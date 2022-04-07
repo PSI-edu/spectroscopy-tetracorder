@@ -1,0 +1,49 @@
+
+#
+# Wavelengths
+#
+
+10	write(ttyout,115)
+	go to 17
+
+16	call what(i)
+        write(ttyout,31)
+
+17	call crtin
+	i=1
+	call wjfren (i,a,il)
+        if (i>=80) go to 32
+	if (il==ihe || il==ihx) go to 1000
+	if (iwidok(il) == 1) {
+		iwtmpf = il
+30		call wjfren (i,a,il)
+		if (i>=80) go to 16
+		if (il!=0) go to 16
+		if ((a<=0)|(a>maxrec)) go to 16
+		if ((iwtmpf == ihcc) & (a > maxchn)) go to 16
+		iwvfl=a
+		call wavlng(iwtmpf,iwvfl,ier)
+		if (ier != 0) {
+			write (ttyout,31) 
+31			format (1x,'reinput wavelength file',/)
+			go to 17
+		}
+		itrol(1)=iwtmpf
+		itrol(2)=iwvfl
+		call hreset(1)
+		call whedr2
+        } else  go to 10
+#        *** wavelength file is assigned to default ***
+32		iwtmpf = itrol(1)
+		iwvfl=itrol(2)
+		call wavlng(iwtmpf,iwvfl,ier)
+
+115     format (_
+' Function f45: Feature Analysis',//,
+'     This function will do a full feature analysis, from a series of ', //,
+'     upper hulls operating on : ',a,i4,':',a,//,/,
+'     Enter new wavelength file id and record number, (e.g. V23),',//,
+'     or press return, or "e", or "x" to exit:',/)
+
+165     format (_
+' *** error -- invalid input re-enter ***:',/)

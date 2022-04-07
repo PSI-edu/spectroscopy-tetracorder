@@ -1,0 +1,31 @@
+Specpr help facility is built around key words and manual sections.
+To get help on a particular topic, type the command:
+
+              help keyword
+
+
+ Keyword                 Topic
+
+bugs        4.4 Bug Reports
+cmd         2.4 Command Interpretation
+locks       4.2 Protective Locks (on specpr files)
+protection  2.3 File Protection
+    1       Specpr Chapter 1: INTRODUCTION
+    2       Specpr Chapter 2: PROGRAM STRUCTURE
+    3       Specpr Chapter 3: STARTING SPECPR ON UNIX
+    4       Specpr Chapter 4: IMPORTANT RULES
+    5       Specpr Chapter 5: PROGRAM INITIALIZATION
+    6       Specpr Chapter  :DEVICE AND FILE ASSIGNMENTS
+    7       Specpr Chapter  :MAIN MENU: PROGRAM OPERATIONS CONTROL
+    8       Specpr Chapter  :MATH OPERATIONS
+    9       Specpr Chapter  :CRT PLOT ROUTINES
+    10      Specpr Chapter  :DATA DISPLAY, TRANSFER, AND OVERLAY
+    11      Specpr Chapter  :DATA FILE LIST
+    12      Specpr Chapter  :EXTINCTION ROUTINES
+    13      Specpr Chapter  :PLOTTING ROUTINES FOR WORK AND PUBLICATION
+    14      Specpr Chapter  :HELP
+    15      Specpr Chapter  :SPECPR STANDARD FORMAT OF DATA FILES
+ 
+    f1      Description of all SPECIAL functions
+    fn      (where n is an integer) gives help on special function n
+            For example: f20 gives help on special function 20.

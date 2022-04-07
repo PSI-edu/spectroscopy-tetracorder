@@ -1,0 +1,250 @@
+<!-- Creator     : groff version 1.18.1.1 -->
+<!-- CreationDate: Tue Nov  9 14:21:31 2010 -->
+<html>
+<head>
+<meta name="generator" content="groff -Thtml, see www.gnu.org">
+<meta name="Content-Style" content="text/css">
+<title></title>
+</head>
+<body>
+
+<hr>
+<pre>SPECPR Users&rsquo; Manual                                                   Page 7.1
+
+</pre>
+
+<p align=center>CHAPTER 7</p>
+
+<p align=center>MAIN MENU: PROGRAM OPERATIONS CONTROL</p>
+
+<p>7.1 Introduction The Program Operations Control is the
+main menu part of the program which allows access to math
+operations, file list, overlay, transfer, display, plot,
+file assignments, initialization and other applications
+programs such as the extinction routines. This is also the
+only point where the program should be terminated. The main
+menu looks like:</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="3%"></td>
+<td width="96%">
+<pre>__________________________________________________________________________
+ v = spdemos : f    1    w = *unasnd*: f    1    d = *unasnd*: f    1
+ u = *unasnd*: f    1    y = *unasnd*: f    1    s = starpack: f    1
+ lp: spoolfile       obs lat=    .000 deg   channels= 256 wav fl=C  256 h
+ file protection: v    53,w     0,d     0,u     0,y     0,s     0 ltype= 0
+--------------------------------------------------------------------------
+ MAIN MENU: ********** Program Operations Control *********************
+
+  INFO:     &quot;in&quot; to turn OFF information
+
+  LIST:      l followed by v,w,d,u,or y  to list the contents
+                         of the corresponding file
+   DISPLAY:   t  to DISPLAY on screen, OVERLAP on screen
+   MATH:      m  to do MATH operations
+   TRANSFER:  t  to TRANSFER (COPY) files
+
+  PLOT:      p  to PLOT SPECTRA on PLOTTER/printer
+   SETUP:     b  to change SETUP PARAMETERS
+   FILES:     r  to REASSIGN files and devices
+   STARPACK:  s  to create a STARPACK for extinction corrections
+   PRINT RST: f  to print summary of the current restart file
+
+  EXIT:      EX  to exit program
+__________________________________________________________________________
+</pre>
+<!-- INDENTATION -->
+<p>7.2 Menu Information Information on the screen can be
+suppressed by typing</p>
+</td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="37%"></td>
+<td width="62%">
+<p>in</p></td>
+</table>
+
+<p>or restored by typing</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="37%"></td>
+<td width="62%">
+<p>i</p></td>
+</table>
+
+<p>7.3 Listing the Contents of a Data File To list the
+contents of the data files (v, w, d, u, or y), type l
+followed by the corresponding letter. For example to list
+the contents of file v, type:</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="37%"></td>
+<td width="62%">
+<p>lv</p></td>
+</table>
+
+<p>See Chapter 11 for instructions once you are in the list
+routine.</p>
+
+<p>7.4 Terminating Program To stop specr, type</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="37%"></td>
+<td width="62%">
+<p>EX</p></td>
+</table>
+
+<p>All files and devices will be closed properly, and
+specpr will print a summary of the files assigned and their
+protections. When you restart specpr, the files will be
+opened and protections set to the same state as when you
+quit at this point.</p>
+
+<p>7.5 File Display, Transfer, and Overlap To transfer
+(copy) files, or display or overlap data on the CRT,
+type</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="37%"></td>
+<td width="62%">
+<p>t</p></td>
+</table>
+
+<p>See Chapter 10 for information once you are in the
+display, transfer and overlap routines.</p>
+
+<p>7.6 Changing Initialization Parameters To change the
+basic setup parameters or reassign files and devices,
+type</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="37%"></td>
+<td width="62%">
+<p>b</p></td>
+</table>
+
+<p>The basic setup parameter menu is then displayed:</p>
+<pre>  __________________________________________________________________________
+   v = spdemos : f   25    w =         : f    1    d = *unasnd*: f    1
+   u = *unasnd*: f    1    y = *unasnd*: f    1    s = starpack: f    1
+   lp: spoolfile       obs lat=    .000 deg   channels= 471 wav fl=V   23 a
+   file protection: v    53,w     0,d     0,u     0,y     0,s     0 ltype= 3
+  --------------------------------------------------------------------------
+                      *** SETUP parameters ***
+
+      type  o    to change the OBSERVATORY or observatory site
+       type  r    to REASSIGN FILES and devices
+       type  f    to EVALUATE PROTECTION vs file sizes
+                  (no response indicates all is consistent)
+       type  g    and number to set GRAPHICS type (see manual)
+       type  b    to toggle BELL
+       type  v    to change the NAME of device v
+       type  d    to change the NAME of device d
+       type  u    to change the NAME of device u
+       type  y    to change the NAME of device y
+       type  w    to change the NAME of device w
+       type  cp   to change the  FILE PROTECTION
+
+      press return to go back to the MAIN routines.
+  __________________________________________________________________________
+</pre>
+
+<p>See Chapter 5 for details on each command. From the main
+menu, it is possible to enter a multiple command and go
+right to the basic setup section desired. From the main
+menu, type b&lt;basic setup command&gt;. For example to
+change protection from the main menu, type:</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="37%"></td>
+<td width="62%">
+<p>bcp</p></td>
+</table>
+
+<p>7.7 Device and File Assignments To go to Device and File
+Assignments, type</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="37%"></td>
+<td width="62%">
+<p>r</p></td>
+</table>
+
+<p>See Chapter 6 for details on the assignment
+routines.</p>
+
+<p>7.8 Extinction Routines To do extinction calculations
+and create a starpack or list the starpack file by titles,
+type</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="37%"></td>
+<td width="62%">
+<p>s</p></td>
+</table>
+
+<p>See Chapter 12 for details on the extinction
+routines.</p>
+
+<p>7.9 Plot Routines (to Hardcopy Plotters) To plot spectra
+on the various supported Plotters, type</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="37%"></td>
+<td width="62%">
+<p>p</p></td>
+</table>
+
+<p>See Chapter 13 for details on the hardcopy plotting
+routines.</p>
+
+<p>To go to the mathematics routines, type</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="37%"></td>
+<td width="62%">
+<p>m</p></td>
+</table>
+
+<p>See Chapter 8 for details on the math routines.</p>
+
+<p>7.11 Restart Summary Typing</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="37%"></td>
+<td width="62%">
+<p>f</p></td>
+</table>
+
+<p>will list the contents of the current restart file on
+the listing device.</p>
+<hr>
+</body>
+</html>

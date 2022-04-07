@@ -1,0 +1,18 @@
+	integer*4 function ihchar(c)
+	implicit integer*4 (i-n)
+	character*1 c
+
+	icharb=ichar(' ')
+#ccc
+#DEC	return((( 256*icharb + icharb )*256 + icharb)*256 +ichar(c))
+
+#INTEL	return((( 256*icharb + icharb )*256 + icharb)*256 +ichar(c))
+
+#HPUX	return((( 256*ichar(c) + icharb )*256 + icharb)*256 +icharb)
+#IA64HPUX  ihchar=(( 256*ichar(c) + icharb )*256 + icharb)*256 +icharb
+#IA64HPUX  return
+#SUNOS	return((( 256*ichar(c) + icharb )*256 + icharb)*256 +icharb)
+#SOLARIS	return((( 256*ichar(c) + icharb )*256 + icharb)*256 +icharb)
+#
+
+	end

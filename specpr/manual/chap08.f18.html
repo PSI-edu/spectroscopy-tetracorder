@@ -1,0 +1,119 @@
+<!-- Creator     : groff version 1.18.1.1 -->
+<!-- CreationDate: Tue Nov  9 14:21:31 2010 -->
+<html>
+<head>
+<meta name="generator" content="groff -Thtml, see www.gnu.org">
+<meta name="Content-Style" content="text/css">
+<title></title>
+</head>
+<body>
+
+<hr>
+<pre>SPECPR Users&rsquo; Manual                                            Page 8-f18.1
+
+F18:  Block Averages and Statistics                         Alias: bloc[kav]
+Special function f18 averages data blocks into single data channels and
+computes the statistics (standard deviation of the mean) for each
+block.  The size of the block is defined by the user.  The blocks
+can be a number of channels, or a range from the
+wavelength set.  The blocks can be overlapping, as in Nyquist
+sampling, or contiguous (half Nyquist sampling).
+To start f18, you must supply a data set from math operations.  For
+example, from math, type:
+
+             v23f18
+or
+              v23block
+
+As in most specpr routines, when you first enter f18, the title of
+the current data set being operated on is displayed along with the
+wavelength set in use and the number of channels.  You may change
+the wavelength set in use at this point by typing in the new
+wavelength set file ID(upper case letter)and the record number.  If
+you do not wish to change the wavelength set, press return.
+Next you will be asked if you want the blocks defined as channels or
+wavelengths.  Type:
+
+              c    to define block in units of channels, or
+              w    to define blocks in units of the wavelength set.
+</pre>
+
+<p>Now you are asked to enter the block size. If in channel
+mode, enter the number of channels to be averaged in each
+block. If in wavelength mode, enter the wavelength range in
+the same units as your wavelength set. For example, if you
+have a wavelength set going from 0.3 to 2.5 &mu;m and you
+want blocks of 0.1 &mu;m, enter 0.1 (be sure you are in
+wavelength mode). The block size must be less than or equal
+to the number of channels in channel mode, or less than or
+equal to the upper end of the wavelength range. The block
+always starts at 0 and in includes the upper end of the
+block. For example, in channel mode a block size of 5 will
+include channels 1, 2, 3, 4, and 5. In wavelength mode, a
+block size of 0.1 will include all channels whose
+wavelengths fall from 0.00 to 0.10. Next you are asked for
+half or full Nyquist sampling. Enter</p>
+<pre>              h    for half Nyquist sampling, or
+              f    for full Nyquist sampling.
+</pre>
+
+<p>Say the block size is 6 and you select full Nyquist
+sampling. The input to each block would be as follows:</p>
+<pre>              Input channels               Output channel
+              -------------------------------------------
+              (1+2+3+4+5+6)/6                    1
+              (4+5+6+7+8+9)/6                    2
+              (7+8+9+10+11+12)/6                 3
+              (10+11+12+13+14+15)                4
+              (13+14+15+16+17+18)/6              5
+              -------------------------------------------
+</pre>
+
+<p>However, for half Nyquist sampling, the input would
+be:</p>
+<pre>              Input channels               Output channel
+              -------------------------------------------
+              (1+2+3+4+5+6)/6                    1
+              (7+8+9+10+11+12)/6                 2
+              (13+14+15+16+17+18)/6              3
+              -------------------------------------------
+</pre>
+
+<p>The average of a block j is computed from the
+equation</p>
+<pre>                           n2
+
+                          &Sigma;  xi
+                          i=n1
+                    xj = &mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;
+                          (n2 - n1 + 1)
+</pre>
+
+<p>where (n1 - n2 +1) = N if n2 is less than or equal to
+the number of channels. If errors have been included, the
+standard deviation is calculated by the following</p>
+<pre>                          &#9581;  n2     &#9582; &frac12;
+                          &#9474;         &#9474;
+                          &#9509;  &Sigma;  &sigma;i2 &#9501;
+                          &#9474; i=n1    &#9474;
+                          &#9584;         &#9583;
+                    &oline;j = &mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;
+                         (n2 - n1 + 1)
+</pre>
+
+<p>where &sigma;j is the new standard deviation. If the
+errors have not been read in, the following equation is
+used:</p>
+<pre>                          &#9581;  n2   (xj - &oline;j)2   &#9582;
+                          &#9474;                    &#9474;
+                          &#9509;  S   &mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash; &#9501;
+                          &#9474; i=n1 (n2 - n1 + 1) &#9474;
+                          &#9584;                    &#9583;
+                    &oline;j = &mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;,
+                              (n2 - n1 + 1)&frac12;
+</pre>
+
+<p>which computes the standard deviation of the mean.</p>
+<hr>
+</body>
+</html>

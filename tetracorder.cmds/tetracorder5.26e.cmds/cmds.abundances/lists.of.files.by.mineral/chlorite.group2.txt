@@ -1,0 +1,21 @@
+# Chlorite    based on cmd.lib.setup.t5.2d3
+#
+#  DN scale = what band depth = 255 in the tetracorder output image (from 5.2a2 expert system)
+#  BD factor = band depth =1 for pure, fraction in mixture
+#  splib06conv1, sprlb06conv1 = convolved spectrum ID, valid for spectra for 1 - 2171 channels.
+#
+#                                                                 DN     BD    Band                                   convolved
+#              file                                             scale  factor  depth      title                       reference spectrum
+group.2um/chlorite.depth.gz                                       0.5   1.0   0.3724  Chlorite SMR-13.b 60-104um      splib06conv1 1080
+group.2um/chlorite-skarn.depth.gz                                 0.5   0.61  0.2380  Chlorite_Serpentine BR93-22B    splib06conv1 5664
+group.2um/muscovite+chlorite.depth.gz                             0.5   0.03  0.1594  Muscovite+Chlorite CU91-253D    splib06conv1 5982
+group.2um/chlorite_clinochlore.depth.gz                           0.5   0.998 0.2887  Clinochlore GDS158 Flagst       sprlb06conv1  660
+group.2um/chlorite_clinochlore.nmnh83369.depth.gz                 0.5   1.0   0.2428  Clinochlore NMNH83369           splib06conv1 1212
+group.2um/chlorite_clinochlore.fe.gds157.depth.gz                 0.5   1.00  0.2204  Clinochlore_Fe GDS157           sprlb06conv1  648
+group.2um/chlorite_clinochlore.fe.sc-cca-1.depth.gz               0.5   1.0   0.2009  Clinochlore_Fe SC-CCa-1.b       splib06conv1 1260
+group.2um/chlorite_cookeite-car-1.a.depth.gz                      0.5   0.94  0.2283  Cookeite CAr-1.a 104-150um      splib06conv1 1338
+group.2um/chlorite_cookeite-car-1.c.depth.gz                      0.5   0.81  0.0794  Cookeite CAr-1.c <30um          splib06conv1 1368
+group.2um/chlorite_thuringite.depth.gz                            0.5   1.0   0.3134  Thuringite SMR-15.b             splib06conv1 4872
+group.2um/prehnite+.50chlorite.depth.gz                           0.5   0.50  0.3015  Prehnite+.50Chlorite AMIX       sprlb06conv1  252
+group.2um/prehnite+.67chlorite.depth.gz                           0.5   0.67  0.3070  Prehnite+.67Chlorite AMIX       sprlb06conv1  258
+group.2um/prehnite+.75chlorite.depth.gz                           0.5   0.75  0.3112  Prehnite+.75Chlorite AMIX       sprlb06conv1  264

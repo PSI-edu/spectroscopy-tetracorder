@@ -1,0 +1,348 @@
+.\" use ms macros
+.\" this header is for putting the page numbers at the bottom of the page
+.\" set line length, page offset, vertical spacing
+.nr LL 6.3i
+.ll 6.3i
+.nr PO 1.0i
+.po 1.0i
+.nr VS 12
+.vs 12
+.\" set header and footer margins (default is 1.0i)
+.nr FM 1.00i
+.fm 1.00i
+.nr HM 1.00i
+.hm 1.00i
+.\" set no date here, MUST be before CF definition, because ND sets CF
+.\" set date, so don't do .ND
+.\" LH CH RH are left, center, right header strings
+.\" LF CF RF are left, center, right footer strings
+.\" default is CH is defined as: .ds CH "\(hy \\n(PN \(hy
+.ds LH "SPECPR Users' Manual
+.ds CH
+.ds RH "Page 11.\\n(PN
+.\" setup complete
+.nf
+SPECPR Users' Manual                                                   Page 11.1
+
+
+
+
+
+
+
+
+
+
+
+
+
+.ce
+.B
+CHAPTER 11
+.R
+
+
+
+
+
+.ce
+.B
+DATA FILE LIST
+.R
+
+
+
+
+.fi
+.bp
+.B
+11.1  Introduction
+.R
+.PP
+The data file list routines read the contents of a specpr data file
+and prints header information and data on the terminal or to a print
+spooler.  The user can select different modes to print different
+fields, search for strings and print only those found.  The search
+capability along with the ability to read selected records within a
+file (given as a list of record numbers) can be used for simple data
+base operations.
+.PP
+The list routines can be entered from Program Operations Control,
+Data Display Transfer and Overlay, or from Math.
+To enter the list routines, you type
+
+.in 14n
+.B
+l<ID>
+.R
+.in 0n
+
+where "<ID>" means one of the specpr file letter ID's: v, w, d, u,
+or y.
+.PP
+At all user command points in the list routines, an "e" or "x"
+command will terminate the routine and return you to program
+operations.
+.PP
+NOTE: there is a new X-windows based, "point and click" specpr data file
+viewer.  It is currently called "sp" and is available as part of the pic-works
+(pw) software package.
+
+
+.B
+11.2  Listing Mode
+.R
+.PP
+When you first enter the list routines, you are given the option to
+print in "laboratory" or "telescopic" mode:
+
+.nf
+  ________________________________________________________
+   type  t  for TELESCOPIC or  l  for LABORATORY (DEFAULT)
+  or beginning and ending files to be listed
+  ________________________________________________________
+.fi
+
+The telescopic mode prints the observation air mass whereas the
+laboratory mode prints channels in that column.  The mode is
+different for both the terminal list and the printer list.  The
+printer listing always assumes a 132-character wide printer and is
+able to show more items than the terminal listing.  The default
+printer listing also shows the sidereal time in telescopic mode.
+
+
+.KS
+.B
+11.3  CRT Listing Options
+.R
+.PP
+After you select the telescopic/laboratory mode, you are asked
+which items to show on the terminal.
+
+.nf
+.in 2n
+__________________________________________________________________
+ *** CRT print options ***
+n  print # only on CRT when printing to lineprinter
+a  print wavelength record numbers
+h  print history 
+t  print text
+r  read and print a list of comma separated record numbers
+w  write to a file, a list of comma separated record numbers
+   You will be prompted for the file name after you select r or w.
+__________________________________________________________________
+.in 0n
+.fi
+.KE
+
+The "n" option speeds the operation when all you desire is a printer
+listing.  The "a" option lists the wavelength pointers in place of
+the channel numbers in laboratory mode.  The "h" option adds the
+history to the listing (this takes more than one line on the
+terminal).  The "t" option prints the text if the data record type
+indicates a text record.
+.PP
+As noted in the introduction, the list routines can read only selected
+records.  Similarly, it can write the records it finds.  For
+example, if you do a complicated search, you can record the record
+numbers found by the search and then read only those numbers in subsequent
+listings.  The file containing the record numbers must have each
+record number separated by a comma.  If the number is the last on a
+line, it must still have a comma.  The "r" option directs the list
+routines to read one of these lists, while the "w" option directs it
+to create a list.  You can both read and write a list at the same
+time.
+
+
+.B
+11.4  Printer Listing Options
+.R
+.PP
+Next you enter the options to decide what to print on the printer.
+
+.in 2n
+.nf
+________________________________________________________
+LINEPRINTER OPTIONS (return for CRT only)
+   p  print titles + selected fields given by print mode
+   a  print titles with no pausing at CRT page full
+
+   with p or a, also select:
+   h  print history
+   m  manual history if not blank
+   t  print text on text data files
+   b  print all header info except manual history
+   c  print all except data
+   d  print all and data
+________________________________________________________
+.fi
+.in 0n
+
+If you press return, no printer output is created.  To create a
+printer listing, you must type either
+
+.in 14n
+.B
+p
+.R
+.in 0n
+or
+.in 14n
+.B
+a
+.R
+.in 0n
+
+If you type "p", the terminal stops each time the terminal screen is
+full, but if you type "a" (for "automatic, no stopping"), the
+list continues until the user limits are reached.
+.PP
+With a "p" or "a" command, you can select options as described
+above.  For example, to
+make a listing including the history, type
+
+.in 14n
+.B
+ph
+.R
+.in 0n
+
+
+.KS
+.B
+11.5  Search Capability
+.R
+.PP
+The next command prompt is for search capability:
+
+
+.nf
+.in 2n
+___________________________________________________________
+Enter SEARCH STRING: letter "string1" letter "string2" etc.
+       where letter is for t  title
+                           h  history
+                           d  date
+                           m  manual history
+       maximum number of strings is 4
+       comparisons is and (default), use | for or, & for and
+___________________________________________________________
+.in 0n
+.fi
+.KE
+
+Pressing return does no search selection; all records are printed.
+To limit the listing to a specific search parameter, enter the
+search field (t, h, d, or m) and the search string.  The search
+string is a full Unix regular expression.  See the Unix string
+searching documentation with your computer for more details.  A few
+examples will be given below.
+.PP
+You may enter multiple search fields, as long as they are less than
+80 characters or less.  They may include multiple entries of the
+same type, however, such as two different title strings.  The date
+field is converted from its numerical value to a string for this
+search capability.  The date field searched is the date of data
+acquisition.
+.PP
+Examples:
+
+.in 8n
+.nf
+t"Kaolinite"         \\# search for all Kaolinite
+t"[Kk]aolinite"      \\# search for all Kaolinite or kaolinite
+t"Kaolin" t"NN56"    \\# search for all entries that have Kaolin
+                         and NN56 in the title.
+t"Kaolin" d"198[56]" \\# search for all Kaolin spectra obtained in
+                         1985 or 1986
+t"Kaolin" |t"Alunite"  \\# search for all entries of Kaolin or
+                           Alunite
+.in 0n
+.fi
+
+In the above examples, a "&" was not necessary because "and" id the
+default logical operator.
+
+
+.KS
+.B
+11.6  Listing Limits
+.R
+.PP
+The final prompt before the listing/search occurs is to enter the
+limits of the search:
+
+.nf
+.in 2n
+___________________________________________________
+Type in the beginning and ending files to be listed
+___________________________________________________
+.in 0n
+.fi
+
+If the lower limit is zero, it is reset to 1.  If the upper limit is
+greater than the protection limit, it is reset to the protection
+value.
+.KE
+
+
+.KS
+.B
+11.7  Continuing/Ending the List
+.R
+.PP
+When the listing is complete, or the terminal page is full, you can
+continue, or exit to one of 3 places as described by the prompt:
+
+.nf
+.in 2n
+__________________________________________________________________________
+Type  c  to continue, e or x  to exit,  Type in new record numbers to list
+type  r  to return to options, type t to go to file display and transfer
+or type m to go to math routines
+__________________________________________________________________________
+.in 0n
+.fi
+
+If you type c to continue and you are at the upper limit given
+above, but that upper limit is less than the protection value, the
+listing/search will continue up to the protection limit.  To continue with a
+new range, do not type "c," just the new range of record numbers.
+.KE
+
+
+.KS
+.B
+11.8  Sample Listing
+.R
+.PP
+A sample listing using the default laboratory mode looks like the
+following.
+
+.nf
+_______________________________________________________________________________
+ file            title                            chans    time        date
+    73  Description of Alunite   Hunt 295.?B      3132 Characters of TEXT
+    76  Alunite 295.3B .2-3um 1x ABS REF           512  12:03:14.00  08/20/1985
+    78  errors to previous file   77               512  12:03:14.00  08/20/1985
+    80  Alunite 295.3B .9-2.6um 2x ABS REF         680  09:49:27.00  08/21/1985
+    83  errors to previous file 80                 680  09:49:27.00  08/21/1985
+    86  Alunite 295.3B 1.3-1.7um 2x ABS REF        264  11:43:26.00  08/22/1985
+    88  errors to previous file 86                 264  11:43:26.00  08/22/1985
+    90  USGS Den BKMN STD waves 4x 2.2738-4.00um   256  04:23:02.00  11/13/1985
+    91  USGS Den BKMN 4x resolution                256  04:23:02.00  11/13/1985
+    92  Alunite 295.3B 2.36-2.555um 4x ABS REF      75  14:00:38.00  08/21/1985
+    93  errors to previous file 92                  75  14:00:38.00  08/21/1985
+    94  Alunite 295.3B 1-1.55um 4x ABS REF         442  16:49:01.00  08/21/1985
+    96  errors to previous file 94                 442  16:49:01.00  08/21/1985
+    98  Description of Beryl   (WNS)              1737 Characters of TEXT
+ ------------------------------------------------------------------------------
+ Type  c  to continue, e or x  to exit,  Type in new record numbers to list
+ type  r  to return to options, type t to go to file display and transfer
+ or type m to go to math routines
+_______________________________________________________________________________
+.KE
+.fi
+
+.PP
+Note that the continuation record numbers are hidden from the user.

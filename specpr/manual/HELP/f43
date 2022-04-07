@@ -1,0 +1,63 @@
+
+
+
+
+
+
+SPECPR Users' Manual                                            Page 8-f43.1
+
+
+_F_4_3:  _F_a_s_t _F_o_u_r_i_e_r _T_r_a_n_s_f_o_r_m (_F_F_T) _a_n_d _I_n_v_e_r_s_e _F_F_T      _A_l_i_a_s = _f_f_t
+
+     This routine performs a Fast Fourier Transform  (FFT)  on  a  spectrum.
+The  spectrum can be any number of channels; the algorithm pads the spectrum
+with zeros to a power or 2 number of channels in order to do the  FFT.   For
+example, if you have 931 channels, the algorithm pads the data to 1024 chan-
+nels.  The resulting FFT is NOT folded: zero frequency occurs at  channel  1
+and  the  maximum  channel,  and  the maximum frequency occurs in the middle
+channel.
+
+     The f43 routine does not save both the real and imaginary components at
+this  time.   Thus  the  user must run f42 twice: once to save the real com-
+ponent and the second time to save the imaginary component.
+
+     The inverse FFT requires both real and imaginary  components.   If  you
+have only the real, you could use a data set of zeros for the imaginary com-
+ponents (but this is not strictly valid).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

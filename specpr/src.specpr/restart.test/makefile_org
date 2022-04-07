@@ -1,0 +1,24 @@
+# @(#) makefile 2.4@(#)
+
+SHELL=/bin/sh
+
+OBJ=	\
+	rstdmp.o	\
+	rstart.o
+
+$(SP_OBJ)/rst.o:	$(OBJ)
+	ld $(LFLAGS) -r -o $@ $(OBJ)
+
+.SUFFIXES:
+.SUFFIXES: .o .r
+	
+rstdmp.o:		rstdmp.r
+	$(RF) $(RFLAGS) rstdmp.r > rstdmp.f
+	$(F77) $(FFLAGS) -c rstdmp.f
+	rm -f rstdmp.f
+
+
+rstart.o:		rstart.r
+	$(RF) $(RFLAGS) rstart.r > rstart.f
+	$(F77) $(FFLAGS) -c rstart.f
+	rm -f rstart.f

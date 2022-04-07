@@ -1,0 +1,63 @@
+
+
+
+
+
+
+SPECPR Users' Manual                                            Page 8-f21.1
+
+
+_F_2_1: _C_a_l_c_u_l_a_t_e _N_t_h _T_e_r_m _P_o_l_y_n_o_m_i_a_l_s                        _A_l_i_a_s: _c_a_l_c[_p_o_l_y]
+
+     This routine calculates nth term polynomials where the  maximum  number
+of  terms  or  coefficients  is  256.  This routine operates on the data set
+entered from math operations.  Then it prompts you for a data set of coeffi-
+cients (file ID and record number) for the polynomial:
+
+                    Y(n) = C(1) + C(2)X(n) + C(3)X(n)829 + C(4)X(n)839 + ...,
+
+where Y is the output array, X is the input  array,  C  is  the  coefficient
+array.
+
+     To execute the f21 function, in math operations type the  file  id  and
+record number of the input file and f21.  For example:
+
+              _v_2_3_f_2_1
+or
+              _v_2_3_c_a_l_c
+
+After the routine title is printed type in the file id and record number  of
+the file containing the coefficient values, then a space, then the number of
+terms of the polynomial.  For example, if the coefficients were in  v24  and
+there were 6 coefficients, you would type:
+
+              _v_2_4 _6
+
+
+     The program will then do the calculations and return to the  math  rou-
+tine  prompting  you  for  the location to put the output file and the title
+etc.
+
+
+     _W_A_R_N_I_N_G: be careful of overflows!  When the number of terms, n, becomes
+large (like near or greater than 10), x8n9 can get very large if x > 1.0.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,107 @@
+<!-- Creator     : groff version 1.18.1.1 -->
+<!-- CreationDate: Tue Nov  9 14:21:31 2010 -->
+<html>
+<head>
+<meta name="generator" content="groff -Thtml, see www.gnu.org">
+<meta name="Content-Style" content="text/css">
+<title></title>
+</head>
+<body>
+
+<hr>
+<pre>SPECPR Users&rsquo; Manual                                            Page 8-f13.1
+
+F13:  Merge Two Spectra to One                                Alias: merg[e]
+This function will combine two input data sets (of presumably
+different wavelengths) into a single output data set.  Perhaps this
+routine should be named &quot;splice&quot; because you can only merge two at a
+time, although you can actually have multiple splice points, enough
+that it is indistinguishable from a merge concept.  It will
+not automatically merge the two input data sets according to their
+respective wavelengths; rather, it will combine the two sets
+according to a channel sequence specified by the
+user.  (Errors will be included if specified.)
+The following files must exist prior to calling the function:
+
+A) a first input data set (+ errors),
+
+B) a second input data set (+ errors), and
+
+C) a wavelength set with enough channels to accommodate the desired
+   output data set (the value of the wavelengths is inconsequential;
+   only the number of channels matters--4852 maximum at present)
+
+  The first input data set must be specified when f13 is called. The
+   wavelength set must also be specified at call time unless the
+   last operation or display in the program used a
+   wavelength set with the same number of channels.
+
+  Example of use:
+
+  Given two input data sets of different wavelengths:
+
+          A)  w127  (25 channels) + errors
+          B)  v321 (120 channels) + errors
+</pre>
+<!-- INDENTATION -->
+
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+<p>1) Decide how the two data sets should be combined. For
+this case, combine the two data sets so that w127 channels
+1-24 are followed by v321 channels 4-57 and channels 63-115;
+all other channels will be omitted.</p>
+</td>
+</table>
+
+<p>2) Create a wavelength set with enough channels to
+accommodate the output data set. For this case, set the
+wavelength set to C131.</p>
+
+<p>You would then call f13 from math (the ending
+&quot;e&quot; includes error bars):</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>w127f13eC131</p></td>
+</table>
+
+<p>Then in f13, type in the second data set when prompted
+(data set &quot;b&quot;):</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>v321</p></td>
+</table>
+
+<p>and finally, you will be prompted to enter the channels
+to merge. On the merge command line, &quot;a&quot; refers to
+the first data set (w127 in this case) and &quot;b&quot;
+refers to the second data set. So we have for this
+example:</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>a1 24 b 4 57 b 63 115</p></td>
+</table>
+
+<p>IMPORTANT NOTE: The merge routine works on one data set
+at a time. You must merge the wavelength sets in the same
+manner. Be very careful to make sure the data channels line
+up with the proper wavelength channels. It is usually a good
+idea to overlay the merged data sets with the originals.</p>
+<hr>
+</body>
+</html>

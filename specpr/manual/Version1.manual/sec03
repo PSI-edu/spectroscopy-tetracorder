@@ -1,0 +1,218 @@
+.sh 1 "STARTING SPECPR ON THE TI 980 B COMPUTER " 3
+
+
+To run SPECPR:
+.pp
+The interactive terminal system (ITS) may or may not be running.
+
+A)  If ITS is running:
+.pp
+Press RESET TERMINAL twice fast on the HP2648A graphics
+terminal.  Logon if necessary.  Type a job card to identify
+yourself:
+.ce
+JOB NAME RNC
+
+Name can be any 6 characters.  Your name or SPECPR might be
+used.  Now type:
+.ce
+RUN SPECPR
+
+The program will begin when memory becomes available.
+
+B)  If ITS is not running:
+.pp
+From the system console, type a job card:
+.ce
+//JO NAME RNC
+
+where NAME is as above and // is the escape key.
+
+Then type:
+.ce
+//RU SPECPR DEV=T3
+
+The program will begin when memory becomes available.
+.bp
+
+
+.sh 1 "PROGRAM INITIALIZATION "
+
+
+.sh 2 "Beginning "
+.pp
+As the program is started, the terminal is put in graphics mode
+and the SPECPR version date is written on the screen.  The
+program waits for a carriage return before continuing.  Several
+options are available at this point:
+.pp
+To change the graphics mode, type G and a number to:
+.l( I
+ G2= Set, White on Black
+ G3= Compliment, White on Black
+G11= Set, Black on White
+G13= Compliment, Black on White
+G99= Not a graphics terminal
+other numbers <10= Jam mode, White on Black (default)
+other numbers >10= Jam mode, Black on White
+.l)
+.pp
+White on black is white letters on a black screen.  Set means to
+turn on graphs bits but do not turn off unless the screen is
+erased.  This is like a storage display.  Compliment means to
+turn bits on that are off or off if they are on.  Jam means to
+erase a block where a character is to be written.  This is the
+most desirable because, if you make a mistake and backspace on a
+line you type in, the new letters you type will be readable.
+This is the default mode.
+.pp
+To change the default volume numbers (default=2), type
+.ul
+V
+and the volume number.
+.pp
+To change the default userid (default=SPEC), type
+.ul
+U.
+The program will then ask for the userid.
+.pp
+A restart routine is used so that SPECPR may be exited and later
+restarted with the same files assigned and protection and other
+parameters the same as the time of the exit.  This routine was
+written specifically for calling sons and daughters of SPECPR but
+is also useful for general use.  Note that before you use the
+restart option, you must be sure that nobody has used the program
+since you last used it, or you will need to reset all the
+protections and assignments to load your data again.  The restart
+parameters are stored in a disc file and are updated each time
+the program operations control routine is entered.  Thus, when
+doing math operations or transferring, the restart parameter file
+is not updated until the entry to program operations control.
+.pp
+For example to restart under a different userid (e.g. TEST), type
+.ul
+UR
+(if you type
+.ul
+RU,
+the program will restart before seeing the U for a different
+userid).  The program will ask for the userid then restart after
+you have typed it in.
+
+
+.sh 2 "Protection "
+.pp
+All files may be totally or partially protected, or completely
+unprotected.  The fourth line of the CRT header gives the
+protection status for all six devices (devices V, W, D, U, V, and
+S).  If the protection number is positive or zero, the device is
+a read/write device where you can read up to and including the
+protection, but you can only write to the protection +1 file.  A
+protection number of -1 means the device is a read-only device
+where you can read up to the absolute value of the protection
+number.   The protection numbers are typed in on one line in the
+initialization routine as the file ID and protection number.
+Example:  "V0 D-1 U432 Y-600 W-600 S-50", where V0 means to
+protect 0 files on device V (write to file 1 only, 0 files can be
+read); U432 means to protect files up 732 files (write to file
+433); Y-600 means that Y is a read-only device with 600 files;
+similarly for W; and S is a read only device with 50 files.  If
+the protection number is zero or positive, it is incremented each
+time the device is written to.  One or more device protection
+numbers may be changed on the same line.  See section 2.3 for
+more details.
+
+
+.sh 2 "Observatory Location "
+.pp
+Three letter codes are shown for often used observatories.  If
+you wish another location, type T and then the program will request
+the latitude in degrees, minutes, seconds, free format.
+Longitude is not needed because the sidereal time is contained
+with each spectrum.  The observatory location is used only in
+computing the airmass in the object-sky subtraction routine.
+
+
+.sh 2 "Device Names "
+.pp
+The device names are the names of the mag tapes from which the
+data comes or will be written.  The tape names are a maximum of 8
+characters.  You must be certain these names are correct if you
+want the histories to be correct.  First, you are asked to type in
+the name of the Rawfile (device W), then Savefile (device V), then
+Workfile (device D), then U file and Y file.  If no name is
+entered for device D, the name defaults to WORKFILE.  There is no
+default for V or W.
+.bp
+
+
+.sh 1 "DEVICE AND FILE ASSIGNMENTS "
+
+
+.sh 2 "Assignments "
+.pp
+The device file assignment status is displayed on the CRT.  Each
+device is assigned one at a time by single letter codes.  When
+assigning a "device" (letter V, W, D, S, U, or Y) to disc, you
+type D and a number 1 or 2 for the disc volume number.  If no
+number is entered, the default is 2.  Throughout the program, the
+device and file status in short form is displayed in the top 4
+lines on the CRT.  This tells whether or not the devices are
+assigned, where assigned, the current file pointer position,
+savefile protection, wavelength file in use, number of channels,
+and the device names.
+.pp
+Devices assigned to DUMMY means these devices are not accessed.
+If access is requested when assigned to DUMMY,  the program cannot
+respond and will tell you so.  Error numbers encountered when
+assigning devices can be found on the bulletin board to the left
+of the terminal.
+.pp
+If device V is assigned and then you try to assign U to the same
+thing, the program will say that device V must be assigned to DUMMY
+before U is assigned.  Similarly with W and Y.  If any confusion
+occurs when these messages appear, it may be easiest to assign
+both (U and V, or Y and W) to DUMMY before proceeding.
+.pp
+Typing
+.ul
+E
+or
+.ul
+X
+will cause the program to exit to the next routine.
+.pp
+The printer plotter is never assigned by the user.  It is
+assigned by the program only when needed for a plot.
+.pp
+Multiple commands are allowed in the device and file assignment
+section.  The old version could only accept 1 character commands
+at a time, resulting in rewriting the screen each time a device or
+file was assigned.  You may now type in all assignments on one
+line.  Thus, you can now assign 8 devices and files in essentially
+the same time as it previously took to assign one.
+.pp
+Example:  Assign V to disc (D); D to disc (D); U to MT0 (M); W to
+disc (D); S to disc (D); and to assign the lineprinter (L), you would
+type on one line the sequence:
+.pp
+"VDDDUMWDSDLL".  Note these are the same characters you used to
+type to do the same thing, only you had to wait for the screen to
+be rewritten.  Spaces may be inserted anywhere or left out
+completely.  Devices may be assigned in any order.  You may also
+assign devices the old way.  If you forget what letter to type,
+you may break the command sequence at any point.
+.pp
+Example:  say you forgot that M was to assign U to MT0.  Then to
+perform the assignments as in the example before, type "VDDDU"; the
+program will then list which characters to type for assignment of
+U.  Selecting "M" and wishing to assign the rest of the devices,
+you could then type "MWDSDLL".  The exit command is also a valid
+command.  Thus, to exit without rewriting the screen in the above
+example, type:
+.pp
+"VDDDUMWDSDLLE" or "VDDDUMWDSDLLX".  However, it might be wise to
+make sure the devices are assigned properly before exiting.  If an
+error is encountered, the program halts assignments at that
+point, lists the character, rewrites the screen with the current
+assignment status, and waits for new input.

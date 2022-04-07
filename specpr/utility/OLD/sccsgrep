@@ -1,0 +1,46 @@
+#!/bin/sh
+
+# do a get on an sccs file and then grep for strings
+
+opti=" "
+optv=" "
+
+for i in $*
+do
+	case $i in
+		-i)	opti=-i
+			shift ;;
+
+		-v)	optv=-v
+			shift ;;
+	esac
+done
+
+if [ -z "$1" ]
+then
+	echo "$0: No search string or file name entered"
+	echo "exit 1"
+	exit 1
+else
+	string=$1
+	shift
+fi
+
+if [ -z "$1" ]
+then
+	echo "$0: No file name entered"
+	echo "exit 1"
+	exit 1
+fi
+
+for j in $*
+do
+	if [ -r "$j"  ]
+	then
+		get -s -p $j | grep $opti $optv $string | sed -e "s#^#${j}: #"
+	else
+		echo "$j is not a readable file"
+		echo "exit 1"
+		exit 1
+	fi
+done

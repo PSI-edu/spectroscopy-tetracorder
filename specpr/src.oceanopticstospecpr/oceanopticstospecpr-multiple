@@ -1,0 +1,150 @@
+#!/bin/sh
+
+# R. Clark Jan - Feb, 2020
+
+# 
+
+
+if [ -z "$1" ]
+then
+        echo "Usage:"
+        echo '   oceanopticstospecpr-multiple  specprfile [-w|-wr] -file oneoceanopticsfile.txt'
+	echo 'or'
+        echo '   oceanopticstospecpr-multiple  specprfile [-p wavptr resptr] [-scale X] -files *.txt'
+	echo ' '
+	echo 'Examples:'
+	echo ' '
+	echo '    oceanopticstospecpr-multiple splegs01 -w  -file VacChamberExp_Spec_14-05-26-308.txt'
+	echo '    oceanopticstospecpr-multiple splegs01 -wr -file VacChamberExp_Spec_14-05-26-308.txt  # adds placeholder for resolution'
+	echo ' '
+	echo '    oceanopticstospecpr-multiple splegs01 -p 1 2 -files V*.txt             |& tee oceanopticstospecpr-multiple.out1.txt'
+	echo '    oceanopticstospecpr-multiple splegs01 -p 1 2 -scale 0.01 -files V*.txt |& tee oceanopticstospecpr-multiple.out2.txt'
+	echo ' '
+        echo exit 1
+        exit 1
+fi
+
+if [ -f "$1" ]
+then
+	spfile=$1
+	shift     # now spfile is off the argument list
+else
+	echo "ERROR: specpr file  $1  does not exist"
+        echo "exit 1"
+        exit 1
+fi
+
+wavptr=0
+resptr=0
+yscale=1.0
+
+wavonlymode=0   # if =1, then only write wavelengths
+
+
+# case 1: -w
+if [ "$1" = "-w" -o "$1" = "-wr" ]
+then
+	wavonlymode=$1
+	if [ "$2" = "-file" -a -n "$3" ]
+	then
+		# example:
+		# oceanopticstospecpr-multiple  specprfile -w -file oneoceanopticsfile.txt
+		echo "oceanopticstospecpr $spfile $3 $wavonlymode"
+		oceanopticstospecpr $spfile $3 $wavonlymode
+		exit  # done
+	else
+		echo "ERROR3 $wavonlymode  expecting -file keyword"
+        	echo "exit 1"
+	        exit 1
+	fi
+fi
+
+# first check fpr poionters and scale
+
+
+# Now expect -p -scale or -files
+
+if [ "$1" = "-p" ]
+then
+	if [ -n "$2" ]
+	then
+		wavptr=$2
+	else
+		echo "wavptr not found"
+		echo "exit 1"
+		exit 1
+	fi
+	if [ -n "$3" ]
+	then
+		resptr=$3
+	else
+		echo "resptr not found"
+		echo "exit 1"
+		exit 1
+	fi
+	shift 3    # now -p wavptr resptr are off the argument list
+fi
+
+if [ "$1" = "-scale" -a -n "$2" ]
+then
+	if [ -n "$2" ]
+	then
+		yscale=$2
+	else
+		echo "ERROR: scale value not found"
+		echo "exit 1"
+		exit 1
+	fi
+
+	shift 2
+fi
+
+# if scale was first before -p, we may now find a -p, so check again
+
+if [ "$1" = "-p" ]
+then
+	if [ -n "$2" ]
+	then
+		wavptr=$3
+	else
+		echo "wavptr not found"
+		echo "exit 1"
+		exit 1
+	fi
+	if [ -n "$3" ]
+	then
+		resptr=$4
+	else
+		echo "resptr not found"
+		echo "exit 1"
+		exit 1
+	fi
+	shift 3    # now -p wavptr resptr are off the argument list
+fi
+
+# now we should see $1 = -files
+
+if [ "$1" = "-files"  ]
+then
+	shift    # now remaoning arguments are oceanotpics data files
+
+	tfiles=`ls -1 -tr $*`   # sort by time
+
+	for i in $tfiles
+	do
+		if [ -f "$i" ]
+		then
+			# example:
+			# oceanopticstospecpr specprfilename  oceanopticsfilename  -p 6 7
+			echo "oceanopticstospecpr $spfile $i -p $wavptr $resptr -scale $yscale"
+			oceanopticstospecpr $spfile $i -p $wavptr $resptr -scale $yscale
+		else
+			echo "ERROR: file $i NOT FOUND"
+       	 		echo "exit 1"
+		        exit 1
+		fi
+	done
+else
+	echo "ERROR no -files option found.  "
+	exit 1
+fi

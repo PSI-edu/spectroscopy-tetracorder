@@ -1,0 +1,63 @@
+
+
+
+
+
+
+SPECPR Users' Manual                                                   Page 8-f10.1
+
+
+_F_1_0:  _S_o_r_t_i_n_g _R_o_u_t_i_n_e                                     _A_l_i_a_s: _s_o_r_t
+
+     The function arranges data into increasing wavelength order.  Entry  is
+by the usual method for special functions: from the math routines, enter the
+file id and record number of the data set  or  be  sorted.   Errors  may  be
+included by an "e" option on the math command line.
+
+     After entering the sort routine, the title of the data set to be sorted
+is  printed  along  with the wavelength set in use.  The user may change the
+wavelength set at this point by entering the (upper case) file id and record
+number of the wavelength set.
+
+     _W_A_R_N_I_N_G: Only the data file is sorted, but by specifying the wavelength
+file when calling f10, the wavelengths may be sorted also.
+
+     For example, say the wavelengths are in v3 and the data in  v6.   First
+sort the wavelength set.  From math operations, type the
+
+              _v_3_f_1_0
+or
+              _v_3_s_o_r_t
+
+command.  Once inside the sort routine, set  the  wavelength  set,  in  this
+example to the:
+
+              _V_3
+
+wavelength set.
+
+     Once the wavelengths are sorted, sort the data set v6:
+
+              _v_6_s_o_r_t
+
+and once inside you should not have to set the wavelength set again  because
+V3 should already be in use.  Simply press return to sort the data.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

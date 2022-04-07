@@ -1,0 +1,36 @@
+
+# UNISRC_ID: @(#)HP9872S plotter        09/27/1985
+# lp spooler interface for HP9872S plotter
+#
+#------------------
+# Options recognized:
+#	0 | -0		rotate 0 degrees (default is rotate 90).
+#
+# Determine which options have been invoked
+
+opt=
+for i in $5
+do
+	case "$i" in
+	-0 | 0) # compressed print
+		opt=-0
+	esac
+done
+
+if [ X$opt = X-0 ]
+then
+	echo "IN;" 
+	echo "RO 0;"
+else
+	echo "IN;" 
+	echo "RO 90;"
+fi
+
+# The remaining arguments is the control file for hpdaemon
+
+shift; shift; shift; shift; shift
+
+	cd /usr/spool/gplot
+	/usr/lib/hpdaemon2 < $1
+
+	sleep 5

@@ -1,0 +1,52 @@
+.\" use ms macros
+.nr LL 6.5i
+.ll 6.5i
+.nr PO 1.1i
+.po 1.1i
+.nr VS 12
+.vs 12
+.ce 99
+SPECtrum Processing Routines
+
+
+
+Users Manual
+
+Version 3
+
+(program SPECPR)
+
+
+by
+
+
+Roger N. Clark
+
+
+
+
+
+U.S. Geological Survey, MS 964
+Box 25046 Federal Center
+Denver, CO 80225-0046
+(303) 236-1332
+
+rclark@speclab.cr.usgs.gov
+
+
+USGS Denver Spectroscopy Lab
+(303) 236-1411
+.ce 0
+
+
+
+
+.ce
+USGS Open File Report no. 93-595
+
+
+.in 0n
+.nf
+228 Pages
+  2 Figures
+  5 Tables

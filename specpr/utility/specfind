@@ -1,0 +1,208 @@
+#!/bin/sh
+
+#specprfileslistdir=/d1/spectra
+specprfileslistdir=/specpr-database/
+
+#spdatabase=/d1/samples/spectra
+spdatabase=/specpr-database/
+
+cd $spdatabase
+
+# search the USGS Denver spectroscopy lab file system for entries in
+# specpr files
+
+igc=""
+
+if [ -z "$1" ]
+then
+	echo "usage: specfind0 [-f[r]ka] [keyword] [search_word] [search_word2]"
+	echo " "
+	echo "specfind -i -a string     # search for string in all specpr files, ignore case"
+	echo "specfind -f filename      # find a specpr file"
+	echo "specfind -dups            # find duplicate file names in the database"
+	echo "specfind -corrupt         # find corrupt specpr files"
+	echo "specfind -nodata          # find specpr files with no data"
+	echo "specfind RREF string      # keyword RREF search (example)"
+	echo "specfind -i RREF string   # keyword RREF search, ignore case (example)"
+	echo "specfind -i RREF string1 string2   # keyword RREF search, ignore case (example)"
+	echo "specfind -k               # list keywords"
+	echo "specfind -e               # list number of entries in the database"
+	echo "specfind -u               # lsst database update time and date"
+	echo " "
+	exit 1
+fi
+
+
+case $1 in
+	-f)	if [ -n "$2" ]
+		then
+			grep $2 ${specprfileslistdir}/specpr.files
+			grep $2 ${specprfileslistdir}/specpr.files.offline
+		else
+			echo "usage with option -f: $0 $1 specpr_file_name"
+		fi
+		;;
+	-d)	if [ -n "$2" ]
+		then
+			dir1=`grep $2 ${specprfileslistdir}/specpr.files`
+			dir2=`grep $2 ${specprfileslistdir}/specpr.files.offline`
+			if [ -n "$dir1" ]
+			then
+				dirname $dir1
+			fi
+			if [ -n "$dir2" ]
+			then
+				dirname $dir2
+			fi
+		else
+			echo "usage with option -d: $0 $1 specpr_file_name"
+		fi
+		;;
+	-fr)	if [ -n "$2" ]
+		then
+			grep $2 ${specprfileslistdir}/specpr.files | \
+				sed -e "s/^\///"
+		else
+			echo "usage with option -fr: $0 $1 specpr_file_name"
+		fi
+		;;
+	-k)	cat ${spdatabase}/keywords
+		;;
+	-e)	cat ${spdatabase}/entries
+		;;
+	-a)	echo " File    Record              Title                      Channels    Date"
+		if [ $2 = "-i" ]
+		then
+			igc=-i
+			shift
+		fi
+		cd ALL    # NOTE: if you modify this section, you must 
+				# also modify the similar section below.
+		shift
+		#echo 'specfind debug -a: $1=' "$1"
+		grep $igc $1 * | grep -v ': done$' | \
+			grep $igc ${2:-$1} | sed -e "s/..:..:..\... //"
+		cd ../OFFLINE
+		spofffiles=`ls`
+		if [ -n  "$spofffiles" ]
+		then
+		   grep $igc $1 * /dev/null | grep -v ': done$' | \
+			grep $igc ${2:-$1} | sed -e "s/..:..:..\... //"
+		fi
+		;;
+	-u)	cat ALL/Update.date
+		;;
+	-l)	cd ALL
+		if [ -n "$2" ]
+		then
+			if [ -r "$2" ]
+			then
+				cat $2
+
+			elif [ -r "../OFFLINE/$2" ]
+			then
+				cd ../OFFLINE
+		        	cat $2
+			else
+				echo "cannot find specpr file name $2 in online or offline lists"
+				exit 1
+			fi
+		else
+			echo "ERROR: enter a specpr file name after the -l"
+			exit 1
+		fi
+		;;
+	-o)	cd OFFLINE
+		if [ -n "$2" ]
+		then
+			cat $2
+		else
+			echo "You must enter a specpr offline file name"
+			exit 1
+		fi
+		;;
+	-dup)	cat $spdatabase/duplicate.specpr.files.ll
+		;;
+	-dups)	cat $spdatabase/duplicate.specpr.files.ll
+		;;
+	-corrupt)	cat $spdatabase/corrupt.specpr.files
+		;;
+	-nodata)	cat $spdatabase/specpr.files.with.no.data
+		;;
+	*)	if [ $1 = "-i" ]
+		then
+			igc=-i
+			shift
+			if [ $1 = "-a" ]
+			then
+				echo " File    Record              Title                      Channels    Date"
+				cd ALL
+				shift
+				#echo 'specfind debug -i -a: $1=' "$1" '$igc=' "$igc"
+				spfiles=`ls`
+				if [ -z "$spfiles" ]
+				then
+					echo "No spectral database files foind in ${specprfileslistdir}/ALL"
+					echo "exit 1"
+					exit 1
+				fi
+				grep $igc $1 * | grep -v ': done$' | \
+					grep $igc ${2:-$1} | \
+					sed -e "s/..:..:..\... //"
+				cd ../OFFLINE
+				spofffiles=`ls`
+				if [ -n  "$spofffiles" ]
+				then
+				   grep $igc $1 $spofffiles /dev/null | grep -v ': done$' | \
+					grep $igc ${2:-$1} | \
+					sed -e "s/..:..:..\... //"
+				   exit
+				else
+				   exit
+				fi
+			fi
+		fi
+		k1=`grep $1 ${spdatabase}/keywords`
+		if [ "$1 $2" = "ABS REF" ]
+		then
+			kdir=ABS_REF
+			shift
+			shift
+
+		elif [ "$1 $2" = "ABS COEF" ]
+		then
+			kdir=ABS_COEF
+			shift
+			shift
+
+		elif [ "$1 $2" = "INDX REF" ]
+		then
+			kdir=INDX_REF
+			shift
+
+		elif [ -n "$k1" ]
+		then
+			kdir=$1
+			shift
+		else
+			echo "keyword $1 not found in ${spdatabase}/keywords"
+			echo "usage: $0 [-fka] [keyword] [search_word] [search_word2]"
+			exit 1
+
+		fi
+
+		cd $kdir
+
+		if [ -n "$1" ]
+		then
+			#echo 'specfind debug: $1=' "$1"
+			echo " File    Record              Title                      Channels    Date"
+			grep $igc $1 * | \
+				grep $igc ${2:-$1} | sed -e "s/..:..:..\... //"
+		else
+			echo "No keywords entered, exit 1"
+			exit 1
+		fi
+		;;
+esac
+exit 0

@@ -1,0 +1,91 @@
+.\" use ms macros
+.\" this header is for putting the page numbers at the bottom of the page
+.\" set line length, page offset, vertical spacing
+.nr LL 6.3i
+.ll 6.3i
+.nr PO 1.0i
+.po 1.0i
+.nr VS 12
+.vs 12
+.\" set header and footer margins (default is 1.0i)
+.nr FM 1.00i
+.fm 1.00i
+.nr HM 1.00i
+.hm 1.00i
+.\" set no date here, MUST be before CF definition, because ND sets CF
+.\" set date, so don't do .ND
+.\" LH CH RH are left, center, right header strings
+.\" LF CF RF are left, center, right footer strings
+.\" default is CH is defined as: .ds CH "\(hy \\n(PN \(hy
+.ds LH "SPECPR Users' Manual
+.ds CH
+.ds RH "Page 8-f3.\\n(PN
+.\" setup complete
+.nf
+SPECPR Users' Manual                                                   Page 8-f3.1
+
+
+.B
+F3:  Sequential Processor                                    Alias: sequ
+.R
+.PP
+This routine is very useful for repetitive
+calculations on many records for multiplication, division,
+subtraction and special functions only.  This routine effectively
+sets up the command sequences as a loop, thus you do not have to
+type in the command over and over when you are incrementing a record
+number.
+.PP
+For example, if you wanted to multiply file v records 10 to 23 by the
+constant 1.3452, you would type f3 from Math Operations.  The program
+will ask for the operation.  In this example, you would type * for
+multiplication.  (Other operations would be /, -, f2, f6 or any other
+function number except 3 and 4).  Next the program will ask for the
+first file ID, beginning record number, ending record number and the
+record number increment.  For this example, you would type
+
+.in 14n
+.B
+v10 23 1
+.R
+.in 0n
+
+All positive record increments are valid.  If the record increment
+was negative, it is set to zero.  Next you will be asked to type
+in the second file ID,  beginning and ending record numbers and
+increment.  For this case, you would type
+
+.in 14n
+.B
+c1.3452.
+.R
+.in 0n
+
+You will then be asked to type in options.  If you wanted errors
+included, the record increment should have been 2 (or more if the
+data sets take up more than 256 channels) since the data and
+errors take up at least 2 records.  Note that you can get in an infinite loop if
+the record increment is set to zero.  However, you can exit back to
+Math Operations by typing
+
+.in 14n
+.B
+x
+.R
+.in 0n
+
+at any point.  If you type
+
+.in 14n
+.B
+e
+.R
+.in 0n
+
+at any point in the processing, that operation will be skipped and
+the program will go on to the next operation.  The operations are
+performed just as if you had typed in the commands one at a time
+or all on one line separated by commas in Math Operations.  This
+function should save a lot of time and typing.
+.PP
+This function calls function f4.

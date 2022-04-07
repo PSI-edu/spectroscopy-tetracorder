@@ -1,0 +1,58 @@
+<!-- Creator     : groff version 1.18.1.1 -->
+<!-- CreationDate: Tue Nov  9 14:21:32 2010 -->
+<html>
+<head>
+<meta name="generator" content="groff -Thtml, see www.gnu.org">
+<meta name="Content-Style" content="text/css">
+<title></title>
+</head>
+<body>
+
+<hr>
+<pre>SPECPR Users&rsquo; Manual                                            Page 8-f23.1
+
+F23: Mathematical Parser                                      Alias: pars[e]
+This routine allows the user to type in arbitrary mathematical
+expressions involving data sets and
+constants. The
+expressions allowed are any combination of addition, subtraction,
+multiplication, division, and exponentiation (exponentiation is
+represented by ^).
+WARNING:
+f23 is site specific because of the interdependency between Fortran
+and C so it may not be linked at all sites.  Check with your system
+administrator.
+To use f23 type from math operations:
+
+             f23
+or
+              f23e
+
+if errors are to be included in the
+computation. The program will list the
+wavelength data set and the number of channels it will be using. To
+change the wavelength record at this point type the file ID (upper
+case) and the record number of the new wavelength set.  If the default
+wavelength set is acceptable just type a carriage return.  If
+you wish to abort the routine type
+
+             e
+or
+              x
+
+After choosing the appropriate wavelength set the routine will
+print out the current file protections and allow you to type in
+the expression to be evaluated.  For example, if you wanted to add
+data set v21 to a Gaussian with a height of -1.5, half width of 2.3
+microns (at 1/e
+point), centered at 1.32 microns you would type:
+
+             v21+-1.5*2.71828e0^(-((v3-1.32)/2.3)^2)
+
+assuming you are using wavelength set v3 (note that the wavelengths
+are treated as data here, so the wavelength set uses a lower case
+file ID).
+</pre>
+<hr>
+</body>
+</html>

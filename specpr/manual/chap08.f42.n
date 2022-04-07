@@ -1,0 +1,228 @@
+.\" use ms macros
+.\" this header is for putting the page numbers at the bottom of the page
+.\" set line length, page offset, vertical spacing
+.nr LL 6.3i
+.ll 6.3i
+.nr PO 1.0i
+.po 1.0i
+.nr VS 12
+.vs 12
+.\" set header and footer margins (default is 1.0i)
+.nr FM 1.00i
+.fm 1.00i
+.nr HM 1.00i
+.hm 1.00i
+.\" set no date here, MUST be before CF definition, because ND sets CF
+.\" set date, so don't do .ND
+.\" LH CH RH are left, center, right header strings
+.\" LF CF RF are left, center, right footer strings
+.\" default is CH is defined as: .ds CH "\(hy \\n(PN \(hy
+.ds LH "SPECPR Users' Manual
+.ds CH
+.ds RH "Page 8-f42.\\n(PN
+.\" setup complete
+.nf
+SPECPR Users' Manual                                            Page 8-f42.1
+
+
+.B
+F42:  Fit Band Profile from a Reference Spectrum        Alias = bandmap
+.B
+.PP
+This routine fits an absorption band from a reference spectrum to an
+observed spectrum by minimizing the least squares.  The reference
+absorption band depth is changed by a simple equation (thus the
+reference spectrum chosen should have an absorption band profile
+similar in saturation level to the observed spectrum in order to
+provide the best fit).
+.PP
+This routine is described in detail in the paper
+
+Clark, R.N., A.J. Gallagher, and G.A. Swayze:
+Material Absorption Band Depth Mapping of Imaging Spectrometer Data
+Using a Complete Band Shape Least-Squares Fit
+with Library Reference Spectra,\ \ 
+.I
+Fifth Airborne Imaging Spectrometer Workshop Proceedings,
+.R
+JPL Publication 90-54, 176-186, 1990.
+
+.PP
+To use f42, the user types the observed spectrum and f42 from the
+math command line.  For example, if v76 is the observed spectrum,
+you would type:
+
+.in 14n
+.B
+v76f42
+.R
+.in 0n
+
+Next you will be prompted to enter the reference library spectrum
+file ID and record number.
+
+Then you are asked to enter the left and right continuum values.
+The continuum is located on each side of the absorption band and
+consists of one or more data channels.  You enter the beginning and
+ending channels for each side.  For example, if the channels
+describing the left side of the continuum included channels 331,
+332, and 333 and if the right side continuum included channels 385,
+386, 387, and 388, you would enter the following.
+
+.in 14n
+.B
+331 333 385 388
+.R
+.in 0n
+
+If the continuum included only one channel, you still must enter 4
+numbers, so the beginning and ending channel would be the same.  For
+example if the continuum was only channel 331 on the left and 339
+and 340 on the right, you would type:
+
+.in 14n
+.B
+331 331 339 340
+.R
+.in 0n
+
+.PP
+Next you are asked what data to output to the file.  You can save
+the fitted reference spectrum (press return, this is the default),
+or the continuum-removed observed spectrum by typing "o" (you don't
+type the quotes).
+
+.B
+The Band depth Fitting Algorithm
+.R
+.PP
+The absorption band depth, D, is defined relative to its continuum:
+
+.nf
+.in 10n
+D = 1 - R\db\u/R\dc\u                                         (eqn 8.f42.1)
+.in 0n
+.fi
+
+where R\dc\u is the reflectance of the continuum at the band center,
+and R\db\u is the reflectance at the band center.  The definition
+originates from Clark and Roush, (JGR, 1984).
+The process of
+absorption band analysis is to first remove a continuum (see Clark
+and Roush, 1984 for details about continuum analysis).
+Once the continuum is removed, a band can be characterized
+by determining how well the feature matches a reference library
+spectrum.
+.PP
+A simple model to change a continuum-removed absorption feature's contrast
+is to add a constant to the data at all wavelengths.  In this case, the
+feature will not be represented properly if the band saturation
+changed significantly, due to say a major change in grain size between
+the reference and observed spectra.  The algorithm presented here
+uses the simple case of an additive component because it is
+computationally fast compared to a full radiative transfer model.
+The method can easily be adapted to the full model however, or even
+to a method that examines the band depth and chooses an appropriately
+saturated absorption feature from a library of materials at several
+grain sizes.
+.PP
+The algorithm first removes a straight line continuum from the library
+reference spectrum using channels on each side of the absorption feature
+that is to be mapped.  The continuum is
+removed from the observed spectrum using the same
+method and spectral channels.  The user may select several channels on
+each side of the band so that noise in the continuum is averaged.  The
+continuum is removed by division:
+
+.KS
+.nf
+.\"nr VS 12
+.\"vs 12
+              L(\(*l)                       O(\(*l)
+      L\dc\u(\(*l) = \(em\(em\(em\(em\(em    and       O\dc\u(\(*l) = \(em\(em\(em\(em\(em,         (eqn 8.f42.2 a and b)
+              C\dl\u(\(*l)                      C\do\u(\(*l)
+.\"nr VS 24
+.\"vs 24
+.fi
+.KE
+
+where L(\(*l) is the library spectrum as a function of wavelength,
+\(*l, O is the observed spectrum, C\dl\u is the continuum for the
+library spectrum, C\do\u is the continuum for the observed spectrum,
+L\dc\u is the continuum removed library spectrum, and O\dc\u is the
+continuum removed observed spectrum.  
+.PP
+The contrast in the reference library spectrum
+absorption feature is modified by a simple
+additive constant, k:
+
+.KS
+.nf
+.\"nr VS 12
+.\"vs 12
+                     L\dc\u + k
+               L\dc\u' = \(em\(em\(em\(em\(em\(em,                                    (eqn 8.f42.3)
+                     1.0 +k
+.\"nr VS 24
+.\"vs 24
+.fi
+.KE
+
+where L\dc\u' is the modified continuum-removed spectrum that best
+matches the observed spectrum.  This equation can be rewritten in
+the form:
+
+.KS
+.nf
+.\"nr VS 12
+.\"vs 12
+              L\dc\u' = a + bL\dc\u,                                    (eqn 8.f42.4)
+
+where
+
+              a =  k /(1.0 + k), and
+
+              b = 1.0/(1.0 + k).                                (eqn 8.f42.5)
+.\"nr VS 24
+.\"vs 24
+.fi
+.KE
+              
+.PP
+In Equation 8.f42.4 we want to find the a and b that gives a best fit to
+the observed spectrum O\dc\u.  The solution is done using
+standard least squares:
+
+.KS
+.nf
+.\"nr VS 12
+.\"vs 12
+              a = (\(*S O\dc\u - b\(*S L\dc\u)/n,
+
+                  \(*S O\dc\uL\dc\u - \(*S O\dc\u\(*S L\dc\u/n
+              b = \(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em,
+                  \(*S L\dc\u\u2\d - (\(*S L\dc\u)\u2\d/n
+
+and
+              k = (1-b)/b,                                      (eqn 8.f42.6)
+.\"nr VS 24
+.\"vs 24
+.fi
+.KE
+
+where n is the number of spectral channels in the fit.
+.PP
+The algorithm produces a band depth, indicating its spectral abundance
+in the observed image, a goodness of fit (correlation coefficient) which
+gives a measure of confidence in the accuracy of the resulting fit, and
+the continuum value at the band center in the observed spectrum.  The
+correlation coefficient is computed by
+
+.nf
+              r = sqrt(b\d1\ub'\d1\u)                             (eqn 8.f42.7)
+.fi
+
+where b\d1\u is from Bevington (Data Reduction and Error Analysis for the
+Physical Sciences, Mcgraw Hill, New York, 1969), his equation 7.2 (which
+he calls b) on page 120, and b'\d1\u is from Bevington (1969), his
+equation 7.3 (which he calls b') on page 121.

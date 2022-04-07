@@ -1,0 +1,58 @@
+#! /bin/sh
+
+lock=LOCK.specpr
+notefile=radnotes
+notes=/usr/msgs/$notefile
+
+# bourne shell driver to start radtran
+
+#
+# check for LOCK file in a specpr (radtran) directory
+#
+
+if [ -f $lock ]
+then
+	echo "Specpr directory is locked, another user is running specpr(radtran):"
+	ls -l $lock
+	echo Exit
+	exit 0
+else
+	cat /dev/null > $lock
+	if [ ! -f $lock ]
+	then
+		echo "Cannot create LOCK in specpr(radtran) directory"
+		echo Exit
+		exit 0
+	fi
+fi
+trap "" 2
+#
+#	show user radtran information
+#
+if [ -z "$2" ]
+then
+	more -d $notes
+	echo "hit return to continue"
+	read tempvar
+else
+#                 CHECK to see if news file newer than restart file
+#                 if so then print news anyway.
+	pa=`pwd`
+	name=`find $notes -newer ${pa}/$1 -name $notefile -print`
+
+	if [ "$name" = "$notes" ]
+	then
+		echo "*****************  NEW RADTRAN NEWS *****************"
+		more -d $notes
+		echo "hit return to continue"
+		read tempvar
+	else
+		echo "No new radtran news."
+	fi
+fi
+#
+#	ignore interrupts while in specpr (radtran)
+#
+radtran.exe $1
+
+/bin/rm $lock

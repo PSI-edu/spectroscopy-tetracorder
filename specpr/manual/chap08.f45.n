@@ -1,0 +1,73 @@
+.\" use ms macros
+.\" this header is for putting the page numbers at the bottom of the page
+.\" set line length, page offset, vertical spacing
+.nr LL 6.3i
+.ll 6.3i
+.nr PO 1.0i
+.po 1.0i
+.nr VS 12
+.vs 12
+.\" set header and footer margins (default is 1.0i)
+.nr FM 1.00i
+.fm 1.00i
+.nr HM 1.00i
+.hm 1.00i
+.\" set no date here, MUST be before CF definition, because ND sets CF
+.\" set date, so don't do .ND
+.\" LH CH RH are left, center, right header strings
+.\" LF CF RF are left, center, right footer strings
+.\" default is CH is defined as: .ds CH "\(hy \\n(PN \(hy
+.ds LH "SPECPR Users' Manual
+.ds CH
+.ds RH "Page 8-f45.\\n(PN
+.\" setup complete
+.nf
+SPECPR Users' Manual                                            Page 8-f45.1
+
+
+.B
+F45:  Automatic Band Analysis                           Alias = aba
+.R
+.PP
+This routine uses the segmented upper hull (see f44) to isolate
+absorption features in a spectrum and then for each feature the
+following are derived:
+
+.nf
+.in 10n
+Band Center
+Full Width at Half Maximum (FWHM)
+Band Depth
+Error in band depth (assuming that error bars were included with the
+         input spectrum)
+Full Width at Quarter Maximum (FWQM)
+Band Asymmetry
+Continuum reflectance level
+Segmented Upper Hull iteration number
+.in 0n
+.fi
+
+The output is a data set using 9 channels to describe each feature
+(the 8 items above and one additional that is currently unused).
+Thus if the input spectrum contained 26 features, then the output
+data set would have 234 channels.
+.PP
+This routine was used to generate the features in the USGS Digital
+Spectral Library.
+.PP
+For a description of the continuum algorithm, see
+Clark, R.N., T.V.V. King, and N.S. Gorelick,
+Automatic Continuum Analysis of Reflectance Spectra:
+.I
+Proceedings of the Third Airborne Imaging Spectrometer Data Analysis
+Workshop, 
+.R
+JPL Publication 87-30, 138-142, 1987.
+.PP
+Once the continuum is removed, the band center is found by finding the
+lowest channel in a feature and fitting a parabola to the lowest channel
+and the channel in each side of the lowest one.  The FWHM, and FWQM are
+found by linear interpolation.  The error bar is found based on the
+error bars on the data.  The asymmetry is found by ratioing the distance
+from the band center to each FWHM point.  See also section 9.8,
+Interactive Band Analysis (it uses the same algorithms).

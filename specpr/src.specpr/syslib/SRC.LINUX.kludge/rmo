@@ -1,0 +1,2 @@
+set -x
+rm ../bkrec.o ../frdrec.o ../redtap.o ../wrttap.o 

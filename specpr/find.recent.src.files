@@ -1,0 +1,9 @@
+#!/bin/sh
+
+set -x
+
+find . -name \*.\[rhc\]    -exec ls -ld --full-time {} \; | grep 2018
+find . -name makefile\*  -exec ls -ld --full-time {} \; | grep 2018
+
+ls -l --full-time  src.specpr/common/   | grep 2018
+

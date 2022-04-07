@@ -1,0 +1,122 @@
+.\" use ms macros
+.\" this header is for putting the page numbers at the bottom of the page
+.\" set line length, page offset, vertical spacing
+.nr LL 6.3i
+.ll 6.3i
+.nr PO 1.0i
+.po 1.0i
+.nr VS 12
+.vs 12
+.\" set header and footer margins (default is 1.0i)
+.nr FM 1.00i
+.fm 1.00i
+.nr HM 1.00i
+.hm 1.00i
+.\" set no date here, MUST be before CF definition, because ND sets CF
+.\" set date, so don't do .ND
+.\" LH CH RH are left, center, right header strings
+.\" LF CF RF are left, center, right footer strings
+.\" default is CH is defined as: .ds CH "\(hy \\n(PN \(hy
+.ds LH "SPECPR Users' Manual
+.ds CH
+.ds RH "Page 8-f1.\\n(PN
+.\" setup complete
+.nf
+SPECPR Users' Manual                                                   Page 8-f1.1
+
+
+.B
+F1:  List of Special Functions                             Alias= list
+.PP
+Special function 1 provides a list of all available special functions.
+The list includes the function number, the function alias, and a code to
+indicate if you need to include an input data set before calling the
+function, and if the function can handle propagation of error bars.
+.PP
+The list is as follows.
+
+.nf
+Special Function 1: a list of the special functions
+---------------------------------------------------
+
+f 1 - list        : Description of all special function routines
+f 2 - shif[t]     : SHIFTS data left or right a number of channels (f,e)
+f 3 - sequ        : SETS UP SEQUENTIAL PROCESSING for the user
+f 4 - exse[qu]    : executes SEQUENTIAL PROCESSING set up by f3. No user access.
+f 5 - cont[rem]   : CONTINUUM REMOVAL (use also f12)
+f 6 - plan[ck]    : computes PLANCK BLACK BODY function
+f 7 - smoo[th]    : SMOOTHING function  (f,e)
+f 8 - tran[spose] : channel-file TRANSPOSE
+f 9 - band[rem]   : BAND REMOVAL (reflection method)
+f10 - sort        : SORTs channels into increasing wavelength order (f,e)
+f11 - luna[rtherm]: Lunar THERMAL REMOVAL (f,e)
+f12 - cspl[in]    : CUBIC SPLINE interpolation to new wavelength set,  (f,e)
+f13 - merg[e]     : MERGes 2 files (f,e)
+f14 - edit        : EDITs file and errors (f,e)
+f15 - gaus[sfmt]  : FORMATS Gaussian parameter file (f)
+f16 - line[gen]   : user LINE SEGMENT GENERATOR
+f17 - conv[olv]   : high to low resolution SPECTRAL CONVOLUTION (f).
+f18 - bloc[kav]   : BLOCK AVERAGES and Statistics (f,e).
+f19 - poly[fit]   : POLYNOMIAL FIT routine (f,e)
+f20 - read        : READ/WRITE data from/to a TEXT file
+f21 - calc[poly]  : Calculate N term POLYNOMIAL (f)
+f22 - digi[tize]  : DIGITIZATION tablet input routine
+f23 - pars[e]     : MATH PARSER
+f24 - star[moontherm] : star/moon-spot reflectance THERMAL REMOVAL (f,e)
+f25 - twoc[omlsq] : Two-Component LEAST SQUARE ANALYSIS (f)
+f26 - not available yet
+f27 - not available yet
+f28 - not available yet
+f29 - not available yet
+f30 - not available yet
+f31 - not available yet
+f32 - not available yet
+f33 - not available yet
+f34 - not available yet
+f35 - not available yet
+f36 - not available yet
+f37 - not available yet
+f38 - not available yet
+f39 - noise       : Random Number Noise Generator
+f40 - leastsq     : compute LEAST SQUARES between two spectra (f) under devlp.
+f41 - bin         : BINNING routine (f) under development
+f42 - bandmap     : Map band depths and fit from a reference
+                        spectrum (f) (under development)
+f43 - fft         : FFT and Inverse FFT
+f44 - suh         : Segmented Upper Hull automatic CONTINUUM ANALYSIS (f,e)
+f45 - aba         : Automatic BAND ANALYSIS (f,e)
+f46 - abaout	  : Band Analysis output to a binary FILE (f)
+f47 - abaspecrec  : Band Analysis SPECTRUM RECREATION (f)
+f48 - hpdigit     : DIGITIZATION from an HP Terminal/Tablet
+f49 - lininterp   : Linear interpolation (f,e)
+f50 - wavreg      : wavelength registration
+
+
+.fi
+.PP
+When f1 is started, it lists one page at a time and asks the user to
+type
+
+.in 14n
+.B
+e
+.R
+.in 0n
+or
+.in 14n
+.B
+x
+.R
+.in 0n
+
+to exit, or return to continue to the next page.
+.PP
+In the list, after each function number is the function alias.  For
+example, in the above list, f50 is also "wavreg".
+.PP
+Each special function description has a code at the end of the short
+description which tells if the function needs a data file input before
+the function on the command line.  If this is the case, you will see a
+"(f)" at the end of the description.  If the function can also propagate
+the error bars to the data set, it will have an "(f,e)" at the end of
+the description.

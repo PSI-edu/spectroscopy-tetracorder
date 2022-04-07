@@ -1,0 +1,38 @@
+     NAME
+	  asciitosp - convert  ascii data to specpr format
+
+     SYNOPSIS
+	  asciitosp  [specpr.filename] < [ ascii.filename]
+
+     DESCRIPTION
+	  This program takes ascii files translated from specpr
+	  format by sptoascii(see manual) and translates them
+	  back to specpr format again. Modifications or insertions
+	  made to the ascii file are converted to specpr format.
+	  Be sure that the specpr file is empty and ready to receive
+	  data by using:   cat /dev/null >! [specpr.filename]
+     
+     EXAMPLE
+	  To change information in headers or data simply make the
+	  approriate changes, being sure not to change the position
+	  of the headers.
+	  To add a text file, follow this example:
+
+		ititl: test of text
+		text: 
+
+			Main body of appended text
+
+		ZZZZZZZZZZZZZZZZZZZZ
+
+	  The 20 Z's are needed to mark the end of the text.
+	  When modifying an existing textfile, be sure to leave
+	  the Z's in place.
+
+		
+     FILES
+	  Source files: /usr/src/cmd/specpr/datatran
+	  Executable :  /usr/bin
+
+     AUTHOR
+	  Roger	N. Clark & R. Burtzlaff

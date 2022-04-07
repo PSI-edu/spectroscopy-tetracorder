@@ -1,0 +1,24 @@
+
+#this shell script searches the a specpr directory $1 source listings for
+#    a string $2
+
+output=../spfsearch.out
+output2=/dev/null
+debug=../debug
+
+cd $1
+echo "**********************************************************" >>$output 2>&1
+echo "******** specpr file search done " `date` "*********" >>$output 2>&1
+echo "**********************************************************" >>$output 2>&1
+echo "******** searching for string: $2 ********" >>$output 2>&1
+echo " " >>$output 2>&1
+
+echo ============= directory: $1 ============== >>$output 2>&1
+	for j in `ls s.*`
+	do
+		echo ----------- file: $j ------------ >>$output 2>&1
+		get -p $j 2>>$output2 |grep -n "$2"  >>$output 2>&1
+	done
+
+echo "********" `date` " specpr file search finished ********" >>$output 2>&1
+cd ..

@@ -1,0 +1,63 @@
+
+
+
+
+
+
+SPECPR Users' Manual                                            Page 8-f25.1
+
+
+_F_2_5:  _T_w_o _C_o_m_p_o_n_e_n_t _A_r_e_a_l _M_i_x _L_e_a_s_t _S_q_u_a_r_e_s             _A_l_i_a_s = _t_w_o_c[_o_m_l_s_q]
+
+     This special function computes the best areal mixture  of  two  "known"
+spectra  as  compared to an observed spectrum.  The user provides his or her
+own guess as to what the end-member spectra are and the routine computes the
+least squares fit of the two.
+
+     _W_A_R_N_I_N_G: This routine was a developmental version at the University  of
+Hawaii  and  has  never been certified as to its method.  It currently works
+for spectra without error bars and with channels less than or equal to  256.
+If you do use this routine, you must verify for yourself the accuracy of the
+method.  A full manual entry is waiting on proper certification of this rou-
+tine.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

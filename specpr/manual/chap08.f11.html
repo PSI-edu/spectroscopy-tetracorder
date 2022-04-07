@@ -1,0 +1,90 @@
+<!-- Creator     : groff version 1.18.1.1 -->
+<!-- CreationDate: Tue Nov  9 14:21:31 2010 -->
+<html>
+<head>
+<meta name="generator" content="groff -Thtml, see www.gnu.org">
+<meta name="Content-Style" content="text/css">
+<title></title>
+</head>
+<body>
+
+<hr>
+<pre>SPECPR Users&rsquo; Manual                                            Page 8-f11.1
+
+F11:  Lunar Thermal Removal                             Alias = luna[rtherm]
+This routine removes the thermal component from
+the reflectance object spectrum using the equation:
+
+          &#9581;      Ro&rsquo;(1&mdash;Rs)Ps   Po&#9582; &#9581;    Po&#9582;&mdash;1
+     Ro = &#9509;Ro&rsquo; + &mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash; &mdash; &mdash;&mdash;&#9501; &#9509;1 &mdash; &mdash;&mdash;&#9501;                   (eqn 8.f11.1)
+          &#9584;          RsF       F &#9583; &#9584;    F &#9583;
+</pre>
+
+<p>Refer to R. Clark, 1979, Planetary Reflectance
+Measurements in the Region of Planetary Thermal Emission,
+Icarus 94-103 (equation 14) for more information.</p>
+
+<p>Variable definitions:</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="88%">
+<p>Ro = Reflectance of object with thermal component
+removed.</p>
+<!-- INDENTATION -->
+<p>Ro&rsquo; = Reflectance of object with thermal
+component.</p>
+<!-- INDENTATION -->
+<p>Rs = Reflectance of standard with no thermal
+component.</p>
+<!-- INDENTATION -->
+<p>Po = Temperature for Planck function of object (in
+Degrees Kelvin).</p>
+<!-- INDENTATION -->
+<p>Ps = Temperature for Planck function of standard (in
+Degrees Kelvin).</p>
+<!-- INDENTATION -->
+<p>F = (solar flux/&pi;)/(distance from sun in
+A.U.)2</p></td>
+</table>
+
+<p>The program requires that the file ID and record number
+of Ro&rsquo; and the e to include errors, if any, be
+specified when called from Math operations. The program will
+ask for:</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="88%">
+<p>Rs: The file ID and record number.</p>
+<!-- INDENTATION -->
+<p>The albedo at the normalization wavelength for Ro and Rs
+(0.0 &lt; A &le; 1.0). If the data are already in albedo
+(reflectance), then this constant should = 1.0 (the spectra
+are multiplied by this constant).</p>
+<!-- INDENTATION -->
+<p>The wavelength data set (File ID and record number).</p>
+<!-- INDENTATION -->
+<p>Po and Ps in degrees Kelvin (10 &lt; T &lt; 105).</p>
+<!-- INDENTATION -->
+<p>Solar flux/&pi; data set (file ID and record number).</p>
+<!-- INDENTATION -->
+<p>Distance from sun in A.U. (&gt;0.0)</p></td>
+</table>
+
+<p>After entering albedo at normalization, the user has an
+option of either continuing, exiting, or changing what has
+been input so far (for the current screen information). User
+also has a similar option after entering distance from the
+sun. In calculating the thermal removal, Ro and Rs spectra
+are multiplied by their respective albedos at the
+normalization point. Errors are propagated by multiplying
+individual error values by the Ro albedo at the
+normalization point.</p>
+<hr>
+</body>
+</html>

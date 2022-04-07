@@ -1,0 +1,187 @@
+.\" use ms macros
+.\" this header is for putting the page numbers at the bottom of the page
+.\" set line length, page offset, vertical spacing
+.nr LL 6.3i
+.ll 6.3i
+.nr PO 1.0i
+.po 1.0i
+.nr VS 12
+.vs 12
+.\" set header and footer margins (default is 1.0i)
+.nr FM 1.00i
+.fm 1.00i
+.nr HM 1.00i
+.hm 1.00i
+.\" set no date here, MUST be before CF definition, because ND sets CF
+.\" set date, so don't do .ND
+.\" LH CH RH are left, center, right header strings
+.\" LF CF RF are left, center, right footer strings
+.\" default is CH is defined as: .ds CH "\(hy \\n(PN \(hy
+.ds LH "SPECPR Users' Manual
+.ds CH
+.ds RH "Page 8-f18.\\n(PN
+.\" setup complete
+.nf
+SPECPR Users' Manual                                            Page 8-f18.1
+
+
+.B
+F18:  Block Averages and Statistics                         Alias: bloc[kav]
+.R
+.PP
+Special function f18 averages data blocks into single data channels and
+computes the statistics (standard deviation of the mean) for each
+block.  The size of the block is defined by the user.  The blocks
+can be a number of channels, or a range from the
+wavelength set.  The blocks can be overlapping, as in Nyquist
+sampling, or contiguous (half Nyquist sampling).
+.PP
+To start f18, you must supply a data set from math operations.  For
+example, from math, type:
+
+.in 14n
+.B
+v23f18
+.R
+.in 0n
+or
+.in 14n
+.B
+v23block
+.R
+.in 0n
+
+.PP
+As in most specpr routines, when you first enter f18, the title of
+the current data set being operated on is displayed along with the
+wavelength set in use and the number of channels.  You may change
+the wavelength set in use at this point by typing in the new
+wavelength set file ID(upper case letter)and the record number.  If
+you do not wish to change the wavelength set, press return.
+.PP
+Next you will be asked if you want the blocks defined as channels or
+wavelengths.  Type:
+
+.nf
+.in 14n
+c    to define block in units of channels, or
+w    to define blocks in units of the wavelength set.
+.in 0n
+.fi
+
+.PP
+Now you are asked to enter the block size.  If in channel mode, enter
+the number of channels to be averaged in each block.  If in
+wavelength mode, enter the wavelength range in the same units as
+your wavelength set.  For example, if you have a wavelength set
+going from 0.3 to 2.5 \(*mm and you want blocks of 0.1 \(*mm, enter
+0.1 (be sure you are in wavelength mode).
+The block size must be less than or equal to the number
+of channels in channel mode, or less than or equal to the upper end
+of the wavelength range.
+.PP
+The block always starts at 0 and in includes the upper end of the
+block.  For example, in channel mode a block size of 5 will
+include channels 1, 2, 3, 4, and 5.  In wavelength mode, a block
+size of 0.1 will include all channels whose wavelengths fall from
+0.00 to 0.10.
+.PP
+Next you are asked for half or full Nyquist sampling. Enter
+
+.nf
+.in 14n
+h    for half Nyquist sampling, or
+f    for full Nyquist sampling.
+.in 0n
+.fi
+
+Say the block size is 6 and you select full Nyquist sampling.  The
+input to each block would be as follows:
+
+.KS
+.nf
+.in 14n
+Input channels               Output channel
+-------------------------------------------
+(1+2+3+4+5+6)/6                    1
+(4+5+6+7+8+9)/6                    2
+(7+8+9+10+11+12)/6                 3
+(10+11+12+13+14+15)                4
+(13+14+15+16+17+18)/6              5
+-------------------------------------------
+.in 0n
+.fi
+.KE
+
+However, for half Nyquist sampling, the input would be:
+
+.KS
+.nf
+.in 14n
+Input channels               Output channel
+-------------------------------------------
+(1+2+3+4+5+6)/6                    1
+(7+8+9+10+11+12)/6                 2
+(13+14+15+16+17+18)/6              3
+-------------------------------------------
+.in 0n
+.fi
+.KE
+
+.PP
+The average of a block j is computed from the equation
+
+.KS
+.nf
+.in 20n
+       n\d2\u
+
+       \(*S  x\di\u
+      i=n\d1\u
+x\dj\u = \(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em
+      (n\d2\u - n\d1\u + 1)
+.fi
+.in 0n
+.KE
+
+.PP
+where (n\d1\u - n\d2\u +1) = N if n\d2\u is
+less than or equal to the number of
+channels.
+.PP
+If errors have been included, the standard deviation is
+calculated by the following
+
+.KS
+.nf
+.in 20n
+      \(lt  n\d2\u     \(rt \(12
+      \(br         \(br
+      \(lk  \(*S  \(*s\di\u\u2\d \(rk
+      \(br i=n\d1\u    \(br
+      \(lb         \(rb
+\(*s\(rn\dj\u = \(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em
+     (n\d2\u - n\d1\u + 1)
+.in 0n
+.fi
+.KE
+
+.PP
+where \(*s\dj\u is the new standard deviation.  If the errors have not
+been read in, the following equation is used:
+
+.KS
+.nf
+.in 20n
+      \(lt  n\d2\u   (x\dj\u - x\(rn\dj\u)\u2\d   \(rt
+      \(br                    \(br
+      \(lk  S   \(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em \(rk
+      \(br i=n\d1\u (n\d2\u - n\d1\u + 1) \(br
+      \(lb                    \(rb
+\(*s\(rn\dj\u = \(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em,
+          (n\d2\u - n\d1\u + 1)\u\(12\d
+.in 0n
+.fi
+
+which computes the standard deviation of the mean.
+.KE

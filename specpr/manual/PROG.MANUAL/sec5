@@ -1,0 +1,213 @@
+.nr LT 6.5i
+.lt 6.5i
+.nr PO 0.875i
+.po 0.875i
+.TL
+.ce
+GRAPHICS
+
+
+HP Graphics are performed by writing on logical unit 6
+
+The subroutines for graphics are:
+
+.IP SUBROUTINE 12
+INITT (I)
+
+Sets the graphics mode:
+
+.nf
+g2   HP2393A compatible graphics, Set White on Black mode
+g3   HP2393A compatible graphics, Compliment, White on Black mode
+g4   HP2393A compatible graphics, Jam mode, white on black (DEFAULT)
+g11  HP2393A compatible graphics, Set Black on White mode
+g13  HP2393A compatible graphics, Compliment, Black on White mode
+
+g20  Tektronix Plot 10 compatible graphics terminals
+g21  DEC VT240 with (sort of) Tektronix Plot 10 graphics
+g22  GTERM (Tektronix window in a Sun gterm window)
+
+g50  X-Windows using an hpterm window (see X-NOTE below)
+g51  X-Windows using an xterm window (see X-NOTE below)
+
+g99  Scrolling mode (non-graphics terminal)
+g100 Televideo 914 alphanumeric terminal with no graphics
+
+Other numbers <10 = Jam mode, White on black (default)
+Other numbers >10 = Jam mode, black on white
+.fi
+
+The subroutine RESPAG is called then the line type is set to 1.
+
+X-Windows NOTES:
+
+.in 3n
+.ti -3n
+\(bu  When running X-windows, the environment variable DISPLAY must
+be set to your X server.
+
+.ti -3n
+\(bu Every time you enter specpr, you must re-initialize the
+graphics
+window by typing g50 or g51 or by specifying the graphics mode on
+the
+command line as specified in section 3.1.
+
+.ti -3n
+\(bu User input always comes from the text window except for mouse
+button clicks which are entered in the graphics window.
+
+.ti -3n
+\(bu If the graphics window is hidden and then exposed, it will not be redrawn.
+.in 0n
+
+
+
+.IP SUBROUTINE
+OTHTRM
+
+is called by other graphics if the graphics mode is set to 99
+(see INITT)
+each call to this subroutine scrolls the terminal 6 lines.
+
+.IP SUBROUTINE
+HPLINE (I)
+
+Sets the line type
+.RS
+.IP I
+= 0 increment line type, 1 to 10 but not 2 or 3
+.br
+= 1 Set line type = 1
+.br
+= 2 not valid
+.br
+= 3 not valid
+.br
+= 4 through 10:  set line type = I
+
+If I < 0 or > 10, I is reset to 1
+.RE
+
+.IP SUBROUTINE
+HRESET (I)
+
+Resets the terminal
+.RS
+.IP I
+= 0:  hard reset
+.br
+\(!= 0:  turn off graphics display and graphics text and turn on alpha display
+.RE
+
+.IP SUBROUTINE
+HBELL (I)
+
+Sounds the Bell I times.
+
+.RS
+if I < 0 there is a 1 second delay between beeps
+.RE
+
+.IP SUBROUTINE
+VGRMOD
+
+Sets the terminal to the vector graphics drawing mode.
+
+
+.IP SUBROUTINE
+RESPAG
+
+Resets the graphics to the terminal by:  graphics on, clear,
+alpha off, Zoom = 1, graphics cursor on, graphics text on, rubber
+band line off, cursor at top left line of screen (coordinates 0,
+350) and programs this into the f5 button on the terminal.
+calls VGRMOD
+
+.IP SUBROUTINE
+HPPLOT
+
+Puts the terminal in plotting mode
+
+
+.IP SUBROUTINE
+DRWABS (IX, IY)
+
+Draws a vector from the current cursor position to absolute
+position IX, IY.  (pen is down)
+Data is sent in absolute binary for the fastest possible graphics
+commands.
+Calls HPPLOT if the terminal is not in plotting mode.
+Calls HPABS
+
+
+.IP SUBROUTINE
+MOVABS (IX, IY)
+
+Moves the cursor to absolute position (IX, IY) (pen is up).
+Data is sent in absolute binary for the fastest possible graphics
+commands
+Calls HPPLOT if the terminal is not in plotting mode.
+Calls HPABS
+
+.IP SUBROUTINE
+HPABS (IX, IY)
+
+Converts IX, IY to absolute binary (by calling ABSBIN) and sends
+the converted values to the terminal.
+
+
+.IP SUBROUTINE
+SB (I)
+
+Calls TEXMOD, sets the graphics
+mode to I (see
+INITT) and calls VGRMOD.
+(if I = 0, only TEXMOD is called)
+
+.IP SUBROUTINE
+TMOVE
+
+This subroutine moves the text cursor to the last graphics cursor
+position as given by DRWABS or MOVABS.
+calls CONVRT
+
+
+.IP SUBROUTINE
+TEXMOD
+
+This subroutine sets the terminal to the graphics text mode and
+calls TMOVE.  This routine must be called each time you want to
+do a FORTRAN write or read after performing graphics.
+
+.IP SUBROUTINE
+NEWPAG
+
+calls RESPAG
+
+.bp
+.RS
+Sample:  draw an X on the screen and write Hello, and sound Bell:
+
+.nf
+	character*80 outline        # for X-window writes
+	CALL INITT (0)
+	CALL RESPAG
+	CALL MOVABS (0, 0)
+	CALL DRAWABS (760, 320)
+	CALL MOVABS (760, 0)
+	CALL DRAWABS (0, 320)
+	CALL MOVABS (300, 200)
+	CALL TEXMOD   -[or CALL SB (0)]
+	k=123
+	write(outline,40) ' Hello',k
+40	format (a,i3)
+	call gwrite(outline)
+	CALL HBELL (1)
+	STOP
+	END
+.ad
+.fi
+.RE
+.RE
+.bp

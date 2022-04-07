@@ -1,0 +1,20 @@
+
+#       load errors
+	if (ictrl==ihe) {
+		write(ttyout,303)
+		ifile=ifl1
+		id=idv1
+		call devok (4,id,ifile,lun,ier)
+		if (ier==0) {
+			call rederr (ifile,lun,ier)
+		} else {
+			write(ttyout,305)
+			ic=ihe
+			return
+		}
+	} else {
+#		do l=1,nchans {
+#			if (datab(l)==-1.23e34) next
+#			data(l)=tol
+#		}
+	}

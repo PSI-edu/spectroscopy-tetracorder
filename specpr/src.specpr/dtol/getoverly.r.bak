@@ -1,0 +1,175 @@
+	subroutine getoverly(i,iov,iero)
+	implicit none
+
+# read  overlay spectra from specpr file and put in overlay
+#       arrays
+
+        include "../common/blank"
+        include "../common/lbl7"
+        include "../common/lbl6"
+        include "../common/lbl4"
+        include "../common/label1"
+        include "../common/labl2"
+        include "../common/lbl3"
+        include "../common/label3"
+        include "../common/labelf"
+        include "../common/info"
+        include "../common/lblg"
+        include "../common/lundefs"
+        include "../common/hptrm"
+        include "../common/alphabet"
+        include "../common/ioftyp"
+        include "../common/overlys"
+
+# the overlys common block has:
+#       ovrflg1, ovrdat1, ovrwav1, ovrclr1, ovrchn1
+#       ovrflg2, ovrdat2, ovrwav2, ovrclr2, ovrchn2
+#       ovrflg3, ovrdat3, ovrwav3, ovrclr3, ovrchn3
+
+	integer*4 i, iov, iero, j, ic2
+	integer*4 ifilnu, ifilid, lun
+	real*4    xfilb, x1
+
+	iero=0   # error value
+
+	#write (*,*) "DEBUG: getoverly pos1"
+
+#       i = index in the iopcon command line array
+#       iov = which array to put specturm into (1, 2, or 3)
+
+	call wjfren(i,x1,ifilid)  # file ID letter
+	call wjfren(i,xfilb,ic2)
+	ifilnu=xfilb              # file record number
+
+        if (ifilid==ihe || ic2==ihe) {
+            iero = ihe
+            return
+        } else if (ifilid==ihx || ic2==ihx) {
+            iero = ihx
+            return
+
+#        *** check for invalid input ***
+        } else if (xfilb<=0.0) {
+	    call what(i)
+            write(ttyout,100)
+100         format (' ERROR: ILLEGAL RECORD NUMBER FOUND. reenter line.',/)
+	    return
+	}
+
+	if (ic2 != 0) i=i-1  # this character may be wavelength file ID
+
+
+	#write (*,*) "DEBUG: getoverly pos2 called"
+
+	if ( ifilnu == 0 || ifilid == 0) {
+		iero =1
+		write (*,*) "overlay: file ID or record number ERROR"
+		write (ttyout,9924) "         file ID=", ifilid
+		write (ttyout,9924) "         record#=", ifilnu
+9924		format (' ', a, a)
+		call crtin
+		return
+	}
+
+	call devlun (0,ifilid,lun)
+	call redfil (ifilnu, lun, iero)
+
+	#write (*,*) "DEBUG: getoverly pos3 redfil called"
+
+	if ( iov == 1 ) {
+
+		ovrflg1 = 1
+		ovrchn1 = itchan
+		#write (*,*) "DEBUG: getoverly pos3a"
+		do j = 1, 4864 {
+			ovrdat1(j) = data(j)
+		}
+		#write (*,*) "DEBUG: getoverly pos3b"
+
+	} else if ( iov == 2 ) {
+
+		ovrflg2 = 1
+		ovrchn2 = itchan
+		do j = 1, 4864 {
+			ovrdat2(j) = data(j)
+		}
+	} else if ( iov == 3 ) {
+
+		ovrflg3 = 1
+		ovrchn3 = itchan
+		do j = 1, 4864 {
+			ovrdat3(j) = data(j)
+		}
+	} 
+
+# Now get wavelengths
+# We don't want to write into the wavelength in use array, so we
+# need to read the wavelengths as more data.
+
+	#write (*,*) "DEBUG: getoverly pos4a calling filidw"
+
+	#call filidw (i, ifilnu, ifilid)  # file record number and file ID letter
+
+	call wjfren(i,x1,ifilid)  # file ID letter
+	call wjfren(i,xfilb,ic2)
+	ifilnu=xfilb              # file record number
+
+        if (ifilid==ihe || ic2==ihe) {
+            iero = ihe
+            return
+        } else if (ifilid==ihx || ic2==ihx) {
+            iero = ihx
+            return
+
+#        *** check for invalid input ***
+        } else if (xfilb<=0.0) {
+	    call what(i)
+            write(ttyout,101)
+101         format (' ERROR: ILLEGAL RECORD NUMBER FOUND. reenter line.',/)
+	    return
+	}
+
+	#write (*,*) "DEBUG: getoverly pos2 called"
+
+	if ( ifilnu == 0 || ifilid == 0) {
+		iero =1
+		write (ttyout,*) "overlay: WAVELENGTH ID or record number ERROR"
+		write (ttyout,9924) "         file ID=", ifilid
+		write (ttyout,9924) "         record#=", ifilnu
+		call crtin
+		return
+	}
+
+#	write (ttyout,9923) ifilnu, ifilid
+#9923    format (" DEBUG: filidw:", i6, a)
+
+	#write (*,*) "DEBUG: getoverly pos4b filidw called"
+
+	if ( ifilnu == 0 || ifilid == 0) {
+		iero =1
+		return
+	}
+
+	call devlun (0,ifilid,lun)
+	call redfil (ifilnu, lun, iero)
+
+	if ( iov == 1 ) {
+
+		do j = 1, 4864 {
+			ovrwav1(j) = data(j)
+		}
+	} else if ( iov == 2 ) {
+
+		do j = 1, 4864 {
+			ovrwav2(j) = data(j)
+		}
+	} else if ( iov == 3 ) {
+
+		do j = 1, 4864 {
+			ovrwav3(j) = data(j)
+		}
+	} 
+
+	#call crtin   # DEBUG
+	return
+	end

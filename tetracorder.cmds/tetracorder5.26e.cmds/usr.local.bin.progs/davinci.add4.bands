@@ -1,0 +1,24 @@
+#!/usr/bin/env -S davinci -f  
+
+###########################  was:  #!/usr/local/bin/davinci -f
+
+
+
+verbose=3
+cube=$1
+b1=atoi($2)
+b2=atoi($3)
+b3=atoi($4)
+b4=atoi($5)
+fout=$6
+#############################################################
+
+a=read(filename=cube,record=b1)
+b=read(filename=cube,record=b2)
+c=read(filename=cube,record=b3)
+d=read(filename=cube,record=b4)
+
+e = bsq(short((float(a) + float(b) + float(c) + float(d))/4))
+
+write(e,filename=fout,type=vicar)
+exit

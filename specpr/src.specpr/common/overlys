@@ -1,0 +1,71 @@
+#       overlay arrays for plots
+
+#       ovrflg  = -1 not defined  
+#               = 0 do not overlay
+#               = 1 overlay
+#               = 2 overlay with autoscale 2% margin  (user  says A)
+#               = 3 overlay with autoscale to min max (user says A2)
+#               = 4 overlay with autoscale to max, min stays as original (use syas A0)
+
+#       ovrflgb = stored setting of ovrflg when the overlay gets turned off
+#                 when turned back on, ovrflg(n) = ovrflgb(n)
+
+#       ovrclr  =     color (to be defined, future)
+
+#       ovrchn  = channels in spectrum
+ 
+#       ovrdat  = original data for overlay
+#       ovrwav  = wavelengths
+#       ovrdsc  = auto-scaled data
+
+#       ovtitle = titles
+#       ovfil   = file ID letter for overlsy spectrum
+#       ovrec   = record number for overlay
+#       ovwfil  = file ID letter for wavelengths
+#       ovwrec  = record number for overlay for wavelengths
+#       ovops   = overlay options
+#       ovflgmenu = 1 if show overlays defined on crt plot, else =0
+
+#       Added 12/22/2009 RNC, updates from 3 to 6 overlays +autoscale 02/22/2012
+
+#
+#    11/2018: add band depth calculations  R. Clark
+#
+#
+#
+#
+
+	common /ovrly1/   ovrflg, ovrflgb, ovrclr, ovrchn
+	common /ovrly1/   ovtitle, ovfil, ovrec 
+	common /ovrly1/   ovwfil, ovwrec, ovops
+        common /ovrly1/   ovrdat, ovrwav, ovrdsc, ovflgmenu
+	common /ovrly1/   ovlftwave, ovctrwave, ovritwave, ovbdepth
+	common /ovrly1/   ovlftchan, ovctrchan, ovritchan
+
+	real*4 ovrdat(SPMAXCHAN,6)
+	real*4 ovrwav(SPMAXCHAN,6)
+	real*4 ovrdsc(SPMAXCHAN,6)
+
+	integer*4 ovrflg(6)
+	integer*4 ovrflgb(6)
+	integer*4 ovrclr(6)
+	integer*4 ovrchn(6), ovflgmenu
+
+	character*40 ovtitle(6)
+	character*4  ovops(6)
+	integer*4 ovfil(6), ovrec(6), ovwfil(6), ovwrec(6)
+
+# band depths on overlays: 5 bands per overlay:
+
+	real*4 ovlftwave(2,5,6)     # left continuum interval
+	real*4 ovctrwave(2,5,6)      # band bottom interval
+	real*4 ovritwave(2,5,6)    # right continuum interval
+
+	integer*4 ovlftchan(2,5,6)     # left continuum interval
+	integer*4 ovctrchan(2,5,6)      # band bottom interval
+	integer*4 ovritchan(2,5,6)    # right continuum interval
+
+	real*4 ovbdepth(5,6)            # band depth
+
+	character*16 ovfeatname(5,6)    # featue name
+

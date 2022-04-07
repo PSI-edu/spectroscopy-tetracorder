@@ -1,0 +1,51 @@
+<!-- Creator     : groff version 1.18.1.1 -->
+<!-- CreationDate: Tue Nov  9 14:21:31 2010 -->
+<html>
+<head>
+<meta name="generator" content="groff -Thtml, see www.gnu.org">
+<meta name="Content-Style" content="text/css">
+<title></title>
+</head>
+<body>
+
+<hr>
+<pre>SPECPR Users&rsquo; Manual                                                   Page 8-f10.1
+
+F10:  Sorting Routine                                     Alias: sort
+The function arranges data into increasing wavelength order.
+Entry is by the usual method for special functions: from the math
+routines, enter the file id and record number of the data set or be
+sorted.  Errors may
+be included by an &quot;e&quot; option on the math command line.
+After entering the sort routine, the title of the data set to be sorted
+is printed along with the wavelength set in use.  The
+user may change the wavelength set at this point by entering the
+(upper case) file id and record number of the wavelength set.
+WARNING:
+Only the data
+file is sorted, but by specifying the wavelength file when
+calling f10, the wavelengths may be sorted also.
+For example, say the wavelengths are in v3 and the data in v6.  First
+sort the wavelength set.  From math operations, type the
+
+             v3f10
+or
+              v3sort
+
+command.  Once inside the sort routine, set the wavelength set, in
+this example to the:
+
+             V3
+
+wavelength set.
+Once the wavelengths are sorted, sort the data set v6:
+
+             v6sort
+
+and once inside you should not have to set the wavelength set again
+because V3 should already be in use.  Simply press return to sort
+the data.
+</pre>
+<hr>
+</body>
+</html>

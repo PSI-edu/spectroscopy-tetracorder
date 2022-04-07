@@ -1,0 +1,94 @@
+<!-- Creator     : groff version 1.18.1.1 -->
+<!-- CreationDate: Tue Nov  9 14:21:32 2010 -->
+<html>
+<head>
+<meta name="generator" content="groff -Thtml, see www.gnu.org">
+<meta name="Content-Style" content="text/css">
+<title></title>
+</head>
+<body>
+
+<hr>
+<pre>SPECPR Users&rsquo; Manual                                            Page 8-f22.1
+
+F22: Graph Digitization using a Tablet                     Alias: digi[tize]
+This routine is a graphics digitization program.
+Note: this routine is device-specific and must be tailored
+specifically for your site; see your system administrator for
+details).
+This program asks the user to define a graph by digitizing the
+graph limits.  Then it accepts points from the tablet that are within
+the limits of the graph and converts the x and y values into
+data values as defined by the graph.
+If a digitized point is outside the bounds of the graph, the
+program will say so and ask if you want to redo the point, begin
+over, write the data or exit.
+When you are finished digitizing, the program will prompt you for the
+file id (v, w, d, u, or y).  The file must have positive protection set.
+The program will first write
+the x data values and than the y values in the following record.  The
+protection is updated as appropriate.
+To run f22, type
+
+             f22
+
+from math operations.  The program will
+return with the title page of f22.
+
+Press return to continue.
+Digitize the upper left bound of the graph, lower left bound
+(origin), and the lower right bound of the graph.  The program
+will return with the values of the points in tablet coordinates,
+the amount that the points are off perpendicular, and the angle
+between the two axes.  If these values are acceptable type &quot;yes&quot;.
+The program will rotate the axis should it be not exactly
+perpendicular.  Then you must enter the values of the digitized
+points starting with the upper left, origin, lower right points.
+Then you must enter the limits of the horizontal
+axis and the limits of the vertical axis of your graph.
+When the above is finished the program will return with &quot;ENTER
+POINTS FROM TABLET&quot;.  Now you can digitize points from
+your graph.
+If you somehow enter a point that is outside the limits of your
+graph, the program will return with &quot;POINT OUT OF BOUNDS&quot;.
+You have various options at this point.  Type
+
+              r   to reenter the point.
+                  This will not affect the data count.
+
+             b   to begin entering the points again.
+                  This allows you to start over without
+                  having to reenter the limits etc.
+
+             w   when finished entering points. This
+                  will put you in the writing mode to
+                  write your data to a file.
+
+             x   will exit you from the program.
+</pre>
+
+<p>If you are finished entering points from the tablet, and
+wish to write the data, digitize a point outside the graph.
+The program will return with &quot;POINT OUT OF
+BOUNDS&quot;. Type a</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>w</p></td>
+</table>
+
+<p>to write the data. To write the data, the program will
+prompt you to enter the file id of the file and record
+number where you want the data to be written. Then you are
+prompted to type in the title of the data set that will
+contain the x (horizontal) values, then after that the title
+of the data set that contains the y (vertical) values. The
+data are then written. After all that you will be asked if
+you want to digitize another graph. Answer yes or no, if no
+then the program exits.</p>
+<hr>
+</body>
+</html>

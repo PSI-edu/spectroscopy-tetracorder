@@ -1,0 +1,15 @@
+set -x
+for i in \
+gfit/change \
+gfit/contrl \
+gfit/fit    \
+gfit/io     \
+gfit/lib    \
+gfit/main   \
+gfit/plot   \
+gfit/rstart
+do
+pr $i/[mM]akefile $i/*.r |xlpr
+done
+pr gfit/makefile |xlpr
+

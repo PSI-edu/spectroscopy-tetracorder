@@ -1,0 +1,83 @@
+.\" use ms macros
+.\" this header is for putting the page numbers at the bottom of the page
+.\" set line length, page offset, vertical spacing
+.nr LL 6.3i
+.ll 6.3i
+.nr PO 1.0i
+.po 1.0i
+.nr VS 12
+.vs 12
+.\" set header and footer margins (default is 1.0i)
+.nr FM 1.00i
+.fm 1.00i
+.nr HM 1.00i
+.hm 1.00i
+.\" set no date here, MUST be before CF definition, because ND sets CF
+.\" set date, so don't do .ND
+.\" LH CH RH are left, center, right header strings
+.\" LF CF RF are left, center, right footer strings
+.\" default is CH is defined as: .ds CH "\(hy \\n(PN \(hy
+.ds LH "SPECPR Users' Manual
+.ds CH
+.ds RH "Page 8-f2.\\n(PN
+.\" setup complete
+.nf
+SPECPR Users' Manual                                                   Page 8-f2.1
+
+
+.B
+F2:  Shift Channels Left or Right                         Alias: shift
+.R
+.PP
+Special function
+f2 shifts data left or right an integer or fractional number of
+channels.  A data set is required and errors can be included.
+Fractional shifts are done by linear interpolation.
+.PP
+When the
+routine has been entered, type:
+
+.in 14n
+the number of channels to shift, or
+e  to soft exit, or
+x  to hard exit.
+.in 0n
+
+A positive number (integer or real)
+indicates a shift right and a negative number left.
+.PP
+If X is the number of channels to shift, the value of X is split
+into the integer part (n) and the fractional part (XN).  First,
+the integer part is shifted
+
+        D\di+n\u = D\di\u                                    (eqn 8.f2.1)
+
+where D\di\u is each data channel in the spectrum.  Next,
+the fractional part is interpolated
+
+        XN' > 0.0;   D\di\u = D\di+1\u - D\di\u * XN' + D\di\u        (eqn 8.f2.2)
+
+        XN' < 0.0;   D\di\u = D\di\u - D\di-1\u * XN' + D\di\u        (eqn 8.f2.3)
+
+where XN' = -1.0 * XN.  Data channels not in the shifted
+region are set to zero.  The errors to the data are shifted in a
+similar manner.
+.PP
+Before June 24, 1979, there was a slight error
+in the program (XN' = XN) making the fractional shift appear to
+go in a different direction than the integer part shift.  The
+history has been modified to signal this new change:
+
+.in 5n
+Old history (X = + 2.5 operation on WDG536 file 238):
+
+"F2:  wdg536 FILE 238 shift right 2.5 channels"
+
+New History:
+
+"F2:  wdg536 r 238 shift right (+) 2.5 channels".
+
+.in 0n
+The subtle change is the sign (+ or -) in parentheses signifying
+the direction of the shift (very early version may have had the
+words in upper case).

@@ -1,0 +1,98 @@
+# @(#) makefile 2.9@(#)
+
+SHELL=/bin/sh
+
+OBJ=	\
+ilink.o 	\
+fsleep.o 	\
+time.o 	\
+iulink.o  \
+fsize.o \
+iwrite.o	\
+iread.o	\
+bkrec.o \
+frdrec.o	\
+rewinf.o	\
+wrttap.o	\
+redtap.o	\
+getpid.o	\
+setbit.o	\
+clrbit.o	\
+chkbit.o	\
+fcuser.o	\
+fuser.o		\
+ixdate.o	\
+frandom.o
+
+
+$(SP_OBJ)/syslib.o:	$(OBJ)	
+	(cd SRC.$(KLUDGE).kludge ; rmo ; make) 
+	ld $(LFLAGS) -r -o $@ $(OBJ)
+
+.SUFFIXES:
+.SUFFIXES: .o .c
+	
+ilink.o:		ilink.c
+	$(CC) $(CFLAGS) -c ilink.c
+
+fsleep.o:	fsleep.c
+	$(CC) $(CFLAGS) -c fsleep.c
+
+frandom.o:	frandom.c
+	$(CC) $(CFLAGS) -DRANDRET=$(RANDRET) -c frandom.c
+
+time.o:		time.c
+	$(CC) $(CFLAGS) -c time.c
+
+iulink.o:		iulink.c
+	$(CC) $(CFLAGS) -c iulink.c
+
+fsize.o:		fsize.c
+	$(CC) $(CFLAGS) -c fsize.c
+
+fcuser.o:		fcuser.c
+	$(CC) $(CFLAGS) -c fcuser.c
+
+fuser.o:		fuser.r
+	$(RF) $(RFLAGS) fuser.r > fuser.f
+	$(F77) $(FFLAGS) -c fuser.f
+	rm -f fuser.f
+
+iwrite.o:		iwrite.r
+	$(RF) $(RFLAGS) iwrite.r > iwrite.f
+	$(F77) $(FFLAGS) -c iwrite.f
+	rm -f iwrite.f
+
+iread.o:		iread.c
+	$(CC) $(CFLAGS) -c iread.c 
+
+bkrec.o:		bkrec.c
+	$(CC) $(CFLAGS) -c bkrec.c
+
+frdrec.o:		frdrec.c
+	$(CC) $(CFLAGS) -c frdrec.c
+
+rewinf.o:		rewinf.c
+	$(CC) $(CFLAGS) -c rewinf.c
+
+wrttap.o:		wrttap.c
+	$(CC) $(CFLAGS) -c wrttap.c
+
+redtap.o:		redtap.c
+	$(CC) $(CFLAGS) -c redtap.c
+
+getpid.o:		getpid.c
+	$(CC) $(CFLAGS) -c getpid.c
+
+setbit.o:		setbit.c
+	$(CC) $(CFLAGS) -c setbit.c
+
+clrbit.o:		clrbit.c
+	$(CC) $(CFLAGS) -c clrbit.c
+
+chkbit.o:		chkbit.c
+	$(CC) $(CFLAGS) -c chkbit.c
+
+ixdate.o:	ixdate.c
+	$(CC) $(CFLAGS) -c ixdate.c
+

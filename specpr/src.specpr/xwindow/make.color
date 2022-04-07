@@ -1,0 +1,3 @@
+#!/bin/sh
+
+cc -g -c xsetline.c.testcolor.c -O -m64

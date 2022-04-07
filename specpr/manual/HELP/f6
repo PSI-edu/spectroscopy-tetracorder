@@ -1,0 +1,63 @@
+
+
+
+
+
+
+SPECPR Users' Manual                                                   Page 8-f6.1
+
+
+_F_6:  _B_l_a_c_k _B_o_d_y _C_o_m_p_u_t_a_t_i_o_n                               _A_l_i_a_s: _p_l_a_n[_c_k]
+
+     This function computes the Planck black body function at a  given  tem-
+perature  (in degrees Kelvin) and any wavelength set.  Currently, the output
+is in watts per  square  meter  per  micron  per  steradian  and  the  input
+wavelength set is assumed to be in microns.
+
+     Upon entering the routine, you are asked to type in the temperature and
+the  wavelength  id  and  record number.  When using extreme temperatures or
+extreme wavelengths, you should check the results for underflow or  overflow
+in  the  CRT  plot routines (Chapter 9).  No file or errors are needed since
+this routine generates a new file instead of an operation  on  an  old  one.
+The equation used is
+
+
+                                                                        (eqn
+
+where E is the energy for each channel at wavelength,
+      L (in microns),
+      T is the temperature (degrees Kelvin),
+      c is the speed of light,
+      h is the Planck constant (= 6.6252x108-349 Joule-seconds),
+
+  and k is the Boltzmann constant (= 1.3806x108-239 Joule/8o9K).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

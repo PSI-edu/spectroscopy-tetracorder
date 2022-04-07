@@ -1,0 +1,78 @@
+       Specpr and support program Instalation and Upgrades
+-------------------------------------------------------------------------------
+
+The software:
+
+   specpr       SPECtrum Proucessing Routines
+                General spectral analysis, and plotting for publications
+
+   sp_stamp     installs a header in record 1 of a specpr file
+                (WARNING: will do this to any file if the size is a multiple
+                  of 1536 bytes)
+
+   spprint      Prints the contents of a specpr file
+
+   radtran      Radiative transfer modeling
+
+   spfeatures   Find spectra with with ranges of spectral features
+
+data translation:
+   fstospecpr   ASD field spectrometer to specpr format conversion
+   asciitosp    ASCII data to specpr format
+   sptoascii    specpr format to ASCII
+
+   The 2017+ version also includes:
+
+   spsetwave    independent program to set the wavelength and resolution pointers
+                to a single specpr record.
+
+   spsettitle   independent program to set the title to a spectrum in a
+                single specpr record.
+
+
+Other packages (separate install)
+   tetracorder  material identification and mapping system for imaging spectroscopy
+                as well as individual spectra.
+
+   tgif         Vector drawing program for plotting spectra (open source)
+                http://bourbon.usc.edu/tgif/
+
+   davinci      open source data analysis for images, spectra and imaging
+                spectroscopy data.  An IDL-like open source tool.
+                http://davinci.asu.edu/
+-------------------------------------------------------------------------------
+
+NEW Specpr INSTALLATIONS and upgrades:
+
+   The following is a scipt that will install everything IF the directories
+   and permission have been set up properly.
+
+               AAA.INSTALL.specpr+support-progs-linux-upgrade.1.7.sh
+                       or the latest version in the distribution.
+
+-------------------------------------------------------------------------------
+
+OLD, use the abve.
+
+   If all the directories are set up and environment variable set, then:
+
+        move or copy the tar file with the upgrade to the 
+         directory above $SPECPR
+        (e.g. $SPECPR is typically something like /src/local/specpr,
+         so copy to /src/local/)
+
+        move the current specpr directory to a different name, e.g.
+
+                cd $SPECPR
+                cd ..
+                mv specpr specpr-old_date
+                # untar the new specpr code, e.g.:
+                tar xzf specpr.2017-11-09.tar.gz
+
+                # If you want to set the logo, edit:
+                vi $SPECPR/src.specpr/logo/set.logo
+
+                cd specpr
+                ./AAA.INSTALL.specpr+support-progs-linux-upgrade.1.3.sh
+                        or the latest version in the distribution.
+

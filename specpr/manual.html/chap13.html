@@ -1,0 +1,653 @@
+<!-- Creator     : groff version 1.18.1.1 -->
+<!-- CreationDate: Tue Nov  9 14:21:33 2010 -->
+<html>
+<head>
+<meta name="generator" content="groff -Thtml, see www.gnu.org">
+<meta name="Content-Style" content="text/css">
+<title></title>
+</head>
+<body>
+
+<hr>
+<pre>SPECPR Users&rsquo; Manual                                                   Page 13.1
+
+</pre>
+
+<p align=center>CHAPTER 13</p>
+
+<p align=center>PLOT ROUTINES FOR WORK AND PUBLICATION</p>
+
+<p>13.1 Introduction The specpr hardcopy plot routines are
+designed to provide publication quality plots for general
+x-y data sets. Specpr builds two intermediate files: a
+vector file and a text file. The files are plotter device
+independent. Specpr then starts a Unix daemon process that
+reads the files and plots the data on a specific plotter.
+The daemon process is device dependent. While some users
+have written programs to use several different plotters and
+even laser printers, the most commonly used plotter is an
+HP7550-compatible plotter. This chapter is specific to the
+HP-compatible plotters, but will work in general for all
+other plotters so far implemented. The plot routines are
+called from Program Operations by typing a</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>p</p></td>
+</table>
+
+<p>command. When you first enter the routine, the first
+command will list the available plotters. This may be site
+dependent.</p>
+
+<p>13.2 Plotting Mode Type The first step in setting up a
+plot is to select the plot mode. Type</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>w</p></td>
+</table>
+
+<p>to plot in value versus wavelength,</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>n</p></td>
+</table>
+
+<p>to plot in value inverse wavelength. In this case, you
+specify a wavelength set in microns and the plot routines
+convert to wavenumber where wavenumber increases to the
+right. To plot in wavenumber, as above, but with wavenumber
+increasing to the left (reverse of the above mode), type
+an</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>r</p></td>
+</table>
+
+<p>command. If you want to use your own horizontal axis
+label, type</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>y</p></td>
+</table>
+
+<p>(the plot will be linear). You will then be asked to
+type in the horizontal axis label (24 characters). For
+example, you might type:</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>TIME (SECONDS)</p></td>
+</table>
+
+<p>or whatever your data correspond to. Thus, you may do
+any kind of one-dimensional array processing you wish.</p>
+
+<p>13.2.1 User-selected wavelength limits If you type only
+a letter for the plot mode, the horizontal axis is scaled to
+the range covered by all the wavelength sets used in the
+generation of the plot. However, you may select the
+wavelength limits for the plot, regardless of the wavelength
+sets used. When you type in the &quot;w&quot; for wavelength
+mode (or n, r, or y), also type (on the same line) the
+minimum and maximum wavelengths for the plot. Type in
+wavelengths the inverse wavelength modes (n and r) also.
+Example:</p>
+<pre>              w 0.325        2.60
+              n 0.325        2.60
+              r 0.325        2.60
+              y 0.325        2.60
+</pre>
+
+<p>The actual limits on the plot will be 2% greater than
+the range (maximum-minimum) on each side (see section 13.5
+for details). The left bound is then minimum minus 2% of the
+maximum-minimum range, and the right bound is the maximum
+plus 2% of the maximum-minimum range. You can suppress the
+addition of the 2% by adding the option</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>n</p></td>
+</table>
+
+<p>after the limits. For example,</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>w 0.325 2.60</p></td>
+</table>
+
+<p>would produce actual limits of 0.2795 to 2.6455.
+However,</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>w 0.325 2.60n</p></td>
+</table>
+
+<p>would keep the actual limits at 0.325 and 2.60. To exit
+the plot routine, type an</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>e</p></td>
+</table>
+
+<p>or</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>x</p></td>
+</table>
+
+<p>command anywhere in the routine.</p>
+
+<p>13.3 Vertical Axis Label Several vertical scale labels
+are displayed for you to select. They are numbered 1 to n,
+where n is currently 8. To select one of these, type in the
+number. If you wish to type in your own label, type the
+number (currently number 9) that says &quot;type in your own
+label,&quot; and you will be instructed to type in a label
+of not more than 60 characters. If you wish to plot the
+vertical axis in log (base 10) of the input data, type</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>10</p></td>
+</table>
+
+<p>and you must type in your own vertical axis label. The
+program will then proceed to the Delete From All Spectra
+section. Type</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>e</p></td>
+</table>
+
+<p>or</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>x</p></td>
+</table>
+
+<p>to return to the beginning (section 13.1).</p>
+
+<p>13.4 Delete From All Spectra If, from all the spectra
+you are going to plot, you wish to delete one or more
+channels common to all, type a</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>d</p></td>
+</table>
+
+<p>command. You will then be instructed to type in the
+channels that will be deleted from all spectra to be
+plotted. At least one space should be left between each pair
+of channels, and more than one line can be used for input.
+All channels may be deleted if desired. When you are
+through, type</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>c</p></td>
+</table>
+
+<p>to continue to the scale section. Type</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>e</p></td>
+</table>
+
+<p>or</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>x</p></td>
+</table>
+
+<p>to return to the beginning (section 13.1). When typing
+in a sequence of channels, you may give the beginning
+channel, a</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>t</p></td>
+</table>
+
+<p>and the end channel. For instance, to delete channels 1,
+2, 3, 4, 5, 6, 7, 8, 15, 16, 17, 23, and 24, you could
+type</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>d1t8 15t17 23 24c.</p></td>
+</table>
+
+<p>13.5 Scale of Plot The vertical scale of the plot is
+selected by the user. Type in the lower and upper bounds of
+the plot. The plot size is 13.5 centimeters (vertical axis)
+by 21.7 centimeters (horizontal axis) for the data plot area
+on the HP plotter. However, the plot size does vary somewhat
+with other plotters. If your data are to be plotted in log
+space on the vertical axis, the lower and upper bounds
+should be input as ordinary numbers. The program will
+convert the scale limits and data to logs. The scale is then
+labeled as the log of the number. Type</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>e</p></td>
+</table>
+
+<p>or</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>x</p></td>
+</table>
+
+<p>to return to the beginning of the plot routines (section
+13.1); otherwise, the program will go to the Plot Scale
+Factors section (section 13.6).</p>
+
+<p>13.6 Plot Scale Factors Next you are asked to enter the
+plot horizontal and vertical scaling factors. These factors
+must be less than 1.0 and scale the size od the data area of
+the plot. Thus if the original size of the plot was 17
+centimeters high, a vertical scale factor of 0.5 would make
+it 8.5 centimeters. These scale factors do not affect the
+text or the text size.</p>
+
+<p>13.7 Data Set Input and Options The data sets to be
+plotted are input as the file ID (v, w, u, y, or d), the
+record number, and the options. For all data sets entered,
+the wavelength set must be specified. If it is not,
+unpredictable plots can occur. A maximum of 50 spectra may
+be plotted at one time. These may be all on one graph or
+separated into many plots by an option request. The options
+are listed below.</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="7%"></td>
+<td width="92%">
+<p>Option B means to plot symbols as Black (assuming the
+black pen is used on HP compatible plotters), the same color
+as the axes labels. The default is to use the same pen color
+as the data.</p>
+<!-- INDENTATION -->
+<p>Option c means to Connect the data points. If the
+wavelengths are not in sequence, or a if channel has been
+deleted, the points involved are not connected.</p>
+<!-- INDENTATION -->
+<p>Option C means to Always Connect the data points. This
+option permits the wavelengths to be NOT in sequence, but
+will connect them anyway.</p>
+<!-- INDENTATION -->
+<p>Option d means to delete points from this data set only
+(as opposed to delete from all data sets as in section
+13.4). The program will ask for channels to be typed in when
+it is ready. More than one line may be used to input the
+channels to be deleted. When you are finished entering
+channels, type</p>
+<!-- INDENTATION -->
+<p>c</p>
+<!-- INDENTATION -->
+<p>to continue.</p>
+<!-- INDENTATION -->
+<p>Option e is include Errors.</p>
+<!-- INDENTATION -->
+<p>Option E is include Errors, but only when the error bars
+are large enough to be recognized on the plot.</p>
+<!-- INDENTATION -->
+<p>Option g means the spectrum after this one is to be
+plotted on a new graph. Thus, 50 spectra may be plotted on a
+single graph (overlaid), or they may be plotted singly or
+any combination. The g (new Gould plot) selects when a new
+plot is to begin. The &quot;g&quot; works the same for
+non-Gould plotters also.</p>
+<!-- INDENTATION -->
+<p>Option l followed by a number 1 through 8 selects the
+line color for the plot. The line color for HP-compatible
+plotters is the pen number. The default is size 1.</p>
+<!-- INDENTATION -->
+<p>The line color for some implementations is device daemon
+dependent. For the Gould electrostatic plotter this number
+represents the line thickness. the axis is fixed at 3. The
+number 1, 3, 5, or 7 is the width of the line in Gould
+units. Size 1 is about 1/200 of an inch (0.127 mm). The line
+size changes error bars and the line connecting points.</p>
+<!-- INDENTATION -->
+<p>Option L is the Line type. For HP-compatible plotters it
+varies from solid to various dot and line patterns. See
+Figure 13.7.1 for specific examples.</p>
+<!-- INDENTATION -->
+<p>Option m More copies: In the options, specify
+&quot;m&quot; and the number of copies desired (1 to 9)
+default=1. Note that you need this option only on the last
+spectrum to be put on the plot.</p>
+<!-- INDENTATION -->
+<p>Option n means that, if a point lies outside the lower or
+upper bound, it should be deleted. If this specification is
+not given, the point will be plotted at the limit of the
+graph.</p>
+<!-- INDENTATION -->
+<p>Option o means to offset the data, followed by the amount
+to offset. You can use any positive or negative number. This
+number is added to the data before it is plotted. For
+example to offset data set v23 with its wavelength set v22,
+you could type:</p>
+<!-- INDENTATION -->
+<p>v23V22o2.2</p>
+<!-- INDENTATION -->
+<p>to offset by 2.2 data units.</p>
+<!-- INDENTATION -->
+<p>Option p followed by a number is the point size. This
+number can be 0 to 5. If the number is zero, no point will
+be plotted. Point size 1 is about 1.27mm on a side, size 2
+is twice this, size 3 is three times, etc. Note, if point
+size zero is specified and points are not connected, no data
+will be plotted, and you will have a blank plot! A line
+drawing can be made by specifying point size zero and
+connecting points. The default point size varies with the
+total number of channels per spectrum. It is size 3 for 30
+channels or less, size 2 for 31 to 100 channels, and size 1
+for more than 100 channels. The symbol type changes with
+each spectrum plotted. See Figure 13.7.2.</p>
+<!-- INDENTATION -->
+<p>Option r Because mistakes are bound to happen when typing
+in all these data sets, you may return to the last step for
+re-entering your data. This is done by typing an
+&quot;r&quot; in place of a file ID and record number.
+Example: You type in the spectra</p>
+<!-- INDENTATION -->
+<p>1) &quot;v23eV2p3&quot; 2) &quot;v29eV2p4&quot; 3)
+&quot;v30p1c&quot; 4) &quot;v33V5&quot;.</p>
+<!-- INDENTATION -->
+<p>You now notice the step #3 should have been
+&quot;v31V3p1c&quot;. You are at step 5: you type
+&quot;r&quot;; the computer says</p>
+<!-- INDENTATION -->
+<p>&quot;RETURN TO 4; CONTINUE&quot;.</p>
+<!-- INDENTATION -->
+<p>You then type &quot;r&quot; again, and the computer
+responds</p>
+<!-- INDENTATION -->
+<p>&quot;RETURN TO 3; CONTINUE&quot;.</p>
+<!-- INDENTATION -->
+<p>You may then retype step 3 (and also all steps after 3).
+You may not return to a step before the first data set
+entered (if you need to, you must &quot;e&quot; or
+&quot;x&quot; to exit).</p>
+<!-- INDENTATION -->
+<p>Option s Symbol type: To change symbol type, specify
+&quot;s&quot; and the symbol number (1 to 8). See Figure
+13.7.2. The symbol size is given by the &quot;p&quot;
+specification (point symbol size). The symbol type is
+incremented for each spectrum input and is reset to 1 for
+each new plot (&quot;g&quot; specification).</p>
+<!-- INDENTATION -->
+<p>Option t means to include text on the graph. Text may be
+written as 15 sets of 70 characters per set for each
+spectrum entered. The text position is given in centimeters
+[horizontal direction (x), then vertical (y)] from the lower
+left-hand corner of the axes of the plot. After the x and y
+position, input the text angle (90&deg; is horizontal and
+0&deg; is vertical) and then the text to be added. When all
+text is entered, type a</p>
+<!-- INDENTATION -->
+<p>c</p>
+<!-- INDENTATION -->
+<p>to continue to the next data set.</p>
+<!-- INDENTATION -->
+<p>Symbols may be plotted using the text mode. Instead of x,
+y, degrees, text, you enter</p>
+<!-- INDENTATION -->
+<p>s &lt;symbol type&gt; &lt;size&gt; x y</p>
+<!-- INDENTATION -->
+<p>where &lt;symbol type&gt; is the symbol described under
+the &quot;s&quot; option. The symbol size is also described
+under the &quot;s&quot; option.</p>
+<!-- INDENTATION -->
+<p>Terminate entry of the text mode and continue entering
+data sets by typing a</p>
+<!-- INDENTATION -->
+<p>c</p>
+<!-- INDENTATION -->
+<p>command.</p>
+<!-- INDENTATION -->
+<p>Option V, W, D, U or Y followed by a record number sets
+the wavelength set to be used (the horizontal axis
+values).</p>
+</td>
+</table>
+
+<p>Notes on Text entry: You may also return to the previous
+text entry using the &quot;r&quot; specification as with the
+data set input. You may not return to a previous entry
+before text entry 1. If you have an error in a previous file
+entry, type &quot;c&quot; to continue to next step after
+text entry; then return to the last data set input as
+described above. The specpr plot routines allow
+subscripting, superscripting, backspacing and greek and math
+characters in the text. Special characters are used to enter
+the different modes and can be used wherever text is written
+on the plot (horizontal or vertical axis labels or other
+text). The characters are:</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="7%"></td>
+<td width="92%">
+<p>Character Effect<br>
+\ (Backslash) Backspace to previous character<br>
+\{ (Left Brace) Go into subscript mode<br>
+} (Right Brace) Go into superscript mode<br>
+@ (At sign) End last scripting mode<br>
+! (Exclamation Point) Toggle greek/normal mode (see table
+13.7.1)<br>
+| (Vertical Bar) Toggle math/normal mode (see table
+13.7.2)</p>
+<!-- INDENTATION -->
+<p>NOTE: the \\ is necessary before &quot;{&quot; because
+these brackets are used by<br>
+the command interpreter for variable parsing (section 2.6).
+The &quot;\&quot;<br>
+escapes the &quot;{&quot; so that it is not interpreted by
+the command line<br>
+variable parser.</p>
+</td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="37%"></td>
+<td width="62%">
+<pre>   Table 13.7.1
+
+Greek character set
+--------------------
+&Alpha; &alpha;  A a    &Nu; &nu;  N n
+&Beta; &beta;  B b    &Xi; &xi;  C c
+&Gamma; &gamma;  G g    &Omicron; &omicron;  O o
+&Delta; &delta;  D d    &Pi; &pi;  P p
+&Epsilon; &epsilon;  E e    &Rho; &rho;  R r
+&Zeta; &zeta;  Z z    &Sigma; &sigma;  S s
+&Eta; &eta;  Y y    &Tau; &tau;  T t
+&Theta; &theta;  H h    &Upsilon; &upsilon;  U u
+&Iota; &iota;  I i    &Phi; &phi;  F f
+&Kappa; &kappa;  K k    &Chi; &chi;  X x
+&Lambda; &lambda;  L l    &Omega; &omega;  W w
+&Mu; &mu;  M m
+--------------------
+</pre>
+<!-- INDENTATION -->
+<p>Example: 1.04&mu;m would be entered as:</p>
+</td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>1.04!m!m</p></td>
+</table>
+<pre>                             Table 13.7.2
+
+                         Mathematical Symbols
+      --------------------------------------------------------------
+      A   infinity (&infin;)                   _     _
+      B   improper superset (&supe;)          a   &uArr;
+      C   proportional (&prop;)               b   &darr;
+      D   union (&cup;)                      c   section (&sect;)
+      E   root extender (&oline;)              d   @
+      F   bell ()                       e   double dagger (&Dagger;)
+      G   plus or minus (&plusmn;)              f   |
+      H   less than or equal to (&le;)      g   improper subset (&sube;)
+      I   greater than or equal to (&ge;)   h   \\
+      J   square root (&radic;)                i   circle (&#9711;)
+      K   terminal sigma (&sigmaf;)             j   partial derivative (&part;)
+      L   integral sign (&int;)              k   empty set (&empty;)
+      M   subset (&sub;)                     l   {
+      N   superset (&sup;)                   m   }
+      O   intersection (&cap;)               /   /
+      P   not (&not;)                        &quot;   &quot;
+      Q   clover leaf (&cent;)                #   #
+      R   angstrom (&deg;)                   &rsquo;   &rsquo;
+      S   gradient (&nabla;)                   +   +
+      T   times (&times;)                      -   -
+      U   divide (&divide;)                     *   *
+      V   identically equal (&equiv;)          &lt;   &lt;
+      W   approximately equal (&asymp;)        =   =
+      X   not equal (&ne;)                  &gt;   &gt;
+      Y   &larr;                              ^   ^
+      Z   &rarr;                              &lsquo;   &lsquo;
+      --------------------------------------------------------------
+</pre>
+
+<p>It was assumed that these characters would not need to
+be printed so they have been reserved for the above special
+use. Backslash can be used to cause characters to be
+overprinted. An &quot;@&quot; (at sign) terminates the last
+use of a brace. All characters in between are printed in
+script mode.</p>
+
+<p>Examples:</p>
+<pre>                      A\{1@  Will print as A1
+
+                     SAM\\\___    Will print as ___
+
+</pre>
+<!-- TABS -->
+
+<table width="100%" border=0 rules="none" frame="void"
+       cols="3" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+
+<p>X}2@-Y Will print as X2 - Y</p>
+</table>
+
+<p>Typing</p>
+
+<p>e<br>
+or<br>
+x</p>
+
+<p>in place of a file ID will cause the program to return
+to the beginning<br>
+of the routine (section 13.1).</p>
+
+<p>Typing</p>
+
+<p>b</p>
+
+<p>will begin building the vector and text files<br>
+on the disc. As soon as these files are complete, specpr
+starts the<br>
+plot daemon job and returns for more input. Thus while the
+plotter<br>
+is plotting, you may do other tasks, including creating
+more<br>
+plots.</p>
+<hr>
+</body>
+</html>

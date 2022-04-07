@@ -1,0 +1,64 @@
+#!/bin/sh
+#set -x
+
+# Roger N. Clark, May 3, 2012
+
+# copy jpg.overlay+base-dual.images that have non-zero
+# results pixels to a new directory.
+
+# NOTE: this script assumes the 
+#                gen.fd.jpg.overlay+base-dual.images
+# script has already been successfully run/
+
+# gen.fd.jpg.overlay+base-dual.images-notzero   (no command line arguments needed)
+
+if [ ! -f results.cluster.sorted ]
+then
+	echo "$0 :"
+	echo "results.cluster.sorted file not found: can not continue"
+	echo "exit 1"
+	exit 1
+fi
+
+zresult=results.cluster.sorted.notzero
+
+grep -v ' zero' results.cluster.sorted | grep 'fd.gz' > $zresult
+
+
+for i in `ls -d group.* case*`
+do
+    rdir=results.dual.$i
+    zdir=${rdir}.notzero
+    if [ -d $rdir ]
+    then
+
+	if [ ! -d "$zdir" ]     # Make notzero results directory
+	then
+		mkdir $zdir
+	fi
+
+	# make list of all non-zero results images for the group/case
+	a=`grep ${i}\/ $zresult | awk -F\/ '{ print $2 }' | awk '{ print $1 }' `
+
+	# now copy dual images to notzero directory
+
+	for j in $a
+	do
+
+		# dual image:
+		fb=`basename $j .gz`
+
+		f=${rdir}/${fb}.ovrly.dual.gstr.jpg
+
+		if [ -f "$f" ]  # found the joeg file, so copy it
+		then
+			echo "cp $f $zdir"
+			cp $f $zdir
+
+		else
+			echo "$f NOT FOUND"
+		fi
+	done
+    fi
+done
+

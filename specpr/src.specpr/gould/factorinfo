@@ -1,0 +1,13 @@
+axis.r:		tik = 19./(dscale*FACTOR)
+axis.r:		tik = 19./(ascale*FACTOR)
+catn.r:#ccc            scale factor of the form '(10}n@)' to the string src1
+pltsym.r:	nd = d * FACTOR + .5
+pltsym.r:	na = a * FACTOR + .5
+point.r:	dmid = d + float(iabs(width))/FACTOR/2.
+point.r:	acmax = a + float(iabs(width))/FACTOR
+range.r:#ccc      computes scale factor and origin
+setup.r:	FACTOR = 1.0  # not initialized why? RNC 2/25/93
+setup.r:	pwidth = width * FACTOR
+setup.r:	pheigh = width * FACTOR
+symbol.r:	nd = d * FACTOR + .5
+symbol.r:	na = a * FACTOR + .5

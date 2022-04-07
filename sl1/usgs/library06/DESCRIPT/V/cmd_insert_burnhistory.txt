@@ -1,0 +1,270 @@
+vi rangeland_C03-004.html
+:g/\[FILL_BURN_HISTORY\]/s//The area of this plot has been recently burned (since 1996)./g
+:wq
+vi rangeland_C03-005.html
+:g/\[FILL_BURN_HISTORY\]/s//The area of this plot has not been recently burned (since 1996)./g
+:wq
+vi rangeland_C03-006.html
+:g/\[FILL_BURN_HISTORY\]/s//The area of this plot has been recently burned (since 1996)./g
+:wq
+vi rangeland_C03-010.html
+:g/\[FILL_BURN_HISTORY\]/s//Part of the area of this plot has been recently burned (since 1996)./g
+:wq
+vi rangeland_C03-013.html
+:g/\[FILL_BURN_HISTORY\]/s//The area of this plot has been recently burned (since 1996)./g
+:wq
+vi rangeland_C03-014.html
+:g/\[FILL_BURN_HISTORY\]/s//The area of this plot has not been recently burned (since 1996)./g
+:wq
+vi rangeland_C03-017.html
+:g/\[FILL_BURN_HISTORY\]/s//The area of this plot has been recently burned (since 1996)./g
+:wq
+vi rangeland_C03-019.html
+:g/\[FILL_BURN_HISTORY\]/s//The area of this plot has not been recently burned (since 1996)./g
+:wq
+vi rangeland_C03-021.html
+:g/\[FILL_BURN_HISTORY\]/s//The area of this plot has been recently burned (since 1996)./g
+:wq
+vi rangeland_C03-022.html
+:g/\[FILL_BURN_HISTORY\]/s//The area of this plot has been recently burned (since 1996)./g
+:wq
+vi rangeland_C03-027.html
+:g/\[FILL_BURN_HISTORY\]/s//The area of this plot has not been recently burned (since 1996)./g
+:wq
+vi rangeland_C03-031.html
+:g/\[FILL_BURN_HISTORY\]/s//Part of the area of this plot has been recently burned (since 1996)./g
+:wq
+vi rangeland_C03-032.html
+:g/\[FILL_BURN_HISTORY\]/s//The area of this plot has not been recently burned (since 1996)./g
+:wq
+vi rangeland_C03-037.html
+:g/\[FILL_BURN_HISTORY\]/s//The area of this plot has not been recently burned (since 1996)./g
+:wq
+vi rangeland_C03-041.html
+:g/\[FILL_BURN_HISTORY\]/s//The area of this plot has not been recently burned (since 1996)./g
+:wq
+vi rangeland_C03-047.html
+:g/\[FILL_BURN_HISTORY\]/s//The area of this plot has been recently burned (since 1996)./g
+:wq
+vi rangeland_C03-050.html
+:g/\[FILL_BURN_HISTORY\]/s//The area of this plot has not been recently burned (since 1996)./g
+:wq
+vi rangeland_C03-052.html
+:g/\[FILL_BURN_HISTORY\]/s//The area of this plot has not been recently burned (since 1996)./g
+:wq
+vi rangeland_C03-066.html
+:g/\[FILL_BURN_HISTORY\]/s//The area of this plot has been recently burned (since 1996)./g
+:wq
+vi rangeland_C03-068.html
+:g/\[FILL_BURN_HISTORY\]/s//The area of this plot has been recently burned (since 1996)./g
+:wq
+vi rangeland_C03-070.html
+:g/\[FILL_BURN_HISTORY\]/s//The area of this plot has been recently burned (since 1996)./g
+:wq
+vi rangeland_C03-073.html
+:g/\[FILL_BURN_HISTORY\]/s//The area of this plot has not been recently burned (since 1996)./g
+:wq
+vi rangeland_C03-074.html
+:g/\[FILL_BURN_HISTORY\]/s//The area of this plot has not been recently burned (since 1996)./g
+:wq
+vi rangeland_C03-076.html
+:g/\[FILL_BURN_HISTORY\]/s//The area of this plot has not been recently burned (since 1996)./g
+:wq
+vi rangeland_C03-077.html
+:g/\[FILL_BURN_HISTORY\]/s//The area of this plot has not been recently burned (since 1996)./g
+:wq
+vi rangeland_C03-080.html
+:g/\[FILL_BURN_HISTORY\]/s//The area of this plot has been recently burned (since 1996)./g
+:wq
+vi rangeland_C03-081.html
+:g/\[FILL_BURN_HISTORY\]/s//Part of the area of this plot has been recently burned (since 1996)./g
+:wq
+vi rangeland_C03-085.html
+:g/\[FILL_BURN_HISTORY\]/s//The area of this plot has been recently burned (since 1996)./g
+:wq
+vi rangeland_C03-086.html
+:g/\[FILL_BURN_HISTORY\]/s//The area of this plot has not been recently burned (since 1996)./g
+:wq
+vi rangeland_C03-089.html
+:g/\[FILL_BURN_HISTORY\]/s//The area of this plot has not been recently burned (since 1996)./g
+:wq
+vi rangeland_C03-090.html
+:g/\[FILL_BURN_HISTORY\]/s//The area of this plot has been recently burned (since 1996)./g
+:wq
+vi rangeland_C03-091.html
+:g/\[FILL_BURN_HISTORY\]/s//The area of this plot has not been recently burned (since 1996)./g
+:wq
+vi rangeland_C03-095.html
+:g/\[FILL_BURN_HISTORY\]/s//The area of this plot has been recently burned (since 1996)./g
+:wq
+vi rangeland_C03-097.html
+:g/\[FILL_BURN_HISTORY\]/s//The area of this plot has been recently burned (since 1996)./g
+:wq
+vi rangeland_C04-151.html
+:g/\[FILL_BURN_HISTORY\]/s//The area of this plot has not been recently burned (since 1996)./g
+:wq
+vi rangeland_C04-153.html
+:g/\[FILL_BURN_HISTORY\]/s//The area of this plot has been recently burned (since 1996)./g
+:wq
+vi rangeland_C04-154.html
+:g/\[FILL_BURN_HISTORY\]/s//The area of this plot has not been recently burned (since 1996)./g
+:wq
+vi rangeland_C04-155.html
+:g/\[FILL_BURN_HISTORY\]/s//Part of the area of this plot has been recently burned (since 1996)./g
+:wq
+vi rangeland_C04-166.html
+:g/\[FILL_BURN_HISTORY\]/s//Part of the area of this plot has been recently burned (since 1996)./g
+:wq
+vi rangeland_C04-170.html
+:g/\[FILL_BURN_HISTORY\]/s//The area of this plot has not been recently burned (since 1996)./g
+:wq
+vi rangeland_C04-175.html
+:g/\[FILL_BURN_HISTORY\]/s//The area of this plot has been recently burned (since 1996)./g
+:wq
+vi rangeland_C04-197.html
+:g/\[FILL_BURN_HISTORY\]/s//The area of this plot has not been recently burned (since 1996)./g
+:wq
+vi rangeland_C04-200.html
+:g/\[FILL_BURN_HISTORY\]/s//The area of this plot has been recently burned (since 1996)./g
+:wq
+vi rangeland_C04-203.html
+:g/\[FILL_BURN_HISTORY\]/s//The area of this plot has not been recently burned (since 1996)./g
+:wq
+vi rangeland_C04-204.html
+:g/\[FILL_BURN_HISTORY\]/s//The area of this plot has not been recently burned (since 1996)./g
+:wq
+vi rangeland_C04-208.html
+:g/\[FILL_BURN_HISTORY\]/s//Part of the area of this plot has been recently burned (since 1996)./g
+:wq
+vi rangeland_C04-209.html
+:g/\[FILL_BURN_HISTORY\]/s//The area of this plot has been recently burned (since 1996)./g
+:wq
+vi rangeland_C04-211.html
+:g/\[FILL_BURN_HISTORY\]/s//The area of this plot has been recently burned (since 1996)./g
+:wq
+vi rangeland_C04-214.html
+:g/\[FILL_BURN_HISTORY\]/s//The area of this plot has been recently burned (since 1996)./g
+:wq
+vi rangeland_C04-226.html
+:g/\[FILL_BURN_HISTORY\]/s//The area of this plot has been recently burned (since 1996)./g
+:wq
+vi rangeland_C04-232.html
+:g/\[FILL_BURN_HISTORY\]/s//The area of this plot has not been recently burned (since 1996)./g
+:wq
+vi rangeland_C04-233.html
+:g/\[FILL_BURN_HISTORY\]/s//The area of this plot has been recently burned (since 1996)./g
+:wq
+vi rangeland_C04-236.html
+:g/\[FILL_BURN_HISTORY\]/s//The area of this plot has not been recently burned (since 1996)./g
+:wq
+vi rangeland_C04-237.html
+:g/\[FILL_BURN_HISTORY\]/s//The area of this plot has been recently burned (since 1996)./g
+:wq
+vi rangeland_C04-243.html
+:g/\[FILL_BURN_HISTORY\]/s//Part of the area of this plot has been recently burned (since 1996)./g
+:wq
+vi rangeland_C04-251.html
+:g/\[FILL_BURN_HISTORY\]/s//Part of the area of this plot has been recently burned (since 1996)./g
+:wq
+vi rangeland_C04-252.html
+:g/\[FILL_BURN_HISTORY\]/s//The area of this plot has been recently burned (since 1996)./g
+:wq
+vi rangeland_C04-253.html
+:g/\[FILL_BURN_HISTORY\]/s//The area of this plot has not been recently burned (since 1996)./g
+:wq
+vi rangeland_C04-264.html
+:g/\[FILL_BURN_HISTORY\]/s//The area of this plot has been recently burned (since 1996)./g
+:wq
+vi rangeland_C04-272.html
+:g/\[FILL_BURN_HISTORY\]/s//The area of this plot has been recently burned (since 1996)./g
+:wq
+vi rangeland_C04-273.html
+:g/\[FILL_BURN_HISTORY\]/s//The area of this plot has not been recently burned (since 1996)./g
+:wq
+vi rangeland_C04-288.html
+:g/\[FILL_BURN_HISTORY\]/s//The area of this plot has not been recently burned (since 1996)./g
+:wq
+vi rangeland_C04-295.html
+:g/\[FILL_BURN_HISTORY\]/s//The area of this plot has not been recently burned (since 1996)./g
+:wq
+vi rangeland_L02-005.html
+:g/\[FILL_BURN_HISTORY\]/s//The area of this plot has not been recently burned (since 1996)./g
+:wq
+vi rangeland_L02-013.html
+:g/\[FILL_BURN_HISTORY\]/s//The area of this plot has been recently burned (since 1996)./g
+:wq
+vi rangeland_L02-015.html
+:g/\[FILL_BURN_HISTORY\]/s//The area of this plot has been recently burned (since 1996)./g
+:wq
+vi rangeland_L02-019.html
+:g/\[FILL_BURN_HISTORY\]/s//The area of this plot has been recently burned (since 1996)./g
+:wq
+vi rangeland_L02-022.html
+:g/\[FILL_BURN_HISTORY\]/s//The area of this plot has not been recently burned (since 1996)./g
+:wq
+vi rangeland_L02-023.html
+:g/\[FILL_BURN_HISTORY\]/s//The area of this plot has been recently burned (since 1996)./g
+:wq
+vi rangeland_L02-025.html
+:g/\[FILL_BURN_HISTORY\]/s//The area of this plot has been recently burned (since 1996)./g
+:wq
+vi rangeland_L02-042.html
+:g/\[FILL_BURN_HISTORY\]/s//The area of this plot has been recently burned (since 1996)./g
+:wq
+vi rangeland_L02-043.html
+:g/\[FILL_BURN_HISTORY\]/s//The area of this plot has been recently burned (since 1996)./g
+:wq
+vi rangeland_L02-045.html
+:g/\[FILL_BURN_HISTORY\]/s//The area of this plot has been recently burned (since 1996)./g
+:wq
+vi rangeland_L02-046.html
+:g/\[FILL_BURN_HISTORY\]/s//The area of this plot has not been recently burned (since 1996)./g
+:wq
+vi rangeland_L02-054.html
+:g/\[FILL_BURN_HISTORY\]/s//The area of this plot has been recently burned (since 1996)./g
+:wq
+vi rangeland_L02-057.html
+:g/\[FILL_BURN_HISTORY\]/s//The area of this plot has been recently burned (since 1996)./g
+:wq
+vi rangeland_L02-058.html
+:g/\[FILL_BURN_HISTORY\]/s//The area of this plot has been recently burned (since 1996)./g
+:wq
+vi rangeland_L02-060.html
+:g/\[FILL_BURN_HISTORY\]/s//The area of this plot has been recently burned (since 1996)./g
+:wq
+vi rangeland_L02-061.html
+:g/\[FILL_BURN_HISTORY\]/s//The area of this plot has been recently burned (since 1996)./g
+:wq
+vi rangeland_L02-068.html
+:g/\[FILL_BURN_HISTORY\]/s//The area of this plot has been recently burned (since 1996)./g
+:wq
+vi rangeland_L02-069.html
+:g/\[FILL_BURN_HISTORY\]/s//The area of this plot has not been recently burned (since 1996)./g
+:wq
+vi rangeland_L02-077.html
+:g/\[FILL_BURN_HISTORY\]/s//Part of the area of this plot has been recently burned (since 1996)./g
+:wq
+vi rangeland_L04-035.html
+:g/\[FILL_BURN_HISTORY\]/s//The area of this plot has been recently burned (since 1996)./g
+:wq
+vi rangeland_L04-047.html
+:g/\[FILL_BURN_HISTORY\]/s//The area of this plot has been recently burned (since 1996)./g
+:wq
+vi rangeland_L04-058.html
+:g/\[FILL_BURN_HISTORY\]/s//The area of this plot has not been recently burned (since 1996)./g
+:wq
+vi rangeland_L04-072.html
+:g/\[FILL_BURN_HISTORY\]/s//The area of this plot has not been recently burned (since 1996)./g
+:wq
+vi rangeland_L04-075.html
+:g/\[FILL_BURN_HISTORY\]/s//The area of this plot has been recently burned (since 1996)./g
+:wq
+vi rangeland_L04-091.html
+:g/\[FILL_BURN_HISTORY\]/s//The area of this plot has not been recently burned (since 1996)./g
+:wq
+vi rangeland_L04-095.html
+:g/\[FILL_BURN_HISTORY\]/s//The area of this plot has been recently burned (since 1996)./g
+:wq
+vi rangeland_L04-096.html
+:g/\[FILL_BURN_HISTORY\]/s//The area of this plot has been recently burned (since 1996)./g
+:wq

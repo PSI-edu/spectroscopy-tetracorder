@@ -1,0 +1,32 @@
+#!/usr/local/bin/davinci -f
+###### for env version 8.30 and higher:  #!/usr/bin/env -S davinci -f
+
+###################################################
+# User:   rclark    Date:  Thu Apr  8 08:15:53 2021
+###################################################
+
+verbose=0
+
+if ( $argc < 1 ) {
+
+	printf ("Usage\n")
+	printf ("        cmds.abundances/davinci.image.moments imagename\n")
+	printf (" \n")
+	printf ("Example:\n")
+	printf ("        cmds.abundances/davinci.image.moments calcite.v.gz\n")
+}
+
+image=$1
+
+
+	m1file="model1/" + image
+	afile = "results.abundances/" + m1file 
+	m1= read (filename=afile)
+	mom1 = moment(m1)
+
+printf ("\n")
+printf ("              File                  min             max             mean       standard deviation\n")
+
+printf ("%26s    %12.6f    %12.6f    %12.6f    %12.6f  Relative Abundances\n",               m1file, mom1[1,1,1], mom1[2,1,1], mom1[3,1,1], mom1[5,1,1])
+
+

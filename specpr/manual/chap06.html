@@ -1,0 +1,1479 @@
+<!-- Creator     : groff version 1.18.1.1 -->
+<!-- CreationDate: Tue Nov  9 14:21:31 2010 -->
+<html>
+<head>
+<meta name="generator" content="groff -Thtml, see www.gnu.org">
+<meta name="Content-Style" content="text/css">
+<title></title>
+</head>
+<body>
+
+<hr>
+<pre>SPECPR Users&rsquo; Manual                                                   Page 6.1
+
+</pre>
+
+<p align=center>CHAPTER 6</p>
+
+<p align=center>DEVICE AND FILE ASSIGNMENTS</p>
+
+<p>6.1 Device and File Assignments The device and file
+assignment is accessed from Program Operations Control by
+typing &quot;r&quot;, or by typing &quot;b&quot; to get to
+Basic Setup and then &quot;r&quot;. The &quot;r&quot; stands
+for device and file reassignment. If you are starting specpr
+from scratch, specpr will automatically come to the device
+and file assignment menu. The status of all files, online or
+not, is displayed on the terminal at the top 3 lines. File
+protections are displayed in line 4. The status menu, which
+appears at the top of most menus throughout specpr looks
+like the following when starting specpr from scratch:</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="3%"></td>
+<td width="96%">
+<pre> v = *unasnd*: f    1    w = *unasnd*: f    1    d = *unasnd*: f    1
+ u = *unasnd*: f    1    y = *unasnd*: f    1    s = starpack: f    1
+ lp: spoolfile       obs lat=    .000 deg   channels= 120 wav fl=C  256 h
+ file protection: v     0,w     0,d     0,u     0,y     0,s     0 ltype= 0
+--------------------------------------------------------------------------
+</pre>
+</td>
+</table>
+
+<p>Throughout the program, the device and file status in
+short form menu (above) is displayed in the top 4 lines on
+the CRT. This tells whether or not the devices are assigned,
+where assigned, the current file pointer position, the
+protections on all files, wavelength file in use, number of
+channels, and the file names that are used in the
+history.</p>
+
+<p>WARNING: after assigning a new file name, you MUST set
+the PROTECTION and the FILE NAME VARIABLE to be used in the
+history. See section 5.3 for a discussion of file
+protection, and 5.6 for a discussion on file names. Also in
+the basic setup menu (type b from the main menu), the
+&quot;f&quot; command evaluates specpr file sizes and based
+on those sizes, computes the protection, and if the
+protection does not agree with the computed value, a warning
+message is printed and you are given the option to change
+the protection to the computes value. Further you are given
+the option to make the file read only. You should use this
+command any time you are not sure of the proper file
+protection. Devices assigned to /dev/null means these
+devices are not accessed. If access is requested when
+assigned to /dev/null, the program cannot respond and will
+tell you so. Typing</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="37%"></td>
+<td width="62%">
+<p>e</p></td>
+</table>
+
+<p>or</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="37%"></td>
+<td width="62%">
+<p>x</p>
+</td>
+</table>
+
+<p>will cause the program to exit to the next routine.
+Multiple commands are allowed in the device and file
+assignment section. Example: Assign v to file lab501, d to
+file lab502, and l to the spooler.</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="37%"></td>
+<td width="62%">
+<p>v lab501 d lab502 l spooler</p></td>
+</table>
+
+<p>(NOTE: spaces are allowable between the file ID letters
+and the file names. Spaces are necessary before the file ID
+letters except the first one on the line.) assigning the
+list device to spoolfile (on Unix BSD machines, the keyword
+&quot;spooler&quot; will also work) will automatically dump
+the listings to the line printer as they are created. If you
+assign the list device to a file the listings will be
+appended to that file so that you can print them later. When
+assigning a file, specpr tells you that it is either
+assigning a new file (creating it) or assigning an existing
+(old) one. If you are intending to assign an existing file,
+and specpr says it is creating a new file, then you probably
+misspelled it. When assigning a file, a qualifier may be
+specified to assign non-standard specpr files. The file type
+may be specified with the sequence:</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="28%"></td>
+<td width="71%">
+<p>&lt;file ID letter&gt; file name
+t=&lt;keyword&gt;</p></td>
+</table>
+
+<p>Currently, the only keyword defined is &quot;3d&quot;
+for a three-dimensional file type, such as data from an
+imaging spectrometer, see section 6.2.</p>
+
+<p>6.2 3D File Types Three-dimensional files enable the
+user to read and extract spectra from a three-dimensional
+data file by designating the pixel coordinates and the
+extraction direction from several types of file formats. The
+file setup is somewhat lengthy but required for proper
+reading of the 3D file. The following topics cover each
+aspect of the method in more detail and outline the
+procedure for actual use of the program.</p>
+
+<p>6.2.1 3D File Parameters File parameters are qualities
+of the data file which affect the way the program chooses
+which records are read. Currently, it takes 11 parameters to
+set up the file. They are listed here with descriptions and
+information on allowable values.</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="13%"></td>
+<td width="86%">
+<p>File name - Necessary to correctly open data file for
+i/o.</p>
+<!-- INDENTATION -->
+<p>Organization - This variable is either band interleaved
+by line (BIL), band interleaved by pixel (BIP) or band
+sequential (BSQ).</p>
+<!-- INDENTATION -->
+<p>File header length - Length (in records) of the header
+preceding the actual data cube.</p>
+<!-- INDENTATION -->
+<p>Record length - Record length to read. Since Unix sees
+data as a byte stream, designating a different record length
+than the one in which the data was written will cause the
+program to choose the wrong records to read. Maximum
+allowable value is 1536.</p>
+<!-- INDENTATION -->
+<p>Record header length - Some records have headers so this
+was included to allow for that possibility. Must be less
+than record length, of course.</p>
+<!-- INDENTATION -->
+<p>Data type - This is menu-selected and indicates what type
+of numbers the data file consists of. Allowable values are
+integer halfwords (2 byte), integer fullword (4 byte) or
+real fullwords (4 bytes).</p>
+<!-- INDENTATION -->
+<p>The number of lines, number of samples, and number of
+bands which describe the size of the data set. Note: only a
+maximum of 4852 channels can be extracted along any one
+dimension, but the file could be larger.</p>
+<!-- INDENTATION -->
+<p>Dimensions of the data cube. The conceptual method for
+addressing the cube is Line (or down, or scan direction, or
+y direction), sample (or across, meaning cross-track, x
+direction), and bands (or deep, z direction), where x,y,z
+are normal cartesian coordinates. Line 1, sample 1 is the
+upper left corner of the image. Line increases down, and
+sample increases to the right.</p>
+</td>
+</table>
+<!-- TABS -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="3" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="13%"></td>
+<td width="0%">
+
+<p>Data number (DN) offset and scale - These values allow a
+scaled range, usually used to represent a real number by an
+integer. The formula used to reconstitute the original value
+is:</p>
+</td>
+<td width="86%">
+</td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="18%"></td>
+<td width="81%">
+<pre>Original value = (value stored + offset)*(scale).
+</pre>
+</td>
+</table>
+
+<p>6.2.2 3D Algorithm Description This algorithm is divided
+into two major components; one that sets all of the
+parameters necessary to read the file correctly and another
+section which does all of the work required to read the data
+and extract spectra into arrays that specpr can handle. The
+first component, essentially an information prompter, is
+initiated in the specpr REASSIGN file area. Follow the
+normal file assignment procedure but add the string
+&quot;t=3d&quot; after the device designator (u,v,w,y) and
+the file name. An example is, &quot;u file3d.dat t=3d&quot;
+which assigns the 3D data file file3d.dat to device u. What
+follows is a series of prompts for file parameters. You need
+to know that the file is not actually opened until after the
+record length prompt because it is possible (and sometimes
+desirable) to use the last file setup that was entered. This
+is accomplished by answering the first prompt for the record
+length and then skipping to the parameter list. Just
+remember that unless you have allowed the program to go
+through the record length prompt the file has not been
+opened. The parameter list will remind you of this by
+printing next to &quot;Status =&quot; the words &quot;File
+not opened&quot;. The secondary part of the program does the
+actual record reading according to the pixel coordinates
+input by the user in the TRANSFER, DISPLAY and OVERLAY area
+of specpr. The extraction direction is set by the position
+of the &quot;*&quot; in the pixel designation. An asterisk
+in the z coordinate place indicates that the extracted
+spectra will have all z elements. A complete command example
+to read and extract a spectra from a 3D file assigned to
+device w is &quot;wpx(n,m,*)&quot;. This translates as, for
+the file assigned to device w extract a spectrum aligned
+parallel to the z-axis. The coordinates of this pixel are
+x=m and y=n. Visualizing this type of extraction is not very
+hard, however, the mechanics are more difficult. This is why
+so many file parameters are required in order to read the
+records correctly. Listed below is a table of equations
+which determine the first record to read (a), the record
+increment (b), and the last record to read (c). Something of
+note when looking at the equations is that there are some
+simplifications imposed in order to facilitate understanding
+of how records are selected for reading. Also, these
+equations use integer arithmetic where fractions are
+truncated to whole numbers. Programmers will want to read
+the internal documentation in the source code in order to
+understand exactly how records are selected.</p>
+<pre>Dictionary of Variables:
+</pre>
+<!-- TABS -->
+
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>rl - records per line</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>pr - pixels per record</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>fh - file header length</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>rh</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>- record header length</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>rln - record length</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>dx</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>- x dimension (# of Samples)</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>dy - y dimension (# of Lines)</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>dz - z dimension (# of Bands)</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>x - x coordinate (sample) for pixel</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>y</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>- y coordinate (line) for pixel</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>z - z coordinate (band) for pixel</p>
+</td>
+</table>
+
+<p>General Equation for All Routines</p>
+<!-- TABS -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>pixels/record = rln/2 (i*2 data)</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>= rln/4 (i,r*4 data)</p>
+</td>
+</table>
+
+<p>Band Interleaved by Pixel (BIP)</p>
+<!-- TABS -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>records/line = dz/pr</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>extraction direction || x axis</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>a = (y - 1)*dx*rl + z/pr + fh</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>b = a + dx*rl - 1</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>c = rl</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>extraction direction || y axis</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>a = (x - 1)*rl + z/pr + fh</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>b = a + (dy - 1)*rl*dx</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>c = reclin * dx</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>extraction direction || z axis</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>a = (y - 1)*rl*dx + (x - 1)*rl + 1 + fh</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>b = a + rl - 1</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>c = 1</p>
+</td>
+</table>
+
+<p>Band Interleaved by Line (BIL)</p>
+<!-- TABS -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>records/line = dx/pr</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>extraction direction || x axis</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>a = (y - 1)*dz*rl + (z - 1)*rl + 1 + fh</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>b = a + rl - 1</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>c = 1</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>extraction direction || y axis</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>a = (z - 1)*rl + x/pr + fh</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>b = dz*dy*rl</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>c = rl*dz</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>extraction direction || z axis</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>a = x/pr + (y - 1)*dz*rl + fh</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>b = a + (dz - 1)*rl</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>c = rl</p>
+</td>
+</table>
+
+<p>Band Sequential (BSQ)</p>
+<!-- TABS -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>records/line = dx/pr</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>extraction direction || x axis</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>a = (z - 1)*rl*dy + (y - 1)*rl + 1 + fh</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>b = a + rl - 1</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>c = 1</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>extraction direction || y axis</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>a = (z - 1)*rl*dy + x/pr + fh</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>b = rl*dy</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>c = rl</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>extraction direction || z axis</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>a = (y - 1)*rl + x/pr + fh</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>b = dz*dy*rl</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>c = rl*dy</p>
+</td>
+</table>
+
+<p>The algorithm is completed by reading the whole record
+into a character buffer as a byte stream, extracting the
+correct 4 or 2 byte section of it into full word or half
+word (respectively) number arrays (Max. length = 1536
+bytes), applying the DN offset and scale correction to
+reconstitute the original number, converting the result to a
+fullword real number and then loading the number into a
+specpr array.</p>
+
+<p>6.2.3 3D I/O Setup Examples<br>
+So far two different types of data have had more than
+preliminary testing. The AVIRIS image data file and dark
+current data file have both been used as sources for spectra
+extraction. The image data are in band interleaved by line
+(BIL) format and the dark current data are in band
+interleaved by pixel (BIP) format. The dimensions for both
+are as follows:</p>
+<pre>                      Line  Sample  Band
+                        y     x      z
+</pre>
+<!-- TABS -->
+
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>image 512 614 224</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>dark 512 1 224</p>
+</td>
+</table>
+
+<p>Given this information (the rest is extraneous in our
+example) a setup and extraction procedure is listed below
+starting at the specpr main menu.</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="15%"></td>
+<td width="84%">
+<pre>specpr&gt;r                          # go to REASSIGN area of specpr
+specpr&gt;w image.dat t=3d           # assign image.dat to w
+        .
+</pre>
+</td>
+</table>
+<!-- TABS -->
+
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="24%"></td>
+<td width="75%">
+
+<p>. # setup parameters for image.dat</p>
+</td>
+<tr valign="top" align="left">
+<td width="24%"></td>
+<td width="75%">
+
+<p>.</p>
+</td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="15%"></td>
+<td width="84%">
+<p>specpr&gt;v dark.dat t=3d # assign dark.dat to v<br>
+.</p></td>
+</table>
+<!-- TABS -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="24%"></td>
+<td width="75%">
+
+<p>. # setup parameters for dark.dat</p>
+</td>
+<tr valign="top" align="left">
+<td width="24%"></td>
+<td width="75%">
+
+<p>.</p>
+</td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="15%"></td>
+<td width="84%">
+<p>specpr&gt;e # go back to main menu<br>
+specpr&gt;t # TRANSFER,OVERLAY,DISPLAY<br>
+specpr&gt;wpx(4,5,*) # extract pixel (4,5)<br>
+specpr&gt;vpx(3,1,*) # extract pixel (3,1)<br>
+^<br>
+|<br>
+NOTE: NO space here - px(n,m,*) is req&rsquo;d
+syntax.</p></td>
+</table>
+
+<p>In addition, an AVIRIS data set can be visualized as a
+cube of data similar to the figure below.</p>
+<pre>                          _____________________
+                         /                    /|
+         _______________/                    / |
+        /______________/____________________/  |
+        | File header  |                    |  |
+        |______________|                    |  |
+                       |                    |  |
+                     5 |       data         |  |
+          (Line) y = 1 |                    |  |
+                     2 |                    |  /
+                       |                    | / z = 224
+                       |____________________|/   (Band)
+                               x = 614
+                              (Sample)
+</pre>
+
+<p>If we use the above file setups, an extraction indicated
+by wpx(*,j,k) will extract all values parallel to the y-axis
+at the xz coordinates j,k. It will appear in the above data
+cube as:</p>
+<pre>                                ......................
+                               .                    ..
+                            k .- - - - - - *       . .
+                             .            /*      .  .
+                            .            / *     .   .
+                           ............./..*.....    .
+                           .           j   *    .    .
+                           .               *    .    .
+                           .               *    .    .
+                 (Line) y  .               *    .   .
+                           .   - - - - - - *    .  . z
+                           .              /     . .   (Band)
+                           .             /      ..
+                           ............ /........
+                                      x (Sample)
+</pre>
+
+<p>where the asterisks show which numbers are extracted.
+Similarly, an extraction along the x-axis such as wpx(i,*,k)
+looks like this,</p>
+<pre>                             ......................
+</pre>
+<!-- TABS -->
+
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>. ..</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>. . .</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>. . .</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>. . .</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>...................... .</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>. . .</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>. ********************** .</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>. /| . /| .</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>(Line) y ./ | ./ |.</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>i. | . | z</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>. j . . (Band)</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>. ..</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>......................</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>x (Sample)</p>
+</td>
+</table>
+
+<p>and an extraction along the z-axis initiated by the
+command wpx(i,j,*) would resemble the following:</p>
+<!-- TABS -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>......................</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>. . .</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>. . .</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>. . .</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>. - - - * . .</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>................*.|... .</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>. * | . .</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>. * | . .</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>. * | . .</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>i. - - - * . .</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>(Line) y . | . . z</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>. | . . (Band)</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>. | . .</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>........|.............</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>j x (Sample)</p>
+</td>
+</table>
+
+<p>6.2.4 3D I/O Suggestions Since 3d files have many
+parameters it might be easier to use a command file to do
+the file setup for you. Once you are in the REASSIGN area of
+specpr type a greater than symbol (&gt;) and a file name.
+The information entered for file parameters will be saved in
+that file for use later. When you need to set that
+particular 3d file up again type (in REASSIGN area of
+specpr) a less than symbol (&lt;) and the file name you used
+to store the information. If you can&rsquo;t remember what
+the name is type &quot;!ls&quot; (don&rsquo;t include the
+double quotes) for a listing. If you need to change one or
+two parameters in the command file type &quot;!vi
+filename&quot;. Edit the parameters that need changing just
+as you would at any other time and then exit as usual. The
+program will return you to the REASSIGN area and you can
+type in &lt;filename to have the command file enter the
+parameters for the file. It is very important (and will save
+you time in the long run) to make sure that the parameters
+are correct when the program provides the checklist for your
+inspection. If the dimensions were entered in the wrong
+order a message will usually appear telling you that one
+dimension must be a multiple of some integer number. Usually
+an i/o error message saying that an attempt was made to
+access an illegal record number (either &lt; 1 or &gt; max
+number of records) also appears. In this case, note which
+dimension has to be a multiple of the integer number and
+correct that dimension first. If you still aren&rsquo;t sure
+what order to enter the other dimensions, try one
+combination. Since there are only 2 possibilities only one
+combination is left to try if you&rsquo;re wrong. If the
+file parameters are the same as the file previously setup
+the array holding the values can be used again. When the
+first prompt comes up enter the record length and then an s
+on the next prompt. You will skip to the parameter check
+list where you should check status to make sure the file
+opened successfully before continuing.</p>
+
+<p>6.2.5 3D I/O DEMONSTRATION What follows is an actual 3D
+file setup and spectral extraction procedure being executed.
+The screens you will see as you progress through this
+example are included. Explanations not part of the screen
+stuff are indicated by an asterisk in the first column.
+Entries by the user are to the right of the &gt; prompt.</p>
+<pre>&gt;specpr r1 -
+
+* Translation:  Execute specpr, use a restart file named r1, do a
+* non-verbose entry into specpr (-).  NOTE:  Type this in at system level
+* prompt.
+
+Restarting
+restart file= r1
+------------------------------------------------------------------------
+ v = spd0071 : f    4    w = splib001: f   19    d = spd0029 : f  169
+ u = calger1 : f    1    y = spd0084 : f   25    s = starpack: f    1
+ lp: spoolfile       obs lat=    .000 deg   channels=  61 wav fl=V    3 a
+ file protect: v  -1358,w   -635,d   -168,u -55144,y    115,s   0 ltype= 3
+--------------------------------------------------------------------------
+ MAIN MENU: ********** Program Operations Control *********************
+
+  INFO:     &quot;in&quot; to turn OFF information
+
+  LIST:      l followed by v,w,d,u,or y  to list the contents
+                         of the corresponding file
+   DISPLAY:   t  to DISPLAY on screen, OVERLAP on screen
+   MATH:      m  to do MATH operations
+   TRANSFER:  t  to TRANSFER (COPY) files
+
+  PLOT:      p  to PLOT SPECTRA on PLOTTER/printer
+   SETUP:     b  to change SETUP PARAMETERS
+   FILES:     r  to REASSIGN files and devices
+   STARPACK:  s  to create a STARPACK for extinction corrections
+   PRINT RST: f  to print summary of the current restart file
+
+  EXIT:      EX  to exit program
+
+&gt;r
+
+* Translation:  Go to REASSIGN area of specpr
+
+__________________________________________________________________________
+ v = spd0071 : f    4    w = splib001: f   19    d = spd0029 : f  169
+ u = calger1 : f    1    y = spd0084 : f   25    s = starpack: f    1
+ lp: spoolfile       obs lat=    .000 deg   channels=  61 wav fl=V    3 a
+ file protect: v  -1358,w   -635,d   -168,u -55144,y    115,s   0 ltype= 3
+--------------------------------------------------------------------------
+               *** FILE ASSIGNMENTS ***
+               -----------------------------------
+ to reassign files type letter and name:
+    (74 characters max per file name)
+ v = /d1/gswayze/data/ger/spd0071
+ w = /d1/speclib/splib001
+ d = /d1/fkruse/data/spd0029
+ s = /dev/null
+ u = /i1/tmp/GER/canon.city/calger2.dat
+ y = spd0084
+ l = spoolfile
+     e  or  x = EXIT this routine
+
+&gt; u /i1/tmp/GER/canon.city/calger2.dat t=3d
+
+* Translation:  Assign /i1/tmp/GER/canon.city/calger2.dat to device
+* u.  Indicated 3D file by the &quot;t=3d&quot;.
+__________________________________________________________________________
+
+---------------------------------------------------
+ This program is designed to read multidimensional
+ data files although at present it is limited to 3-
+ dimensional data sets.  It is recommended that you
+ put the input file parameters in a command file to
+ save time if you find it necessary to change the
+ specpr u,v,w,y or d setups often.  Currently,
+ it takes 12 parameters to set up a file.
+                  *************
+ NOTE:  AT ANY TIME entering an e or x terminates
+ the setup routines without opening the 3D file.
+ ---------------------------------------------------
+
+What is the length of each record (in bytes)?
+ (e or x to exit)
+&gt;1024
+
+Opening file...
+
+File opened successfully...
+
+Select file organization:
+                    1   BIL (band interleaved by line)
+                    2   BIP (band interleaved by pixel)
+                    3   BSQ (band sequential)
+                    s   skip to parameter check list
+                    e,x exit program
+&gt;1
+ How many records long is the file header?
+ (e or x to exit, b to back up, s to skip to list)
+&gt;0
+ What is the length of the record header in bytes?
+ (e or x to exit, b to back up, s to skip to list)
+&gt;0
+ What is the DN offset?
+ (e or x to exit, b to back up, s to skip to list)
+&gt;0
+ What is the DN scale?
+ (e or x to exit, b to back up, s to skip to list)
+&gt;.00005
+                      ......................
+                    .                    . .
+   ................                    .   .
+ .....................................     .
+ . File header  .                    .     .
+ ................                    .     .
+                .                    .     .
+         LINES  .       data         .     .
+          (y)   .                    .     . S
+                .                    .   . D
+                .                    . . N   (z)
+                ...................... A
+                       SAMPLES       B
+</pre>
+<!-- TABS -->
+
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>(x)</p>
+</td>
+</table>
+
+<p>Please enter the dimension lengths of the input
+array<br>
+which can be either 2 or 3 -dimensional (y,x,z):<br>
+(e or x to exit, b to back up, s to skip to list)<br>
+&gt;904 512 61<br>
+Choose the file data type:<br>
+--------------------------</p>
+
+<p>1 Integer*2 (half-word)<br>
+2 Integer*4 (full-word) - specpr normal<br>
+3 Real*4 (full-word)</p>
+
+<p>b backup<br>
+s skip to parameter check list<br>
+e,x to exit<br>
+&gt;1<br>
+What is the deleted point value?<br>
+&gt;0<br>
+Your input is as follows:<br>
+---------------------------------------<br>
+/i1/tmp/GER/canon.city/calger2.dat</p>
+
+<p>Parm.#<br>
+Status = File opened<br>
+1 Record Header length = 0<br>
+2 Format = BIL<br>
+3 File Header length = 0<br>
+4 Record length = 1024<br>
+5 DN offset = 0<br>
+6 DN scale = 4.99999E-05<br>
+7 x-dimension = 512<br>
+y-dimension = 904<br>
+z-dimension = 61<br>
+8 Data type = Integer*2<br>
+9 Point drop flag = 0<br>
+---------------------------------------</p>
+
+<p>Enter the parameter # to be changed<br>
+c to CONTINUE<br>
+e,x to EXIT file setup<br>
+&gt;c<br>
+Continuing...<br>
+Please type in the title (16 characters or less).<br>
+-----------------|<br>
+&gt;Canon City S CALIBRATED<br>
+Please enter the time (hh mm ss) data was acquired<br>
+in Universal or Civil time (r to return to main).<br>
+&gt;19 00 00<br>
+Enter the date (mm dd yyyy) of data acquisition.<br>
+&gt;09 16 1988<br>
+File opened. Press return to continue.<br>
+&gt; &lt;CR&gt;</p>
+
+<p>* Translation: Carriage return.<br>
+
+__________________________________________________________________________<br>
+v = spd0071 : f 4 w = splib001: f 19 d = spd0029 : f 169<br>
+u = calger1 : f 1 y = spd0084 : f 25 s = starpack: f 1<br>
+lp: spoolfile obs lat= .000 deg channels= 61 wav fl=V 3
+a<br>
+file protect: v -1358,w -635,d -168,u -55144,y 115,s 0
+ltype= 3<br>
+
+--------------------------------------------------------------------------<br>
+*** FILE ASSIGNMENTS ***<br>
+-----------------------------------<br>
+to reassign files type letter and name:<br>
+(74 characters max per file name)<br>
+v = /d1/gswayze/data/ger/spd0071<br>
+w = /d1/speclib/splib001<br>
+d = /d1/fkruse/data/spd0029<br>
+s = /dev/null<br>
+u = /i1/tmp/GER/canon.city/calger2.dat<br>
+y = spd0084<br>
+l = spoolfile<br>
+e or x = EXIT this routine</p>
+
+<p>&gt;e</p>
+
+<p>* Translation: Exit to main menu.</p>
+
+
+<p>__________________________________________________________________________<br>
+v = spd0071 : f 4 w = splib001: f 19 d = spd0029 : f 169<br>
+u = calger1 : f 1 y = spd0084 : f 25 s = starpack: f 1<br>
+lp: spoolfile obs lat= .000 deg channels= 61 wav fl=V 3
+a<br>
+file protect: v -1358,w -635,d -168,u -55144,y 115,s 0
+ltype= 3<br>
+
+--------------------------------------------------------------------------<br>
+MAIN MENU: ********** Program Operations Control
+*********************</p>
+
+<p>INFO: &quot;in&quot; to turn OFF information</p>
+
+<p>LIST: l followed by v,w,d,u,or y to list the
+contents<br>
+of the corresponding file<br>
+DISPLAY: t to DISPLAY on screen, OVERLAP on screen<br>
+MATH: m to do MATH operations<br>
+TRANSFER: t to TRANSFER (COPY) files</p>
+
+<p>PLOT: p to PLOT SPECTRA on PLOTTER/printer<br>
+SETUP: b to change SETUP PARAMETERS<br>
+FILES: r to REASSIGN files and devices<br>
+STARPACK: s to create a STARPACK for extinction
+corrections<br>
+PRINT RST: f to print summary of the current restart
+file</p>
+
+<p>EXIT: EX to exit program</p>
+
+<p>&gt;t<br>
+Transferring to display &amp; math routine<br>
+
+__________________________________________________________________________<br>
+v = spd0071 : f 4 w = splib001: f 19 d = spd0029 : f 169<br>
+u = calger1 : f 1 y = spd0084 : f 25 s = starpack: f 1<br>
+lp: spoolfile obs lat= .000 deg channels= 61 wav fl=V 3
+a<br>
+file protect: v -1358,w -635,d -168,u -55144,y 115,s 0
+ltype= 3<br>
+
+--------------------------------------------------------------------------<br>
+********** data DISPLAY, TRANSFER, and OVERLAY
+**********</p>
+
+<p>Type i to turn ON information</p>
+
+<p>&gt;upx(1,1,*)</p>
+
+<p>Demonstration complete.</p>
+<hr>
+</body>
+</html>

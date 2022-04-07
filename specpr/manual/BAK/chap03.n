@@ -1,0 +1,99 @@
+.\" use ms macros
+.\" this header is for putting the page numbers at the bottom of the page
+.\" set line length, page offset, vertical spacing
+.nr LL 6.3i
+.ll 6.3i
+.nr PO 1.0i
+.po 1.0i
+.nr VS 12
+.vs 12
+.\" set header and footer margins (default is 1.0i)
+.nr FM 1.00i
+.fm 1.00i
+.nr HM 1.00i
+.hm 1.00i
+.\" set no date here, MUST be before CF definition, because ND sets CF
+.\" set date, so don't do .ND
+.\" LH CH RH are left, center, right header strings
+.\" LF CF RF are left, center, right footer strings
+.\" default is CH is defined as: .ds CH "\(hy \\n(PN \(hy
+.ds LH "SPECPR Users' Manual
+.ds CH
+.ds RH "Page 3.\\n(PN
+.\" setup complete
+.nf
+SPECPR Users' Manual                                                   Page 3.1
+
+
+
+
+
+
+
+
+
+
+
+
+
+.ce
+.B
+CHAPTER 3
+.R
+
+
+
+
+
+.ce
+.B
+STARTING SPECPR ON UNIX
+.R
+
+
+
+
+.fi
+.bp
+.B
+3.1  Starting Specpr
+.R
+.PP
+To run specpr you must first log in to the system.  It is advisable
+to do specpr work for a particular project in a separate directory.
+Specpr uses protective locks on files to prevent simultaneous specpr
+sessions from overwriting data.  Thus, if you are starting a new
+project, create a directory in which to start, then cd to that
+directory.
+
+.PP
+You can start specpr in one of three ways, using the following
+commands.
+
+.in 10n
+.IP specpr 20
+starts specpr, first with current messages, then a start "from
+scratch" where a complete setup is required.  After the word
+"specpr" type a carriage return.
+
+.IP specpr\ rfile 20
+starts specpr in restart mode, where the restart file "rfile"
+contains all the information saved from the previous session.
+Before specpr is started, current messages are displayed.
+
+.IP specpr\ rfile\ - 20
+starts specpr in restart mode, where the restart file "rfile"
+contains all the information saved from the previous session.  The
+minus sign suppresses messages unless new messaes have been added
+since the last timr "rfile" has been written.  After a basic setup,
+this is the command you will want to use to restart specpr.
+
+.in 0n
+.PP
+The restart file contains all information for restarting specpr and
+putting it in the same state it was in as when you last quit the
+program.  Specpr periodically updates the restart file during a
+processing session in case of a system or program crash.
+.PP
+The specpr startup messages are notes and information about chanes, additions
+and bugs in the current version of specpr.

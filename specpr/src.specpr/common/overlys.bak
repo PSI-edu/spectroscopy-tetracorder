@@ -1,0 +1,21 @@
+#       overlay arrays for plots
+
+	common /ovrly1/   ovrflg1, ovrdat1, ovrwav1, ovrclr1, ovrchn1
+	common /ovrly1/   ovrflg2, ovrdat2, ovrwav2, ovrclr2, ovrchn2
+	common /ovrly1/   ovrflg3, ovrdat3, ovrwav3, ovrclr3, ovrchn3
+
+	real*4 ovrdat1(4864), ovrwav1(4864)
+	real*4 ovrdat2(4864), ovrwav2(4864)
+	real*4 ovrdat3(4864), ovrwav3(4864)
+
+	integer*4 ovrflg1, ovrflg2, ovrflg3
+	integer*4 ovrclr1, ovrclr2, ovrclr3
+	integer*4 ovrchn1, ovrchn2, ovrchn3
+
+#       ovrflg* = -1 not defined  
+#               = 0 do not overlay
+#		= 1 overlay
+#
+#       ovrclr* =     color (to be defined, future)
+#
+#       Added 12/22/2009 RNC

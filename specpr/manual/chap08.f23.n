@@ -1,0 +1,95 @@
+.\" use ms macros
+.\" this header is for putting the page numbers at the bottom of the page
+.\" set line length, page offset, vertical spacing
+.nr LL 6.3i
+.ll 6.3i
+.nr PO 1.0i
+.po 1.0i
+.nr VS 12
+.vs 12
+.\" set header and footer margins (default is 1.0i)
+.nr FM 1.00i
+.fm 1.00i
+.nr HM 1.00i
+.hm 1.00i
+.\" set no date here, MUST be before CF definition, because ND sets CF
+.\" set date, so don't do .ND
+.\" LH CH RH are left, center, right header strings
+.\" LF CF RF are left, center, right footer strings
+.\" default is CH is defined as: .ds CH "\(hy \\n(PN \(hy
+.ds LH "SPECPR Users' Manual
+.ds CH
+.ds RH "Page 8-f23.\\n(PN
+.\" setup complete
+.nf
+SPECPR Users' Manual                                            Page 8-f23.1
+
+
+.B
+F23: Mathematical Parser                                      Alias: pars[e]
+.R
+.PP
+This routine allows the user to type in arbitrary mathematical
+expressions involving data sets and
+constants. The
+expressions allowed are any combination of addition, subtraction,
+multiplication, division, and exponentiation (exponentiation is
+represented by ^).
+.PP
+.B
+WARNING:
+.R
+f23 is site specific because of the interdependency between Fortran
+and C so it may not be linked at all sites.  Check with your system
+administrator.
+.PP
+To use f23 type from math operations:
+
+.in 14n
+.B
+f23
+.R
+.in 0n
+or
+.in 14n
+.B
+f23e
+.R
+.in 0n
+
+if errors are to be included in the
+computation. The program will list the
+wavelength data set and the number of channels it will be using. To
+change the wavelength record at this point type the file ID (upper
+case) and the record number of the new wavelength set.  If the default
+wavelength set is acceptable just type a carriage return.  If
+you wish to abort the routine type
+
+.in 14n
+.B
+e
+.R
+.in 0n
+or
+.in 14n
+.B
+x
+.R
+.in 0n
+
+After choosing the appropriate wavelength set the routine will
+print out the current file protections and allow you to type in
+the expression to be evaluated.  For example, if you wanted to add
+data set v21 to a Gaussian with a height of -1.5, half width of 2.3
+microns (at 1/e
+point), centered at 1.32 microns you would type:
+
+.in 14n
+.B
+v21+-1.5*2.71828e0^(-((v3-1.32)/2.3)^2)
+.R
+.in 0n
+
+assuming you are using wavelength set v3 (note that the wavelengths
+are treated as data here, so the wavelength set uses a lower case
+file ID).

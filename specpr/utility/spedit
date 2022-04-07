@@ -1,0 +1,18 @@
+#!/bin/sh
+#
+# this shell script is called by specpr routine chgtxt to start
+# a system editor.  Different users can choose different editors
+# by modifying the EDITOR environment variable.
+# R. Clark 7/5/85.
+# environment variable added 8/90  R Clark
+
+
+if [ $EDITOR ]
+then
+	editor=$EDITOR
+else
+	editor=vi
+fi
+
+set -x
+$editor $*

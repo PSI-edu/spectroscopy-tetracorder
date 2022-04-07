@@ -1,0 +1,13 @@
+#!/bin/sh
+# compare checked out SCCS files
+
+i=`find SCCS -name p.\* -print | sed -e 's/p\./s\./`
+
+for j in $i
+do
+	a=`basename $j | sed -e 's/s\.//'`
+	get -s -p $j > OLD.$a
+
+	echo '*****************' $a '****************'
+	diff $a OLD.$a
+done

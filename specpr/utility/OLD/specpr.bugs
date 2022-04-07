@@ -1,0 +1,36 @@
+#! /bin/sh
+
+tmpfil=/tmp/spbug$$
+tmpfil2=/tmp/spbug2$$
+cat /dev/null > $tmpfil
+cat /dev/null > $tmpfil2
+
+trap 'echo "Terminated"; rm $tmpfil $tmpfil2 ; exit 1' 1 2
+
+echo "Program to mail specpr information about bugs"
+echo "Type in a title"
+read title
+while
+	[ -z "$title"  ]
+do
+	echo "Type in a title"
+	read title
+done
+echo "Title: $title"
+
+echo "Type in your message, then a EOF to terminate and deliver the message"
+
+cat > $tmpfil
+
+echo "Mailing message to specpr"
+
+echo "~s $title" >> $tmpfil2
+cat $tmpfil >> $tmpfil2
+
+mail specpr < $tmpfil2
+
+echo "Adding message to notes specpr.bugs"
+
+cat $tmpfil | /usr/lib/notes/inotes -n specpr.bugs -t "$title"
+
+rm $tmpfil $tmpfil2

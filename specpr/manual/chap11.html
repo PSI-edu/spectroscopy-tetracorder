@@ -1,0 +1,269 @@
+<!-- Creator     : groff version 1.18.1.1 -->
+<!-- CreationDate: Tue Nov  9 14:21:33 2010 -->
+<html>
+<head>
+<meta name="generator" content="groff -Thtml, see www.gnu.org">
+<meta name="Content-Style" content="text/css">
+<title></title>
+</head>
+<body>
+
+<hr>
+<pre>SPECPR Users&rsquo; Manual                                                   Page 11.1
+
+</pre>
+
+<p align=center>CHAPTER 11</p>
+
+<p align=center>DATA FILE LIST</p>
+
+<p>11.1 Introduction The data file list routines read the
+contents of a specpr data file and prints header information
+and data on the terminal or to a print spooler. The user can
+select different modes to print different fields, search for
+strings and print only those found. The search capability
+along with the ability to read selected records within a
+file (given as a list of record numbers) can be used for
+simple data base operations. The list routines can be
+entered from Program Operations Control, Data Display
+Transfer and Overlay, or from Math. To enter the list
+routines, you type</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>l&lt;ID&gt;</p></td>
+</table>
+
+<p>where &quot;&lt;ID&gt;&quot; means one of the specpr
+file letter ID&rsquo;s: v, w, d, u, or y. At all user
+command points in the list routines, an &quot;e&quot; or
+&quot;x&quot; command will terminate the routine and return
+you to program operations. NOTE: there is a new X-windows
+based, &quot;point and click&quot; specpr data file viewer.
+It is currently called &quot;sp&quot; and is available as
+part of the pic-works (pw) software package.</p>
+
+<p>11.2 Listing Mode When you first enter the list
+routines, you are given the option to print in
+&quot;laboratory&quot; or &quot;telescopic&quot; mode:</p>
+<pre>  ________________________________________________________
+   type  t  for TELESCOPIC or  l  for LABORATORY (DEFAULT)
+  or beginning and ending files to be listed
+  ________________________________________________________
+</pre>
+
+<p>The telescopic mode prints the observation air mass
+whereas the laboratory mode prints channels in that column.
+The mode is different for both the terminal list and the
+printer list. The printer listing always assumes a
+132-character wide printer and is able to show more items
+than the terminal listing. The default printer listing also
+shows the sidereal time in telescopic mode.</p>
+
+<p>11.3 CRT Listing Options After you select the
+telescopic/laboratory mode, you are asked which items to
+show on the terminal.</p>
+<pre>  __________________________________________________________________
+   *** CRT print options ***
+  n  print # only on CRT when printing to lineprinter
+  a  print wavelength record numbers
+  h  print history
+  t  print text
+  r  read and print a list of comma separated record numbers
+  w  write to a file, a list of comma separated record numbers
+     You will be prompted for the file name after you select r or w.
+  __________________________________________________________________
+</pre>
+
+<p>The &quot;n&quot; option speeds the operation when all
+you desire is a printer listing. The &quot;a&quot; option
+lists the wavelength pointers in place of the channel
+numbers in laboratory mode. The &quot;h&quot; option adds
+the history to the listing (this takes more than one line on
+the terminal). The &quot;t&quot; option prints the text if
+the data record type indicates a text record. As noted in
+the introduction, the list routines can read only selected
+records. Similarly, it can write the records it finds. For
+example, if you do a complicated search, you can record the
+record numbers found by the search and then read only those
+numbers in subsequent listings. The file containing the
+record numbers must have each record number separated by a
+comma. If the number is the last on a line, it must still
+have a comma. The &quot;r&quot; option directs the list
+routines to read one of these lists, while the &quot;w&quot;
+option directs it to create a list. You can both read and
+write a list at the same time.</p>
+
+<p>11.4 Printer Listing Options Next you enter the options
+to decide what to print on the printer.</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="3%"></td>
+<td width="96%">
+<pre>________________________________________________________
+LINEPRINTER OPTIONS (return for CRT only)
+   p  print titles + selected fields given by print mode
+   a  print titles with no pausing at CRT page full
+
+  with p or a, also select:
+   h  print history
+   m  manual history if not blank
+   t  print text on text data files
+   b  print all header info except manual history
+   c  print all except data
+   d  print all and data
+________________________________________________________
+</pre>
+</td>
+</table>
+
+<p>If you press return, no printer output is created. To
+create a printer listing, you must type either</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>p</p></td>
+</table>
+
+<p>or</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>a</p></td>
+</table>
+
+<p>If you type &quot;p&quot;, the terminal stops each time
+the terminal screen is full, but if you type &quot;a&quot;
+(for &quot;automatic, no stopping&quot;), the list continues
+until the user limits are reached. With a &quot;p&quot; or
+&quot;a&quot; command, you can select options as described
+above. For example, to make a listing including the history,
+type</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>ph</p></td>
+</table>
+
+<p>11.5 Search Capability The next command prompt is for
+search capability:</p>
+<pre>  ___________________________________________________________
+  Enter SEARCH STRING: letter &quot;string1&quot; letter &quot;string2&quot; etc.
+         where letter is for t  title
+                             h  history
+                             d  date
+                             m  manual history
+         maximum number of strings is 4
+         comparisons is and (default), use | for or, &amp; for and
+  ___________________________________________________________
+</pre>
+
+<p>Pressing return does no search selection; all records
+are printed. To limit the listing to a specific search
+parameter, enter the search field (t, h, d, or m) and the
+search string. The search string is a full Unix regular
+expression. See the Unix string searching documentation with
+your computer for more details. A few examples will be given
+below. You may enter multiple search fields, as long as they
+are less than 80 characters or less. They may include
+multiple entries of the same type, however, such as two
+different title strings. The date field is converted from
+its numerical value to a string for this search capability.
+The date field searched is the date of data acquisition.
+Examples:</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="15%"></td>
+<td width="84%">
+<pre>t&quot;Kaolinite&quot;         \# search for all Kaolinite
+t&quot;[Kk]aolinite&quot;      \# search for all Kaolinite or kaolinite
+t&quot;Kaolin&quot; t&quot;NN56&quot;    \# search for all entries that have Kaolin
+                         and NN56 in the title.
+t&quot;Kaolin&quot; d&quot;198[56]&quot; \# search for all Kaolin spectra obtained in
+                         1985 or 1986
+t&quot;Kaolin&quot; |t&quot;Alunite&quot;  \# search for all entries of Kaolin or
+                           Alunite
+</pre>
+<!-- INDENTATION -->
+<p>In the above examples, a &quot;&amp;&quot; was not
+necessary because &quot;and&quot; id the default logical
+operator.</p>
+<!-- INDENTATION -->
+<p>11.6 Listing Limits The final prompt before the
+listing/search occurs is to enter the limits of the
+search:</p>
+<!-- INDENTATION -->
+<pre>___________________________________________________
+Type in the beginning and ending files to be listed
+___________________________________________________
+</pre>
+<!-- INDENTATION -->
+<p>If the lower limit is zero, it is reset to 1. If the
+upper limit is greater than the protection limit, it is
+reset to the protection value.</p>
+<!-- INDENTATION -->
+<p>11.7 Continuing/Ending the List When the listing is
+complete, or the terminal page is full, you can continue, or
+exit to one of 3 places as described by the prompt:</p>
+<!-- INDENTATION -->
+<pre>__________________________________________________________________________
+Type  c  to continue, e or x  to exit,  Type in new record numbers to list
+type  r  to return to options, type t to go to file display and transfer
+or type m to go to math routines
+__________________________________________________________________________
+</pre>
+<!-- INDENTATION -->
+<p>If you type c to continue and you are at the upper limit
+given above, but that upper limit is less than the
+protection value, the listing/search will continue up to the
+protection limit. To continue with a new range, do not type
+&quot;c,&quot; just the new range of record numbers.</p>
+<!-- INDENTATION -->
+<p>11.8 Sample Listing A sample listing using the default
+laboratory mode looks like the following.</p>
+<!-- INDENTATION -->
+<pre>_______________________________________________________________________________
+file            title                            chans    time        date
+73  Description of Alunite   Hunt 295.?B      3132 Characters of TEXT
+76  Alunite 295.3B .2-3um 1x ABS REF           512  12:03:14.00  08/20/1985
+78  errors to previous file   77               512  12:03:14.00  08/20/1985
+80  Alunite 295.3B .9-2.6um 2x ABS REF         680  09:49:27.00  08/21/1985
+83  errors to previous file 80                 680  09:49:27.00  08/21/1985
+86  Alunite 295.3B 1.3-1.7um 2x ABS REF        264  11:43:26.00  08/22/1985
+88  errors to previous file 86                 264  11:43:26.00  08/22/1985
+90  USGS Den BKMN STD waves 4x 2.2738-4.00um   256  04:23:02.00  11/13/1985
+91  USGS Den BKMN 4x resolution                256  04:23:02.00  11/13/1985
+92  Alunite 295.3B 2.36-2.555um 4x ABS REF      75  14:00:38.00  08/21/1985
+93  errors to previous file 92                  75  14:00:38.00  08/21/1985
+94  Alunite 295.3B 1-1.55um 4x ABS REF         442  16:49:01.00  08/21/1985
+96  errors to previous file 94                 442  16:49:01.00  08/21/1985
+98  Description of Beryl   (WNS)              1737 Characters of TEXT
+------------------------------------------------------------------------------
+Type  c  to continue, e or x  to exit,  Type in new record numbers to list
+type  r  to return to options, type t to go to file display and transfer
+or type m to go to math routines
+_______________________________________________________________________________
+</pre>
+<!-- INDENTATION -->
+<p>Note that the continuation record numbers are hidden from
+the user.</p></td>
+</table>
+<hr>
+</body>
+</html>

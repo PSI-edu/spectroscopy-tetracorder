@@ -1,0 +1,46 @@
+#! /bin/sh
+
+lock=LOCK.specpr
+
+# bourne shell driver to start specpr
+
+#
+# check for LOCK file in a specpr directory
+#
+
+if [ -f $lock ]
+then
+	echo Specpr directory is locked, another user is running specpr:
+	ls -l $lock
+	echo Exit
+	exit 0
+else
+	cat /dev/null > $lock
+	if [ ! -f $lock ]
+	then
+		echo Cannot create LOCK in specpr directory
+		echo Exit
+		exit 0
+	fi
+fi
+trap "" 2
+#
+#	show user specpr information
+#
+seenote=yes
+if [ "$2" = "-" -o "$3" = "-" ]
+then
+	seenote=no
+fi
+if [ "$seenote" = "yes" ]
+then
+	more -d /usr/msgs/dspecnotes
+	echo hit return to continue
+	read tempvar
+fi
+#
+#	ignore interrupts while in specpr
+#
+/src/local/specpr/src.specpr/dspecpr $1 $2
+
+/bin/rm $lock

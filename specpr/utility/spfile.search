@@ -1,0 +1,72 @@
+
+#this shell script searches the entire specpr source listings for
+#    a string $1
+
+output=../spfsearch.out
+output2=/dev/null
+debug=../debug
+
+cd common
+echo "**********************************************************" >>$output 2>&1
+echo "******** specpr file search done " `date` "*********" >>$output 2>&1
+echo "**********************************************************" >>$output 2>&1
+echo "******** searching for string: $1 ********" >>$output 2>&1
+echo " " >>$output 2>&1
+cd ..
+
+for i in \
+common	\
+add	\
+band	\
+crtp	\
+dtol	\
+dvml	\
+extn	\
+fass	\
+fcn1	\
+fcn2	\
+fcn3	\
+fcn4	\
+fcn5	\
+fcn6	\
+fcn7	\
+fcn8	\
+fcn9	\
+free	\
+gould	\
+hed	\
+hpgraph	\
+hppen	\
+init	\
+io	\
+lib	\
+main	\
+mth1	\
+mth2	\
+newplot	\
+parser	\
+rst	\
+sub	\
+syslib	\
+talg	\
+wav	
+do
+	cd $i
+	echo ============= directory: $i ============== >>$output 2>&1
+		for j in `ls s.*`
+		do
+			echo ----------- file: $j ------------ >>$output 2>&1
+			get -p $j 2>>$output2 |grep -n "$1"  >>$output 2>&1
+		done
+	cd ..
+done
+
+cd dummy
+echo ============= directory: dummy ============== >>$output 2>&1
+	for j in `ls *.r`
+	do
+		echo ----------- file: $j ------------ >>$output 2>&1
+		grep -n "$1" $j >>$output 2>&1
+	done
+echo "********" `date` " specpr file search finished ********" >>$output 2>&1
+cd ..

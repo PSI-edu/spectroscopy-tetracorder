@@ -1,0 +1,63 @@
+Swayze's guide to better SCREEN plotting:
+
+Example:     to change wavelength to .2-3um type:
+
+                    c;w.2 3;
+
+             to change vertical scale to 0-1 type:
+
+                    c;0 1
+
+             to change both wavelength and vert. scale type:
+
+                    c;w.2 3;0 1
+       ----------------------------------------
+Getting Fancy
+
+             to automatically set vert. scale type:
+
+                    c;A
+
+             to change wavelength and to do vert. autoscale type:
+
+                    c;w2.1 2.5;A
+
+             *Note: "A" does not scale to the vert. demensions of
+              windows only to the whole spectrum, you have to 
+              manually set vert. scale for windows. This is on the
+              fix list. 
+       ------------------------------------------
+Changing wavelength file or number of channels 
+
+             to change the wavelength file while in graphics mode
+             type the wave file with a upper case file id letter: 
+
+                    V234  
+         
+             to change the number of channels type an upper case C
+             and the number of channels:
+
+                    C480
+
+             *Note: if you use "a", "n", or "e" to toggle between
+              wavelength, channel, and energy space, you may have to
+              type in the number of channels or enter a new
+              wavelength file. 
+        --------------------------------------------
+Handy Tools
+
+              Graph Cursor Pick: type "G" and move the graphics
+              cursor to the desired position on the graph and press
+              return.  Cursor wave and vert. axis positions will be
+              displayed along with closest channel coordinates. Very
+              Handy for locating band centers and figuring out end
+              channels for merging spectra.
+
+
+              Interactive Band Analysis: type "A" and follow
+              instructions.  With this routine you can remove
+              continua from spectra and have band center and fwhm 
+              automatically or manually computed.  Very handy for 
+              picking band centers and widths.
+
+        -------------------------------------------------

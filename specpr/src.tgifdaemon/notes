@@ -1,0 +1,29 @@
+initplotter(FILE *fp)
+{
+    int             error;
+#if 0
+    INITIALIZE;
+    /* SCPTS(300, -270, 8300, 10530); */
+    SCPTS(650, -320, 8650, 10480);
+    SCALE(0, 2000, 0, 2048);
+    LINETYPE(-1);
+    TEXTSIZE(8);
+    PEN(3);
+    VS(10);
+#endif
+
+char            init_str[] =
+        "%TGIF 2.16-p12\n"
+        "state(0,32,50,0,0,0,8,1,0,1,1,0,0,1,0,1,0,"
+        "'Times-Roman',0,20,0,0,0,10,0,0,1,1,0,16,0,0,1,1,1,0,"
+        "2000,2400).\n"
+        "%\n"
+        "% @(#)$Header$\n"
+        "% %W%\n"
+        "%\n"
+        "page(1,\"\",1).\n";
+
+        fprintf(fp, "%s", init_str);
+}
+
+

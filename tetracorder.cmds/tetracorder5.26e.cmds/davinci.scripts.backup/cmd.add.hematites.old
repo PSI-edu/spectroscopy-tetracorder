@@ -1,0 +1,42 @@
+#!/bin/sh
+
+set -x
+
+cd group.1um
+
+cat hematite_lg_gr_br25a.fd.gz | gunzip > file1
+cat hematite_lg_gr_br25b.fd.gz | gunzip > file2 
+cat hematite_lg_gr_br25c.fd.gz | gunzip > file3 
+cat hematite_md_gr_br34c.fd.gz | gunzip > file4 
+
+davinci <<EOI
+a=load("file1")
+b=load("file2")
+c=load("file3")
+d=load("file4")
+e = a + b + c + d
+write(e,"SUM.hematites.lg+med.fd",type=vicar)
+exit
+EOI
+
+rm file1 file2 file3 file4
+
+gzip SUM.hematites.lg+med.fd
+
+
+cat Fe2+_broad_br60b.fd.gz         | gunzip > file1
+cat Fe2+_hematite_weathering.fd.gz | gunzip > file2
+cat Fe2+_vbroad_br20.fd.gz         | gunzip > file3
+
+davinci <<EOI
+a=load("file1")
+b=load("file2")
+c=load("file3")
+e = a + b + c
+write(e,"SUM.Fe2_vb+broad+hem.fd",type=vicar)
+exit
+EOI
+
+rm file1 file2 file3
+
+gzip SUM.Fe2_vb+broad+hem.fd

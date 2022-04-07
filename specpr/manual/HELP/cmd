@@ -1,0 +1,225 @@
+_2._4  _C_o_m_m_a_n_d _I_n_t_e_r_p_r_e_t_a_t_i_o_n
+
+     The specpr terminal input routine looks for various special  characters
+in  the input.  These special characters are: <, >, ?, %, =, !, ;, {, [, and
+$.  All of these characters except ; {, [, and $ have special  meaning  only
+when  it  is  the first non-blank character on the line.  Additional special
+character sequences are also interpreted: "\#", "\\#", "==", and "px(".   If
+a  "{" or "[" is found on the command then the corresponding bracket, "}" or
+"]", will also have a special meaning. The effect of these characters is  as
+follows:
+
+
+<    This character when followed by a file name causes specpr to read input
+     from  that  file.   You  can  also  specify  a starting and ending line
+     number.  For example
+
+                    <_i_n_p_u_t_c_o_m_m_a_n_d_s _2_0 _4_0
+
+
+     will read commands from a file called inputcommands starting at line 20
+     and  stopping  after line 40 of the file.  If the ending line number is
+     omitted, the file will be read until the end of the  file  is  reached.
+     If  the  starting line number is also omitted the file is read starting
+     at the first line.
+
+     When commands are being read from an input file, that command file  may
+     read  commands  from another input file.  That input file can then read
+     from yet another file, up to 9 deep.  In a sense, a command file  could
+     set  several  variables and read another command file similar to a sub-
+     routine.  In this case, the "subroutine" has access to  all  variables,
+     thus  it  is  similar  to  subroutines  used  in  the Basic programming
+     language.  When one command file finishes, commands are read  from  the
+     next line of the previous command file.  For example, given two command
+     files:
+
+               file "a1"            file "a2"
+               ----------           ------------
+               line 1               line 1
+               line 2               line 2
+               <a2                  line 3
+               line 4
+               <a2
+               line 6
+
+
+
+
+
+     then the command sequence would be as follows.
+
+                    <a1     # terminal input from user
+                    a1 line 1
+                    a1 line 2
+                    a2 line 1
+                    a2 line 2
+                    a2 line 3
+                    a1 line 4
+                    a2 line 1
+                    a2 line 2
+                    a2 line 3
+                    a1 line 6
+                    # back to terminal input
+
+
+
+>    This character when followed by a file name causes specpr to  copy  all
+     user  input  into  the  named file. When not followed by a file name it
+     terminates the copying of the input.  Example:
+
+                    > _o_u_t_p_u_t_f_i_l_e     # _c_o_p_i_e_s _a_l_l _c_o_m_m_a_n_d_s _t_o _f_i_l_e  "_o_u_t_p_u_t_-
+                    _f_i_l_e"
+
+                    >                # _t_u_r_n_s  _o_f_f  _c_o_p_y_i_n_g  _o_f  _c_o_m_m_a_n_d_s  _t_o
+                    "_o_u_t_p_u_t_f_i_l_e"
+
+
+!    This character when followed by any string will pass that string to the
+     UNIX  shell  (/bin/sh, see the UNIX manual) for execution.  For example
+     typing
+
+                    !_l_s
+
+
+     will give you a listing of the files in the current directory.
+
+
+;    A semicolon anywhere in an input line is treated as  if  the  user  had
+     typed a carriage return instead of a semicolon. For example typing
+
+                    _c;_0 _1
+
+
+     is equivalent to typing
+
+                    _c
+                    _0 _1
+
+
+     The special characters ?, %, =, and $ involve the "command file"  which
+     automatically  keeps  a  record  of  the  last 20 commands the user has
+     typed, and in addition can contain up to 80 permanent commands saved by
+     the  user.  The commands in the command file are numbered 1 to 100 with
+
+
+
+
+
+     commands 1-20 being the last twenty commands typed by the user and com-
+     mands  21-100 being the permanent commands.  The effect of these 4 spe-
+     cial characters is as follows:
+
+
+?    This character lists the contents of the command  file  on  the  user's
+     terminal.  The  commands are printed in five groups of twenty commands.
+     If the ? is followed by a digit from 1 to 5 the corresponding group  of
+     commands  will be printed. If no digit is specified, the first group of
+     twenty commands is listed. For example,
+
+                    ?_2
+
+
+     will list commands 21-40.
+
+
+=    This command allows the user to type in the permanent commands.  The  =
+     should be followed by the number of the command to be entered. The sys-
+     tem will prompt the user with a question mark at which  time  the  user
+     should type in up to 80 characters for the new command. For example,
+
+                    =_2_5
+
+
+     allows the user to type in command 25.
+
+
+%    This command allows the user to copy a command from one  entry  in  the
+     command file to another. Commands may be copied only from commands 1-20
+     to commands 21-100. For example
+
+                    % _1_0 _2_5
+
+
+     will copy command 10 to command 25.
+
+
+$    This command when followed by a number  from  1  to  100  extracts  the
+     corresponding  entry  from the command file. For example, if command 25
+     contains
+
+                    _0._5_7_4
+
+
+     then typing
+
+                    _0 $_2_5
+
+
+     is equivalent to typing
+
+                    _0 _0._5_7_4
+
+
+
+
+
+
+     Care is needed when the command number is followed by  another  number.
+     If  the command ends with a number then the user should follow the com-
+     mand number with a comma if the number following the command is part of
+     the desired final number. For example, if command 25 contains
+
+                    _0._5_7_4
+
+
+     then typing
+
+                    _0 $_2_5,_7
+
+
+     is equivalent to typing
+
+                    _0 _0._5_7_4_7
+
+
+     while typing
+
+                    _0 $_2_5 _7
+
+
+     is equivalent to typing
+
+                    _0 _0._5_7_4 _7
+
+
+{    is used to parse internal variables.  See section 2.6.
+
+
+[    is used to parse aliases.  See section 2.5.
+
+\#   The character sequence "\#" means everything after and including  these
+     characters  are  comments and not to be interpreted by the command pro-
+     cessor.  If \# occurs as the first two characters on the command  line,
+     then the line is ignored.
+
+\\#  The character sequence \\# is an "escaped"  comment  meaning  interpret
+     the  characters as \# and pass them to the command processor, in effect
+     uncommenting the comment.
+
+
+==   The character string == means an alias function follows.   See  section
+     2.5 below.
+
+
+px(  The character sequence "px(" means  a  pixel  coordinate  of  the  form
+     px(i+j,k+l,m+n)  where  i, j, k, l, m, and n are integers describing an
+     extraction from a 3D file.  See section 6.2 for more details.
+
+
+
+
+
+
+
+
+

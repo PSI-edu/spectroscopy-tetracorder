@@ -1,0 +1,51 @@
+<!-- Creator     : groff version 1.18.1.1 -->
+<!-- CreationDate: Tue Nov  9 14:21:31 2010 -->
+<html>
+<head>
+<meta name="generator" content="groff -Thtml, see www.gnu.org">
+<meta name="Content-Style" content="text/css">
+<title></title>
+</head>
+<body>
+
+<hr>
+<pre>SPECPR Users&rsquo; Manual                                            Page 8-f21.1
+
+F21: Calculate Nth Term Polynomials                        Alias: calc[poly]
+This routine calculates nth term polynomials where the maximum
+number of terms or coefficients is 256.  This routine operates on
+the data set entered from math operations.  Then it prompts you
+for a data set of coefficients (file ID and record number)
+for the polynomial:
+
+                   Y(n) = C(1) + C(2)X(n) + C(3)X(n)2 + C(4)X(n)3 + ...,
+
+where Y is the output array, X is the input array, C is the
+coefficient array.
+To execute the f21 function, in math operations type the file id
+and record number of the input file and f21.  For example:
+
+             v23f21
+or
+              v23calc
+
+After the routine
+title is printed type in the file id and record number of the
+file containing the coefficient values, then a space, then the
+number of terms of the polynomial.  For example, if the coefficients
+were in v24 and there were 6 coefficients, you would type:
+
+             v24 6
+
+The program will then do the
+calculations and return to the math routine prompting you for the
+location to put the output file and the title etc.
+
+WARNING:
+be careful of overflows!  When the number of terms, n, becomes large
+(like near or greater than 10), xn can get very large if x &gt;
+1.0.
+</pre>
+<hr>
+</body>
+</html>

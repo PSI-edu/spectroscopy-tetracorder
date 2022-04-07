@@ -1,0 +1,40 @@
+# define  features for computing band depths for spectra plots
+#
+# 11/2018 - R. Clark
+
+	# imax3pt is set in spmaxes
+
+#       3-point band depth wavelengths/channels for band depth calculations
+#
+#             label      left1   left2  center1  center2   right1  right2
+#       bd1= 1.04um C|W  0.958   0.986   1.02     1.05      1.080   1.110
+#       bd1= 1.04um   W  0.958   0.986   1.02     1.05      1.080   1.110
+#       bd2= 1.25um   W  1.12    1.16    1.25     1.29      1.34    1.38  box
+#       added 11/23/2018 - R. Clark
+
+
+	common /spcfeat/ sleftwave, sctrwave, srightwave, sbdepth
+	common /spcfeat/ sleftchan, sctrchan, srightchan
+	common /spcfeat/ sfeatname, sfmode, sonoff, spcbox
+	common /spcfeat/ slcavg, sbbavg, srcavg, bdflgmenu
+
+        real*4 sleftwave(2,imax3pt)     # left continuum interval
+        real*4 sctrwave(2,imax3pt)      # band bottom interval
+        real*4 srightwave(2,imax3pt)    # right continuum interval
+
+        integer*4 sleftchan(2,imax3pt)     # left continuum interval
+        integer*4 sctrchan(2,imax3pt)      # band bottom interval
+        integer*4 srightchan(2,imax3pt)    # right continuum interval
+
+        real*4 sbdepth(imax3pt)            # band depth
+
+        character*12 sfeatname(imax3pt)    # featue name
+
+	integer*4 sfmode(imax3pt)          # mode: 0= not defined, 1= C= channels, 2= W= waves
+	integer*4 sonoff(imax3pt)          # 0=off, 1=on
+	integer*4 spcbox(imax3pt)          # 0=off, 1=on (plot box on plot)
+	integer*4 bdflgmenu                # 0=off, 1=on to print band depths on plot
+
+	real*4 slcavg(imax3pt)             # left continuum data average
+	real*4 sbbavg(imax3pt)             # band center data average
+	real*4 srcavg(imax3pt)             # right continuum data average

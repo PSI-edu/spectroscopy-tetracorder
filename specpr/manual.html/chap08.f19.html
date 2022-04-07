@@ -1,0 +1,55 @@
+<!-- Creator     : groff version 1.18.1.1 -->
+<!-- CreationDate: Tue Nov  9 14:21:31 2010 -->
+<html>
+<head>
+<meta name="generator" content="groff -Thtml, see www.gnu.org">
+<meta name="Content-Style" content="text/css">
+<title></title>
+</head>
+<body>
+
+<hr>
+<pre>SPECPR Users&rsquo; Manual                                            Page 8-f19.1
+
+F19:  Polynomial Fit (10 Term)                              Alias: poly[fit]
+Special Function 19 does a least squares fit to a
+data set with a polynomial of the form:
+
+               y = a1 + a2 x + a3 x3 + a4 x2 + ... + an xn-1
+</pre>
+
+<p>The program requests the number of terms to use for the
+polynomial fit and will currently handle up to ten terms. To
+run this routine type the file id and record number of the
+spectrum you wish to fit followed by f19, or use the
+alias:</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>v23f19</p></td>
+</table>
+
+<p>or</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>v13poly</p></td>
+</table>
+
+<p>The program will allow you to change the wavelength set
+if the current set is not the proper one. The program then
+calculates the least squares curve and prints the polynomial
+coefficients and the reduced chi square for the fit. You
+have the option of saving the fitted curve, computed with
+the wavelength set in use, or saving the coefficients. The
+coefficients can be used as input to f21 (calculate a
+polynomial).</p>
+<hr>
+</body>
+</html>

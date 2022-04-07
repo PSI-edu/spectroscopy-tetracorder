@@ -1,0 +1,44 @@
+<!-- Creator     : groff version 1.18.1.1 -->
+<!-- CreationDate: Tue Nov  9 14:21:32 2010 -->
+<html>
+<head>
+<meta name="generator" content="groff -Thtml, see www.gnu.org">
+<meta name="Content-Style" content="text/css">
+<title></title>
+</head>
+<body>
+
+<hr>
+<pre>SPECPR Users&rsquo; Manual                                                   Page 8-f6.1
+
+F6:  Black Body Computation                               Alias: plan[ck]
+This function computes the Planck black body function
+at a given temperature (in degrees Kelvin) and any
+wavelength set.  Currently, the output is in watts per square meter
+per micron per steradian and the input wavelength set is assumed to
+be in microns.
+Upon entering the routine, you are asked to type
+in the temperature and the wavelength id and record number.  When using extreme
+temperatures or extreme wavelengths, you should check the results
+for underflow or overflow in the CRT plot routines (Chapter 9).
+No file or errors are needed since this routine generates a new
+file instead of an operation on an old one.  The equation used is
+
+HTML-IMAGEcpile { E sub i (T) ={ 8 pi h c sup 2 } over { lambda sup 5 }
+left [ e sup {{ h
+c}  over { lambda k T }} - 1 right ] sup -1
+        above
+        ={ 1.4966 times 10 sup -5 } over lambda sup -5 left [ e sup
+{13586 over { lambda T } } -1 right ] sup -1 }
+HTML-IMAGE-END
+where E is the energy for each channel at wavelength,
+      &lambda; (in microns),
+      T is the temperature (degrees Kelvin),
+      c is the speed of light,
+      h is the Planck constant (= 6.6252&times;10-34 Joule-seconds),
+
+ and k is the Boltzmann constant (= 1.3806&times;10-23 Joule/&deg;K).
+</pre>
+<hr>
+</body>
+</html>

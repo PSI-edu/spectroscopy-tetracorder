@@ -1,0 +1,509 @@
+-a chap08.2.n
+special Functions Special function subroutines are additional routines for operating on any kind of data 
+.
+ sentence length: 15 SIMPLE  readability 14.33 : begins with adjective
+
+subroutine calls already exist in the program for many as yet unwritten routines .
+ sentence length: 13 SIMPLE  readability 9.71 : begins with adjective
+
+these routines are designed for easy linking to the present program .
+ sentence length: 11 SIMPLE :passive: readability 8.48 : begins with adjective
+
+new routines can be user written with less effort than a completely separate program since 
+, in most cases , specpr handles all the data management .
+ sentence length: 24 COMPLEX  readability 14.12 : begins with adjective
+
+the routines are called by the letter f and the function number .
+ sentence length: 12 SIMPLE :passive: readability 4.98 : begins with article
+
+an example would be to call function 2 to operate on file v record 10 
+: v10 f2 note there is no colon as in the algebraic and trig routines .
+ sentence length: 29 SIMPLE  readability 10.77 : begins with article
+
+some special functions do not require a file to be input before the function command 
+.
+ sentence length: 15 COMPLEX  readability 8.05 : begins with adjective
+
+an example is function 1 which is a list of all available functions ( type f1 
+only ) .
+ sentence length: 16 COMPLEX  readability 5.70 : begins with article
+
+functions which require a file input before the function call will have an f in 
+parenthesis in the list of functions ( f1 ) .
+ sentence length: 22 COMPLEX  readability 10.55 : begins with noun
+
+similarly , an e will also be in parenthesis if an error analysis can be included 
+.
+ sentence length: 15 COMPLEX :passive: readability 6.48 : begins with adverb
+
+the available functions are described below .
+ sentence length: 6 SIMPLE :passive: readability 11.40 : begins with article
+
+list Special Functions List of all available special functions .
+ sentence length: 9 SIMPLE  readability 11.33 : begins with noun
+
+shift f2 shifts data left or right an integer or fractional number of channels .
+ sentence length: 14 SIMPLE  readability 7.44 : begins with adjective
+
+a file input is required and errors can be included .
+ sentence length: 10 COMPOUND :passive: readability 3.35 : begins with article
+
+fractional shifts are done by linear interpolation .
+ sentence length: 7 SIMPLE :passive: readability 11.68 : begins with adjective
+
+when the routine has been entered , type in the number of channels to shift or 
+type e or x to exit .
+ sentence length: 20 COMPLEX :passive: readability 6.23 : begins with 
+
+a positive number ( integer or real ) indicates a shift right and a negative number left 
+.
+ sentence length: 15 SIMPLE  readability 8.05 : begins with article
+
+if X is the number of channels to shift , the value of X is split 
+into the integer part ( n ) and the fractional part ( xn ) .
+ sentence length: 24 COMPLEX  readability 7.84 : begins with 
+
+first , the integer part is shifted x x where 0 i n 257 and D 
+sub i is each data point in the spectrum .
+ sentence length: 22 COMPLEX :passive: readability 5.63 : begins with adverb
+
+next , the fractional part is interpolated x x where XN' - 1.0 xn .
+ sentence length: 9 COMPLEX :passive: readability 7.14 : begins with adverb
+
+data channels not in the shifted region are set to zero .
+ sentence length: 11 SIMPLE :passive: readability 3.34 : begins with adjective
+
+the errors to the data are shifted in a similar manner .
+ sentence length: 11 SIMPLE :passive: readability 2.91 : begins with article
+
+before June 24 , 1979 , there was a slight error in the program ( XN' xn ) making 
+the fractional shift appear to go in a different direction than the integer part shift 
+.
+ sentence length: 29 COMPLEX  readability 14.02 : begins with 
+
+the history has been modified to signal this new change Old history ( X 2.5 operation 
+on WDG536 file 238 ) : " F2 : WDG536 file 238 shift right 2.5 channels " New History : " F2 
+: WDG536 file 238 shift right ( ) 2.5 channels " .
+ sentence length: 37 SIMPLE :passive: readability 18.20 : begins with article
+
+the subtle change is the sign ( or - ) in parentheses signifying the direction of the shift 
+.
+ sentence length: 15 SIMPLE  readability 8.36 : begins with article
+
+sequential Processor This routine is very useful for repetitive calculations on many records for multiplication 
+, division , subtraction and special functions only .
+ sentence length: 21 COMPOUND  readability 20.25 : begins with adjective
+
+for example , if you wanted to multiply file v records 10 to 23 by the 
+constant 1.3452 , you would type f3 from Math Operations .
+ sentence length: 24 COMPLEX  readability 10.19 : begins with preposition
+
+the program will ask for the operation .
+ sentence length: 7 SIMPLE  readability 3.60 : begins with article
+
+you would type .
+ sentence length: 3 SIMPLE  readability -1.09 : begins with pronoun
+
+( other operations would be , - , f2 , f6 or any other function number except 3 and 4 
+) .
+ sentence length: 15 SIMPLE  readability 5.22 : begins with noun
+
+next the program will ask for the first file id , beginning record number , ending record 
+number and the record number increment .
+ sentence length: 21 SIMPLE  readability 12.40 : begins with adverb
+
+for this example , you would type v10 23 1 .
+ sentence length: 9 SIMPLE  readability -0.18 : begins with preposition
+
+record increments from 0 to 2000 are valid .
+ sentence length: 8 SIMPLE  readability 3.18 : begins with adjective
+
+if the record increment was negative , it is set to zero .
+ sentence length: 11 COMPLEX :passive: readability 2.91 : begins with 
+
+next you will be asked to type in the second file id , beginning and ending 
+record numbers and increment .
+ sentence length: 19 SIMPLE :passive: readability 8.89 : begins with adverb
+
+for this case , you would type c1 .3452 .
+ sentence length: 8 SIMPLE  readability 0.23 : begins with preposition
+
+you will then be asked to type in options .
+ sentence length: 9 SIMPLE :passive: readability 0.34 : begins with pronoun
+
+if you wanted errors included , the record increment should have been 2 since the data 
+and errors take up 2 records .
+ sentence length: 21 COMPLEX  readability 9.93 : begins with 
+
+note you can get in an infinite loop if the record increment is set to 
+zero .
+ sentence length: 16 COMPLEX :passive: readability 4.23 : begins with noun
+
+however , you can exit back to Math Operations by typing x at any point .
+ sentence length: 13 SIMPLE  readability 5.00 : begins with adverb
+
+if you type e at any point in the processing , that operation will be skipped 
+and the program will go on to the next operation .
+ sentence length: 25 COMPOUND-COMPLEX :passive: readability 9.91 : begins with 
+
+the operations are performed just as if you had typed in the commands one at 
+a time or all one line separated by commas in Math Operations .
+ sentence length: 27 COMPLEX :passive: readability 11.61 : begins with article
+
+this function should save a lot of time and typing .
+ sentence length: 10 SIMPLE  readability 2.88 : begins with adjective
+
+sequential Processor User Access ) This function sets up the commands from function 3 for execution 
+and thus has no user access .
+ sentence length: 21 COMPLEX  readability 12.62 : begins with adjective
+
+continuum Removal author : lucy Mcfadden Type f5 .
+ sentence length: 7 SIMPLE  readability 8.98 : begins with adjective
+
+the directions follow on the crt and will be given here .
+ sentence length: 11 COMPOUND :passive: readability 3.34 : begins with article
+
+" this routine matches A continuum to two given points of A spectrum and removes the 
+continuum by dividing ."
+ sentence length: 18 SIMPLE  readability 10.34 : begins with noun
+
+a continuum is any spectrum which the user generates by whatever means available .
+ sentence length: 13 COMPLEX  readability 9.71 : begins with article
+
+however , the user must have a concrete file with a device name and number available 
+before using this routine .
+ sentence length: 19 SIMPLE  readability 10.38 : begins with adverb
+
+you can generate a continuum by using the special math functions or using Michael Gaffey's 
+Fe 2 modified spectrum or whatever you choose .
+ sentence length: 23 COMPOUND-COMPLEX  readability 13.42 : begins with pronoun
+
+" enter two values to which continuum is to be matched followed by H , A , or 
+N representing units of channel , wavelength , and energy space , and the wavelength file ( default H1 
+) .
+ sentence length: 30 COMPOUND-COMPLEX :passive: readability 15.08 : begins with noun
+
+enter E or X to exit ."
+ sentence length: 6 SIMPLE  readability -6.66 : begins with adjective
+
+the two points can be entered in whatever units are convenient for you , in free 
+format ( spaces between numbers , no commas ) .
+ sentence length: 21 COMPLEX :passive: readability 11.05 : begins with article
+
+the wavelength file is read , and the two values entered are correlated with the appropriate 
+channel in the wavelength file .
+ sentence length: 20 COMPOUND :passive: readability 12.59 : begins with article
+
+if you do not specify a unit's code or a wavelength file , the program accesses 
+wavelength file 1 and assumes your numbers entered are channels .
+ sentence length: 25 COMPLEX  readability 13.11 : begins with 
+
+you can bail out of the routine here if you wish .
+ sentence length: 11 COMPLEX  readability 0.34 : begins with pronoun
+
+" enter spectrum file id and , E to include errors followed by continuum file id and 
+.
+ sentence length: 15 SIMPLE  readability 6.79 : begins with noun
+
+type X to exit ."
+ sentence length: 4 SIMPLE  readability -6.48 : begins with adjective
+
+the message on the crt will say " working " when you hit the return button after 
+entering the information .
+ sentence length: 18 COMPLEX  readability 9.55 : begins with article
+
+the title of the files used will be printed on the crt as they are 
+accessed by the program .
+ sentence length: 19 COMPLEX :passive: readability 5.92 : begins with article
+
+the error file with the spectrum is accessed if asked for .
+ sentence length: 11 COMPLEX :passive: readability 4.19 : begins with article
+
+the continuum file is scaled to the spectrum file at the two given points by 
+calculating a scaled slope and an intercept ( or vertical offset ) and converting each data point 
+of the continuum to the scaled continuum through the relationship Y mx b where Y 
+is the scaled continuum , m is the slope , x is the original continuum value at 
+a give channel , and b is the intercept .
+ sentence length: 67 COMPOUND-COMPLEX :passive: readability 32.95 : begins with article
+
+the spectrum is then divided by the scaled continuum .
+ sentence length: 9 SIMPLE :passive: readability 6.10 : begins with article
+
+the errors are scaled by a factor of ( scaled spectrum original spectrum ) .
+ sentence length: 12 SIMPLE :passive: readability 7.73 : begins with article
+
+finally , the title and history are made and control is transferred back to the main 
+program to write the file .
+ sentence length: 20 COMPOUND :passive: readability 9.53 : begins with adverb
+
+black Body Computation This function computes the Planck black body function at a given temperature 
+( in degrees Kelvin ) and any wavelength set .
+ sentence length: 22 COMPOUND  readability 15.05 : begins with adjective
+
+upon entering the routine , you are asked to type in the temperature and the wavelength 
+record number .
+ sentence length: 17 SIMPLE :passive: readability 10.07 : begins with preposition
+
+if no wavelength file number is specified , the default is record 1 .
+ sentence length: 12 COMPLEX :passive: readability 5.76 : begins with 
+
+the units are computed in Watts per meter squared per micron .
+ sentence length: 11 SIMPLE :passive: readability 5.48 : begins with article
+
+the wavelength values must be in microns .
+ sentence length: 7 SIMPLE  readability 4.95 : begins with article
+
+when using extreme temperatures or extreme wavelengths , you should check the results for underflow or 
+overflow in the crt plot routines ( section 9 ) .
+ sentence length: 23 COMPOUND-COMPLEX  readability 15.05 : begins with 
+
+no file or errors are needed since this routine generates a new file instead of 
+an operation on an old one .
+ sentence length: 21 SIMPLE :passive: readability 8.36 : begins with adjective
+
+the equation used is x where E is the energy for each channel at wavelength 
+( in microns ) , T is the temperature ( degrees Kelvin ) , c is the speed of light , h 
+is the Planck constant ( 6.6252 times 10 sup - 34 Joule-seconds ) , and k is the Boltzmann 
+constant ( 1.3806 times 10 sup - 23 joule K ) .
+ sentence length: 52 COMPOUND-COMPLEX  readability 24.32 : begins with article
+
+smoothing Function This routine smoothes a spectrum by performing a weighted smoothing of adjacent channels 
+.
+ sentence length: 15 SIMPLE  readability 15.27 : begins with noun
+
+first , the channels are sorted into increasing wavelengths ; note that the smoothing is done in 
+channel space .
+ sentence length: 17 COMPOUND-COMPLEX :passive: readability 12.01 : begins with adverb
+
+the user then requests how many channels to include on each side of each data 
+point .
+ sentence length: 16 COMPLEX  readability 6.59 : begins with article
+
+each point is weighted by the inverse power of 2 with the power increasing with 
+increasing distance from the data point to be smoothed .
+ sentence length: 24 SIMPLE :passive: readability 12.35 : begins with adjective
+
+if the parameter giving the number of channels is n , then for n 1 data 
+point D is computed by x .
+ sentence length: 20 COMPLEX :passive: readability 5.76 : begins with 
+
+for n 2 x .
+ sentence length: 3 SIMPLE  readability -12.08 : begins with preposition
+
+in general x and x The parameter n can vary from 1 to the number 
+of channels divided by 2 .
+ sentence length: 18 SIMPLE  readability 5.36 : begins with preposition
+
+when the smoothing is finished , the data is sorted into the original order .
+ sentence length: 13 COMPLEX :passive: readability 7.17 : begins with 
+
+the wavelength record default is the current wavelength set in use ( and is printed on 
+the crt ) .
+ sentence length: 17 COMPOUND :passive: readability 8.13 : begins with article
+
+if another is desired , type a and the wavelength file number on the same line 
+as the parameter n ( which must be first on the line ) .
+ sentence length: 26 COMPLEX :passive: readability 10.05 : begins with 
+
+also , if data only in a certain range is to be considered , on the same 
+line , type l and the minimum and maximum data numbers to be included .
+ sentence length: 28 COMPLEX :passive: readability 10.91 : begins with adverb
+
+default limits on L are - 1.0 times 10 sup 34 to 1.0 times 10 sup 
+34 .
+ sentence length: 16 SIMPLE  readability 1.58 : begins with adjective
+
+if certain channels should be deleted , type d to delete points .
+ sentence length: 11 COMPLEX :passive: readability 5.91 : begins with 
+
+a message will then be printed to type in the points to be deleted .
+ sentence length: 14 SIMPLE :passive: readability 3.40 : begins with article
+
+when you are finished typing in points to be deleted , type c to continue .
+ sentence length: 14 COMPLEX :passive: readability 5.08 : begins with 
+
+a file must be specified before the f7 command , and errors can be included .
+ sentence length: 14 COMPOUND :passive: readability 5.76 : begins with article
+
+the parameter n seems to give excellent results when it is 1 or 2 .
+ sentence length: 14 COMPLEX  readability 3.06 : begins with article
+
+when n gets large , there seems little change in the smoothed result .
+ sentence length: 12 COMPLEX  readability 6.16 : begins with 
+
+Channel-Record transpose This routine transposes the array of channel ( column ) versus spectrum ( rows ) to spectrum 
+versus channel .
+ sentence length: 17 SIMPLE  readability 16.99 : begins with noun
+
+for example , if you had 10 spectra of 50 channels each where each spectrum was 
+taken at 1 hour intervals , this routine transposes the matrix so that there are 50 
+output " spectra " of 10 channels each where each " spectrum " is intensity at 10 different times 
+.
+ sentence length: 45 COMPLEX :passive: readability 22.53 : begins with preposition
+
+the request for input spectra are input one per line ( file letter id and record 
+number ) .
+ sentence length: 16 COMPLEX  readability 7.18 : begins with article
+
+when all are typed in , type b to begin transpose .
+ sentence length: 10 COMPLEX :passive: readability 1.47 : begins with 
+
+the program will then ask for the beginning output location ( type in file letter id 
+and record number ) .
+ sentence length: 18 SIMPLE  readability 9.29 : begins with article
+
+the output spectra will be output sequentially beginning at that point ( but first the program 
+asks for a common title for the output spectra ) .
+ sentence length: 24 COMPLEX  readability 13.34 : begins with article
+
+the number of output spectra is equal to the number of channels in use .
+ sentence length: 14 SIMPLE  readability 4.75 : begins with article
+
+band Removal Method ) author : lucy Mcfadden Type f9 .
+ sentence length: 8 SIMPLE  readability 6.71 : begins with adjective
+
+this subroutine takes one half of an absorption band and reflects it about the band 
+minimum then divides a given reflection spectrum by the calculated band .
+ sentence length: 26 SIMPLE  readability 15.12 : begins with adjective
+
+" type in the file id and file to be processed , E to include errors , followed 
+by L or R for left - or RIGHT-SIDE of band to be reflected .
+ sentence length: 28 SIMPLE  readability 9.90 : begins with noun
+
+type E or X to exit ."
+ sentence length: 6 SIMPLE  readability -7.44 : begins with adjective
+
+l or R refers to left - or right-side of the band minimum when the spectrum 
+is stored in increasing wavelength from left to right .
+ sentence length: 24 COMPLEX :passive: readability 10.98 : begins with noun
+
+it refers to the side of the band that you want to be reflected to 
+the other side .
+ sentence length: 18 COMPLEX  readability 4.32 : begins with pronoun
+
+" enter outer limits of band ( 2 values ) , estimated half height point on side to be 
+reflected followed by H , A , N ( channel , wavelength , energy ) , and wavelength file number .
+ sentence length: 28 COMPOUND  readability 14.61 : begins with noun
+
+( default H1 ) , type E or X to exit ."
+ sentence length: 8 SIMPLE  readability -3.89 : begins with noun
+
+the two outer limits are on either side of the band minimum .
+ sentence length: 12 SIMPLE  readability 3.41 : begins with article
+
+the first limit tells where to stop the reflection process , the second tells where to 
+stop looking for the band minimum .
+ sentence length: 21 COMPLEX  readability 11.05 : begins with article
+
+the program types " working " and is doing the following : accessing the wavelength file , default is 
+1. correlating the given band limits to channels in the wavelength file , default is that 
+the limits are given in terms of channels .
+ sentence length: 38 COMPOUND-COMPLEX :passive: readability 20.62 : begins with article
+
+searching for the band minimum by looking for a datum that is smaller than the 
+three values on either side of it , between the limits of the height and the 
+second outer band limit .
+ sentence length: 34 COMPOUND-COMPLEX  readability 15.52 : begins with noun
+
+puts values of one side of band into the position symmetrically opposite to it relative 
+to the band minimum .
+ sentence length: 19 SIMPLE  readability 10.13 : begins with noun
+
+divides spectrum by reflected band .
+ sentence length: 5 SIMPLE  readability 9.33 : begins with noun
+
+scales the errors by a factor of ( the residual the original spectrum ) .
+ sentence length: 12 SIMPLE  readability 6.55 : begins with noun
+
+calculates title and history .
+ sentence length: 4 SIMPLE  readability 10.01 : begins with noun
+
+returns to the main program .
+ sentence length: 5 SIMPLE  readability 2.74 : begins with noun
+
+this is a primitive means of removing a band .
+ sentence length: 9 SIMPLE  readability 1.91 : begins with pronoun
+
+if there are any suggestions or improvements , please let me know .
+ sentence length: 11 COMPLEX  readability 6.76 : begins with 
+
+sorting Routine The function arranges data into increasing wavelength order .
+ sentence length: 10 SIMPLE  readability 14.66 : begins with noun
+
+entry is by the usual method for special functions .
+ sentence length: 9 SIMPLE  readability 5.05 : begins with noun
+
+errors may be included .
+ sentence length: 4 SIMPLE :passive: readability 2.94 : begins with noun
+
+after entry , the files to be used are printed .
+ sentence length: 9 SIMPLE :passive: readability 1.91 : begins with preposition
+
+the user may change the wavelength file at this point .
+ sentence length: 10 SIMPLE  readability 4.29 : begins with article
+
+only the data file is sorted , but by specifying the wavelength file when calling f10 
+, the wavelengths may be sorted also .
+ sentence length: 21 COMPOUND-COMPLEX :passive: readability 11.05 : begins with adverb
+
+lunar Thermal Removal This routine removes the thermal component from the reflectance object spectrum using 
+the equation : x Refer to Roger Clark's paper , " planetary Reflectance Measurements in the Region of 
+Planetary Thermal Emission , " equation 14 ( Icarus , 40 , 94-103 , 1979 ) .
+ sentence length: 38 SIMPLE  readability 25.46 : begins with adjective
+
+variable definitions : r sub 0 reflectance of object with thermal component removed R sub 0 
+sup reflectance of object with thermal component R sub s reflectance of standard with no 
+thermal component P sub 0 temperature for Planck function of object ( in Degrees Kelvin ) P 
+sub s temperature for Planck function of standard ( in Degrees Kelvin ) F ( solar flux ) ( distance 
+from sun in A. U. ) sup 2 The program requires that the file id and 
+record number of R sub 0 sup and the e to include errors , if any 
+, be specified when called from Math operations .
+ sentence length: 97 COMPOUND-COMPLEX :passive: readability 48.24 : begins with noun
+
+the program will ask for : r sub s file id and number Albedo at normalization 
+for R sub 0 and R sub s ( 0.0 A 1.0 ) Wavelength record number ( 1 
+N 99 ) P sub 0 and P sub s in degrees Kelvin ( 10 T 10 
+sup 5 ) Solar flux file id and number Distance from sun in A. U. ( 0.0 
+) .
+ sentence length: 60 SIMPLE  readability 23.88 : begins with article
+
+After entering albedo at normalization , the user has an option of either continuing , exiting , or 
+changing what has been input so far ( for the current screen information ) .
+ sentence length: 27 COMPOUND-COMPLEX  readability 16.14 : begins with preposition
+
+user also has a similar option after entering distance from the sun .
+ sentence length: 12 SIMPLE  readability 6.55 : begins with noun
+
+in calculating the thermal removal , R sub 0 and R sub s values are multiplied 
+by their respective albedo at the normalization point .
+ sentence length: 23 SIMPLE :passive: readability 12.19 : begins with preposition
+
+errors are propagated by multiplying individual error values by the R sub 0 albedo at 
+the normalization point .
+ sentence length: 18 SIMPLE :passive: readability 11.64 : begins with noun
+
+readability grades:
+	(Kincaid)  9.3  (auto)  8.7  (Coleman-Liau)  9.0  (Flesch)  9.0 (60.4)
+sentence info:
+	no. sent 130 no. wds 2333
+	av sent leng 17.9 av word leng 4.49
+	no. questions 0 no. imperatives 0
+	no. nonfunc wds 1432  61.4%   av leng 5.59
+	short sent (<13) 37% (48) long sent (>28)   9% (12)
+	longest sent 97 wds at sent 125; shortest sent 3 wds at sent 29
+sentence types:
+	simple  52% (68) complex  32% (41)
+	compound   7% (9) compound-complex   9% (12)
+word usage:
+	verb types as % of total verbs
+	tobe  44% (112) aux  18% (46) inf  18% (46)
+	passives as % of non-inf verbs  29% (60)
+	types as % of total
+	prep 10.6% (248) conj 3.5% (82) adv 2.2% (52)
+	noun 29.2% (682) adj 20.5% (478) pron 2.2% (52)
+	nominalizations   2 % (43)
+sentence beginnings:
+	subject opener: noun (25) pron (6) pos (0) adj (23) art (38) tot  71%
+	prep   8% (10) adv   8% (11) 
+	verb   0% (0)  sub_conj  13% (17) conj   0% (0)
+	expletives   0% (0)

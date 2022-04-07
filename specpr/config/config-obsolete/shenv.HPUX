@@ -1,0 +1,129 @@
+#
+# Should only need to edit the next group.
+#
+# note: in SSPPFLAGS, set TERMDELAY if you need extra delays by the
+# cpu for graphics terminal graphics.
+SPKLUDGE=HPUX
+export SPKLUDGE
+#SSPPFLAGS=NOC2FUNDERBAR -HPUX -NONDEC -XWIN
+SSPPFLAGS='HPUX -NONDEC -XWIN'
+export SSPPFLAGS
+
+SPECPR=/src/local/specpr
+export SPECPR
+
+LDLIBS='-lX11 -lm -lPW'
+export LDLIBS
+
+LDFLAGS=' '
+export LDFLAGS
+
+LSTRING='-lstrings'
+export LSTRING
+
+RANDRET=32767
+export RANDRET
+
+SP_LOCAL=/usr/local
+export SP_LOCAL
+
+SP_BIN=bin
+export SP_BIN
+
+#
+# RANDRET is the max value that rand() returns on your system
+#
+SPSDIR=syshpux
+export SPSDIR
+
+SPSYSOBJ=${SP_OBJ}/syshpux.o
+export SPSYSOBJ
+
+RANLIB=/bin/true
+export RANLIB
+
+F77=f77
+export F77
+
+CC=cc
+export CC
+
+AR=ar
+export AR
+
+RF=ratfor
+export RF
+
+SSPP=sspp
+export SSPP
+#
+# select a variation of the following two FFLAGS lines (comment one out).
+# The -O3 -OP4 is valid on HP-UX 9.0 on 700 and 800 series machines
+# On HP-UX 10.0, +O3 +Oall may work best
+#     and gives the optimum speed, but some versions of HP-UX produced
+#     bad code!!   Suggest using -O on everything, but for certain
+#     subroutines, like bandmp, then select special optimization
+#     When special optimization is done in the makefiles,
+#                  FOPT1 and FFLAGS1 are used together, or
+#                  FOPT2 and FFLAGS2 are used together.
+#                  FFLAGS is used by itself.
+#     Use FOPT2 and FFLAGS2 for higesht optimization (e.g. used in banbdmp)
+#
+FFLAGS='-C +T -O'
+export FFLAGS
+
+FFLAGS1='-C +T'
+export FFLAGS1
+
+FFLAGS2='-C +T'
+export FFLAGS2
+
+FOPT1=+O3
+export FOPT1
+
+FOPT2='+O3 +Oall'
+export FOPT2
+
+FFLAGOPS=-O
+export FFLAGOPS
+#
+RFLAGS='-C -6%'
+export RFLAGS
+
+CFLAGS=-O
+export CFLAGS
+
+ARFLAGS=rvl
+export ARFLAGS
+
+GFLAGS=-s
+export GFLAGS
+
+SP_DBG=${SPECPR}/debug
+export SP_DBG
+
+SP_TMP=${SPECPR}/tmp
+export SP_TMP
+
+SP_OBJ=${SPECPR}/obj
+export SP_OBJ
+
+SP_LIB=${SPECPR}/lib
+export SP_LIB
+
+LIBPW=/lib/libPW.a
+export LIBPW
+
+# gfit
+GF1_CFLAGS=-g
+export GF1_CFLAGS
+GF1_FFLAGS='-C +T -T2 +Vc +Vf'
+export GF1_FFLAGS
+GF1_LFLAGS=
+export GF1_LFLAGS
+GF2_CFLAGS=-g
+export GF2_CFLAGS
+GF2_FFLAGS='-C +T -I2 +Vc'
+export GF2_FFLAGS
+GF2_LFLAGS=-z
+export GF2_LFLAGS

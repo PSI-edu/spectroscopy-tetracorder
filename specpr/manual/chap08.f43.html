@@ -1,0 +1,31 @@
+<!-- Creator     : groff version 1.18.1.1 -->
+<!-- CreationDate: Tue Nov  9 14:21:32 2010 -->
+<html>
+<head>
+<meta name="generator" content="groff -Thtml, see www.gnu.org">
+<meta name="Content-Style" content="text/css">
+<title></title>
+</head>
+<body>
+
+<hr>
+<pre>SPECPR Users&rsquo; Manual                                            Page 8-f43.1
+
+F43:  Fast Fourier Transform (FFT) and Inverse FFT      Alias = fft
+This routine performs a Fast Fourier Transform (FFT) on a spectrum.  The
+spectrum can be any number of channels; the algorithm pads the
+spectrum with zeros to a power or 2 number of channels in order to
+do the FFT.  For example, if you have 931 channels, the algorithm pads the
+data to 1024 channels.  The resulting FFT is NOT folded: zero frequency occurs
+at channel 1 and the maximum channel, and the maximum frequency occurs in
+the middle channel.
+The f43 routine does not save both the real and imaginary components
+at this time.  Thus the user must run f42 twice: once to save the
+real component and the second time to save the imaginary component.
+The inverse FFT requires both real and imaginary components.  If you
+have only the real, you could use a data set of zeros for the
+imaginary components (but this is not strictly valid).
+</pre>
+<hr>
+</body>
+</html>

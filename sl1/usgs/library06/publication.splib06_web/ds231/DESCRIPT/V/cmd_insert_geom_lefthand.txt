@@ -1,0 +1,84 @@
+vi rangeland_L02-005.html
+:g/The site elevation .*$/s//The average elevation over the area of the site is 1970 meters (6464 feet).  The average slope of the site is 23 percent, with a East aspect of 75 degrees./g
+:wq
+vi rangeland_L02-013.html
+:g/The site elevation .*$/s//The average elevation over the area of the site is 1990 meters (6530 feet).  The average slope of the site is 22 percent, with a West aspect of 272 degrees./g
+:wq
+vi rangeland_L02-015.html
+:g/The site elevation .*$/s//The average elevation over the area of the site is 1976 meters (6481 feet).  The average slope of the site is 23 percent, with a East aspect of 67 degrees./g
+:wq
+vi rangeland_L02-019.html
+:g/The site elevation .*$/s//The average elevation over the area of the site is 1981 meters (6498 feet).  The average slope of the site is 24 percent, with a South aspect of 198 degrees./g
+:wq
+vi rangeland_L02-022.html
+:g/The site elevation .*$/s//The average elevation over the area of the site is 1962 meters (6437 feet).  The average slope of the site is 25 percent, with a East aspect of 71 degrees./g
+:wq
+vi rangeland_L02-023.html
+:g/The site elevation .*$/s//The average elevation over the area of the site is 1992 meters (6535 feet).  The average slope of the site is 15 percent, with a North aspect of 353 degrees./g
+:wq
+vi rangeland_L02-025.html
+:g/The site elevation .*$/s//The average elevation over the area of the site is 1979 meters (6492 feet).  The average slope of the site is 10 percent, with a East aspect of 83 degrees./g
+:wq
+vi rangeland_L02-042.html
+:g/The site elevation .*$/s//The average elevation over the area of the site is 1977 meters (6486 feet).  The average slope of the site is 9 percent, with a Southeast aspect of 129 degrees./g
+:wq
+vi rangeland_L02-043.html
+:g/The site elevation .*$/s//The average elevation over the area of the site is 2098 meters (6884 feet).  The average slope of the site is 26 percent, with a South aspect of 166 degrees./g
+:wq
+vi rangeland_L02-045.html
+:g/The site elevation .*$/s//The average elevation over the area of the site is 2031 meters (6663 feet).  The average slope of the site is 32 percent, with a South aspect of 165 degrees./g
+:wq
+vi rangeland_L02-046.html
+:g/The site elevation .*$/s//The average elevation over the area of the site is 1947 meters (6389 feet).  The average slope of the site is 14 percent, with a Southeast aspect of 128 degrees./g
+:wq
+vi rangeland_L02-054.html
+:g/The site elevation .*$/s//The average elevation over the area of the site is 1956 meters (6417 feet).  The average slope of the site is 22 percent, with a Northwest aspect of 329 degrees./g
+:wq
+vi rangeland_L02-057.html
+:g/The site elevation .*$/s//The average elevation over the area of the site is 1990 meters (6530 feet).  The average slope of the site is 22 percent, with a East aspect of 80 degrees./g
+:wq
+vi rangeland_L02-058.html
+:g/The site elevation .*$/s//The average elevation over the area of the site is 2052 meters (6733 feet).  The average slope of the site is 14 percent, with a East aspect of 100 degrees./g
+:wq
+vi rangeland_L02-060.html
+:g/The site elevation .*$/s//The average elevation over the area of the site is 2045 meters (6708 feet).  The average slope of the site is 34 percent, with a West aspect of 289 degrees./g
+:wq
+vi rangeland_L02-061.html
+:g/The site elevation .*$/s//The average elevation over the area of the site is 2116 meters (6943 feet).  The average slope of the site is 28 percent, with a East aspect of 95 degrees./g
+:wq
+vi rangeland_L02-068.html
+:g/The site elevation .*$/s//The average elevation over the area of the site is 1999 meters (6559 feet).  The average slope of the site is 15 percent, with a Southwest aspect of 212 degrees./g
+:wq
+vi rangeland_L02-069.html
+:g/The site elevation .*$/s//The average elevation over the area of the site is 1919 meters (6297 feet).  The average slope of the site is 11 percent, with a East aspect of 96 degrees./g
+:wq
+vi rangeland_L02-077.html
+:g/The site elevation .*$/s//The average elevation over the area of the site is 1979 meters (6492 feet).  The average slope of the site is 13 percent, with a West aspect of 283 degrees./g
+:wq
+vi rangeland_L04-033.html
+:g/The site elevation .*$/s//The average elevation over the area of the site is 1915 meters (6284 feet).  The average slope of the site is 33 percent, with a East aspect of 67 degrees./g
+:wq
+vi rangeland_L04-035.html
+:g/The site elevation .*$/s//The average elevation over the area of the site is 1988 meters (6523 feet).  The average slope of the site is 9 percent, with a South aspect of 180 degrees./g
+:wq
+vi rangeland_L04-047.html
+:g/The site elevation .*$/s//The average elevation over the area of the site is 2164 meters (7098 feet).  The average slope of the site is 31 percent, with a Southwest aspect of 218 degrees./g
+:wq
+vi rangeland_L04-058.html
+:g/The site elevation .*$/s//The average elevation over the area of the site is 1930 meters (6331 feet).  The average slope of the site is 6 percent, with a South aspect of 168 degrees./g
+:wq
+vi rangeland_L04-072.html
+:g/The site elevation .*$/s//The average elevation over the area of the site is 1923 meters (6309 feet).  The average slope of the site is 20 percent, with a West aspect of 270 degrees./g
+:wq
+vi rangeland_L04-075.html
+:g/The site elevation .*$/s//The average elevation over the area of the site is 2046 meters (6713 feet).  The average slope of the site is 40 percent, with a East aspect of 74 degrees./g
+:wq
+vi rangeland_L04-091.html
+:g/The site elevation .*$/s//The average elevation over the area of the site is 1931 meters (6334 feet).  The average slope of the site is 32 percent, with a East aspect of 101 degrees./g
+:wq
+vi rangeland_L04-095.html
+:g/The site elevation .*$/s//The average elevation over the area of the site is 1978 meters (6489 feet).  The average slope of the site is 15 percent, with a North aspect of 348 degrees./g
+:wq
+vi rangeland_L04-096.html
+:g/The site elevation .*$/s//The average elevation over the area of the site is 2016 meters (6613 feet).  The average slope of the site is 12 percent, with a Northeast aspect of 55 degrees./g
+:wq

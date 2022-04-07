@@ -1,0 +1,1326 @@
+    77  Acmite NMNH133746 Pyroxene   W1R1Ba AREF   480  15:18:47.00  03/23/1988
+    91  Actinolite HS116.3B          W1R1Bb AREF   480  08:41:01.00  07/11/1991
+   105  Actinolite HS22.3B           W1R1Bb AREF   480  12:06:59.00  03/16/1987
+   119  Actinolite HS22.3B         W9R4Nbbb RREF  4280  19:51:17.00  07/06/1993
+   164  Actinolite HS315.4B          W1R1Bb AREF   480  11:47:02.00  10/31/1986
+   178  Actinolite HS315.4B        W5R4Nbbb RREF  4280  21:14:49.00  07/06/1993
+   223  Actinolite NMNH80714         W1R1Bb AREF   480  08:48:42.00  11/17/1987
+   235  Actinolite NMNHR16485        W1R1Bb AREF   480  10:03:07.00  02/11/1988
+   247  Actinolite NMNHR16485      W9R4Nbbb RREF  4280  00:00:00.00  11/24/****
+   290  Adularia GDS57 Orthoclase    W1R1Bb AREF   480  12:38:17.00  08/07/1989
+   302  Adularia GDS57 Orthoclase  W9R4Nbbb RREF  4280  00:00:00.00  11/24/****
+   346  Albite GDS30 74-250um Plag   W1R1Bb AREF   480  11:53:28.00  03/28/1988
+   359  Albite GDS30 74-250um Plag W5R4Nbb_ RREF  4280  00:00:00.00  11/24/****
+   402  Albite HS324.3B Plagioclase  W1R1Bc AREF   480  09:35:48.00  11/14/1986
+   414  Albite HS324.3B Plagioclas W9R4Ncbb RREF  4280  20:07:21.00  07/06/1993
+   457  Albite HS66.3B Plagioclase   W1R1Bc AREF   480  15:40:40.00  11/24/1986
+   469  Albite HS66.3B Plagioclase W9R4Nbbb RREF  4280  20:54:44.00  07/06/1993
+   512  Albite HS143.3B Plagioclase  W1R1Bc AREF   480  12:31:21.00  11/28/1986
+   524  Albite HS143.3B Plagioclas W5R4Ncc_ RREF  4280  16:17:04.00  07/07/1993
+   568  Allanite HS293.3B            W1R1Bb AREF   480  14:14:00.00  10/30/1986
+   581  Allanite HS293.3B          W5R4Nbc_ RREF  4280  00:00:00.00  11/24/****
+   626  Almandine HS114.3B Garnet    W1R1Bb AREF   480  16:46:43.00  08/27/1986
+   640  Almandine HS114.3B Garnet  W5R4Nbb_ RREF  4280  23:15:47.00  07/06/1993
+   685  Almandine WS475 Garnet       W1R1Bb AREF   480  13:37:11.00  11/10/1986
+   699  Almandine WS475 Garnet     W5R4Nbb_ RREF  4280  17:23:55.00  08/19/1993
+   743  Almandine WS476 Garnet       W1R1Bb AREF   480  08:23:47.00  11/21/1986
+   756  Almandine WS476 Garnet     W9R4Nbbb RREF  4280  00:00:00.00  11/24/****
+   799  Almandine WS477 Garnet       W1R1Bb AREF   480  15:34:18.00  12/12/1986
+   811  Almandine WS477 Garnet     W9R4Nbbb RREF  4280  00:00:00.00  11/24/****
+   855  Almandine WS478 Garnet       W1R1Bb AREF   480  14:28:28.00  01/07/1987
+   867  Almandine WS478 Garnet     W9R4Ncbb RREF  4280  00:00:00.00  11/24/****
+   911  Almandine WS479 Garnet       W1R1Bb AREF   480  11:12:23.00  01/09/1987
+   924  Almandine WS479 Garnet     W9R4Nbbb RREF  4280  00:00:00.00  11/24/****
+   966  Alunite AL706 Na__           W1R1Bb AREF   480  14:40:08.00  06/18/1991
+   979  Alunite GDS82 Na82           W2R4Nb RREF  3325  00:00:00.00  11/24/****
+  1019  Alunite GDS82 Na82         W5R4Nbc_ RREF  4280  19:04:18.00  08/20/1992
+  1063  Alunite GDS82 Na82           W1R1Bb AREF   480  11:08:22.00  05/06/1991
+  1079  Alunite GDS83 Na63           W1R1Bb AREF   480  12:28:33.00  05/06/1991
+  1092  Alunite GDS83 Na63           W2R4Nb RREF  3325  00:00:00.00  11/24/****
+  1132  Alunite GDS83 Na63         W5R4Nbb_ RREF  4280  00:00:00.00  11/24/****
+  1175  Alunite GDS84 Na03           W1R1Ba AREF   480  13:55:00.00  05/06/1991
+  1187  Alunite GDS84 Na03           W2R4Na RREF  3325  00:00:00.00  11/24/****
+  1226  Alunite GDS84 Na03         W5R4Naa_ RREF  4280  16:11:20.00  08/19/1993
+  1269  Alunite GDS95 Na Syn (150C)  W2R4Na RREF  3325  00:00:00.00  11/24/****
+  1308  Alunite GDS96 K  Syn (250C)  W2R4Na RREF  3325  00:00:00.00  11/24/****
+  1347  Alunite GDS97 K  Syn (150C)  W2R4Na RREF  3325  00:00:00.00  11/24/****
+  1388  Alunite HS295                W1R1Fa AREF  2151  23:25:16.00  06/01/2001
+  1411  Alunite HS295.3B             W1R1Ba AREF   480  10:03:31.00  11/22/1985
+  1425  Alunite HS295.3B           W9R4Naaa RREF  4280  00:00:00.00  11/24/****
+  1468  Alunite RES-2 K Syn (450C)   W2R4Na RREF  3325  00:00:00.00  11/24/****
+  1507  Alunite RES-3 Na Syn (450C)  W2R4Na RREF  3325  00:00:00.00  11/24/****
+  1546  Alunite RES-4 Na Syn (300C)  W2R4Na RREF  3325  00:00:00.00  11/24/****
+  1585  Alunite RES-9 Summitv (400C) W2R4Nb RREF  3325  00:00:00.00  11/24/****
+  1624  Alunite RES10 NA56% Syn 450C W2R4Na RREF  3325  00:00:00.00  11/24/****
+  1663  Alunite RES12 NA78% Syn 450C W2R4Na RREF  3325  00:00:00.00  11/24/****
+  1702  Alunite SUSTDA-20            W1R1Bb AREF   480  08:49:15.00  01/29/1988
+  1714  Alunite SUSTDA-20          W5R4Nbb_ RREF  4280  00:00:00.00  11/24/****
+  1757  Ammonio-Illite/Smectit GDS87 W1R1Bb AREF   480  15:20:04.00  05/07/1991
+  1769  Ammonio-Illite/Smect GDS87 W5R4Nbb_ RREF  4280  00:00:00.00  11/24/****
+  1812  Ammonio-Jarosite SCF-NHJ     W2R4Na RREF  3325  00:00:00.00  11/24/****
+  1851  Ammonio-Jarosite SCR-NHJ     W1R1Ba AREF   480  14:46:46.00  04/15/1992
+  1863  Ammonio-Smectite GDS86       W1R1Bb AREF   480  20:03:05.00  05/06/1991
+  1875  Amphibole NMNH78662          W1R1Bb AREF   480  13:09:39.00  02/11/1988
+  1887  Amphibole NMNH78662        W9R4Nbbb RREF  4280  00:00:00.00  11/24/****
+  1930  Analcime GDS1 Zeolite        W1R1Ba AREF   480  09:08:40.00  10/02/1985
+  1942  Analcime GDS1 Zeolite      W9R4Naaa RREF  4280  00:00:00.00  11/24/****
+  1987  Andalusite NMNHR17898        W1R1Bc AREF   480  10:01:53.00  04/15/1988
+  2001  Andalusite NMNHR17898 <74  W5R4Ncb_ RREF  4280  19:49:50.00  08/20/1993
+  2046  Andalusite NMNHR17898 lggr W5R4Ncb_ RREF  4280  20:35:41.00  08/20/1993
+  2089  Andesine HS142.3B            W1R1Bc AREF   480  14:05:24.00  11/28/1986
+  2101  Andesine HS142.3B          W9R4Nccc RREF  4280  22:03:43.00  07/06/1993
+  2146  Andradite GDS12 Garnet       W1R1Bc AREF   480  11:16:25.00  11/28/1986
+  2160  Andradite GDS12 Garnet     W5R4Ncc_ RREF  4280  17:06:50.00  08/20/1993
+  2203  Andradite HS111.3B Garnet    W1R1Bb AREF   480  10:19:13.00  08/29/1986
+  2215  Andradite HS111.3b Garnet  W9R4Nbbb RREF  4280  21:39:30.00  07/06/1993
+  2260  Andradite NMNH113829 Garnet  W1R1Bb AREF   480  13:27:42.00  12/01/1986
+  2274  andradite NMNH113829 Garnt W9R4Nbbb AREF  4280  00:00:00.00  11/24/****
+  2318  Andradite WS474              W1R1Bb AREF   480  14:09:55.00  08/29/1986
+  2330  Andradite WS487 Garnet       W1R1Bb AREF   480  21:43:40.00  05/12/1987
+  2342  Andradite WS487 Garnet     W5R4Nbb_ RREF  4280  20:18:54.00  08/19/1993
+  2386  Andradite WS488 Garnet       W1R1Bc AREF   480  13:14:24.00  12/11/1986
+  2399  Andradite WS488 Garnet     W5R4Ncc_ RREF  4280  15:48:04.00  08/19/1993
+  2442  Anhydrite GDS42 <250um       W1R1Ba AREF   480  08:42:32.00  11/21/1988
+  2454  Anhydrite GDS42 Garnet     W5R4Naa_ RREF  4280  15:05:40.00  08/19/1993
+  2499  Annite WS661 Biotite         W1R1Bb AREF   480  07:46:39.00  10/30/1986
+  2513  Annite WS661 Biotite       W5R4Nbb_ RREF  4280  00:00:00.00  11/24/****
+  2557  Anorthite GDS28 Syn <74um    W1R1Ba AREF   480  12:48:10.00  03/22/1988
+  2570  Anorthite GDS28 Syn <74    W5R4Naa_ RREF  4280  00:00:00.00  11/24/****
+  2613  Anorthite HS201.3B Plagio    W1R1Ba AREF   480  20:30:51.00  10/29/1988
+  2625  Anorthite HS201.3B Plagio  W5R4Naa_ RREF  4280  00:00:00.00  11/24/****
+  2668  Anorthite HS349.3B Plagio    W1R1Bc AREF   480  09:51:20.00  10/30/1986
+  2680  Anorthite HS349.3B Plagio  W9R4Nccc RREF  4280  00:29:45.00  08/04/1993
+  2725  Anthophyllite HS286.3B       W1R1Bc AREF   480  15:34:12.00  08/29/1986
+  2739  Anthophyllite HS286.3B     W5R4Ndd_ RREF  4280  00:00:00.00  11/24/****
+  2782  Antigorite NMNH17958         W1R1Bb AREF   480  12:40:39.00  04/30/1987
+  2797  Antigorite NMNH96917.f <30u  W1R1Bb AREF   480  10:41:53.00  06/27/1985
+  2813  Antigorite NMNH96917.e 32um  W1R1Bb AREF   480  10:01:33.00  06/26/1985
+  2829  Antigorite NMNH96917.e     W5R4Nbb_ RREF  4280  00:00:00.00  11/24/****
+  2876  Antigorite NMNH96917.d 70um  W1R1Bb AREF   480  14:26:13.00  06/15/1985
+  2892  Antigorite NMNH96917.d     W5R4Nbb_ RREF  4280  00:00:00.00  11/24/****
+  2939  Antigorite NMNH96917.c 120um W1R1Bb AREF   480  10:42:22.00  06/25/1985
+  2955  Antigorite NMNH96917.c     W5R4Nbb_ RREF  4280  00:00:00.00  11/24/****
+  3002  Antigorite NMNH96917.b 165u  W1R1Bb AREF   480  14:01:39.00  06/17/1985
+  3018  Antigorite NMNH96917.b     W5R4Nbb_ RREF  4280  00:00:00.00  11/24/****
+  3065  Antigorite NMNH96917.a >250  W1R1Bb AREF   480  09:27:25.00  06/17/1985
+  3081  Antigorite NMNH96917.a     W5R4Nbb_ RREF  4280  00:00:00.00  11/24/****
+  3124  Arsenopyrite HS262.3B        W1R1Bc AREF   480  08:36:49.00  05/08/1987
+  3135  Arsenopyrite HS262.3B      W5R4Ncd_ RREF  4280  22:19:30.00  08/16/1993
+  3180  Augite NMNH120049            W1R1Bb AREF   480  16:13:17.00  02/04/1988
+  3192  Augite WS588 Pyroxene        W1R1Bb AREF   480  13:55:41.00  08/27/1986
+  3204  Augite WS588 Pyroxene      W9R4Ncbb RREF  4280  00:00:00.00  11/24/****
+  3247  Augite WS592 Pyroxene        W1R1Bb AREF   480  11:42:44.00  08/27/1986
+  3259  Augite WS592 Pyroxene      W5R4Ncc_ RREF  4280  00:00:00.00  11/24/****
+  3302  Axinite HS342.3B             W1R1Bb AREF   480  13:47:48.00  11/14/1986
+  3314  Axinite HS342.3B           W9R4Ncbb RREF  4280  00:29:06.00  08/04/1993
+  3357  Azurite WS316                W1R1Ba AREF   480  10:56:34.00  01/21/1993
+  3369  Barite HS79.3B               W1R1Bb AREF   480  11:56:09.00  05/20/1987
+  3380  Barite HS79.3B             W5R4Nbb_ RREF  4280  22:27:26.00  07/06/1993
+  3422  Bassanite GDS145 (syn)       W1R1Ba AREF   480  10:44:24.00  03/10/1993
+  3433  Bassanite GDS145 (syn)     W5R4Naa_ RREF  4280  19:51:08.00  07/08/1993
+  3476  Beryl GDS9 <150um gs         W1R1Bb AREF   480  14:47:50.00  09/11/1985
+  3488  Beryl GDS9 <150um gs       W9R4Nbbb RREF  4280  00:00:00.00  11/24/****
+  3532  Beryl HS180.3B               W1R1Ba AREF   480  13:16:22.00  06/15/1987
+  3545  Beryl HS180.3B             W9R4Naaa RREF  4280  17:44:02.00  07/26/1993
+  3590  Biotite HS28.3B              W1R1Bb AREF   480  14:50:52.00  09/16/1985
+  3604  Biotite HS28.3B            W9R4Nbbb RREF  4280  00:00:00.00  11/24/****
+  3648  Biotite WS660                W1R1Bb AREF   480  12:12:37.00  10/07/1986
+  3661  Biotite WS660              W5R4Ncc_ RREF  4280  00:00:00.00  11/24/****
+  3703  Bloedite GDS147              W1R1Ba AREF   480  09:35:13.00  03/31/1993
+  3714  Bloedite GDS147            W5R4Naa_ RREF  4280  17:18:36.00  07/09/1993
+  3757  Bronzite HS9.3B Pyroxene     W1R1Bc AREF   480  00:51:10.00  06/20/1987
+  3768  Bronzite HS9.3B Pyroxene   W9R4Nccc RREF  4280  16:23:37.00  08/17/1993
+  3811  Brookite HS443.2B            W1R1Bb AREF   480  10:52:12.00  05/07/1987
+  3823  Brookite HS443.2B          W5R4Nbc_ RREF  4280  16:13:03.00  08/13/1993
+  3867  Brucite HS247.3B             W1R1Bc AREF   480  08:12:37.00  01/10/1986
+  3881  Brucite HS34827.3B         W9R4Nccc RREF  4280  00:25:29.00  08/04/1993
+  3924  Buddingtonite GDS85 D-206    W1R1Bb AREF   480  15:49:13.00  05/06/1991
+  3935  Buddingtonite NHB2301        W1R1Bb AREF   480  08:50:33.00  07/02/1991
+  3947  Butlerite GDS25              W1R1Ba AREF   480  08:46:43.00  03/15/1988
+  3959  Butlerite GDS25            W9R4Naaa RREF  4280  22:18:04.00  08/19/1992
+  4002  Bytownite HS105.3B Plagio    W1R1Bb AREF   480  08:49:40.00  12/01/1986
+  4014  Bytownite HS105.3B Plagio  W9R4Nbbb RREF  4280  21:37:47.00  07/07/1993
+  4058  Bytownite HS106.3B Plagio    W1R1Bc AREF   480  10:24:34.00  12/01/1986
+  4071  Bytownite HS106.3B Plagio  W9R4Nccc RREF  4280  20:35:28.00  07/07/1993
+  4113  Calcite CO2004               W1R1Bb AREF   480  09:53:53.00  07/02/1991
+  4124  Calcite GDS304 75-150um      W1R1Fb AREF  2151  14:17:33.00  07/28/1999
+  4147  Calcite HS48.3B              W1R1Ba AREF   480  08:24:36.00  09/05/1985
+  4159  Calcite WS272                W1R1Ba AREF   480  11:09:19.00  01/16/1986
+  4172  Calcite WS272              W9R4Naaa RREF  4280  00:00:00.00  11/24/****
+  4215  Carbon_Black GDS68 sm.ap.    W1R1Ba AREF   480  00:13:13.00  01/01/1980
+  4228  Carnallite HS430.3B          W1R1Ba AREF   480  11:39:17.00  08/19/1986
+  4241  Carnallite HS430.3B        W5R4Naa_ RREF  4280  00:30:15.00  08/04/1993
+  4283  Carnallite NMNH98011         W1R1Bb AREF   480  14:24:46.00  04/01/1993
+  4293  Carnallite NMNH98011       W5R4Nbb_ RREF  4280  20:24:09.00  07/09/1993
+  4337  Cassiterite HS279.3B         W1R1Bc AREF   480  13:30:17.00  07/17/1987
+  4349  Cassiterite HS279.3B       W9R4Nbbb RREF  4280  19:17:17.00  08/13/1993
+  4392  Celestite HS251.3B Barite    W1R1Bb AREF   480  13:44:13.00  01/29/1993
+  4404  Celestite HS251.3B Barite  W9R4Nbbb RREF  4280  00:22:30.00  08/04/1993
+  4447  Celsian HS200.3B             W1R1Bd AREF   480  12:14:31.00  11/13/1986
+  4459  Celsian HS200.3B           W9R4Nddd RREF  4280  00:25:53.00  08/04/1993
+  4502  Chalcedony CU91-6A           W1R1Ba AREF   480  18:52:23.00  04/06/1991
+  4514  Chalcedony CU91-6A XRD     W5R4Naa_ RREF  4280  00:00:00.00  11/24/****
+  4557  Chalcopyrite HS431.3B        W1R1Bb AREF   480  10:23:12.00  05/08/1987
+  4568  Chalcopyrite HS431.3B      W5R4Nbc_ RREF  4280  17:42:27.00  08/13/1993
+  4611  Chalcopyrite S26-36          W1R1Bb AREF   480  22:42:34.00  01/01/1980
+  4621  Chert ANP90-6D (White)       W1R1B? AREF   480  11:37:43.00  07/15/1991
+  4636  Chlorapatite WS423           W1R1Bb AREF   480  13:39:14.00  04/13/1992
+  4648  Chlorapatite WS423         W5R4Nbb_ RREF  4280  16:32:22.00  08/20/1993
+  4691  Chlorite HS179.3B            W1R1Bb AREF   480  16:14:44.00  08/26/1986
+  4703  Chlorite HS179.3B          W5R4Nbb_ RREF  4280  00:00:00.00  11/24/****
+  4745  Chlorite HS197.3B            W1R1Bb AREF   480  11:05:27.00  06/15/1987
+  4759  Chlorite HS197.3B          W9R4Nbbb RREF  4280  00:00:00.00  11/24/****
+  4805  Chlorite SMR-13.a            W2R4Na RREF  3325  00:00:00.00  11/24/****
+  4847  Chlorite SMR-13.a 104-150    W1R1Ba AREF   480  13:17:21.00  07/24/1985
+  4862  Chlorite SMR-13.a 104-150  W5R4Naa_ RREF  4280  00:00:00.00  11/24/****
+  4908  Chlorite SMR-13.b 60-104um   W1R1Ba AREF   480  14:40:24.00  07/24/1985
+  4923  Chlorite SMR-13.c 45-60um    W1R1Ba AREF   480  10:30:52.00  07/25/1985
+  4938  Chlorite SMR-13.c 45-60um  W5R4Naa_ RREF  4280  00:00:00.00  11/24/****
+  4984  Chlorite SMR-13.d 30-45um    W1R1Ba AREF   480  17:14:31.00  07/24/1985
+  4999  Chlorite SMR-13.d 30-45um  W5R4Naa_ RREF  4280  00:00:00.00  11/24/****
+  5045  Chlorite SMR-13.e <30um      W1R1Bb AREF   480  09:20:47.00  07/25/1985
+  5063  Chlorite SMR-13.e <30um    W5R4Nbb_ RREF  4280  00:00:00.00  11/24/****
+  5107  Chromite HS281.3B            W1R1Bb AREF   480  13:00:31.00  08/20/1986
+  5120  Chromite HS281.3B          W9R4Nbcb RREF  4280  22:17:37.00  07/26/1993
+  5163  Chrysocolla HS297.3B         W1R1Bb AREF   480  14:57:53.00  09/02/1986
+  5175  Chrysocolla HS297.3B       W9R4Nbcb RREF  4280  22:43:28.00  07/26/1993
+  5218  Chrysotile HS323.1B          W1R1Ba AREF   480  12:45:12.00  09/07/1985
+  5230  Chrysotile ML99-12A Coar Fib W1R1Fb AREF  2151  16:42:26.00  07/14/2000
+  5250  Chrysotile ML99-12C Fine Fib W1R1Fb AREF  2151  16:55:43.00  07/14/2000
+  5270  Cinnabar HS133.3B            W1R1Bc AREF   480  15:59:48.00  04/28/1987
+  5282  Cinnabar HS133.3B          W9R4Nddd RREF  4280  19:45:06.00  07/07/1993
+  5327  Clinochlore GDS158 Flagst    W1R1Bb AREF   480  11:51:41.00  04/15/1993
+  5341  Clinochlore GDS158 Flagst  W5R4Nbb_ RREF  4280  18:16:32.00  07/30/1993
+  5386  Clinochlore GDS159           W1R1Bb AREF   480  11:29:56.00  04/16/1993
+  5400  Clinochlore GDS159         W5R4Nbb_ RREF  4280  19:07:56.00  07/30/1993
+  5444  Clinochlore NMNH83369        W1R1Bb AREF   480  12:22:25.00  03/03/1988
+  5457  Clinochlore NMNH83369 NIR    W2R4Nb RREF  3325  00:00:00.00  11/24/****
+  5497  Clinochlore NMNH83369      W9R4Nbbb RREF  4280  00:00:00.00  11/24/****
+  5542  Clinochlore_Fe GDS157        W1R1Ba AREF   480  09:37:29.00  04/19/1993
+  5556  Clinochlore_Fe GDS157.b      W1R1Fa AREF  2151  14:40:50.00  07/28/1999
+  5580  Clinochlore_Fe GDS157 NIR    W2R4Na RREF  3325  16:58:36.00  08/13/1993
+  5621  Clinochlore_Fe GDS157      W5R4Naa_ RREF  4280  16:54:49.00  08/13/1993
+  5666  Clinochlore_Fe SC-CCa-1.a    W1R1Ba AREF   480  09:35:41.00  07/10/1985
+  5680  Clinochlore_Fe SC-CCa-1.a  W5R4Naa_ RREF  4280  00:00:00.00  11/24/****
+  5725  Clinochlore_Fe SC-CCa-1.b    W1R1Ba AREF   480  11:55:14.00  07/10/1985
+  5739  Clinochlore_Fe SC-CCa-1.b  W5R4Naa_ RREF  4280  00:00:00.00  11/24/****
+  5784  Clinochlore_Fe SC-CCa-1.c    W1R1Ba AREF   480  10:38:19.00  07/11/1985
+  5798  Clinochlore_Fe SC-CCa-1.c  W5R4Naa_ RREF  4280  00:00:00.00  11/24/****
+  5841  Clinoptilolite GDS152 Zeolit W1R1Bb AREF   480  13:19:39.00  04/13/1993
+  5853  Clinoptilolite GDS152 Zeol W9R4Nbbb RREF  4280  16:06:42.00  07/08/1993
+  5896  Clinoptilolite GDS2 Zeolite  W1R1Bb AREF   480  13:36:52.00  11/01/1985
+  5908  Clinoptilolite GDS2 Zeolit W9R4Nbbb RREF  4280  00:00:00.00  11/24/****
+  5952  Clinozoisite HS299.2B        W1R1Bd AREF   480  08:30:17.00  10/07/1986
+  5965  Clinozoisite HS299.2B      W5R4Nbc_ RREF  4280  17:20:07.00  07/26/1993
+  6008  Clintonite NMNH126553        W1R1Bc AREF   480  10:07:24.00  04/29/1992
+  6019  Colemanite GDS143            W1R1Bb AREF   480  09:26:52.00  03/30/1993
+  6030  Colemanite GDS143          W5R4Nbb_ RREF  4280  20:59:12.00  07/08/1993
+  6074  Cookeite CAr-1.a 104-150um   W1R1Bb AREF   480  10:07:02.00  07/28/1985
+  6087  Cookeite CAr-1.a 104-150um W5R4Nbb_ RREF  4280  00:00:00.00  11/24/****
+  6131  Cookeite CAr-1.b 60-104um    W1R1Bb AREF   480  10:31:44.00  07/29/1985
+  6144  Cookeite CAr-1.b 60-104um    W2R4Nb RREF  3325  00:00:00.00  11/24/****
+  6184  Cookeite CAr-1.b 60-104um  W5R4Nbb_ RREF  4280  00:00:00.00  11/24/****
+  6228  Cookeite CAr-1.c <30um       W1R1Bb AREF   480  09:21:04.00  07/30/1985
+  6241  Cookeite CAr-1.c <30um     W5R4Ncc_ RREF  4280  00:00:00.00  11/24/****
+  6285  Copiapite GDS21              W1R1Bb AREF   480  12:20:48.00  03/07/1988
+  6298  Copiapite GDS21            W5R4Nbc_ RREF  4280  00:00:00.00  11/24/****
+  6341  Coquimbite GDS22             W1R1Bc AREF   480  12:40:26.00  03/08/1988
+  6353  Cordierite HS346.3B          W1R1Bd AREF   480  10:14:25.00  09/03/1986
+  6365  Cordierite HS346.3B        W9R4Nddd RREF  4280  16:25:37.00  08/16/1993
+  6408  Corrensite CorWa-1           W1R1Bb AREF   480  13:57:34.00  01/28/1986
+  6420  Corrensite CorWa-1         W5R4Nbc_ RREF  4280  00:00:00.00  11/24/****
+  6463  Corundum HS283.3B            W1R1Bc AREF   480  08:35:56.00  04/14/1987
+  6475  Covellite HS477.2B           W1R1Bb AREF   480  08:10:36.00  06/13/1987
+  6486  Covellite HS477.3B         W9R4Nbbb RREF  4280  22:27:56.00  08/16/1993
+  6528  Cronstedtite M3542           W1R1Bb AREF   480  13:34:11.00  08/08/1986
+  6540  Cronstedtite M3542         W5R4Nbb_ RREF  4280  19:39:53.00  07/09/1993
+  6583  Cummingtonite HS294.3B       W1R1Bc AREF   480  14:56:14.00  10/06/1986
+  6595  Cummingtonite HS294.3B     W9R4Nccc RREF  4280  20:30:44.00  07/26/1993
+  6639  Cuprite HS127.3B             W1R1Bb AREF   480  11:22:34.00  07/17/1987
+  6651  Cuprite HS127.3B           W9R4Nccc RREF  4280  17:07:19.00  07/12/1993
+  6695  Datolite HS442.3B            W1R1Bb AREF   480  15:14:51.00  01/08/1985
+  6709  Datolite HS442.3B          W9R4Nbbb RREF  4280  00:30:55.00  08/04/1993
+  6752  Datolite SU51399             W1R1Bb AREF   480  09:20:08.00  01/28/1988
+  6765  Diaspore HS416.3B            W1R1Bb AREF   480  00:53:59.00  01/01/1980
+  6777  Diaspore HS416.3B          W5R4Nbb_ RREF  4280  15:30:25.00  08/13/1993
+  6820  Dickite NMNH106242           W1R1Bb AREF   480  12:17:40.00  01/02/1991
+  6832  Dickite NMNH106242           W2R4Nb RREF  3325  00:00:00.00  11/24/****
+  6871  Dickite NMNH106242         W5R4Nbb_ RREF  4280  00:00:00.00  11/24/****
+  6913  Dickite NMNH46967            W1R1Ba AREF   480  14:26:12.00  01/25/1991
+  6924  Diopside HS15.3B Pyroxene    W1R1Bc AREF   480  15:03:09.00  06/15/1987
+  6935  Diopside HS15.3B Pyroxene  W9R4Ndbb RREF  4280  16:01:53.00  08/17/1993
+  6978  Diopside HS317.3B (Cr)Pyx    W1R1Bc AREF   480  12:43:49.00  11/12/1986
+  6990  Diopside HS317.3B (Cr)Pyx  W9R4Ndbb RREF  4280  00:00:00.00  11/24/****
+  7035  Diopside NMNHR18685 ~160 Pyx W1R1Bb AREF   480  08:42:04.00  03/25/1988
+  7049  Diopside NMNHR18685 ~160   W9R4Ncbb RREF  4280  00:00:00.00  11/24/****
+  7093  Dipyre BM1959,505.HLsp       W1R1Bc AREF   480  12:58:55.00  11/24/1987
+  7104  Dolomite COD2005             W1R1Bb AREF   480  10:55:59.00  07/02/1991
+  7116  Dolomite HS102.3B            W1R1Bb AREF   480  08:29:15.00  02/18/1986
+  7128  Dolomite HS102.3B          W9R4Nbbb RREF  4280  00:00:00.00  11/24/****
+  7170  Dolomite ML97-3 Ferroan      W1R1Fb AREF  2151  23:48:21.00  04/15/1998
+  7191  Dumortierite HS190.3B        W1R1Bc AREF   480  08:42:13.00  06/16/1987
+  7204  Dumortierite HS190.3B      W9R4Ncdd RREF  4280  18:59:51.00  07/26/1993
+  7249  Elbaite NMNH94217-1.a 659    W1R1Bb AREF   480  14:56:36.00  03/22/1988
+  7263  Elbaite NMNH94217-1.a 659  W9R4Nbbb RREF  4280  00:00:00.00  11/24/****
+  7308  Elbaite NMNH94217-1.b 196    W1R1Bb AREF   480  11:39:31.00  03/23/1988
+  7322  Elbaite NMNH94217-1.b 196  W9R4Nbbb RREF  4280  00:00:00.00  11/24/****
+  7367  Elbaite NMNH94217-1.c <74    W1R1Bb AREF   480  10:33:14.00  03/23/1988
+  7379  Endellite GDS16              W1R1Bb AREF   480  15:13:27.00  03/27/1987
+  7391  Endellite GDS16            W9R4Nbbb RREF  4280  00:00:00.00  11/24/****
+  7435  Enstatite NMNH128288         W1R1Bc AREF   480  10:26:04.00  02/08/1988
+  7447  Enstatite NMNH128288       W9R4Nccc RREF  4280  00:00:00.00  11/24/****
+  7490  Epidote BR93-33a             W1R1Bb AREF   480  13:52:54.00  01/21/1993
+  7501  Epidote GDS26.a 75-200um   W9R4Nbbb RREF  4280  00:00:00.00  11/24/****
+  7546  Epidote GDS26.a 75-200um     W1R1Bb AREF   480  12:10:48.00  03/16/1988
+  7560  Epidote GDS26.b <75um        W1R1Bb AREF   480  15:54:22.00  03/16/1988
+  7571  Epidote GDS301 75-150um      W1R1Fb AREF  2151  14:26:38.00  07/28/1999
+  7592  Epidote HS328.3B             W1R1Bc AREF   480  09:50:45.00  01/09/1986
+  7604  Epidote HS328.3B           W5R4Nbc_ RREF  4280  00:31:17.00  08/04/1993
+  7646  Epsomite GDS149              W1R1Bc AREF   480  00:00:00.00  03/11/1993
+  7657  Epsomite GDS149            W5R4Ncc_ RREF  4280  19:27:12.00  07/08/1993
+  7700  Eugsterite GDS140 Syn        W1R1Bb AREF   480  12:08:19.00  03/08/1993
+  7712  Eugsterite GDS140 Syn      W5R4Nbb_ RREF  4280  16:57:10.00  07/09/1993
+  7755  Europium_Oxide GDS33         W1R1Ba AREF   480  09:01:22.00  08/03/1988
+  7767  Fassaite HS118.3B            W1R1Bc AREF   480  08:29:14.00  11/12/1986
+  7779  Fassaite HS118.3B          W9R4Nccc RREF  4280  22:53:06.00  07/06/1993
+  7822  Ferrihydrite GDS75 Syn, F6   W1R1Bb AREF   480  15:48:06.00  01/04/1991
+  7833  Fluorapatite WS416           W1R1Ba AREF   480  09:23:31.00  04/13/1992
+  7845  Fluorapatite WS416         W5R4Naa_ RREF  4280  22:59:50.00  08/19/1993
+  7888  Galena HS37.3                W1R1Bb AREF   480  08:00:00.00  06/11/1987
+  7899  Galena HS37.3              W5R4Nbb_ RREF  4280  00:00:00.00  11/24/****
+  7943  Galena S102-17               W1R1Bb AREF   480  23:15:59.00  01/02/1980
+  7955  Galena S102-1B               W1R1Bb AREF   480  01:44:06.00  01/03/1980
+  7967  Galena S105-2                W1R1Bb AREF   480  13:17:16.00  07/14/1987
+  7980  Galena S26-39                W1R1Bb AREF   480  17:50:58.00  01/05/1980
+  7992  Galena S26-40                W1R1Bb AREF   480  13:53:53.00  07/08/1987
+  8003  Gaylussite NMNH102876-2      W1R1Bb AREF   480  16:01:45.00  03/10/1993
+  8014  Gaylussite NMNH102876-2    W5R4Nbb_ RREF  4280  20:14:17.00  07/08/1993
+  8057  Gibbsite HS423.3B            W1R1Bb AREF   480  14:17:01.00  11/26/1986
+  8069  Gibbsite HS423.3B          W9R4Nbbb RREF  4280  15:28:08.00  08/13/1993
+  8111  Gibbsite WS214               W1R1Bb AREF   480  08:30:06.00  11/28/1986
+  8123  Glauconite HS313.3B          W1R1Bc AREF   480  10:18:52.00  11/25/1986
+  8135  Glauconite HS313.3B        W9R4Nccc RREF  4280  21:54:56.00  08/17/1993
+  8178  Glaucophane HS426.3B         W1R1Bc AREF   480  08:30:28.00  10/02/1986
+  8190  Glaucophane HS426.3B       W9R4Nccc RREF  4280  21:08:11.00  08/13/1993
+  8232  Goethite GDS134              W1R1Fb AREF  2151  22:07:34.00  05/11/1999
+  8252  Goethite GDS134            W5R4Nbb_ RREF  4280  21:04:20.00  07/30/1993
+  8296  Goethite HS36.3              W1R1Bb AREF   480  08:07:48.00  07/26/1987
+  8308  Goethite HS36.3B           W9R4Nbcb RREF  4280  22:03:37.00  07/07/1993
+  8351  Goethite MPCMA2-B FineGr adj W1R1Bb AREF   480  08:12:42.00  05/04/1995
+  8365  Goethite MPCMA2-C M-Crsgrad2 W1R1Bb AREF   480  09:45:36.00  05/04/1995
+  8380  Goethite WS219 (limonite)    W1R1Bc AREF   480  12:21:57.00  08/20/1986
+  8392  Goethite WS220               W1R1Bc AREF   480  10:27:05.00  08/21/1986
+  8404  Goethite WS220             W5R4Ncd_ RREF  4280  00:00:00.00  11/24/****
+  8447  Goethite WS222 Medium Gr.    W1R1Ba AREF   480  09:04:31.00  08/21/1986
+  8459  Goethite WS222 Coarse Gr.    W1R1Ba AREF   480  14:24:20.00  01/31/1996
+  8474  Goethite WS222 Medium Gr.  W5R4Naa_ RREF  4280  00:00:00.00  11/24/****
+  8517  Grossular HS113.3B-HCL Garnt W1R1Bd AREF   480  16:14:12.00  02/02/1987
+  8529  Grossular HS113.3B-HCL     W9R4Nccc RREF  4280  19:24:48.00  07/07/1993
+  8573  Grossular NMNH155371 Garnet  W1R1Bb AREF   480  12:00:46.00  12/01/1986
+  8586  Grossular NMNH155371 Garnt W9R4Ncbb RREF  4280  00:00:00.00  11/24/****
+  8629  Grossular WS483 Garnet       W1R1Bb AREF   480  15:25:02.00  11/20/1986
+  8641  Grossular WS483 Garnet     W5R4Ncc_ RREF  4280  19:12:24.00  08/19/1993
+  8685  Grossular WS484 Garnet       W1R1Bb AREF   480  16:05:33.00  03/18/1987
+  8698  Grossular WS484 Garnet     W5R4Nbb_ RREF  4280  22:13:20.00  08/19/1993
+  8741  Grossular WS485 Garnet       W1R1Bb AREF   480  08:59:51.00  12/18/1986
+  8753  Grossular WS485 Garnet     W5R4Nbb_ RREF  4280  16:46:12.00  08/20/1993
+  8796  Gypsum HS333.3B (Selenite)   W1R1Ba AREF   480  10:39:38.00  09/13/1985
+  8808  Gypsum HS333.3B (Selenite) W9R4Naaa RREF  4280  00:00:00.00  11/24/****
+  8850  Gypsum SU2202                W1R1Ba AREF   480  10:37:54.00  07/03/1991
+  8863  Halite HS433.3B              W1R1Ba AREF   480  13:25:51.00  08/19/1986
+  8876  Halite HS433.3B            W5R4Naa_ RREF  4280  00:00:00.00  11/24/****
+  8921  Halloysite CM13              W1R1Bb AREF   480  11:53:37.00  08/30/1985
+  8935  Halloysite CM13            W9R4Nbbb RREF  4280  00:00:00.00  11/24/****
+  8977  Halloysite KLH503            W1R1Bb AREF   480  10:07:39.00  07/09/1991
+  8988  Halloysite NMNH106236        W1R1Ba AREF   480  12:46:50.00  03/26/1987
+  8999  Halloysite NMNH106237        W1R1Ba AREF   480  08:48:56.00  03/24/1987
+  9010  Halloysite NMNH106237      W9R4Naaa RREF  4280  00:00:00.00  11/24/****
+  9052  Halloysite NMNH106237 scl Bk W2R4Na RREF  3325  00:00:00.00  11/24/****
+  9093  Hectorite SHCa-1             W1R1Bc AREF   480  11:12:14.00  09/15/1985
+  9107  Hectorite SHCa-1.Ac-B        W1R1Bb AREF   480  10:33:55.00  03/16/1987
+  9120  Hectorite SHCa-1.Ac-B      W5R4Nbb_ RREF  4280  00:00:00.00  11/24/****
+  9164  Hedenbergite HS10.3B         W1R1Bc AREF   480  16:24:11.00  12/16/1987
+  9176  Hedenbergite HS10.3B       W9R4Nccc RREF  4280  18:45:23.00  08/17/1993
+  9218  Hedenbergite NMNH119197      W1R1Bb AREF   480  12:25:02.00  01/14/1993
+  9229  Hedenbergite NMNH119197    W5R4Ncb_ RREF  4280  00:00:00.00  11/24/****
+  9271  Hematite FE2602              W1R1Bb AREF   480  11:40:44.00  07/03/1991
+  9282  Hematite GDS27               W1R1Ba AREF   480  09:03:35.00  03/16/1988
+  9297  Hematite GDS69.a 150-250u    W1R1Bb AREF   480  11:16:37.00  02/20/1986
+  9312  Hematite GDS69.a 150-250u  W9R4Nbbb RREF  4280  00:00:00.00  11/24/****
+  9358  Hematite GDS69.b 104-150u    W1R1Bb AREF   480  12:55:49.00  02/20/1986
+  9373  Hematite GDS69.b 104-150u  W9R4Nbbb RREF  4280  00:00:00.00  11/24/****
+  9419  Hematite GDS69.c 60-104um    W1R1Bb AREF   480  15:13:20.00  02/20/1986
+  9434  Hematite GDS69.c 60-104um  W5R4Nbb_ RREF  4280  00:00:00.00  11/24/****
+  9480  Hematite GDS69.d 30-45um     W1R1Bb AREF   480  08:47:35.00  02/28/1986
+  9495  Hematite GDS69.d 30-45um   W9R4Nbbb RREF  4280  19:56:08.00  08/20/1992
+  9541  Hematite GDS69.e 20-30um     W1R1Bb AREF   480  14:27:12.00  02/21/1986
+  9556  Hematite GDS69.e 20-30um   W9R4Nbbb RREF  4280  00:00:00.00  11/24/****
+  9602  Hematite GDS69.f 10-20um     W1R1Bb AREF   480  08:57:45.00  02/24/1986
+  9618  Hematite GDS69.f 10-20um   W9R4Nbbb RREF  4280  00:00:00.00  11/24/****
+  9664  Hematite GDS69.g <10um       W1R1Bb AREF   480  14:18:06.00  02/24/1986
+  9679  Hematite GDS69.g <10um     W9R4Ndcc RREF  4280  00:00:00.00  11/24/****
+  9722  Hematite HS45.3              W1R1Bb AREF   480  08:24:26.00  07/27/1987
+  9733  Hematite HS45.3            W5R4Nbc_ RREF  4280  22:22:00.00  07/07/1993
+  9776  Hematite WS161               W1R1Bb AREF   480  08:31:13.00  08/20/1986
+  9788  Heulandite GDS3              W1R1Ba AREF   480  11:38:31.00  08/22/1986
+  9800  Heulandite GDS3            W5R4Naa_ RREF  4280  19:43:53.00  08/19/1993
+  9843  Heulandite NMNH84534         W1R1Ba AREF   480  09:32:31.00  04/05/1993
+  9855  Heulandite NMNH84534       W5R4Naa_ RREF  4280  16:51:23.00  07/08/1993
+  9899  Holmquistite HS291.3B        W1R1Bd AREF   480  13:04:01.00  10/06/1986
+  9912  Holmquistite HS291.3B      W5R4Ndd_ RREF  4280  22:16:47.00  08/16/1993
+  9956  Hornblende HS16.3B           W1R1Bb AREF   480  11:31:04.00  08/29/1986
+  9969  Hornblende HS16.3B         W5R4Ncb_ RREF  4280  22:37:21.00  08/18/1993
+ 10014  Hornblende HS177.3B          W1R1Bc AREF   480  08:33:03.00  06/15/1987
+ 10027  Hornblende HS177.3B        W5R4Nbb_ RREF  4280  15:42:57.00  08/13/1993
+ 10071  Hornblende_Fe HS115.3B       W1R1Bc AREF   480  15:00:55.00  06/14/1987
+ 10084  Hornblende_Fe HS115.3B     W5R4Ncb_ RREF  4280  21:16:46.00  07/07/1993
+ 10126  Hornblende_Mg NMNH117329     W1R1Bb AREF   480  15:45:42.00  01/15/1991
+ 10137  Hornblende_Mg NMNH117329   W5R4Nbb_ RREF  4280  00:00:00.00  11/24/****
+ 10180  Howlite GDS155               W1R1Ba AREF   480  11:46:06.00  04/02/1993
+ 10192  Howlite GDS155             W5R4Naa_ RREF  4280  19:40:34.00  07/09/1993
+ 10236  Hydrogrossular NMNH120555    W1R1Bb AREF   480  03:44:02.00  05/13/1987
+ 10249  Hydrogrossular NMNH120555  W5R4Nbb_ RREF  4280  00:00:00.00  11/24/****
+ 10292  Hydroxyl-Apatite WS425       W1R1Bb AREF   480  14:59:08.00  04/12/1992
+ 10303  Hydroxyl-Apatite WS425     W5R4Nbb_ RREF  4280  16:31:36.00  08/20/1993
+ 10348  Hypersthene NMNHC2368        W1R1Bb AREF   480  11:59:28.00  02/08/1988
+ 10362  Hypersthene NMNHC2368      W9R4Nbbb RREF  4280  00:00:00.00  11/24/****
+ 10409  Hypersthene PYX02.a 12um     W1R1Bc AREF   480  13:45:52.00  04/20/1987
+ 10424  Hypersthene PYX02.a 12um   W9R4Ncbb RREF  4280  23:00:32.00  07/26/1994
+ 10471  Hypersthene PYX02.b 120um    W1R1Bc AREF   480  08:39:15.00  04/23/1987
+ 10486  Hypersthene PYX02.b 120um  W9R4Ncbb RREF  4280  22:22:18.00  07/26/1994
+ 10533  Hypersthene PYX02.c 180um    W1R1Bc AREF   480  10:56:43.00  04/23/1987
+ 10548  Hypersthene PYX02.c 180um  W9R4Ncbb RREF  4280  21:46:23.00  07/26/1994
+ 10595  Hypersthene PYX02.d 23um     W1R1Bc AREF   480  11:10:37.00  04/20/1987
+ 10610  Hypersthene PYX02.d 23um   W9R4Ncbb RREF  4280  21:05:04.00  07/26/1994
+ 10657  Hypersthene PYX02.e 34um     W1R1Bc AREF   480  08:27:36.00  04/20/1987
+ 10672  Hypersthene PYX02.e 34um   W9R4Ncbb RREF  4280  22:35:44.00  07/25/1994
+ 10719  Hypersthene PYX02.f 60um     W1R1Bc AREF   480  13:14:05.00  04/22/1987
+ 10735  Hypersthene PYX02.f 60um   W9R4Ncbb RREF  4280  17:31:07.00  04/30/2007
+ 10782  Hypersthene PYX02.g 7um      W1R1Bc AREF   480  13:14:09.00  04/21/1987
+ 10797  Hypersthene PYX02.g 7um    W9R4Ncbb RREF  4280  21:17:52.00  07/25/1994
+ 10844  Hypersthene PYX02.h >250um   W1R1Bc AREF   480  13:25:05.00  04/23/1987
+ 10859  Hypersthene PYX02.h >250um W9R4Ncbb RREF  4280  17:34:56.00  07/26/1994
+ 10903  Illite GDS4 (Marblehead)     W1R1Bb AREF   480  13:21:42.00  06/30/1986
+ 10916  Illite GDS4 (Marblehead)   W5R4Nbb_ RREF  4280  00:00:00.00  11/24/****
+ 10958  Illite IL101 (2M2)           W1R1Bb AREF   480  13:27:09.00  07/08/1991
+ 10969  Illite IL105 (1Md)           W1R1Bb AREF   480  14:28:37.00  07/03/1991
+ 10982  Illite IMt-1.a               W1R1Bb AREF   480  13:15:26.00  01/02/1986
+ 10996  Illite IMt-1.a             W5R4Nbb_ RREF  4280  00:00:00.00  11/24/****
+ 11041  Illite IMt-1.b <2um          W1R1Ba AREF   480  08:35:59.00  02/25/1988
+ 11055  Illite IMt-1.b <2um        W5R4Naa_ RREF  4280  00:00:00.00  11/24/****
+ 11099  Ilmenite HS231.3B            W1R1Bb AREF   480  12:45:07.00  12/08/1987
+ 11112  Ilmenite HS231.3B          W5R4Nbc_ RREF  4280  16:07:44.00  08/16/1993
+ 11155  Jadeite HS343.3B             W1R1Bb AREF   480  14:58:50.00  11/10/1986
+ 11167  Jadeite HS343.3B           W5R4Ncb_ RREF  4280  20:38:22.00  08/13/1993
+ 11210  Jarosite GDS100 Na,Sy 90C    W1R1Ba AREF   480  11:15:42.00  06/22/1992
+ 11222  Jarosite GDS100 Na,Sy 90C  W5R4Naa_ RREF  4280  00:00:00.00  11/24/****
+ 11265  Jarosite GDS101 Na,Sy 200C   W1R1Ba AREF   480  12:21:50.00  06/19/1992
+ 11277  Jarosite GDS101 Na,Sy 200C W5R4Naa_ RREF  4280  00:00:00.00  11/24/****
+ 11320  Jarosite GDS24 Na            W1R1Bb AREF   480  09:25:31.00  03/14/1988
+ 11332  Jarosite GDS24 Na          W9R4Nbbb RREF  4280  00:00:00.00  11/24/****
+ 11375  Jarosite GDS98 K 90C Syn     W1R1Ba AREF   480  09:44:24.00  06/21/1992
+ 11387  Jarosite GDS98 K 90C Syn     W2R4Na RREF  3325  00:00:00.00  11/24/****
+ 11426  Jarosite GDS98 K 90C Syn   W5R4Naa_ RREF  4280  00:00:00.00  11/24/****
+ 11469  Jarosite GDS99 K 200C Syn    W1R1Ba AREF   480  15:15:25.00  06/18/1992
+ 11481  Jarosite GDS99 K 200C Syn    W2R4Na RREF  3325  00:00:00.00  11/24/****
+ 11520  Jarosite GDS99 K 200C Syn  W5R4Naa_ RREF  4280  00:00:00.00  11/24/****
+ 11562  Jarosite JR2501 (K)          W1R1Bb AREF   480  14:26:06.00  07/08/1991
+ 11574  Jarosite NMNH95074-1 (Na)    W1R1Bb AREF   480  14:55:34.00  05/19/1987
+ 11586  Jarosite NMNH95074-1 (Na)  W5R4Nbb_ RREF  4280  00:00:00.00  11/24/****
+ 11629  Jarosite SJ-1 H3O,10-20%     W1R1Bb AREF   480  08:35:22.00  04/16/1992
+ 11641  Jarosite SJ-1 H3O (20%) Syn  W2R4Nb RREF  3325  00:00:00.00  11/24/****
+ 11680  Jarosite SJ-1 H3O 10-20%   W5R4Nbb_ RREF  4280  00:00:00.00  11/24/****
+ 11723  Jarosite WS368 (Pb)          W1R1Bc AREF   480  11:15:02.00  12/07/1992
+ 11733  Kainite NMNH83904            W1R1Ba AREF   480  12:36:36.00  03/31/1993
+ 11744  Kainite NMNH83904          W5R4Naa_ RREF  4280  17:43:29.00  07/09/1993
+ 11788  Kaolinite CM3                W1R1Ba AREF   480  11:41:48.00  02/10/1986
+ 11802  Kaolinite CM3              W5R4Naa_ RREF  4280  00:00:00.00  11/24/****
+ 11846  Kaolinite CM5                W1R1Bb AREF   480  13:20:17.00  02/12/1986
+ 11860  Kaolinite CM5              W5R4Nbb_ RREF  4280  00:00:00.00  11/24/****
+ 11904  Kaolinite CM7                W1R1Bb AREF   480  14:38:17.00  02/12/1986
+ 11917  Kaolinite CM7              W5R4Nbb_ RREF  4280  20:16:53.00  08/20/1992
+ 11962  Kaolinite CM9                W1R1Bb AREF   480  09:29:59.00  10/20/1985
+ 11976  Kaolinite CM9                W2R4Nb RREF  3325  00:00:00.00  11/24/****
+ 12017  Kaolinite CM9              W9R4Nbbb RREF  4280  00:00:00.00  11/24/****
+ 12060  Kaolinite GDS11 <63um        W1R1Bb AREF   480  10:24:01.00  09/12/1985
+ 12072  Kaolinite GDS11 <63um      W5R4Nbb_ RREF  4280  19:20:14.00  08/20/1993
+ 12117  Kaolinite KGa-1 (wxl)        W1R1Bb AREF   480  11:31:11.00  01/29/1986
+ 12132  Kaolinite KGa-1 (wxl)      W5R4Nbb_ RREF  4280  00:00:00.00  11/24/****
+ 12176  Kaolinite KGa-2 (pxl)        W1R1Bb AREF   480  08:29:44.00  01/29/1986
+ 12190  Kaolinite KGa-2 (pxl)        W2R4Nb RREF  3325  00:00:00.00  11/24/****
+ 12230  Kaolinite KGa-2 (pxl)      W9R4Nbbb RREF  4280  00:00:00.00  11/24/****
+ 12272  Kaolinite KL502 (pxl)        W1R1Bb AREF   480  10:04:24.00  07/11/1991
+ 12283  Kieserite KIEDE1.a coarse gr W1R1Fc AREF  2151  16:28:59.00  05/16/2005
+ 12310  Kieserite KIEDE1.b fine gr   W1R1Fc AREF  2151  16:29:32.00  05/16/2005
+ 12337  Kieserite KIEDE1.a crse gr W5R4Ncc_ AREF  4280  20:00:27.00  05/11/2005
+ 12381  Knebelite HS419.3B           W1R1Bb AREF   480  10:31:55.00  11/17/1986
+ 12394  Knebelite HS419.3B         W9R4Ncbb RREF  4280  22:15:22.00  08/16/1993
+ 12437  Labradorite HS17.3B          W1R1Bb AREF   480  10:55:32.00  11/14/1986
+ 12449  Labradorite HS17.3B        W9R4Ncbb RREF  4280  19:14:09.00  08/17/1993
+ 12491  Laumontite GDS5 Zeolite      W1R1Bb AREF   480  15:27:45.00  08/21/1986
+ 12502  Laumontite GDS5 Zeolite    W5R4Nbb_ RREF  4280  15:28:23.00  08/19/1993
+ 12545  Lazurite HS418.3B            W1R1Bb AREF   480  13:58:06.00  08/25/1986
+ 12557  Lazurite HS418.3B          W5R4Nc?_ RREF  4280  16:16:28.00  08/16/1993
+ 12600  Lepidocrosite GDS80 (Syn)    W1R1Bb AREF   480  17:42:14.00  03/20/1991
+ 12611  Lepidocrocite GDS80 (Syn)  W5R4Nbb_ RREF  4280  19:32:11.00  07/30/1993
+ 12655  Lepidolite HS167.3B          W1R1Bb AREF   480  14:54:53.00  08/19/1986
+ 12668  Lepidolite HS167.3B        W9R4Nccc RREF  4280  15:37:22.00  08/17/1993
+ 12711  Lepidolite NMNH105538        W1R1Bb AREF   480  14:10:34.00  08/05/1988
+ 12723  Lepidolite NMNH105538      W5R4Ncc_ RREF  4280  00:00:00.00  11/24/****
+ 12766  Lepidolite NMNH105541        W1R1Bb AREF   480  11:11:39.00  08/02/1988
+ 12778  Lepidolite NMNH105543        W1R1Bc AREF   480  12:23:54.00  08/05/1988
+ 12790  Lepidolite NMNH105543      W5R4Ncc_ RREF  4280  00:00:00.00  11/24/****
+ 12832  Lepidolite NMNH88526-1       W1R1Ba AREF   480  02:05:23.00  04/24/1992
+ 12843  Lepidolite NMNH88526-1     W5R4Naa_ RREF  4280  00:00:00.00  11/24/****
+ 12886  Limonite HS41.3              W1R1Bb AREF   480  14:17:12.00  07/28/1987
+ 12897  Limonite HS41.3            W5R4Nbb_ RREF  4280  23:07:46.00  07/07/1993
+ 12941  Lizardite NMNHR4687.a 280    W1R1Ba AREF   480  12:22:22.00  06/27/1985
+ 12954  Lizardite NMNHR4687.b 165    W1R1Ba AREF   480  14:21:33.00  06/27/1985
+ 12967  Lizardite NMNHR4687.b 165  W5R4Naa_ RREF  4280  00:00:00.00  11/24/****
+ 13011  Lizardite NMNHR4687.c  70    W1R1Ba AREF   480  08:21:00.00  07/09/1985
+ 13024  Lizardite NMNHR4687.c  70  W5R4Naa_ RREF  4280  00:00:00.00  11/24/****
+ 13068  Lizardite NMNHR4687.d <30    W1R1Bb AREF   480  13:42:37.00  07/09/1985
+ 13081  Lizardite NMNHR4687.d <30  W5R4Ncb_ RREF  4280  00:00:00.00  11/24/****
+ 13124  Maghemite GDS81 Syn (M-3)    W1R1Bb AREF   480  03:04:54.00  04/30/1991
+ 13135  Maghemite GDS81            W5R4Nbb_ RREF  4280  19:55:18.00  07/30/1993
+ 13178  Magnetite HS195.3B           W1R1Bb AREF   480  13:59:21.00  07/27/1987
+ 13189  Magnetite HS195.3B         W5R4Nbb_ RREF  4280  23:01:26.00  07/26/1993
+ 13233  Magnetite HS78.3B            W1R1Bb AREF   480  15:30:50.00  07/27/1987
+ 13246  Magnetite HS78.3B          W5R4Nbb_ RREF  4280  17:38:08.00  07/12/1993
+ 13289  Malachite HS254.3B           W1R1Bb AREF   480  10:16:01.00  07/17/1987
+ 13301  Malachite HS254.3B         W5R4Nbb_ RREF  4280  20:10:13.00  08/13/1993
+ 13344  Margarite GDS106             W1R1Bc AREF   480  12:43:24.00  04/29/1992
+ 13356  Margarite GDS106           W5R4Nbb_ RREF  4280  00:00:00.00  11/24/****
+ 13400  Marialite NMNH126018-2       W1R1Bb AREF   480  15:32:19.00  07/08/1987
+ 13413  Marialite NMNH126018-2     W5R4Ncb_ RREF  4280  00:00:00.00  11/24/****
+ 13456  Mascagnite GDS65.a (coar)    W1R1Ba AREF   480  10:26:54.00  10/22/1985
+ 13468  Mascagnite GDS65.a (coar)  W5R4Naa_ RREF  4280  17:04:14.00  04/27/2007
+ 13511  Mascagnite GDS65.b (fr)      W1R1Ba AREF   480  12:43:08.00  10/22/1985
+ 13523  Mascagnite GDS65.b (fr)    W5R4Naa_ RREF  4280  00:00:00.00  11/24/****
+ 13567  Meionite WS700.HLsp          W1R1Bb AREF   480  08:58:19.00  11/25/1987
+ 13581  Meionite WS701               W1R1Bb AREF   480  08:43:01.00  11/20/1986
+ 13596  Meionite WS701             W5R4Ncc_ RREF  4280  00:00:00.00  11/24/****
+ 13639  Microcline HS103.3B Feldspar W1R1Bc AREF   480  09:44:47.00  11/18/1986
+ 13651  Microcline HS103.3B Feldsp W5R4Ncc_ RREF  4280  17:56:25.00  07/07/1993
+ 13694  Microcline HS107.3B Feldspar W1R1Bd AREF   480  15:19:41.00  11/17/1986
+ 13706  Microcline HS107.3B Feldsp W5R4Ndc_ RREF  4280  23:27:28.00  07/07/1993
+ 13749  Microcline HS108.3B Feldspar W1R1Bc AREF   480  11:53:07.00  11/17/1986
+ 13761  Microcline HS108.3B Feldsp W5R4Nbb_ RREF  4280  17:35:51.00  07/07/1993
+ 13804  Microcline HS151.3B Feldspar W1R1Bc AREF   480  10:29:37.00  11/20/1986
+ 13816  Microcline HS151.3B Feldsp W5R4Nbb_ RREF  4280  19:05:19.00  07/07/1993
+ 13859  Microcline HS82.3B Feldspar  W1R1Bb AREF   480  13:42:58.00  11/13/1986
+ 13871  Microcline HS82.3B Feldspr W9R4Nbb? RREF  4280  22:58:32.00  08/18/1993
+ 13913  Microcline NMNH135231 Fspar  W1R1Bc AREF   480  16:31:26.00  02/10/1988
+ 13924  Microcline NMNH135231 FSpr W9R4Nbbb RREF  4280  00:00:00.00  11/24/****
+ 13967  Mirabilite GDS150 Na2SO4     W1R1Ba AREF   480  09:29:13.00  04/02/1993
+ 13978  Mirabilite GDS150 Na2SO4   W5R4Naa_ RREF  4280  17:13:20.00  07/08/1993
+ 14023  Mizzonite BM1931,12 Scapolte W1R1Bc AREF   480  09:04:54.00  05/22/1987
+ 14037  Mizzonite BM1931,12 Scapol W5R4Ncc_ RREF  4280  00:00:00.00  11/24/****
+ 14082  Mizzonite HS350.3B HLSp Scap W1R1Bc AREF   480  11:45:21.00  11/25/1987
+ 14096  Mizzonite HS350.3B HLSp    W5R4Ncc_ RREF  4280  00:00:00.00  11/24/****
+ 14141  Mizzonite HS351.3BS Scapolte W1R1Bc AREF   480  08:48:14.00  12/14/1988
+ 14155  Mizzonite HS351.3B Scap    W5R4Ncd_ RREF  4280  18:25:49.00  08/17/1993
+ 14199  Mizzonite NMNH113775-1 Scap  W1R1Bb AREF   480  08:49:28.00  11/18/1987
+ 14212  Monazite HS255.3B            W1R1Bc AREF   480  08:04:02.00  11/17/1986
+ 14225  Monazite HS255.3B          W9R4Nbbb RREF  4280  22:13:37.00  08/18/1993
+ 14268  Monticellite HS339.3B        W1R1Bb AREF   480  13:39:43.00  11/18/1986
+ 14280  Monticellite HS339.3B      W9R4Ncbb RREF  4280  18:06:23.00  08/17/1993
+ 14324  Montmorillonite CM20         W1R1Bb AREF   480  10:23:26.00  02/13/1986
+ 14338  Montmorillonite CM20       W5R4Nbc_ RREF  4280  00:00:00.00  11/24/****
+ 14382  Montmorillonite CM26         W1R1Bb AREF   480  12:19:28.00  02/13/1986
+ 14396  Montmorillonite CM26       W5R4Nbc_ RREF  4280  00:00:00.00  11/24/****
+ 14440  Montmorillonite CM27         W1R1Bb AREF   480  10:21:58.00  02/10/1986
+ 14453  Montmorillonite CM27       W5R4Nbb_ RREF  4280  00:00:00.00  11/24/****
+ 14498  Montmorillonite SAz-1        W1R1Bb AREF   480  11:39:14.00  08/29/1985
+ 14512  Montmorillonite SAz-1      W5R4Nbb_ RREF  4280  00:00:00.00  11/24/****
+ 14557  Montmorillonite SCa-2.a      W1R1Bb AREF   480  09:22:23.00  08/20/1986
+ 14571  Montmorillonite SCa-2.b      W1R1Bb AREF   480  09:31:07.00  03/02/1988
+ 14585  Montmorillonite SCa-2.b    W5R4Nbb_ RREF  4280  00:00:00.00  11/24/****
+ 14630  Montmorillonite STx-1        W1R1Bb AREF   480  10:34:28.00  01/30/1986
+ 14644  Montmorillonite STx-1      W5R4Nbb_ RREF  4280  00:00:00.00  11/24/****
+ 14688  Montmorillonite SWy-1        W1R1Bb AREF   480  10:02:41.00  01/30/1986
+ 14701  Montmorillonite SWy-1      W9R4Nbcc RREF  4280  00:00:00.00  11/24/****
+ 14743  Mordenite GDS18              W1R1Bb AREF   480  13:59:53.00  06/10/1987
+ 14754  Mordenite GDS18            W5R4Nbb_ RREF  4280  00:00:00.00  11/24/****
+ 14796  Mordenite+Clinopt. GDS151    W1R1Bb AREF   480  11:25:22.00  04/14/1993
+ 14806  Mordenite+Clinopt. GDS151  W5R4Ncc_ RREF  4280  19:01:04.00  07/08/1993
+ 14848  Muscovite CU93-1 low-Al Phyl W2R4Nb RREF  3325  03:39:57.00  01/11/1994
+ 14887  Muscovite GDS107             W1R1Ba AREF   480  14:52:27.00  04/16/1992
+ 14899  Muscovite GDS107           W5R4Naa_ RREF  4280  00:00:00.00  11/24/****
+ 14944  Muscovite GDS108             W1R1Bb AREF   480  12:37:53.00  04/16/1992
+ 14958  Muscovite GDS108           W5R4Nbb_ RREF  4280  00:00:00.00  11/24/****
+ 15002  Muscovite GDS111 Guatemal    W1R1Ba AREF   480  15:59:44.00  09/07/1992
+ 15015  Muscovite GDS111 Guatemal  W5R4Naa_ RREF  4280  00:00:00.00  11/24/****
+ 15059  Muscovite GDS113 Ruby        W1R1Bb AREF   480  14:12:33.00  09/08/1992
+ 15072  Muscovite GDS113 Ruby      W9R4Nbbb RREF  4280  00:00:00.00  11/24/****
+ 15116  Muscovite GDS114 Marshall    W1R1Ba AREF   480  08:55:36.00  09/08/1992
+ 15129  Muscovite GDS114 Marshall  W9R4Naaa RREF  4280  00:00:00.00  11/24/****
+ 15173  Muscovite GDS116 Tanzania    W1R1Ba AREF   480  13:20:54.00  09/09/1992
+ 15186  Muscovite GDS116 Tanzania  W9R4Naaa RREF  4280  00:00:00.00  11/24/****
+ 15230  Muscovite GDS117 Isinglas    W1R1Ba AREF   480  09:51:59.00  09/09/1992
+ 15243  Muscovite GDS117 Isingles  W9R4Naaa RREF  4280  00:00:00.00  11/24/****
+ 15287  Muscovite GDS118 Capitan     W1R1Ba AREF   480  10:07:35.00  09/07/1992
+ 15300  Muscovite GDS118 Capitan   W9R4Naaa RREF  4280  00:00:00.00  11/24/****
+ 15344  Muscovite GDS119 Mt Alamo    W1R1Ba AREF   480  11:35:29.00  06/16/1992
+ 15357  Muscovite GDS119 Mt Alamo  W5R4Na?_ RREF  4280  00:00:00.00  11/24/****
+ 15401  Muscovite GDS120 Pegma M.    W1R1Ba AREF   480  12:36:10.00  09/07/1992
+ 15414  Muscovite GDS120 Pegma M.  W5R4Naa_ RREF  4280  00:00:00.00  11/24/****
+ 15457  Muscovite HS146.3B           W1R1Ba AREF   480  10:55:44.00  08/08/1985
+ 15469  Muscovite HS146.3B         W9R4Naaa RREF  4280  00:00:00.00  11/24/****
+ 15512  Muscovite HS24.3             W1R1Bb AREF   480  14:24:52.00  06/16/1987
+ 15524  Muscovite HS24.3           W5R4Nbb_ RREF  4280  23:49:21.00  07/07/1993
+ 15566  Muscovite IL107              W1R1Ba AREF   480  11:11:20.00  07/09/1991
+ 15578  Nacrite GDS88                W1R1Bc AREF   480  09:55:58.00  05/08/1991
+ 15589  Nanohematite BR93-34B2       W1R1Bb AREF   480  15:25:46.00  05/04/1994
+ 15604  Natrolite HS169.3B Zeolite   W1R1Bb AREF   480  10:42:38.00  10/02/1985
+ 15616  Natrolite HS169.3B Zeolite W9R4Nbbb RREF  4280  00:00:00.00  11/24/****
+ 15659  Natrolite NMNH83380 Zeolite  W1R1Bb AREF   480  16:38:54.00  04/05/1993
+ 15671  Natrolite NMNH83380 Zeolit W5R4Nbb_ RREF  4280  17:37:54.00  07/08/1993
+ 15715  Neodymium_Oxide GDS34        W1R1Ba AREF   480  11:41:54.00  08/03/1988
+ 15729  Neodymium_Oxide GDS34      W5R4Naa_ RREF  4280  00:00:00.00  11/24/****
+ 15772  Nepheline HS19.3             W1R1Bc AREF   480  12:47:12.00  06/16/1987
+ 15784  Nepheline HS19.3           W5R4Nbc_ RREF  4280  22:44:54.00  07/07/1993
+ 15827  Nephrite HS296.3B            W1R1Bc AREF   480  11:51:57.00  11/10/1986
+ 15839  Nephrite HS296.3B          W5R4Ncb_ RREF  4280  21:33:50.00  07/26/1993
+ 15882  Nickeline HS264.3B           W1R1Bc AREF   480  10:10:17.00  06/11/1987
+ 15893  Nickeline HS264.3B         W5R4Ncd_ RREF  4280  19:39:15.00  08/13/1993
+ 15935  Niter GDS43 (K-Saltpeter)    W1R1Ba AREF   480  09:44:35.00  01/25/1993
+ 15946  Niter GDS43 (K-Saltpeter)  W5R4Naa_ RREF  4280  23:18:18.00  08/19/1993
+ 15991  Nontronite NG-1.a            W1R1Bb AREF   480  12:52:02.00  09/03/1985
+ 16005  Nontronite NG-1.a          W5R4Ncd_ RREF  4280  00:00:00.00  11/24/****
+ 16050  Nontronite NG-1.b <2um fr    W1R1Bb AREF   480  08:36:03.00  03/01/1988
+ 16064  Nontronite NG-1.b <2um fr  W5R4Nbb_ RREF  4280  00:00:00.00  11/24/****
+ 16109  Nontronite SWa-1.a           W1R1Bb AREF   480  12:01:56.00  09/03/1985
+ 16123  Nontronite SWa-1.a         W9R4Nbbb RREF  4280  00:00:00.00  11/24/****
+ 16168  Nontronite SWa-1.b  <2um     W1R1Ba AREF   480  10:27:18.00  02/26/1988
+ 16182  Nontronite SWa-1.b  <2um   W5R4Naa_ RREF  4280  00:00:00.00  11/24/****
+ 16226  Oligoclase HS110.3B          W1R1Bc AREF   480  08:11:17.00  11/14/1986
+ 16239  Oligoclase HS110.3B        W5R4Nbb_ RREF  4280  20:07:07.00  07/07/1993
+ 16284  Olivine GDS70.a Fo89 165um   W1R1Bb AREF   480  13:20:59.00  08/26/1985
+ 16298  Olivine GDS70.a Fo89 165um W9R4Nbbb RREF  4280  21:03:49.00  07/12/2007
+ 16343  Olivine GDS70.b Fo89 115um   W1R1Bb AREF   480  11:02:48.00  08/26/1985
+ 16357  Olivine GDS70.b Fo89 115um W9R4Nbbb RREF  4280  17:26:01.00  11/24/2004
+ 16402  Olivine GDS70.c Fo89  70um   W1R1Bb AREF   480  11:54:52.00  08/03/1985
+ 16416  Olivine GDS70.c Fo89  70um W9R4Nbbb RREF  4280  17:35:29.00  11/24/2004
+ 16461  Olivine GDS70.d Fo89 <60um   W1R1Bb AREF   480  14:49:22.00  08/03/1985
+ 16475  Olivine GDS70.d Fo89 <60um W9R4Nbbb RREF  4280  17:54:48.00  11/24/2004
+ 16520  Olivine GDS71.a Fo91 65um    W1R1Bb AREF   480  11:58:53.00  08/05/1985
+ 16534  Olivine GDS71.a Fo91 65um  W5R4Ncb_ RREF  4280  00:00:00.00  11/24/****
+ 16579  Olivine GDS71.b Fo91 65um  W5R4Ncb_ RREF  4280  21:31:00.00  11/18/2004
+ 16624  Olivine GDS71.b Fo91 <60um   W1R1Bb AREF   480  09:03:26.00  08/04/1985
+ 16638  Olivine GDS71.b Fo91 <60um W5R4Ncb_ RREF  4280  14:40:24.00  08/21/1992
+ 16681  Olivine HS285.4B Fo80        W1R1Bb AREF   480  14:12:32.00  10/03/1986
+ 16693  Olivine HS285.4B Fo80      W5R4Nbb_ RREF  4280  20:33:40.00  07/11/2007
+ 16736  Olivine HS420.3B Fo          W1R1Bc AREF   480  11:32:58.00  11/18/1986
+ 16748  Olivine HS420.3B Fo        W9R4Ncbb RREF  4280  22:42:38.00  02/21/2006
+ 16792  Olivine KI3005 Fo11 <60um    W1R1Bb AREF   480  14:45:16.00  08/04/1985
+ 16805  Olivine KI3005 Fo11 <60um  W5R4Nbb_ RREF  4280  22:38:55.00  08/20/1992
+ 16849  Olivine KI3054 Fo66 <60um    W1R1Bb AREF   480  17:45:38.00  08/04/1985
+ 16862  Olivine KI3054 Fo66 <60um  W9R4Ncbb RREF  4280  20:01:43.00  11/18/2004
+ 16906  Olivine KI3188 Fo51 <60um    W1R1Bb AREF   480  17:02:41.00  08/02/1985
+ 16919  Olivine KI3188 Fo51 <60um  W9R4Nbbb RREF  4280  20:19:14.00  11/18/2004
+ 16963  Olivine KI3189 Fo60 <60um    W1R1Bb AREF   480  13:53:37.00  08/01/1985
+ 16976  Olivine KI3189 Fo60 <60um  W5R4Nbb_ RREF  4280  20:31:02.00  05/10/2005
+ 17020  Olivine KI3291 Fo29 <60um    W1R1Bb AREF   480  17:08:49.00  08/01/1985
+ 17033  Olivine KI3291 Fo29 <60um  W5R4Nbb_ RREF  4280  14:22:23.00  08/21/1992
+ 17077  Olivine KI3377 Fo18 <60um    W1R1Bb AREF   480  13:42:39.00  08/02/1985
+ 17090  Olivine KI3377 Fo18 <60um  W9R4Nbbb RREF  4280  20:12:29.00  11/18/2004
+ 17134  Olivine KI4143 Fo41 <60um    W1R1Bb AREF   480  09:04:33.00  08/05/1985
+ 17147  Olivine KI4143 Fo41 <60um  W9R4Nbbb RREF  4280  21:08:01.00  05/10/2005
+ 17191  Olivine NMNH137044.a 160u    W1R1Ba AREF   480  14:17:50.00  03/28/1988
+ 17204  Olivine NMNH137044.b <74u    W1R1Ba AREF   480  16:08:26.00  03/28/1988
+ 17216  Opal TM8896 (Hyalite)        W1R1Ba AREF   480  09:38:44.00  04/15/1993
+ 17228  Opal TM8896 (Hyalite)      W5R4Naa_ RREF  4280  17:50:42.00  07/30/1993
+ 17271  Opal WS732                   W1R1Ba AREF   480  11:32:50.00  04/19/1991
+ 17283  Orthoclase HS13.3B           W1R1Bc AREF   480  14:17:01.00  11/24/1986
+ 17296  Orthoclase HS13.3B         W5R4Nbb_ RREF  4280  15:14:16.00  08/17/1993
+ 17338  Orthoclase NMNH113188        W1R1Bb AREF   480  14:50:10.00  02/10/1988
+ 17349  Orthoclase NMNH142137 Fe     W1R1Bb AREF   480  08:51:35.00  02/11/1988
+ 17360  Orthoclase NMNH142137 Fe   W5R4Nbb_ RREF  4280  00:00:00.00  11/24/****
+ 17404  Palygorskite CM46a Attapulg  W1R1Bb AREF   480  08:46:21.00  02/10/1986
+ 17415  Palygorskite PFL-1 Attapulg  W1R1Bb AREF   480  16:12:01.00  03/20/1991
+ 17429  Paragonite GDS109            W1R1Ba AREF   480  08:12:04.00  04/17/1992
+ 17443  Pectolite NMNH94865.a        W1R1Bb AREF   480  12:46:04.00  03/21/1988
+ 17456  Pectolite NMNH94865.a      W5R4Nbb_ RREF  4280  16:32:44.00  08/20/1993
+ 17501  Pectolite NMNH94865.b        W1R1Bb AREF   480  10:11:15.00  03/21/1988
+ 17514  Pectolite NMNH94865.b      W9R4Nbbb RREF  4280  00:00:00.00  11/24/****
+ 17557  Perthite HS415.3B            W1R1Bc AREF   480  12:12:34.00  11/14/1986
+ 17569  Perthite HS415.3B          W5R4Nbb_ RREF  4280  17:56:39.00  08/16/1993
+ 17614  Phlogopite GDS20 fine fr     W1R1Bb AREF   480  14:02:07.00  02/26/1988
+ 17628  Phlogopite GDS20 fine fr   W9R4Nbbb RREF  4280  00:00:00.00  11/24/****
+ 17673  Phlogopite HS23.3B           W1R1Bb AREF   480  00:12:16.00  01/01/1980
+ 17687  Phlogopite HS23.3B         W9R4Nbbb RREF  4280  00:00:00.00  11/24/****
+ 17731  Phlogopite WS496             W1R1Bb AREF   480  11:38:07.00  11/25/1986
+ 17744  Phlogopite WS496           W5R4Ncc_ RREF  4280  18:27:16.00  08/19/1993
+ 17787  Phlogopite WS675             W1R1Bb AREF   480  09:55:55.00  11/28/1986
+ 17799  Phlogopite WS675           W5R4Ncb_ RREF  4280  17:42:38.00  08/19/1993
+ 17843  Pigeonite HS199.3B           W1R1Bb AREF   480  10:18:46.00  11/10/1986
+ 17856  Pigeonite HS199.3B         W5R4Ncc_ RREF  4280  21:53:17.00  07/26/1993
+ 17898  Pinnoite NMNH123943          W1R1Ba AREF   480  13:38:51.00  03/10/1993
+ 17909  Pinnoite NMNH123943        W9R4Naaa RREF  4280  20:40:19.00  07/08/1993
+ 17952  Pitch_Limonite GDS104 Cu     W1R1B? AREF   480  16:51:12.00  04/12/1992
+ 17962  Polyhalite NMNH92669-4       W1R1Ba AREF   480  14:01:55.00  03/30/1993
+ 17973  Polyhalite NMNH92669-4     W5R4Naa_ RREF  4280  21:58:03.00  07/08/1993
+ 18015  Portlandite GDS525 Ca(OH)2   W1R1Fa AREF  2151  17:48:53.00  10/02/2001
+ 18039  Praseodymium_Oxide GDS35     W1R1Bb AREF   480  15:12:00.00  08/03/1988
+ 18051  Praseodymium_Oxide GDS35   W5R4Nbb_ RREF  4280  00:00:00.00  11/24/****
+ 18096  Prehnite GDS613.a <60um    W5R4Naa_ RREF  4280  17:10:03.00  05/03/2005
+ 18141  Prehnite GDS613.a <60um      W1R1Fa AREF  2151  21:14:14.00  04/22/2005
+ 18167  Prehnite GDS613.b >60um    W5R4Naa_ RREF  4280  17:13:41.00  05/03/2005
+ 18212  Prehnite GDS613.b >60um      W1R1Fa AREF  2151  21:14:14.00  04/22/2005
+ 18237  Prochlorite SMR-14.a 115um   W1R1Ba AREF   480  14:36:38.00  07/11/1985
+ 18251  Prochlorite SMR-14.a 115um   W2R4Na RREF  3325  00:00:00.00  11/24/****
+ 18292  Prochlorite SMR-14.a 115um W5R4Naa_ RREF  4280  00:00:00.00  11/24/****
+ 18337  Prochlorite SMR-14.b  32um   W1R1Ba AREF   480  11:01:59.00  07/24/1985
+ 18351  Prochlorite SMR-14.b  32um   W2R4Na RREF  3325  00:00:00.00  11/24/****
+ 18392  Prochlorite SMR-14.b  32um W5R4Naa_ RREF  4280  00:00:00.00  11/24/****
+ 18437  Prochlorite SMR-14.c <30um   W1R1Ba AREF   480  11:27:10.00  07/24/1985
+ 18451  Prochlorite SMR-14.c <30um W5R4Naa_ RREF  4280  00:00:00.00  11/24/****
+ 18495  Psilomelane HS139.3B         W1R1Bb AREF   480  12:27:22.00  07/21/1987
+ 18507  Psilomelane HS139.3B       W5R4Nbb_ RREF  4280  15:25:59.00  07/26/1993
+ 18550  Pyrite HS35.3                W1R1Bb AREF   480  10:04:15.00  06/10/1987
+ 18561  Pyrite HS35.3              W5R4Ncc_ RREF  4280  15:48:10.00  07/26/1993
+ 18605  Pyrite S142-1                W1R1Bc AREF   480  12:02:03.00  07/13/1987
+ 18617  Pyrite S26-8                 W1R1Bc AREF   480  08:39:31.00  06/29/1987
+ 18629  Pyrite S29-4                 W1R1Bc AREF   480  11:19:19.00  07/08/1987
+ 18641  Pyrite S30                   W1R1Bc AREF   480  08:19:17.00  07/10/1987
+ 18655  Pyrite GDS483.c 30-60um    W9R4Ncdb RREF  4280  17:22:47.00  05/03/2005
+ 18701  Pyrite GDS483.c 30-60um      W1R1Fc AREF  2151  21:14:14.00  04/22/2005
+ 18732  Pyrolusite HS138.3B          W1R1Bb AREF   480  14:46:15.00  07/21/1987
+ 18744  Pyrolusite HS138.3B        W5R4Nbc_ RREF  4280  16:40:07.00  07/12/1993
+ 18788  Pyrophyllite PYS1A <850um    W1R1Ba AREF   480  03:18:33.00  05/14/1987
+ 18801  Pyrophyllite PYS1A <850um    W2R4Na RREF  3325  00:00:00.00  11/24/****
+ 18841  Pyrophyllite PSY1A <850um  W9R4Naaa RREF  4280  00:00:00.00  11/24/****
+ 18885  Pyrophyllite PYS1A fine gr   W1R1Ba AREF   480  13:31:47.00  03/23/1988
+ 18898  Pyrophyllite PSY1A fine gr W9R4Naaa RREF  4280  00:00:00.00  11/24/****
+ 18941  Pyrophyllite SU1421          W1R1Bb AREF   480  15:27:49.00  01/26/1988
+ 18954  Pyroxene HS119.3B            W1R1Bc AREF   480  13:40:44.00  09/03/1986
+ 18967  Pyroxene HS119.3B          W9R4Nccc RREF  4280  00:00:00.00  11/24/****
+ 19010  Pyrrhotite HS269.3B          W1R1Bb AREF   480  09:22:59.00  06/10/1987
+ 19021  Pyrrhotite HS269.3B        W5R4Nbc_ RREF  4280  17:42:45.00  04/30/2007
+ 19064  Quartz GDS31 0-74um fr       W1R1Ba AREF   480  10:30:41.00  03/28/1988
+ 19075  Quartz GDS74 Sand Ottawa     W1R1Bc AREF   480  10:31:46.00  01/29/1988
+ 19086  Quartz GDS74 Sand Ottawa   W5R4Ncb_ AREF  4280  00:00:00.00  11/24/****
+ 19129  Quartz HS117.3B Aventurin    W1R1Bb AREF   480  11:16:31.00  12/11/1986
+ 19141  Quartz HS32.4B               W1R1Ba AREF   480  09:17:45.00  12/11/1986
+ 19153  Rectorite ISR202 (RAr-1)     W1R1B? AREF   480  13:21:06.00  07/10/1991
+ 19166  Rectorite RAr-1              W1R1Bd AREF   480  14:47:30.00  09/17/1985
+ 19179  Rectorite RAr-1            W5R4Nbb_ AREF  4280  00:00:00.00  11/24/****
+ 19222  Rhodochrosite HS338.3B       W1R1Bb AREF   480  15:27:14.00  04/14/1987
+ 19234  Rhodochrosite HS338.3B     W5R4Nbb_ RREF  4280  17:30:58.00  08/16/1993
+ 19277  Rhodochrosite HS67 <250um    W1R1Bb AREF   480  11:50:26.00  04/14/1987
+ 19289  Rhodochrosite HS67 <250um  W5R4Nbb_ RREF  4280  15:24:03.00  07/08/1993
+ 19332  Rhodonite HS325.3B           W1R1Bc AREF   480  11:18:33.00  11/12/1986
+ 19344  Rhodonite HS325.3B         W5R4Ncb_ RREF  4280  17:10:23.00  08/16/1993
+ 19388  Rhodonite NMNHC6148 >250um   W1R1Bb AREF   480  14:07:35.00  03/21/1988
+ 19401  Rhodonite NMNHC6148 >250um W5R4Nbb_ RREF  4280  00:00:00.00  11/24/****
+ 19444  Richterite HS336.3B Amphibol W1R1Bc AREF   480  11:35:21.00  10/06/1986
+ 19456  Richterite HS336.3B Amphib W9R4Nccc RREF  4280  22:14:29.00  08/16/1993
+ 19500  Richterite NMNH150800 HCl    W1R1Bb AREF   480  15:06:56.00  02/08/1988
+ 19513  Richterite NMNH150800 HCl  W5R4Nbb_ RREF  4280  00:00:00.00  11/24/****
+ 19557  Riebeckite HS326.3B Amphibol W1R1Bd AREF   480  15:10:34.00  10/01/1986
+ 19570  Reibeckite HS326.3B Amphib W9R4Nddd RREF  4280  22:17:27.00  08/16/1993
+ 19614  Riebeckite NMNH122689 Amph   W1R1Ba AREF   480  14:49:22.00  02/04/1988
+ 19626  Rivadavite NMNH170164 Amph   W1R1Ba AREF   480  16:16:38.00  03/03/1993
+ 19638  Rivadavite NMNH170164 Amph W9R4Naaa RREF  4280  16:36:33.00  07/09/1993
+ 19682  Roscoelite EN124             W1R1Bb AREF   480  16:32:53.00  09/12/1988
+ 19695  Rutile HS126.3B              W1R1Bc AREF   480  12:11:27.00  07/28/1987
+ 19708  Rutile HS126.3B            W9R4Ncbb RREF  4280  00:00:00.00  11/24/****
+ 19751  Rutile HS137.3B              W1R1Bd AREF   480  14:58:30.00  07/17/1987
+ 19763  Rutile HS137.3B            W5R4Ncb_ RREF  4280  00:00:00.00  11/24/****
+ 19806  Samarium_Oxide GDS36         W1R1Ba AREF   480  09:00:20.00  08/04/1988
+ 19819  Samarium Oxide GDS36       W5R4Naa_ RREF  4280  00:00:00.00  11/24/****
+ 19863  Sanidine GDS19 Feldspar      W1R1Ba AREF   480  08:48:49.00  02/08/1988
+ 19876  Sanidine GDS19 Feldspar    W9R4Naaa RREF  4280  00:00:00.00  11/24/****
+ 19920  Sanidine NMNH103200 Feldspar W1R1Bb AREF   480  13:24:32.00  02/10/1988
+ 19933  Sanidine NMNH103200 Feldsp W5R4Nbb_ RREF  4280  00:00:00.00  11/24/****
+ 19977  Saponite SapCa-1             W1R1Bb AREF   480  13:17:45.00  08/09/1985
+ 19990  Saponite SapCa-1.AcB         W1R1Bb AREF   480  10:04:49.00  02/27/1987
+ 20002  Saponite SapCa-1.AcB       W9R4Nbbb RREF  4280  00:00:00.00  11/24/****
+ 20044  Sauconite GDS135             W1R1Bb AREF   480  12:19:27.00  04/19/1993
+ 20055  Sauconite GDS135           W9R4Nbb? RREF  4280  21:32:20.00  07/30/1993
+ 20097  Schwertmannite BZ93-1        W1R1Bb AREF   480  14:11:11.00  02/10/1993
+ 20112  Scolecite GDS7 Zeolite       W1R1Bb AREF   480  13:57:43.00  08/22/1986
+ 20124  Scolecite GDS7 Zeolite     W5R4Nbb_ RREF  4280  00:00:00.00  11/24/****
+ 20168  Sepiolite SepNev-1           W1R1Bb AREF   480  13:11:46.00  01/30/1986
+ 20181  Sepiolite SepNev-1         W5R4Nbb_ RREF  4280  00:00:00.00  11/24/****
+ 20225  Sepiolite SepNev-1.AcB       W1R1Ba AREF   480  15:38:46.00  02/26/1986
+ 20238  Sepiolite SepNev-1.AcB     W5R4Naa_ RREF  4280  00:00:00.00  11/24/****
+ 20282  Sepiolite SepSp-1            W1R1Bb AREF   480  11:36:35.00  03/05/1986
+ 20295  Sepiolite SepSp-1          W5R4Ncb_ RREF  4280  00:00:00.00  11/24/****
+ 20339  Sepiolite SepSp-1.AcB        W1R1Bb AREF   480  08:44:05.00  02/27/1987
+ 20352  Sepiolite SepSp-1.AcB      W5R4Nbc_ RREF  4280  00:00:00.00  11/24/****
+ 20395  Serpentine HS318.4B          W1R1Bc AREF   480  13:38:53.00  11/17/1986
+ 20407  Serpentine HS8.3B            W1R1Bc AREF   480  22:42:57.00  06/19/1987
+ 20418  Serpentine HS8.3B          W9R4Ncbc RREF  4280  18:05:47.00  08/17/1993
+ 20461  Siderite HS271.3B            W1R1Ba AREF   480  15:48:46.00  07/16/1987
+ 20472  Siderite HS271.3B          W5R4Naa_ RREF  4280  00:00:00.00  11/24/****
+ 20516  Siderophyllite NMNH104998    W1R1Bb AREF   480  08:11:34.00  04/30/1992
+ 20529  Siderophyllite NMNH104998  W5R4N??_ RREF  4280  00:00:00.00  11/24/****
+ 20572  Sillimanite HS186.3B         W1R1Bc AREF   480  12:05:52.00  09/02/1986
+ 20584  Sillimanite HS186.3B       W5R4Ncc_ RREF  4280  18:04:06.00  07/26/1993
+ 20628  Smaragdite HS290.3B Amphibol W1R1Bb AREF   480  08:24:44.00  11/18/1986
+ 20641  Smaragdite HS290.3B        W9R4Nbbb RREF  4280  21:59:19.00  08/16/1993
+ 20683  Sodium_Bicarbonate GDS55     W1R1Ba AREF   480  11:48:07.00  01/26/1993
+ 20694  Sodium Bicarbonate GDS55   W5R4Naa_ RREF  4280  17:53:53.00  06/18/2007
+ 20737  Spessartine HS112.3B Garnet  W1R1Bb AREF   480  15:29:46.00  08/27/1986
+ 20749  Spessartine HS112.3B       W5R4Ncc_ RREF  4280  15:45:18.00  07/08/1993
+ 20793  Spessartine NMNH14143 Garnet W1R1Bb AREF   480  14:46:01.00  12/01/1986
+ 20806  Spessartine NMNH14143 Garn W9R4Ncbb RREF  4280  15:24:23.00  08/21/1992
+ 20849  Spessartine WS480 Garnet     W1R1Bb AREF   480  16:01:51.00  11/28/1986
+ 20861  Spessartine WS480 Garnet   W5R4Ncc_ RREF  4280  18:52:27.00  08/19/1993
+ 20903  Spessartine WS481 Garnet     W1R1B? AREF   480  12:00:30.00  11/20/1986
+ 20914  Spessartine WS481 Garnet   W5R4Ncb_ RREF  4280  16:58:12.00  08/19/1993
+ 20958  Sphalerite HS136.3B          W1R1Bb AREF   480  11:24:20.00  01/23/1986
+ 20971  Sphalerite HS136.3B        W9R4N??? RREF  4280  00:00:00.00  11/24/****
+ 21014  Sphalerite S102-7            W1R1Bc AREF   480  08:37:52.00  06/30/1987
+ 21026  Sphalerite S102-8            W1R1Bc AREF   480  01:35:59.00  01/02/1980
+ 21037  Sphalerite S26-34            W1R1Bb AREF   480  09:54:49.00  07/10/1987
+ 21048  Sphalerite S26-35            W1R1Bb AREF   480  10:44:11.00  07/08/1987
+ 21059  Sphene HS189.3B              W1R1Bb AREF   480  09:58:30.00  10/07/1986
+ 21071  Sphene HS189.3B            W5R4Ncc_ RREF  4280  21:13:09.00  07/26/1993
+ 21114  Spodumene HS210.3B           W1R1Bc AREF   480  13:17:59.00  10/01/1986
+ 21126  Spodumene HS210.3B         W5R4Ncc_ RREF  4280  19:50:12.00  07/26/1993
+ 21169  Staurolite HS188.3B          W1R1Bb AREF   480  08:44:59.00  09/02/1986
+ 21181  Staurolite HS188.3B        W5R4Ncd_ RREF  4280  20:50:42.00  07/26/1993
+ 21224  Stilbite GDS8 Zeolite        W1R1Bb AREF   480  08:45:16.00  08/22/1986
+ 21236  Stilbite GDS8 Zeolite      W5R4Nbb_ RREF  4280  16:32:12.00  08/19/1993
+ 21279  Stilbite HS482.3B Zeolite    W1R1Bb AREF   480  10:14:22.00  08/25/1986
+ 21291  Stilbite HS482.3B Zeolite  W9R4N??? RREF  4280  16:49:43.00  08/16/1993
+ 21334  Strontianite HS272.3B        W1R1Bb AREF   480  10:31:58.00  07/16/1987
+ 21346  Strontianite HS272.3B      W5R4Nbb_ RREF  4280  16:40:51.00  07/26/1993
+ 21389  Sulfur GDS94 Reagent         W1R1Ba AREF   480  09:11:10.00  12/07/1992
+ 21401  Sulfur GDS94 Reagent       W5R4Naa_ RREF  4280  00:00:00.00  11/24/****
+ 21444  Syngenite GDS139             W1R1Ba AREF   480  13:48:42.00  03/05/1993
+ 21456  Syngenite GDS139           W5R4Naa_ RREF  4280  22:20:59.00  07/08/1993
+ 21499  Talc GDS23 74-250um fr       W1R1Ba AREF   480  10:06:57.00  03/15/1988
+ 21511  Talc GDS23 74-250um        W9R4Naaa RREF  4280  00:00:00.00  11/24/****
+ 21556  Talc HS21.3B                 W1R1Bb AREF   480  09:27:58.00  12/23/1985
+ 21570  Talc HS21.3B               W9R4Nbbb RREF  4280  00:00:00.00  11/24/****
+ 21613  Talc TL2702                  W1R1Ba AREF   480  16:08:15.00  07/10/1991
+ 21626  Talc WS659                   W1R1Bb AREF   480  16:16:12.00  01/02/1987
+ 21639  Talc WS659                 W9R4Nbbb RREF  4280  00:00:00.00  11/24/****
+ 21682  Thenardite GDS146            W1R1Bc AREF   480  19:46:09.00  03/10/1993
+ 21694  Thenardite GDS146          W9R4Ncc? RREF  4280  20:47:25.00  07/09/1993
+ 21737  Thenardite HS450.3B          W1R1Ba AREF   480  09:28:50.00  01/27/1993
+ 21751  Thuringite SMR-15.a 115um    W1R1Bb AREF   480  11:44:32.00  07/25/1985
+ 21765  Thuringite SMR-15.a 115um  W5R4Nbc_ RREF  4280  00:00:00.00  11/24/****
+ 21810  Thuringite SMR-15.b  80um    W1R1Ba AREF   480  13:00:36.00  07/25/1985
+ 21824  Thuringite SMR-15.b  80um    W2R4Na RREF  3325  00:00:00.00  11/24/****
+ 21865  Thuringite SMR-15.b  80um  W5R4Naa_ RREF  4280  00:00:00.00  11/24/****
+ 21910  Thuringite SMR-15.c  32um    W1R1Ba AREF   480  14:11:01.00  07/25/1985
+ 21924  Thuringite SMR-15.c  32um  W5R4Naa_ RREF  4280  00:00:00.00  11/24/****
+ 21969  Thuringite SMR-15.d <30um    W1R1Ba AREF   480  11:27:10.00  07/24/1985
+ 21983  Thuringite SMR-15.d <30um  W5R4Naa_ RREF  4280  00:00:00.00  11/24/****
+ 22026  Tincalconite GDS142          W1R1Ba AREF   480  16:14:01.00  03/08/1993
+ 22038  Tincalconite GDS142        W5R4Naa_ RREF  4280  18:00:40.00  07/08/1993
+ 22081  Topaz Cameron_Cone_#42       W1R1Bb AREF   480  09:07:34.00  08/10/1988
+ 22094  Topaz Cameron_Cone_#42     W5R4Nbb_ RREF  4280  00:00:00.00  11/24/****
+ 22137  Topaz Crystal_Park_#2        W1R1Bb AREF   480  15:11:36.00  06/23/1988
+ 22150  Topaz Crystal_Park_#2      W5R4Nbb_ RREF  4280  00:00:00.00  11/24/****
+ 22193  Topaz Glen_Cove_#6           W1R1Bb AREF   480  13:49:40.00  06/25/1988
+ 22206  Topaz Glen_Cove_#6         W5R4Nbb_ RREF  4280  00:00:00.00  11/24/****
+ 22249  Topaz Glen_Cove_#8           W1R1Bb AREF   480  09:10:21.00  06/26/1988
+ 22261  Topaz Glen_Cove_#8         W5R4Nbb_ RREF  4280  00:00:00.00  11/24/****
+ 22304  Topaz HS184.3B               W1R1Bc AREF   480  11:09:27.00  01/05/1986
+ 22317  Topaz HS184.3B             W5R4Ncc_ RREF  4280  00:00:00.00  11/24/****
+ 22360  Topaz Harris_Park_#17        W1R1Bb AREF   480  17:18:51.00  06/28/1988
+ 22373  Topaz Harris_Park_#17      W5R4Nbb_ RREF  4280  00:00:00.00  11/24/****
+ 22416  Topaz Harris_Park_#3         W1R1Bb AREF   480  10:42:19.00  06/24/1988
+ 22429  Topaz Harris_Park_#9         W1R1Bb AREF   480  13:43:21.00  06/26/1988
+ 22441  Topaz Harris_Park_#9       W5R4Nbb_ RREF  4280  00:00:00.00  11/24/****
+ 22484  Topaz Jos_#22                W1R1Bb AREF   480  13:16:32.00  06/29/1988
+ 22497  Topaz Jos_#22              W5R4Nbb_ RREF  4280  18:04:28.00  08/21/1992
+ 22540  Topaz Little_3_Mine_#41      W1R1Bb AREF   480  17:05:03.00  08/10/1988
+ 22552  Topaz Little_3_Mine_#41    W5R4Nbb_ RREF  4280  00:00:00.00  11/24/****
+ 22595  Topaz Mt._Antero_#5          W1R1Bb AREF   480  09:35:59.00  06/25/1988
+ 22608  Topaz Tarryalls_#4           W1R1Bb AREF   480  14:14:29.00  06/24/1988
+ 22621  Topaz Tarryalls_#4         W5R4Nbb_ RREF  4280  00:00:00.00  11/24/****
+ 22664  Topaz Wigwam_Area_2_#12      W1R1Bb AREF   480  10:03:08.00  06/27/1988
+ 22676  Topaz Wigwam_Area_2_#12    W5R4Nbb_ RREF  4280  00:00:00.00  11/24/****
+ 22719  Topaz Wigwam_Area_3_#13      W1R1Bb AREF   480  14:15:20.00  06/27/1988
+ 22731  Topaz Wigwam_Area_3_#13    W5R4Nbb_ RREF  4280  00:00:00.00  11/24/****
+ 22774  Topaz Wigwam_Area_4_#14      W1R1Bb AREF   480  14:20:27.00  08/11/1988
+ 22786  Topaz Wigwam_Area_4_#14    W5R4Nbb_ RREF  4280  00:00:00.00  11/24/****
+ 22829  Topaz Wigwam_Area_5_#15      W1R1Bb AREF   480  09:13:38.00  06/28/1988
+ 22841  Topaz Wigwam_Area_5_#15    W5R4Nbb_ RREF  4280  00:00:00.00  11/24/****
+ 22884  Topaz Wigwam_Area_6_#16      W1R1Bb AREF   480  13:39:46.00  06/28/1988
+ 22897  Topaz Wigwam_Area #16      W5R4Nbb_ RREF  4280  00:00:00.00  11/24/****
+ 22940  Topaz Wigwam_Area_A_#10      W1R1Bb AREF   480  17:14:56.00  06/26/1988
+ 22953  Topaz Wigwam_Area #10      W5R4Nbb_ RREF  4280  00:00:00.00  11/24/****
+ 22996  Tourmaline HS282.2B          W1R1Bc AREF   480  12:10:23.00  01/09/1986
+ 23008  Tourmaline HS282.2B        W9R4Nccc RREF  4280  00:00:00.00  11/24/****
+ 23052  Tremolite HS18.3             W1R1Bc AREF   480  09:01:39.00  09/08/1985
+ 23065  Tremolite HS18.3B          W9R4Nccc RREF  4280  00:00:00.00  11/24/****
+ 23109  Tremolite NMNH117611.HCl     W1R1Bc AREF   480  13:26:42.00  02/08/1988
+ 23122  Tremolite NMNH117611.HCL   W5R4Nbb_ RREF  4280  00:00:00.00  11/24/****
+ 23164  Trona GDS148                 W1R1Ba AREF   480  10:52:16.00  04/01/1993
+ 23174  Trona GDS148               W5R4Naa_ RREF  4280  20:00:44.00  07/09/1993
+ 23216  Ulexite GDS138 Boron, CA     W1R1Ba AREF   480  13:43:02.00  03/03/1993
+ 23227  Ulexite GDS138             W5R4Naa_ RREF  4280  21:38:15.00  07/08/1993
+ 23270  Ulexite HS441.3B             W1R1Ba AREF   480  12:24:42.00  01/27/1993
+ 23282  Ulexite HS441.3B           W5R4Naa_ RREF  4280  15:25:46.00  08/13/1993
+ 23325  Uralite HS345.3B             W1R1Bb AREF   480  14:36:51.00  10/07/1986
+ 23337  Uralite HS345.3B           W5R4Ncc_ RREF  4280  18:20:39.00  08/16/1993
+ 23381  Uvarovite NMNH106661 Garnet  W1R1Bb AREF   480  20:06:43.00  05/12/1987
+ 23393  Uvarovite NMNH106661       W5R4Ncb_ RREF  4280  00:00:00.00  11/24/****
+ 23435  Vermiculite GDS13 Llano      W1R1Ba AREF   480  16:01:36.00  03/02/1987
+ 23448  Vermiculite VTx-1.a <250     W1R1Bc AREF   480  09:25:57.00  03/31/1987
+ 23461  Vermiculite VTx-1.fls        W1R1Bc AREF   480  10:45:06.00  03/24/1987
+ 23472  Vermiculite WS681            W1R1Bc AREF   480  09:16:05.00  06/27/1986
+ 23483  Vermiculite WS681          W5R4Ncc_ RREF  4280  00:00:00.00  11/24/****
+ 23527  Vesuvianite HS446.3B Idocras W1R1Ba AREF   480  15:01:50.00  09/03/1986
+ 23540  Vesuvianite HS446.3B       W9R4Naaa RREF  4280  18:07:29.00  08/17/1993
+ 23583  Witherite HS273.3B           W1R1Ba AREF   480  13:12:48.00  07/16/1987
+ 23595  Witherite HS273.3B         W5R4Naa_ RREF  4280  16:40:24.00  07/26/1993
+ 23639  Wollastonite HS348.3B        W1R1Bb AREF   480  10:36:20.00  09/09/1986
+ 23652  Wollastonite HS348.3B      W9R4Nccc RREF  4280  19:18:01.00  08/16/1993
+ 23695  Zircon WS522                 W1R1Ba AREF   480  13:46:00.00  04/14/1987
+ 23707  Zoisite HS347.3B             W1R1Bb AREF   480  12:51:22.00  04/17/1987
+ 23719  Zoisite HS347.3B           W9R4Nbcc RREF  4280  00:00:00.00  11/24/****
+ 23761  Zunyite GDS-241B <150um      W1R1B? AREF   480  14:36:58.00  09/28/1995
+ 23775  Acid_Mine_Dr Assemb1-Fe3+    W1R1Fb AREF  2151  21:07:56.00  10/11/1995
+ 23799  Acid_Mine_Dr Assemb2-Fe3+    W1R1Fb AREF  2151  20:05:02.00  08/23/1995
+ 23822  Actinolite-Hornfels BR93-5a  W1R1Bc AREF   480  12:26:38.00  02/02/1994
+ 23833  Actinolite-Tremolit BR93-22C W1R1Bb AREF   480  07:27:46.00  02/02/1994
+ 23844  Actinolite_Dolomit BR93-60B  W1R1Bb AREF   480  08:45:58.00  01/20/1994
+ 23855  Alun.33+Kaol.33+Musc.33 AMX2 W1R1Ba AREF   480  09:02:10.00  10/01/1991
+ 23867  Alun0.3+Musc0.4+Pyro0.3 AMX1 W1R1Ba AREF   480  00:00:00.00  11/24/****
+ 23881  Alun366+.50PyroPYS1A GDS222  W1R1Bb AREF   480  15:04:16.00  02/14/1986
+ 23894  Alun_Na+Kaol+Hemat  MV00-11a W1R1Fc AREF  2151  20:48:51.00  09/24/2002
+ 23913  Alunite+Pyrophyl SD1093A     W1R1Bb AREF   480  08:54:11.00  11/14/1994
+ 23924  Alunite-K CU91-217G1 HiTemp  W1R1Fb AREF  2151  22:13:44.00  06/26/2003
+ 23945  Alunite+Dickite MV99-6-26b   W1R1Fc AREF  2151  00:00:00.00  11/24/****
+ 23965  Alunite.5+MuscCU91-250A AMX4 W1R1Ba AREF   480  09:02:10.00  10/01/1991
+ 23978  Alunite0.35K+.65Na CU91-217H W1R1Fb AREF  2151  22:49:11.00  06/26/2003
+ 24001  Alunite0.35K+.65Na CU91-217H W2R4Nb RREF  3325  00:00:00.00  11/24/****
+ 24039  Alunite0.5+Kaol_KGa-1 AMX3   W1R1Bb AREF   480  11:31:11.00  01/29/1986
+ 24051  Alunite0.66K+.34Na CU91-217A W2R4Nb RREF  3325  00:00:00.00  11/24/****
+ 24090  Alunite0.73K+.27Na CU91-217D W2R4Na RREF  3325  00:00:00.00  11/24/****
+ 24129  Alunite_K CU98-5C MedTemp    W1R1Fb AREF  2151  18:44:23.00  04/16/2003
+ 24153  Alunite_K-Na CU91-217H1 LowT W1R1Fb AREF  2151  22:49:11.00  06/26/2003
+ 24175  Alunite_NH4+Jaro NMNH145596A W1R1Bb AREF   480  17:45:27.00  05/06/1991
+ 24187  Alunite_NH4+Ja NMNH145596A W5R4Nbb_ RREF  4280  00:00:00.00  11/24/****
+ 24230  Alunite_NH4+Jaro NMNH145596A W1R1Fb AREF  2151  00:07:16.00  04/28/2005
+ 24252  Basalt_fresh BR93-46B        W1R1Bb AREF   480  12:54:28.00  01/12/1994
+ 24263  Basalt_weathered BR93-43     W1R1Bb AREF   480  12:55:04.00  01/21/1993
+ 24274  Beidellite+Montmor GDS123    W1R1Fb AREF  2151  21:14:13.00  04/22/2005
+ 24297  Beidellite+Montmor GDS123  W9R4Nbbb RREF  4280  00:00:00.00  11/24/****
+ 24340  Beidellite+Montmor GDS124    W1R1Fb AREF  2151  21:14:13.00  04/22/2005
+ 24364  Beidellite+Montmor GDS124  W9R4Nbbb RREF  4280  00:00:00.00  11/24/****
+ 24407  Biotite-Chlorite_Mx BR93-36A W1R1Bb AREF   480  13:25:20.00  01/31/1994
+ 24417  Blue_Efflorscnt_Min SU93-300 W1R1Bb AREF   480  15:54:12.00  02/07/1993
+ 24428  Buddingtnt+Na-Mont CU93-260B W2R4Nb RREF  3325  23:36:30.00  03/06/1995
+ 24466  Calc.25+Dolo.25+Ca-Mon AMX7  W1R1Bb AREF   480  11:39:14.00  08/29/1985
+ 24480  Calc.25+dolo.25+mont.5 AMX18 W1R1Bb AREF   480  10:02:41.00  01/30/1986
+ 24493  Calcite+.33Muscov AMX5 Ruby  W1R1Ba AREF   480  14:12:33.00  09/08/1992
+ 24507  Calcite+.50Ca-Mont AMX6      W1R1Bb AREF   480  11:39:14.00  08/29/1985
+ 24521  Calcite+Dolomite.5 AMX8      W1R1Bb AREF   480  08:29:15.00  02/18/1986
+ 24536  Calcite+Talc PC99-1G         W1R1Fc AREF  2151  21:38:53.00  09/24/2002
+ 24558  Calcite.33+Ca-mont.67 AMX19  W1R1Bb AREF   480  11:39:14.00  08/29/1985
+ 24573  Calcite.33+Epidote.67 GDS311 W1R1Fa AREF  2151  16:59:47.00  07/28/1999
+ 24594  Calcite.67+Epidote.33 GDS310 W1R1Fa AREF  2151  16:54:47.00  07/28/1999
+ 24615  Calcite.7+Kaolwxl.3 AMX9     W1R1Ba AREF   480  11:31:11.00  01/29/1986
+ 24629  Calcite.8+Ca-Montmor.2 AMX15 W1R1Bb AREF   480  14:52:50.00  01/17/1986
+ 24644  Calcite.80+Mont_Swy-1 GDS212 W1R1Ba AREF   480  11:57:07.00  05/23/1994
+ 24657  Calcite.80wt+Kaol_CM9 GDS213 W1R1Ba AREF   480  15:10:30.00  05/24/1994
+ 24671  Chabazite+Thom+Wair HS193.3B W1R1Bb AREF   480  11:32:42.00  08/25/1986
+ 24683  Chabazt+Thom+Wair HS193.3B W5R4Nbb_ RREF  4280  16:58:21.00  07/26/1993
+ 24727  Chl.33+Epid.33+Cal.33 GDS319 W1R1Fa AREF  2151  05:45:27.00  07/31/1999
+ 24750  Chlor+Goethite CU93-4B Phyl  W1R1Ba AREF   480  16:09:08.00  08/28/1995
+ 24766  Chlor.2+Epid.2+Calc.6 GDS314 W1R1Fa AREF  2151  17:17:26.00  07/28/1999
+ 24789  Chlor.2+Epid.6+Calc.2 GDS312 W1R1Fa AREF  2151  17:06:10.00  07/28/1999
+ 24811  Chlor.6+Epid.2+Calc.2 GDS313 W1R1Fa AREF  2151  17:11:16.00  07/28/1999
+ 24833  Chlorit.33+Calcite.67 GDS315 W1R1Fa AREF  2151  17:23:23.00  07/28/1999
+ 24855  Chlorite+Muscovite CU93-65A  W1R1Ba AREF   480  09:49:00.00  08/29/1995
+ 24870  Chlorite.33+Epidot.67 GDS318 W1R1Fa AREF  2151  05:38:00.00  07/31/1999
+ 24892  Chlorite.67+Calcit.33 GDS316 W1R1Fa AREF  2151  05:23:38.00  07/31/1999
+ 24914  Chlorite.67+Epidot.33 GDS317 W1R1Fa AREF  2151  05:31:24.00  07/31/1999
+ 24936  Chlorite_Phyllite CU91-238A  W1R1Bb AREF   480  12:02:14.00  09/07/1995
+ 24951  Chlorite_Serpentine BR93-22B W1R1Bb AREF   480  09:58:08.00  02/02/1994
+ 24965  Dic.4+msc.3+gyp.2+jr.1 AMX20 W1R1Ba AREF   480  12:17:40.00  01/02/1991
+ 24979  Dickite+others CU91-219B     W2R4Na AREF  3325  00:00:00.00  11/24/****
+ 25017  Dolomit+Calcite+Talc PC99-1E W1R1Fc AREF  2151  01:00:39.00  07/28/1999
+ 25039  Dolomite.5+Na-mont.5 AMX21   W1R1Bb AREF   480  10:02:41.00  01/30/1986
+ 25052  Dolomite.50+Ca-Montmor AMX10 W1R1Bb AREF   480  11:39:14.00  08/29/1985
+ 25066  Erionite+Merlinoite GDS144   W1R1Bc AREF   480  14:42:41.00  04/14/1993
+ 25076  Erionite+Merlinoite GDS144 W5R4Nbb_ RREF  4280  22:39:24.00  07/08/1993
+ 25119  Erionite+Offretite GDS72     W1R1Bb AREF   480  09:58:40.00  09/15/1987
+ 25131  Erionite+Offretite GDS72   W5R4Nbb_ RREF  4280  16:33:14.00  08/20/1993
+ 25174  Fe-Hydroxide SU93-106 amorph W1R1Bb AREF   480  14:40:14.00  01/25/1994
+ 25184  Goeth+qtz.5+Jarosite.5 AMX11 W1R1Bb AREF   480  15:15:25.00  06/18/1992
+ 25198  Goethite0.02+Quartz GDS240   W1R1Ba AREF   480  11:46:31.00  09/08/1995
+ 25213  Goethite_Phyllite CU91-236A  W1R1Fb AREF  2151  18:44:22.00  04/16/2003
+ 25237  Gyp+jar+ill BRCM1 Marysvale  W1R1Fb AREF  2151  00:04:39.00  12/15/1999
+ 25258  Gyp.3+jr.1+msc.4+dic.2 AMX22 W1R1Ba AREF   480  12:17:40.00  01/02/1991
+ 25272  Gyp.4+jr20+msc.2+dic.2 AMX23 W1R1Ba AREF   480  12:17:40.00  01/02/1991
+ 25287  Gyp.5+Kjar.3+hAlmsc.2 AMX24  W1R1Ba AREF   480  14:12:33.00  09/08/1992
+ 25302  Halloysite CU91-242D         W1R1Fb AREF  2151  18:44:22.00  04/16/2003
+ 25328  Halloysite+Kaolinite CM29    W1R1Ba AREF   480  12:45:47.00  08/30/1985
+ 25341  Halloysite+Kaolinite CM29  W9R4Naaa RREF  4280  00:00:00.00  11/24/****
+ 25384  Hematite.02+Quartz.98 GDS76  W1R1Ba AREF   480  18:50:35.00  01/30/1991
+ 25396  Hematitic_Alt._Tuff CU91-223 W1R1Fb AREF  2151  01:09:31.00  06/27/2003
+ 25417  Hydrated_Volc_Tuff CU01-4A   W1R1Fc AREF  2151  20:09:04.00  07/11/2001
+ 25438  Illite CU00-5B Hi-Al+Quartz  W1R1Fa AREF  2151  18:04:43.00  10/26/2000
+ 25459  Jarosite_Rhyolite CU91-20A   W1R1Ba AREF   480  17:19:20.00  04/08/1991
+ 25474  Kalun+kaol+gth mv2-ar3       W1R1Fb AREF  2151  00:00:00.00  11/24/****
+ 25494  Kaol+Musc_intimate CU93-5C   W1R1Ba AREF   480  09:39:57.00  08/28/1995
+ 25507  Kaol.5+MuscCU91-250A AMX13   W1R1Bb AREF   480  09:02:10.00  10/01/1991
+ 25521  Kaol_Wxl+0.5Musc_Ruby AMX12  W1R1Ba AREF   480  09:29:59.00  10/20/1985
+ 25536  Kaol_wxl+others CU00-19A     W1R1Fb AREF  2151  16:28:29.00  11/21/2000
+ 25557  Kaol_wxl+others CU91-200A    W1R1Fb AREF  2151  23:32:41.00  08/07/2003
+ 25581  Kaolin/Smect KLF511 .12Kaol  W1R1Bb AREF   480  10:03:49.00  04/15/1992
+ 25593  Kaolin/Smect KLF511 .12K   W5R4Ncc_ RREF  4280  00:00:00.00  11/24/****
+ 25636  Kaolin_Smect H89-FR-2 .5Kaol W1R1Bb AREF   480  12:14:33.00  04/14/1991
+ 25648  Kaolin_Smect H89-FR-2 .5K  W5R4Nbb_ RREF  4280  00:00:00.00  11/24/****
+ 25691  Kaolin_Smect H89-FR-5 .3Kaol W1R1Bb AREF   480  16:39:07.00  04/13/1992
+ 25703  Kaolin_Smect KLF506  .95Kaol W1R1Bb AREF   480  13:37:29.00  04/17/1992
+ 25715  Kaolin_Smect KLF506 .95kao W5R4Nbb_ RREF  4280  00:00:00.00  11/24/****
+ 25758  Kaolin_Smect KLF508  .85Kaol W1R1Bb AREF   480  11:43:18.00  04/17/1992
+ 25770  Kaolin_Smect KLF508 .85Kao W5R4Nbb_ RREF  4280  00:00:00.00  11/24/****
+ 25812  Kaolwxl.75+Alun_HS295 AMX14  W1R1Bb AREF   480  10:03:31.00  11/22/1985
+ 25827  Limestone CU02-11A           W1R1Fa AREF  2151  22:18:00.00  05/02/2002
+ 25848  Magnesite+Hydroma HS47.3B    W1R1Ba AREF   480  08:45:42.00  07/16/1987
+ 25861  Magnesite+Hydroma HS47.3B  W5R4Naa_ RREF  4280  20:56:55.00  07/07/1993
+ 25904  Magnetite_skarn BR93-5B      W1R1Bb AREF   480  13:33:44.00  02/02/1994
+ 25914  Mesolite+Hydroxyapop GDS6    W1R1Bb AREF   480  10:13:35.00  08/22/1986
+ 25925  Mesolite+Hydroxyapop GDS6  W5R4Nbc_ RREF  4280  00:00:00.00  11/24/****
+ 25969  Montmorillonite+Illite CM37  W1R1Bb AREF   480  13:21:29.00  01/29/1986
+ 25982  Montmorillonite+Illite CM42  W1R1Bb AREF   480  15:02:00.00  01/29/1986
+ 25995  Montmorillonite-Na CU93-52A  W1R1Bc AREF   480  15:06:40.00  07/13/1993
+ 26008  Muscov+Jaros CU93-314 coatng W1R1Bb AREF   480  15:26:01.00  09/06/1995
+ 26022  Muscovite CU91-250A med Al   W2R4Nb RREF  3325  00:00:00.00  11/24/****
+ 26061  Muscovite+Chlorite CU91-253D W2R4Na RREF  3325  00:00:00.00  11/24/****
+ 26100  Muscovite+Pyrophyl JH_PYRP1  W1R1Fb AREF  2151  18:47:53.00  08/27/1999
+ 26121  Muscovite-low-Al CU98-8H     W1R1Fb AREF  2151  00:04:14.00  06/27/2003
+ 26143  Muscovite-medhi-Al CU91-252D W1R1Fc AREF  2151  23:41:21.00  01/12/2001
+ 26166  Muscovite-medlowAl CU91-250A W1R1Fb AREF  2151  23:20:12.00  01/12/2001
+ 26189  Nontronite+others CU00-13A   W1R1Fb AREF  2151  17:36:38.00  10/26/2000
+ 26211  Natrolite+Zeolite HS168.3B   W1R1Bb AREF   480  12:17:32.00  07/16/1986
+ 26223  Natrolite+Zeolite HS168.3B W9R4Nbbb RREF  4280  00:00:00.00  11/24/****
+ 26266  Opalized Tuff CU00-15E       W1R1Fb AREF  2151  21:17:07.00  11/21/2000
+ 26287  Phlogopite_Sand_Mix BR93-20  W1R1Ba AREF   480  17:08:09.00  05/04/1994
+ 26297  Pyrite LV95-6A Weath on Tail W1R1Bb AREF   480  09:48:16.00  09/11/1995
+ 26313  Pyrophyl+Muscovite JH_PYRM1  W1R1Fb AREF  2151  18:44:07.00  09/24/2002
+ 26333  Pyrophyl.25+wxlKaol.75 AMX17 W1R1Bb AREF   480  13:31:47.00  03/23/1988
+ 26348  Pyrophyl.50+Ca-Mont.50 AMX16 W1R1Ba AREF   480  12:23:07.00  01/27/1986
+ 26360  Pyroxene_Basalt CU01-20A     W1R1Fa AREF  2151  18:44:22.00  04/16/2003
+ 26390  Stonewall_Playa_Dry_Mud 2001 W1R1Fa AREF  2151  00:00:00.00  08/28/2001
+ 26413  Stonewall_Playa CU93-52A a11 W1R1Ba AREF   480  15:06:40.00  07/13/1993
+ 26428  Talc+Clinochlore HS327.3B    W1R1Fa AREF  2151  00:07:17.00  04/28/2005
+ 26454  Talc+Clinochlore HS327.3B    W1R1Ba AREF   480  08:40:15.00  09/06/1985
+ 26471  Talc+Clinochlore HS327.3B  W9R4Naaa RREF  4280  00:00:00.00  11/24/****
+ 26513  Teepleite+Trona NMNH102798   W1R1Ba AREF   480  09:52:40.00  03/05/1993
+ 26524  Teepleite+Trona NMNH102798 W5R4Naa_ RREF  4280  18:49:22.00  07/09/1993
+ 26567  White_Crust LV30 starkeyite  W1R1Fc AREF  2151  00:00:00.00  11/24/****
+ 26590  Zincite+Franklin HS147.3B    W1R1Bb AREF   480  08:27:49.00  07/24/1987
+ 26601  Zincite+Franklin HS147.3B  W5R4Nbb_ RREF  4280  23:18:47.00  08/18/1993
+ 26644  BurnArea_Traverse WRF00-01   W1R1Fb AREF  2151  18:50:09.00  02/07/2002
+ 26668  BurnArea_TopSurface WRF00-02 W1R1Fb AREF  2151  18:52:11.00  02/07/2002
+ 26691  Blck_Mn_Coat_Tailngs LV95-3  W1R1Bb AREF   480  15:36:15.00  10/14/1995
+ 26705  Desert_Varnish ANP90-14      W1R1Ba AREF   480  16:21:23.00  07/16/1991
+ 26719  Desert_Varnish GDS141        W1R1Ba AREF   480  12:52:19.00  08/02/1989
+ 26731  Desert_Varnish GDS78A Rhy    W1R1Ba AREF   480  11:21:29.00  02/13/1991
+ 26742  Goethite_Thin_Film WS222     W1R1Ba AREF   480  16:01:07.00  05/06/1994
+ 26756  Hematite_Coatd_Qtz BR93-25B  W1R1Bb AREF   480  11:31:26.00  05/03/1994
+ 26767  Hematite_Coatd_Qtz BR93-34C  W1R1Ba AREF   480  09:09:59.00  05/05/1994
+ 26778  Hematite_Coatd_Qtzt BR93-25A W1R1Bb AREF   480  10:25:28.00  09/28/1993
+ 26789  Hematite_Coatd_Qtzt BR93-25C W1R1Bb AREF   480  14:06:19.00  09/28/1993
+ 26800  Hematite_Thin_Film GDS27     W1R1Ba AREF   480  14:57:33.00  03/08/1994
+ 26815  Jarosite_Thin_Film GDS243    W1R1Bb AREF   480  15:46:10.00  03/24/1996
+ 26829  Jarosite_on_Qtzite BR93-34A2 W1R1Bb AREF   480  13:38:17.00  05/04/1994
+ 26841  H2O-Ice GDS136 77K           W1R1Ba AREF   480  13:00:51.00  06/04/1985
+ 26853  Melting_snow mSnw12 (slush)  W1R1Fa AREF  2151  18:42:07.00  01/12/1996
+ 26876  Melting_snow mSnw14 (slush)  W1R1Fa AREF  2151  18:45:45.00  01/12/1996
+ 26900  Melting_snow mSnw15 (slush)  W1R1Fa AREF  2151  18:56:47.00  01/12/1996
+ 26925  Melting_snow mSnw16 (slush)  W1R1Fa AREF  2151  19:04:42.00  01/12/1996
+ 26950  Melting_snow mSnw16+0.25_veg W1R1Fa AREF  2151  14:18:41.00  05/13/1992
+ 26974  Melting_snow mSnw16+0.5 veg  W1R1Fa AREF  2151  14:18:41.00  05/13/1992
+ 26997  Melting_snow mSnw1a          W1R1Fa AREF  2151  17:30:02.00  01/12/1996
+ 27021  Melting_snow mSnw1a+0.5_veg  W1R1Fa AREF  2151  14:18:41.00  05/13/1992
+ 27044  Melting_snow mSnw3           W1R1Fa AREF  2151  17:44:15.00  01/12/1996
+ 27067  Melting_snow mSnw3+0.5_veg   W1R1Fa AREF  2151  14:18:41.00  05/13/1992
+ 27090  Melting_snow mSnw4           W1R1Fa AREF  2151  17:56:06.00  01/12/1996
+ 27113  Melting_snow mSnw5           W1R1Fa AREF  2151  17:58:27.00  01/12/1996
+ 27137  Melting_snow mSnw8           W1R1Fa AREF  2151  18:31:43.00  01/12/1996
+ 27161  Melting_snow mSnw8+0.5_veg   W1R1Fa AREF  2151  14:18:41.00  05/13/1992
+ 27185  Melting_snow mSnw9  (slush)  W1R1Fa AREF  2151  18:36:32.00  01/12/1996
+ 27209  Melting_snow mSnw9+0.5_veg   W1R1Fa AREF  2151  14:18:41.00  05/13/1992
+ 27230  Red_Coated_Algea_Water RCAW1 W1R1Fa AREF  2151  21:17:51.00  10/11/1995
+ 27251  Seawater_Coast_Chl SW1       W1R1Ba AREF   480  00:00:00.00  11/24/****
+ 27262  Seawater_Open_Ocean SW2 lwch W1R1Ba AREF   480  00:00:00.00  11/24/****
+ 27273  Water+Montmor SWy-2+0.5g/l   W1R1Fa AREF  2151  00:00:00.00  11/24/****
+ 27299  Water+Montmor SWy-2+1.67g/l  W1R1Fa AREF  2151  00:00:00.00  11/24/****
+ 27324  Water+Montmor SWy-2+16.5g/l  W1R1Fa AREF  2151  00:00:00.00  11/24/****
+ 27348  Water+Montmor SWy-2+5.01g/l  W1R1Fa AREF  2151  00:00:00.00  11/24/****
+ 27373  Ammonium_Chloride GDS77      W1R1Ba AREF   480  15:03:27.00  02/05/1991
+ 27384  Asphalt GDS376 Blck_Road old W1R1Fa AREF  2151  20:37:28.00  09/12/2001
+ 27407  Asphalt_Shingle GDS366 Tan   W1R1Fa AREF  2151  20:37:23.00  09/12/2001
+ 27430  Asphalt_Shingle GDS367 DkGry W1R1Fa AREF  2151  20:37:23.00  09/12/2001
+ 27454  Asphalt_Shingle GDS368 Lgray W1R1Fa AREF  2151  20:37:22.00  09/12/2001
+ 27476  Asphalt_Tar GDS346 Blck_Roof W1R1Fa AREF  2151  20:37:22.00  09/12/2001
+ 27494  Brick GDS347 Paving Tan      W1R1Fa AREF  2151  20:55:44.00  09/12/2001
+ 27516  Brick GDS348 Pave DkBrwngrey W1R1Fa AREF  2151  20:55:44.00  09/12/2001
+ 27538  Brick GDS349 Paving Red      W1R1Fa AREF  2151  20:55:44.00  09/12/2001
+ 27559  Brick GDS350 Dk Red Building W1R1Fa AREF  2151  20:37:30.00  09/12/2001
+ 27580  Brick GDS353 Building MedRed W1R1Fa AREF  2151  20:55:43.00  09/12/2001
+ 27601  Brick GDS354 Building Lt Gry W1R1Fa AREF  2151  20:55:43.00  09/12/2001
+ 27620  Brick GDS355 Building Dk Gry W1R1Fa AREF  2151  20:55:43.00  09/12/2001
+ 27645  Burlap_Fabric GDS430 Brown   W1R1Fa AREF  2151  16:53:28.00  11/14/2001
+ 27664  Cardboard GDS371 Brn Corgted W1R1Fa AREF  2151  20:37:23.00  09/12/2001
+ 27683  Nylon_Carpet GDS535 LtBrown  W1R1Fa AREF  2151  16:53:24.00  11/14/2001
+ 27703  Nylon_Carpet GDS536 Gry Pile W1R1Fa AREF  2151  16:53:23.00  11/14/2001
+ 27723  Cedar_Shake GDS357 Fresh     W1R1Fa AREF  2151  20:37:26.00  09/12/2001
+ 27742  Cedar_Shake GDS358 SlgWeathr W1R1Fa AREF  2151  20:37:26.00  09/12/2001
+ 27761  Cedar_Shake GDS359 MedWeathr W1R1Fa AREF  2151  20:37:24.00  09/12/2001
+ 27781  Cedar_Shake GDS360 H Weamoss W1R1Fa AREF  2151  20:37:25.00  09/12/2001
+ 27800  Cedar_Shake GDS361 HiWeather W1R1Fa AREF  2151  20:37:24.00  09/12/2001
+ 27820  Cinder_Block GDS356 Lg Grey  W1R1Fa AREF  2151  20:37:27.00  09/12/2001
+ 27843  Coated_Steel_Girder WTC01-8  W1R1Fa AREF  2151  21:36:46.00  09/21/2001
+ 27862  Concrete GDS375 Lt Gry Road  W1R1Fa AREF  2151  20:55:42.00  09/12/2001
+ 27883  Concrete WTC01-37A           W1R1Fa AREF  2151  02:16:18.00  09/25/2001
+ 27904  Cotton_Fabric GDS437 White   W1R1Fa AREF  2151  16:53:25.00  11/14/2001
+ 27924  Cyanide_Cadmium_Potassium    W2R4Na RREF  3325  23:36:16.00  12/14/1992
+ 27962  Cyanide_Nickel_Potassium     W2R4Na RREF  3325  23:35:24.00  12/14/1992
+ 28000  Cyanide_Trihydrate CT1       W1R1Ba AREF   480  16:11:57.00  01/03/1980
+ 28013  Cyanide_Zinc_Potassium       W1R1Ba AREF   480  20:11:50.00  01/01/1980
+ 28027  Cyanide_Zinc_Potassium       W2R4Na RREF  3325  23:35:46.00  12/14/1992
+ 28065  Cyanide_Potassium_Ferro      W1R1Ba AREF   480  10:54:05.00  06/08/1992
+ 28077  Fiberglass GDS337 Grn Roofng W1R1Fa AREF  2151  20:37:21.00  09/12/2001
+ 28096  Fiberglass GDS399 Clear Roof W1R1Fa AREF  2151  20:55:45.00  09/12/2001
+ 28116  Fiberglass GDS335 Wh Roofing W1R1Fa AREF  2151  20:37:21.00  09/12/2001
+ 28136  Fiberglass GDS336 Grn Roofng W1R1Fa AREF  2151  20:37:21.00  09/12/2001
+ 28155  Fiberglass GDS374 Pnk Insul  W1R1Fa AREF  2151  20:37:27.00  09/12/2001
+ 28176  GalvanizedSheetMetal GDS334  W1R1Fa AREF  2151  20:37:18.00  09/12/2001
+ 28199  Green_Slime SM93-14A Summitv W1R1Ba AREF   480  10:32:53.00  02/07/1993
+ 28209  Kerogen BK-Cornell           W1R1Ba AREF   480  16:44:35.00  05/15/1986
+ 28220  Montmorill+Benzene SWy 1ml   W1R1Ba AREF   480  11:27:43.00  10/10/1986
+ 28232  Montmorill+TCE SWy saturated W1R1Ba AREF   480  10:45:24.00  04/03/1987
+ 28244  Montmorill+Toluene SWy .5ml  W1R1Ba AREF   480  15:06:40.00  06/11/1986
+ 28256  Montmorill+Trichlor SWy 1ml  W1R1Ba AREF   480  14:11:59.00  10/16/1986
+ 28268  Montmorill+Unleaded_Gas SWy  W1R1Ba AREF   480  16:01:56.00  12/03/1986
+ 28280  Nylon_Fabric GDS431 Red RpSt W1R1Fa AREF  2151  16:53:24.00  11/14/2001
+ 28301  Nylon_Fabric GDS432 Grn RpSt W1R1Fa AREF  2151  16:53:26.00  11/14/2001
+ 28321  Nylon_Fabric GDS433 Blu RpSt W1R1Fa AREF  2151  16:53:24.00  11/14/2001
+ 28342  Nylon_Fabric GDS436 BlkCoatd W1R1Fa AREF  2151  16:53:26.00  11/14/2001
+ 28362  Nylon_Webbing GDS428 OlvDrab W1R1Fa AREF  2151  16:53:25.00  11/14/2001
+ 28382  Nylon_Webbing GDS438 Flr Yel W1R1Fa AREF  2151  16:53:27.00  11/14/2001
+ 28401  Painted_Aluminum GDS333 LgGr W1R1Fa AREF  2151  00:07:06.00  11/17/2000
+ 28422  Paper_Cotton_Bond PAPR1 100% W1R1Fa AREF  2151  22:40:40.00  09/25/1997
+ 28443  Particle_Board GDS364 Fn Gr  W1R1Fa AREF  2151  20:37:25.00  09/12/2001
+ 28462  Plastic GGA-54 Grnhouse Roof W1R1Ba AREF   480  10:27:49.00  07/28/1989
+ 28474  Plastic_ABS GDS341 BlackPipe W1R1Fa AREF  2151  20:37:29.00  09/12/2001
+ 28497  Plastic_HDPE GDS351 BlkSheet W1R1Fa AREF  2151  20:37:21.00  09/12/2001
+ 28520  Plastic_HDPE GDS391 Blu-Grn  W1R1Fa AREF  2151  20:37:33.00  09/12/2001
+ 28542  Plastic_HDPE GDS393 GlosWhTr W1R1Fa AREF  2151  20:37:33.00  09/12/2001
+ 28562  Plastic_HDPE GDS373 Grey Bag W1R1Fa AREF  2151  20:37:20.00  09/12/2001
+ 28584  Plastic_HDPE GDS384 Wht Opaq W1R1Fa AREF  2151  20:37:32.00  09/12/2001
+ 28604  Plastic_HDPE GDS385 WhTransl W1R1Fa AREF  2151  20:37:31.00  09/12/2001
+ 28623  Plastic_HDPE GDS386 Yelopaqu W1R1Fa AREF  2151  20:37:32.00  09/12/2001
+ 28643  Plastic_HDPE GDS387 WhTransl W1R1Fa AREF  2151  20:37:32.00  09/12/2001
+ 28662  Plastic_HDPE GDS389 WhTransl W1R1Fa AREF  2151  20:37:32.00  09/12/2001
+ 28683  Plastic_HDPE GDS390 Transpar W1R1Fa AREF  2151  20:37:33.00  09/12/2001
+ 28706  Plastic_HDPE GDS392 WhTransl W1R1Fa AREF  2151  20:37:33.00  09/12/2001
+ 28727  Plastic_HDPE GDS394 LgryTrns W1R1Fa AREF  2151  20:37:34.00  09/12/2001
+ 28746  Plastic_HDPE GDS400 WhTrnslu W1R1Fa AREF  2151  20:55:45.00  09/12/2001
+ 28766  Plastic_LDPE GDS402 Clr film W1R1Fa AREF  2151  20:55:45.00  09/12/2001
+ 28787  Plastic_LDPE GDS405 Black    W1R1Fa AREF  2151  20:55:46.00  09/12/2001
+ 28812  Plastic_LDPE GDS401 Clr film W1R1Fa AREF  2151  20:55:45.00  09/12/2001
+ 28833  Plastic_LDPE GDS404 WhTrnslu W1R1Fa AREF  2151  20:55:46.00  09/12/2001
+ 28854  Plastic_LDPE GDS406 WhTrnslu W1R1Fa AREF  2151  20:55:46.00  09/12/2001
+ 28874  Plastic_PETE GDS379 TrnslBrn W1R1Fa AREF  2151  20:37:31.00  09/12/2001
+ 28894  Plastic_PETE GDS380 Clear    W1R1Fa AREF  2151  20:37:31.00  09/12/2001
+ 28914  Plastic_PETE GDS381 Clr-prpl W1R1Fa AREF  2151  20:37:30.00  09/12/2001
+ 28935  Plastic_PETE GDS382 Black    W1R1Fa AREF  2151  20:37:31.00  09/12/2001
+ 28958  Plastic_PETE GDS383 Clrbluis W1R1Fa AREF  2151  20:37:30.00  09/12/2001
+ 28978  Plastic_PVC GDS338 White     W1R1Fa AREF  2151  20:40:51.00  01/20/2000
+ 28997  Plastic_Pipe GDS342 Black    W1R1Fa AREF  2151  20:37:29.00  09/12/2001
+ 29017  Plastic_Pipe GDS344 Blue     W1R1Fa AREF  2151  20:37:28.00  09/12/2001
+ 29036  Plastic_Tarp GDS339 Green    W1R1Fa AREF  2151  22:59:18.00  01/19/2000
+ 29055  Plastic_Tarp GDS340 Blu_Wovn W1R1Fa AREF  2151  20:37:19.00  09/12/2001
+ 29074  Plastic_Tyvek GDS369 White   W1R1Fa AREF  2151  20:37:20.00  09/12/2001
+ 29096  Plastic_Vinyl GDS372 White   W1R1Fa AREF  2151  20:37:20.00  09/12/2001
+ 29117  Plastic_Vinyl GDS395 Clr1mm  W1R1Fa AREF  2151  20:37:34.00  09/12/2001
+ 29137  Plastic_Vinyl GDS396 Clr1mm  W1R1Fa AREF  2151  20:37:35.00  09/12/2001
+ 29157  Plastic_Vinyl GDS397 Cl0.4mm W1R1Fa AREF  2151  20:37:34.00  09/12/2001
+ 29178  Plastic_Vinyl GDS398 Red Toy W1R1Fa AREF  2151  20:37:34.00  09/12/2001
+ 29197  Plastic_Visqueen GDS370 Clr  W1R1Fa AREF  2151  20:37:19.00  09/12/2001
+ 29218  Plywood GDS365 Fresh Pine    W1R1Fa AREF  2151  20:37:25.00  09/12/2001
+ 29237  Polyester_Pile GDS434 Blk    W1R1Fa AREF  2151  16:53:26.00  11/14/2001
+ 29257  Polyester_Pile GDS435 DkGrn  W1R1Fa AREF  2151  16:53:27.00  11/14/2001
+ 29277  Polyester_Webbing GDS429 Blk W1R1Fa AREF  2151  16:55:24.00  11/14/2001
+ 29297  Polystyrene GDS345 BluInsul  W1R1Fa AREF  2151  20:37:26.00  09/12/2001
+ 29317  Renyolds_TnlSldgWet SM93-15w W1R1Ba AREF   480  12:35:55.00  02/10/1993
+ 29328  Renyolds_Tnl_Sludge SM93-15  W1R1Ba AREF   480  13:29:59.00  02/07/1993
+ 29338  Roofing_Felt GDS377 Black    W1R1Fa AREF  2151  20:37:24.00  09/12/2001
+ 29358  Rusted_Tin_Can GDS378 MV99-6 W1R1Fa AREF  2151  20:37:29.00  09/12/2001
+ 29379  Sheet_Metal GDS352 crg Galvn W1R1Fa AREF  2151  21:11:18.00  09/12/2001
+ 29402  Strand_Board GDS362 Oriented W1R1Fa AREF  2151  20:37:26.00  09/12/2001
+ 29421  Tar_Paper GDS285A New Blk    W1R1Fa AREF  2151  20:37:24.00  09/12/2001
+ 29442  Tar_Paper GDS285B Weath Blk  W1R1Fa AREF  2151  20:37:25.00  09/12/2001
+ 29463  Terrycloth_Fabric GDS537 Yl  W1R1Fa AREF  2151  16:53:23.00  11/14/2001
+ 29484  Terrycloth_Fabric GDS537 Yel W1R1Fa AREF  2151  16:53:28.00  11/14/2001
+ 29505  Wood_Beam GDS363 Nw Pine 2X4 W1R1Fa AREF  2151  20:37:27.00  09/12/2001
+ 29526  WTC_Dust_Debris WTC01-2      W1R1Fa AREF  2151  19:57:24.00  09/21/2001
+ 29548  WTC_Dust_Debris WTC01-28     W1R1Fa AREF  2151  19:57:25.00  09/21/2001
+ 29568  Aspen Aspen-1 Green-Top      W1R1Fa AREF  2151  18:52:43.00  10/04/1996
+ 29590  Aspen Aspen-2 Green-Bottom   W1R1Fa AREF  2151  18:54:52.00  10/04/1996
+ 29612  Aspen Aspen-3 YellowGreenTop W1R1Fa AREF  2151  19:17:29.00  10/04/1996
+ 29634  Aspen Aspen-4 Yellow-Top     W1R1Fa AREF  2151  19:06:20.00  10/04/1996
+ 29665  Aspen_Leaf-A DW92-2          W1R1Ba AREF   480  01:30:10.00  05/20/1992
+ 29675  Aspen_Leaf-B DW92-3          W1R1Ba AREF   480  11:37:47.00  05/21/1992
+ 29695  Blackbrush ANP92-9A leaves   W1R1Ba AREF   480  12:44:42.00  05/18/1992
+ 29705  Blue_Spruce DW92-5 needle    W1R1Ba AREF   480  17:09:11.00  05/21/1992
+ 29715  Cactus Opuntia-1 Purple_pad  W1R1Fa AREF  2151  23:32:56.00  06/17/1997
+ 29744  Cheatgrass ANP92-11A         W1R1Ba AREF   480  15:56:57.00  06/24/1992
+ 29754  Cheatgrass ANPC1 field Calib W1R1Fa AREF  2151  17:57:33.00  06/19/1995
+ 29812  Dry_Long_Grass AV87-2        W1R1Ba AREF   480  12:05:07.00  08/09/1987
+ 29822  Engelmann-Spruce ES-Needls-1 W1R1Fa AREF  2151  22:18:05.00  09/19/1997
+ 29889  Fir_Tree IH91-2              W1R1Ba AREF   480  10:06:33.00  10/03/1991
+ 29900  Flower Geranium-1 Red-Orange W1R1Fa AREF  2151  18:50:05.00  07/22/1997
+ 29920  Flower Pansy-1 Yellow        W1R1Fa AREF  2151  19:05:53.00  07/22/1997
+ 29941  Flower Petunia-1 Pink        W1R1Fa AREF  2151  18:35:47.00  07/22/1997
+ 29962  Flower Petunia-2 Purple      W1R1Fa AREF  2151  18:48:17.00  07/22/1997
+ 29983  Flower Petunia-3 White       W1R1Fa AREF  2151  19:07:46.00  07/22/1997
+ 30003  Flower Platycodon-1 Purple   W1R1Fa AREF  2151  18:58:35.00  07/22/1997
+ 30024  Flower Platycodon-2 White    W1R1Fa AREF  2151  18:54:08.00  07/22/1997
+ 30093  Grass_Golden_Dry GDS480      W1R1Fa AREF  2151  22:08:19.00  07/16/2000
+ 30112  Juniper_Bush IH91-4B         W1R1Ba AREF   480  16:54:45.00  10/03/1991
+ 30123  Lawn_Grass GDS91 (Green)     W1R1Ba AREF   480  16:04:29.00  06/18/1991
+ 30134  LeafySpurge Spurge-A1-Jul98  W1R1Fa AREF  2151  18:07:31.00  07/10/1998
+ 30156  LeafySpurge Spurge-A1-Jun98  W1R1Fa AREF  2151  17:13:08.00  06/08/1998
+ 30178  LeafySpurge Spurge-A1-Oct97  W1R1Fa AREF  2151  20:22:49.00  10/22/1997
+ 30199  LeafySpurge Spurge-A1-Sep97  W1R1Fa AREF  2151  20:04:07.00  09/25/1997
+ 30221  LeafySpurge Spurge-A2-Jun98  W1R1Fa AREF  2151  17:21:16.00  06/08/1998
+ 30243  LeafySpurge Spurge-B1-Jul98  W1R1Fa AREF  2151  18:22:04.00  07/10/1998
+ 30265  LeafySpurge Spurge-B1-Oct97  W1R1Fa AREF  2151  20:31:40.00  10/22/1997
+ 30286  LeafySpurge Spurge-B2-Jul98  W1R1Fa AREF  2151  18:24:34.00  07/10/1998
+ 30308  LeafySpurge Spurge-B3-Jul98  W1R1Fa AREF  2151  18:23:25.00  07/10/1998
+ 30331  LeafySpurge Spurge-C1-Oct97  W1R1Fa AREF  2151  20:36:41.00  10/22/1997
+ 30351  Lichen Acarospora-1          W1R1Fb AREF  2151  21:31:56.00  10/08/1996
+ 30374  Lichen Licedea-1             W1R1Fb AREF  2151  21:10:10.00  10/08/1996
+ 30397  Lichen Licedea-2             W1R1Fb AREF  2151  21:58:33.00  10/08/1996
+ 30420  Lichen Xanthoparmelia-1      W1R1Fb AREF  2151  20:48:43.00  10/08/1996
+ 30443  Lichen Xanthoparmelia-2      W1R1Fb AREF  2151  21:00:12.00  10/08/1996
+ 30466  Lichen Xanthoria-1           W1R1Fb AREF  2151  21:24:13.00  10/08/1996
+ 30489  Lodgepole-Pine LP-Needles-1  W1R1Fa AREF  2151  22:26:19.00  09/19/1997
+ 30509  Lodgepole-Pine LP-Needles-2  W1R1Fa AREF  2151  21:05:18.00  09/22/1997
+ 30529  Lodgepole-Pine LP-Needles-3  W1R1Fa AREF  2151  22:36:13.00  09/19/1997
+ 30659  Maple_Leaves DW92-1          W1R1Ba AREF   480  16:06:37.00  05/19/1992
+ 30669  Oak Oak-Leaf-1 fresh         W1R1Fa AREF  2151  18:17:24.00  07/23/1997
+ 30689  Oak Oak-Leaf-2 dried         W1R1Fa AREF  2151  23:17:44.00  07/28/1997
+ 30708  Pinon_Pine ANP92-14A needle  W1R1Ba AREF   480  14:18:41.00  05/13/1992
+ 30718  Rabbitbrush ANP92-27         W1R1Ba AREF   480  06:48:38.00  05/15/1992
+ 30728  Russian_Olive DW92-4         W1R1Ba AREF   480  14:05:34.00  05/21/1992
+ 30741  Sage_Brush IH91-1B           W1R1Ba AREF   480  12:23:53.00  10/02/1991
+ 30752  Sagebrush Sage-Leaves-1 dry  W1R1Fa AREF  2151  21:13:23.00  09/19/1997
+ 30812  Saltbrush ANP92-31A          W1R1Ba AREF   480  15:27:40.00  05/18/1992
+ 30831  Tumbleweed ANP92-2C Dry      W1R1Ba AREF   480  11:23:34.00  05/19/1992
+ 30841  Walnut_Leaf SUN (Green)      W1R1Ba AREF   480  17:23:29.00  09/25/1992
+ 30887  Willow Willow-Leaves-1 dry   W1R1Fa AREF  2151  23:04:17.00  09/19/1997
+ 30925  Antigorite+.2DryGrass  AMX26 W1R1Fa AREF  2151  22:08:19.00  07/16/2000
+ 30944  Antigorite+.33DryGrass AMX25 W1R1Fa AREF  2151  22:08:19.00  07/16/2000
+ 30964  Grass_dry.4+.6green    AMX27 W1R1Ba AREF   480  16:04:29.00  06/18/1991
+ 30978  Grass_dry.5+.5green    AMX28 W1R1Ba AREF   480  12:05:07.00  08/09/1987
+ 30993  Grass_dry.6+.4green    AMX29 W1R1Ba AREF   480  16:04:29.00  06/18/1991
+ 31008  Grass_dry.7+.3green    AMX30 W1R1Ba AREF   480  16:04:29.00  06/18/1991
+ 31023  Grass_dry.8+.2green    AMX31 W1R1Ba AREF   480  16:04:29.00  06/18/1991
+ 31038  Grass_dry.9+.1green    AMX32 W1R1Ba AREF   480  16:04:29.00  06/18/1991
+ 31056  Lawn_Grass GDS91 +1shf/unshf W1R1Ba AREF   480  16:04:29.00  06/18/1991
+ 31074  Lawn_Grass GDS91 +1shft 3nm  W1R1Ba AREF   480  16:04:29.00  06/18/1991
+ 31090  Lawn_Grass GDS91 +const 1.0  W1R1Ba AREF   480  16:04:29.00  06/18/1991
+ 31107  Lawn_Grass GDS91 /shiftd 3nm W1R1Ba AREF   480  16:04:29.00  06/18/1991
+ 31126  Lawn_Grass GDS91 shifted 3nm W1R1Ba AREF   480  16:04:29.00  06/18/1991
+ 31143  Rangeland C03-004 S08% G27%  W1R1Fa AREF  2151  21:40:29.00  06/20/2003
+ 31175  Rangeland C03-005 S25% G24%  W1R1Fa AREF  2151  20:16:58.00  06/16/2003
+ 31207  Rangeland C03-006 S01% G39%  W1R1Fa AREF  2151  19:40:55.00  06/17/2003
+ 31236  Rangeland C03-010 S12% G15%  W1R1Fa AREF  2151  21:43:13.00  06/17/2003
+ 31264  Rangeland C03-013 S06% G08%  W1R1Fa AREF  2151  21:42:42.00  06/21/2003
+ 31294  Rangeland C03-014 S26% G25%  W1R1Fa AREF  2151  20:13:30.00  06/19/2003
+ 31322  Rangeland C03-017 S20% G19%  W1R1Fa AREF  2151  20:00:48.00  06/21/2003
+ 31354  Rangeland C03-019 S20% G14%  W1R1Fa AREF  2151  22:22:34.00  06/16/2003
+ 31384  Rangeland C03-021 S11% G07%  W1R1Fa AREF  2151  22:31:37.00  06/21/2003
+ 31416  Rangeland C03-022 S12% G22%  W1R1Fa AREF  2151  19:34:01.00  06/21/2003
+ 31442  Rangeland C03-027 S27% G19%  W1R1Fa AREF  2151  20:39:14.00  06/22/2003
+ 31470  Rangeland C03-031 S15% G14%  W1R1Fa AREF  2151  18:45:49.00  06/22/2003
+ 31499  Rangeland C03-032 S34% G15%  W1R1Fa AREF  2151  18:49:52.00  06/20/2003
+ 31530  Rangeland C03-037 S37% G13%  W1R1Fa AREF  2151  20:36:20.00  06/22/2003
+ 31557  Rangeland C03-041 S15% G06%  W1R1Fa AREF  2151  21:40:14.00  06/16/2003
+ 31583  Rangeland C03-047 S09% G12%  W1R1Fa AREF  2151  20:34:58.00  06/21/2003
+ 31612  Rangeland C03-050 S18% G12%  W1R1Fa AREF  2151  19:13:04.00  06/18/2003
+ 31641  Rangeland C03-052 S22% G24%  W1R1Fa AREF  2151  22:10:04.00  06/20/2003
+ 31669  Rangeland C03-066 S11% G17%  W1R1Fa AREF  2151  22:10:44.00  06/22/2003
+ 31700  Rangeland C03-068 S05% G43%  W1R1Fa AREF  2151  21:40:07.00  06/22/2003
+ 31730  Rangeland C03-070 S02% G31%  W1R1Fa AREF  2151  20:50:25.00  06/22/2003
+ 31759  Rangeland C03-073 S30% G24%  W1R1Fa AREF  2151  18:48:29.00  06/19/2003
+ 31789  Rangeland C03-074 S24% G16%  W1R1Fa AREF  2151  19:53:46.00  06/22/2003
+ 31819  Rangeland C03-076 S13% G13%  W1R1Fa AREF  2151  22:34:40.00  06/22/2003
+ 31846  Rangeland C03-077 S09% G10%  W1R1Fa AREF  2151  22:10:44.00  06/22/2003
+ 31877  Rangeland C03-080 S18% G15%  W1R1Fa AREF  2151  21:03:54.00  06/21/2003
+ 31909  Rangeland C03-081 S07% G23%  W1R1Fa AREF  2151  19:09:01.00  06/22/2003
+ 31939  Rangeland C03-085 S06% G24%  W1R1Fa AREF  2151  20:16:09.00  06/22/2003
+ 31969  Rangeland C03-086 S29% G13%  W1R1Fa AREF  2151  19:13:15.00  06/17/2003
+ 31999  Rangeland C03-089 S20% G21%  W1R1Fa AREF  2151  19:16:08.00  06/19/2003
+ 32030  Rangeland C03-090 S14% G31%  W1R1Fa AREF  2151  18:52:28.00  06/21/2003
+ 32060  Rangeland C03-091 S30% G17%  W1R1Fa AREF  2151  19:45:36.00  06/19/2003
+ 32088  Rangeland C03-095 S09% G08%  W1R1Fa AREF  2151  18:53:27.00  06/21/2003
+ 32117  Rangeland C03-097 S07% G21%  W1R1Fa AREF  2151  19:38:32.00  06/22/2003
+ 32147  Rangeland C04-151 S29% G05%  W1R1Fa AREF  2151  18:29:00.00  06/16/2004
+ 32177  Rangeland C04-153 S12% G16%  W1R1Fa AREF  2151  20:46:20.00  06/14/2004
+ 32208  Rangeland C04-154 S12% G10%  W1R1Fa AREF  2151  18:52:59.00  06/14/2004
+ 32240  Rangeland C04-155A S03% G38% W1R1Fa AREF  2151  19:36:09.00  06/17/2004
+ 32273  Rangeland C04-166 S09% G10%  W1R1Fa AREF  2151  20:14:09.00  06/18/2004
+ 32305  Rangeland C04-170 S30% G24%  W1R1Fa AREF  2151  18:17:57.00  06/15/2004
+ 32336  Rangeland C04-175 S06% G23%  W1R1Fa AREF  2151  18:00:53.00  06/18/2004
+ 32368  Rangeland C04-197 S17% G15%  W1R1Fa AREF  2151  21:57:36.00  06/15/2004
+ 32399  Rangeland C04-200 S03% G17%  W1R1Fa AREF  2151  19:43:50.00  06/18/2004
+ 32431  Rangeland C04-203 S21% G07%  W1R1Fa AREF  2151  19:06:34.00  06/16/2004
+ 32463  Rangeland C04-204 S24% G06%  W1R1Fa AREF  2151  21:58:39.00  06/14/2004
+ 32493  Rangeland C04-208 S15% G20%  W1R1Fa AREF  2151  20:41:54.00  06/15/2004
+ 32524  Rangeland C04-209A S17% G04% W1R1Fa AREF  2151  22:22:08.00  06/16/2004
+ 32556  Rangeland C04-211 S03% G16%  W1R1Fa AREF  2151  21:03:47.00  06/17/2004
+ 32586  Rangeland C04-214 S03% G17%  W1R1Fa AREF  2151  18:12:02.00  06/14/2004
+ 32616  Rangeland C04-226 S05% G25%  W1R1Fa AREF  2151  18:06:25.00  06/17/2004
+ 32647  Rangeland C04-232 S23% G13%  W1R1Fa AREF  2151  22:48:30.00  06/15/2004
+ 32678  Rangeland C04-233 S16% G06%  W1R1Fa AREF  2151  18:01:41.00  06/18/2004
+ 32706  Rangeland C04-236 S20% G18%  W1R1Fa AREF  2151  18:43:41.00  06/15/2004
+ 32737  Rangeland C04-237 S05% G25%  W1R1Fa AREF  2151  20:02:10.00  06/16/2004
+ 32767  Rangeland C04-243A S05%G02%  W1R1Fa AREF  2151  18:45:58.00  06/17/2004
+ 32800  Rangeland C04-251 S17% G07%  W1R1Fa AREF  2151  21:01:21.00  06/16/2004
+ 32832  Rangeland C04-252 S08% G05%  W1R1Fa AREF  2151  18:28:32.00  06/18/2004
+ 32863  Rangeland C04-253 S27% G21%  W1R1Fa AREF  2151  19:09:44.00  06/15/2004
+ 32894  Rangeland C04-264 S09% G18%  W1R1Fa AREF  2151  19:35:28.00  06/18/2004
+ 32922  Rangeland C04-272 S04% G36%  W1R1Fa AREF  2151  20:25:27.00  06/17/2004
+ 32952  Rangeland C04-273 S25% G08%  W1R1Fa AREF  2151  18:55:46.00  06/18/2004
+ 32983  Rangeland C04-288 S19% G34%  W1R1Fa AREF  2151  21:22:19.00  06/15/2004
+ 33013  Rangeland C04-295 S17% G17%  W1R1Fa AREF  2151  22:57:18.00  06/14/2004
+ 33045  Rangeland L02-005 S14% G16%  W1R1Fa AREF  2151  18:36:46.00  07/05/2002
+ 33072  Rangeland L02-013 S00% G31%  W1R1Fa AREF  2151  21:19:25.00  10/28/2002
+ 33096  Rangeland L02-015 S01% G35%  W1R1Fa AREF  2151  20:43:06.00  07/07/2002
+ 33126  Rangeland L02-019 S01% G06%  W1R1Fa AREF  2151  17:51:57.00  10/30/2002
+ 33152  Rangeland L02-022 S20% G09%  W1R1Fa AREF  2151  19:26:35.00  07/05/2002
+ 33179  Rangeland L02-023 S01% G56%  W1R1Fa AREF  2151  20:07:01.00  07/04/2002
+ 33208  Rangeland L02-025 S00% G21%  W1R1Fa AREF  2151  17:51:57.00  10/30/2002
+ 33234  Rangeland L02-042 S01% G57%  W1R1Fa AREF  2151  18:13:25.00  10/30/2002
+ 33258  Rangeland L02-043 S01% G07%  W1R1Fa AREF  2151  18:13:25.00  10/30/2002
+ 33282  Rangeland L02-045 S01% G04%  W1R1Fa AREF  2151  21:50:53.00  07/08/2002
+ 33312  Rangeland L02-046 S16% G20%  W1R1Fa AREF  2151  21:57:26.00  10/28/2002
+ 33336  Rangeland L02-054 S00% G21%  W1R1Fa AREF  2151  21:39:19.00  10/28/2002
+ 33360  Rangeland L02-057 S01% G47%  W1R1Fa AREF  2151  21:41:52.00  07/10/2002
+ 33387  Rangeland L02-058 S00% G25%  W1R1Fa AREF  2151  18:50:32.00  07/11/2002
+ 33413  Rangeland L02-060 S00% G13%  W1R1Fa AREF  2151  19:46:24.00  07/11/2002
+ 33439  Rangeland L02-061 S00% G06%  W1R1Fa AREF  2151  22:20:29.00  10/28/2002
+ 33466  Rangeland L02-068A S00% G38% W1R1Fa AREF  2151  20:43:49.00  07/08/2002
+ 33496  Rangeland L02-069 S00% G99%  W1R1Fa AREF  2151  19:17:42.00  07/07/2002
+ 33526  Rangeland L02-077 S00% G28%  W1R1Fa AREF  2151  19:34:29.00  07/08/2002
+ 33557  Rangeland L04-035 S03% G54%  W1R1Fa AREF  2151  23:23:55.00  12/09/2004
+ 33589  Rangeland L04-047 S00% G47%  W1R1Fa AREF  2151  23:33:28.00  12/09/2004
+ 33620  Rangeland L04-058 S34% G25%  W1R1Fa AREF  2151  23:38:26.00  12/09/2004
+ 33651  Rangeland L04-072 S30% G21%  W1R1Fa AREF  2151  23:43:02.00  12/09/2004
+ 33682  Rangeland L04-075A S00% G49% W1R1Fa AREF  2151  16:05:15.00  12/10/2004
+ 33714  Rangeland L04-091 S10% G11%  W1R1Fa AREF  2151  16:16:41.00  12/10/2004
+ 33744  Rangeland L04-095 S01% G51%  W1R1Fa AREF  2151  16:38:20.00  12/10/2004
+ 33775  Rangeland L04-096 S00% G45%  W1R1Fa AREF  2151  16:53:12.00  12/10/2004
+ 33801  Stonwll_Ply+.1grnGrass AMX33 W1R1Ba AREF   480  15:06:40.00  07/13/1993
+ 33813  Stonwll_Ply+.2grnGrass AMX34 W1R1Ba AREF   480  15:06:40.00  07/13/1993
+ 33826  Willow_Dead FluvTailSite_A   W1R1Fa AREF  2151  00:00:00.00  11/24/****

@@ -1,0 +1,320 @@
+.sh 1 "MATH OPERATIONS " 8
+
+.sh 2 "Introduction "
+.pp
+All mathematical operations are carried out in Math Operations
+except for extinction analysis.  One entire line (80 characters)
+of commands may be typed in (separated by commas) for execution.
+After each math operation is completed, you will be asked where
+the result is to be written (V, W, D, U, or Y).  In the case of a
+positive protection value, the file number is set to the
+protection plus 1.  Next you will be asked to type in a
+title.  See section 8.8 for the title routines.  Finally the program
+will (if requested) go to band normalization routine (section
+8.9) and the CRT plot routines (section 9).  The Math Operations
+information on the CRT can be turned off by typing
+.ul
+IN
+or turned back on by typing
+.ul
+I.
+
+
+.sh 2 "Subtraction, Multiplication, and Division "
+.pp
+Generally these operations contain an ID (V, W, U, or D, Y),
+file number, operation sign (- for subtraction, * for
+multiplication, and / for division), then the second file ID (V,
+W, D, C, S, U, or Y, S is for division only), the second file
+number, and the options.  Options include:
+.ul
+E
+for include 1 sigma error bars,
+.ul
+N
+for subtraction without airmass calculation,
+.ul
+B
+for turn on band normalization (section 8.9),
+.ul
+BN
+for turn off band normalization, T for change sidereal Time in
+subtraction with airmass calculation,
+.ul
+R
+for change RA and declination in subtraction calculation, and
+.ul
+P
+for Production processing.  The production processing option
+stops only to request the title and writes the result to device V
+without doing the CRT plot.  This option (P) makes processing
+equivalent to the time spent in performing batch processing.  The
+.ul
+C
+in place of the second file ID is for constant.  The value of the
+constant is then placed where the second file number is located.
+.pp
+Example:
+.pp
+W10-11, W12-13, V10*C1.3, V23/46EB, V12-D10NP BN
+
+Here Rawfile (W) file 11 is subtracted from 10 (the default when
+the second file ID is left out is the first file ID).  Next W13
+is subtracted from W12, then V10 is multiplied by the constant
+1.3, next V23 is divided by V46 with 1 sigma standard deviation
+(errors) included and also a band normalization performed.
+Spaces may be included at any point except within a number, or they
+may be completely left out.  The program processes the commands
+sequentially.  When performing each operation, the program enters
+the appropriate routine, writes the titles of the requested files
+on the CRT, and pauses for a continue command (unless the
+Production option has been set).  If you type
+.ul
+X
+here, the program exits directly to math operations.  If you type
+.ul
+E,
+the program exits that operation and begins processing of the next
+operation if one exists.  The production option is set to no
+production at the end of each operation whereas the band
+normalization option stays on until turned off by
+.ul
+BN.
+When the operation is completed, the program goes to section 8.1.
+Division of two zeros is defined as zero by this program.
+.pp
+Math Operations can be used to change the wavelength file set in
+the options section.  Example: "V23/V45 A2, V86*V27 A4" where A
+followed by a number 1 to 20 calls the corresponding wavelength
+set (with its associated number of channels).
+
+.ul
+Annotations on Subtraction Routine
+(by P. Owensby--8/20/80)
+.pp
+Normal subtraction calculates airmass based on the coordinates
+found in the first 13 characters of the title of the first input
+file; if these coordinates are not entered in the correct format
+(HHMMSS+DDMMSS no spaces, declination sign must be explicitly
+specified as plus or minus, and any one of the first six digits
+must be non-zero), the routine issues the command
+.ul
+TYPE IN RIGHT ASCENSION AND DECLINATION
+
+and awaits a correct response.  The routine repeats this message
+until a correct response is encountered--E and X are NOT correct
+responses.  The correct response is up to six numbers separated
+by spaces, any one of the first three of which must be non-zero,
+the fourth of which should be signed only if negative, and all
+the rest of which should be unsigned.
+
+TO GET OUT OF THIS LOOP, enter any single non-zero number, and
+type E or X at the next possible opportunity.
+
+(This format may be confusing because the interpretation routine
+from the first 13 characters requires an explicitly specified plus
+or minus sign for the declination, and the request for RA and DEC
+cannot interpret plus signs.)
+
+
+.sh 2 "Addition Routine "
+.pp
+The addition routine can add from 2 to 30 spectra with deletion
+of zeros or requested points.  To access the addition routine,
+type + and any options (E for errors) with no other math
+operations after that on the input line (because they will not be
+processed due to a programming restriction).  Upon entering the
+addition routine, you will be asked whether you want to average or
+sum.  Type
+.ul
+A
+to Average or
+.ul
+S
+to Sum and, on the same line,
+.ul
+D
+if you wish to Delete zeros.  Next you will be given instructions
+on inputting the files to be added or summed.  Type in the file ID
+[V, W, D, U, Y or C (for constant)] and the file number or
+constant.  If you wish to delete points from this file, type
+.ul
+D
+and then the channel numbers.  You may use more than one line to
+input these numbers, but each channel to be deleted from the sum
+or average must be listed.  When you are through inputting
+numbers to be deleted, type
+.ul
+C
+to continue.  When you are through inputting file numbers, type
+.ul
+B
+to Begin analysis.  Note only 1 constant can be entered per
+addition run.  If you type
+.ul
+E
+or
+.ul
+X,
+the program will exit directly back to math operations;
+otherwise, after the analysis is complete, the program goes to
+section 8.7.
+.pp
+Note the "tape names" of U and Y are not given in the history (as
+of June, 1980)--will be corrected when programmer time becomes
+available.
+
+
+.sh 2 "Error Analysis "
+.pp
+Error analyses are included in addition, multiplication and
+division, and subtraction.  In all cases of error analysis, the
+data numbers should be within the range of 1.0E-15 to 1.0E+15 or
+-1.0E-15 to -1.0E+15 to avoid overflow.  If overflow occurs, the error
+is set to zero.  If the data is zero in the multiplication or
+division routines, when using the propagation of errors, the
+error is set to zero for that channel.  The errors represent 1
+sigma standard deviation of the mean and are first computed in
+the addition routine as a standard deviation of the mean
+computation.  The equations used in propagating errors are as
+in Appendix C.
+
+
+.sh 2 "Algebraic and Trigonometric Functions "
+.pp
+A complete set of algebraic, trigonometric, and power functions
+exists as can be found on a scientific calculator.  No error
+analysis is included with any of these functions.  The functions
+are accessed by file ID, file number, colon (:), and the name of
+the function.  Functions are:
+
+.TS
+center,tab(!);
+r l.
+Exponential:! EXP
+Natural logarithm:! LN
+Common logarithm:! LOG
+Ten to spectrum power:! 10**X
+Inverse:! 1/X
+Spectrum to the constant power:! X**C
+Constant to the spectrum power:! C**X
+Sine (in radians):! SIN
+Cosine (in radians):! COS
+Tangent (in radians):! TAN
+Sine (in degrees):! SIND
+Cosine (in degrees):! COSD
+Tangent (in degrees):! TAND
+Inverse sine (radians):! INVSIN
+Inverse cosine (radians):! INVCOS
+Inverse tangent (radians):! INVTAN
+Inverse sine (degrees):! INVSIND
+Inverse cosine (degrees):! INVCOSD
+Inverse tangent (degrees):! INVTAND
+Hyperbolic sine (radians):! SINH
+Hyperbolic cosine (radians):! COSH
+Hyperbolic tangent (radians):! TANH
+Absolute value:! ABS
+Integer value:! INT
+Fractional part:! FRAC
+.TE
+
+.pp
+In both the spectrum to the constant power and constant to the
+spectrum power, the value of the constant is after the command
+(X**C or C**X).
+.ul
+No options are valid with any of these operations
+including errors, band normalization, and production processing.
+This is due to programming limits (there has to be some).  Since
+these routines are not used too often, this should make little
+difference.  What are they used for?  Normal spectral processing
+does not need them, but say you wanted to make a plot of a phase
+function for a Lambert sphere: (equation 8.5.1 Appendix C)
+
+.pp
+You could generate data for \(*a increasing from 0 to 180\(de
+using the wavelength routines and then this function using the
+math functions.  The result can then be plotted on the Gould
+printer plotter using the plot routines.
+.pp
+As of this writing, the hyperbolic routines are not written yet
+although the function decode and subroutine calls are already in
+the program.  If they are needed, please see the author about
+getting them finished.
+
+
+.sh 2 "Special Functions "
+.pp
+Special function subroutines are additional routines for operating
+any kind of data.  Subroutine calls already exist in the
+program for many as yet unwritten routines.  These routines are
+designed for easy linking to the present program.  New routines can
+be user written with less effort than a completely separate
+program since, in most cases, SPECPR handles all the data
+management.  The routines are called by the letter
+.ul
+F
+and the function number.  An example would be to call function
+2 to operate on Vfile (V) file 10:
+.ul
+V10F2.
+Note there is no colon as in the algebraic and trig routines.
+Some special functions do not require a file to be input before
+the function command.  An example is function 1 which is a list
+of all available functions (type
+.ul
+F1
+only).  Functions which require a file input before the function
+call will have an F in parenthesis in the list of functions (F1).
+Similarly, an E will also be in parenthesis if an error analysis
+can be included.  The available functions are described below.
+
+
+.sh 3 "Special Function 1:  List of Special Functions "
+.pp
+List of all available special functions.
+
+
+.sh 3 "Special Function 2:  Shift "
+.pp
+F2 shifts data left or right an integer or fractional number of
+channels.  A file input is required and errors can be included.
+Fractional shifts are done by linear interpolation.  When the
+routine has been entered, type in the number of channels to shift
+or type E or X to exit.  A positive number (integer or real)
+indicates a shift right and a negative number left.
+.pp
+If X is the number of channels to shift, the value of X is split
+into the integer part (n) and the fractional part (XN).  First,
+the integer part is shifted
+.l(
+
+        D(i+n) = D(i)                                   eqn 8.6.2.1
+
+.l)
+where 0 < i + n < 257 and D(i) is each data point in the spectrum.  Next,
+the fractional part is interpolated
+.l(
+
+        XN'>0.0;  D(i) = {D(i+1) - D(i)} * XN' + D(i)   eqn 8.6.2.2
+
+        XN'<0.0;  D(i) = {D(i) - D(i-1)} * XN' + D(i)   eqn 8.6.2.3
+
+.l)
+where XN' = -1.0 * XN.  Data channels not in the shifted
+region are set to zero.  The errors to the data are shifted in a
+similar manner.  Before June 24, 1979, there was a slight error
+in the program (XN' = XN) making the fractional shift appear to
+go in a different direction than the integer part shift.  The
+history has been modified to signal this new change
+.pp
+Old history (X = + 2.5 operation on WDG536 file 238):
+
+"F2:  WDG536 FILE 238 SHIFT RIGHT 2.5 CHANNELS"
+
+New History:
+
+"F2:  WDG536 FILE 238 SHIFT RIGHT (+) 2.5 CHANNELS".
+
+The subtle change is the sign (+ or -) in parentheses signifying
+the direction of the shift.

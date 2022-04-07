@@ -1,0 +1,276 @@
+.\" use ms macros
+.\" this header is for putting the page numbers at the bottom of the page
+.\" set line length, page offset, vertical spacing
+.nr LL 6.3i
+.ll 6.3i
+.nr PO 1.0i
+.po 1.0i
+.nr VS 12
+.vs 12
+.\" set header and footer margins (default is 1.0i)
+.nr FM 1.00i
+.fm 1.00i
+.nr HM 1.00i
+.hm 1.00i
+.\" set no date here, MUST be before CF definition, because ND sets CF
+.\" set date, so don't do .ND
+.\" LH CH RH are left, center, right header strings
+.\" LF CF RF are left, center, right footer strings
+.\" default is CH is defined as: .ds CH "\(hy \\n(PN \(hy
+.ds LH "SPECPR Users' Manual
+.ds CH
+.ds RH "Page 1.\\n(PN
+.\" setup complete
+.nf
+SPECPR Users' Manual                                                   Page 1.1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.ce
+.B
+CHAPTER 1
+.R
+
+
+
+
+
+.ce
+.B
+INTRODUCTION
+.R
+
+
+
+
+.fi
+.bp
+.B
+1.1 Introduction
+.R
+.PP
+The SPECtrum Processing Routines (SPECPR) is a large scale
+interactive program for general one dimensional array
+processing, and optimized for reflectance spectroscopy data and
+analysis.  The program processes one-dimensional arrays up to 4852 data
+points and the operations include addition, subtraction, multiplication,
+division, trigonometric functions, logarithmic and exponential
+functions, and many more specialized routines.
+.PP
+The specpr user interface is a menu driven, character command system
+with all user input entered as ascii characters to the program.
+User commands are thoroughly checked for the context in which they
+will be used.  This provides for essentially all user input mistakes
+to be caught and appropriate error messages to be issued.  The user
+interface also allows for command aliasing, variable substitutions,
+command history and batch command processing to occur at any point
+in the program.  The user can also control his or her own variables, increment and
+decrement them, and monitor certain internal variables.  This flexibility
+allows for sophisticated programming, e.g. from specific computations, to
+management of a database.
+.PP
+All arrays are treated as one dimensional lists of numbers, each
+with an appropriate header for identification and history.  Any
+array can be plotted versus another array, and each axis labeled
+appropriately.  For example, you may plot a reflectance spectrum
+versus wavelength or wavelength versus reflectance.  The array type
+is simply a label, so data like temperature versus time can be
+treated just as easily as a reflectance spectrum.  Some routines are
+specific to certain purposes, however.  For example, the Planck
+black body generator is specific to intensity versus wavelength,
+whereas a smoothing routine could operate equally on reflectance
+versus wavelength or temperature versus time.
+.PP
+Each array element can
+have an error bar associated with it and errors are propagated through
+all appropriate routines.  Data points can be marked deleted and deleted
+points are tracked appropriately.  These features allow the program to
+be effectively used on real world data.
+.PP
+This philosophy has resulted in a flexible system for which a user
+can manipulate data arrays efficiently.  The program was designed
+for analysis of laboratory, field, telescopic, and spacecraft
+spectroscopic data, and although general in nature, there are biases
+built in.  For example, horizontal axis labels default to wavelength
+in micrometers, but the defaults can be changed.
+.PP
+Because of the orientation in specpr to process planetary and
+terrestrial data, and the need to access such data, specpr has been
+extended to have access to non-specpr default file types.  In
+particular, specpr can "skewer" an 3-dimensional (3D) data file along any of
+the three axes.  Further, block skewers can be done with the
+standard deviation of the mean computed for each channel in the
+block.  Currently, specpr can access any of the standard file types
+common in the terrestrial and planetary remote sensing communities.
+Details on 3D file I/O are given in Chapter 6.
+.PP
+Specpr has multiple record types available within a single specpr
+data file.  Currently defined record types are data and text.  In a
+data record, a standard one dimensional array is held, along with
+its header information.  The header information includes a title,
+history, dates and time of data acquisition and when the data were last
+processed,
+the user who processed the data, information typical of a spectrum like
+temperature and viewing geometry, as well as pointers to
+wavelengths, resolution, and text.  If a spectrum is more than 256
+channels in length, then the data gets put in succeeding records in
+the file, and the following records are continuation records.
+.PP
+The second record type is the text, where a title and a block of
+text (up to 19 kbytes) can be stored.  This record type is typically
+used for a description of samples, experiments, instruments, or
+data processing for a particular data set.  It could also store the
+actual commands used to create a spectrum.  The
+commands for a complicated plot for a publication might be stored in
+a text record.  That way, you can easily regenerate the plot, or
+even write the commands to a non-specpr file, modify them with any
+editor and reexecute them.
+.PP
+The file types, text and command processing, combined with the math
+and special functions, provide for very
+powerful and general analysis tool.  These facilities also provide
+the framework for database management.
+
+
+.B
+1.2  History of Specpr
+.R
+.PP
+The program began in 1975 at the M.I.T. Wallace Observatory,
+on a Harris 2024 computer, as a short routine to
+subtract or divide 2 spectra from the
+Remote Sensing Laboratory Circular Variable filter spectrometer
+("The Wedge").   Due to lack of processing software, the program
+grew to fill the Wedge data reduction needs.  Over the years, the
+program has grown to serve more and more applications.
+The reason specpr has survived is because of the philosophy behind each
+application routine that was added: it should be of a general nature,
+have checking of user input so that data are not inadvertently
+destroyed, give a history of all operations, and track deleted
+points because most data are not perfect.
+.PP
+After the initial development of specpr at the MIT
+Remote Sensing Lab (RSL), the lab moved to the Institute for Astronomy of
+the University of Hawaii in June 1977.  At that time, there was no software for
+reduction of spectral data.  It was decided that the Wedge data
+reduction program should be put on the new computer (TI 980 B) as a
+general spectrum and one dimensional array processing system.
+In the next 3 years, the program was written to handle the many
+types of astronomical photometry being obtained by the group at the
+Institute.
+.PP
+In 1980, Specpr was moved from the overworked TI 980 B to the newly
+acquired LSI 11/23 system running the UNIX operating system.
+.PP
+The historical development of specpr up to this point solidified some
+of the commands used in the program.  The initial specpr routines (pre 1980) were
+designed with data reduction strategy for a particular method of
+astronomical observing.  That strategy is still there, but must be
+modified for other methods, for example reduction of laboratory
+spectroscopy data.  The TI 980 B and LSI 11/23 versions of specpr were
+based on 16 bit words whereas the MIT version was based on a 24 bit word
+machine, and that resulted in certain array sizes that are still in
+place.  During the change to the TI 980 B, many of the letter command
+codes and array sizes were changed to fit more general cases.  Also
+during the change to the LSI version all of the routines were rewritten
+in Ratfor with a few in C and the program was broken up into about 25
+separate programs due to the lack of a decent overlay linker for the
+Fortran compiler.  This Ratfor conversion apparently took place because
+the programmer who did it was a C programmer, and liked Ratfor better
+than FORTRAN 66 (this happened before FORTRAN 77 became widely
+available).
+.PP
+In 1984, the program was moved to the U. S. Geological Survey in
+Denver.  The new spectrometers at the USGS necessitated many
+changes, mostly because the USGS machines produced more data points
+per spectrum.  Research directions also played a role in the
+analysis routines developed.  The study of high resolution spectra,
+absorption band analysis, radiative transfer mixing models, and the
+desire to manage spectral databases necessitated major changes to
+the functionality of specpr.
+.PP
+The latest analysis area for specpr development is access to imaging
+spectrometer data cubes.  This access allows a user to query large
+data sets for spectra and then analyze those spectra in detail.
+
+
+.B
+1.3  Specpr Design Philosophy
+.R
+.PP
+Specpr is designed to meet the needs of the remote sensing
+spectroscopist for detailed analysis of spectral data.  In that
+sense, it is not designed to analyze whole image cubes (hundreds of
+thousands of spectra), but smaller numbers (ones to several
+thousands) where the user must become intimately knowledgeable about
+the data quality and results.
+.PP
+One of the main goals of the program is to be uncrashable.  Since
+users sit at the terminal for many hours processing data, they
+are bound to make mistakes, so another goal is for the program to
+be somewhat "intelligent" and to try and catch mistakes.  The
+program is completely free format allowing quick and easy input of
+commands.  Spaces are required between two numbers only when
+there is no character between them.  Otherwise, spaces can be
+completely left out or inserted wherever the user wishes.
+.PP
+Most commands are a single character.  With the many programs and
+options in specpr, an individual letter is used for more than one
+command.  For example in one section of the program, the command "l"
+may mean list a file, but in another, say a plot routine, it may
+mean line type.  Thus a command is context dependent.  The menus in
+each routine give the commands and options available to the users.
+.PP
+In many batch processing
+systems, the user types commands in a file, and then directs the files
+into a program for processing.  If there was a mistake, the job
+must be run again, and this wastes time.  In the interactive
+version, as the commands are typed in, they are executed
+immediately and the results displayed.  In this way, all
+intermediate steps are seen, and decisions can be made to change the
+processing in order to obtain the best results.  
+Specpr commands can be read from a file
+starting and terminating at any point in the program, thus giving
+batch capability.  Commands can also be saved in a text file as they
+are typed in.  Then, if a mistake is made, the text file can be
+edited and executed again.
+.PP
+Specpr maintains a complete history (within
+reason) of each operation.  This has proved invaluable
+for figuring out what was done to some data whether it is yours
+or someone else's.  Any time there is a question of the results of a
+particular analysis, anyone can trace and verify whether or not
+everything was done correctly.  However, for specpr to properly record
+histories, certain steps must be followed, for it is possible to subvert
+any history mechanism.  One possible way to subvert the history is
+to put intermediate products in a temporary file, then delete the
+file and only keep the final product.  Specpr records the history of
+the last operation of each spectrum, so to trace a complete history,
+all intermediate steps must be kept.  This is not really a
+limitation, because spectral data are small in comparison to the
+size of modern computer disk space.
+.PP
+An interactive "smart" program of this nature requires an almost
+shocking amount of code.
+Specpr is now about 50,000 lines of Ratfor and C in length, contains
+over 400 subroutines, and takes about 1.5 megabytes of memory to
+run.
+.PP
+For reference, specpr was first described by Clark (1980,
+.I
+Publications of the Astronomical Society of the Pacific,
+.R
+.B 92,
+.R
+221-224).

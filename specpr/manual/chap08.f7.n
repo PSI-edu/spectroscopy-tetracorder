@@ -1,0 +1,132 @@
+.\" use ms macros
+.\" this header is for putting the page numbers at the bottom of the page
+.\" set line length, page offset, vertical spacing
+.nr LL 6.3i
+.ll 6.3i
+.nr PO 1.0i
+.po 1.0i
+.nr VS 12
+.vs 12
+.\" set header and footer margins (default is 1.0i)
+.nr FM 1.00i
+.fm 1.00i
+.nr HM 1.00i
+.hm 1.00i
+.\" set no date here, MUST be before CF definition, because ND sets CF
+.\" set date, so don't do .ND
+.\" LH CH RH are left, center, right header strings
+.\" LF CF RF are left, center, right footer strings
+.\" default is CH is defined as: .ds CH "\(hy \\n(PN \(hy
+.ds LH "SPECPR Users' Manual
+.ds CH
+.ds RH "Page 8-f7.\\n(PN
+.\" setup complete
+.nf
+SPECPR Users' Manual                                                   Page 8-f7.1
+
+
+.B
+F7:  Smoothing Function                                   Alias: smoo[th]
+.R
+.PP
+This routine smoothes a spectrum by performing a weighted smoothing of
+adjacent channels.  First, the channels are sorted into increasing
+wavelengths; note that the smoothing is done in channel space only.  The
+user then chooses how many channels to include on each side of each data
+point.  Each point is weighted by the inverse power of 2 with the power
+increasing with increasing distance from the data point to be smoothed.
+If the parameter giving the number of channels to include on each side
+of a given channel is n, then for n = 1 data point D at channel i is computed by
+
+.in 19n
+D\di\u = [ \(12D\di-1\u + D\di\u + \(12D\di+1\u]/2.                (eqn 8.f7.1)
+.in 0n
+
+For n = 2
+
+.in 12n
+D\di\u = [ \(14D\di-2\u + \(12D\di-1\u + D\di\u + \(12D\di+1\u  \(14D\di+2\u]/2.5.      (eqn 8.f7.2)
+.in 0n
+
+In general
+
+.in 6n
+.nf
+      \(lt D\di-n\u          D\di-1\u        D\di+1\u          D\di+n\u \(rt
+      \(lk \(em\(em\(em\(em + .... + \(em\(em\(em\(em + D\di\u + \(em\(em\(em\(em + .... + \(em\(em\(em\(em \(rk
+      \(lb  2\un\d            2           2             2\un\d  \(rb
+D\di\u = \(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em   (eqn 8.f7.3)
+                  \(lt     2          2  \(rt
+                  \(lk 1 + \(em\(em + ... + \(em\(em \(rk
+                  \(lb     2\d1\u         2\un\d \(rb
+.fi
+.in 0n
+
+and
+
+.in 6n
+.nf
+      \(lt \(*s\u2\d\di-n\u         \(*s\u2\d\di-1\u        \(*s\u2\d\di+1\u         \(*s\u2\d\di+n\u \(rt \(12
+      \(lk \(em\(em\(em\(em + .... + \(em\(em\(em\(em + \(*s\u2\d\di\u + \(em\(em\(em\(em + .... + \(em\(em\(em\(em  \(rk
+      \(lb  2\un\d            2            2              2\un\d  \(rb
+\(*s\di\u = \(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em  (eqn 8.f7.4)
+                  \(lt     2          2  \(rt
+                  \(lk 1 + \(em\(em + ... + \(em\(em \(rk
+                  \(lb     2\d1\u         2\un\d \(rb
+.fi
+.in 0n
+
+.PP
+The parameter n can vary from 1 to the number of channels divided
+by 2.  When the smoothing is finished, the data are sorted into
+the original order.  The wavelength record default is the current
+wavelength set in use (and is printed on the CRT).  If another
+wavelength set is desired, type the wavelength file id and record number
+on the same line as the parameter n (which must be first on the line).
+Also, if data only in a certain range is to be considered, on the same
+line, type an "l" command (for limit) and the range limits:
+
+.in 14n
+.B
+l n1 n2
+.R
+.in 0n
+
+where n1 and n2 are
+the minimum and maximum data numbers to be included.  Default
+limits on l are -1.0x10\u34\d to +1.0x10\u34\d.
+.PP
+For example, the following command (all on one line):
+
+.in 15n
+.B
+2 V15 l -50 30000
+.R
+.in 0n
+
+sets the n = 2, wavelength set V15, and set limits to be -50 to 30,000.
+.PP
+If certain channels should be deleted, type
+
+.in 14n
+.B
+d
+.R
+.in 0n
+
+to delete points.  You will then be asked to type in the
+points to be deleted.  When you are finished typing in points to
+be deleted, type
+
+.in 14n
+.B
+c
+.R
+.in 0n
+
+to continue.
+.PP
+A data set must be specified before the f7 command, and
+errors can be included.  The parameter n seems to give excellent
+results when it is 1 or 2.  When n gets larger, there seems little
+difference in the smoothed result compared to smoothed data with n=2.

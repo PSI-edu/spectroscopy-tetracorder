@@ -1,0 +1,6 @@
+
+io/fpt2v.c and io/fpv2t.c are for old VA and TI980 format floating point
+data used in reading/writing 9-track takes.  We should delete
+these subroutines and code referencing them in a future release.
+
+   RNC 10/8/2015

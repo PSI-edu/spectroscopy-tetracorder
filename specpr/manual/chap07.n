@@ -1,0 +1,336 @@
+.\" use ms macros
+.\" this header is for putting the page numbers at the bottom of the page
+.\" set line length, page offset, vertical spacing
+.nr LL 6.3i
+.ll 6.3i
+.nr PO 1.0i
+.po 1.0i
+.nr VS 12
+.vs 12
+.\" set header and footer margins (default is 1.0i)
+.nr FM 1.00i
+.fm 1.00i
+.nr HM 1.00i
+.hm 1.00i
+.\" set no date here, MUST be before CF definition, because ND sets CF
+.\" set date, so don't do .ND
+.\" LH CH RH are left, center, right header strings
+.\" LF CF RF are left, center, right footer strings
+.\" default is CH is defined as: .ds CH "\(hy \\n(PN \(hy
+.ds LH "SPECPR Users' Manual
+.ds CH
+.ds RH "Page 7.\\n(PN
+.\" setup complete
+.nf
+SPECPR Users' Manual                                                   Page 7.1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.ce
+.B
+CHAPTER 7
+.R
+
+
+
+
+
+.ce
+.B
+MAIN MENU:  PROGRAM OPERATIONS CONTROL
+.R
+
+
+
+
+.fi
+.bp
+.B
+7.1  Introduction
+.PP
+The Program Operations Control is the main menu part of the program
+which allows access to math operations, file list, overlay,
+transfer, display, plot, file assignments, initialization and
+other applications programs such as the extinction routines.
+This is also the only point where the program should be
+terminated.  The main menu looks like:
+
+.in 2n
+.KS
+.nf
+__________________________________________________________________________
+ v = spdemos : f    1    w = *unasnd*: f    1    d = *unasnd*: f    1
+ u = *unasnd*: f    1    y = *unasnd*: f    1    s = starpack: f    1
+ lp: spoolfile       obs lat=    .000 deg   channels= 256 wav fl=C  256 h   
+ file protection: v    53,w     0,d     0,u     0,y     0,s     0 ltype= 0
+--------------------------------------------------------------------------
+ MAIN MENU: ********** Program Operations Control *********************
+
+   INFO:     "in" to turn OFF information
+
+   LIST:      l followed by v,w,d,u,or y  to list the contents 
+                         of the corresponding file
+   DISPLAY:   t  to DISPLAY on screen, OVERLAP on screen
+   MATH:      m  to do MATH operations
+   TRANSFER:  t  to TRANSFER (COPY) files
+
+   PLOT:      p  to PLOT SPECTRA on PLOTTER/printer
+   SETUP:     b  to change SETUP PARAMETERS
+   FILES:     r  to REASSIGN files and devices
+   STARPACK:  s  to create a STARPACK for extinction corrections
+   PRINT RST: f  to print summary of the current restart file
+   
+   EXIT:      EX  to exit program
+__________________________________________________________________________
+.fi
+.KE
+
+
+
+.KS
+.B
+7.2  Menu Information
+.R
+.PP
+Information on the screen can be suppressed by typing
+
+.in 20n
+.B
+in
+.R
+.in 0n
+
+or restored by typing
+
+.in 20n
+.B
+i
+.R
+.in 0n
+.KE
+
+
+
+.KS
+.B
+7.3  Listing the Contents of a Data File
+.R
+.PP
+To list the contents of the data files (v, w, d, u, or y), type l
+followed by the corresponding letter.  For example to list the
+contents of file v, type:
+
+.in 20n
+.B
+lv
+.R
+.in 0n
+
+See Chapter 11 for instructions once you are in the list routine.
+.KE
+
+
+
+.KS
+.B
+7.4  Terminating Program
+.R
+.PP
+To stop specr, type
+
+.in 20n
+.B
+EX
+.R
+.in 0n
+
+All files and devices will be closed properly, and specpr will print
+a summary of the files assigned and their protections.  When you
+restart specpr, the files will be opened and protections set to the
+same state as when you quit at this point.
+.KE
+
+
+
+.KS
+.B
+7.5  File Display, Transfer, and Overlap 
+.R
+.PP
+To transfer (copy) files, or display or overlap data on the CRT, type
+
+.in 20n
+.B
+t
+.R
+.in 0n
+
+See Chapter 10 for information once you are in the display, transfer
+and overlap routines.
+.KE
+
+
+
+.KS
+.B
+7.6  Changing Initialization Parameters 
+.R
+.PP
+To change the basic setup parameters or reassign files and
+devices, type
+
+.in 20n
+.B
+b
+.R
+.in 0n
+.KE
+
+.KS
+The basic setup parameter menu is then displayed:
+
+.nf
+.in 2n
+__________________________________________________________________________
+ v = spdemos : f   25    w =         : f    1    d = *unasnd*: f    1
+ u = *unasnd*: f    1    y = *unasnd*: f    1    s = starpack: f    1
+ lp: spoolfile       obs lat=    .000 deg   channels= 471 wav fl=V   23 a   
+ file protection: v    53,w     0,d     0,u     0,y     0,s     0 ltype= 3
+--------------------------------------------------------------------------
+                    *** SETUP parameters ***
+
+
+     type  o    to change the OBSERVATORY or observatory site
+     type  r    to REASSIGN FILES and devices
+     type  f    to EVALUATE PROTECTION vs file sizes
+                (no response indicates all is consistent)
+     type  g    and number to set GRAPHICS type (see manual)
+     type  b    to toggle BELL
+     type  v    to change the NAME of device v
+     type  d    to change the NAME of device d
+     type  u    to change the NAME of device u
+     type  y    to change the NAME of device y
+     type  w    to change the NAME of device w
+     type  cp   to change the  FILE PROTECTION
+
+     press return to go back to the MAIN routines.
+__________________________________________________________________________
+.in 0n
+.fi
+.KE
+
+See Chapter 5 for details on each command.
+.PP
+.KS
+From the main menu, it is possible to enter a multiple command and
+go right to the basic setup section desired.  From the main menu,
+type b<basic setup command>.  For example to change protection from
+the main menu, type:
+
+.in 20n
+.B
+bcp
+.R
+.in 0n
+.KE
+
+
+
+.KS
+.B
+7.7  Device and File Assignments 
+.R
+.PP
+To go to Device and File Assignments, type
+
+.in 20n
+.B
+r
+.R
+.in 0n
+
+See Chapter 6 for details on the assignment routines.
+.KE
+
+
+
+.KS
+.B
+7.8  Extinction Routines 
+.R
+.PP
+To do extinction calculations and create a starpack or list the
+starpack file by titles, type
+
+.in 20n
+.B
+s
+.R
+.in 0n
+
+See Chapter 12 for details on the extinction routines.
+.KE
+
+
+
+.KS
+.B
+7.9  Plot Routines (to Hardcopy Plotters)
+.R
+.PP
+To plot spectra on the various supported Plotters, type
+
+.in 20n
+.B
+p
+.R
+.in 0n
+
+See Chapter 13 for details on the hardcopy plotting routines.
+.KE
+
+.KS
+.B
+.sh 2 "Calling Math Operations "
+.R
+.PP
+To go to the mathematics routines, type
+
+.in 20n
+.B
+m
+.R
+.in 0n
+
+See Chapter 8 for details on the math routines.
+.KE
+
+
+
+.KS
+.B
+7.11  Restart Summary 
+.R
+.PP
+Typing
+
+.in 20n
+.B
+f
+.R
+.in 0n
+
+will list the contents of the current restart file on the listing
+device.
+.KE

@@ -1,0 +1,63 @@
+
+
+
+
+
+
+SPECPR Users' Manual                                                   Page 8-f2.1
+
+
+_F_2:  _S_h_i_f_t _C_h_a_n_n_e_l_s _L_e_f_t _o_r _R_i_g_h_t                         _A_l_i_a_s: _s_h_i_f_t
+
+     Special function f2 shifts data left or right an integer or  fractional
+number  of  channels.   A  data  set is required and errors can be included.
+Fractional shifts are done by linear interpolation.
+
+     When the routine has been entered, type:
+
+              the number of channels to shift, or e  to soft exit, or x   to
+              hard exit.
+
+A positive number (integer or real) indicates a shift right and  a  negative
+number left.
+
+     If X is the number of channels to shift, the value of X is  split  into
+the  integer part (n) and the fractional part (XN).  First, the integer part
+is shifted
+
+        D9i+n8 = D9i8                                    (eqn 8.f2.1)
+
+where D9i8 is each data channel in the spectrum.  Next, the fractional part is
+interpolated
+
+        XN' > 0.0;   D9i8 = D9i+18 - D9i8 * XN' + D9i8        (eqn 8.f2.2)
+
+        XN' < 0.0;   D9i8 = D9i8 - D9i-18 * XN' + D9i8        (eqn 8.f2.3)
+
+where XN' = -1.0 * XN.  Data channels not in the shifted region are  set  to
+zero.  The errors to the data are shifted in a similar manner.
+
+     Before June 24, 1979, there was a slight error in the  program  (XN'  =
+XN)  making  the fractional shift appear to go in a different direction than
+the integer part shift.  The history has been modified to  signal  this  new
+change:
+
+     Old history (X = + 2.5 operation on WDG536 file 238):
+
+     "F2:  wdg536 FILE 238 shift right 2.5 channels"
+
+     New History:
+
+     "F2:  wdg536 r 238 shift right (+) 2.5 channels".
+
+The subtle change is the sign (+ or -) in parentheses signifying the  direc-
+tion of the shift (very early version may have had the words in upper case).
+
+
+
+
+
+
+
+
+

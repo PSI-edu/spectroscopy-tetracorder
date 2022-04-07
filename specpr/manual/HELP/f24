@@ -1,0 +1,63 @@
+
+
+
+
+
+
+SPECPR Users' Manual                                            Page 8-f24.1
+
+
+_F_2_4:  _S_t_a_r _M_o_o_n _T_h_e_r_m_a_l _R_e_m_o_v_a_l                         _A_l_i_a_s = _s_t_a_r[_m_o_o_n_t_h_e_r_m]
+
+     This routine removes the thermal component from the  reflectance  of  a
+lunar spectrum using a standard star as a reference.  This routine was writ-
+ten by the University of Hawaii, Planetary Geosciences Division as a modifi-
+cation  to  special  function 11 (Lunar Thermal Removal, page 8-f11.1).  See
+that manual page for related operation.  The specific manual page  for  this
+function will be written by people at the UH.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

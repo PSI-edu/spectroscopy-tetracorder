@@ -1,0 +1,10 @@
+#	letters
+	write (ttyout,301)
+	call crtin
+	i=1
+	call wjfren (i,a,il)
+		if (il==ihx || il==ihe) {
+			ic=il
+			return
+		}
+	var=il

@@ -1,0 +1,59 @@
+
+   type  t  for TELESCOPIC or  l  for LABORATORY (DEFAULT)
+  or beginning and ending files to be listed
+>
+
+ *** CRT print options ***
+n  print # only on CRT when printing to lineprinter
+a  print wavelength record numbers
+h  print history 
+t  print text
+r  read and print a list of comma separated record numbers
+w  write to a file, a list of comma separated record numbers
+   You will be prompted for the file name after you select r or w.
+>
+
+
+LINEPRINTER OPTIONS (return for CRT only)
+   p  print titles + selected fields given by print mode
+   a  print titles with no pausing at CRT page full
+
+   with p or a, also select:
+   h   no history to be printed 
+   m  manual history if not blank
+   t  print text on text data files
+   b  print all header info except manual history
+   c  print all except data
+   d  print all and data
+
+> 
+Enter SEARCH STRING: letter "string1" letter "string2" etc.
+       where letter is for t  title
+                           h  history
+                           d  date
+                           m  manual history
+       maximum number of strings is 4
+       comparisons is and (default), use | for or, & for and
+>
+
+   Type in the beginning and ending files to be listed
+
+ file            title                            chans    time        date
+    73  Description of Alunite   Hunt 295.?B      3132 Characters of TEXT
+    76  Alunite 295.3B .2-3um 1x ABS REF           512  12:03:14.00  08/20/1985
+    78  errors to previous file   77               512  12:03:14.00  08/20/1985
+    80  Alunite 295.3B .9-2.6um 2x ABS REF         680  09:49:27.00  08/21/1985
+    83  errors to previous file 80                 680  09:49:27.00  08/21/1985
+    86  Alunite 295.3B 1.3-1.7um 2x ABS REF        264  11:43:26.00  08/22/1985
+    88  errors to previous file 86                 264  11:43:26.00  08/22/1985
+    90  USGS Den BKMN STD waves 4x 2.2738-4.00um   256  04:23:02.00  11/13/1985
+    91  USGS Den BKMN 4x resolution                256  04:23:02.00  11/13/1985
+    92  Alunite 295.3B 2.36-2.555um 4x ABS REF      75  14:00:38.00  08/21/1985
+    93  errors to previous file 92                  75  14:00:38.00  08/21/1985
+    94  Alunite 295.3B 1-1.55um 4x ABS REF         442  16:49:01.00  08/21/1985
+    96  errors to previous file 94                 442  16:49:01.00  08/21/1985
+    98  Description of Beryl   (WNS)              1737 Characters of TEXT
+ ------------------------------------------------------------------------------
+ Type  c  to continue, e or x  to exit,  Type in new record numbers to list
+ type  r  to return to options, type t to go to file display and transfer
+ or type m to go to math routines

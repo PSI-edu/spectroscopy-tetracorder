@@ -1,0 +1,289 @@
+.nr % 0
+.nr CN 9
+.bp
+.sh 1 "CRT PLOT ROUTINES " 9
+.sh 2 "CRT Plot Routines "
+.pp
+The CRT plot routines are called from the completion of a Math
+Operation (section 8) or from the File Display, Transfer and
+Overlay routines (section 10).  Data can be plotted in channel,
+wavelength (axis labeled:  microns), or energy (axis labeled:
+inverse microns) space.  The data can be plotted on the line
+printer in channel space or the data listed.  Spikes or glitches
+can be removed, and the header information can be displayed and
+changed.
+
+
+.sh 2 "Plotting Space "
+.pp
+The plot mode is selected by the letters
+.ul
+h
+for channel,
+.ul
+a
+for wavelength, or
+.ul
+n
+for energy space followed by the wavelength record number.  If no
+number is specified, the default is the current record number.  A
+wavelength record number is given for channel space since the
+wavelength data set also contains the number of channels.
+Note the characters chosen are the second letter of
+channel, wavelength, and energy since the first letters are used
+for other commands.  The program tries to choose round numbers
+and tick marks for the horizontal and vertical axes regardless of
+the data range.
+
+
+.sh 2 "Changing Scale "
+.pp
+The minimum and maximum of the vertical axis (scale) or the
+horizontal axis can be changed by typing
+.ul
+c.
+The minimum and maximum are free format integers or floating
+point numbers (such as
+.ul
+0  1.2, 0.  .5
+or
+.ul
+-0.3  25).
+If the minimum and maximum wavelengths are to be changed,
+they should be changed first because when the vertical values are
+changed, the routine automatically exits back to the CRT plot.
+To change the horizontal values, type
+.ul
+w
+(for wavelength) and then the lower and upper values.  If you
+type
+.ul
+w
+and then press return, the minimum and maximum are automatically
+scaled from the wavelength file in use.  The routine then reasks
+for input so you may then type in the vertical minimum and
+maximum.  For changing the vertical minimum and maximum,  you may type
+.ul
+a
+instead of numbers; the data will be auto scaled.  If
+.ul
+a
+or return is typed, the old minimum and maximum will be used.
+
+
+.sh 2 "Printer Listings and Plots "
+.pp
+The entire header information and data (in scientific notation)
+can be listed on the lineprinter by typing
+.ul
+pd.
+The data can be plotted as a lineprinter plot with the current
+scale by typing
+.ul
+p
+and the number of copies (10 or less).  The data can be plotted
+in a lineprinter plot only in channel space.  The (y-axis)
+resolution is 1 part in 100 (100 print positions for the plot).
+For each data point printed, the wavelength, channel number, and
+data number are given.  Four pages are required for 256 data
+points while only 2 pages for 120 points.  When the number of
+channels is less than 120, the plot is scaled to fit from 1 to 2
+pages.
+
+
+.sh 2 "Information Change "
+.pp
+The title only can be changed by typing
+.ul
+t.
+The program will then draw a box where the title is to fit.  If
+other information is to be changed (including the title), type
+.ul
+i.
+The header information is contained on 3 pages of the CRT.
+Pressing return goes to the next page, and typing
+.ul
+r
+returns to the first page.  To change information, type the
+indicated letter.  You will then be instructed to input the
+appropriate data.
+.pp
+In the case of the manual history, it is displayed in 4 lines and
+can be changed one line at a time (type
+.ul
+m
+and the line number or simply the line number 1, 2, 3, or 4)
+or all four lines (type
+.ul
+m
+and no line number).
+.pp
+In the case of the Band Normalization factor, scan time, or total
+integrating time, the number can be integer, floating point, or
+scientific notation.  In the case of scientific notation, the
+number is typed in as an integer or real number, then the letter
+e, then the exponent (to the power of 10, an integer).
+.pp
+There are 3 ways to exit the information change routine.  When at
+page 3, pressing return with no input will exit to the CRT plot.
+Typing
+.ul
+g
+will also exit to the CRT (graph) plot.  Typing
+.ul
+x
+will return to the calling routine (Math Operations or File
+Display and Transfer).  The option e exit will not terminate other
+processing; it only skips the CRT plot.
+Thus, if a file
+write is pending (as in the Math Operation, section 8, or file
+transfer with display, section 10), it will be completed in the
+type e exit.  If you wish to exit and terminate pending file
+writes, type
+.ul
+x
+for a hard exit. Note that, from file display routine (section 10), no
+information is changed on the stored data unless there is a
+transfer involved (see section 10).
+
+
+.sh 2 "Glitch Removal "
+.pp
+Typing
+.ul
+g
+from the CRT plot will call the glitch removal routine.  The
+routine tries to identify glitches by looking for data points
+which are greater than 6 percent of the total data range and, by
+the use of a simple pattern recognition routine, checks 4
+conditions.  The data points which are thought to be glitches
+are identified by a small diamond shaped symbol.  The user can
+then select which data points are "actual" glitches and can then
+correct them.  The glitches are assumed to be wrong by a some
+power of 2 from the true data.  This follows from a binary counter
+where one of the bits has been set wrong.  This routine was
+written specifically for the "Wedge" CVF spectrometer which has
+these type of counters.  Thus, the glitch removal routine should
+be used only on raw or object-sky data with data systems
+containing such counters.  Once the data has been multiplied or
+divided, the glitch removal is not strictly valid and is
+"fudging" the data.
+.pp
+The user indicates which channels are to be deglitched.  By
+typing
+.ul
+a,
+the user tells the program that All the points identified plus
+the channels typed in after the a are glitches to be corrected.
+By typing
+.ul
+o,
+the user tells the program Only those channels typed in after the
+letter o are to be corrected as glitches.  By typing
+.ul
+b,
+all the channels identified by the program are glitches except
+those channels which are typed in after the b.  At least one space
+must occur between channel numbers.  The glitch routine searches
+for 15 glitches at one time so it may take more than one pass to
+remove a lot of glitches.  Sometimes more than one bit is wrong,
+and it will take more than one pass.  Glitches which occur next
+to each other are not recoverable by this routine since the
+routine tries to correct the point to the surrounding data using
+the nearest power of 2.  If after 2 passes on the same point
+the data is not restored, it is probably lost.
+.pp
+A note on removing glitches:  you are fudging the data.  If you
+are not very careful and use the utmost restraint, you may create
+some absorption or emission features you had not counted on!
+
+.sh 2 "Line Type"
+.pp
+Typing
+.ul
+l
+followed by either 0, 1, 2, or 3 will change the line type used
+in the CRT plot. The following gives the characteristics of the
+four types.
+.(l
+
+        0               error bars included, points not connected
+        1               error bars included, points connected
+        2               error bars excluded, points connected
+        3               error bars excluded, points not connected
+
+.)l
+
+.sh 2 "Point Deletions"
+By typing
+.ul
+r
+followed by a list of channel numbers followed by
+.ul
+c
+you can Remove the points in the list. The deletion is done by
+setting the value of the data in the specified channels to
+@-1.23 times 10 sup 34@ which indicates deleted points. The list of channel
+numbers consists of numbers separated by spaces and by pairs of
+numbers separated by
+.ul
+t
+to indicate the deletion of a range of channels.
+
+.sh 2 "Exiting CRT Plot "
+.pp
+There are 3 commands for CRT plot exiting.  The first applies to
+the Math Operations routine only.  If the Band Normalization
+option was not turned on, the user may type
+.ul
+b.
+This will turn on the Band Normalization option, exit the CRT
+plot, and go to the Band Normalization routine (section 8.9).
+When the Band Normalization routine is left, the program will
+return to the CRT plot.  If
+.ul
+b
+is typed while in the file display, transfer, and overlay, the
+CRT plot will soft exit (as a type e exit below).  By typing
+.ul
+e
+the user soft exits from the CRT plot in the normal fashion and
+the program executes the next command.  By typing
+.ul
+x,
+the user hard exits from the CRT plot, all pending commands are
+ignored, and the program returns to the calling routine (which
+is either Math Operations or File Display, Transfer, and
+Overlay).
+.pp
+After a soft exit (e) from the CRT plot under Math Operations,
+the data is written to the requested location (see section 8.7).
+If errors are included, the program writes on the CRT where they
+will be written and gives the user the option of not to write the
+errors (by typing
+.ul
+x).
+Otherwise, press return or type
+.ul
+c
+to continue.
+.pp
+After a soft exit from the CRT plot under File Display and
+Transfer, the data is written only if there is a transfer (see
+section 10); otherwise, the next command is executed.
+
+
+.sh 2 "Multiple Commands in CRT Plot "
+.pp
+One entire line (80 characters) can be input to the CRT plot
+routine at one time for execution.   For example, to change to
+wavelength space, record 2, change scale, change information, print
+header information and data twice, and make 2 lineprinter plots,
+you would type:
+
+        a2cipdpdp2  or  a2 ci pd pd pp.
+
+Spaces can be inserted wherever desired but are not necessary.
+This greatly speeds up processing since it takes about 12
+seconds to plot 120 channels on the CRT and would take a long
+time to replot the CRT after each command.

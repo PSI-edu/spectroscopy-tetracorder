@@ -1,0 +1,307 @@
+<!-- Creator     : groff version 1.18.1.1 -->
+<!-- CreationDate: Tue Nov  9 14:21:33 2010 -->
+<html>
+<head>
+<meta name="generator" content="groff -Thtml, see www.gnu.org">
+<meta name="Content-Style" content="text/css">
+<title></title>
+</head>
+<body>
+
+<hr>
+<pre>SPECPR Users&rsquo; Manual                                                   Page 12.1
+
+</pre>
+
+<p align=center>CHAPTER 12</p>
+
+<p align=center>EXTINCTION ROUTINES</p>
+
+<p>12.1 Introduction The extinction routines are used to
+correct astronomical data for the effects of the terrestrial
+atmosphere. The extinction analysis is a least squares fit
+of a straight line to the base 10 logarithm of the data
+versus airmass for each channel. The intercept and slope of
+the line, along with a goodness of fit (correlation
+coefficient), are stored for later extinction corrections
+with objects observed and is together called called a
+&quot;starpack.&quot; Extinction analysis methods and
+examples can be found in</p>
+
+<p>McCord, T.B., and R.N. Clark, Atmospheric Extinction
+0.65-2.50 &mu;m Above Mauna Kea, Pub. Astron. Soc. Pac.,
+571-576, 1979. The extinction routines are accessed by
+typing</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>s</p></td>
+</table>
+
+<p>from Program Operations Control. The screen will then
+list available commands on the CRT.</p>
+
+<p>12.2 Starpack List and Display Type</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>d</p></td>
+</table>
+
+<p>to list the starpack by title. You will then be
+instructed to input a record number (1 to 50) or type the
+number 0 to list all starpacks in the starpack file. Typing
+a number (1 to 50) will read that starpack into memory so
+that it can be displayed (see section 12.4). If zero was
+typed, the last starpack listed is in memory (assuming there
+is no I/O error).</p>
+
+<p>IMPORTANT NOTE: If you have just created a new starpack,
+do not list the starpack file as this writes over the
+starpack in memory.</p>
+
+<p>Note that, when reading a starpack from disk, you cannot
+do airmass versus log intensity plots because this
+information is not stored in the starpack. It is only stored
+in memory after an extinction calculation. In order to do
+these plots, or deletion and restoration of runs and
+channels (section 12.5), you must recreate the starpack from
+scratch using the data indicated in the history.</p>
+
+<p>12.3 Extinction Calculation Type</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>c</p></td>
+</table>
+
+<p>to perform extinction calculations. The computer then
+asks the user for up to 20 spectra for extinction
+calculations. The data are input by typing in the file ID
+(v, w, u, y, or d) and the record numbers. The program is
+designed so that the user can type on one line as in the
+example:</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="18%"></td>
+<td width="81%">
+<p>w12 13 14 15 16v1 2 3 d4 5 6c.</p></td>
+</table>
+
+<p>Typing the file ID and then a string of numbers after
+the ID causes the program to store the string of numbers
+along with that file ID. When all files have been typed in,
+the user types</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>c</p></td>
+</table>
+
+<p>to indicate the finish. More than one line (at 80
+characters per line) may be used. Note: At the beginning of
+a new line, a file ID must be typed; otherwise, erroneous
+record numbers will be stored. After typing in the data
+sets, the user is asked to type in a 24-character title for
+the starpack. After storing the title, the computer will
+read in the records and list the titles on the CRT, then
+calculate the extinction values (it takes a few seconds),
+and display the slopes in a CRT plot. At this point in
+extinction calculations, all the data are stored in memory
+and the extinction coefficients have been calculated, but
+the starpack has not been written to the starpack file. The
+user should look over the calculations using the CRT plot
+and then write the starpack on disc (see below). Possible
+deviations from normal operation:</p>
+
+<p>If the number of spectral scans (revs) in each data set
+are not the same, the sets whose scans differ from the first
+set read in are flagged.</p>
+
+<p>If a file ID has not been included, a read error is
+encountered, the list of options is displayed, and the user
+must begin again.</p>
+
+<p>12.4 Extinction CRT Plot Because the extinction
+coefficients are in 3 arrays (slopes, intercepts, and
+goodness of fit), they are displayed one at a time on the
+CRT. When the plot routine is entered [automatically from
+extinction calculation or by typing</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>p</p></td>
+</table>
+
+<p>(for plot) from extinction commands], the slopes are
+displayed. The scale can be changed by typing</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>c</p></td>
+</table>
+
+<p>and the intercepts can be plotted by typing</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>i</p></td>
+</table>
+
+<p>and the goodness of fit can be plotted by typing a</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>g</p></td>
+</table>
+
+<p>command. The slopes can then be plotted again by typing
+an</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>s</p></td>
+</table>
+
+<p>command. A lineprinter plot can be made of either
+slopes, intercepts, or goodness of fit by typing</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>p</p></td>
+</table>
+
+<p>(note that the printer spooler must be assigned). To
+exit the plot routines, type an</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>e</p></td>
+</table>
+
+<p>or</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>x</p></td>
+</table>
+
+<p>command. Both these exit commands are the same since
+there can be no pending commands.</p>
+<pre>12.5  Airmass Versus Log Intensity Plots and Deletion
+      and Restoration of Runs and Channels
+      To investigate the fitted line, and the scatter in the data, the
+airmass versus log intensity must be plotted.  To improve the fit,
+entire runs or single channels must be deleted (and restored).
+Typing
+
+             t
+
+will call this routine.  The program will then ask you to type in a
+channel number (with which an airmass versus log intensity plot is to be
+made) or type
+
+             d
+
+to delete runs and channels or
+
+             r
+
+to restore runs and channels.
+Up to 10 channels in each run can be deleted, or the entire run
+can be deleted.  Because up to 20 data sets can be used to calculate
+extinction, this routine refers to the sets as run numbers 1 to
+20 in the order that they were typed in by the user.  To delete a
+run, type the run number and 0.  The system then asks for n channel
+numbers to be read in.  The whole procedure can be repeated until
+the user has finished deletions.  A least squares fit is done in
+this routine, and the routines list of options is displayed upon
+completion.  The least squares fit takes a few seconds.
+Selecting restoration causes the display of an array of numbers
+that is 12 wide and 20 high.  The left-hand column is the run
+number, and the column next to this gives the number of channels
+deleted or, if the number is -1, it indicates that the run has been
+deleted.  To restore a run, type in the run number and zero; to restore
+a channel, type in the run number and the channel number.  This process
+can be repeated, if necessary, and the array can be plotted out again
+showing any changes.  When restoration is complete, a least squares fit
+is applied, and the routines list of options is displayed.  The least
+squares fit takes a couple of minutes.  To exit this routine, type e.
+Note that no history is kept of runs and channels that are
+deleted or restored.  There is a 592-character manual history
+(see section 12.7) for any notes or listing runs and channels which
+have been deleted, but the user must do this manually.
+
+12.6  Writing a Starpack
+After extinction calculations are finished, the starpack is
+stored in memory but is not written to disc (to the starpack
+file).  This is not done automatically because the user must look
+over the data and decide whether to delete runs or
+channels or whether or not the starpack is any good at all.  Thus,
+the user must remember that an extinction
+analysis has been completed and that the starpack must be written to the starpack
+file.  (If you have been able to keep the slightest attention
+while reading this manual, you will be able to remember when you
+have finished an extinction analysis).  To write a starpack to
+the starpack file, type an
+
+             s
+
+command.
+You will then be asked for the record number (1 to 50).
+
+12.7  Starpack Manual History
+There is a 592-character (8 lines at 74 characters per line) manual
+history for special notes or for listing runs and channels which have
+been deleted.  Type
+
+             m
+
+from the extinction routines section.  You will then be asked to
+type in the line number or zero for all lines or
+
+             e
+
+to exit the routine.
+</pre>
+<hr>
+</body>
+</html>

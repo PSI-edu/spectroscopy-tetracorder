@@ -1,0 +1,113 @@
+<html>
+<TITLE>USGS Spectroscopy Lab - Clark et. al. 2003 Spectral Library splib05a </TITLE>
+</HEAD>
+<BODY>
+
+<table width="100%" border="0" height="70" bgcolor="black">
+  <tr>
+    <td>
+       <A HREF="http://www.usgs.gov/">
+       <IMG SRC="USGSearthsat2.gif"  border=0
+                  ALT="U.S. Geological Survey home page">
+       </A>
+   </td>
+  </tr>
+</table>
+
+<H2>
+<br clear=all>
+<B>Clark <i>et. al.</i> 2003 USGS Open File Report 03-____<br>
+   Spectral Library splib05a Sample Description</B></H2></CENTER>
+
+<br>
+<P>
+<p>
+TITLE: Alunite0.66K+.34Na CU91-217A DESCRIPT
+<p>
+DOCUMENTATION_FORMAT: MIXTURE
+<p>
+SAMPLE_ID: CU91-217A
+<p>
+MIXTURE_TYPE: Intimate
+<p>
+MIXTURE: Alunite 66% 0.00XNa + 34% 0.83XNa
+<p>
+FORMULA: 
+<p>
+FORMULA_HTML:
+<p>
+COLLECTION_LOCALITY: Eastern Altertion Center, Cuprite, Nevada, USA
+<p>
+ORIGINAL_DONOR: Gregg Swayze
+<P>
+COLLECTION_LATITUDE:   N37            # degrees and decimal minutes (N or S)
+<P>
+COLLECTION_LONGITUDE:  W117           # degrees and decimal minutes (W or E)
+P>
+DATUM:                 NAD27  # coordinate datum
+<p>
+CURRENT_SAMPLE_LOCATION: U.S.G.S. Denver Spectroscopy Laboratory
+<p>
+ULTIMATE_SAMPLE_LOCATION: U.S.G.S. Denver Spectroscopy Laboratory
+<p>
+SAMPLE_DESCRIPTION:
+<p>
+This sample contains two alunite phases from the western side of Alunite Hill in
+<p>
+<p>
+<p>
+<p>
+END_SAMPLE_DESCRIPTION.
+<p>
+<p>
+XRD_ANALYSIS:
+<p>
+
+<p>
+<p>
+<p>
+END_XRD_ANALYSIS.
+<p>
+COMPOSITIONAL_ANALYSIS_TYPE: XRF    # XRF, EM(WDS), ICP(Trace), WChem
+<p>
+COMPOSITION_TRACE: None
+<p>
+COMPOSITION_DISCUSSION:
+<p>
+None
+<p>
+<p>
+END_COMPOSITION_DISCUSSION.
+<p>
+MICROSCOPIC_EXAMINATION:
+<p>
+None
+<p>
+<p>
+END_MICROSCOPIC_EXAMINATION.
+
+<p>
+SPECTROSCOPIC_DISCUSSION:
+<p>
+The spectrum has
+<p>
+See:  Swayze, G.A., 1997, The hydrothermal and structural history of the
+  Cuprite Mining District, southwestern Nevada:  an integrated
+  geological and geophysical approach:  unpublished Ph.D.  Dissertation,
+  University of Colorado at Boulder, 399p.
+
+<p>
+
+END_SPECTROSCOPIC_DISCUSSION.
+
+<p>
+SPECTRAL_PURITY: 1 2_3_4_     # 1= 0.2-3, 2= 1.5-6, 3= 6-25, 4= 20-150 microns
+<p>
+<TABLE BORDER=1 SUMMARY="Table of spectra for this sample">
+<TR><TD>
+LIB_SPECTRA_HED:</TD><TD>    where     </TD><TD>   Wave Range </TD><TD> Av_Rs_Pwr </TD><TD> Comment</TD></TR>
+<p>
+<TR><TD>
+LIB_SPECTRA:</TD><TD>  splib05a r ____ </TD><TD>   0.2-3.0&#181;m</TD><TD> 200    </TD><TD> g.s.= </TD></TR>
+</TABLE>
+</html>

@@ -1,0 +1,825 @@
+.nr LT 6.5i
+.lt 6.5i
+.nr PO 0.875i
+.po 0.875i
+.TL
+.ce
+Commands in SPECPR
+
+
+The following lists the commands used in SPECPR.  Many commands
+are of a general nature and are used throughout the programs.
+Listed in brackets are the sections of the users manual where the
+commands are found. Listed in the curly brackets {} are
+additional options to the command letters.
+.TS
+center,tab(!);
+c s
+lw(0.5i) lw(4.5i).
+- A -
+.sp 5
+a:!T{
+Change default wavelength record assignment (general command used
+in Math Operations [section 8], CRT Plot Routines [section 9],
+and File Display, Transfer and Overlay [section 10])
+T}
+.sp
+a:!T{
+Average option in addition mode [8.3]
+T}
+.sp
+a:!T{
+Wavelength plot mode in CRT plot routines [9.2]
+T}
+.sp
+a:!T{
+Autoscale (on CRT plot) [9.3] [10.1]
+T}
+.sp
+a:!T{
+Remove all glitches and any other entered [9.6]
+T}
+.sp
+a:!T{
+Assign a different wavelength record in the wavelength assignment routine
+T}
+.sp
+a:!T{
+"Automatic" line printer lists of file [11.1]
+T}
+.sp
+a:!T{
+Wavelength record used in plot [13.6]
+T}
+.sp
+a{tl}:!T{
+GFIT, Estimate Parameters routine to enter output file title
+where tl is the title, entered on same line. [14.2.1]
+T}
+.sp
+a{n}:!T{
+GFIT, Estimate Gaussians routine to change all the parameters of
+a gaussian, where n is the gaussian number. [14.2.2]
+T}
+.TE
+
+.bp
+.TS
+center,tab(!);
+c s
+lw(0.5i) lw(4.5i).
+- B -
+.sp 5
+b:!T{
+Change initialization parameters or return to wavelength
+assignment routines [7.6]
+T}
+.sp
+b:!Turns on band normalization [8.2] [8.8]
+.sp
+bn:!Turns off band normalization [8.2] [8.8]
+.sp
+b:!Begin addition analysis [8.3]
+.sp
+b:!T{
+Remove all glitches in the channels identified except those
+specified by the user [9.6]
+T}
+.sp
+b:!Autoscale with line printer plot [10.1]
+.sp
+b:!T{
+Line printer option for all header information except manual
+history and data [11.1]
+T}
+.sp
+b:!Begin Building plot [13.6]
+.sp
+b:!Begin transpose [8.6.8]
+.sp
+b:!Begin Analysis [8.6.16] (F16)
+.sp
+b{xy}:!T{
+GFIT, Estimate Parameters routine to assign the input specpr file
+where x is the specpr file id and y is the record number.
+[14.2.1]
+T}
+.TE
+
+.bp
+.TS
+center,tab(!);
+c s
+lw(0.5i) lw(4.5i).
+- C -
+.sp 5
+c:!T{
+Change channel number (wavelength assignments) [6.8]
+T}
+.sp
+c:!T{
+Constant identifier in Math Operations [8.2]
+T}
+.sp
+c:!T{
+Continue (after entering numbers to be deleted) [8.3]
+T}
+.sp
+c:!Change scale (on CRT plot) [9.3]
+.sp
+c:!T{
+"CRT plot routine" option in file transfer mode [10.1.2]
+T}
+.sp
+cit:!T{
+CRT plot of only header information and transfer [10.1.2]
+T}
+.sp
+c:!T{
+Continue listing of file [11.1]
+T}
+.sp
+c:!T{
+Line Printer option for all header information but not data [11.1]
+T}
+.sp
+c:!T{
+Command to perform extinction calculations [12.3]
+T}
+.sp
+c:!T{
+End of extinction calculations [12.3]
+T}
+.sp
+c:!T{
+Connect data points in plot [13.6]
+T}
+.sp
+c:!Continue [13.6]
+.sp
+cp:!Change protection [7.6]
+.sp
+C:!Connect points, ignore non-ordered wavelengths [13.6]
+.sp
+c:!T{
+Deletion ended, continue:  a general command to signify end of
+deleted points (all routines).
+T}
+.sp
+co:!GFIT, Plotting routine to plot the continuum  [14.7]
+.sp
+c{n}:!T{
+GFIT, Estimate Parameters routine to specifying the number of
+continuums, where n is the number of continuums. [14.2.1]
+T}
+.TE
+
+.bp
+.TS
+center,tab(!);
+c s
+lw(0.5i) lw(4.5i).
+- D -
+.sp 5
+d:!T{
+D-file, workfile [2.2] This is  a general command to access "DFILE".
+T}
+.sp
+d:!T{
+Edit wavelength records (wavelength assignments) [6.9]
+T}
+.sp
+d{fn}:!T{
+Change file assignment of the d-file, where fn is the filenname
+[5.1]
+T}
+.sp
+d:!T{
+Delete Zero's option in addition routine [8.3]
+T}
+.sp
+d:!T{
+Delete channels in addition routine [8.3], and in Gould Plot
+routines [13.4, 13.6]
+T}
+.sp
+d:!T{
+Line printer option for all header information and data [11.1]
+T}
+.sp
+d:!List (Display) starpack by title [12.2]
+.sp
+d:!Delete specified runs or channels [12.5]
+.sp
+d:!T{
+Delete specified points in smoothing function, F7 [8.6.7]
+T}
+.sp
+d{n}:!T{
+Delete step n [8.6.16] F16 Where n is an integer)
+T}
+.sp
+d{n}:!T{
+GFIT, Estimate Parameters routine for specifying the number of
+gaussians to be fitted, where n is the number of gaussians.
+[14.2.1]
+T}
+.TE
+
+.bp
+.TS
+center,tab(!);
+c s
+lw(0.5i) lw(4.5i).
+- E -
+.sp 5
+e:!T{
+Exit to next routine:  a general "soft exit" command
+T}
+.sp
+ex:!T{
+Exit Program [7.4] (from Program Operations Control only)
+T}
+.sp
+e:!T{
+Includes error bars:  a general command
+T}
+.sp
+es:!GFIT, Transfer estimate to scratch [14.4]
+.sp
+eg:!GFIT, Goto estimate gaussian routine [14.2.2]
+.sp
+eg:!GFIT, Plotting routine for erasing graphics [14.7]
+.sp
+ep:!GFIT, Goto estimate parameter routine [14.2.1]
+.TE
+
+.bp
+.TS
+center,tab(!);
+c s
+lw(0.5i) lw(4.5i).
+- F -
+.sp 5
+f:!Print summary of the current restart file [7.12]
+.sp
+f1:!Lists Index of special functions [8.6.1]
+.sp
+f2:!T{
+Special function, shifts data left or right an integer or
+fraction number of channels [8.6.2]
+T}
+.sp
+f3:!T{
+Special function, sequential processor [8.6.3]
+T}
+.sp
+f5:!Special function, continuum removal [8.6.5]
+.sp
+f6:!T{
+Special function, black body computation [8.6.6]
+T}
+.sp
+f7:!Special function, smoothing [8.6.7]
+.sp
+f8:!T{
+Special function, channel-file transpose [8.6.8]
+T}
+.sp
+f9:!Special function, Band Removal [8.6.9]
+.sp
+f10:!T{
+Special function, arranges data into increasing wavelength order [8.6.10]
+T}
+.sp
+f11:!Special function, thermal removal [8.6.11]
+.sp
+f12:!T{
+Special function, cubic spline interpolation [8.6.12]
+T}
+.sp
+f13:!Special function, merge [8.6.13]
+.sp
+f14:!Special function, Edit data [8.6.14]
+.sp
+f15:!T{
+Special function, Gaussian Fit Formatter [8.6.15]
+T}
+.sp
+f16:!T{
+Special function, SPECPR line segment generator [8.6.16]
+T}
+.sp
+f17:!T{
+Special function, High to low resolution connvolution [8.6.17]
+T}
+.sp
+f18:!T{
+Special function, Block averages and statistics [8.6.18]
+T}
+.sp
+f19:!T{
+Special function, Polynomial fit (10 term) [8.6.19]
+T}
+.sp
+f20:!T{
+Special function, read/write data from a Unix text file in f or e format
+[8.6.20]
+T}
+.sp
+f21:!T{
+Special function, Calculates the n-th term polynomial [8.6.21]
+T}
+.sp
+f22:!T{
+Special function, reads data from the digitizing tablet, and scales
+it to given limits. [8.6.22]
+T}
+.sp
+f23:!T{
+Special function, Mathematical expression parser. [8.6.23]
+T}
+.TE
+
+.bp
+.TS
+center,tab(!);
+c s
+lw(0.5i) lw(4.5i).
+- G -
+.sp 5
+g2:!Set, White on Black graphics mode [4.6]
+.sp
+g3:!T{
+Compliment, White on Black graphics mode [4.6]
+T}
+.sp
+g11:!Set, Black on White graphics mode [4.6]
+.sp
+g13:!T{
+Compliment, Black on White graphics mode [4.6]
+T}
+.sp
+g99:!Not a graphics terminal [4.6]
+.sp
+g{n}:!T{
+n < 10, Jam mode, White on Black [4.6];
+T}
+!T{
+n > 10, Jam mode, Black on White [4.6]
+T}
+.sp
+g:!Glitch removal routine call [9.6]
+.sp
+g:!T{
+Next spectrum is to be plotted on a new graph [13.6]
+T}
+.sp
+g:!Execute GFIT prograam [7.11]
+.sp
+g:!T{
+Plot goodness of fit in extinction routines [12.4]
+T}
+.TE
+
+.bp
+.TS
+center,tab(!);
+c s
+lw(0.5i) lw(4.5i).
+- H -
+.sp 5
+h:!T{
+Channel plot mode in CRT plot routines [9.2] and used as a
+general command to indicate Channel space
+T}
+.TE
+
+.bp
+.TS
+center,tab(!);
+c s
+lw(0.5i) lw(4.5i).
+- I -
+.sp 5
+i:!T{
+Puts Program Operations Control, Math Operations, or File
+Display, transfer and Overlay information of the screen [7.2]
+[8.1]
+T}
+.sp
+in:!T{
+Clears Program Operations Control information from the screen [7.2] [8.1]
+T}
+.sp
+i:!Review and change of other information [9.5]
+.sp
+i:!Plot intercepts [12.4] in extinction routine
+.TE
+.bp
+.TS
+center,tab(!);
+c s
+lw(0.5i) lw(4.5i).
+- K -
+.sp 5
+.TE
+.bp
+.TS
+center,tab(!);
+c s
+lw(0.5i) lw(4.5i).
+- L -
+.sp 5
+l:!T{
+Print the summary of the wavelength file from wavelength file assignments
+[6.10]
+T}
+.sp
+l#:!T{
+Change line type in transfer and crt plot routines
+where # is the line type number, 0 = crosses only, 1 = connect
+crosses, 2 = connect points only, 3 = point plot
+[9.7]
+T}
+.sp
+lv:!T{
+List v-file when in program operations control
+[7.3]
+T}
+.sp
+lw:!T{
+List W-file when in program operations control
+[7.3]
+T}
+.sp
+ld:!T{
+List D-file when in program operations control
+[7.3]
+T}
+.sp
+lu:!T{
+List U-file when in program operations control
+[7.3]
+T}
+.sp
+ly:!T{
+List Y-file when in program operations control
+[7.3]
+T}
+.sp
+l:!T{
+"Last title" option in title routine [8.8]
+T}
+.sp
+l:!T{
+Line size for axes in plot [13.6]
+T}
+.sp
+l:!T{
+Set limits to data range [8.6.7] (in function F7)
+T}
+.sp
+l{n}:!T{
+List (from step n) [8.6.12] (in function F12)
+T}
+.TE
+.bp
+.TS
+center,tab(!);
+c s
+lw(0.5i) lw(4.5i).
+- M -
+.sp 5
+m:!T{
+Calls for math operations from Program Operations control [7.10]
+or File Display, Transfer and Overlay [10]
+T}
+.sp
+m:!Command to move band limits [8.9]
+.sp
+m:!Allows changing of manual history [9.5]
+.sp
+m:!Call for manual history access [12.7]
+.sp
+m:!More copies option in plot mode [13.6]
+.TE
+.bp
+.TS
+center,tab(!);
+c s
+lw(0.5i) lw(4.5i).
+- N -
+.sp 5
+n:!End of wavelengths [6.7]
+.sp
+n:!T{
+Subtraction with NO air mass calculation [8.2]
+T}
+.sp
+n:!T{
+Energy space plot mode in CRT routines [9.2] and Gould Plot
+Routines [13.2].  Note n is second letter in energy
+T}
+.sp
+n:!T{
+Command to turn line printer action off [11.1] in file list.
+T}
+.sp
+n:!T{
+Delete points that lie out-of-bounds of plot [13.6]
+T}
+.sp
+n:!Specify block size [8.6.18] (function F18)
+.TE
+.bp
+.TS
+center,tab(!);
+c s
+lw(0.5i) lw(4.5i).
+- O -
+.sp 5
+o:!T{
+Remove only those channels specified by user in glitch removal
+routine [9.6]
+T}
+.sp
+o:!T{
+Calls for overlap mode in display and transfer routine [10.2]
+T}
+.sp
+o:!T{
+Call for observatory location [4.3]
+T}
+.TE
+.bp
+.TS
+center,tab(!);
+c s
+lw(0.5i) lw(4.5i).
+- P -
+.sp 5
+p:!T{
+Generate and store nominal wavelengths of the PDS photometer
+(used in wavelenth assignments) [6.4]
+T}
+.sp
+p:!Print wavelengths [6.9]
+.sp
+p:!T{
+Calls Gould plot routines from Program Operations Control [7.9]
+T}
+.sp
+p:!T{
+Calls for Production Processing [8.2] [8.8]
+T}
+.sp
+p:!T{
+"Present title" option in title routine [8.8]
+T}
+.sp
+pn:!T{
+Turns Producton Processing off [8.8]
+T}
+.sp
+pd:!T{
+Line printer prints header information and data [9.4]
+T}
+.sp
+p:!Line priter plots data [9.4]
+.sp
+p:!Line priter list of file [11.1]
+.sp
+p:!T{
+CRT plot routine call command [12.4] in extinction routines
+T}
+.sp
+p:!Call for Gould plot routines [13.1]
+.sp
+p:!Point size in plot mode [13.6]
+.sp
+p:!Make line printer plot of CRT plot [12.4]
+.TE
+.bp
+.TS
+center,tab(!);
+c s
+lw(0.5i) lw(4.5i).
+- R -
+.sp 5
+r{fn}:!T{
+Restart, where fn is the name of the restart file
+[4.1]
+T}
+.sp
+r:!T{
+Read data from a file and put it in the wavelength file (used in
+wavelength assignments) [6.5]
+T}
+.sp
+r:!T{
+Return to device and file assignments from Program Operations Control
+[7.7]
+T}
+.sp
+r:!T{
+Change RA and declination in subtraction calculation [8.2]
+T}
+.sp
+r:!T{
+Reinstates deleted channels [8.9] in band normalization routine
+T}
+.sp
+r:!T{
+Returns to first page of information in Header Information change
+routines [9.5]
+T}
+.sp
+r:!"Return" to last step [13.6]
+.sp
+r:!Reverse energy space plot option [13.2]
+.sp
+r{n}:!T{
+Return to step n [8.6.16] function F16 (n is an integer)
+T}
+.TE
+.bp
+.TS
+center,tab(!);
+c s
+lw(0.5i) lw(4.5i).
+- S -
+.sp 5
+s:!T{
+Access a starpack file [2.2] in math operations [8] or File
+Display, Transfer and Overlay routines [10]
+T}
+.sp
+s:!Create or list a starpack file [7.8]
+.sp
+s:!Sum option in addition mode [8.3]
+.sp
+s:!Call for extinction routines [12.1]
+.sp
+s:!T{
+Command to write a starpack to starpack file [12.6]
+T}
+.sp
+s:!Change of symbol in plot print [13.6]
+.sp
+s:!Plot slopes [12.4] in extinction routines
+.TE
+.bp
+.TS
+center,tab(!);
+c s
+lw(0.5i) lw(4.5i).
+- T -
+.sp 5
+t:!T{
+"to" when transfering data from one file to another [10.1.1] [7.5]
+T}
+.sp
+t:!T{
+Observatory location (latitude) if other than most often used
+observatories [4.3]
+T}
+.sp
+t:!T{
+Write data from a wavelength file onto tape or disk (wavelength
+assignment) [6.6]
+T}
+.sp
+t:!T{
+Change siderial time in subtraction routine [8.2]
+T}
+.sp
+t{#}:!T{
+title store or recall command [8.8] (#=number 1 to 25)
+T}
+.sp
+tl:!Title list [8.8]
+.sp
+t:!T{
+Go to file transfer routine [11.1] from Program operations
+Control [7] or Math Operations [8]
+T}
+.sp
+t:!T{
+Command for fitting routine [12.5] (extinction Routines)
+T}
+.sp
+t:!T{
+All channels from this channel "to" that channel in delete points
+routines (general command in delete points routines).
+T}
+.sp
+t:!Include text on graph [13.6]
+.TE
+.bp
+.TS
+center,tab(!);
+c s
+lw(0.5i) lw(4.5i).
+- U -
+.sp 5
+u:!access to the "Ufile" [2.2]
+.sp
+u{fn}:!T{
+Change file assignment of U-file, where fn is the filename, from the
+file assignment routine
+[5.1]
+T}
+.sp
+u{fn}:!T{
+Create new restart file, where fn is the name of the restart file
+[4.1]
+T}
+.TE
+.bp
+.TS
+center,tab(!);
+c s
+lw(0.5i) lw(4.5i).
+- V -
+.sp 5
+v:!Access to the "Vfile" [2.2]
+.sp
+v{fn}:!T{
+Change file assignment of V-file, where fn is the filename, from the
+file assignment routine
+[5.1]
+T}
+.sp
+v:!T{
+Assign VIS CVF wavelengths (120 channels) in wavelength assign. routine
+[6.3]
+T}
+.TE
+.bp
+.TS
+center,tab(!);
+c s
+lw(0.5i) lw(4.5i).
+- W -
+.sp 5
+w:!Access to the "Wfile" [2.2]
+.sp
+w:!T{
+Generate standard wavelengths of "wedge" CVF spectrometer with
+small calibration shift (used in wavelength assignments) [6.2]
+T}
+.sp
+w{fn}:!T{
+Change file assignment of W-file, where fn is the filename, from the
+file assignment routine [5.1]
+T}
+.sp
+w{n}:!T{
+GFIT, Estimate Parameters routine assign wavelength record(file)
+where n is the wavelength record number [14.2.1]
+T}
+.sp
+w:!Change Horizontal wavelength scale [9.3]
+.sp
+w:!"Wavelength" space limits [13.2]
+.sp
+w{n}:!T{
+GFIT, Estimate Gaussians routine to change the center value of a
+gaussian, where n is the gaussian number. [14.2.1]
+T}
+.TE
+.bp
+.TS
+center,tab(!);
+c s
+lw(0.5i) lw(4.5i).
+- X -
+.sp 5
+x:!T{
+Exit ("hard") from present routine.  If other commands are
+pending, terminate all commands and return to main routine -
+general command.
+T}
+.TE
+.bp
+.TS
+center,tab(!);
+c s
+lw(0.5i) lw(4.5i).
+- Y -
+.sp 5
+y:!Access to "Yfile" [2.2]
+.sp
+y{fn}:!T{
+Change file assignment of Y-file, where fn is the filename, from the
+file assignment routine [5.1]
+T}
+.sp
+y:!T{
+Create your own wavelengths (wavelength assignments) [6.7]
+T}
+.sp
+y:!User defines horizontal axis on plot [13.2]
+.TE
+.bp

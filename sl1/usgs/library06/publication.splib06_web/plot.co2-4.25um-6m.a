@@ -1,0 +1,27 @@
+t
+w4.15 4.45
+7
+0.0 0.32
+1.0 1.0   \# horiz, bert scaling
+ 
+\#  v= splib06a    u=spd0450
+v  8252 V42 Cp0l3d  *6 o-0.7  \#  Goethite GDS134            W5R4Nbb_ RREF  4280
+       1t3080 3137t4280c
+v  6365 V42 Cp0l3d            \#  Cordierite HS346.3B        W9R4Nddd RREF  4280 
+       1t3073 3130t4280c
+v  3488 V42 Cp0l3d  *0.4      \#  Beryl GDS9 <150um gs       W9R4Nbbb RREF  4280 
+       1t3073 3130t4280c
+v 10303 V42 Cp0l3d            \#  Hydroxyl-Apatite WS425     W5R4Nbb_ RREF  4280
+       1t3053 3135t4280c
+v 22094 V42 Cp0l3d  *0.33     \#  Topaz Cameron_Cone_#42     W5R4Nbb_ RREF  4280  4.31
+       1t3063 3145t4280c
+u 18100 U6058 Cp0l3d *0.6     \#  Fe <10um+CO2+H2 +pufsCO2, H2O 79k #2      3812
+       1t2900 2983t3812c
+\#  11055  Illite IMt-1.b <2um        W5R4Naa_ RREF  4280
+\#  12072 Kaolinite GDS11 <63um      W5R4Nbb_ RREF  4280
+\#  25770  Kaolin_Smect KLF508 .85Kao W5R4Nbb_ RREF  4280
+\#  13816  Microcline HS151.3B Feldsp W5R4Nbb_ RREF  4280
+\#  17228  Opal TM8896 (Hyalite)      W5R4Naa_ RREF 4280  4.277
+\#  19234  Rhodochrosite HS338.3B     W5R4Nbb_ RREF  4280
+\#  21126  Spodumene HS210.3B         W5R4Ncc_ RREF  4280 
+b

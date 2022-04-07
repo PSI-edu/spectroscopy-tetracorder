@@ -1,0 +1,35 @@
+#!/bin/sh
+
+#set -x
+
+find . -name \*.o -exec ls -ld {} \; -exec rm {} \;
+find . -name \*.a -exec ls -ld {} \; -exec rm {} \;
+
+for i in src.specpr/dspecpr src.specpr/dspecpr.old1 \
+	src.hppen/hpdaemon		\
+	src.laserjet/ljdaemon		\
+	src.fstospecpr/fstospecpr	\
+	src.psplotdaemon/psplotdaemon	\
+	src.radtran/SRC/radtran		\
+	src.spfeatures/SRC/spfeatures	\
+	src.spprint/SRC/spprint		\
+	src.spsettitle/SRC/spsettitle	\
+	src.spsetwave/SRC/spsetwave	\
+	src.spratio2spectra             \
+	src.sp_stamp/sp_stamp		\
+	src.sspp/sspp			\
+	src.tgifdaemon/sptgifdaemon	\
+	src.wejfmt/wejfmt/wejfmt	
+do
+	if [ -f "$i" ]
+	then
+		ls -l $i
+		rm $i
+	fi
+done
+
+# to be done as root from /src/local/specpr:
+
+# find . -exec chown rclark {} \;
+
+# find . -exec chgrp devel {} \;

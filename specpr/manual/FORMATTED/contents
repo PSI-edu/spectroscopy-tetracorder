@@ -1,0 +1,330 @@
+
+
+
+
+
+
+                                   TABLE OF CONTENTS
+
+
+           1.      INTRODUCTION
+                   1.1.    Introduction
+                   1.2  History of Specpr
+                   1.3  Specpr Design Philosophy
+
+           2.      PROGRAM STRUCTURE
+                   2.1 Block Diagram of Program Structure
+                   2.2 File Structure from the Users View
+                           2.2.1 Deleted point values
+                           2.2.2 General data file I/O
+                           2.2.3 Transfer Restrictions
+                   2.3 File Protection
+                           2.3.1  Use of SPECPR File Protection
+                   2.4  Command Interpretation
+                   2.5  Alias Definitions and Substitions
+                           2.5.1  Creating Alias Words
+                           2.5.2  Translating Alias Words
+                           2.5.3  Listing and Saving Alias Words and Translations
+                           2.5.4  Reading Alias Words into specpr from a File
+                           2.5.5  Deleting or Writing Over an Alias Word
+                   2.6  Order of Substitution and Command Interpretation
+                           2.6.1 Flow Chart for Command Interpretation Order
+                   2.7  Specpr File Types and Content
+                           2.7.1  The Standard File Content
+
+           3.      STARTING SPECPR ON UNIX AND IMPORTANT RULES
+                   3.1  Starting Specpr
+                   3.2  IMPORTANT RULES
+                           3.2.1  Protective Locks
+                           3.2.2  Make Specpr Files Read Only When Outside Your Directory
+                           3.2.3  Bug Reports
+                           3.2.4  Keep Track of the Number of Channels and
+                                      the Wavelength Set!
+                                    3.2.4.1  Rules of Operation for Channels
+                                    3.2.4.2  If You Must Change The Number Of Channels
+                                    3.2.4.3  Setting Channels
+
+           4.      PROGRAM INITIALIZATION
+                   4.1.    Beginning
+                   4.2.    Protection
+                   4.3.    Observatory Location
+                   4.4.    Device Names
+                   4.5.    File Names
+                   4.6.    Graphics Options
+
+           5.      DEVICE AND FILE ASSIGNMENTS
+                   5.1.    Assignments
+
+           6.      WAVELENGTH ASSIGNMENTS
+                   6.1.    Wavelengths
+
+
+
+
+                                   December 12, 1989
+
+
+
+
+
+                                         - 2 -
+
+
+           7.      MAIN MENU: PROGRAM OPERATIONS CONTROL
+                   7.1.    Introduction
+                   7.2.    Screen Information
+                   7.3.    Calling File List
+                   7.4.    Terminating Program
+                   7.5.    Calling File Display, Transfer, and Overlap
+                   7.6.    Changing Initialization Parameters
+                   7.7.    Calling Device and File Assignments
+                   7.8.    Calling Extinction Routines
+                   7.9.    Calling Gould Plot Routines
+                   7.10.   Calling Math Operations
+                   7.11.   Calling Gauss Fit Routines
+                   7.12.   Calling restart summary
+
+           8.      MATH OPERATIONS
+                   8.1.    Introduction
+                   8.2.    Subtraction, Multiplication, and Division
+                   8.3.    Addition Routine
+                   8.4.    Error Analysis
+                   8.5.    Algebraic and Trigonometric Functions
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                   December 12, 1989
+
+
+
+
+
+                                         - 3 -
+
+
+                   8.6.    Special Functions
+                           8.6.1.  F1:  List of Special Functions
+                           8.6.2.  F2:  Shift
+                           8.6.3.  F3:  Sequential Processor
+                           8.6.4.  F4:  Sequential Processor (No User Process)
+                           8.6.5.  F5:  Continuum Removal
+                           8.6.6.  F6:  Black Body Computation
+                           8.6.7.  F7:  Smoothing Function
+                           8.6.8.  F8:  Channel-File Transpose
+                           8.6.9.  F9:  Band Removal (Reflection Method)
+                           8.6.10. F10:  Sorting Routine
+                           8.6.11. F11:  Lunar Thermal Removal
+                           8.6.12. F12:  Cubic Spline Interpolation
+                           8.6.13. F13:  Merge Two Spectra to One
+                           8.6.14. F14:  Edits Spectral Data and Error Value
+                           8.6.15. F15:  Formats Gaussian Parameter File
+                           8.6.16. F16:  Line Segment Generator
+                           8.6.17. F17:  High To Low Resolution Convolution
+                           8.6.18. F18:  Block Averages and Statistics
+                           8.6.19. F19:  Polynomial Fit (10 Term)
+                           8.6.20. F20:  Text File Input
+                                   8.6.20.1.       Using Function 20
+                                   8.6.20.2.       Setting Up the Text File
+                                   8.6.20.3.       Example
+                           8.6.21. F21:  Calculate N term Polynomial
+                           8.6.22. F22:  Tablet Graphics (TABGRAF)
+                           8.6.23. F23:  Mathmatical Parser
+                           8.6.24. F24:  Star Moon Thermal Removal
+                           8.6.25. F25:  Two Component Areal Mix Least Squares
+                           8.6.26. F26:  not developed yet
+                           8.6.27. F27:  not developed yet
+                           8.6.28. F28:  not developed yet
+                           8.6.29. F29:  not developed yet
+                           8.6.30. F30:  not developed yet
+                           8.6.31. F31:  not developed yet
+                           8.6.32. F32:  not developed yet
+                           8.6.33. F33:  not developed yet
+                           8.6.34. F34:  not developed yet
+                           8.6.35. F35:  not developed yet
+                           8.6.36. F36:  not developed yet
+                           8.6.37. F37:  not developed yet
+                           8.6.38. F38:  not developed yet
+                           8.6.39. F39:  not developed yet
+                           8.6.40. F40:  under development
+                           8.6.42. F42:  under development
+                           8.6.43. F43:  FFT and Inverse FFT
+                           8.6.44. F44:  Segmented Upper Hull Continuum
+                           8.6.45. F45:  Automatic Band Analysis (under development)
+                           8.6.46. F46:  Band Analysis Output (Under Development)
+                           8.6.47. F47:  Spectrum Recreation from F46 output (Under Dev.)
+                           8.6.48. F48:  HP Graphics Terminal Tablet Digitization
+                           8.6.49. F49:  Linear Interpolation
+
+
+
+
+
+                                   December 12, 1989
+
+
+
+
+
+                                         - 4 -
+
+
+                   8.7.    Return from a Math Operation or Function
+                   8.8.    The Titles Routine
+                   8.9.    Band Normalization
+
+           9.      CRT PLOT ROUTINES
+                   9.1.    CRT Plot Routines
+                   9.2.    Plotting Space
+                   9.3.    Changing Scale
+                   9.4.    Printer Listings and Plots
+                   9.5.    Information Change
+                   9.6.    Glitch Removal
+                   9.7.    Line Type
+                   9.8.    Point Deletions
+                   9.9.    Exiting CRT Plot
+                   9.10.   Multiple Commands in CRT Plot
+                   9.11.   Interactive Band Analysis
+                   9.12.   Graphics Cursor Read Position
+                   9.13.   Horizontal Axis Labels
+
+           10.     DATA DISPLAY, TRANSFER, AND OVERLAY
+                   10.1.   File Display
+                           10.1.1. File Transfer
+                           10.1.2. File Tranfer with Plot or Information Change
+                   10.2.   Overlaying Spectra
+                   10.3.   Multiple Commands in File Display
+
+           11.     DATA FILE LIST
+                   11.1.   File List
+
+           12.     EXTINCTION ROUTINES
+                   12.1.   Introduction
+                   12.2.   Starpack List and Display
+                   12.3.   Extinction Calculation
+                   12.4.   CRT Plot
+                   12.5.   Airmass Versus Log Intensity Plots and Deletion
+                   12.6.   Writing a Starpack
+                   12.7.   Starpack Manual History
+
+           13.     PLOTTING ROUTINES FOR WORK AND PUBLICATION
+                   13.1.   The Plot Routines
+                   13.2.   Plotting Space Type
+                   13.3.   Vertical Axis Label
+                   13.4.   Delete From All Spectra
+                   13.5.   Scale of Plot
+                   13.6.   File Input and Options
+                   13.7.   Building the Vector and Text files
+                   13.8.   Running the plotdaemon routine
+
+
+
+
+
+
+
+
+
+
+                                   December 12, 1989
+
+
+
+
+
+                                         - 5 -
+
+
+           14.     Gaussian Fitting Program
+                   14.1.   gfit startup
+                   14.2.   parameters
+                           14.2.1. Estimate Parameters
+                           14.2.2. Estimate Gaussians
+                           14.2.3. Fit Parameter Review
+                           14.2.4. Fit Gaussians Review
+                   14.3.   fit
+                   14.4.   transfer data
+                   14.5.   save, recall gfit parameters
+                   14.6.   write to specpr file
+                   14.7.   gfit plotting package
+                   14.8.   miscellaneous commands
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                   December 12, 1989
+
+

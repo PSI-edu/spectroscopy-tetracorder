@@ -1,0 +1,687 @@
+vi rangeland_C03-005.html
+:g/^Artemisia arbuscula/s//<i>Artemisia arbuscula<\/i>/g
+:wq
+vi rangeland_C03-010.html
+:g/^Artemisia arbuscula/s//<i>Artemisia arbuscula<\/i>/g
+:wq
+vi rangeland_C03-019.html
+:g/^Artemisia arbuscula/s//<i>Artemisia arbuscula<\/i>/g
+:wq
+vi rangeland_C03-022.html
+:g/^Artemisia arbuscula/s//<i>Artemisia arbuscula<\/i>/g
+:wq
+vi rangeland_C03-033.html
+:g/^Artemisia arbuscula/s//<i>Artemisia arbuscula<\/i>/g
+:wq
+vi rangeland_C03-041.html
+:g/^Artemisia arbuscula/s//<i>Artemisia arbuscula<\/i>/g
+:wq
+vi rangeland_C03-050.html
+:g/^Artemisia arbuscula/s//<i>Artemisia arbuscula<\/i>/g
+:wq
+vi rangeland_C03-052.html
+:g/^Artemisia arbuscula/s//<i>Artemisia arbuscula<\/i>/g
+:wq
+vi rangeland_C03-054.html
+:g/^Artemisia arbuscula/s//<i>Artemisia arbuscula<\/i>/g
+:wq
+vi rangeland_C03-071.html
+:g/^Artemisia arbuscula/s//<i>Artemisia arbuscula<\/i>/g
+:wq
+vi rangeland_C03-073.html
+:g/^Artemisia arbuscula/s//<i>Artemisia arbuscula<\/i>/g
+:wq
+vi rangeland_C03-079.html
+:g/^Artemisia arbuscula/s//<i>Artemisia arbuscula<\/i>/g
+:wq
+vi rangeland_C03-079.html
+:g/^Artemisia arbuscula/s//<i>Artemisia arbuscula<\/i>/g
+:wq
+vi rangeland_C03-081.html
+:g/^Artemisia arbuscula/s//<i>Artemisia arbuscula<\/i>/g
+:wq
+vi rangeland_C03-086.html
+:g/^Artemisia arbuscula/s//<i>Artemisia arbuscula<\/i>/g
+:wq
+vi rangeland_C04-151.html
+:g/^Artemisia arbuscula/s//<i>Artemisia arbuscula<\/i>/g
+:wq
+vi rangeland_C04-154.html
+:g/^Artemisia arbuscula/s//<i>Artemisia arbuscula<\/i>/g
+:wq
+vi rangeland_C04-166.html
+:g/^Artemisia arbuscula/s//<i>Artemisia arbuscula<\/i>/g
+:wq
+vi rangeland_C04-197.html
+:g/^Artemisia arbuscula/s//<i>Artemisia arbuscula<\/i>/g
+:wq
+vi rangeland_C04-203.html
+:g/^Artemisia arbuscula/s//<i>Artemisia arbuscula<\/i>/g
+:wq
+vi rangeland_C04-204.html
+:g/^Artemisia arbuscula/s//<i>Artemisia arbuscula<\/i>/g
+:wq
+vi rangeland_C04-221.html
+:g/^Artemisia arbuscula/s//<i>Artemisia arbuscula<\/i>/g
+:wq
+vi rangeland_C04-251.html
+:g/^Artemisia arbuscula/s//<i>Artemisia arbuscula<\/i>/g
+:wq
+vi rangeland_C04-273.html
+:g/^Artemisia arbuscula/s//<i>Artemisia arbuscula<\/i>/g
+:wq
+vi rangeland_L04-054.html
+:g/^Artemisia cana/s//<i>Artemisia cana<\/i>/g
+:wq
+vi rangeland_C03-011.html
+:g/^Artemisia tridentata/s//<i>Artemisia tridentata<\/i>/g
+:wq
+vi rangeland_C03-013.html
+:g/^Artemisia tridentata/s//<i>Artemisia tridentata<\/i>/g
+:wq
+vi rangeland_C03-014.html
+:g/^Artemisia tridentata/s//<i>Artemisia tridentata<\/i>/g
+:wq
+vi rangeland_C03-016.html
+:g/^Artemisia tridentata/s//<i>Artemisia tridentata<\/i>/g
+:wq
+vi rangeland_C03-017.html
+:g/^Artemisia tridentata/s//<i>Artemisia tridentata<\/i>/g
+:wq
+vi rangeland_C03-021.html
+:g/^Artemisia tridentata/s//<i>Artemisia tridentata<\/i>/g
+:wq
+vi rangeland_C03-022.html
+:g/^Artemisia tridentata/s//<i>Artemisia tridentata<\/i>/g
+:wq
+vi rangeland_C03-023.html
+:g/^Artemisia tridentata/s//<i>Artemisia tridentata<\/i>/g
+:wq
+vi rangeland_C03-027.html
+:g/^Artemisia tridentata/s//<i>Artemisia tridentata<\/i>/g
+:wq
+vi rangeland_C03-031.html
+:g/^Artemisia tridentata/s//<i>Artemisia tridentata<\/i>/g
+:wq
+vi rangeland_C03-032.html
+:g/^Artemisia tridentata/s//<i>Artemisia tridentata<\/i>/g
+:wq
+vi rangeland_C03-033.html
+:g/^Artemisia tridentata/s//<i>Artemisia tridentata<\/i>/g
+:wq
+vi rangeland_C03-034.html
+:g/^Artemisia tridentata/s//<i>Artemisia tridentata<\/i>/g
+:wq
+vi rangeland_C03-037.html
+:g/^Artemisia tridentata/s//<i>Artemisia tridentata<\/i>/g
+:wq
+vi rangeland_C03-042.html
+:g/^Artemisia tridentata/s//<i>Artemisia tridentata<\/i>/g
+:wq
+vi rangeland_C03-047.html
+:g/^Artemisia tridentata/s//<i>Artemisia tridentata<\/i>/g
+:wq
+vi rangeland_C03-053.html
+:g/^Artemisia tridentata/s//<i>Artemisia tridentata<\/i>/g
+:wq
+vi rangeland_C03-054.html
+:g/^Artemisia tridentata/s//<i>Artemisia tridentata<\/i>/g
+:wq
+vi rangeland_C03-065.html
+:g/^Artemisia tridentata/s//<i>Artemisia tridentata<\/i>/g
+:wq
+vi rangeland_C03-071.html
+:g/^Artemisia tridentata/s//<i>Artemisia tridentata<\/i>/g
+:wq
+vi rangeland_C03-073.html
+:g/^Artemisia tridentata/s//<i>Artemisia tridentata<\/i>/g
+:wq
+vi rangeland_C03-074.html
+:g/^Artemisia tridentata/s//<i>Artemisia tridentata<\/i>/g
+:wq
+vi rangeland_C03-076.html
+:g/^Artemisia tridentata/s//<i>Artemisia tridentata<\/i>/g
+:wq
+vi rangeland_C03-077.html
+:g/^Artemisia tridentata/s//<i>Artemisia tridentata<\/i>/g
+:wq
+vi rangeland_C03-080.html
+:g/^Artemisia tridentata/s//<i>Artemisia tridentata<\/i>/g
+:wq
+vi rangeland_C03-081.html
+:g/^Artemisia tridentata/s//<i>Artemisia tridentata<\/i>/g
+:wq
+vi rangeland_C03-084.html
+:g/^Artemisia tridentata/s//<i>Artemisia tridentata<\/i>/g
+:wq
+vi rangeland_C03-089.html
+:g/^Artemisia tridentata/s//<i>Artemisia tridentata<\/i>/g
+:wq
+vi rangeland_C03-090.html
+:g/^Artemisia tridentata/s//<i>Artemisia tridentata<\/i>/g
+:wq
+vi rangeland_C03-091.html
+:g/^Artemisia tridentata/s//<i>Artemisia tridentata<\/i>/g
+:wq
+vi rangeland_C03-097.html
+:g/^Artemisia tridentata/s//<i>Artemisia tridentata<\/i>/g
+:wq
+vi rangeland_C04-153.html
+:g/^Artemisia tridentata/s//<i>Artemisia tridentata<\/i>/g
+:wq
+vi rangeland_C04-154.html
+:g/^Artemisia tridentata/s//<i>Artemisia tridentata<\/i>/g
+:wq
+vi rangeland_C04-170.html
+:g/^Artemisia tridentata/s//<i>Artemisia tridentata<\/i>/g
+:wq
+vi rangeland_C04-175.html
+:g/^Artemisia tridentata/s//<i>Artemisia tridentata<\/i>/g
+:wq
+vi rangeland_C04-197.html
+:g/^Artemisia tridentata/s//<i>Artemisia tridentata<\/i>/g
+:wq
+vi rangeland_C04-203.html
+:g/^Artemisia tridentata/s//<i>Artemisia tridentata<\/i>/g
+:wq
+vi rangeland_C04-204.html
+:g/^Artemisia tridentata/s//<i>Artemisia tridentata<\/i>/g
+:wq
+vi rangeland_C04-208.html
+:g/^Artemisia tridentata/s//<i>Artemisia tridentata<\/i>/g
+:wq
+vi rangeland_C04-209.html
+:g/^Artemisia tridentata/s//<i>Artemisia tridentata<\/i>/g
+:wq
+vi rangeland_C04-211.html
+:g/^Artemisia tridentata/s//<i>Artemisia tridentata<\/i>/g
+:wq
+vi rangeland_C04-214.html
+:g/^Artemisia tridentata/s//<i>Artemisia tridentata<\/i>/g
+:wq
+vi rangeland_C04-221.html
+:g/^Artemisia tridentata/s//<i>Artemisia tridentata<\/i>/g
+:wq
+vi rangeland_C04-226.html
+:g/^Artemisia tridentata/s//<i>Artemisia tridentata<\/i>/g
+:wq
+vi rangeland_C04-232.html
+:g/^Artemisia tridentata/s//<i>Artemisia tridentata<\/i>/g
+:wq
+vi rangeland_C04-233.html
+:g/^Artemisia tridentata/s//<i>Artemisia tridentata<\/i>/g
+:wq
+vi rangeland_C04-236.html
+:g/^Artemisia tridentata/s//<i>Artemisia tridentata<\/i>/g
+:wq
+vi rangeland_C04-243.html
+:g/^Artemisia tridentata/s//<i>Artemisia tridentata<\/i>/g
+:wq
+vi rangeland_C04-251.html
+:g/^Artemisia tridentata/s//<i>Artemisia tridentata<\/i>/g
+:wq
+vi rangeland_C04-253.html
+:g/^Artemisia tridentata/s//<i>Artemisia tridentata<\/i>/g
+:wq
+vi rangeland_C04-264.html
+:g/^Artemisia tridentata/s//<i>Artemisia tridentata<\/i>/g
+:wq
+vi rangeland_C04-273.html
+:g/^Artemisia tridentata/s//<i>Artemisia tridentata<\/i>/g
+:wq
+vi rangeland_C04-288.html
+:g/^Artemisia tridentata/s//<i>Artemisia tridentata<\/i>/g
+:wq
+vi rangeland_C04-289.html
+:g/^Artemisia tridentata/s//<i>Artemisia tridentata<\/i>/g
+:wq
+vi rangeland_C04-295.html
+:g/^Artemisia tridentata/s//<i>Artemisia tridentata<\/i>/g
+:wq
+vi rangeland_L02-005.html
+:g/^Artemisia tridentata/s//<i>Artemisia tridentata<\/i>/g
+:wq
+vi rangeland_L02-006.html
+:g/^Artemisia tridentata/s//<i>Artemisia tridentata<\/i>/g
+:wq
+vi rangeland_L02-022.html
+:g/^Artemisia tridentata/s//<i>Artemisia tridentata<\/i>/g
+:wq
+vi rangeland_L02-032.html
+:g/^Artemisia tridentata/s//<i>Artemisia tridentata<\/i>/g
+:wq
+vi rangeland_L02-040.html
+:g/^Artemisia tridentata/s//<i>Artemisia tridentata<\/i>/g
+:wq
+vi rangeland_L02-046.html
+:g/^Artemisia tridentata/s//<i>Artemisia tridentata<\/i>/g
+:wq
+vi rangeland_L02-047.html
+:g/^Artemisia tridentata/s//<i>Artemisia tridentata<\/i>/g
+:wq
+vi rangeland_L02-056.html
+:g/^Artemisia tridentata/s//<i>Artemisia tridentata<\/i>/g
+:wq
+vi rangeland_L02-067.html
+:g/^Artemisia tridentata/s//<i>Artemisia tridentata<\/i>/g
+:wq
+vi rangeland_L02-078A.html
+:g/^Artemisia tridentata/s//<i>Artemisia tridentata<\/i>/g
+:wq
+vi rangeland_L04-004.html
+:g/^Artemisia tridentata/s//<i>Artemisia tridentata<\/i>/g
+:wq
+vi rangeland_L04-005.html
+:g/^Artemisia tridentata/s//<i>Artemisia tridentata<\/i>/g
+:wq
+vi rangeland_L04-021.html
+:g/^Artemisia tridentata/s//<i>Artemisia tridentata<\/i>/g
+:wq
+vi rangeland_L04-022.html
+:g/^Artemisia tridentata/s//<i>Artemisia tridentata<\/i>/g
+:wq
+vi rangeland_L04-054.html
+:g/^Artemisia tridentata/s//<i>Artemisia tridentata<\/i>/g
+:wq
+vi rangeland_L04-058.html
+:g/^Artemisia tridentata/s//<i>Artemisia tridentata<\/i>/g
+:wq
+vi rangeland_L04-058.html
+:g/^Artemisia tridentata/s//<i>Artemisia tridentata<\/i>/g
+:wq
+vi rangeland_L04-062.html
+:g/^Artemisia tridentata/s//<i>Artemisia tridentata<\/i>/g
+:wq
+vi rangeland_L04-072.html
+:g/^Artemisia tridentata/s//<i>Artemisia tridentata<\/i>/g
+:wq
+vi rangeland_L04-073.html
+:g/^Artemisia tridentata/s//<i>Artemisia tridentata<\/i>/g
+:wq
+vi rangeland_L04-090.html
+:g/^Artemisia tridentata/s//<i>Artemisia tridentata<\/i>/g
+:wq
+vi rangeland_L04-091.html
+:g/^Artemisia tridentata/s//<i>Artemisia tridentata<\/i>/g
+:wq
+vi rangeland_L04-035.html
+:g/^Chrysothamnus nauseosus/s//<i>Chrysothamnus nauseosus<\/i>/g
+:wq
+vi rangeland_L04-045.html
+:g/^Chrysothamnus nauseosus/s//<i>Chrysothamnus nauseosus<\/i>/g
+:wq
+vi rangeland_C03-004.html
+:g/^Chrysothamnus viscidiflorus/s//<i>Chrysothamnus viscidiflorus<\/i>/g
+:wq
+vi rangeland_C03-010.html
+:g/^Chrysothamnus viscidiflorus/s//<i>Chrysothamnus viscidiflorus<\/i>/g
+:wq
+vi rangeland_C03-010.html
+:g/^Chrysothamnus viscidiflorus/s//<i>Chrysothamnus viscidiflorus<\/i>/g
+:wq
+vi rangeland_C03-011.html
+:g/^Chrysothamnus viscidiflorus/s//<i>Chrysothamnus viscidiflorus<\/i>/g
+:wq
+vi rangeland_C03-013.html
+:g/^Chrysothamnus viscidiflorus/s//<i>Chrysothamnus viscidiflorus<\/i>/g
+:wq
+vi rangeland_C03-017.html
+:g/^Chrysothamnus viscidiflorus/s//<i>Chrysothamnus viscidiflorus<\/i>/g
+:wq
+vi rangeland_C03-021.html
+:g/^Chrysothamnus viscidiflorus/s//<i>Chrysothamnus viscidiflorus<\/i>/g
+:wq
+vi rangeland_C03-023.html
+:g/^Chrysothamnus viscidiflorus/s//<i>Chrysothamnus viscidiflorus<\/i>/g
+:wq
+vi rangeland_C03-030.html
+:g/^Chrysothamnus viscidiflorus/s//<i>Chrysothamnus viscidiflorus<\/i>/g
+:wq
+vi rangeland_C03-032.html
+:g/^Chrysothamnus viscidiflorus/s//<i>Chrysothamnus viscidiflorus<\/i>/g
+:wq
+vi rangeland_C03-034.html
+:g/^Chrysothamnus viscidiflorus/s//<i>Chrysothamnus viscidiflorus<\/i>/g
+:wq
+vi rangeland_C03-037.html
+:g/^Chrysothamnus viscidiflorus/s//<i>Chrysothamnus viscidiflorus<\/i>/g
+:wq
+vi rangeland_C03-042.html
+:g/^Chrysothamnus viscidiflorus/s//<i>Chrysothamnus viscidiflorus<\/i>/g
+:wq
+vi rangeland_C03-047.html
+:g/^Chrysothamnus viscidiflorus/s//<i>Chrysothamnus viscidiflorus<\/i>/g
+:wq
+vi rangeland_C03-050.html
+:g/^Chrysothamnus viscidiflorus/s//<i>Chrysothamnus viscidiflorus<\/i>/g
+:wq
+vi rangeland_C03-052.html
+:g/^Chrysothamnus viscidiflorus/s//<i>Chrysothamnus viscidiflorus<\/i>/g
+:wq
+vi rangeland_C03-053.html
+:g/^Chrysothamnus viscidiflorus/s//<i>Chrysothamnus viscidiflorus<\/i>/g
+:wq
+vi rangeland_C03-065.html
+:g/^Chrysothamnus viscidiflorus/s//<i>Chrysothamnus viscidiflorus<\/i>/g
+:wq
+vi rangeland_C03-066.html
+:g/^Chrysothamnus viscidiflorus/s//<i>Chrysothamnus viscidiflorus<\/i>/g
+:wq
+vi rangeland_C03-068.html
+:g/^Chrysothamnus viscidiflorus/s//<i>Chrysothamnus viscidiflorus<\/i>/g
+:wq
+vi rangeland_C03-070.html
+:g/^Chrysothamnus viscidiflorus/s//<i>Chrysothamnus viscidiflorus<\/i>/g
+:wq
+vi rangeland_C03-071.html
+:g/^Chrysothamnus viscidiflorus/s//<i>Chrysothamnus viscidiflorus<\/i>/g
+:wq
+vi rangeland_C03-073.html
+:g/^Chrysothamnus viscidiflorus/s//<i>Chrysothamnus viscidiflorus<\/i>/g
+:wq
+vi rangeland_C03-076.html
+:g/^Chrysothamnus viscidiflorus/s//<i>Chrysothamnus viscidiflorus<\/i>/g
+:wq
+vi rangeland_C03-077.html
+:g/^Chrysothamnus viscidiflorus/s//<i>Chrysothamnus viscidiflorus<\/i>/g
+:wq
+vi rangeland_C03-079.html
+:g/^Chrysothamnus viscidiflorus/s//<i>Chrysothamnus viscidiflorus<\/i>/g
+:wq
+vi rangeland_C03-080.html
+:g/^Chrysothamnus viscidiflorus/s//<i>Chrysothamnus viscidiflorus<\/i>/g
+:wq
+vi rangeland_C03-084.html
+:g/^Chrysothamnus viscidiflorus/s//<i>Chrysothamnus viscidiflorus<\/i>/g
+:wq
+vi rangeland_C03-089.html
+:g/^Chrysothamnus viscidiflorus/s//<i>Chrysothamnus viscidiflorus<\/i>/g
+:wq
+vi rangeland_C03-090.html
+:g/^Chrysothamnus viscidiflorus/s//<i>Chrysothamnus viscidiflorus<\/i>/g
+:wq
+vi rangeland_C03-091.html
+:g/^Chrysothamnus viscidiflorus/s//<i>Chrysothamnus viscidiflorus<\/i>/g
+:wq
+vi rangeland_C03-095.html
+:g/^Chrysothamnus viscidiflorus/s//<i>Chrysothamnus viscidiflorus<\/i>/g
+:wq
+vi rangeland_C03-097.html
+:g/^Chrysothamnus viscidiflorus/s//<i>Chrysothamnus viscidiflorus<\/i>/g
+:wq
+vi rangeland_C04-155.html
+:g/^Chrysothamnus viscidiflorus/s//<i>Chrysothamnus viscidiflorus<\/i>/g
+:wq
+vi rangeland_C04-166.html
+:g/^Chrysothamnus viscidiflorus/s//<i>Chrysothamnus viscidiflorus<\/i>/g
+:wq
+vi rangeland_C04-170.html
+:g/^Chrysothamnus viscidiflorus/s//<i>Chrysothamnus viscidiflorus<\/i>/g
+:wq
+vi rangeland_C04-175.html
+:g/^Chrysothamnus viscidiflorus/s//<i>Chrysothamnus viscidiflorus<\/i>/g
+:wq
+vi rangeland_C04-200.html
+:g/^Chrysothamnus viscidiflorus/s//<i>Chrysothamnus viscidiflorus<\/i>/g
+:wq
+vi rangeland_C04-204.html
+:g/^Chrysothamnus viscidiflorus/s//<i>Chrysothamnus viscidiflorus<\/i>/g
+:wq
+vi rangeland_C04-209.html
+:g/^Chrysothamnus viscidiflorus/s//<i>Chrysothamnus viscidiflorus<\/i>/g
+:wq
+vi rangeland_C04-226.html
+:g/^Chrysothamnus viscidiflorus/s//<i>Chrysothamnus viscidiflorus<\/i>/g
+:wq
+vi rangeland_C04-232.html
+:g/^Chrysothamnus viscidiflorus/s//<i>Chrysothamnus viscidiflorus<\/i>/g
+:wq
+vi rangeland_C04-233.html
+:g/^Chrysothamnus viscidiflorus/s//<i>Chrysothamnus viscidiflorus<\/i>/g
+:wq
+vi rangeland_C04-236.html
+:g/^Chrysothamnus viscidiflorus/s//<i>Chrysothamnus viscidiflorus<\/i>/g
+:wq
+vi rangeland_C04-237.html
+:g/^Chrysothamnus viscidiflorus/s//<i>Chrysothamnus viscidiflorus<\/i>/g
+:wq
+vi rangeland_C04-243.html
+:g/^Chrysothamnus viscidiflorus/s//<i>Chrysothamnus viscidiflorus<\/i>/g
+:wq
+vi rangeland_C04-251.html
+:g/^Chrysothamnus viscidiflorus/s//<i>Chrysothamnus viscidiflorus<\/i>/g
+:wq
+vi rangeland_C04-252.html
+:g/^Chrysothamnus viscidiflorus/s//<i>Chrysothamnus viscidiflorus<\/i>/g
+:wq
+vi rangeland_C04-253.html
+:g/^Chrysothamnus viscidiflorus/s//<i>Chrysothamnus viscidiflorus<\/i>/g
+:wq
+vi rangeland_C04-264.html
+:g/^Chrysothamnus viscidiflorus/s//<i>Chrysothamnus viscidiflorus<\/i>/g
+:wq
+vi rangeland_C04-272.html
+:g/^Chrysothamnus viscidiflorus/s//<i>Chrysothamnus viscidiflorus<\/i>/g
+:wq
+vi rangeland_C04-278.html
+:g/^Chrysothamnus viscidiflorus/s//<i>Chrysothamnus viscidiflorus<\/i>/g
+:wq
+vi rangeland_C04-288.html
+:g/^Chrysothamnus viscidiflorus/s//<i>Chrysothamnus viscidiflorus<\/i>/g
+:wq
+vi rangeland_C04-289.html
+:g/^Chrysothamnus viscidiflorus/s//<i>Chrysothamnus viscidiflorus<\/i>/g
+:wq
+vi rangeland_L02-056.html
+:g/^Chrysothamnus viscidiflorus/s//<i>Chrysothamnus viscidiflorus<\/i>/g
+:wq
+vi rangeland_L04-072.html
+:g/^Gutierrezia sarothrae/s//<i>Gutierrezia sarothrae<\/i>/g
+:wq
+vi rangeland_L04-091.html
+:g/^Gutierrezia sarothrae/s//<i>Gutierrezia sarothrae<\/i>/g
+:wq
+vi rangeland_L04-005.html
+:g/^Juniperus utahensis/s//<i>Juniperus utahensis<\/i>/g
+:wq
+vi rangeland_L04-062.html
+:g/^Juniperus utahensis/s//<i>Juniperus utahensis<\/i>/g
+:wq
+vi rangeland_L04-021.html
+:g/^Opuntia polyacantha/s//<i>Opuntia polyacantha<\/i>/g
+:wq
+vi rangeland_L04-073.html
+:g/^Opuntia polyacantha/s//<i>Opuntia polyacantha<\/i>/g
+:wq
+vi rangeland_L04-091.html
+:g/^Opuntia polyacantha/s//<i>Opuntia polyacantha<\/i>/g
+:wq
+vi rangeland_C03-077.html
+:g/^Prunus virginiana/s//<i>Prunus virginiana<\/i>/g
+:wq
+vi rangeland_C03-011.html
+:g/^Purshia tridentata/s//<i>Purshia tridentata<\/i>/g
+:wq
+vi rangeland_C03-016.html
+:g/^Purshia tridentata/s//<i>Purshia tridentata<\/i>/g
+:wq
+vi rangeland_C03-019.html
+:g/^Purshia tridentata/s//<i>Purshia tridentata<\/i>/g
+:wq
+vi rangeland_C03-023.html
+:g/^Purshia tridentata/s//<i>Purshia tridentata<\/i>/g
+:wq
+vi rangeland_C03-034.html
+:g/^Purshia tridentata/s//<i>Purshia tridentata<\/i>/g
+:wq
+vi rangeland_C03-071.html
+:g/^Purshia tridentata/s//<i>Purshia tridentata<\/i>/g
+:wq
+vi rangeland_C03-073.html
+:g/^Purshia tridentata/s//<i>Purshia tridentata<\/i>/g
+:wq
+vi rangeland_C03-076.html
+:g/^Purshia tridentata/s//<i>Purshia tridentata<\/i>/g
+:wq
+vi rangeland_C03-086.html
+:g/^Purshia tridentata/s//<i>Purshia tridentata<\/i>/g
+:wq
+vi rangeland_C03-089.html
+:g/^Purshia tridentata/s//<i>Purshia tridentata<\/i>/g
+:wq
+vi rangeland_C03-091.html
+:g/^Purshia tridentata/s//<i>Purshia tridentata<\/i>/g
+:wq
+vi rangeland_C04-151.html
+:g/^Purshia tridentata/s//<i>Purshia tridentata<\/i>/g
+:wq
+vi rangeland_C04-170.html
+:g/^Purshia tridentata/s//<i>Purshia tridentata<\/i>/g
+:wq
+vi rangeland_C04-203.html
+:g/^Purshia tridentata/s//<i>Purshia tridentata<\/i>/g
+:wq
+vi rangeland_C04-204.html
+:g/^Purshia tridentata/s//<i>Purshia tridentata<\/i>/g
+:wq
+vi rangeland_C04-208.html
+:g/^Purshia tridentata/s//<i>Purshia tridentata<\/i>/g
+:wq
+vi rangeland_C04-232.html
+:g/^Purshia tridentata/s//<i>Purshia tridentata<\/i>/g
+:wq
+vi rangeland_C04-236.html
+:g/^Purshia tridentata/s//<i>Purshia tridentata<\/i>/g
+:wq
+vi rangeland_C04-251.html
+:g/^Purshia tridentata/s//<i>Purshia tridentata<\/i>/g
+:wq
+vi rangeland_C04-253.html
+:g/^Purshia tridentata/s//<i>Purshia tridentata<\/i>/g
+:wq
+vi rangeland_C04-273.html
+:g/^Purshia tridentata/s//<i>Purshia tridentata<\/i>/g
+:wq
+vi rangeland_C04-288.html
+:g/^Purshia tridentata/s//<i>Purshia tridentata<\/i>/g
+:wq
+vi rangeland_L02-067.html
+:g/^Ribes oxyacanthoides/s//<i>Ribes oxyacanthoides<\/i>/g
+:wq
+vi rangeland_L02-078A.html
+:g/^Ribes oxyacanthoides/s//<i>Ribes oxyacanthoides<\/i>/g
+:wq
+vi rangeland_L04-022.html
+:g/^Ribes oxyacanthoides/s//<i>Ribes oxyacanthoides<\/i>/g
+:wq
+vi rangeland_L04-026.html
+:g/^Ribes oxyacanthoides/s//<i>Ribes oxyacanthoides<\/i>/g
+:wq
+vi rangeland_L04-045.html
+:g/^Ribes sp/s//<i>Ribes<\/i> sp./g
+:wq
+vi rangeland_L02-015.html
+:g/^Rosa sp/s//<i>Rosa<\/i> sp./g
+:wq
+vi rangeland_L02-078A.html
+:g/^Rosa sp/s//<i>Rosa<\/i> sp./g
+:wq
+vi rangeland_L04-022.html
+:g/^Rosa sp/s//<i>Rosa<\/i> sp./g
+:wq
+vi rangeland_L04-054.html
+:g/^Rosa sp/s//<i>Rosa<\/i> sp./g
+:wq
+vi rangeland_L04-022.html
+:g/^Salix sp./s//<i>Salix<\/i> sp./g
+:wq
+vi rangeland_L02-015.html
+:g/^Symphoricarpos occidentalis/s//<i>Symphoricarpos occidentalis<\/i>/g
+:wq
+vi rangeland_L02-040.html
+:g/^Symphoricarpos occidentalis/s//<i>Symphoricarpos occidentalis<\/i>/g
+:wq
+vi rangeland_L04-005.html
+:g/^Symphoricarpos occidentalis/s//<i>Symphoricarpos occidentalis<\/i>/g
+:wq
+vi rangeland_L04-026.html
+:g/^Symphoricarpos occidentalis/s//<i>Symphoricarpos occidentalis<\/i>/g
+:wq
+vi rangeland_L04-054.html
+:g/^Symphoricarpos occidentalis/s//<i>Symphoricarpos occidentalis<\/i>/g
+:wq
+vi rangeland_L04-070.html
+:g/^Symphoricarpos occidentalis/s//<i>Symphoricarpos occidentalis<\/i>/g
+:wq
+vi rangeland_C03-047.html
+:g/^Symphoricarpos oreophilus/s//<i>Symphoricarpos oreophilus<\/i>/g
+:wq
+vi rangeland_C03-077.html
+:g/^Symphoricarpos oreophilus/s//<i>Symphoricarpos oreophilus<\/i>/g
+:wq
+vi rangeland_C03-004.html
+:g/^Tetradymia canescens/s//<i>Tetradymia canescens<\/i>/g
+:wq
+vi rangeland_C03-013.html
+:g/^Tetradymia canescens/s//<i>Tetradymia canescens<\/i>/g
+:wq
+vi rangeland_C03-017.html
+:g/^Tetradymia canescens/s//<i>Tetradymia canescens<\/i>/g
+:wq
+vi rangeland_C03-022.html
+:g/^Tetradymia canescens/s//<i>Tetradymia canescens<\/i>/g
+:wq
+vi rangeland_C03-033.html
+:g/^Tetradymia canescens/s//<i>Tetradymia canescens<\/i>/g
+:wq
+vi rangeland_C03-052.html
+:g/^Tetradymia canescens/s//<i>Tetradymia canescens<\/i>/g
+:wq
+vi rangeland_C03-065.html
+:g/^Tetradymia canescens/s//<i>Tetradymia canescens<\/i>/g
+:wq
+vi rangeland_C03-068.html
+:g/^Tetradymia canescens/s//<i>Tetradymia canescens<\/i>/g
+:wq
+vi rangeland_C03-070.html
+:g/^Tetradymia canescens/s//<i>Tetradymia canescens<\/i>/g
+:wq
+vi rangeland_C03-073.html
+:g/^Tetradymia canescens/s//<i>Tetradymia canescens<\/i>/g
+:wq
+vi rangeland_C03-081.html
+:g/^Tetradymia canescens/s//<i>Tetradymia canescens<\/i>/g
+:wq
+vi rangeland_C04-153.html
+:g/^Tetradymia canescens/s//<i>Tetradymia canescens<\/i>/g
+:wq
+vi rangeland_C04-175.html
+:g/^Tetradymia canescens/s//<i>Tetradymia canescens<\/i>/g
+:wq
+vi rangeland_C04-203.html
+:g/^Tetradymia canescens/s//<i>Tetradymia canescens<\/i>/g
+:wq
+vi rangeland_C04-208.html
+:g/^Tetradymia canescens/s//<i>Tetradymia canescens<\/i>/g
+:wq
+vi rangeland_C04-226.html
+:g/^Tetradymia canescens/s//<i>Tetradymia canescens<\/i>/g
+:wq
+vi rangeland_C04-232.html
+:g/^Tetradymia canescens/s//<i>Tetradymia canescens<\/i>/g
+:wq
+vi rangeland_C04-233.html
+:g/^Tetradymia canescens/s//<i>Tetradymia canescens<\/i>/g
+:wq
+vi rangeland_C04-236.html
+:g/^Tetradymia canescens/s//<i>Tetradymia canescens<\/i>/g
+:wq
+vi rangeland_C04-253.html
+:g/^Tetradymia canescens/s//<i>Tetradymia canescens<\/i>/g
+:wq
+vi rangeland_C04-264.html
+:g/^Tetradymia canescens/s//<i>Tetradymia canescens<\/i>/g
+:wq
+vi rangeland_C04-273.html
+:g/^Tetradymia canescens/s//<i>Tetradymia canescens<\/i>/g
+:wq

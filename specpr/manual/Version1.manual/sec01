@@ -1,0 +1,113 @@
+.ce 99
+SPECtrum Processing Routines
+
+
+
+Users Manual
+
+
+
+(program SPECPR)
+
+
+
+by
+
+
+
+Roger Nelson Clark
+
+
+
+Planetary Geosciences
+Hawaii Institute of Geophysics
+University of Hawaii
+2525 Correa Road
+Honolulu, Hawaii  96822
+(808) 948-6487
+(808) 948-6488
+
+
+
+
+First version August, 1978
+Rewritten June, 1980
+.ce 0
+.bp
+
+.sh 1 "INTRODUCTION "  1
+
+
+.sh 2 "Introduction "
+
+.pp
+ The SPECtrum Processing Routines (SPECPR) is a very large scale
+interactive program for one dimensional array general
+processing.  The program began at the M.I.T. Wallace Observatory
+as a short routine to substract and divide 2 spectra from the
+Remote Sensing Laboratory Circular Variable filter spectrometer
+("The Wedge").   Due to lack of processing software, the program
+grew to fill the Wedge data reduction needs.  In June, 1977, the
+Remote Sensing Lab (RSL) moved to the Institute for Astronomy of
+the University of Hawaii.  At that time, there was no software for
+reduction of spectral data.  It was decided that the Wedge data
+reduction program be put on the new computer (TI 980 B) as a
+general spectrum and one dimensional array processing system.
+The number of data points is variable from 2 to 256 and can be
+over any wavelength region.  Spectra are accessed by a single
+letter code designating the device or file and the record number
+of the file or device (such as a magnetic tape or disk file).
+
+.pp
+ The TI 980 B version described here is based on 16 bit words
+whereas the MIT version was based on a 24 bit word machine.
+Also, since the program was not planned completely from the start, some
+of the letter codes may seem obscure.  During the change to the
+TI 980 B, many of the letter codes were changed to make more sense.
+Programmers reading this manual in order to make additions
+or changes to SPECPR will find some of the codes messy.  This is
+due to the change from one machine to another while making a
+program specific to one type of instrument general to all
+instruments.  Since I consider myself a scientist and not a
+programmer, I designed the program for a scientist to use.  Many
+parts may seem messy, picky, and a lot of busy work which many
+programmers would not have done.  The result, I feel, is a program
+that is generally easy to use based on what a user would like and
+not what is easy for a programmer to program.
+
+.pp
+ One of the main goals of the program is to be uncrashable.  Since
+users sit at the terminal for many hours processing data, they
+are bound to make mistakes so another goal is for the program to
+be somewhat "intelligent" and to try and catch mistakes.  The
+program is completely free format allowing quick and easy input of
+commands.  Spaces are only required between two numbers where
+there is no character between them.  Otherwise, spaces can be
+completely left out or inserted wherever the user wishes.  Most
+commands are a single character.  In many batch processing
+systems, the user types commands on cards, and then feeds them
+into a machine for processing.  If there was a mistake, the job
+must be run again, and this wastes time.  In the interactive
+version, as the commands are typed in, they are executed almost
+instantaneously and the results displayed.  In this way, all
+intermediate steps are seen, and decisions can be made to change the
+processing in order to obtain the best results.  If viewing
+intermediate steps is not required, many parts of the program can
+be run in a semi-batch mode which is nearly as fast as the user
+can type.  Frequently, when processing is complete and the user is
+looking at the data, he/she needs to know exactly what the
+program did or was told to do.  Thus, a complete history (within
+reason) is kept of each operation.  This has proved invaluable
+for figuring out what was done to some data whether it is yours
+or someone else's.
+
+.pp
+ An interactive "smart" program of this nature requires an almost
+shocking amount of code.  Programmers who hear of the volume of
+code think that it is unnecessary and can be reduced to a few
+hundred lines.  Once they look at the code and see the
+requirements of the program, they see it really is necessary.
+SPECPR is now over 20,000 lines of FORTRAN in length, contains
+about 200 subroutines, is linked in an overlay structure
+containing about 100 overlays, and takes about 20K words on the
+TI 980 B to run.  The load module is 310,000 bytes long.

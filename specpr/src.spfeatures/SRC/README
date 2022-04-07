@@ -1,0 +1,7 @@
+Before making the spfeatures program, you probably should be sure
+the spfeatures databases exist.  Once they are created (e.g. as part
+of the spectral library distribution...see that documentation) then
+edit the file "defaultfile.h" and make sure the file names point to
+the files on your system.
+
+Then type make

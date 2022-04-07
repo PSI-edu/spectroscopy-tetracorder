@@ -1,0 +1,21 @@
+#!/bin/sh
+LFILE=clocate.files
+RFILE=clocate.results
+
+if [ -f $RFILE ]
+  then
+    rm $RFILE
+    touch $RFILE
+fi
+
+if [ -f $LFILE ]
+  then
+  for AFILE in `cat $LFILE`
+    do
+	echo == $AFILE >> $RFILE
+	grep -i $1 $AFILE >> $RFILE
+    done
+    echo Search Results for $1 in $RFILE
+  else
+    echo $LFILE does not exist!
+fi

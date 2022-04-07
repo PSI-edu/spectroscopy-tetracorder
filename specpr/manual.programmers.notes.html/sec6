@@ -1,0 +1,356 @@
+.nr LT 6.5i
+.lt 6.5i
+.nr PO 0.875i
+.po 0.875i
+.TL
+.EQ
+delim $$
+.EN
+.ce
+SPECPR Gould Plotting Subroutines
+
+
+0.  Introduction
+
+
+.PP
+The Gould may be used to produce alphanumeric symbols, curves, or
+pictures by laying down a pattern of closely spaced "dots."  The
+density of these is 200/inch or approximately 78.74/cm.  The
+paper is 11 inches wide and of arbitrary length.
+
+.PP
+A set of fortran callable subroutines has been written to provide
+a simple means for utilizing the Gould as a plotting device.
+Since the Gould can move the paper only in one direction it is
+necessary to create intermediate data files on disk containing
+a representation of the plot to allow for drawing the parts of the
+plot in any order.  The representation chosen was to represent
+each line of data as it is actually sent to the Gould, with a
+zero bit meaning a white dot, and a one bit meaning a black dot.
+Although this requires a rather large file ($2.75 times 10 sup 4$
+words/inch of vertical space on the Gould), it permitted a more
+straightforward and rapid implementation than with other schemes.
+
+.PP
+In order to produce a plot, using these subroutines, four main
+steps are involved.  They are:
+
+.RS
+.nf
+.na
+1.  Prepare the disk file.
+2.  Initialize the origin and scale factors.
+3.  Plot the data, titles, axes, etc. to the file.
+4.  Dump the file to the plotter.
+.RE
+.fi
+.ad
+
+1.  Preparing the File
+
+.PP
+A subroutine named SETUP must be called first before any others
+in the plot collection.  Its function is to setup the vector and
+text intermediate disk files.
+SETUP also calculates the value of
+several parameters which are required for the proper functioning
+of the other subroutines.  These parameters are stored in common
+areas named PLOT01 and PLOT02, which should be separate
+from the named common in the user's routines.
+
+.RS
+The arguments to SETUP  are as follows:
+.IP errlun: 10
+The logical unit number to which status and error
+messages are to be sent.
+.IP  plotname:
+The id under which the disk file is to be
+assigned.
+.IP disp:
+The disposition (2 characters)
+.IP height:
+The maximum vertical dimension of the plot (in cm.), up to
+200 cm.
+.IP width:
+The maximum horizontal dimension of the plot (in cm.) up to
+27 cm.
+.IP error:
+error status
+.RE
+
+.PP
+Initially the disposition
+is "NE" for new or "RE" for replace.  Subsequently it may be "OL"
+for a file which already exists and which is to be re-plotted.
+
+.nf
+.na
+Ex:  CALL SETUP (6, 'X', 'PLDATA', 'RE', 20.6, 27.0, IER)
+.fi
+.ad
+
+
+2.  Scaling the Data
+
+.PP
+After SETUP has been called, a centimeter coordinate system is
+automatically established with the upper left corner of the paper
+being (0., 0.) and the horizontal and vertical limits being the
+values given as the last two arguments to SETUP.  The positive
+directions are to the right and downwards respectively.
+
+.PP
+In general the user's data values are not in centimeters and
+rather than having to convert them, a subroutine named RANGE has
+been provided to do the job.  Its arguments are the centimeter
+coordinates of two arbitrary points on the user's plot and the
+corresponding data values. Figure 6.1 should make this clear:
+
+.RS
+
+.PP
+Two arbitrary points are chosen (labeled $P sub 1$ and $P sub 2$ )
+and their values are given as the following arguments to RANGE:
+.IP dndt1: 7
+The data value of $P sub 1$ in the vertical direction.
+(shown as $X sub 1$)
+.IP acdt1:
+The data value of $P sub 1$ in the horizontal direction
+(shown as $Y sub 1$)
+.IP dncm1:
+The centimeter coordinate of $P sub 1$ in the vertical direction
+(shown as $D sub 1$)
+.IP accm1:
+The centimeter coordinate of $P sub 1$ in the horizontal
+direction (shown as $A sub 1$)
+.IP dndt2:
+Same as dndt1 but for $P sub 2$
+.IP acdt2:
+Same as acdt1 but for $P sub 2$
+.IP dncm2:
+Same as dncm1 but for $P sub 2$
+.IP accm2:
+Same as accm1 but for $P sub 2$
+.RE
+
+The only restriction is that $arg sub i$ \(!= $arg sub i+4$.
+.RE
+
+.nf
+.na
+Ex:  CALL RANGE (X(1), Y(1), 2., 1.5, X(N), Y(N), 20.1, 26.5)
+.fi
+.ad
+
+3.  Generating the Pattern
+
+.PP
+The subroutines described in this section set the appropriate
+bits in the disk file to represent points, curves, and
+characters.  Curves are composed of lne segments between the
+successive points.  Most of the subroutines have an integer
+argument by which the user can choose the thickness of lines and
+the height of characters.  A convention has been adopted such
+that if this integer is negative then the other arguments which
+give the position of the line or character, are in centimeters
+rather than in data units.  This is convenient for referring to
+places on the outlying regions of the plot.
+
+.PP
+a.  Points and Lines
+
+.PP
+Subroutine POINT permits the placement of a single point or a
+square matrix of points.  Its arguments are:
+.RS
+.IP down: 8
+The vertical coordinate of the upper left corner.
+.IP across:
+The horizontal coordinate of the upper left corner.
+.IP width:
+The length of a side in Gould units (1 Gould unit = .005 in.).
+.RE
+.RE
+.nf
+.na
+e.g.:
+        CALL POINT (5., 4., -4)
+        CALL POINT (X, Y, 1)
+
+.PP
+Subroutine LINE may be used to draw lines or rectangles at any
+angle.  Its arguments are:
+
+.RS
+.IP fromd: 7
+The vertical coordinate of one end of the line.
+.IP froma:
+The horizontal coordinate of one end of the line.
+.IP tod:
+The vertical coordinate of the other end of the line.
+.IP toa:
+The horizontal coordinate of the other end of the line.
+.IP width:
+The thickness of the line in Gould units.
+.RE
+.RE
+.na
+.nf
+e.g.:
+        CALL LINE (X(I), Y(I), X(I+1), Y(I+1), 1)
+        CALL LINE (2., 1., 1.5, 4., -5)
+.ad
+.fi
+
+.PP
+b.  Characters
+
+.PP
+Two subroutines are available-for plotting single symbols or
+strings of text.
+
+.PP
+Subroutine PLTSYM is used to mark one's data points on the plot
+with "centered" symbols.  Its arguments are:
+
+.RS
+.IP down: 8
+The vertical coordinate of the center of the symbol.
+.IP across:
+The horizontal coordinate of the center of the symbol.
+.IP height:
+The size of the symbol as a multiple of 8 Gould units.
+.IP symbol:
+The symbol number is chosen from figure 6.2.
+.RE
+
+
+.PP
+Subroutine SYMBOL is used to write text to the plot file.  Its
+arguments are:
+
+.RS
+.IP down: 8
+The vertical coordinate of the lower left corner of the first
+character.
+.IP across:
+The horizontal coordinate of the lower left corner of the first
+character.
+.IP height:
+The height of the characters as a multiple of 10 Could units.
+.IP string:
+The array of characters to be plotted.
+.IP angle:
+The angle (in degrees) at which they are to be plotted with
+0\(de being
+vertical and 90\(de being horizontal.
+.IP len:
+The number of characters in string to be plotted.
+
+.RE
+.RE
+e.g.:  CALL SYMBOL (2.5, 1.5, -1, 16HThis is a Sample, 60., 16)
+
+.PP
+Subroutine SYMBOL recognizes six special
+characters which can occur in the text array passed to it (the
+4th argument).  These are:
+
+.TS
+center,tab(#);
+l l.
+T{
+.ul
+Character
+T}#T{
+.ul
+Effect
+T}
+\\\\ (Backslash)#Backspace to previous character
+{ (Left Brace)#Go into subscript mode
+} (Right Brace)#Go into superscript mode
+@ (At sign)#End last scripting mode
+! (Exclaimation Point)#Toggle greek/normal mode
+| (Vertical Bar)#Toggle math/normal mode
+.TE
+
+As it was assumed that these characters would not need to be
+printed they have been reserved for the above special use.
+Backslash can be used to cause characters to be overprinted.
+At-sign terminates the last use of a brace.  All characters in
+between are printed in script mode.
+
+.PP
+c.  Axes
+
+.PP
+We consider an axis to be a horizontal or vertical line between
+two points, having a sequence of short line segments at right
+angles.  These segments, called tic-marks, may have the value of
+the varying coordinate indicated above or below them, and a title
+can be written above or below the axis.  It is possible for the
+user to write his own axis drawing routine using only the LINE
+and SYMBOL subroutines, but it would be inconvenient to determine
+the exact location of the tic-marks and their values.  It is
+easier to use the AXIS subroutine, however one must accept the
+conventions which were adopted.  The arguments to AXIS and the
+conventions are as follows:
+
+.RS
+.IP dn1: 8
+The vertical coordinate of one end of the axis, in data units.
+.IP acr1:
+The horizontal coordinate of one end of the axis, in data units.
+.IP dn2:
+The vertical coordinate of the other end of the axis, in data
+units.
+.IP acr2:
+The horizontal coordinate of the other end of the axis, in data
+units.
+.IP wlabel:
+An array of characters for the title.
+.IP lchars:
+The number of characters in wlabel.  If zero then no title or
+tic-mark labeling will be drawn.
+.IP step:
+The minimum spacing of the tic-marks in cm.
+.RE
+
+.PP
+For a horizontal axis, dn1 = dn2 while for a
+vertical axis, acr1 = acr2.  The tic marks will be
+drawn from the axis to the direction of the center of the plot,
+and will be either 36 or l8 Gould units in length, the longer one
+being used for labeled tic-marks and the shorter one for
+unlabeled tic-marks.  Tic-marks will be drawn only at intervals
+which are 1, 2, or 5 times a power of 10, for example .02, 50, $10
+sup 4$ etc. and no closer together than as indicated by step.
+Two significant digits will be used with the power of 10 by
+which the value is to be multiplied indicated as a superscript
+after the axis title.  The title will be centered within the axis
+and will be drawn at 90 or at 0 degrees.  All characters will
+be 30 Gould units high.
+
+e.g.:  CALL AXIS (-.2, 1., -.2, 11., 8HX - AXIS, 8, 1.)
+
+
+4.  Dumping the Plot File to the Gould
+
+.PP
+Once the plot file has been filled with the picture to be drawn
+it must be sent to the Gould.  Subroutine DONE closes
+the text and vector intermediate files. The program PLOTDAEMON
+reformats the text and vector files into the binary image of the
+plot which it then sends to the Gould plotter.
+The arguments of subroutine DONE are:
+
+.RS
+.IP idone: 8
+A dummy argument. No longer used.
+
+.IP iflag:
+A dummy argument. No longer used.
+.RE
+.RE
+.bp

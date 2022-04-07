@@ -1,0 +1,221 @@
+<!-- Creator     : groff version 1.18.1.1 -->
+<!-- CreationDate: Tue Nov  9 14:21:31 2010 -->
+<html>
+<head>
+<meta name="generator" content="groff -Thtml, see www.gnu.org">
+<meta name="Content-Style" content="text/css">
+<title></title>
+</head>
+<body>
+
+<hr>
+<pre>SPECPR Users&rsquo; Manual                                            Page 8-f14.1
+
+F14:  Edits Spectral Data and Error Value                        Alias: edit
+This function allows editing of a data set and, if e is
+specified at call time, its associated error set as well.
+
+To call f14, specify the file and record number, f14, and, if errors
+are desired, e.
+
+Example:
+
+       v317f14e                    or               v317f14
+
+F14 accepts the following formatted commands to perform particular
+tasks:
+
+        channel data/e error                            change
+        ----------------------------------------------------------------
+        d[c] channel [channel1 t channel2] c          delete
+        i channel                                     insert after
+        l channel1 channel2                           list (crt)
+        pd                                            print data (lp)
+        c                                             continue
+                                                       (exit with write)
+        e                                             soft exit
+        x                                             hard exit
+        ----------------------------------------------------------------
+        Note: both e and x terminate the editing session without
+              writing the results.  Use &quot;c&quot; to exit and write results.
+</pre>
+
+<p>To CHANGE a data value (and its error, or just its
+error), specify the channel number of the value to be
+changed and the new data value (and the new error value);
+should you wish to change only the error, specify the
+channel number, e, and the new error value. (If you wish to
+change only the data value but you specified e at call time,
+you must specify three parameters; the channel number, the
+new data value, and the old error value.) Incorrect or
+uninterpretable format will cause an error message to be
+printed on the terminal screen. (Parameters may be entered
+either as integers or as real numbers but not in exponential
+format.)</p>
+
+<p>Examples:</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="15%"></td>
+<td width="84%">
+<pre>Call setup  Command        Task enacted
+
+v317f14    11 13.567    change channel 11 data value to 13.567
+v317f14e   11 13.4 .2   change ch. 11 data to 13.4, error to .2
+v317f14e   11 e .2      change ch. 11 error value to .2
+v317f14e   11 13.567    ILLEGAL ENTRY (errors were specified at
+                        call time, but no error value was entered)
+</pre>
+</td>
+</table>
+
+<p>To DELETE data values, specify d (or &quot;dc&quot; to
+delete and compress); the routine will then accept only
+channel number or channel ranges until the parameter c (do
+not confuse the parameter c with the option c) is
+encountered, at which time the delete task is performed.
+Without option c, the data values of all specified channels
+will be set to -1.23e+34 (the standard value for SPECPR
+deleted points) [and the associated errors will be set to
+0.0]. However, if the dc command is specified, the specified
+points will first be deleted, and then the channel space
+will be compressed to totally eliminate the specified
+channels. (Note: Compression of the channel space does not
+take effect until all specified points have first been
+deleted.) Channel numbers for the points to be deleted may
+be specified either individually or as ranges; the character
+t specifies a range of channels, starting with (and
+including) the number preceding t, and ending with (and
+including) the number following t, the command d, [the
+option c,] individual channels, channel ranges, and the
+parameter c may all be strung together; spaces are required
+as delimiters only between two numbers.</p>
+
+<p>Examples:</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="15%"></td>
+<td width="84%">
+<pre>Command                             Task enacted
+
+d6 7 12t13 18t21c               Data values for channels 6, 7, 12,
+                                13, 18, 19, 20, 21 are set to
+                                -1.23e34:[errors for same channels
+                                are set to 0.0]
+
+dc1t3 7c                        channels 1, 2, 3, 7 are deleted
+                                totally; old ch. 4 becomes new ch.
+                                1; old ch. 5 becomes new 2; old 8
+                                becomes new 4.
+
+dc                              routine requests &quot;enter more
+                                deletions or type c to continue&quot;
+</pre>
+</td>
+</table>
+
+<p>To INSERT data [and error] values after a specified
+channel, specify i and the channel number after which you
+wish to insert values. (If no channel is specified, the
+routine defaults to channel 0, in which case the insertions
+occur at the start of a spectrum.) The routine will then
+accept only data [and error] values, one data [and error]
+value per line, until either a blank line or two carriage
+returns in a row are encountered; either integers or real
+numbers (but not exponential format) are acceptable for data
+and errors.</p>
+
+<p>Example:</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="15%"></td>
+<td width="84%">
+<pre>Call setup    Command sequence         Task enacted
+-----------------------------------------------------------------
+v317f14e         i                routine prepares to accept data
+                                  &amp; errors, starting at channel 1
+
+                12 1.3           new channel 1: data = 12;
+                                  error = 1.3; original ch. 1
+                                  becomes new channel 2
+
+                15.6 .9          new channel 2: data = 15.6;
+                                  error = .9; original ch.1
+                                  becomes new channel 3
+
+                i2               routine prepares to accept data
+                                  &amp; errors starting after current
+                                  channel 2
+
+               16 2              new channel 3: data = 16;
+                                  error = 2
+
+               17.9              ILLEGAL ENTRY--no error was
+                                  specified; routine requests last
+                                  line to be retyped
+
+               17.9 1.6          new channel 4: data = 17.9;
+                                  error = 1.6; original ch.1 is
+                                  now ch.5
+
+              &lt;return&gt;           insertion routine stops
+-----------------------------------------------------------------
+</pre>
+<!-- INDENTATION -->
+<p>To LIST data and error values on the terminal screen,
+specify l and either a channel number or else two channel
+limits. Data [and error] values will be listed in
+exponential format along with channel numbers. (Spaces are
+required as delimiters between limits.) All data values
+within the channel limits are listed first; error values
+follow.</p>
+<!-- INDENTATION -->
+<p>Example:</p>
+<!-- INDENTATION -->
+<pre>l 1 60    channel number &amp; data value for channels 1 through
+          60 are listed on the terminal [followed by channel
+          number &amp; error value for channels 1 through 60]
+
+l 5       5 and data value for ch. 5 [and 5 and error value for
+          ch. 5] are listed on the terminal
+</pre>
+</td>
+</table>
+
+<p>To PRINT the data [and error] values on the line
+printer, specify pd. The output format is the same as when
+pd is specified in the CRT plot routine. To CONTINUE
+normally and write the edited file, specify the command c;
+the routine will exit to the write-to-file routine. Note:
+You cannot return to f14 and issue additional commands once
+CONTINUE is enacted.) A SOFT or HARD EXIT will occur if at
+any time the commands e or x, respectively, are encountered;
+control will return to MATH OPERATIONS. (Exception: In
+CHANGE, e is not interpreted as an EXIT command if it
+follows a channel specification.) IMPORTANT NOTE: This
+routine does NOT record a history of the edit commands
+performed; should you desire a record of your editing
+commands, you must create a manual history yourself.
+However, edited changes can be easily seen by comparing with
+the original data set which is specified in the history.</p>
+
+<p>Minor notes: All channel numbers should be positive
+integers; if a real number is entered by mistake, the
+routine will truncate it to integer form. All channel range
+limits must list the lower bound first and the upper bound
+last. If at any time during this routine you find yourself
+lost or confused, try pressing &lt;return&gt; once or twice
+until the EDIT COMMAND FORMAT message appears.
+Alternatively, you may type e or x to exit f14. You may
+insert spaces as delimiters to improve the clarity of
+commands; use of such spaces will not affect the operation
+of f14.</p>
+<hr>
+</body>
+</html>

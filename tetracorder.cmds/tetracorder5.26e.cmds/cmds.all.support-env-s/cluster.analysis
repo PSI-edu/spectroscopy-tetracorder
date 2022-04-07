@@ -1,0 +1,71 @@
+#!/bin/sh
+
+# do davinci cluster analysis on all results from a tricorder run,
+#    analyzing image output from all tricorder groups and cases.
+
+# Roger N. Clark, April 24, 1995
+
+out=results.cluster
+out2=${out}.sorted
+tmp=${out}$$
+
+echo '---------- Davinci Cluster Analysis Results from Tricorder run ('`date`')' > $tmp
+echo '----------                                    Cluster Threshold for pixel radius = 1' >> $tmp
+echo '----------                                   1       2       3       5       7       9' >> $tmp
+
+# for loop to do each group and case
+
+for i in `ls -d group.* case.*` 
+do
+
+	#echo '----------' $i
+	#echo '----------' $i >> $out
+	if [ -d $i ] 
+	then
+		cd $i
+
+		a=`ls *.fd* | grep -v hdr$`   # analyze all fd files in the directory
+
+		for j in $a
+		do
+			echo "analyzing $j"
+			../cmds.all.support/davinci.cluster $j $i >> ../$tmp
+		done
+
+		cd ..
+	else
+		echo '----------' note: directory $i does not exist, skipping.
+		echo '----------' note: directory $i does not exist, skipping. >> $out
+	fi
+done
+
+# now format the results a little better
+
+grep '^----------' $tmp  > $out
+echo "" >> $out
+
+grep -v '^----------' $tmp | \
+        grep -v '^$'     | \
+        sed -e 's/\"//g' | \
+        awk '{ printf ("%-40s  %7.4f %7.4f %7.4f %7.4f %7.4f %7.4f %-10s\n", \
+                                        $1, $2, $3, $4, $5, $6, $7, $8 ) }' \
+		>> $out
+
+# now make sorted list, with best clusters at top
+
+grep '^----------' $out > $out2
+echo "" >> $out2
+
+for i in `ls -d group.* case.*` 
+do
+	if [ -d $i ] 
+	then
+		grep "^$i\/" $out | sort --key=3 -r  >> $out2
+		#HPUX: grep "^$i\/" $out | sort +3 -r  >> $out2
+		echo "" >> $out2
+	fi
+done
+
+echo "Cluster analysis complete"
+
+rm $tmp

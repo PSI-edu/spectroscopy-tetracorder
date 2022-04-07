@@ -1,0 +1,1428 @@
+
+                         Specpr News Notes
+
+12/18/87: New method for reporting specpr bugs.  There is now a
+        program called "specpr.bugs".  When you have a bug to report, type
+        from a specpr prompt:
+                        !specpr.bugs
+        The specpr.bugs program will prompt you for a title and a
+        message.  When you are through, type a "control d" as the first
+        thing on the line and the specpr.bugs will deliver mail to specpr
+        and post the message to the notesfile specpr.bugs
+
+8/26/87:  Major additions and bug fixes
+
+	The following special functions have been available in dspecpr for
+	some time, but they are now in specpr.
+
+	f43 - fft: fast fourier transform and inverse is working
+		fine but frequencies (x-axis values) are wrong for one
+		half of the spectrum.
+
+	f44 - suh: Segmented Upper Hull: automatic continuum analysis.
+
+
+--More--(14%)[Hit space to continue, Rubout to abort
+hit return to continue
+
+ ************************************************************************
+ ********************* SPECtrum Processing Routines *********************
+ ************************************************************************
+ ****************** current program version: 02/22/88 *******************
+ *****************************Unix version*******************************
+ ************************************************************************
+
+ ************************************************************************
+  published papers for which this program played a major processing
+ role could reference:
+
+ Clark, R. N. (1980).  A Large Scale Interactive One Dimensional  Array
+       Processing System.   Pub. A. S. P., 92, 221-224.
+ ************************************************************************
+
+
+ Type:  u  and filename for NEW RESTART file and do NEW SETUP
+        r  and filename to  RESTART with a PREVIOUS SETUP
+
+><input.demo/input
+
+ !more -17 intro.demo/messagea
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+                     Welcome to SPECPR.
+This is demo A and its intention is to give a quick introduction
+to some of the capabilities of the program.  All "help" messages in
+this demo will be enclosed by a string of colons above and some
+below as in this message.  These messages will not appear in a
+normal running of the program.  These messages are invoked by doing
+a unix shell command "more" on a particular file.  On long messages,
+a prompt "more" will appear at the bottom of the screen.  Press the
+space bar to get the next page of text.
+
+Any command can be executed while within SPECPR by simply typing
+"!command" (e.g. !who ).  This feature is used several times in the
+demos and is the reason for things such as "!sdelay" and "!sleep 1"
+which will appear on your screen in subsequent displays.
+
+::::::::: press space bar to continue demo :::::::::::::::::::::::::
+
+This demo will show the following.
+	1) How to initialize a restart file (which must be done each
+		time SPECPR is run from a new directory).  In demo B
+		we will demonstrate how SPECPR is normally run once
+		a restart file has been established.
+	2) How to list data files.
+	3) How to plot spectra on the graphics terminal.
+	4) Overlay spectra covering different wavelength ranges
+		(e.g. a visible-NIR and a MIR spectrum).
+	5) How to copy (called "transfer") spectra from one data
+		file to another.
+	6) A sample math problem will be shown: derive a continuum
+		to a kaolinite spectrum and remove it by division.
+
+::::::::: press space bar to continue demo :::::::::::::::::::::::::
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+!
+> !more -14 intro.demo/messageb
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+In the initial running of this  program from a new directory a
+restart file (and .spttl .cmd files) must be created. By convention 
+the restart file is typically named "r1".  We chose a simple name
+purely for the reason that we could always recognize what that file
+was.
+
+In this demo the procedure to establish a restart file is initiated
+by entering "u r1" in response to a question asked in the beginning
+of the program.
+
+Other rather self-explanatory questions are asked.  More detail can
+be found in section 4 of the SPECPR users manual.
+::::::::: press space bar to continue demo :::::::::::::::::::::::::
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+!
+> u r1
+
+ restart file name=r1                                                                              
+ v = *unasnd*: f    1    w = *unasnd*: f    1    d = *unasnd*: f    1
+ u = *unasnd*: f    1    y = *unasnd*: f    1    s = starpack: f    1
+ lp: spoolfile       obs lat=    .000 deg   channels= 120 wav fl=C  256 h   
+ file protection: v     0,w     0,d     0,u     0,y     0,s     0 ltype= 0
+--------------------------------------------------------------------------
+ FILE PROTECTION: type in the file id and protection (e.g. v237 w-1)
+ protection number:
+
+ PROTECTED, WRITE AT END OF DATA: protection number 0 or greater
+ READ ONLY: protection number less than -1 (you canot have
+            a read only file of 1 record)
+ UNPROTECTED: protection number = -1
+
+ !sdelay
+ !
+>  
+
+ v = *unasnd*: f    1    w = *unasnd*: f    1    d = *unasnd*: f    1
+ u = *unasnd*: f    1    y = *unasnd*: f    1    s = starpack: f    1
+ lp: spoolfile       obs lat=    .000 deg   channels= 256 wav fl=C  256 h   
+ file protection: v     0,w     0,d     0,u     0,y     0,s     0 ltype= 0
+--------------------------------------------------------------------------
+  type in observatory or location: type  mko  for mauna kea observ atory
+                                   type  na   for not applicable
+                                   type  wal  for wallace observatory
+                                   type  mwo  for mount wilson observatory
+                                   type  kpn  for kitt peak national obs.
+          type  t  to type in the coordinates of the observing site.
+
+ !sdelay
+!
+> na
+
+ v = *unasnd*: f    1    w = *unasnd*: f    1    d = *unasnd*: f    1
+ u = *unasnd*: f    1    y = *unasnd*: f    1    s = starpack: f    1
+ lp: spoolfile       obs lat=    .000 deg   channels= 256 wav fl=C  256 h   
+ file protection: v     0,w     0,d     0,u     0,y     0,s     0 ltype= 0
+--------------------------------------------------------------------------
+               *** FILE ASSIGNMENTS ***
+               -----------------------------------
+ to reassign files type letter and name:
+    (74 characters max per file name)
+ v = /dev/null                                                                 
+ w = /dev/null                                                                 
+ d = /dev/null                                                                 
+ s = /dev/null                                                                 
+ u = /dev/null                                                                 
+ y = /dev/null                                                                 
+ l = spoolfile                                                                 
+     e  or  x = EXIT this routine
+
+ !sdelay
+!
+> !more  -15 intro.demo/message0
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+We have just completed part of the initialization process. Now we
+must assign the files w,v,d,u,y so that data can be accessed. In
+this demo we initially assign v to the file named "spdemos" which
+contains some sample data which will be used later.
+
+THE NAME GIVEN TO EACH LETTER IS VERY IMPORTANT.  The name is used
+in all histories which are automatically generated by any math
+operation.  It is important that the names make sense so that you
+will be able to trace your processing steps, if needed, sometime in
+the future.  The convention is to name the data file the same as
+the name of the magnetic tape on which you will archive the results.
+The SPECPR convention is to NEVER reuse a tape name.  That way any
+spectral ID is guaranteed to be unique.
+::::::::: press space bar to continue demo :::::::::::::::::::::::::
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+!
+> v spdemos
+
+ v = *unasnd*: f    1    w = *unasnd*: f    1    d = *unasnd*: f    1
+ u = *unasnd*: f    1    y = *unasnd*: f    1    s = starpack: f    1
+ lp: spoolfile       obs lat=    .000 deg   channels= 256 wav fl=C  256 h   
+ file protection: v     0,w     0,d     0,u     0,y     0,s     0 ltype= 0
+--------------------------------------------------------------------------
+               *** FILE ASSIGNMENTS ***
+               -----------------------------------
+ to reassign files type letter and name:
+    (74 characters max per file name)
+ v = spdemos                                                                   
+ w = /dev/null                                                                 
+ d = /dev/null                                                                 
+ s = /dev/null                                                                 
+ u = /dev/null                                                                 
+ y = /dev/null                                                                 
+ l = spoolfile                                                                 
+     e  or  x = EXIT this routine
+
+ !sdelay
+!
+> e
+  type in the tape name of the file w.
+  
+  type in the tape name of the file v.
+ spdemos
+  type in the tape name of the file d.
+  
+  type in the tape name of the file u.
+  
+  type in the tape name of the file y.
+  
+ WARNING -- spdemos contains     53 records but protection is      0
+ type c to change protection to    53  or return to continue
+ c
+
+ v = spdemos : f    1    w = *unasnd*: f    1    d = *unasnd*: f    1
+ u = *unasnd*: f    1    y = *unasnd*: f    1    s = starpack: f    1
+ lp: spoolfile       obs lat=    .000 deg   channels= 256 wav fl=C  256 h   
+ file protection: v    53,w     0,d     0,u     0,y     0,s     0 ltype= 0
+--------------------------------------------------------------------------
+ MAIN MENU: ********** Program Operations Control *********************
+
+   INFO:     "in" to turn OFF information
+
+   LIST:      l followed by v,w,d,u,or y  to list the contents 
+                         of the corresponding file
+   DISPLAY:   t  to DISPLAY on screen, OVERLAP on screen
+   MATH:      m  to do MATH operations
+   TRANSFER:  t  to TRANSFER (COPY) files
+
+   PLOT:      p  to PLOT SPECTRA on PLOTTER/printer
+   SETUP:     b  to change SETUP PARAMETERS
+   FILES:     r  to REASSIGN files and devices
+   STARPACK:  s  to create a STARPACK for extinction corrections
+   PRINT RST: f  to print summary of the current restart file
+   
+   EXIT:      EX  to exit program
+
+ !sdelay
+!
+> !more  -10 intro.demo/message1
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+"v" has now been assigned to the file spdemos and has been given the
+name "spdemos" as can be seen at the top of the screen.  We are
+currently in the main "menu" of SPECPR (section 7 of the SPECPR
+users manual).
+
+Next we will enter the section of the program
+called file transfer and display and demonstrate a few of the
+utilities which can be found there.
+::::::::: press space bar to continue demo :::::::::::::::::::::::::
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+!
+> t
+ Transfering to display & math routine
+
+ v = spdemos : f    1    w = *unasnd*: f    1    d = *unasnd*: f    1
+ u = *unasnd*: f    1    y = *unasnd*: f    1    s = starpack: f    1
+ lp: spoolfile       obs lat=    .000 deg   channels= 256 wav fl=C  256 h   
+ file protection: v    53,w     0,d     0,u     0,y     0,s     0 ltype= 0
+--------------------------------------------------------------------------
+ ********** data DISPLAY, TRANSFER, and OVERLAY **********
+
+ Type  i  to turn ON information
+
+ !more -4 intro.demo/message2
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+First the contents of the file v will be listed using the command 
+	lv
+::::::::: press space bar to continue demo :::::::::::::::::::::::::
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+!
+> lv
+
+ v = spdemos : f    1    w = *unasnd*: f    1    d = *unasnd*: f    1
+ u = *unasnd*: f    1    y = *unasnd*: f    1    s = starpack: f    1
+ lp: spoolfile       obs lat=    .000 deg   channels= 256 wav fl=C  256 h   
+ file protection: v    53,w     0,d     0,u     0,y     0,s     0 ltype= 0
+--------------------------------------------------------------------------
+                           LISTING OF FILE: spdemos 
+
+   type  t  for TELESCOPIC or  l  for LABORATORY (DEFAULT)
+  or beginning and ending files to be listed
+ !sdelay
+!
+> 0 60
+
+ file            title                            chans    time        date
+     1  *********** Demos **********************   256  00:00:00.00  11/07/1979
+     2   mean optical path length (cm)              14  00:00:00.00  11/07/1979
+     3  Log (mean optical path in cm)               14  00:00:00.00  11/07/1979
+     4  1.04 micron H2O ice band depth              14  00:00:00.00  11/07/1979
+     5  1.25 um H2O ice band depth                  14  00:00:00.00  11/07/1979
+     6  1.52 um H2O ice band depth                  14  00:00:00.00  11/07/1979
+     7  2.02 um H2O ice band depth                  14  00:00:00.00  11/07/1979
+     8  3.0 um H2O ice badn depth                   14  00:00:00.00  11/07/1979
+     9  Wavelengths in um for IR data             2394  00:00:00.00  11/24/****
+    16  Olivine coarse 2-15um * scale const=4.37  2394  00:00:00.00  11/24/****
+    23  wavelengths to following data    waves     471  13:42:39.00  08/02/1985
+    25  1x KI 3005 100% correc. <30um 2.7-.2um     471  12:46:23.00  08/27/1985
+    27  1x KI 100% correct < 30um .2-2.7um        2394  12:46:23.00  08/27/1985
+    34  1x KI 100% correct < 30um .2-2.7um         471  12:46:23.00  08/27/1985
+    36  USGS Denver Beckman STD wavelengths 1x     512  02:57:26.00  10/15/1985
+    38  USGS Denver BKMN 1x resolution             512  02:57:26.00  10/15/1985
+    40  Description of Alunite   Hunt 295.?B      3132 Characters of TEXT
+ ------------------------------------------------------------------------------
+ Type  c  to continue, e or x  to exit,  Type in new record numbers to list
+ type  r  to return to options, type t to go to file display and transfer
+or type m to go to math routines
+ !ldelay
+!
+> c
+
+ file            title                            chans    time        date
+    43  Alunite 295.3B .2-3um 1x ABS REF           512  12:03:14.00  08/20/1985
+    45  errors to previous file   77               512  12:03:14.00  08/20/1985
+    47  Description of Kaolinite  (WNS)            703 Characters of TEXT
+    48  Kaolinite gs<63um .2-3um 1x ABS REF        512  10:24:01.00  09/12/1985
+    50  errors to previous file  106               512  10:24:01.00  09/12/1985
+    52  AVIRIS wavelength set .4-2.4064 210ch      210  00:00:00.00  11/24/****
+    53  AVIRIS resolution set .0096 210ch          210  00:00:00.00  11/24/****
+ ------------------------------------------------------------------------------
+ Type  c  to continue, e or x  to exit,  Type in new record numbers to list
+ type  r  to return to options, type t to go to file display and transfer
+or type m to go to math routines
+ !ldelay
+!
+> e
+
+ Updating Restart File 
+ Updating Restart File 
+ v = spdemos : f   54    w = *unasnd*: f    1    d = *unasnd*: f    1
+ u = *unasnd*: f    1    y = *unasnd*: f    1    s = starpack: f    1
+ lp: spoolfile       obs lat=    .000 deg   channels= 256 wav fl=C  256 h   
+ file protection: v    53,w     0,d     0,u     0,y     0,s     0 ltype= 0
+--------------------------------------------------------------------------
+ MAIN MENU: ********** Program Operations Control *********************
+
+   INFO:     "in" to turn OFF information
+
+   LIST:      l followed by v,w,d,u,or y  to list the contents 
+                         of the corresponding file
+   DISPLAY:   t  to DISPLAY on screen, OVERLAP on screen
+   MATH:      m  to do MATH operations
+   TRANSFER:  t  to TRANSFER (COPY) files
+
+   PLOT:      p  to PLOT SPECTRA on PLOTTER/printer
+   SETUP:     b  to change SETUP PARAMETERS
+   FILES:     r  to REASSIGN files and devices
+   STARPACK:  s  to create a STARPACK for extinction corrections
+   PRINT RST: f  to print summary of the current restart file
+   
+   EXIT:      EX  to exit program
+
+ !sdelay
+!
+> t
+ Transfering to display & math routine
+
+ v = spdemos : f   54    w = *unasnd*: f    1    d = *unasnd*: f    1
+ u = *unasnd*: f    1    y = *unasnd*: f    1    s = starpack: f    1
+ lp: spoolfile       obs lat=    .000 deg   channels= 256 wav fl=C  256 h   
+ file protection: v    53,w     0,d     0,u     0,y     0,s     0 ltype= 0
+--------------------------------------------------------------------------
+ ********** data DISPLAY, TRANSFER, and OVERLAY **********
+
+ Type  i  to turn ON information
+
+ !sdelay
+!
+> !more -17 intro.demo/message3
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+Next a sample spectrum is displayed.  The command to do this is
+	v43V36al3
+A spectrum is accessed by its letter code and record number.  The
+letter code can be lower or upper case.  Lower case means vertical
+axis and upper case refers to the horizontal axis.  The vertical
+axis must always come first.  So the above command means display
+record v43 using the record V36 for the wavelength (x-axis).  Note
+that v36 and V36 refer to the same set of data contained in record
+v36 but when a V is used this specifies that the particular record
+is to be used for the "wavelength set".
+Following the request for the data are options on how to modify the
+default conditions. The "a" in the command designates that you want 
+to plot in wavelength space, other options are h for channel and n 
+for "inverse wavelength".
+::::::::: press space bar to continue demo :::::::::::::::::::::::::
+
+Note the letter is the second one of the words wavelength, channel, 
+and inverse.  These options can be seen at the bottom of the plot
+which will soon appear.  This option need not be specified each 
+time a spectrum is plotted with the plot remaining in the last x 
+coordinate space that was selected.  Finally the "l3" at the end 
+of the command selects the specific type of line (dotted ,
+dashed , solid ...) with which the plot is to be made.  The line 
+type is set properly for HP class of graphics terminals but may 
+not exist on other types.
+The scale of the plot is then changed once an initial display has
+been generated using the command c; w .2 3 ; 0 1.  The c stands for
+change scale as denoted on the top of the plot display.  A ";" is
+shorthand for a return.  The "w .2 3" means wavelength from 0.2 to
+3.0 units (default is microns) and the "0 1" sets the vertical scale
+from 0 to 1.0.
+::::::::: press space bar to continue demo :::::::::::::::::::::::::
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+!
+> v43V36al3
+
+ 
+
+
+ Current Scale: VERTICAL= 0.0000E+00   2.0000E+00
+                HORIZ.  = Automatic
+
+ To scale the plot, type in the mode (n or w) and horizontal axis limits first.
+ When the vertical scale is entered, the routine will exit to the plot.
+
+ HORIZONTAL:
+ type  n  and left and right hand limits for INVERSE WAVELENGTH, or:
+ type  w  and left and right hand WAVELENGTH limits
+          (if you type  w  only,  the program will AUTOSCALE the limits 
+          from the current wavelength set)
+
+ VERTICAL:
+ Type lower bound and upper bound values for the VERTICAL AXIS, or:
+ type  A  to AUTO SCALE (the VERTICAL AXIS), or:
+
+ !more -13  intro.demo/message3a
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+           Now we will change the scale of the plot.
+
+Following the instructions shown above we type:
+
+	w .2 3
+
+to change the wavelength scale to .2 microns to 3 microns.  Then:
+
+	0 1
+
+to change the vertical scale to 0 to 1.
+::::::::: press space bar to continue demo :::::::::::::::::::::::::
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+!
+> w .2 3
+ Current Scale: VERTICAL= 0.0000E+00   2.0000E+00
+                HORIZ.  = 2.0000E-01   3.0000E+00
+
+ To scale the plot, type in the mode (n or w) and horizontal axis limits first.
+ When the vertical scale is entered, the routine will exit to the plot.
+
+ HORIZONTAL:
+ type  n  and left and right hand limits for INVERSE WAVELENGTH, or:
+ type  w  and left and right hand WAVELENGTH limits
+          (if you type  w  only,  the program will AUTOSCALE the limits 
+          from the current wavelength set)
+
+ VERTICAL:
+ Type lower bound and upper bound values for the VERTICAL AXIS, or:
+ type  A  to AUTO SCALE (the VERTICAL AXIS), or:
+
+ !sleep 1
+!
+> 0 1
+
+
+
+
+ v = spdemos : f   38    w = *unasnd*: f    1    d = *unasnd*: f    1
+ u = *unasnd*: f    1    y = *unasnd*: f    1    s = starpack: f    1
+ lp: spoolfile       obs lat=    .000 deg   channels= 512 wav fl=V   36 a   
+ file protection: v    53,w     0,d     0,u     0,y     0,s     0 ltype= 3
+--------------------------------------------------------------------------
+ ********** data DISPLAY, TRANSFER, and OVERLAY **********
+
+ Type  i  to turn ON information
+
+ !more -22 intro.demo/message4
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+      Now we will overlay 2 separate spectra on the same plot.
+
+We will display the spectrum of Olivine from .2 to 20 microns.  The
+command used in this instance is:
+
+	v16V9l7o v34V23l3o
+
+The explanation for the mess is as follows v16 is displayed using
+the wavelength set V9.  The small o indicates that overlay mode.  
+The "l7" indicates line type 7.
+
+Then spectrum v34 is to be plotted with wavelength set V23 using
+line type 3 (l3) and it is also in overlay mode (the o is needed on
+EVERY spectrum to be overlayed, even the last one).
+
+Once the routine is entered we again change the scale of the plot
+using a command c;w .2 20 where the ";" represents a carriage return
+in SPECPR.
+
+::::::::: press space bar to continue demo :::::::::::::::::::::::::
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+!
+> v16V9l7ov34V23l3o
+
+
+
+
+ Current Scale: VERTICAL= 0.0000E+00   1.0000E+00
+                HORIZ.  = 2.0000E-01   3.0000E+00
+
+ To scale the plot, type in the mode (n or w) and horizontal axis limits first.
+ When the vertical scale is entered, the routine will exit to the plot.
+
+ HORIZONTAL:
+ type  n  and left and right hand limits for INVERSE WAVELENGTH, or:
+ type  w  and left and right hand WAVELENGTH limits
+          (if you type  w  only,  the program will AUTOSCALE the limits 
+          from the current wavelength set)
+
+ VERTICAL:
+ Type lower bound and upper bound values for the VERTICAL AXIS, or:
+ type  A  to AUTO SCALE (the VERTICAL AXIS), or:
+
+ w .2 20;
+ Current Scale: VERTICAL= 0.0000E+00   1.0000E+00
+                HORIZ.  = 2.0000E-01   2.0000E+01
+
+ To scale the plot, type in the mode (n or w) and horizontal axis limits first.
+ When the vertical scale is entered, the routine will exit to the plot.
+
+ HORIZONTAL:
+ type  n  and left and right hand limits for INVERSE WAVELENGTH, or:
+ type  w  and left and right hand WAVELENGTH limits
+          (if you type  w  only,  the program will AUTOSCALE the limits 
+          from the current wavelength set)
+
+ VERTICAL:
+ Type lower bound and upper bound values for the VERTICAL AXIS, or:
+ type  A  to AUTO SCALE (the VERTICAL AXIS), or:
+
+  
+
+
+
+
+
+
+ v = spdemos : f   25    w = *unasnd*: f    1    d = *unasnd*: f    1
+ u = *unasnd*: f    1    y = *unasnd*: f    1    s = starpack: f    1
+ lp: spoolfile       obs lat=    .000 deg   channels= 471 wav fl=V   23 a   
+ file protection: v    53,w     0,d     0,u     0,y     0,s     0 ltype= 3
+--------------------------------------------------------------------------
+ ********** data DISPLAY, TRANSFER, and OVERLAY **********
+
+ Type  i  to turn ON information
+
+ !sdelay
+!
+> e
+ Updating Restart File 
+ Updating Restart File 
+
+ v = spdemos : f   25    w = *unasnd*: f    1    d = *unasnd*: f    1
+ u = *unasnd*: f    1    y = *unasnd*: f    1    s = starpack: f    1
+ lp: spoolfile       obs lat=    .000 deg   channels= 471 wav fl=V   23 a   
+ file protection: v    53,w     0,d     0,u     0,y     0,s     0 ltype= 3
+--------------------------------------------------------------------------
+ MAIN MENU: ********** Program Operations Control *********************
+
+   INFO:     "in" to turn OFF information
+
+   LIST:      l followed by v,w,d,u,or y  to list the contents 
+                         of the corresponding file
+   DISPLAY:   t  to DISPLAY on screen, OVERLAP on screen
+   MATH:      m  to do MATH operations
+   TRANSFER:  t  to TRANSFER (COPY) files
+
+   PLOT:      p  to PLOT SPECTRA on PLOTTER/printer
+   SETUP:     b  to change SETUP PARAMETERS
+   FILES:     r  to REASSIGN files and devices
+   STARPACK:  s  to create a STARPACK for extinction corrections
+   PRINT RST: f  to print summary of the current restart file
+   
+   EXIT:      EX  to exit program
+
+ !more -10 intro.demo/message5
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+Another utility which can be used from the transfer section of the
+program is the transferring (copying) of files from one assigned file
+(i.e. v,w,y,d,u ) to another.  First we assign w to a physical file
+as was done with v earlier.  Then we give the name "junkfile" to "w"
+just as "v" was labeled "spdemos" and then execute a few file transfers. 
+
+File transfers are described in section 10 of the SPECPR users
+manual.
+::::::::: press space bar to continue demo :::::::::::::::::::::::::
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+!
+> r
+
+ v = spdemos : f   25    w = *unasnd*: f    1    d = *unasnd*: f    1
+ u = *unasnd*: f    1    y = *unasnd*: f    1    s = starpack: f    1
+ lp: spoolfile       obs lat=    .000 deg   channels= 471 wav fl=V   23 a   
+ file protection: v    53,w     0,d     0,u     0,y     0,s     0 ltype= 3
+--------------------------------------------------------------------------
+               *** FILE ASSIGNMENTS ***
+               -----------------------------------
+ to reassign files type letter and name:
+    (74 characters max per file name)
+ v = spdemos                                                                   
+ w = /dev/null                                                                 
+ d = /dev/null                                                                 
+ s = /dev/null                                                                 
+ u = /dev/null                                                                 
+ y = /dev/null                                                                 
+ l = spoolfile                                                                 
+     e  or  x = EXIT this routine
+
+ !sdelay
+!
+> w junkfile
+
+ v = spdemos : f   25    w = *unasnd*: f    1    d = *unasnd*: f    1
+ u = *unasnd*: f    1    y = *unasnd*: f    1    s = starpack: f    1
+ lp: spoolfile       obs lat=    .000 deg   channels= 471 wav fl=V   23 a   
+ file protection: v    53,w     0,d     0,u     0,y     0,s     0 ltype= 3
+--------------------------------------------------------------------------
+               *** FILE ASSIGNMENTS ***
+               -----------------------------------
+ to reassign files type letter and name:
+    (74 characters max per file name)
+ v = spdemos                                                                   
+ w = junkfile                                                                  
+ d = /dev/null                                                                 
+ s = /dev/null                                                                 
+ u = /dev/null                                                                 
+ y = /dev/null                                                                 
+ l = spoolfile                                                                 
+     e  or  x = EXIT this routine
+
+ !sdelay
+!
+> e
+
+ v = spdemos : f   25    w =         : f    1    d = *unasnd*: f    1
+ u = *unasnd*: f    1    y = *unasnd*: f    1    s = starpack: f    1
+ lp: spoolfile       obs lat=    .000 deg   channels= 471 wav fl=V   23 a   
+ file protection: v    53,w     0,d     0,u     0,y     0,s     0 ltype= 3
+--------------------------------------------------------------------------
+ MAIN MENU: ********** Program Operations Control *********************
+
+   INFO:     "in" to turn OFF information
+
+   LIST:      l followed by v,w,d,u,or y  to list the contents 
+                         of the corresponding file
+   DISPLAY:   t  to DISPLAY on screen, OVERLAP on screen
+   MATH:      m  to do MATH operations
+   TRANSFER:  t  to TRANSFER (COPY) files
+
+   PLOT:      p  to PLOT SPECTRA on PLOTTER/printer
+   SETUP:     b  to change SETUP PARAMETERS
+   FILES:     r  to REASSIGN files and devices
+   STARPACK:  s  to create a STARPACK for extinction corrections
+   PRINT RST: f  to print summary of the current restart file
+   
+   EXIT:      EX  to exit program
+
+ !sdelay
+!
+> b
+
+ v = spdemos : f   25    w =         : f    1    d = *unasnd*: f    1
+ u = *unasnd*: f    1    y = *unasnd*: f    1    s = starpack: f    1
+ lp: spoolfile       obs lat=    .000 deg   channels= 471 wav fl=V   23 a   
+ file protection: v    53,w     0,d     0,u     0,y     0,s     0 ltype= 3
+--------------------------------------------------------------------------
+                    *** SETUP parameters ***
+
+
+     type  o    to change the OBSERVATORY or observatory site
+     type  r    to REASSIGN FILES and devices
+     type  f    to EVALUATE PROTECTION vs file sizes
+                (no response indicates all is consistent)
+     type  g    and number to set GRAPHICS type (see manual)
+     type  b    to toggle BELL
+     type  v    to change the NAME of device v
+     type  d    to change the NAME of device d
+     type  u    to change the NAME of device u
+     type  y    to change the NAME of device y
+     type  w    to change the NAME of device w
+     type  cp   to change the  FILE PROTECTION
+
+     press return to go back to the MAIN routines.
+
+ !sdelay
+!
+> w
+  type in the tape name of the file w.
+ junkfile
+
+ v = spdemos : f   25    w = junkfile: f    1    d = *unasnd*: f    1
+ u = *unasnd*: f    1    y = *unasnd*: f    1    s = starpack: f    1
+ lp: spoolfile       obs lat=    .000 deg   channels= 471 wav fl=V   23 a   
+ file protection: v    53,w     0,d     0,u     0,y     0,s     0 ltype= 3
+--------------------------------------------------------------------------
+                    *** SETUP parameters ***
+
+
+     type  o    to change the OBSERVATORY or observatory site
+     type  r    to REASSIGN FILES and devices
+     type  f    to EVALUATE PROTECTION vs file sizes
+                (no response indicates all is consistent)
+     type  g    and number to set GRAPHICS type (see manual)
+     type  b    to toggle BELL
+     type  v    to change the NAME of device v
+     type  d    to change the NAME of device d
+     type  u    to change the NAME of device u
+     type  y    to change the NAME of device y
+     type  w    to change the NAME of device w
+     type  cp   to change the  FILE PROTECTION
+
+     press return to go back to the MAIN routines.
+
+ !sdelay
+!
+> e
+ Updating Restart File 
+
+ v = spdemos : f   25    w = junkfile: f    1    d = *unasnd*: f    1
+ u = *unasnd*: f    1    y = *unasnd*: f    1    s = starpack: f    1
+ lp: spoolfile       obs lat=    .000 deg   channels= 471 wav fl=V   23 a   
+ file protection: v    53,w     0,d     0,u     0,y     0,s     0 ltype= 3
+--------------------------------------------------------------------------
+ MAIN MENU: ********** Program Operations Control *********************
+
+   INFO:     "in" to turn OFF information
+
+   LIST:      l followed by v,w,d,u,or y  to list the contents 
+                         of the corresponding file
+   DISPLAY:   t  to DISPLAY on screen, OVERLAP on screen
+   MATH:      m  to do MATH operations
+   TRANSFER:  t  to TRANSFER (COPY) files
+
+   PLOT:      p  to PLOT SPECTRA on PLOTTER/printer
+   SETUP:     b  to change SETUP PARAMETERS
+   FILES:     r  to REASSIGN files and devices
+   STARPACK:  s  to create a STARPACK for extinction corrections
+   PRINT RST: f  to print summary of the current restart file
+   
+   EXIT:      EX  to exit program
+
+ !sdelay
+!
+> t
+ Transfering to display & math routine
+
+ v = spdemos : f   25    w = junkfile: f    1    d = *unasnd*: f    1
+ u = *unasnd*: f    1    y = *unasnd*: f    1    s = starpack: f    1
+ lp: spoolfile       obs lat=    .000 deg   channels= 471 wav fl=V   23 a   
+ file protection: v    53,w     0,d     0,u     0,y     0,s     0 ltype= 3
+--------------------------------------------------------------------------
+ ********** data DISPLAY, TRANSFER, and OVERLAY **********
+
+ Type  i  to turn ON information
+
+ !more -18 intro.demo/message6
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+We will first simply transfer four separate spectra from file v to w.
+We use the command:
+
+	 v9+3tw
+
+This hieroglyphics means spectrum v9 plus the next three spectra
+(+3) will be transferred (t) to w.  The spectra are transferred to the
+first available unprotected record in w, in this case since w has
+not been previously written to.  The first available record of w is
+number one (w1).
+
+SPECPR file protection is important: it is designed so that you can
+not inadvertently destroy (overwrite) data.  For example, the
+program would not let you copy (transfer) v2 to v3 (because v3 is
+currently protected).  Protections are automatically incremented as
+you create new data records.
+::::::::: press space bar to continue demo :::::::::::::::::::::::::
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+!
+> v9+3tw
+
+ record transfer (copy) in progress
+    transferring v     15 to w      1                                        
+    transferring v     22 to w      8      
+    transferring v     24 to w     15     
+    transferring v     26 to w     17                                        
+
+ v = spdemos : f   27    w = junkfile: f   19    d = *unasnd*: f    1
+ u = *unasnd*: f    1    y = *unasnd*: f    1    s = starpack: f    1
+ lp: spoolfile       obs lat=    .000 deg   channels= 471 wav fl=V   23 a   
+ file protection: v    53,w    18,d     0,u     0,y     0,s     0 ltype= 3
+--------------------------------------------------------------------------
+ ********** data DISPLAY, TRANSFER, and OVERLAY **********
+
+ Type  i  to turn ON information
+
+ !sdelay
+!
+> !more -4 intro.demo/message7
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+Now we list w to see if the transferred files are actually there.
+::::::::: press space bar to continue demo :::::::::::::::::::::::::
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+!
+> lw
+
+ v = spdemos : f   27    w = junkfile: f   19    d = *unasnd*: f    1
+ u = *unasnd*: f    1    y = *unasnd*: f    1    s = starpack: f    1
+  lp: spoolfile       obs lat=    .000 deg   channels= 471 wav fl=V   23 a   
+  file protection: v    53,w    18,d     0,u     0,y     0,s     0 ltype= 3
+ --------------------------------------------------------------------------
+                            LISTING OF FILE: junkfile
+
+   type  t  for TELESCOPIC or  l  for LABORATORY (DEFAULT)
+   or beginning and ending files to be listed
+ !sdelay
+!
+> 0 20
+
+
+ file            title                            chans    time        date
+     1  Wavelengths in um for IR data             2394  00:00:00.00  11/24/****
+     8  Olivine coarse 2-15um * scale const=4.37  2394  00:00:00.00  11/24/****
+    15  wavelengths to following data    waves     471  13:42:39.00  08/02/1985
+    17  1x KI 3005 100% correc. <30um 2.7-.2um     471  12:46:23.00  08/27/1985
+ ------------------------------------------------------------------------------
+ Type  c  to continue, e or x  to exit,  Type in new record numbers to list
+ type  r  to return to options, type t to go to file display and transfer
+or type m to go to math routines
+ !ldelay
+!
+> e
+
+ Updating Restart File 
+ Updating Restart File 
+ v = spdemos : f   27    w = junkfile: f   19    d = *unasnd*: f    1
+ u = *unasnd*: f    1    y = *unasnd*: f    1    s = starpack: f    1
+ lp: spoolfile       obs lat=    .000 deg   channels= 471 wav fl=V   23 a   
+ file protection: v    53,w    18,d     0,u     0,y     0,s     0 ltype= 3
+--------------------------------------------------------------------------
+ MAIN MENU: ********** Program Operations Control *********************
+
+   INFO:     "in" to turn OFF information
+
+   LIST:      l followed by v,w,d,u,or y  to list the contents 
+                         of the corresponding file
+   DISPLAY:   t  to DISPLAY on screen, OVERLAP on screen
+   MATH:      m  to do MATH operations
+   TRANSFER:  t  to TRANSFER (COPY) files
+
+   PLOT:      p  to PLOT SPECTRA on PLOTTER/printer
+   SETUP:     b  to change SETUP PARAMETERS
+   FILES:     r  to REASSIGN files and devices
+   STARPACK:  s  to create a STARPACK for extinction corrections
+   PRINT RST: f  to print summary of the current restart file
+   
+   EXIT:      EX  to exit program
+
+ !sdelay
+!
+> t
+ Transfering to display & math routine
+
+ v = spdemos : f   27    w = junkfile: f   19    d = *unasnd*: f    1
+ u = *unasnd*: f    1    y = *unasnd*: f    1    s = starpack: f    1
+ lp: spoolfile       obs lat=    .000 deg   channels= 471 wav fl=V   23 a   
+ file protection: v    53,w    18,d     0,u     0,y     0,s     0 ltype= 3
+--------------------------------------------------------------------------
+ ********** data DISPLAY, TRANSFER, and OVERLAY **********
+
+ Type  i  to turn ON information
+
+ !more -15 intro.demo/message8
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+Next another transfer is executed.  The command used is 
+
+	v2+1citw
+
+This transfer copys the spectrum v2 and the next spectrum (+1) to
+the next available record in w.  In this case the t again specifies
+the transfer but ci allows the user to change header information
+relevant to the file.  The "c" means enter the crt plot routines
+(where information display and change routines are located).  The "i"
+then means to enter the header information routines once in the crt
+plot routines.
+
+Two examples are now shown.
+::::::::: press space bar to continue demo :::::::::::::::::::::::::
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+!
+> v2+1citw
+ record transfer (copy) in progress
+
+               Header Information Display and Change Routine
+               ---------------------------------------------
+               display of: v     2    mean optical path length (cm)          
+ type in the number and/or letter code next to the information you
+ wish to change
+
+  t: title=    mean optical path length (cm)          
+  h: history= copy of lab711 rec 307                                      
+
+  m: manual history: (type m and the line number to change only one line)
+  -------------------------------------------------------------------------
+                                                                           
+                                                                           
+                                                                           
+ \W Mean Optical Path Length (cm)                                          
+  -------------------------------------------------------------------------
+  a: airmass=     .0000
+  u: username= 
+
+ type  g  to exit to crt plot,  e  to soft exit with write and no plot,
+  x  to hard exit, press return to display next page of information
+
+ !sdelay
+!
+> !more -5 intro.demo/message9
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+With this transfer we change the manual history (mhist) by 
+simply typing an m and then inserting the desired information.
+::::::::: press space bar to continue demo :::::::::::::::::::::::::
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+!
+> m
+ type in the manual history - 4 lines at 73 characters per line
+
+ !sleep 1
+!
+> This is now the new manual history
+ blah
+ blah
+ blah
+
+               Header Information Display and Change Routine
+               ---------------------------------------------
+               display of: v     2    mean optical path length (cm)          
+ type in the number and/or letter code next to the information you
+ wish to change
+
+  t: title=    mean optical path length (cm)          
+  h: history= copy of lab711 rec 307                                      
+
+  m: manual history: (type m and the line number to change only one line)
+  -------------------------------------------------------------------------
+ This is now the new manual history                                        
+ blah                                                                      
+ blah                                                                      
+ blah                                                                      
+  -------------------------------------------------------------------------
+  a: airmass=     .0000
+  u: username= 
+
+ type  g  to exit to crt plot,  e  to soft exit with write and no plot,
+  x  to hard exit, press return to display next page of information
+
+ !sdelay
+!
+> e
+transferring v      2 to w     19          
+
+               Header Information Display and Change Routine
+               ---------------------------------------------
+               display of: v     3   Log (mean optical path in cm)           
+ type in the number and/or letter code next to the information you
+ wish to change
+
+  t: title=   Log (mean optical path in cm)           
+  h: history= log(ywork    rec     2)                                     
+
+  m: manual history: (type m and the line number to change only one line)
+  -------------------------------------------------------------------------
+                                                                           
+                                                                           
+                                                                           
+ \W Mean Optical Path Length (cm)                                          
+  -------------------------------------------------------------------------
+  a: airmass=     .0000
+  u: username= 
+
+ type  g  to exit to crt plot,  e  to soft exit with write and no plot,
+  x  to hard exit, press return to display next page of information
+
+ !more -5 intro.demo/message10
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+In this transfer the user name is changed, note there are several
+additional pages of information which are accessible.
+::::::::: press space bar to continue demo :::::::::::::::::::::::::
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+!
+> u
+ type in the username, 8 characters
+ -------I
+
+ !sleep 1
+!
+> userme
+
+               Header Information Display and Change Routine
+               ---------------------------------------------
+               display of: v     3   Log (mean optical path in cm)           
+ type in the number and/or letter code next to the information you
+ wish to change
+
+  t: title=   Log (mean optical path in cm)           
+  h: history= log(ywork    rec     2)                                     
+
+  m: manual history: (type m and the line number to change only one line)
+  -------------------------------------------------------------------------
+                                                                           
+                                                                           
+                                                                           
+ \W Mean Optical Path Length (cm)                                          
+  -------------------------------------------------------------------------
+  a: airmass=     .0000
+  u: username= userme  
+
+ type  g  to exit to crt plot,  e  to soft exit with write and no plot,
+  x  to hard exit, press return to display next page of information
+
+ !sdelay
+  !
+> e
+transferring v      3 to w     20                                        
+
+ v = spdemos : f    4    w = junkfile: f   21    d = *unasnd*: f    1
+ u = *unasnd*: f    1    y = *unasnd*: f    1    s = starpack: f    1
+ lp: spoolfile       obs lat=    .000 deg   channels= 471 wav fl=V   23 a   
+ file protection: v    53,w    20,d     0,u     0,y     0,s     0 ltype= 3
+--------------------------------------------------------------------------
+ ********** data DISPLAY, TRANSFER, and OVERLAY **********
+
+ Type  i  to turn ON information
+
+ !more -4 intro.demo/message11
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+After completing those transfers we again list the contents of w.
+::::::::: press space bar to continue demo :::::::::::::::::::::::::
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+!
+> lw
+
+ v = spdemos : f    4    w = junkfile: f   21    d = *unasnd*: f    1
+ u = *unasnd*: f    1    y = *unasnd*: f    1    s = starpack: f    1
+ lp: spoolfile       obs lat=    .000 deg   channels= 471 wav fl=V   23 a   
+ file protection: v    53,w    20,d     0,u     0,y     0,s     0 ltype= 3
+--------------------------------------------------------------------------
+                           LISTING OF FILE: junkfile
+
+   type  t  for TELESCOPIC or  l  for LABORATORY (DEFAULT)
+  or beginning and ending files to be listed
+ !sdelay
+!
+> 0 20
+
+
+ file              title                          chans    time        date
+     1  Wavelengths in um for IR data             2394  00:00:00.00  11/24/****
+     8  Olivine coarse 2-15um * scale const=4.37  2394  00:00:00.00  11/24/****
+    15  wavelengths to following data    waves     471  13:42:39.00  08/02/1985
+    17  1x KI 3005 100% correc. <30um 2.7-.2um     471  12:46:23.00  08/27/1985
+    19   mean optical path length (cm)              14  00:00:00.00  11/07/1979
+    20  Log (mean optical path in cm)               14  00:00:00.00  11/07/1979
+ ------------------------------------------------------------------------------
+ Type  c  to continue, e or x  to exit,  Type in new record numbers to list
+ type  r  to return to options, type t to go to file display and transfer
+or type m to go to math routines
+ !sdelay
+!
+> e
+
+ Updating Restart File 
+ Updating Restart File 
+ v = spdemos : f    4    w = junkfile: f   21    d = *unasnd*: f    1
+ u = *unasnd*: f    1    y = *unasnd*: f    1    s = starpack: f    1
+ lp: spoolfile       obs lat=    .000 deg   channels= 471 wav fl=V   23 a   
+ file protection: v    53,w    20,d     0,u     0,y     0,s     0 ltype= 3
+--------------------------------------------------------------------------
+ MAIN MENU: ********** Program Operations Control *********************
+
+   INFO:     "in" to turn OFF information
+
+   LIST:      l followed by v,w,d,u,or y  to list the contents 
+                         of the corresponding file
+   DISPLAY:   t  to DISPLAY on screen, OVERLAP on screen
+   MATH:      m  to do MATH operations
+   TRANSFER:  t  to TRANSFER (COPY) files
+
+   PLOT:      p  to PLOT SPECTRA on PLOTTER/printer
+   SETUP:     b  to change SETUP PARAMETERS
+   FILES:     r  to REASSIGN files and devices
+   STARPACK:  s  to create a STARPACK for extinction corrections
+   PRINT RST: f  to print summary of the current restart file
+   
+   EXIT:      EX  to exit program
+
+ !more -4 intro.demo/message12
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+Now a few of the capabilities of the math section will be
+demonstrated. 
+::::::::: press space bar to continue demo :::::::::::::::::::::::::
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+!
+> m
+ Transfering to display & math routine
+
+ v = spdemos : f    4    w = junkfile: f   21    d = *unasnd*: f    1
+ u = *unasnd*: f    1    y = *unasnd*: f    1    s = starpack: f    1
+ lp: spoolfile       obs lat=    .000 deg   channels= 471 wav fl=V   23 a   
+ file protection: v    53,w    20,d     0,u     0,y     0,s     0 ltype= 3
+--------------------------------------------------------------------------
+ ************************ MATH OPERATIONS ************************
+
+ Type  i  to turn ON information
+
+ Band normalization: *** OFF ***
+ Previous operation: v48/w21
+ -------------------------------------------------------------------------
+
+ !more -14 intro.demo/message13
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+Using one of the special functions of the math routines a 1st order
+continuum to a kaolinite spectrum is created.  The command being:
+
+	v48f44e
+
+Within each function are instructions on how to proceed.  In this
+function, you must be sure the right wavelength set is selected.
+The command "V36" ensures this.  Then the first-order continuum is
+selected.  Finally, the "n" selects that the continuum should not be
+divided into the original spectrum (we will do that as a separate
+step to illustrate division).
+::::::::: press space bar to continue demo :::::::::::::::::::::::::
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+!
+> v48f44e
+
+ Transfering to special function 44
+
+wavelength file  V   23,  471 channels in use
+--------------------------------------------------------------------------
+ Function f44: Hull Generation
+
+     This function will place a convex hull over the higest data   
+
+     points opearing on : v     48:Kaolinite gs<63um .2-3um 1x ABS REF     
+
+     Enter new wavelength file id and record number, (e.g. V23), 
+
+     or press return, or "e", or "x" to exit:
+
+ !sdelay
+!
+> V36
+
+
+wavelength file  V   36,  512 channels in use
+--------------------------------------------------------------------------
+How many iterations to do? (default = 1)
+ !sleep 1
+!
+> 1
+Remove final continuum y=yes, n=no? (default = y)
+
+ !sleep 1
+!
+> !sleep 1
+!
+> n
+computation started using previos errors
+
+ Updating Restart File 
+ ************************************************************************
+ OPERATION COMPLETED.  to WRITE results type in the file id and record #
+ no file # on a protected device defaults to the protected+1 file.
+ FILE PROTECTION: v   53,w   20,d    0,u    0,y    0
+ ------------------------------------------------------------------------
+
+ !more -13 intro.demo/message14
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+After the function f44 is complete (as with other math routines),
+SPECPR asks where you intend to write the result.  Normally, you
+select the file by its letter code and use the protection to let
+SPECPR figure out where the data are actually written (concern
+yourself with the analysis, not data management).
+
+Next SPECPR asks for a title (the data are not written to the file
+until after the plot display).
+
+Next the result is plotted on the graphics terminal.
+::::::::: press space bar to continue demo :::::::::::::::::::::::::
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+!
+> w
+ specify a title:  type  t  and the title number (2 to 25) or:
+ type  p  to preserve present title:   Kaolinite gs<63um .2-3um 1x ABS REF     
+ type  l  to preserve last title (t1): Division by continuum                   
+ ---------------------------------------i     title store request goes here
+
+ !sleep 1
+!
+> First order contiuum
+
+
+
+
+> c;w .2 3;
+ Current Scale: VERTICAL= 0.0000E+00   1.0000E+00
+                HORIZ.  = 2.0000E-01   2.0000E+01
+
+ To scale the plot, type in the mode (n or w) and horizontal axis limits first.
+ When the vertical scale is entered, the routine will exit to the plot.
+
+ HORIZONTAL:
+ type  n  and left and right hand limits for INVERSE WAVELENGTH, or:
+ type  w  and left and right hand WAVELENGTH limits
+          (if you type  w  only,  the program will AUTOSCALE the limits 
+          from the current wavelength set)
+
+ VERTICAL:
+ Type lower bound and upper bound values for the VERTICAL AXIS, or:
+ type  A  to AUTO SCALE (the VERTICAL AXIS), or:
+
+ w .2 3;
+ Current Scale: VERTICAL= 0.0000E+00   1.0000E+00
+                HORIZ.  = 2.0000E-01   3.0000E+00
+
+ To scale the plot, type in the mode (n or w) and horizontal axis limits first.
+ When the vertical scale is entered, the routine will exit to the plot.
+
+ HORIZONTAL:
+ type  n  and left and right hand limits for INVERSE WAVELENGTH, or:
+ type  w  and left and right hand WAVELENGTH limits
+          (if you type  w  only,  the program will AUTOSCALE the limits 
+          from the current wavelength set)
+
+ VERTICAL:
+ Type lower bound and upper bound values for the VERTICAL AXIS, or:
+ type  A  to AUTO SCALE (the VERTICAL AXIS), or:
+
+  
+
+
+
+
+ v = spdemos : f   38    w = junkfile: f   23    d = *unasnd*: f    1
+ u = *unasnd*: f    1    y = *unasnd*: f    1    s = starpack: f    1
+ lp: spoolfile       obs lat=    .000 deg   channels= 512 wav fl=V   36 a   
+ file protection: v    53,w    22,d     0,u     0,y     0,s     0 ltype= 3
+--------------------------------------------------------------------------
+ ************************ MATH OPERATIONS ************************
+
+ Type  i  to turn ON information
+
+ Band normalization: *** OFF ***
+ Previous operation: v48f44e
+ -------------------------------------------------------------------------
+
+ !more -9 intro.demo/message15
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+The first order continumm which was generated by f44 is now in
+record w21.
+
+To illustrate a division, we will now divide the original kaolinite
+spectrum by its continuum (note f44 can also do the removal of the
+continuum; we are only doing this to illustrate another function).
+
+
+
+
+::::::::: press space bar to continue demo :::::::::::::::::::::::::
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+!
+> v48/w21
+
+wavelength file  V   36,  512 channels in use
+--------------------------------------------------------------------------
+                               division routine
+
+          form:
+
+Kaolinite gs<63um .2-3um 1x ABS REF       # revs=   1. file: v      48
+                   **********
+                   divided by
+                   **********
+First order contiuum                      # revs=   1. file: w      21
+
+          press return to continue or type  e  to exit routine.
+ !sdelay
+!
+>  
+ ************************************************************************
+ OPERATION COMPLETED.  to WRITE results type in the file id and record #
+ no file # on a protected device defaults to the protected+1 file.
+ FILE PROTECTION: v   53,w   22,d    0,u    0,y    0
+ ------------------------------------------------------------------------
+
+ w
+ specify a title:  type  t  and the title number (2 to 25) or:
+ type  p  to preserve present title:   Kaolinite gs<63um .2-3um 1x ABS REF     
+ type  l  to preserve last title (t1): First order contiuum                    
+ ---------------------------------------i     title store request goes here
+
+ !sleep 1
+!
+> Division by continuum
+
+
+
+
+> c; 0 1.05
+ Current Scale: VERTICAL= 0.0000E+00   1.0000E+00
+                HORIZ.  = 2.0000E-01   3.0000E+00
+
+ To scale the plot, type in the mode (n or w) and horizontal axis limits first.
+ When the vertical scale is entered, the routine will exit to the plot.
+
+ HORIZONTAL:
+ type  n  and left and right hand limits for INVERSE WAVELENGTH, or:
+ type  w  and left and right hand WAVELENGTH limits
+          (if you type  w  only,  the program will AUTOSCALE the limits 
+          from the current wavelength set)
+
+ VERTICAL:
+ Type lower bound and upper bound values for the VERTICAL AXIS, or:
+ type  A  to AUTO SCALE (the VERTICAL AXIS), or:
+
+  0 1.05
+
+
+
+
+> e
+ Updating Restart File 
+ v = spdemos : f   38    w = junkfile: f   25    d = *unasnd*: f    1
+ u = *unasnd*: f    1    y = *unasnd*: f    1    s = starpack: f    1
+ lp: spoolfile       obs lat=    .000 deg   channels= 512 wav fl=V   36 a   
+ file protection: v    53,w    24,d     0,u     0,y     0,s     0 ltype= 3
+--------------------------------------------------------------------------
+ ************************ MATH OPERATIONS ************************
+
+ Type  i  to turn ON information
+
+ Band normalization: *** OFF ***
+ Previous operation: v48/w21
+ -------------------------------------------------------------------------
+
+ !sleep 1
+!
+> e
+
+ Updating Restart File 
+ Updating Restart File 
+ v = spdemos : f   38    w = junkfile: f   25    d = *unasnd*: f    1
+ u = *unasnd*: f    1    y = *unasnd*: f    1    s = starpack: f    1
+ lp: spoolfile       obs lat=    .000 deg   channels= 512 wav fl=V   36 a   
+ file protection: v    53,w    24,d     0,u     0,y     0,s     0 ltype= 3
+--------------------------------------------------------------------------
+ MAIN MENU: ********** Program Operations Control *********************
+
+   INFO:     "in" to turn OFF information
+
+   LIST:      l followed by v,w,d,u,or y  to list the contents 
+                         of the corresponding file
+   DISPLAY:   t  to DISPLAY on screen, OVERLAP on screen
+   MATH:      m  to do MATH operations
+   TRANSFER:  t  to TRANSFER (COPY) files
+
+   PLOT:      p  to PLOT SPECTRA on PLOTTER/printer
+   SETUP:     b  to change SETUP PARAMETERS
+   FILES:     r  to REASSIGN files and devices
+   STARPACK:  s  to create a STARPACK for extinction corrections
+   PRINT RST: f  to print summary of the current restart file
+   
+   EXIT:      EX  to exit program
+
+ !more -21 intro.demo/message16
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+               The demo is now complete.
+This demo was BY NO STRETCH OF THE IMAGINATION intended as a
+tutorial introduction to SPECPR. To see how one would normally
+run SPECPR please continue on to demo B.
+
+After pressing the space bar the program will be exited and you will
+be returned to the shell.
+In the shell type:
+	specpr r1 -
+
+The word "SPECPR" again invokes the program the "r1" specifies the
+program is to use a restart file named "r1" which was created by this
+demo.  The "-" suppresses all the messages in the beginning of the
+program which concern new features, bug fixes and the like.
+
+After you have entered the program type
+	<convol.demo/input
+
+and the second demo will begin.
+::::::::: press space bar to continue demo :::::::::::::::::::::::::
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+!
+> EX
+
+
+
+ specpr ending status:
+
+
+
+ v = spdemos : f   38    w = junkfile: f   25    d = *unasnd*: f    1
+ u = *unasnd*: f    1    y = *unasnd*: f    1    s = starpack: f    1
+ lp: spoolfile       obs lat=    .000 deg   channels= 512 wav fl=V   36 a   
+ file protection: v    53,w    24,d     0,u     0,y     0,s     0 ltype= 3
+--------------------------------------------------------------------------
+
+
+ Updating Restart File 
+58.3u 30.3s 8:31 17%
+G105>

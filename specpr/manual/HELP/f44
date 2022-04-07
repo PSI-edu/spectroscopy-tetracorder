@@ -1,0 +1,63 @@
+
+
+
+
+
+
+SPECPR Users' Manual                                            Page 8-f44.1
+
+
+_F_4_4:  _S_e_g_m_e_n_t_e_d _U_p_p_e_r _H_u_l_l _C_o_n_t_i_n_u_u_m                    _A_l_i_a_s = _s_u_h
+
+     This program derives a continuum by draping line segments over the  top
+of  the spectrum.  The user can remove the spectrum and then drape line seg-
+ments into the remaining absorption features.  The iteration level can  con-
+tinue  until  the  continuum  matches  the  entire  spectrum.  The method is
+described in detail in:
+
+Clark, R.N., T.V.V. King, and N.S. Gorelick, Automatic Continuum Analysis of
+Reflectance  Spectra: _P_r_o_c_e_e_d_i_n_g_s _o_f _t_h_e _T_h_i_r_d _A_i_r_b_o_r_n_e _I_m_a_g_i_n_g _S_p_e_c_t_r_o_m_e_t_e_r
+_D_a_t_a _A_n_a_l_y_s_i_s _W_o_r_k_s_h_o_p, JPL Publication 87-30, 138-142, 1987.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

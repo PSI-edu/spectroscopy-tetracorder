@@ -1,0 +1,7 @@
+#!/bin/sh
+
+a=`whoami`
+b=`pwd`
+d=`date`
+
+echo "$a $b $d $*" >> /usr/log/tetracorder

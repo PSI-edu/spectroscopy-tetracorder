@@ -1,0 +1,176 @@
+# These shell variables are set up for Microsoft Windows running natively (64-bit mode)
+#
+# Should only need to edit the next group.
+#
+# note: in SSPPFLAGS, set TERMDELAY if you need extra delays by the
+# cpu for graphics terminal graphics.
+
+
+
+# Cygwin / MinGW section (Microsoft Windows-XP through Windows-7)
+# -------------------------------------------------------------------------------------------------
+# SSPPFLAGS='LINUX -INTEL  -XWIN '  - uses X-Window system, compile for Linux and for CYGWIN
+# SSPPFLAGS='LINUX -INTEL '         - no X-window system, compile for MinGW (32 and 64 bit systems)
+
+# WIN='-WIN'                        - source code for MinGW (MS-Windows executables) 32 and 64 bit systems
+#                                      used for Cygwin-MinGW32 (32 & 64 bit) compiles; not used for Cygwin compiles
+#                                   - (Note: Cygwin has an intrinsic flag MS-WIN='-WIN' not used in SPECPR)
+
+#LD='ld'                             - sets (compiler) linking-loader to default system path
+#                                       (Cygwin environment and Cygwin-MinGW32 cross-compile)
+#LD='/usr/x86_64-w64-mingw32/bin/ld' - sets (compiler) linking-loader path for Cygwin-MinGW64 cross-compile
+# -------------------------------------------------------------------------------------------------
+
+SSPPFLAGS='LINUX -INTEL '
+export SSPPFLAGS
+
+WIN='-WIN'
+export WIN
+
+LD='/usr/x86_64-w64-mingw32/bin/ld'
+export LD
+
+# end of Cygwin / MinGW section
+
+
+
+SPECPR=/src/local/specpr
+export SPECPR
+
+RANDRET=32767
+export RANDRET
+
+SP_LOCAL=/usr/local
+export SP_LOCAL
+
+#SP_BIN=securebin
+#export SP_BIN
+
+#
+# the following is needed for Linux red Hat 8, 9, ....
+# but not before. So comment out the one not needed
+
+SP_LDFLAGS=-L/usr/lib
+export SP_LDFLAGS
+
+#SP_LDLIBS='-lX11 -lm'                       - use with Cygwin (32-bit Cygwin environment under MS-Windows)
+#SP_LDLIBS=' '                               - use with Cygwin-Mingw32 32- & 64-bit cross-compiles (No X-Window)
+SP_LDLIBS=' '
+export SP_LDLIBS
+
+# pre RedHat 8:
+#
+
+LSTRING=''
+export LSTRING
+
+LIBPW='/lib/libPW.a'
+export LIBPWCC=''
+
+#
+# The following should be fine as is, except FFLAGS might need
+#               floating point accelerator flags
+#               (e.g. on sun add -ffpa if you have an accelerator)
+#
+SPSDIR=syslinux
+export SPSDIR
+
+SPSYSOBJ='${SP_OBJ}/syslinux.o'
+export SPSYSOBJ
+
+#RANLIB='ranlib'                             - use with Cygwin and Cygwin-Mingw32 32-bit compiles
+#RANLIB='/usr/x86_64-w64-mingw32/bin/ranlib' - use with Cygwin-Mingw32 64-bit cross-compiles
+RANLIB='/usr/x86_64-w64-mingw32/bin/ranlib'
+export RANLIB
+
+SSPP='sspp'
+export SSPP
+
+SP_DBG='${SPECPR}/debug'
+export SP_DBG
+
+SP_TMP='${SPECPR}/tmp'
+export SP_TMP
+
+SP_OBJ='${SPECPR}/obj'
+export SP_OBJ
+
+SP_LIB='${SPECPR}/lib'
+export SP_LIB
+
+#F77='gfortran'                              - use with Cygwin (32-bit Cygwin environment under MS-Windows)
+#F77='i686-w64-mingw32-gfortran'             - use with Cygwin-Mingw32 32-bit cross-compiles
+#F77='x86_64-w64-mingw32-gfortran'           - use with Cygwin-Mingw32 64-bit cross-compiles
+F77='x86_64-w64-mingw32-gfortran'
+export F77
+
+#CC='gcc-4'                                  - use with Cygwin (32-bit Cygwin environment under MS-Windows)
+#CC='i686-w64-mingw32-gcc'                   - use with Cygwin-Mingw32 32-bit cross-compiles
+#CC='x86_64-w64-mingw32-gcc'                 - use with Cygwin-Mingw32 64-bit cross-compiles
+CC='x86_64-w64-mingw32-gcc'
+export CC
+
+#AR='ar'                                     - use with Cygwin compiles and Cygwin-Mingw32 32-bit cross-compiles
+#AR='/usr/x86_64-w64-mingw32/bin/ar'         - use with Cygwin-Mingw32 64-bit cross-compiles
+AR='/usr/x86_64-w64-mingw32/bin/ar'
+export AR
+
+RF='ratfor'
+export RF
+
+YACC='yacc'
+export YACC
+
+LEX='flex'
+export LEX
+
+#SP_FFLAGS='-C -O'                           - use with Cygwin (32-bit Cygwin environment under MS-Windows)
+#SP_FFLAGS='-C -O -DWIN -static'             - use with Cygwin-Mingw32 32-bit and 64-bit cross-compiles
+SP_FFLAGS='-C -O -DWIN -static'
+export SP_FFLAGS
+
+SP_FFLAGS1='-C '
+export SP_FFLAGS1
+
+SP_FFLAGS2='-C '
+export SP_FFLAGS2
+
+SPKLUDGE=LINUX
+export SPKLUDGE
+
+# Added to following to not interrupt a backslash
+BSLASH='-fno-backslash'
+export BSLASH
+
+SP_FOPT='-O'
+export SP_FOPT
+
+SP_FOPT1='-O'
+export SP_FOPT1
+
+SP_FOPT2='-O'
+export SP_FOPT2
+
+SP_RFLAGS='-C -6%'
+export SP_RFLAGS
+
+#SP_CFLAGS='-O'                           - use with Cygwin (32-bit Cygwin environment under MS-Windows)
+#SP_CFLAGS='-O -DWIN -static'             - use with Cygwin-Mingw32 32-bit and 64-bit cross-compiles
+SP_CFLAGS='-O -DWIN -static'
+export SP_CFLAGS
+
+SP_ARFLAGS='rv'
+export SP_ARFLAGS
+
+SP_GFLAGS='-s'
+export SP_GFLAGS
+
+SP_LFLAGS=' '
+export SP_LFLAGS
+
+SP_YFLAGS=' '
+export SP_YFLAGS
+
+GNU='gnu'
+export GNU
+

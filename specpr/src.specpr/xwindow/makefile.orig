@@ -1,0 +1,61 @@
+# @(#) makefile 2.2@(#)
+
+SHELL=/bin/sh
+
+OBJ= \
+xclear.o \
+xcrsrd.o \
+xdraw.o \
+xerase.o \
+xflush.o \
+xinit.o \
+xread.o \
+xtext.o \
+xsetline.o \
+xwrite.o 
+
+
+$(SP_OBJ)/xwindow.o:	$(OBJ)
+	ld $(LFLAGS) -r -o $@ $(OBJ)
+
+.SUFFIXES:
+.SUFFIXES: .o .r .c
+	
+
+xclear.o:	xclear.c
+	$(CC) -g -c xclear.c $(CCFLAGS)
+
+xcrsrd.o:	xcrsrd.c
+	$(CC) -g -c xcrsrd.c $(CCFLAGS) 
+
+xdraw.o:	xdraw.c
+	$(CC) -g -c  xdraw.c $(CCFLAGS)
+
+xerase.o:	xerase.c
+	$(CC) -g -c xerase.c $(CCFLAGS)
+
+xflush.o:	xflush.c
+	$(CC) -g -c xflush.c $(CCFLAGS)
+
+xinit.o:	xinit.c
+	$(CC) -g -c xinit.c $(CCFLAGS)
+
+xread.o:	xread.c
+	$(CC) -g -c xread.c $(CCFLAGS)
+
+xtext.o:	xtext.c
+	$(CC) -g -c xtext.c $(CCFLAGS)
+
+xwrite.o:	xwrite.c
+	$(CC) -g -c xwrite.c $(CCFLAGS)
+
+xsetline.o:	xsetline.c
+	$(CC) -g -c  xsetline.c $(CCFLAGS)
+
+gtest:	gtest.r $(OBJ)
+	$(SSPP) -r -$(SSPPFLAGS) gtest.r > gtest.x
+	$(RF) $(RFLAGS) gtest.x > gtest.f
+	$(F77) $(FFLAGS) gtest.f $(OBJ) ../syslib/fsleep.o \
+	../syslib/iwrite.o ../obj/hpgraph.o -o gtest -lX11
+	rm -f gtest.f
+

@@ -1,0 +1,328 @@
+.\" use ms macros
+.\" this header is for putting the page numbers at the bottom of the page
+.\" set line length, page offset, vertical spacing
+.nr LL 6.3i
+.ll 6.3i
+.nr PO 1.0i
+.po 1.0i
+.nr VS 12
+.vs 12
+.\" set header and footer margins (default is 1.0i)
+.nr FM 1.00i
+.fm 1.00i
+.nr HM 1.00i
+.hm 1.00i
+.\" set no date here, MUST be before CF definition, because ND sets CF
+.\" set date, so don't do .ND
+.\" LH CH RH are left, center, right header strings
+.\" LF CF RF are left, center, right footer strings
+.\" default is CH is defined as: .ds CH "\(hy \\n(PN \(hy
+.ds LH "SPECPR Users' Manual
+.ds CH
+.ds RH "Page 5.\\n(PN
+.\" setup complete
+.nf
+SPECPR Users' Manual                                                   Page 5.1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.ce
+.B
+CHAPTER 5
+.R
+
+
+
+
+
+.ce
+.B
+BASIC PROGRAM SETUP
+.R
+
+
+
+
+.fi
+.bp
+.B
+5.1  Introduction
+.R
+.PP
+This section describes the steps necessary to basically configure
+specpr for working with data.  This section describes the basic
+setup.  To start with no setup, you must enter no arguments on the
+command line (see Chapter 3).
+
+
+.B
+5.2  Beginning
+.R
+.PP
+As the program is started, messages relating to recent changes
+to specpr are printed.  These messages can be skipped with command
+line flags; see Chapter 3 for details on how to start specpr from
+the operating system.  However, to start specpr from scratch and do
+a basic setup, you can't skip messages.
+.PP
+When specpr starts with messages, the program is actually a Unix
+text viewing program (usually it is configured to be the program
+"more", but it could vary depending on your local specpr
+administrator).  Assuming you are in the Unix "more" program,
+if you wish to skip these messages type "q" to quit, or type the
+space bar to see the next page of information.
+.PP
+After specpr messages have been printed, specpr asks you to press
+return before continuing.  As soon as you do, 
+the SPECPR version date will be  written on the screen.  Two
+options are available at this point:
+.PP
+Type
+
+.in 20n
+.B
+u <filename>
+.R
+.in 0n
+
+to create a new restart file or type
+
+.in 20n
+.B
+r <filename>
+.R
+.in 0n
+
+to use an existing restart file.
+.PP
+A restart routine is used so that SPECPR may be exited and later
+restarted with the same files assigned and protection and other
+parameters the same as the time of the exit.  The restart
+parameters are stored in a disc file and are updated each time
+the periodically as new sections of specpr are entered during normal
+operation.  See Chapter 3 for additional information on restart anmd
+restart files.
+
+
+.KS
+.B
+5.3  Protection
+.R
+.PP
+The next section for basic setup is the file protections.
+Protections are set before files are assigned, so that the
+protections will be in place when the files get assigned in a
+following step.  Some users think this is backwards, but is is just
+another safety precaution.  When assigning protections to each file
+ID, anticipate which files will be assigned in the file asignments
+section so that they will be correct.  Plan you basic setup.
+.KE
+.PP
+Specpr protection is designed to protect your data.  Proper use is
+very important, because of your data is not protected, it takes only
+one little typing mistake to destroy something important!  In
+specpr, all files may be totally or partially protected, or completely
+unprotected.  The fourth line of the CRT header gives the
+protection status for all six devices (devices v, w, d, u, v, and
+s).
+
+.in 5n
+.ti -2n
+\(bu If the protection number is positive or zero, the device is
+a read/write device where you can read up to and including the
+protection, but you can only write to the protection +1 record.
+For example, a value of 637 means you can read the first 637
+records, and you can only write to record 638.
+
+.ti -2n
+\(bu A protection number of -1 means totally unprotected so you may read
+or write anywhere in the file randomly.
+
+.ti -2n
+\(bu A protection number of
+less than -1 means the device is a read-only device where you can
+read up to the absolute value protection number.  For example, a
+value of -264 means 264 records are read only and you can't write to
+the file.
+
+.in 0n
+You can set the protections on many files on one command line.
+Example:
+
+.B
+.in 10n
+v0 d-1 u432 y-600 w-600 s-50
+.in 0n
+.R
+
+where v0 means to protect 0 files
+on device v (write to file 1 only, 0 files can be read); u432
+means to protect up to record 432 (write to record 433); y-600
+means that y is a read-only device with 600 records; similarly for
+w; and s is a read-only file with 50 records.  If the protection
+number is zero or positive, it is incremented each time the
+device is written to.  See section 2.3 for more details on file
+protection.
+
+
+.B
+5.4  Observatory Location
+.R
+.PP
+The observatory location is used by specpr to compute air mass
+in astronomical data reductions, or for example, terrestrial field
+observations if the position of the sun were important.  If you are
+not doing astronomical extinction corrections, this is not
+applicable and the not applicable, "na" flag should be set.  The
+request for observatory location looks like:
+
+.KS
+.nf
+.in 2n
+ v = *unasnd*: f    1    w = *unasnd*: f    1    d = *unasnd*: f    1
+ u = *unasnd*: f    1    y = *unasnd*: f    1    s = starpack: f    1
+ lp: spoolfile       obs lat=    .000 deg   channels= 256 wav fl=C  256 h   
+ file protection: v     0,w     0,d     0,u     0,y     0,s     0 ltype= 0
+--------------------------------------------------------------------------
+  type in observatory or location: type  mko  for mauna kea observ atory
+                                   type  na   for not applicable
+                                   type  wal  for wallace observatory
+                                   type  mwo  for mount wilson observatory
+                                   type  kpn  for kitt peak national obs.
+          type  t  to type in the coordinates of the observing site.
+.in 0n
+.fi
+.KE
+
+
+Three letter codes are shown for often used observatories.  If
+you wish another observatory location, type
+
+.in 20n
+.B
+t
+.R
+.in 0n
+
+and then the program will request
+the latitude in degrees, minutes, seconds, free format.
+Longitude is not needed because the sidereal time is contained
+with each spectrum.  The observatory location is used only in
+computing the air mass in the object-sky subtraction routine.
+
+
+.B
+5.5  Device and File Assignments
+.R
+.PP
+The device and file assignments menu with a new start looks like:
+
+.KS
+.nf
+.in 2n
+ v = *unasnd*: f    1    w = *unasnd*: f    1    d = *unasnd*: f    1
+ u = *unasnd*: f    1    y = *unasnd*: f    1    s = starpack: f    1
+ lp: spoolfile       obs lat=    .000 deg   channels= 256 wav fl=C  256 h   
+ file protection: v     0,w     0,d     0,u     0,y     0,s     0 ltype= 0
+--------------------------------------------------------------------------
+               *** FILE ASSIGNMENTS ***
+               -----------------------------------
+ to reassign files type letter and name:
+    (74 characters max per file name)
+ v = /dev/null                                                                 
+ w = /dev/null                                                                 
+ d = /dev/null                                                                 
+ s = /dev/null                                                                 
+ u = /dev/null                                                                 
+ y = /dev/null                                                                 
+ l = spoolfile                                                                 
+     e  or  x = EXIT this routine
+.in 2n
+.fi
+.KE
+
+To assign a file you type in the file ID letter followed by the file
+name.  But there can be qualifiers, and Chapter 6 is devoted to the
+details of file assignments.
+.PP
+The listing device can be a file or the line printer spooler.  To
+have the listing device the line printer spooler, specify a name of
+"spoolfile" for ID l as shown in the above menue.  Specpr will write
+all lists to a file in the current directory, when the list is
+complete, the file is sent to the spooler and the file length
+truncated to zero length in preparation for the next listing.
+
+
+.B
+5.6  Data File Names
+.R
+.PP
+The next section in basic setup is to assign the names to each file
+ID.  The names entered here is VERY IMPORTANT for the history
+mechanism of specpr.  The names entered here should reflect the
+archive name of where the data will ultimately be stored.
+Traditionally, these names have been the names of the mag tapes from which the
+data comes or will be written.  The names are a maximum of 8
+characters.  You must be certain these names are correct if you
+want the histories to be correct.  See section 2.3.1 for more
+details of why this is so important.
+
+
+.B
+5.7  Graphics Options
+.R
+.PP
+There are several graphics options available in this program.
+They were implemented to allow specpr to be run from different
+terminals, for example HP2623A, HP2648A, non-graphics terminals.
+Please note that the graphics options does not show
+up at the beginning of a new restart, but has to be set from the
+Initialize Parameter Routine via Program Operations.
+To change the terminal configuration, go to program operations
+control and type "g#" where # is a number from the table below.
+If you type g and a return with no number, it is equivalent to
+typing g4.  Options not in the table default to HP graphics.
+These are the options available:
+
+.nf
+.in 8n
+g2   HP2393A compatible graphics, Set White on Black mode
+g3   HP2393A compatible graphics, Compliment, White on Black mode
+g4   HP2393A compatible graphics, Jam mode, white on black (DEFAULT)
+g11  HP2393A compatible graphics, Set Black on White mode
+g13  HP2393A compatible graphics, Compliment, Black on White mode
+
+g20  Tektronix Plot 10 compatible graphics terminals
+g21  DEC VT240 with (sort of) Tektronix Plot 10 graphics
+
+g99  Scrolling mode (non-graphics terminal)
+g100 Televideo 914 alphanumeric terminal with no graphics
+.in 0n
+
+
+.B
+5.8  Automatically Checking File Protection
+.R
+.PP
+The basic setup menu (type b from
+the main menu) includes a command to evaluate current protections
+compared to what protections might be based on file sizes.  This is
+done by the "f" command.  The f command computes the number of
+records in the file from the file size and assumes the protection
+should be all records in the file.  If the protection
+does not agree with the computed value, a warning message is printed
+and you are given the option to change the protection to the
+computes value.  Further you are given the option to make the file
+read only.  You should use this command any time you are not sure of
+the proper file protection.

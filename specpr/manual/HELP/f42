@@ -1,0 +1,181 @@
+
+
+
+
+
+
+SPECPR Users' Manual                                            Page 8-f42.1
+
+
+_F_4_2:  _F_i_t _B_a_n_d _P_r_o_f_i_l_e _f_r_o_m _a _R_e_f_e_r_e_n_c_e _S_p_e_c_t_r_u_m        _A_l_i_a_s = _b_a_n_d_m_a_p
+
+     This routine fits an absorption band from a reference  spectrum  to  an
+observed spectrum by minimizing the least squares.  The reference absorption
+band depth is changed by a simple  equation  (thus  the  reference  spectrum
+chosen should have an absorption band profile similar in saturation level to
+the observed spectrum in order to provide the best fit).
+
+     This routine is described in detail in the paper
+
+Clark, R.N., A.J. Gallagher, and G.A. Swayze: Material Absorption Band Depth
+Mapping  of  Imaging  Spectrometer  Data  Using a Complete Band Shape Least-
+Squares Fit with Library Reference Spectra,   _F_i_f_t_h _A_i_r_b_o_r_n_e  _I_m_a_g_i_n_g  _S_p_e_c_-
+_t_r_o_m_e_t_e_r _W_o_r_k_s_h_o_p _P_r_o_c_e_e_d_i_n_g_s, JPL Publication 90-54, 176-186, 1990.
+
+
+     To use f42, the user types the observed spectrum and f42 from the  math
+command line.  For example, if v76 is the observed spectrum, you would type:
+
+              _v_7_6_f_4_2
+
+Next you will be prompted to enter the reference library  spectrum  file  ID
+and record number.
+
+Then you are asked to enter the left and right continuum values.   The  con-
+tinuum is located on each side of the absorption band and consists of one or
+more data channels.  You enter the beginning and ending  channels  for  each
+side.   For example, if the channels describing the left side of the contin-
+uum included channels 331, 332, and 333 and  if  the  right  side  continuum
+included channels 385, 386, 387, and 388, you would enter the following.
+
+              _3_3_1 _3_3_3 _3_8_5 _3_8_8
+
+If the continuum included only one channel, you still must enter 4  numbers,
+so  the  beginning and ending channel would be the same.  For example if the
+continuum was only channel 331 on the left and 339 and 340 on the right, you
+would type:
+
+              _3_3_1 _3_3_1 _3_3_9 _3_4_0
+
+
+     Next you are asked what data to output to the file.  You can  save  the
+fitted  reference  spectrum  (press  return,  this  is  the default), or the
+continuum-removed observed spectrum  by  typing  "o"  (you  don't  type  the
+quotes).
+
+_T_h_e _B_a_n_d _d_e_p_t_h _F_i_t_t_i_n_g _A_l_g_o_r_i_t_h_m
+
+     The absorption band depth, D, is defined relative to its continuum:
+
+          D = 1 - R9b8/R9c8                                         (eqn 8.f42.1)
+
+
+
+
+
+where R9c8 is the reflectance of the continuum at the band center, and  R9b8  is
+the  reflectance  at  the band center.  The definition originates from Clark
+and Roush, (JGR, 1984).  The process of absorption band analysis is to first
+remove  a  continuum  (see Clark and Roush, 1984 for details about continuum
+analysis).  Once the continuum is removed, a band can  be  characterized  by
+determining how well the feature matches a reference library spectrum.
+
+     A simple model to change a continuum-removed absorption feature's  con-
+trast  is  to  add a constant to the data at all wavelengths.  In this case,
+the feature will not be represented properly if the band saturation  changed
+significantly, due to say a major change in grain size between the reference
+and observed spectra.  The algorithm presented here uses the simple case  of
+an  additive component because it is computationally fast compared to a full
+radiative transfer model.  The method can easily  be  adapted  to  the  full
+model  however, or even to a method that examines the band depth and chooses
+an appropriately saturated absorption feature from a library of materials at
+several grain sizes.
+
+     The algorithm first removes a straight line continuum from the  library
+reference  spectrum  using  channels  on each side of the absorption feature
+that is to be mapped.  The continuum is removed from the  observed  spectrum
+using  the  same  method and spectral channels.  The user may select several
+channels on each side of the band so that noise in the  continuum  is  aver-
+aged.  The continuum is removed by division:
+
+              L(L)                       O(L)
+      L9c8(L) = -----    and       O9c8(L) = -----,         (eqn 8.f42.2 a and b)
+              C9l8(L)                      C9o8(L)
+
+where L(L) is the library spectrum as a function of wavelength, L, O is  the
+observed  spectrum,  C9l8 is the continuum for the library spectrum, C9o8 is the
+continuum for the observed spectrum, L9c8 is  the  continuum  removed  library
+spectrum, and O9c8 is the continuum removed observed spectrum.
+
+     The contrast in the reference library spectrum  absorption  feature  is
+modified by a simple additive constant, k:
+
+                     L9c8 + k
+               L9c8' = ------,                                    (eqn 8.f42.3)
+                     1.0 +k
+
+where L9c8' is the modified continuum-removed spectrum that best  matches  the
+observed spectrum.  This equation can be rewritten in the form:
+
+              L9c8' = a + bL9c8,                                    (eqn 8.f42.4)
+
+where
+
+              a =  k /(1.0 + k), and
+
+              b = 1.0/(1.0 + k).                                (eqn 8.f42.5)
+
+
+     In Equation 8.f42.4 we want to find the a and b that gives a  best  fit
+
+
+
+
+
+to  the  observed  spectrum  O9c8.   The solution is done using standard least
+squares:
+
+              a = (R O9c8 - bR L9c8)/n,
+
+                  R O9c8L9c8 - R O9c8R L9c8/n
+              b = -------------------,
+                  R L9c729 - (R L9c8)829/n
+
+and
+              k = (1-b)/b,                                      (eqn 8.f42.6)
+
+where n is the number of spectral channels in the fit.
+
+     The algorithm produces a band depth, indicating its spectral  abundance
+in  the  observed  image,  a goodness of fit (correlation coefficient) which
+gives a measure of confidence in the accuracy of the resulting fit, and  the
+continuum  value  at the band center in the observed spectrum.  The correla-
+tion coefficient is computed by
+
+              r = sqrt(b918b'918)                             (eqn 8.f42.7)
+
+where b918 is from Bevington (Data Reduction and Error Analysis for the Physi-
+cal Sciences, Mcgraw Hill, New York, 1969), his equation 7.2 (which he calls
+b) on page 120, and b'918 is from Bevington (1969), his equation 7.3 (which he
+calls b') on page 121.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

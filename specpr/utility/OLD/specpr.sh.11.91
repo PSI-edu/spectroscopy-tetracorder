@@ -1,0 +1,119 @@
+#! /bin/sh
+
+# bourne shell driver to start specpr and dspecpr
+
+lock=LOCK.specpr
+aa=`basename $0`
+
+exedir=/u/local/lib  # default directory for specpr radtran executables
+notefile=specnotes   # default for specpr
+prog=specpr          # default for specpr
+
+if [ "$aa" = "dspecpr" ]     # default for dspecpr (developmental specpr)
+then
+	prog=dspecpr
+	notefile=dspecnotes
+elif [ "$aa" = "radtran" ]     # default for radtran
+then
+	prog=radtran
+	notefile=radnotes
+elif [ "$aa" = "dradtran" ]     # default for dradtran (developmental radtran)
+then
+	prog=dradtran
+	notefile=dradnotes
+fi
+
+notes=/usr/msgs/$notefile
+
+if [ -z "$SPECPR" ]
+then
+	echo "ERROR: environment variable SPECPR is not set.  EXIT 1"
+	exit 1
+fi
+if [ -z "$SP_LOCAL" ]
+then
+	echo "ERROR: environment variable SP_LOCAL is not set.  EXIT 1"
+	exit 1
+fi
+if [ -z "$SP_BIN" ]
+then
+	echo "ERROR: environment variable SP_BIN is not set.  EXIT 1"
+	exit 1
+fi
+
+#
+# check for LOCK file in a specpr directory
+#
+
+if [ -f $lock ]
+then
+	echo Specpr directory is locked, another user is running specpr:
+	ls -l $lock
+	echo Exit
+	exit 0
+else
+	cat /dev/null > $lock
+	if [ ! -f $lock ]
+	then
+		echo Cannot create LOCK in specpr directory
+		echo Exit
+		exit 0
+	fi
+fi
+
+#	ignore interrupts while in specpr
+
+trap "" 2
+
+#	show user specpr information
+
+if [ "$2" = "-" -o "$3" = "-" ]
+then
+#                 CHECK to see if news file newer than restart file
+#                 if so then print news anyway.
+	pa=`pwd`
+	name=`find $notes -newer ${pa}/$1 -name $notefile -print`
+
+	if [ "$name" = "$notes" ]
+	then
+		echo "*****************  NEW SPECPR NEWS *****************"
+		more -d $notes
+		echo press return to continue
+		read tempvar
+	else
+		echo "No new specpr news."
+	fi
+else
+	more -d $notes
+	echo press return to continue
+	read tempvar
+fi
+
+# now run the actual program
+
+if [ "$prog" = "specpr" ]            # specpr mode
+then
+	${exedir}/$prog $1 $2
+
+elif [ "$prog" = "dspecpr" ]         # dspecpr mode
+then
+
+	$SPECPR/src.specpr/$prog $1 $2
+
+elif [ "$prog" = "radtran" ]         # radtran mode
+then
+
+	${exedir}/radtran $1 $2
+
+elif [ "$prog" = "dradtran" ]         # dradtran mode
+then
+
+	$SPECPR/src.radtran/SRC/$prog $1 $2
+
+else
+	echo "unknown specpr program specified"
+fi
+
+# remove lock file
+
+/bin/rm $lock

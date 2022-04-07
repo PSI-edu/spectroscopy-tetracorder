@@ -1,0 +1,122 @@
+<!-- Creator     : groff version 1.18.1.1 -->
+<!-- CreationDate: Tue Nov  9 14:21:32 2010 -->
+<html>
+<head>
+<meta name="generator" content="groff -Thtml, see www.gnu.org">
+<meta name="Content-Style" content="text/css">
+<title></title>
+</head>
+<body>
+
+<hr>
+<pre>SPECPR Users&rsquo; Manual                                                   Page 8-f7.1
+
+F7:  Smoothing Function                                   Alias: smoo[th]
+This routine smoothes a spectrum by performing a weighted smoothing of
+adjacent channels.  First, the channels are sorted into increasing
+wavelengths; note that the smoothing is done in channel space only.  The
+user then chooses how many channels to include on each side of each data
+point.  Each point is weighted by the inverse power of 2 with the power
+increasing with increasing distance from the data point to be smoothed.
+If the parameter giving the number of channels to include on each side
+of a given channel is n, then for n = 1 data point D at channel i is computed by
+
+                  Di = [ &frac12;Di-1 + Di + &frac12;Di+1]/2.                (eqn 8.f7.1)
+
+For n = 2
+
+           Di = [ &frac14;Di-2 + &frac12;Di-1 + Di + &frac12;Di+1  &frac14;Di+2]/2.5.      (eqn 8.f7.2)
+
+In general
+
+            &#9581; Di-n          Di-1        Di+1          Di+n &#9582;
+            &#9509; &mdash;&mdash;&mdash;&mdash; + .... + &mdash;&mdash;&mdash;&mdash; + Di + &mdash;&mdash;&mdash;&mdash; + .... + &mdash;&mdash;&mdash;&mdash; &#9501;
+            &#9584;  2n            2           2             2n  &#9583;
+      Di = &mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;   (eqn 8.f7.3)
+                        &#9581;     2          2  &#9582;
+                        &#9509; 1 + &mdash;&mdash; + ... + &mdash;&mdash; &#9501;
+                        &#9584;     21         2n &#9583;
+</pre>
+
+<p>and</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="88%">
+<pre>      &#9581; &sigma;2i-n         &sigma;2i-1        &sigma;2i+1         &sigma;2i+n &#9582; &frac12;
+      &#9509; &mdash;&mdash;&mdash;&mdash; + .... + &mdash;&mdash;&mdash;&mdash; + &sigma;2i + &mdash;&mdash;&mdash;&mdash; + .... + &mdash;&mdash;&mdash;&mdash;  &#9501;
+      &#9584;  2n            2            2              2n  &#9583;
+&sigma;i = &mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;  (eqn 8.f7.4)
+                  &#9581;     2          2  &#9582;
+                  &#9509; 1 + &mdash;&mdash; + ... + &mdash;&mdash; &#9501;
+                  &#9584;     21         2n &#9583;
+</pre>
+</td>
+</table>
+
+<p>The parameter n can vary from 1 to the number of
+channels divided by 2. When the smoothing is finished, the
+data are sorted into the original order. The wavelength
+record default is the current wavelength set in use (and is
+printed on the CRT). If another wavelength set is desired,
+type the wavelength file id and record number on the same
+line as the parameter n (which must be first on the line).
+Also, if data only in a certain range is to be considered,
+on the same line, type an &quot;l&quot; command (for limit)
+and the range limits:</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>l n1 n2</p></td>
+</table>
+
+<p>where n1 and n2 are the minimum and maximum data numbers
+to be included. Default limits on l are -1.0x1034 to
++1.0x1034. For example, the following command (all on one
+line):</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="28%"></td>
+<td width="71%">
+<p>2 V15 l -50 30000</p></td>
+</table>
+
+<p>sets the n = 2, wavelength set V15, and set limits to be
+-50 to 30,000. If certain channels should be deleted,
+type</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>d</p></td>
+</table>
+
+<p>to delete points. You will then be asked to type in the
+points to be deleted. When you are finished typing in points
+to be deleted, type</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>c</p></td>
+</table>
+
+<p>to continue. A data set must be specified before the f7
+command, and errors can be included. The parameter n seems
+to give excellent results when it is 1 or 2. When n gets
+larger, there seems little difference in the smoothed result
+compared to smoothed data with n=2.</p>
+<hr>
+</body>
+</html>

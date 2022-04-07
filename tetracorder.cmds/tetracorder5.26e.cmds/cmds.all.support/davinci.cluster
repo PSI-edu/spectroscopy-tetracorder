@@ -1,0 +1,70 @@
+#!/usr/local/bin/davinci -f
+#####!/usr/bin/env -S davinci -f  
+
+###########################  was:  #!/usr/local/bin/davinci -f
+
+
+#
+# Cluster analysis script.
+# usage: cluster filename
+#
+# cluster gives some numbers that migght indicate that something
+# exists in an image.  By experience with tricorder results for
+# minerals mapped with AVIRIS data, and confirmed on the ground,
+# the relative scale: zero, maybe, good, Great, and WOW are added to
+# the output.  maybe means some clustering exists but you will have
+# to evaluate if it is real or not.
+#
+# The davinci script was developed to analyze tricorder mineral map
+# output in an outomated fashion.  It is saving many hours of user
+# time evaluating hundreds of images of tricorder output.
+#
+#
+# Roger N. Clark, April 24, 1995
+#
+
+
+verbose=0      # turn off all davinci echoing except that specified by user
+image=load($1) # input image to evaluate
+
+data = cluster(image,radius=1)   # basic cluster analysis
+
+a1 = ccount(data, threshold=1)   # specific cluster counts.
+a2 = ccount(data, threshold=2)
+a3 = ccount(data, threshold=3)
+a5 = ccount(data, threshold=5)
+a7 = ccount(data, threshold=7)
+a9 = ccount(data, threshold=9)
+
+t = "none    "
+if ( a1[1] < 0.00001 ) {
+
+	t = "zero    "
+}
+if ( a3[1] > 0.25 ) {
+
+	t = "maybe   "
+}
+if ( a3[1] > 0.75 ) {
+	t = "good    "
+}
+if ( a5[1] > 0.5 ) {
+	t = "Great   "
+}
+if ( a7[1] > 0.5 ) {
+	t = "WOW     "
+}
+
+
+f = $2 + "/" + $1
+
+echo (f + "   " + a1 + "  " + a2 + "  " + a3 + "  " + a5 + "  " + a7 + "  " + a9 + " " + t)
+
+# an alternative output:
+#echo("Cluster analysis for" + $1 + ":")               # Output filename
+#echo("                    " + "1/9: " + ccount(data, threshold=1))
+#echo("                    " + "2/9: " + ccount(data, threshold=2))
+#echo("                    " + "3/9: " + ccount(data, threshold=3))
+#echo("                    " + "5/9: " + ccount(data, threshold=5))
+#echo("                    " + "7/9: " + ccount(data, threshold=7))
+#echo("                    " + "9/9: " + ccount(data, threshold=9))

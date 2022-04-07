@@ -1,0 +1,45 @@
+.\" use ms macros
+.nr LL 6.5i
+.ll 6.5i
+.nr PO 1.1i
+.po 1.1i
+.nr VS 12
+.vs 12
+.ce 99
+SPECtrum Processing Routines
+
+
+
+Users Manual
+
+Version 2
+
+(program SPECPR)
+
+
+
+by
+
+
+
+Roger Nelson Clark
+U.S. Geological Survey, MS 964
+Box 25046 Federal Center
+Denver, CO 80225-0046
+(303) 236-1332
+FTS 776-1332
+bgphp1!rclark
+
+USGS Denver Spectroscopy Lab
+(303) 236-1411
+FTS 776-1411
+Node: bgphp1
+.ce 0
+
+.PP
+This is a temporary manual, derived from the Version 1 manual of
+September, 1982.  Changes have been made by hand, and by adding new
+pages for new features.  Hopefully, a new and greatly expanded
+manual will be complete in a few months.  Until then the
+demonstrations combined with this manual should be adequate to get
+you started.

@@ -1,0 +1,23 @@
+#!/bin/sh
+#
+# find newer sccs files in main source code directory and update the
+#      distribution directory.
+#
+# Roger N. Clark  6/6/91
+#
+basedir=/src/DISTRIBUTION/specpr_distrib.v3a/specpr
+distdir=${basedir}/src.specpr
+
+cd /src/local/specpr/src.specpr
+
+NEWER=${basedir}
+
+for i in `find . -name s.\* -newer $NEWER`
+do
+	a=`echo $i | sed -e 's/\.\///'`
+	rm -f ${distdir}/${a}
+	echo cp $a ${distdir}/${a}
+	cp $a ${distdir}/${a}
+done
+
+touch $NEWER

@@ -1,0 +1,16 @@
+#!/bin/sh
+# check that a variable is set as an environment variable
+# Roger Clark 9/26/90
+
+for i in $*
+do
+	a=`env | grep "^${i}=" | awk -F= '{print $2}' `
+	if [ -z "$a"  ] 
+	then 
+		echo "ERROR: $i is an undefined environment variable"
+		echo "exit 1"
+		exit 1
+	else
+		echo "Environment variable $i is set to $a.  OK to proceed"
+	fi
+done

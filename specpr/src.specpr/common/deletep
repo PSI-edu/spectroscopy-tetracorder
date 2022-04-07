@@ -1,0 +1,10 @@
+# deleted point valeu and range
+
+#       delpt    = deleted point value = -1.23e34
+#       delptlow = slightly lower value of delpt = -1.231e34
+#       delptup  = slightly higher value of delpt = -1.229e34
+#       above set in main program
+
+	common /deletep/ delptlow, delpt, delptup
+
+	real*4 delptlow, delpt, delptup

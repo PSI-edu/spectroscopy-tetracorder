@@ -1,0 +1,63 @@
+<!-- Creator     : groff version 1.18.1.1 -->
+<!-- CreationDate: Tue Nov  9 14:21:32 2010 -->
+<html>
+<head>
+<meta name="generator" content="groff -Thtml, see www.gnu.org">
+<meta name="Content-Style" content="text/css">
+<title></title>
+</head>
+<body>
+
+<hr>
+<pre>SPECPR Users&rsquo; Manual                                                   Page 8-f2.1
+
+F2:  Shift Channels Left or Right                         Alias: shift
+Special function
+f2 shifts data left or right an integer or fractional number of
+channels.  A data set is required and errors can be included.
+Fractional shifts are done by linear interpolation.
+When the
+routine has been entered, type:
+
+             the number of channels to shift, or
+              e  to soft exit, or
+              x  to hard exit.
+
+A positive number (integer or real)
+indicates a shift right and a negative number left.
+If X is the number of channels to shift, the value of X is split
+into the integer part (n) and the fractional part (XN).  First,
+the integer part is shifted
+
+       Di+n = Di                                    (eqn 8.f2.1)
+
+where Di is each data channel in the spectrum.  Next,
+the fractional part is interpolated
+
+       XN&rsquo; &gt; 0.0;   Di = Di+1 - Di * XN&rsquo; + Di        (eqn 8.f2.2)
+
+       XN&rsquo; &lt; 0.0;   Di = Di - Di-1 * XN&rsquo; + Di        (eqn 8.f2.3)
+
+where XN&rsquo; = -1.0 * XN.  Data channels not in the shifted
+region are set to zero.  The errors to the data are shifted in a
+similar manner.
+Before June 24, 1979, there was a slight error
+in the program (XN&rsquo; = XN) making the fractional shift appear to
+go in a different direction than the integer part shift.  The
+history has been modified to signal this new change:
+
+    Old history (X = + 2.5 operation on WDG536 file 238):
+
+    &quot;F2:  wdg536 FILE 238 shift right 2.5 channels&quot;
+
+    New History:
+
+    &quot;F2:  wdg536 r 238 shift right (+) 2.5 channels&quot;.
+
+The subtle change is the sign (+ or -) in parentheses signifying
+the direction of the shift (very early version may have had the
+words in upper case).
+</pre>
+<hr>
+</body>
+</html>

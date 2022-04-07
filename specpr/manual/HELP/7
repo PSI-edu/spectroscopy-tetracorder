@@ -1,0 +1,264 @@
+
+
+
+SPECPR Users' Manual                                                Page 7.2
+
+
+_7._1  _I_n_t_r_o_d_u_c_t_i_o_n
+
+     The Program Operations Control is the main menu  part  of  the  program
+which  allows  access  to  math  operations,  file  list, overlay, transfer,
+display, plot, file assignments, initialization and other applications  pro-
+grams  such  as  the extinction routines.  This is also the only point where
+the program should be terminated.  The main menu looks like:
+
+  __________________________________________________________________________
+   v = spdemos : f    1    w = *unasnd*: f    1    d = *unasnd*: f    1
+   u = *unasnd*: f    1    y = *unasnd*: f    1    s = starpack: f    1
+   lp: spoolfile       obs lat=    .000 deg   channels= 256 wav fl=C  256 h
+   file protection: v    53,w     0,d     0,u     0,y     0,s     0 ltype= 0
+  --------------------------------------------------------------------------
+   MAIN MENU: ********** Program Operations Control *********************
+
+     INFO:     "in" to turn OFF information
+
+     LIST:      l followed by v,w,d,u,or y  to list the contents
+                           of the corresponding file
+     DISPLAY:   t  to DISPLAY on screen, OVERLAP on screen
+     MATH:      m  to do MATH operations
+     TRANSFER:  t  to TRANSFER (COPY) files
+
+     PLOT:      p  to PLOT SPECTRA on PLOTTER/printer
+     SETUP:     b  to change SETUP PARAMETERS
+     FILES:     r  to REASSIGN files and devices
+     STARPACK:  s  to create a STARPACK for extinction corrections
+     PRINT RST: f  to print summary of the current restart file
+
+     EXIT:      EX  to exit program
+  __________________________________________________________________________
+
+
+
+  _7._2  _M_e_n_u _I_n_f_o_r_m_a_t_i_o_n
+
+       Information on the screen can be suppressed by typing
+
+                    _i_n
+
+or restored by typing
+
+                    _i
+
+
+
+
+
+
+
+
+
+
+
+
+
+                             February 20, 2002
+
+
+
+
+
+SPECPR Users' Manual                                                Page 7.3
+
+
+  _7._3  _L_i_s_t_i_n_g _t_h_e _C_o_n_t_e_n_t_s _o_f _a _D_a_t_a _F_i_l_e
+
+       To list the contents of the data files (v, w, d, u,  or  y),  type  l
+  followed by the corresponding letter.  For example to list the contents of
+  file v, type:
+
+                    _l_v
+
+See Chapter 11 for instructions once you are in the list routine.
+
+
+
+  _7._4  _T_e_r_m_i_n_a_t_i_n_g _P_r_o_g_r_a_m
+
+       To stop specr, type
+
+                    _E_X
+
+All files and devices will be closed  properly,  and  specpr  will  print  a
+summary  of  the  files  assigned  and  their protections.  When you restart
+specpr, the files will be opened and protections set to the  same  state  as
+when you quit at this point.
+
+
+
+  _7._5  _F_i_l_e _D_i_s_p_l_a_y, _T_r_a_n_s_f_e_r, _a_n_d _O_v_e_r_l_a_p
+
+       To transfer (copy) files, or display or overlap data on the CRT, type
+
+                    _t
+
+See Chapter 10 for information once you are in  the  display,  transfer  and
+overlap routines.
+
+
+
+  _7._6  _C_h_a_n_g_i_n_g _I_n_i_t_i_a_l_i_z_a_t_i_o_n _P_a_r_a_m_e_t_e_r_s
+
+       To change the basic setup parameters or reassign files  and  devices,
+  type
+
+                    _b
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                             February 20, 2002
+
+
+
+
+
+SPECPR Users' Manual                                                Page 7.4
+
+
+  The basic setup parameter menu is then displayed:
+
+  __________________________________________________________________________
+   v = spdemos : f   25    w =         : f    1    d = *unasnd*: f    1
+   u = *unasnd*: f    1    y = *unasnd*: f    1    s = starpack: f    1
+   lp: spoolfile       obs lat=    .000 deg   channels= 471 wav fl=V   23 a
+   file protection: v    53,w     0,d     0,u     0,y     0,s     0 ltype= 3
+  --------------------------------------------------------------------------
+                      *** SETUP parameters ***
+
+
+       type  o    to change the OBSERVATORY or observatory site
+       type  r    to REASSIGN FILES and devices
+       type  f    to EVALUATE PROTECTION vs file sizes
+                  (no response indicates all is consistent)
+       type  g    and number to set GRAPHICS type (see manual)
+       type  b    to toggle BELL
+       type  v    to change the NAME of device v
+       type  d    to change the NAME of device d
+       type  u    to change the NAME of device u
+       type  y    to change the NAME of device y
+       type  w    to change the NAME of device w
+       type  cp   to change the  FILE PROTECTION
+
+       press return to go back to the MAIN routines.
+  __________________________________________________________________________
+
+  See Chapter 5 for details on each command.
+
+  From the main menu, it is possible to enter  a  multiple  command  and  go
+  right  to  the  basic  setup  section  desired.   From the main menu, type
+  b<basic setup command>.  For example to change protection  from  the  main
+  menu, type:
+
+                    _b_c_p
+
+
+
+  _7._7  _D_e_v_i_c_e _a_n_d _F_i_l_e _A_s_s_i_g_n_m_e_n_t_s
+
+       To go to Device and File Assignments, type
+
+                    _r
+
+See Chapter 6 for details on the assignment routines.
+
+
+
+
+
+
+
+
+
+
+
+
+                             February 20, 2002
+
+
+
+
+
+SPECPR Users' Manual                                                Page 7.5
+
+
+  _7._8  _E_x_t_i_n_c_t_i_o_n _R_o_u_t_i_n_e_s
+
+       To do extinction calculations and  create  a  starpack  or  list  the
+  starpack file by titles, type
+
+                    _s
+
+See Chapter 12 for details on the extinction routines.
+
+
+
+  _7._9  _P_l_o_t _R_o_u_t_i_n_e_s (_t_o _H_a_r_d_c_o_p_y _P_l_o_t_t_e_r_s)
+
+       To plot spectra on the various supported Plotters, type
+
+                    _p
+
+See Chapter 13 for details on the hardcopy plotting routines.
+
+
+       To go to the mathematics routines, type
+
+                    _m
+
+See Chapter 8 for details on the math routines.
+
+
+
+  _7._1_1  _R_e_s_t_a_r_t _S_u_m_m_a_r_y
+
+       Typing
+
+                    _f
+
+will list the contents of the current restart file on the listing device.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                             February 20, 2002
+
+

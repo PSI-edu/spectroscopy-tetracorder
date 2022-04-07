@@ -1,0 +1,20 @@
+#!/bin/sh
+# shell script to create the SYSV plotters controlled by the line
+# printer spooler system.
+
+set -x
+
+# make /dev entry:
+
+# NOTE: you must modify this line for your specific hardware address
+
+#/etc/mksf -d instr0 -H 4.6 -l 0 /dev/plotter2
+
+chmod 666 /dev/plotter2
+
+# old plottr, no longer used
+# /usr/lib/lpadmin -phpplotter1 -chpplotters -h -mhp9872s.plottr -v/dev/plotter
+
+# HP7550 plotter:
+
+/usr/lib/lpadmin -phpplotter2 -chpplotters -h -mhp7550a.plottr -v/dev/plotter2

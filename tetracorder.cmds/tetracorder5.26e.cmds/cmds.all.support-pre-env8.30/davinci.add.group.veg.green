@@ -1,0 +1,21 @@
+#!/usr/local/bin/davinci -f
+#####!/usr/bin/env -S davinci -f  
+
+###########################  was:  #!/usr/local/bin/davinci -f
+
+
+###################################################
+# User:   rclark    Date:  Wed Sep 16 09:17:48 1998
+###################################################
+
+af="group.veg/vegetation.map.fd.gz"
+bf="group.veg/vegetation.weak.map.fd.gz"
+cf="group.veg/vegetation.dry+green.fd.gz"
+
+a=read(filename=af)
+b=read(filename=bf)
+c=read(filename=cf)
+
+d=a+b+c
+
+write(d,filename="group.veg/vegetation.allgreen.map.fd",type=vicar)

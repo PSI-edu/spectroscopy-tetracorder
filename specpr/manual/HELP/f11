@@ -1,0 +1,122 @@
+
+
+
+
+
+
+SPECPR Users' Manual                                            Page 8-f11.1
+
+
+_F_1_1:  _L_u_n_a_r _T_h_e_r_m_a_l _R_e_m_o_v_a_l                             _A_l_i_a_s = _l_u_n_a[_r_t_h_e_r_m]
+
+     This routine removes the thermal component from the reflectance  object
+spectrum using the equation:
+
+          |      R9o8'(1-R9s8)P9s8   P9o8| |    P9o8|8-1
+9     R9o8 = |R9o8' + ----------- - --| |1 - --|                   (eqn 8.f11.1)
+          |          R9s8F       F | |    F |
+
+
+     Refer to R. Clark, 1979,  Planetary  Reflectance  Measurements  in  the
+Region  of  Planetary  Thermal Emission, _I_c_a_r_u_s _4_0, 94-103 (equation 14) for
+more information.
+
+_V_a_r_i_a_b_l_e _d_e_f_i_n_i_t_i_o_n_s:
+
+      R9o8  = Reflectance of object with thermal component removed.
+
+      R9o8' = Reflectance of object with thermal component.
+
+      R9s8  = Reflectance of standard with no thermal component.
+
+      P9o8  = Temperature for Planck function of object (in Degrees Kelvin).
+
+      P9s8  = Temperature for Planck function of standard (in Degrees Kelvin).
+
+      F   = (solar flux/PI)/(distance from sun in A.U.)82
+
+9
+     The program requires that the file ID and record number of R9o8' and  the
+e  to include errors, if any, be specified when called from Math operations.
+The program will ask for:
+
+      R9s8: The file ID and record number.
+
+      The albedo at the normalization wavelength for R9o8 and R9s8 (0.0  <  A  <_
+           1.0).  If the data are already in albedo (reflectance), then this
+           constant should = 1.0 (the spectra are multiplied  by  this  con-
+           stant).
+
+      The wavelength data set (File ID and record number).
+
+      P9o8 and P9s8 in degrees Kelvin (10 < T < 10859).
+
+      Solar flux/PI data set (file ID and record number).
+
+      Distance from sun in A.U. (>0.0)
+
+
+     After entering albedo at normalization,  the  user  has  an  option  of
+either  continuing, exiting, or changing what has been input so far (for the
+
+
+
+
+
+current screen information).  User also has a similar option after  entering
+distance  from the sun.  In calculating the thermal removal, R9o8 and R9s8 spec-
+tra are multiplied by their respective albedos at the  normalization  point.
+Errors  are  propagated  by  multiplying  individual  error values by the R9o
+8albedo at the normalization point.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

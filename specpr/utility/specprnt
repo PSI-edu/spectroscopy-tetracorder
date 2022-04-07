@@ -1,0 +1,14 @@
+
+# shell script to print a specpr file. command is implimentation
+#	dependent
+#
+#	R Clark 5/15/85
+#
+# comment out inappropriate lines
+
+# HP-UX:
+		lpr -c -oc -w $1
+
+# Eunice (bgpvax):
+
+#		cat $1 |xlpr

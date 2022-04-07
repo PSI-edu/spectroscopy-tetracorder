@@ -1,0 +1,118 @@
+.nr % 0
+.nr CN 7
+.bp
+.sh 1 "PROGRAM OPERATIONS CONTROL " 7
+
+.sh 2 "Introduction "
+.pp
+The Program Operations Control is the main part of the program
+which allows access to math operations, file list, overlay,
+transfer, display, plot, file assignments, initialization and
+other applications programs such as gaussian fitting and the
+extinction routines.
+This is also the only point where the program should be
+terminated.
+
+.sh 2 "Screen Information "
+.pp
+Information on the screen can be suppressed by typing
+.ul
+in
+or restored by typing
+.ul
+i.
+
+.sh 2 "Calling File List "
+.pp
+To list the contents of the devices (v, w, d, u, or y), type l
+followed by
+the corresponding letter.  See section 11 for further
+instructions.
+
+.sh 2 "Terminating Program "
+.pp
+To terminate the program, type
+.ul
+ex.
+All files and devices will be closed properly.
+
+.sh 2 "Calling File Display, Transfer, and Overlap "
+.pp
+To transfer files, or display or overlap spectra on the CRT, type
+.ul
+t.
+See section 10 for further information.
+
+.sh 2 "Changing Initialization Parameters "
+.pp
+To change the initialization parameters or return to the
+wavelength assignment routines, type
+.ul
+b.
+the b is left over from the MIT program version meaning go back
+to the Beginning of the program.  From here you can change the
+observatory location (section 4.3), device names (section 4.4),
+return to the wavelength assignments (section 6), change the
+device protection (section 4.2), or return to Device and File
+Assignments (section 5).  A multiple command is allowed to go
+from Program Operations Control directly to the initialization
+parameter of interest.  To do this, type
+.ul
+b
+and then the control letter(s) of the parameter to be changed;
+then press return.  For example, to change protection, you could
+type
+.ul
+b,
+return, then the program lists options, then you type
+.ul
+cp
+to change protection, or you could type
+.ul
+bcp
+from Program Operations Control to get to the same point faster
+(see Figure 2.1-1 for the control structure).
+
+.sh 2 "Calling Device and File Assignments "
+.pp
+To go the Device and File Assignments, type
+.ul
+r
+(section 5).
+
+.sh 2 "Calling Extinction Routines "
+.pp
+To create a starpack or list the starpack file by titles, type
+.ul
+s
+(section 12).
+
+.sh 2 "Calling Gould Plot Routines "
+.pp
+To plot spectra on the Gould Printer Plotter, type
+.ul
+p
+(section 13).
+
+.sh 2 "Calling Math Operations "
+.pp
+Type
+.ul
+m
+to go to math operations (section 8).
+
+.sh 2 "Calling Gaussian Fitting Routines "
+.pp
+Type
+.ul
+g
+to startup the gauss fit routine. Refer to section 14
+for more information on this routine.
+
+.sh 2 "Calling restart summary "
+.pp
+Typing
+.ul
+f
+will list the contents of the current restart file on the listing
+device.

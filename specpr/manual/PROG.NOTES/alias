@@ -1,0 +1,18 @@
+
+	ALIAS SUBSTITUTION IN SPECPR FILES
+
+
+	FILES
+
+all located in directory /usr/src/cmd/specpr/free
+
+crtin.r		reads input line
+allist.r	prints or stores alias list
+getkey.r	finds alias word in input line
+keytrn.r	translates alias word
+setals.r	sets up alias list
+setkey.r	creates alias words and deletes alias words
+
+
+	AUTHOR
+		Kathy Kierein       7/31/85

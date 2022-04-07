@@ -1,0 +1,22 @@
+#!/bin/sh
+LFILE=locate.files
+RFILE=locate.results
+
+if [ -f $RFILE ]
+  then
+    rm $RFILE
+    touch $RFILE
+fi
+
+if [ -f $LFILE ]
+  then
+  for AFILE in `cat $LFILE`
+    do
+	echo == $AFILE >> $RFILE
+	grep $1 $AFILE >> $RFILE
+    done
+    echo Search Results for $1 in $RFILE
+  else
+    echo $LFILE does not exist!
+fi
+vi locate.results

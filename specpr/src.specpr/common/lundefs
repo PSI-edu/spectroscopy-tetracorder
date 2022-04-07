@@ -1,0 +1,24 @@
+        integer*4 luntxt,ulun,ylun,ttyin,ttyout,dlun,vlun,wlun
+        integer*4 addlun,wavlun,lstlun,pltlun,wvhlun
+        integer*4 ttllun,cmdlun,slun,rlun,cpylun,wrtlun,redlun
+
+        parameter (luntxt=1)
+        parameter (ulun=3)
+        parameter (ylun=4)
+        parameter (ttyin=5)
+        parameter (ttyout=6)
+        parameter (dlun=7)
+        parameter (vlun=8)
+        parameter (wlun=9)
+        parameter (addlun=10)
+	parameter (redlun=10)
+	parameter (wrtlun=11)
+        parameter (wavlun=11)
+        parameter (lstlun=12)
+        parameter (pltlun=13)
+        parameter (wvhlun=14)
+        parameter (ttllun=15)
+        parameter (cmdlun=16)
+        parameter (slun=17)
+        parameter (rlun=18)
+        parameter (cpylun=19)

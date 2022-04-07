@@ -1,0 +1,331 @@
+<!-- Creator     : groff version 1.18.1.1 -->
+<!-- CreationDate: Wed Nov 10 14:17:28 2010 -->
+<html>
+<head>
+<meta name="generator" content="groff -Thtml, see www.gnu.org">
+<meta name="Content-Style" content="text/css">
+<title></title>
+</head>
+<body>
+
+<hr>
+
+<p>HTML-IMAGE.nr 0C 0 HTML-IMAGE-END.lf 1 - HTML-IMAGE.nr
+0C 0 HTML-IMAGE-END.ce SPECPR User Communication</p>
+
+<p>All user input is to the integer array IOPCON
+dimensioned 80 in /LBL4/ common. The I/O is by a read
+statement with an 80A1 format. All numbers and characters
+are decoded from this array.</p>
+
+<p>The actual decoding is perfomed by the subroutine WJFREN
+(for wedge free input routine). The call is: CALL WJFREN (I,
+X, IL) where I is the column number pointer (array index
+value) in IOPCON (1 to 80), X is a real number returned, and
+IL is a letter or character returned. I is intitially set
+before the first call (usually to 1, the beginning of the
+line) and then WJFREN updates the pointer. If a number is
+encountered, X is set to that number, if a character is
+encountered the character is returned in IL. If a number and
+a character are back-to-back (no spaces) then both the
+number and the character are returned in X and IL,
+respectively by one call to WJFREN. If a number is followed
+by a space and then a character, the first call to WJFREN
+returns the number in X and sets IL to an integer zero then
+the second call will return the character (with X set to
+zero). Thus number inputs are essentially automatically
+checked for illegal characters (positive numbers do not
+require a plus sign - plus signs are returned as
+characters). If a negative sign is followed by a blank or a
+character it is returned as character (thus a negative sign
+followed by a blank then a number will not be returned as a
+negative number).</p>
+
+<p>The following is an example of how SPECPR might decode 2
+numbers. Also, if the user types an E or X, the program
+exits.</p>
+<pre>         SUBROUTINE TEST (TEST1, TEST2)
+         DATA IHE,IHX /1HE, 1HX/
+
+1        CALL CRTIN                    User input.
+         I=1                           start scan at column 1.
+         CALL WJFREN (I, X, IL)
+         IF (I. LT. 80) GO to 10       If &ge; 80, no input.
+
+9        CALL WHAT (I)                 flag error.
+         GO TO 1                       start over.
+
+10       IF ((IL. EQ. IHE).            exist of requested.
+        1OR. (IL. EQ. IHX))
+        2RETURN
+         IF (IL. NE. 0)                error:  character
+        1GO TO 9                       encountered.
+         TEST1=X                      First number.
+         CALL WJFREN (I,X,IL)          Get second number.
+         IF (I. GE. 80) GO TO 9        no second number.
+         IF (IL. NE. 0) GO TO 9        error:  character
+                                       encountered.
+         TEST2=X                      second number.
+         RETURN
+         END
+</pre>
+
+<p>Subroutine WHAT writes a question mark on the terminal
+and a carrot (^) sign at the value of I which is indicative
+of where the error occured. If no characters were input
+(I&ge;80), no carrot sign is printed and a question mark is
+printed in column 1.</p>
+
+<p>This is a lot more work than just a FORTRAN read
+statement, but the input is totally checked for errors, the
+range of the numbers (if they have limits or conditions) can
+be checked and flaged and characters can be input on the
+same line for other controls (either mixed with the number
+or in place of numbers). This allows for maximum flexibility
+for the user to control the program with a minimum of typing
+and reading and answering question.</p>
+
+<p align=center>SPECPR Spectral Data File I/O</p>
+
+<p>The following pages show code examples for reading and
+writing specpr data records involving spectra and the header
+to the data.</p>
+
+<p>All file status and control parameters are stored in 5
+common blocks. User communication (CRT I/O) needs the /LBL4/
+common block (132 words).</p>
+
+<p>To read a spectrum from the disc or tape files you must
+write a prompting message and then the 9 FORTRAN statements
+given on the next pages. If you want to give the user the
+soft or hard exit option (type E or X) you must test the
+variable: ID for equaling a Hollerith E or X after the
+WJFREN call (statement 3). This is done in SPECPR using a
+data statement:</p>
+
+<p>DATA IHE, IHX /1HE, 1HX/</p>
+
+<p>Then test ID after the WJFREN call:</p>
+<pre>IF (ID. EQ. IHE) GO TO   <img src="grohtml-15697-1.png"> &larr; go to soft exit
+IF (ID. EQ. IHX) GO TO   <img src="grohtml-15697-2.png"> &larr; go to hard exit
+</pre>
+
+<p>All control of tapes, I/O error checking, error
+messages, protection and file pointer update are performed
+by REDFIL.</p>
+
+<p>To write a spectrum data record to disc or tape you can
+follow the 11 FORTRAN statements given on the following
+pages (a prompting message is also needed) or you can call
+the subroutine MTHWRT which is used by the math routines to
+decode where the user wants to write the data. This routine
+does all the prompting and user input error handling. This
+latter method only requires 2 lines of FORTRAN to write the
+results. All file control and updates are performed by these
+routines as similar to that done in reading a file.</p>
+
+<p align=center>SPECPR I/O</p>
+
+<p>Minimum Procedure for Reading a Spectral Data File</p>
+<pre>                                        Comments
+
+1  CALL CRTIN                   read line: 80 characters
+
+2  I = 1                        begin scan at column 1
+
+3  CALL WJFREN (I, X, ID)       scan for letter code:  ID
+
+4  CALL WJFREN (I, X, IL)       scan for file number:  X
+
+5  IRECNO = X                   set record number
+
+6  CALL DEVOK (4, ID,           check to see if device is OK
+        IRECNO, LUN, IER)       to read:
+                                  4=access code-4 is all but
+                                    starpacks
+                                  ID=file letter code
+                                  LUN=Logical unit number
+                                    decoded from ID.
+        DEVOK will print          IER:&rarr;error code
+        any appropriate              =0 &rarr; OK
+        error messages.              =1 &rarr; bad status
+                                     =2 &rarr; protection
+                                            violation
+                                     =3 &rarr; both 1 and 2
+
+7  IF (IER. NE 0) GO TO   <img src="grohtml-15697-3.png">      Branch if error
+
+8  CALL REDFIL (IRECNO,         read data
+     LUN, IER)
+
+9  IF (IER. NE 0) GO            Branch if error (any
+     TO   <img src="grohtml-15697-4.png">                      I/O errors will be
+                                explained to the user)
+</pre>
+
+<p align=center>SPECPR I/O</p>
+
+<p>Minimum Procedure fo Writing a Spectral Data File</p>
+<pre>                                       Comments
+
+1  CALL CRTIN                   read line:  80 characters
+
+2  I = 1                        begin scan at column 1
+
+3  CALL WJFREN (I, X, ID)       scan for letter code:  ID
+
+4  CALL WJFREN (I, X, IL)       scan for record number:  X
+
+5  IRECNO = X                   set record number
+
+6  CALL DEVLUN (4, ID, LUN)     get logical unit #:  LUN
+
+7  CALL DEVSTA (LUN, ISTA,      check status:  write errors
+     IER, IPRT)                 OK:  IER=0
+                                get protection:  IPRT
+
+8  IF ((IRECNO. EQ. 0).         set default record #
+     AND. (IPRT. GE. 0))
+     IRECNO = IPRT + 1
+
+9  IF (IPRT. LT. -1)            read only device
+     GO TO   <img src="grohtml-15697-5.png">
+
+10 IF ((IPRT. NE. -1).          illegal record #
+     AND. (IRECNO. NE.
+     IPRT + 1)) GO TO
+<i>       <img src="grohtml-15697-6.png">
+
+</i>11 CALL WRIFIL (IRECNO,         write data
+     LUN, IER)
+
+</pre>
+
+<p align=center>SPECPR I/O</p>
+
+<p>Writing Spectral Data File (con&rsquo;t)</p>
+
+<p>Shorter Alternative</p>
+<pre>1  CALL MTHWRT (IGO, LUN,       performs step 1-10 and
+     IRECNO, IPRODP)            and includes prompting
+                                and error messages
+                                IGO=0:  OK
+                                   =150:  error
+                                   =110:  soft exit
+                                   =1101:  hard exit
+
+2  CALL WRIFIL (IRECNO,        Note:  IPRODP is &quot;Production
+     LUN, IER)                  processing&quot; = automatic write
+                                to device V at file #=IPRTV
+                                +1 (V protection +1)
+</pre>
+
+<p align=center>SPECPR common for file I/O and Restart</p>
+<pre>Common Blocks Needed for File Control
+
+/LABELF/        file pointers &amp; status                  11 words
+/LBL7/          control variables,
+                  spare title array (20 words)          35 words
+/LBLG/          band normalization limits, channels
+                  in use                                 5 words
+/LBLVOL/        file names                             201 words
+/LBLPRT/        protection                               6 words
+
+Other common blocks saved in restart file
+
+/LBL6/          device in use                            2 words
+/LBL4/          CRT I/O arrays, tape names, min
+                  and max for CRT plot vert &amp;
+                  horiz axes                           130 words
+/LABEL3/        RA, Dec, latitude of obs, airmass       11 words
+/INFO/          user information page print flags       12 words
+
+The following common block are partially saved/restored in rstart
+
+/CMD/           data for the freeformat input routine  167 words
+/LBL3/          error array, control flags             516 words
+/LABEL1/        all except data                        512 words
+/HPTRM/         HP terminal status &amp; graphics
+                  control                               30 words
+BLANK           data, titles                          1044 words
+
+                               total                 2682 words
+</pre>
+
+<p>DEVLUN</p>
+
+<p>After decoding a file ID letter and record number, find
+the logical unit number by calling</p>
+
+<p>DEVLUN (I, IDLETR, LUN)</p>
+
+<p>where the file letter ID Logical unit number of the
+device which devices are valid:</p>
+
+<p>= 0 : all units (V, W, D, U, Y, and S)</p>
+
+<p>= 4 : all but S</p>
+
+<p>for normal Math Operations and Special Functions the
+variable I is 4. The variables I and IDLETR do not have to
+be variables in the calling program</p>
+
+<p>e.g. CALL DEVLUN (4, 1HV, LUN)</p>
+
+<p>Note: LUN must be a variable.</p>
+
+<p>DEVSTA</p>
+
+<p>After the file logical unit number has been found, the
+device status must be checked (e.g. not assigned, etc.). The
+call is</p>
+
+<p>CALL DEVSTA (LUN, ISTA, I, IPRT)</p>
+
+<p>where logical unit number returned status condition:</p>
+
+<p>device online, record pointer to the value of ISTA</p>
+
+<p>assigned to &quot;/dev/null&quot;</p>
+
+<p>illegal device (not LUN of V, U, D, W, Y, or S)</p>
+
+<p>= 0 : return without printing</p>
+
+<p>= 1 : print message reflecting above status</p>
+
+<p>Device Protection</p>
+
+<p>read/write anywhere. (no protection)</p>
+
+<p>protected. Read up to protection number, write only to
+protection number +1.</p>
+
+<p>read-only device. (up to absolute value of the
+protection number).</p>
+
+<p>The variable ISTA and IPRT must be variables in the
+calling program.</p>
+
+<p>After the routines DEVLUN and DEVSTA have been called,
+check the value of ISTA to be sure it is greater than zero
+and the file number being accessed is allowed by the
+protection (IPRT).</p>
+
+<p align=center>Subroutine RSTART (IC)</p>
+
+<p>RSTART sets up the SPECPR files and protections for
+restarting the program at the same condition as when SPECPR
+was last terminated (from Program Operations).</p>
+
+<p>Store the current parameters for a future restart.</p>
+
+<p>Restart: Recall the parameters and assign and open all
+the files and devices.</p>
+
+<p>Restart: Recall the parameters but don&rsquo;t assign
+and open any files. If 32 is added to the above the the
+arrays dataa, datac and error are not saved or restored</p>
+<hr>
+</body>
+</html>

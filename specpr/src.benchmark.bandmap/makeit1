@@ -1,0 +1,16 @@
+#!/bin/sh
+set -x
+
+opt="-O -m64"
+
+ratfor77 -C  bandmap.r > bandmap.f
+gfortran -C $opt -c bandmap.f
+rm bandmap.f
+
+ratfor77 -C  bdmset.r > bdmset.f
+gfortran -C $opt -c bdmset.f
+rm bdmset.f
+
+gfortran -C $opt -o btest btest.f bdmset.o bandmap.o 
+
+time ./btest

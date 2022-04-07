@@ -1,0 +1,24 @@
+#!/bin/sh
+
+# compute all the image moments from the 4 adbunance model results
+
+for i in \
+	calcite.v.gz		\
+	chlorite.v.gz		\
+	dolomite.v.gz		\
+	goethite-fine.v.gz	\
+	goethite-large.v.gz	\
+	goethite-med.v.gz	\
+	gypsum.v.gz		\
+	hematite-fine.v.gz	\
+	hematite-large.v.gz	\
+	hematite-med.v.gz	\
+	hematite-nano.v.gz	\
+	illite+muscovite.v.gz	\
+	kaolinite.v.gz		\
+	montmorillonite.v.gz	\
+	quartz-feldspar.v.gz
+do
+	./cmds.abundances/davinci.image.moments1 $i
+done
+

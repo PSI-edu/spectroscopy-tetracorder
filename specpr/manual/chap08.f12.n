@@ -1,0 +1,278 @@
+.\" use ms macros
+.\" this header is for putting the page numbers at the bottom of the page
+.\" set line length, page offset, vertical spacing
+.nr LL 6.3i
+.ll 6.3i
+.nr PO 1.0i
+.po 1.0i
+.nr VS 12
+.vs 12
+.\" set header and footer margins (default is 1.0i)
+.nr FM 1.00i
+.fm 1.00i
+.nr HM 1.00i
+.hm 1.00i
+.\" set no date here, MUST be before CF definition, because ND sets CF
+.\" set date, so don't do .ND
+.\" LH CH RH are left, center, right header strings
+.\" LF CF RF are left, center, right footer strings
+.\" default is CH is defined as: .ds CH "\(hy \\n(PN \(hy
+.ds LH "SPECPR Users' Manual
+.ds CH
+.ds RH "Page 8-f12.\\n(PN
+.\" setup complete
+.nf
+SPECPR Users' Manual                                            Page 8-f12.1
+
+
+.B
+F12:  Cubic Spline Interpolation                             Alias: cspl[in]
+F12:  Derivative
+.R
+.PP
+This routine fits a cubic spline to an input data set, and then computes
+a new data set based on a new wavelength set specified by the user.
+This allows you to smoothly interpolate one data set to another (not
+this is not a convolution).  Errors, if specified, are also
+interpolated.  The input data set and its associated wavelengths are
+used to derive a cubic spline describing the curve.  The curve may then
+be recomputed at other wavelengths, or because the curve is described by
+a set of polynomials, the derivative of the curve may be computed.
+.PP
+The input wavelength set can be the same as the
+output wavelength set, then with selected parts of the spectrum
+deleted, a continuum can be computed.  For example, in this mode,
+you would simply delete all the channels comprising a particular
+absorption band.  The computed spectrum is then the input spectrum
+without the absorption band.  See 
+
+.in 10n
+.KS
+.ti -5n
+Clark, R.N., Water Frost and Ice:  The Near-Infrared Spectral
+Reflectance 0.65-2.5 \(*mm,
+.I
+J. Geophys. Res., 
+.R
+.B 86,
+.R
+3087-3096, 1981.
+.KE
+.in 0n
+or
+.in 10n
+.KS
+.ti -5n
+Clark, R.N. and T.L. Roush, Reflectance Spectroscopy:
+Quantitative Analysis Techniques for Remote Sensing Applications,
+.I
+J. Geophys. Res., 
+.R
+.B 89,
+.R
+6329-6340, 1984.
+.KE
+.in 0n
+
+for examples of continua and a discussion of the theoretical
+aspects of continua.
+.PP
+The program requires that the input data set and its
+error bars, if any, be specified when called from Math Operations.
+For example;
+
+.nf
+.in 14n
+.B
+v23f14e
+.R
+.in 0n
+or
+.in 14n
+.B
+v23csplin e
+.R
+.in 0n
+.fi
+.PP
+Upon entering the routine, the title to the data to be splined is
+displayed and you are asked select normal spline or derivative mode:
+
+.nf
+.in 14n
+.B
+<return> for cubic spline mode,
+d        for derivative mode,
+e  or  x to exit.
+.R
+.in 0n
+.fi
+.PP
+Next, you will be asked to input two wavelength data sets, the first for
+the input data set, the second for the output interpolation.  The
+wavelength sets should be entered with capital letter file IDs.
+Example:
+
+.nf
+.in 14n
+.B
+V24 U46
+.R
+.in 0n
+or
+.in 14n
+.B
+V15 V15
+.R
+.in 0n
+.fi
+
+where the first interpolates to a new wavelength set, and the second
+example interpolates to the same wavelength set, presumably with the
+intent of deleting some channels to use the result as a continuum.
+.PP
+Finally, you are asked if you want to delete points.  If you do,
+just type in the channels to be deleted, separated by spaces, or
+ranges separated by a "t", and then terminated by a "c".  For
+example:
+
+.in 14n
+.B
+1 2 59t63 120 c
+.R
+.in 0n
+
+deletes channels 1, 2, 59, 60, 61, 62, 63, and 120.  You can use
+more than one line, and the deletion routine is not finished until
+it gets the "c".
+.PP
+.B
+WARNING:
+.R
+Cubic splining can be tricky.  For example, glitches in data could
+lead to erroneous results, so you should delete those channels.
+The cubic spline routine used requires each wavelength set
+to be sorted in increasing order, and the interpolated wavelength to
+be within the bounds of the other wavelength set.  F12 handles
+this, minimizing errors that could occur.  However, it seems common
+to have problems.  If you get one of
+the following "F12 errors," note the number and other pertinent
+information (e.g. data sets in use) and submit a bug report if you can't
+figure out a cause.  NOTE, HOWEVER that a usual cause is bad input,
+most likely due to two wavelengths that have the same value (causing an infinite
+slope), and an extremely high data value (causing a near infinite
+slope), or some channel or wavelength not what you think it is (like
+not in the proper overlap range).  Check your data carefully before
+reporting bugs.
+.PP
+If you have problems, you should carefully check all your
+data by both plotting it and examining the values with the data
+editor, f14.  For example, if you find deleted channels in the
+input wavelength data set, you should include those channels in the
+list of channels to be deleted in the spline routine (f12).
+
+.B
+Error codes from the cubic spline routine:
+.R
+.in 8n
+.ti -5n
+33:  Found value(s) in interpolated wavelength set less than input
+wavelength set.
+
+.ti -5n
+34:  Found value(s) in interpolated wavelength set greater than input
+wavelength set.
+
+.ti -5n
+129: The dimension of spline coefficient matrix is less than one less the
+number of channels.
+
+.ti -5n
+130: The number of channels is less than 2 (user should check wavelength
+data sets in use).
+
+.ti -5n
+131: Wavelength files are not ordered.  (Since the routine sorts the
+data, this should not happen.  It may indicate fundamental problem
+with the input data).
+.in 0n
+
+.PP
+The spline function is very useful for interpolating data to new
+wavelength values and also for generating continua.   When
+interpolating to a new wavelength set, the resolution of the
+spectra should be equal (use the smoothing function of F17 to degrade a
+high resolution spectrum to that of the low resolution
+spectrum).  Spurious data points should be deleted.  For generating a
+continuum to a spectrum, specify the same wavelength file for the
+input and output spectra, then delete data points which are not on
+the "continuum."  This can be tricky depending on the data and
+what you are trying to do so talk to people who have used the
+routine first (e.g. Roger Clark or Bob Singer).
+
+.ce
+.B
+How the Cubic Spline Interpolating Function Works
+.R
+.PP
+The cubic spline interpolating function may be visualized as
+follows.  Bend a flexible strip (like a plastic ruler) so that it
+passes through each of the data points in the spectrum to be
+interpolated
+
+.in 10n
+[f(x\d1\u), f(x\d2\u), . . . f(x\dn\u)].
+.in 0n
+
+The physics of the bent strip shows that the
+equation of the strip can be represented as a series of cubic
+polynomials with appropriate boundary conditions.  A different
+cubic polynomial is calculated for each interval in the spectrum
+
+.in 10n
+[i.e. S\d1\u(x) on the interval (x\d1\u, x\d2\u),
+
+S\d2\u(x) on (x\d2\u, x\d3\u) . . . S\d{n-1}\u(x) on (x\d{n-1}\u, x\dn\u)
+.in 0n
+
+where S\dn\u represents a cubic polynomial
+
+.in 10n
+A\dn\ux\u3\d + B\dn\ux\u2\d + C\dn\ux + D\dn\u = S\dn\u(x)].
+.in 0n
+
+.PP
+The boundary conditions are that the spline must go through each
+function value
+
+.in 10n
+[S\d1\u (x\d1\u) = f(x\d1\u), S\d1\u (x\d2\u) =
+f(x\d2\u) = S\d2\u(x\d2\u) = etc.],
+.in 0n
+
+and the first and second derivatives of the cubic polynomials are
+continuous
+
+.in 10n
+[S\d{m-1}\u\u'\d(x\dm\u) = S\dm\u\u'\d(x\dm\u), S\d{m-1}\u\u"\d(x\dm\u)
+= S\dm\u\u"\d(x\dm\u)
+.in 0n
+
+for m on the interval 2 to (n-1) (inclusive)].  Finally, the curvature
+is forced to zero at the endpoints
+
+.in 10n
+[S\d1\u\u"\d(x\d1\u) = 0, S\d{n-1}\u"\d(x\dn\u) = 0].
+.in 0n
+
+.PP
+The spline used here is
+.B
+NOT
+.R
+a smoothing function.  Therefore, data with large noise spikes
+present should be pre-smoothed before fitting with the
+interpolating spline (or the data points with anomalous values
+should be deleted).  For a more complete discussion see
+Carnahan and J. O. Wilkes, "Digital Computing and Numerical Methods,"
+John Wiley & Sons, New York, New York. p 307. (1973).

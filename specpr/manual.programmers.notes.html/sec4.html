@@ -1,0 +1,260 @@
+<!-- Creator     : groff version 1.18.1.1 -->
+<!-- CreationDate: Wed Nov 10 14:17:28 2010 -->
+<html>
+<head>
+<meta name="generator" content="groff -Thtml, see www.gnu.org">
+<meta name="Content-Style" content="text/css">
+<title></title>
+</head>
+<body>
+
+<hr>
+
+<p>HTML-IMAGE.nr 0C 0 HTML-IMAGE-END.lf 1 -</p>
+
+<p align=center>RESTART PROCEDURES</p>
+
+<p>SPECPR is currently running on an LSI 11/23 with a UNIX
+operating system. This program has increased in size so that
+it no longer runs as a single job on the LSI 11/23. Its was
+necessary to break up the major areas of SPECPR into
+separate executable modules. The SPECPR program driver sets
+up the important parameters for running the program, or
+reads the restart file for these parameters and start up the
+excutable modules. These executable modules are separate
+processes that the main program starts up. In turn these
+modules can also start up other processes. These modules are
+as follows: HTML-IMAGE.nr 3c 0</p>
+<pre>PROCESS NAME                DESCRIPTION                CALLED BY
+
+
+
+
+
+dspecpr        main program                            ------
+
+
+
+
+
+reddisv        Display and Transfer, Math routines     dspecpr
+
+
+
+
+
+extnct         Extinction Calculations and starpacks   dspecpr
+
+
+
+
+
+rstdump        Restart file summary                    dspecpr
+
+
+
+
+
+gpplot         Plotting package                        dspecpr
+
+
+
+
+
+gfit           Gaussian fitting program                dspecpr
+
+
+
+
+
+fit            Fitting routine                         gfit
+
+
+
+
+
+f2             Special Function 2                      reddisv
+
+
+
+
+
+f5             Special Function 5                      reddisv
+
+
+
+
+
+f6             Special Function 6                      reddisv
+
+
+
+
+
+f7             Special Function 7                      reddisv
+
+
+
+
+
+f8             Special Function 8                      reddisv
+
+
+
+
+
+f9             Special Function 9                      reddisv
+
+
+
+
+
+f10            Special Function 10                     reddisv
+
+
+
+
+
+f11            Special Function 11                     reddisv
+
+
+
+
+
+f12            Special Function 12                     reddisv
+
+
+
+
+
+f13            Special Function 13                     reddisv
+
+
+
+
+
+f14            Special Function 14                     reddisv
+
+
+
+
+
+f15            Special Function 15                     reddisv
+
+
+
+
+
+f16            Special Function 16                     reddisv
+
+
+
+
+
+f17            Special Function 17                     reddisv
+
+
+
+
+
+f18            Special Function 18                     reddisv
+
+
+
+
+
+f19            Special Function 19                     reddisv
+
+
+
+
+
+f20            Special Function 20                     reddisv
+
+
+
+
+
+f21            Special Function 21                     reddisv
+
+
+
+
+
+f22            Special Function 22                     reddisv
+
+
+
+
+
+f23            Special Function 23                     reddisv
+
+
+
+
+
+wegadd         Addition routine                        reddisv
+
+
+
+
+
+wfcn           Algebraic and Trig functions            reddisv
+
+
+
+</pre>
+
+<p>HTML-IMAGE-END.bp</p>
+
+<p>Passing parameters and data between these processes are
+done via the restart file. The parent process calls the
+restart subroutine prior to starting up the child process to
+save the current restart parameters. When the child process
+starts up it calls the restart subroutine to read the
+parameters saved by the parent. Before the child terminates
+it calls the restart subroutine to save the parameters for
+the parent. Note: on the LSI 11/23 this takes a few
+seconds.</p>
+
+<p>To start up a process from the program you make a call
+to this function:</p>
+<pre>        function ixecut(program)
+
+where program is the process/program name
+
+</pre>
+
+<p>This function forks and executes the program whose name
+(null padded) is in the string &quot;program&quot;. This
+function returns the ending status of the program. See
+function ixecute.</p>
+<pre>EXAMPLE:
+
+c    MAIN PROGRAM
+c
+        common /restart/.... contains the necessary commons
+        .
+        .
+        .
+        st = ixecut(someprog)
+        .
+        .
+        stop
+        end
+
+c
+c   Child process
+c
+        common /restart/ ...... contains the necessary common
+        call restart(2)
+        .
+        .
+        .
+        call restart(1)
+        stop
+        end
+
+<hr>
+</body>
+</html>

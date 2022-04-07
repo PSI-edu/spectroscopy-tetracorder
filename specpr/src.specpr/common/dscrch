@@ -1,0 +1,6 @@
+# scratch data arrays
+
+	real*4  datsc1,datsc2,datsc3,datsc4,datsc5,datsc6
+	common /dscrch/ datsc1(SPMAXCHAN),datsc2(SPMAXCHAN)
+	common /dscrch/ datsc3(SPMAXCHAN),datsc4(SPMAXCHAN)
+	common /dscrch/ datsc5(SPMAXCHAN),datsc6(SPMAXCHAN)

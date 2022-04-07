@@ -1,0 +1,94 @@
+#!/bin/sh
+# this script is used by the specpr make files.
+# input to the script is at least 3 files:
+#	the SCCS file.
+#	a "gotten" sccs file
+#	a destination file
+#
+# or
+#
+#       the SCCS file
+#       a gotten sccs file
+#             output: if SCCS file newer, get over the gotten file
+#                     or if there is no gotten file, do get.
+#
+# Roger N. Clark   5/4/90
+
+dir=`pwd`
+
+if [ $GET ]
+then
+	get=$GET
+        if [ $get = 'sp_if_get' ]
+        then
+                get = get
+                echo "sp_if_get: env variable GET is sp_if_get"
+		echo "sp_if_get: get redifined to get"
+        fi
+else
+	get=get
+fi
+
+if [ -z "$1" ]
+then
+	echo "ERROR: no arguments" 1>&2
+	echo "usage: $0  sccs_file   get_file   detination_file   get_flags" 1>&2
+	exit 1
+else
+	if [ -f "$1" ]
+	then
+		sccsfile=$1
+	else
+		echo "ERROR: SCCS file $1 does not exist" 1>&2
+		exit 1
+	fi
+fi
+
+if [ -z "$2" ]
+then
+	echo "ERROR: no second argument" 1>&2
+	echo "usage: $0  sccs_file   get_file   detination_file   get_flags" 1>&2
+	exit 1
+else
+	gottenfile=$2
+fi
+
+if [ -z "$3" ]
+then
+	if [ -f "$gottenfile" ]
+	then
+		if [ `find $dir/$sccsfile -newer $gottenfile -print > /dev/null` ]
+		then
+			echo "	SCCS file $sccsfile is newer than gotten file $gottenfile"
+			echo "	using $sccsfile"
+			echo "	$get $gflags -p $sccsfile > $gottenfile"
+			$get $GFLAGS -p $sccsfile > $gottenfile
+		fi
+	else
+		echo "	$get $gflags -p $sccsfile > $gottenfile"
+		$get $GFLAGS -p $sccsfile > $gottenfile
+	fi
+	exit
+		
+else
+	destfile=$3
+fi
+
+if [ -f "$gottenfile" ]
+then
+	if [ `find $dir/$sccsfile -newer $gottenfile -print > /dev/null` ]
+	then
+		echo "	SCCS file $sccsfile is newer than gotten file $gottenfile"
+		echo "	using $sccsfile"
+		echo "	$get $gflags -p $sccsfile > $destfile"
+		$get $GFLAGS -p $sccsfile > $destfile
+	else
+		echo "	$gottenfile is newer than SCCS file $sccsfile"
+		echo "	using $gottenfile"
+		echo "	cp $gottenfile $destfile"
+		cp $gottenfile $destfile
+	fi
+else
+	echo "	$get $GFLAGS -p $sccsfile > $destfile"
+	$get $GFLAGS -p $sccsfile > $destfile
+fi

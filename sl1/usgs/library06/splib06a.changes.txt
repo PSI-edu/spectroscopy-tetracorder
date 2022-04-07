@@ -1,0 +1,27 @@
+
+splib06a:
+
+Post publication, this samples was found to be Prehnite + Muscovite, not a scapolite,
+     (may have some scapolite in the sample, but the 1-2.5 features are dominated by
+      Prehnite + Muscovite).
+
+ 14016  Mizzonite BM1931,12 Scapolte    DESCRIPT  6126 Characters of TEXT
+ 14023  Mizzonite BM1931,12 Scapolte W1R1Bc AREF   480  09:04:54.00  05/22/1987      6      8
+ 14027  Mizzonite BM1931,12 Scapolte     FEATANL   351  09:04:54.00  05/22/1987      0      8
+ 14030  Mizzonite BM1931,12 Scapol W5   DESCRIPT  6126 Characters of TEXT
+ 14037  Mizzonite BM1931,12 Scapol W5R4Ncc_ RREF  4280  00:00:00.00  11/24/****     42     54
+ 14061  Mizzonite BM1931,12 Scapol W5    FEATANL  4851  00:00:00.00  11/24/****      0     54
+
+change titles:
+
+spsettitle  splib06a 14016 "Prehnite+Muscovite BM1931,12    DESCRIPT"   force
+
+spsettitle  splib06a 14023 "Prehnite+Muscovite BM1931,12 W1R1Bc AREF"   force
+
+spsettitle  splib06a 14027 "Prehnite+Muscovite BM1931,12     FEATANL"   force
+
+spsettitle  splib06a 14030 "Prehnit+Muscovit BM1931,12 W5   DESCRIPT"   force
+
+spsettitle  splib06a 14037 "Prehnit+Muscovit BM1931,12 W5R4Ncc_ RREF"   force
+
+spsettitle  splib06a 14061 "Prehnit+Muscovit BM1931,12 W5    FEATANL"   force

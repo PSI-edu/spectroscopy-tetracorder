@@ -1,0 +1,350 @@
+.sh 1 "EXTINCTION ROUTINES " 12
+
+
+.sh 2 "Introduction "
+.pp
+The Extinction analysis is a least squares fit of a straight line
+to the base 10 logarithm of the data versus airmass for each
+channel.  The intercept and slope of the line, along with a goodness
+of fit (correlation coefficient), are stored for later extinction
+corrections with objects observed.  The Extinction routines are
+accessed from Program Operations by typing
+.ul
+S.
+The screen will then list available commands on the CRT.
+
+
+.sh 2 "Starpack List and Display "
+.pp
+Type
+.ul
+D
+to list the starpack by title.  You will then be instructed to
+input a file number (1 to 50) or type the number 0 to list all
+starpacks in the starpack file.  Typing a number (1 to 50) will
+read that starpack into memory so that it can be displayed (see
+section 12.4).  If zero was typed, the last starpack listed is in
+memory (assuming there is no I/O error).  Note:  If you have just
+created a new starpack, do not list the starpack file as this
+writes over the starpack in memory.  Note that, when reading a
+starpack from disk, you cannot do airmass versus log intensity
+plots since this information is not stored in the starpack.  It
+is only stored in memory after an extinction calculation.  In
+order to do these plots or deletion and restoraton of runs and
+channels (section 12.5), you must recreate the starpack from
+scratch using the files in the history.
+
+
+.sh 2 "Extinction Calculation "
+.pp
+Type
+.ul
+C
+to perform extinction calculations.  The computer then asks the
+user for up to 20 files for extinction calculations.  The files
+are input by typing in the file ID (V, W, or D) and the file
+numbers (the devices U and Y have not been expanded into this
+routine yet).  The program is designed so that the user can type
+on one line as in the example:
+
+        W12 13 14 15 16V1 2 3 D4 5 6C.
+
+Typing the file ID and then a string of numbers after the ID
+causes the program to store the string of numbers along with that
+file ID.  When all files have been typed in, the user types
+.ul
+C
+to indicate the finish.  More than one line (at 80 characters per
+line) may be used.  Note:  At the beginning of a new line, a file
+ID must be typed; otherwise, erroneous file numbers will be
+stored. After typing in the files, the user is asked to type in a 24
+character title for the starpack.  After storing the title, the
+computer will read in the files and list the titles on the CRT,
+then calculate the extinction values (it takes a couple of
+minutes), and display the slopes in a CRT plot.  At this point in
+extinction calculations, all the data is stored and extinction
+coefficients have been calculated, but the starpack has not been
+written to the starpack file.  The user should look over the
+calculations using the CRT plot and then write the starpack on
+drum or disc (see below).
+.pp
+Possible deviations from normal operation:
+.pp
+If the revolutions in each file are not the same, the files whose
+revolutions differ from the first file read in are flagged.  If
+a file ID has not been included, a tape reading error is
+encountered, the list of options is displayed, and the user must
+begin again.
+
+
+.sh 2 "CRT Plot "
+.pp
+Since the extinction coefficients are in 3 arrays (slopes,
+intercepts, and goodness of fit), they are displayed one at a time
+on the CRT.  When the plot routine is entered [automatically from
+extinction calculation or by typing P (for plot) from extinction
+commands], the slopes are displayed.  The scale can be changed by
+typing
+.ul
+C,
+the intercepts can be plotted by typing
+.ul
+I,
+and the goodness of fit plotted by typing
+.ul
+G.
+The slopes can then be plotted again by typing
+.ul
+S.
+A lineprinter plot can be made of either slopes, intercepts, or
+goodness of fit by typing
+.ul
+P
+(note the lineprinter must be assigned).  To exit the plot
+routines, type
+.ul
+E
+or
+.ul
+X.
+Both these exits are the same since there are no pending commands.
+
+
+.sh 2 "Airmass Versus Log Intensity Plots and Deletion "
+.ti 5
+.ul
+and Restoration of Runs and Channels
+.pp
+To investigate the scatter in the data and the fitted line, the
+airmass versus log intensity must be plotted.  To improve the fit,
+entire runs or single channels must be deleted (and restored).
+Typing
+.ul
+T
+will call this routine.  The program will then ask for a channel
+number (with which an airmass versus log intensity plot is to be
+made) or type
+.ul
+D
+to delete runs and channels or
+.ul
+R
+to restore runs and channels.
+.pp
+Up to 10 channels in each run can be deleted, or the entire run
+can be deleted.  Since up to 20 files can be used to calculate
+extinction, this routine refers to the files as run numbers 1 to
+20 in the order that they were typed in by the user.  To delete a
+run, type the run number and 0.  The system then asks for N channel
+numbers to be read in.  The whole procedure can be repeated until
+the user has finished deletions.  A least squares fit is done in
+this routine, and the routines list of options is displayed upon
+completion.  The least squares fit takes a couple of minutes.
+.pp
+Selecting restoration causes the display of an array of numbers
+that is 12 wide and 20 high.  The left-hand column is the run
+number, the column next to this gives the number of channels
+deleted or, if this number is -1, that run has been deleted.  To
+restore a run, type in the run number and zero; to restore a
+channel, type in the run number and the channel number.  This
+process can be repeated, if necessary, and the array can be plotted
+out again showing any changes.  When restoration is complete, a
+least squares fit is applied, and the routines list of options is
+displayed.  The least squares fit takes a couple of minutes.  To
+exit this routine, type E.
+.pp
+Note that no history is kept of runs and channels that are
+deleted or restored.  There is a 592 character manual history
+(section 12.6) for any notes or listing runs and channels which
+have been deleted.
+
+
+.sh 2 "Writing a Starpack "
+.pp
+After extinction calculations are finished, the starpack is
+stored in memory but is not written to disc (to the starpack
+file).  This is not done automatically because the user must look
+over the data and decide whether he wants to delete runs or
+channels or whether or not the starpack is any good at all.  Thus,
+the user must remember that he has just performed an extinction
+analysis and that the starpack must be written to the starpack
+file.  (If you have been able to keep the slightest attention
+while reading this manual, you will be able to remember when you
+have finished an extinction analysis).  To write a starpack to
+the starpack file, type
+.ul
+S.
+You will then be asked for the file number (1 to 50).
+
+
+.sh 2 "Starpack Manual History "
+.pp
+There is 592 character (8 lines at 74 characters per line) manual
+history for special notes or listing runs and channels which have
+been deleted.  Type
+.ul
+M
+from the extinction routines section.  You will then be asked to
+type in the line number or zero for all lines or
+.ul
+E
+to exit the routine.
+.bp
+
+
+.sh 1 "GOULD PLOT ROUTINES "
+
+
+.sh 2 "The Gould Plot Routines "
+.pp
+The Gould 5200 plot routines are designed to provide nearly all
+types of plotting capability.  Plots can be in wavelength space,
+energy space (energy increasing to the right), reverse energy
+space (energy increasing to the left), or linear space with your
+own label.  The vertical scale can be either linear or
+logarithmic with the label selected from a list or typed in by
+the user.  Text can be inserted at any angle on the plot.  There
+are many options for controlling the type of plot.  The plot is
+built up on the disc as a binary image containing 5 x 10 bits.
+The resolution of the plot is 200 lines per inch.  Each plot
+takes 6 to 8 minutes or more depending upon the number of
+vertical lines.  If you have 120 channels with error bars that stretch from
+the lower to the upper limit of the graph, the plot will take
+about 25 minutes!  This is because the disc access is by
+horizontal line.  Thus, to "draw" a vertical line takes many
+(several hundreds) disc I/O's while a horizontal line may take only
+2 I/O's.  The plot routines are called from Program Operations by
+typing
+.ul
+P.
+
+
+.sh 2 "Plotting Space Type "
+.pp
+Upon entering the Plot routine, the plotting space options are
+given.  Type
+.ul
+W
+to plot in wavelength space,
+.ul
+N
+to plot in energy space (energy increasing to the right),
+.ul
+R
+to plot in reverse energy space (energy increasing to the left),
+or
+.ul
+Y
+to type in your own horizontal axis label (the plot will be
+linear).  If you type
+.ul
+Y,
+you will be asked to type in the horizontal axis label (24
+characters).  Here you might type:
+.ul
+TIME (SECONDS)
+or whatever your data corresponds to.  Thus, you may do any kind
+of one dimensional array processing you wish.
+.pp
+.ul
+User selected wavelength limits:
+You may select the wavelength limits for the plot, regardless of
+the wavelength files.  When you type in the "W" for wavelength
+space (or N, R, or Y), also type (on the same line) the minimum
+and maximum wavelengths for the plot.  Type in wavelengths for
+energy space also.  Example:
+.l(
+
+        "W 0.325        2.60"
+        "N 0.325        2.60"
+        "R 0.325        2.60"
+        "Y 0.325        2.60"
+
+.l)
+
+The actual limits on the plot will be 2% greater of the range
+(maximum-minimum) on each side (see section 13.5 for details).
+.pp
+The left bound is then minimum minus 2% of greater of the
+maximum-minimum range, and the right bound is the maximum plus 2%
+of the maximum-minimum range.
+.pp
+To exit the plot routine, type
+.ul
+E
+or
+.ul
+X.
+If you choose a space, the program will proceed to the
+vertical axis label.
+
+
+.sh 2 "Vertical Axis Label "
+.pp
+Five vertical scale labels are displayed for you to select.  They
+are numbered 1 to 5.  To select one of these, type in the number.
+If you wish to type in your own label, type
+.ul
+6,
+and you will be instructed to type in the label (60 characters,
+maximum).  If you wish to plot the vertical axis in log (base 10)
+space, type
+.ul
+7,
+and you must type in your own vertical axis label.  The program
+will then proceed to the Delete From All Spectra section.  Type
+.ul
+E
+or
+.ul
+X
+to return to the beginning (section 13.2).
+
+
+.sh 2 "Delete From All Spectra "
+.pp
+If, from all the spectra you are going to plot, you wish to delete
+one or more channels common to all, type
+.ul
+D.
+You will then be instructed to type in the channels which will be
+deleted from all spectra to be plotted.  At least one space should
+be left between each pair of channels, and more than one line can be
+used for input.  All 256 channels may be deleted if desired.  When
+you are through, type
+.ul
+C
+to continue to the scale section.  Type
+.ul
+E
+or
+.ul
+X
+to return to the beginning (section 13.2).  When typing in a
+sequence of channels, you may give the beginning channel, a
+.ul
+T,
+and the end channel; for instance, to delete channels 1, 2, 3, 4,
+5, 6, 7, 8, 15, 16, 17, 23, and 24, type
+.ul
+DIT8 15T17 23 24C.
+
+
+.sh 2 "Scale of Plot "
+.pp
+The vertical scale of the plot is selected by the user.  Type in
+the lower and upper bound of the plot.  The plot size is 19
+centimeters (vertical axis) and 23.7 centimeters (horizontal
+axis) for the data plot area.
+.pp
+If your data is to be plotted in log space on the vertical axis,
+the lower and upper bound should be input as ordinary numbers.
+The program will convert the scale limits and data to logs.  The
+scale is then labeled as the log of the number.  Type
+.ul
+E
+or
+.ul
+X
+to return to the beginning of the plot routines (section 13.2);
+otherwise, the program will go to the file input section.

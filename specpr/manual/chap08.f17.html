@@ -1,0 +1,199 @@
+<!-- Creator     : groff version 1.18.1.1 -->
+<!-- CreationDate: Tue Nov  9 14:21:31 2010 -->
+<html>
+<head>
+<meta name="generator" content="groff -Thtml, see www.gnu.org">
+<meta name="Content-Style" content="text/css">
+<title></title>
+</head>
+<body>
+
+<hr>
+<pre>SPECPR Users&rsquo; Manual                                            Page 8-f17.1
+
+F17:  High To Low Resolution Convolution                    Alias: conv[olv]
+Routine f17 convolves a high resolution data set to a low resolution
+data set.  It has 2 modes:  1) use Gaussian profiles whose widths and
+centers are specified by the user, or 2) use user-specified filter
+profiles.  The routine outputs two data sets:  (1) the resultant
+wavelength values (center values) and (2) the convolved spectrum.  The
+output of the center values is optional.  A typical use would be to
+use mode 1 (Gaussian profiles) for convolving one spectrometer to
+another, and mode 2 for convolving a spectrum to a
+specific filter response, such as a LANDSAT TM system.
+To run the function, go to the math routines and enter the
+file ID and number for the input spectrum and f17.  Example:
+
+             v23f17
+or
+              v23conv
+
+The routine starts with a query for the use of the
+default wavelength assignment, which is displayed at the top of
+the screen.  To change the default assignment, enter
+the wavelength data set file ID (upper case) and the record number.
+If you don&rsquo;t want to change the wavelength set, just type return.
+Next you will be asked whether you want to normalize the data.  This
+is a convolution normalization.  Normally you want to do this.  If
+you normalize,the resulting spectrum is divided by a convolved
+spectrum whose input data values are all one.  If you don&rsquo;t
+normalize, the convolution output will vary as a function of the
+area under the curve of each response function.  Unnormalized
+convolutions can be used for tracking voltages from a sensor.  If
+you simply want to compare the spectral response, calibrated to, say,
+radiance or reflectance, and your input data are calibrated in
+those units, you want to normalize the convolution.
+Next you are asked if you want to use the Gaussian mode or the
+filter bandpass mode.  Type:
+
+              g           Gaussian mode.
+              &lt;return&gt;    bandpass filter mode.
+</pre>
+
+<p>Gaussian Profile Convolution You are first asked for a
+data set describing the center values of the Gaussians for
+the output data set (these are the wavelengths you are
+convolving to). Enter the file ID and record number of the
+data set. Next you are prompted to enter the Gaussian
+bandwidths. These are the Gaussian Full Width at Half Maxima
+(FWHM) for each Gaussian center value entered in the
+previous step. Enter the file ID and the record number of
+this data set. The Gaussian bandwidth data set and the
+Gaussian center values must have the same number of
+channels. Next your are asked to input the bandwidths of the
+input data set. The spectral resolution of the input data
+set must be known to properly convolve to the output data
+set. Enter the file ID and record number of the input
+spectrum resolution. This data set must have the same number
+of channels as the input wavelength data set in use. The
+convolution routine computes the convolution and then asks
+if you want to output the center wavelengths. See below.</p>
+
+<p>Bandpass Filter Convolution If you selected the bandpass
+filter convolution mode, the routine prompts you for the
+first filter profile and asks how many filters will be
+convolved. Each filter profile produces one output channel.
+The filter profile must be sampled at the wavelengths of the
+input data set (if it is not, you could reinterpolate them
+using a routine like the cubic spline, f12). For example,
+say you were convolving a laboratory spectrum of kaolinite
+to LANDSAT TM filters (7 bands). Say the filter response
+function sampled at the wavelengths of the laboratory
+spectrum was at w46 (the other 6 filters must be
+sequentially located in the same data file). You would then
+type:</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>w46 7</p></td>
+</table>
+
+<p>The input filter response functions are read in and the
+output spectrum is calculated. Next the user is asked if the
+output of center wavelengths is desired.</p>
+
+<p>Center Wavelengths After the convolution is complete
+(either Gaussian or bandpass mode) you are queried on
+whether or not to output the center value wavelengths. If
+you wish to write the center values, type in the file id and
+record number of the file where you wish to write the center
+values, or type return to ignore writing the center values.
+Next enter the title for the center values when prompted.
+Because this is an output data set (like any other), use a
+lower case file id(not upper case).</p>
+
+<p>Note that f17 cannot include errors in its calculations.
+However, you can do error propagation by simply convolving
+the error data set in the same manner as the regular data
+set.</p>
+
+<p>The equation used to calculate the spline is</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="37%"></td>
+<td width="62%">
+<p>Rj = &int;xxl S Bj dx, (eqn 8.f17.1)</p></td>
+</table>
+
+<p>where Rj is a data point in the resultant spectrum, xo
+is the first value of the input spectrum, xl is the last
+value of the input spectrum, S is the input spectrum, and Bj
+is the spectral bandpasses. The center values are calculated
+by the following:</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="37%"></td>
+<td width="62%">
+<p>Cj = &int;xxl x S Bj dx, (eqn 8.f17.2)</p></td>
+</table>
+
+<p>where Cj is the center value for that particular
+spectral bandpass, xl, S, Bj and xo are the same as in
+equation 8.f17.2, and x is the wavelength. The integrals are
+approximated by using numerical integration by summing the
+rectangular segments. Each rectangle is computed by using
+the channel separation of the input spectrum:</p>
+<pre>               n
+          Rj = &Sigma;  Si Bj,i &delta;xi,                        (eqn 8.f17.3)
+              i=1
+</pre>
+
+<p>where n is the number of channels and &delta;xi is the
+spectral bandpass of channel i</p>
+<pre>                &#9581;  x2 - x1,      i = 1
+                &#9474;
+          &delta;xi = &#9509;  xi+1 - xi-1,  1 &lt; i &lt; n                      (eqn 8.f17.4)
+                &#9474;
+                &#9584;  xn-1 - xn,    i = n
+</pre>
+
+<p>Similarly, the center values (wavelength) of each
+convolved channel are computed from the equation</p>
+<pre>               n
+               &Sigma; xi Si Bj,i &delta;xi    (eqn 8.f17.3)
+              i=1
+          Cj = &mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;
+                        Rj
+</pre>
+
+<p>During the calculations, divide operations are checked
+for a zero denominator. If this happens, an error message is
+printed for the user, and the denominator is reset to
+1.0&times;10-36 instead of crashing the program. If no file
+has been input to the program at the start, an error message
+will be printed, and the routine exits. Note that if the
+number of bandpass files times five is greater than the
+number of channels, a warning message will be printed
+explaining that, with data arranged in such a manner, the
+resulting accuracy of the data is questionable. This is due
+to using the summations (equations 3 and 5) and the equation
+4 to approximate the integrals. The message is only a
+warning--you must determine if the bandpasses are complex
+enough that accuracy may actually be in error due to a small
+sample. IMPORTANT CONSIDERATION: if the filter bandpass or
+the Gaussian profile is close to the input spectral
+resolution, you may want to interpolate the input spectra to
+finer channel spacing. Because the numerical integration
+rectangles are controlled by the channel spacing,
+interpolating to finer spacing will increase the accuracy of
+the numerical integration. You must interpolate both the
+input spectra and the resolution &quot;spectrum&quot; to the
+finer wavelength set. Remember, for example, if you had
+0.001 &mu;m spacing and 0.001 &mu;m resolution, and you
+interpolated to 0.0001 &mu;m spacing, the resolution is
+still only 0.001 &mu;m, thus the spectrum is oversampled.
+This oversampling is only useful in terms of making the
+numerical integration more accurate. If your convolved
+spectra show a &quot;staircase&quot; effect, it is an
+indication of the limitation of the numerical integration
+and you should resample the input data to finer spacing.</p>
+<hr>
+</body>
+</html>

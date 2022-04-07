@@ -1,0 +1,122 @@
+.\" use ms macros
+.\" this header is for putting the page numbers at the bottom of the page
+.\" set line length, page offset, vertical spacing
+.nr LL 6.3i
+.ll 6.3i
+.nr PO 1.0i
+.po 1.0i
+.nr VS 12
+.vs 12
+.\" set header and footer margins (default is 1.0i)
+.nr FM 1.00i
+.fm 1.00i
+.nr HM 1.00i
+.hm 1.00i
+.\" set no date here, MUST be before CF definition, because ND sets CF
+.\" set date, so don't do .ND
+.\" LH CH RH are left, center, right header strings
+.\" LF CF RF are left, center, right footer strings
+.\" default is CH is defined as: .ds CH "\(hy \\n(PN \(hy
+.ds LH "SPECPR Users' Manual
+.ds CH
+.ds RH "Page 8-f13.\\n(PN
+.\" setup complete
+.nf
+SPECPR Users' Manual                                            Page 8-f13.1
+
+
+.B
+F13:  Merge Two Spectra to One                                Alias: merg[e]
+.PP
+This function will combine two input data sets (of presumably
+different wavelengths) into a single output data set.  Perhaps this
+routine should be named "splice" because you can only merge two at a
+time, although you can actually have multiple splice points, enough
+that it is indistinguishable from a merge concept.  It will
+not automatically merge the two input data sets according to their
+respective wavelengths; rather, it will combine the two sets
+according to a channel sequence specified by the
+user.  (Errors will be included if specified.)
+.PP
+The following files must exist prior to calling the function:
+
+.in 3n
+.ti -3n
+A) a first input data set (+ errors),
+
+.ti -3n
+B) a second input data set (+ errors), and
+
+.ti -3n
+C) a wavelength set with enough channels to accommodate the desired
+output data set (the value of the wavelengths is inconsequential;
+only the number of channels matters--4852 maximum at present)
+
+.PP
+The first input data set must be specified when f13 is called. The
+wavelength set must also be specified at call time unless the
+last operation or display in the program used a
+wavelength set with the same number of channels.
+
+Example of use:
+
+
+Given two input data sets of different wavelengths:
+
+.nf
+.in 10n
+A)  w127  (25 channels) + errors
+B)  v321 (120 channels) + errors
+.in 0n
+.fi
+
+.in 10n
+.in -5n
+1) Decide how the two data sets should be combined.  For this case,
+combine the two data sets so that w127 channels 1-24 are followed by
+v321 channels 4-57 and channels 63-115; all other channels will be
+omitted.
+
+.ti -5n
+2) Create a wavelength set with enough channels to accommodate the
+output data set.  For this case, set the wavelength set to C131.
+
+.PP
+You would then call f13 from math (the ending "e" includes error
+bars):
+
+.in 14n
+.B
+w127f13eC131
+.R
+.in 0n
+
+Then in f13, type in the second data set when prompted (data set
+"b"):
+
+.in 14n
+.B
+v321
+.R
+.in 0n
+
+and finally, you will be prompted to enter the channels to merge.
+On the merge command line, "a" refers to the first data set (w127 in
+this case) and "b" refers to the second data set.  So we have for
+this example:
+
+.in 14n
+.B
+a1 24 b 4 57 b 63 115
+.R
+.in 0n
+
+.PP
+.B
+IMPORTANT NOTE:
+.R
+The merge routine works on one data set at a time.  You must merge
+the wavelength sets in the same manner.  Be very careful to make
+sure the data channels line up with the proper wavelength channels.
+It is usually a good idea to overlay the merged data sets with the
+originals.

@@ -1,0 +1,49 @@
+Splining Made Easy  (You can read about it, but here's how to use it!)
+
+1) It is usually a good idea to view the data set you are going to 
+cubic spline on the screen before you do any math operation on it.  
+This serves as a check on the data and also to set the number of
+channels.
+
+2) Get into f12 from math and type file id and f12 (e.g. v456f12e).  
+The e is to include errors if there are any.  The file is the 
+reflectance data you want to cubic spline to a different resolution.
+
+3) The cubic spline menu will come up and you should follow the
+instructions.  When asked to input wavelength set associated the 
+with data set you should type in the wavelength set you are splining 
+from.  The file id. letter must be upper case because this is a 
+wavelength set.  Skip a space and type the wavelength set 
+you are cubic splining to.  An example of the total entry is:
+
+                     V45  U789
+
+4) Delete desired channels or just press return.  One of two things
+will happen: a) the routine will run normally and will ask where you
+want to save the new splined wavelength set, in which case you can 
+proceed, or b) you will get an error message about the wrong 
+wavelength set being used.  Check your files and if they are correct, 
+the fault is a bug in the f12 routine. WE THINK THIS BUG IS FIXED,
+BUT IN CASE YOU RUN INTO IT, HERE IS THE SOLUTION:
+You can get around this bug by 
+exiting from f12 at this point (with x) and using f14 to check for 
+deleted channels in the two wavelength sets.  You need to note which 
+wavelength set has the greater number of deleted channels at the 
+beginning of the data (example: if channels 1 to 124 all have the
+value 1.23E-34 they are deleted).  You would then quit f14 and restart 
+f12.  When asked for channels to delete enter: 
+
+                    1t124c
+
+This will delete those input channels and allow the routine to
+continue.
+
+5) Next you will be asked where to save the data to.  Enter the
+appropriate file id. letter.  Now give the new data a title.
+
+6) The new data will be plotted on the screen, with the output
+wavelength set.
+
+7) Save the file with "e" after double checking the channel setting.
+It is a good idea after any operation to check the newly created file
+with the display routines (type "t" from the main menu). 

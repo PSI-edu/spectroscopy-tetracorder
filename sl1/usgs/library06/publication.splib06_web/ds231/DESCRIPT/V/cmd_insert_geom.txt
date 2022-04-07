@@ -1,0 +1,189 @@
+vi rangeland_C03-004.html
+:g/The site elevation.*$/s//The mean elevation of the site is 1990 m (6529 ft). The mean slope of the site is 20%, with a Northwest aspect of 293 degrees./g
+:wq
+vi rangeland_C03-005.html
+:g/The site elevation.*$/s//The mean elevation of the site is 1899 m (6230 ft). The mean slope of the site is 7%, with a Northeast aspect of 50 degrees./g
+:wq
+vi rangeland_C03-006.html
+:g/The site elevation.*$/s//The mean elevation of the site is 1930 m (6333 ft). The mean slope of the site is 1%, with a North aspect of 2 degrees./g
+:wq
+vi rangeland_C03-010.html
+:g/The site elevation.*$/s//The mean elevation of the site is 1947 m (6387 ft). The mean slope of the site is 9%, with a East aspect of 101 degrees./g
+:wq
+vi rangeland_C03-013.html
+:g/The site elevation.*$/s//The mean elevation of the site is 2094 m (6869 ft). The mean slope of the site is 6%, with a Southeast aspect of 157 degrees./g
+:wq
+vi rangeland_C03-014.html
+:g/The site elevation.*$/s//The mean elevation of the site is 1975 m (6480 ft). The mean slope of the site is 32%, with a Southwest aspect of 203 degrees./g
+:wq
+vi rangeland_C03-017.html
+:g/The site elevation.*$/s//The mean elevation of the site is 2023 m (6637 ft). The mean slope of the site is 4%, with a Southeast aspect of 132 degrees./g
+:wq
+vi rangeland_C03-019.html
+:g/The site elevation.*$/s//The mean elevation of the site is 1910 m (6266 ft). The mean slope of the site is 3%, with a Southwest aspect of 221 degrees./g
+:wq
+vi rangeland_C03-021.html
+:g/The site elevation.*$/s//The mean elevation of the site is 2000 m (6561 ft). The mean slope of the site is 4%, with a North aspect of 11 degrees./g
+:wq
+vi rangeland_C03-022.html
+:g/The site elevation.*$/s//The mean elevation of the site is 2033 m (6669 ft). The mean slope of the site is 7%, with a South aspect of 185 degrees./g
+:wq
+vi rangeland_C03-027.html
+:g/The site elevation.*$/s//The mean elevation of the site is 2010 m (6595 ft). The mean slope of the site is 12%, with a Southwest aspect of 204 degrees./g
+:wq
+vi rangeland_C03-031.html
+:g/The site elevation.*$/s//The mean elevation of the site is 2130 m (6987 ft). The mean slope of the site is 19%, with a Southwest aspect of 220 degrees./g
+:wq
+vi rangeland_C03-032.html
+:g/The site elevation.*$/s//The mean elevation of the site is 1972 m (6468 ft). The mean slope of the site is 9%, with a Northeast aspect of 41 degrees./g
+:wq
+vi rangeland_C03-037.html
+:g/The site elevation.*$/s//The mean elevation of the site is 2021 m (6630 ft). The mean slope of the site is 15%, with a Southwest aspect of 221 degrees./g
+:wq
+vi rangeland_C03-041.html
+:g/The site elevation.*$/s//The mean elevation of the site is 1870 m (6134 ft). The mean slope of the site is 1%, with a South aspect of 163 degrees./g
+:wq
+vi rangeland_C03-047.html
+:g/The site elevation.*$/s//The mean elevation of the site is 2059 m (6756 ft). The mean slope of the site is 30%, with a Northeast aspect of 41 degrees./g
+:wq
+vi rangeland_C03-050.html
+:g/The site elevation.*$/s//The mean elevation of the site is 1877 m (6159 ft). The mean slope of the site is 8%, with a West aspect of 261 degrees./g
+:wq
+vi rangeland_C03-052.html
+:g/The site elevation.*$/s//The mean elevation of the site is 2004 m (6574 ft). The mean slope of the site is 7%, with a Southwest aspect of 222 degrees./g
+:wq
+vi rangeland_C03-066.html
+:g/The site elevation.*$/s//The mean elevation of the site is 1939 m (6360 ft). The mean slope of the site is 7%, with a East aspect of 78 degrees./g
+:wq
+vi rangeland_C03-068.html
+:g/The site elevation.*$/s//The mean elevation of the site is 2053 m (6737 ft). The mean slope of the site is 20%, with a Southeast aspect of 123 degrees./g
+:wq
+vi rangeland_C03-070.html
+:g/The site elevation.*$/s//The mean elevation of the site is 2179 m (7149 ft). The mean slope of the site is 16%, with a Northeast aspect of 34 degrees./g
+:wq
+vi rangeland_C03-073.html
+:g/The site elevation.*$/s//The mean elevation of the site is 2025 m (6644 ft). The mean slope of the site is 4%, with a South aspect of 194 degrees./g
+:wq
+vi rangeland_C03-074.html
+:g/The site elevation.*$/s//The mean elevation of the site is 2019 m (6625 ft). The mean slope of the site is 13%, with a Southwest aspect of 227 degrees./g
+:wq
+vi rangeland_C03-076.html
+:g/The site elevation.*$/s//The mean elevation of the site is 1893 m (6211 ft). The mean slope of the site is 12%, with a Southwest aspect of 244 degrees./g
+:wq
+vi rangeland_C03-077.html
+:g/The site elevation.*$/s//The mean elevation of the site is 2038 m (6687 ft). The mean slope of the site is 18%, with a Northeast aspect of 37 degrees./g
+:wq
+vi rangeland_C03-080.html
+:g/The site elevation.*$/s//The mean elevation of the site is 2031 m (6663 ft). The mean slope of the site is 7%, with a North aspect of 4 degrees./g
+:wq
+vi rangeland_C03-081.html
+:g/The site elevation.*$/s//The mean elevation of the site is 2137 m (7012 ft). The mean slope of the site is 20%, with a Southwest aspect of 211 degrees./g
+:wq
+vi rangeland_C03-085.html
+:g/The site elevation.*$/s//The mean elevation of the site is 2187 m (7176 ft). The mean slope of the site is 11%, with a South aspect of 166 degrees./g
+:wq
+vi rangeland_C03-086.html
+:g/The site elevation.*$/s//The mean elevation of the site is 1927 m (6323 ft). The mean slope of the site is 13%, with a Northeast aspect of 50 degrees./g
+:wq
+vi rangeland_C03-089.html
+:g/The site elevation.*$/s//The mean elevation of the site is 1973 m (6474 ft). The mean slope of the site is 21%, with a Southeast aspect of 146 degrees./g
+:wq
+vi rangeland_C03-090.html
+:g/The site elevation.*$/s//The mean elevation of the site is 2094 m (6871 ft). The mean slope of the site is 15%, with a South aspect of 174 degrees./g
+:wq
+vi rangeland_C03-091.html
+:g/The site elevation.*$/s//The mean elevation of the site is 1991 m (6531 ft). The mean slope of the site is 1%, with a East aspect of 84 degrees./g
+:wq
+vi rangeland_C03-095.html
+:g/The site elevation.*$/s//The mean elevation of the site is 2018 m (6622 ft). The mean slope of the site is 5%, with a Northwest aspect of 325 degrees./g
+:wq
+vi rangeland_C03-097.html
+:g/The site elevation.*$/s//The mean elevation of the site is 2185 m (7167 ft). The mean slope of the site is 16%, with a South aspect of 192 degrees./g
+:wq
+vi rangeland_C04-151.html
+:g/The site elevation.*$/s//The mean elevation of the site is 1918 m (6292 ft). The mean slope of the site is 4%, with a North aspect of 124 degrees./g
+:wq
+vi rangeland_C04-153.html
+:g/The site elevation.*$/s//The mean elevation of the site is 2071 m (6795 ft). The mean slope of the site is 7%, with a Southeast aspect of 121 degrees./g
+:wq
+vi rangeland_C04-154.html
+:g/The site elevation.*$/s//The mean elevation of the site is 2191 m (7188 ft). The mean slope of the site is 11%, with a Southeast aspect of 17 degrees./g
+:wq
+vi rangeland_C04-155.html
+:g/The site elevation.*$/s//The mean elevation of the site is 1978 m (6488 ft). The mean slope of the site is 7%, with a North aspect of 108 degrees./g
+:wq
+vi rangeland_C04-166.html
+:g/The site elevation.*$/s//The mean elevation of the site is 1928 m (6325 ft). The mean slope of the site is 16%, with a East aspect of 29 degrees./g
+:wq
+vi rangeland_C04-170.html
+:g/The site elevation.*$/s//The mean elevation of the site is 2001 m (6565 ft). The mean slope of the site is 11%, with a Northeast aspect of 125 degrees./g
+:wq
+vi rangeland_C04-175.html
+:g/The site elevation.*$/s//The mean elevation of the site is 1975 m (6480 ft). The mean slope of the site is 9%, with a Southeast aspect of 113 degrees./g
+:wq
+vi rangeland_C04-197.html
+:g/The site elevation.*$/s//The mean elevation of the site is 1881 m (6173 ft). The mean slope of the site is 11%, with a Southeast aspect of 358 degrees./g
+:wq
+vi rangeland_C04-200.html
+:g/The site elevation.*$/s//The mean elevation of the site is 1925 m (6315 ft). The mean slope of the site is 4%, with a South aspect of 202 degrees./g
+:wq
+vi rangeland_C04-203.html
+:g/The site elevation.*$/s//The mean elevation of the site is 1927 m (6322 ft). The mean slope of the site is 5%, with a East aspect of 108 degrees./g
+:wq
+vi rangeland_C04-204.html
+:g/The site elevation.*$/s//The mean elevation of the site is 1964 m (6442 ft). The mean slope of the site is 7%, with a Northeast aspect of 59 degrees./g
+:wq
+vi rangeland_C04-208.html
+:g/The site elevation.*$/s//The mean elevation of the site is 1941 m (6367 ft). The mean slope of the site is 29%, with a East aspect of 98 degrees./g
+:wq
+vi rangeland_C04-209.html
+:g/The site elevation.*$/s//The mean elevation of the site is 1927 m (6323 ft). The mean slope of the site is 3%, with a Southeast aspect of 121 degrees./g
+:wq
+vi rangeland_C04-211.html
+:g/The site elevation.*$/s//The mean elevation of the site is 1984 m (6508 ft). The mean slope of the site is 9%, with a South aspect of 182 degrees./g
+:wq
+vi rangeland_C04-214.html
+:g/The site elevation.*$/s//The mean elevation of the site is 2172 m (7126 ft). The mean slope of the site is 18%, with a South aspect of 180 degrees./g
+:wq
+vi rangeland_C04-226.html
+:g/The site elevation.*$/s//The mean elevation of the site is 1999 m (6559 ft). The mean slope of the site is 9%, with a Southeast aspect of 113 degrees./g
+:wq
+vi rangeland_C04-232.html
+:g/The site elevation.*$/s//The mean elevation of the site is 1945 m (6382 ft). The mean slope of the site is 13%, with a Southeast aspect of 122 degrees./g
+:wq
+vi rangeland_C04-233.html
+:g/The site elevation.*$/s//The mean elevation of the site is 1989 m (6526 ft). The mean slope of the site is 10%, with a East aspect of 91 degrees./g
+:wq
+vi rangeland_C04-236.html
+:g/The site elevation.*$/s//The mean elevation of the site is 2001 m (6566 ft). The mean slope of the site is 9%, with a East aspect of 106 degrees./g
+:wq
+vi rangeland_C04-237.html
+:g/The site elevation.*$/s//The mean elevation of the site is 1938 m (6359 ft). The mean slope of the site is 4%, with a Southeast aspect of 141 degrees./g
+:wq
+vi rangeland_C04-243.html
+:g/The site elevation.*$/s//The mean elevation of the site is 2028 m (6653 ft). The mean slope of the site is 18%, with a Northeast aspect of 60 degrees./g
+:wq
+vi rangeland_C04-251.html
+:g/The site elevation.*$/s//The mean elevation of the site is 1936 m (6351 ft). The mean slope of the site is 5%, with a East aspect of 107 degrees./g
+:wq
+vi rangeland_C04-252.html
+:g/The site elevation.*$/s//The mean elevation of the site is 1996 m (6550 ft). The mean slope of the site is 3%, with a Northwest aspect of 310 degrees./g
+:wq
+vi rangeland_C04-253.html
+:g/The site elevation.*$/s//The mean elevation of the site is 1986 m (6517 ft). The mean slope of the site is 14%, with a East aspect of 109 degrees./g
+:wq
+vi rangeland_C04-264.html
+:g/The site elevation.*$/s//The mean elevation of the site is 2003 m (6570 ft). The mean slope of the site is 5%, with a West aspect of 287 degrees./g
+:wq
+vi rangeland_C04-272.html
+:g/The site elevation.*$/s//The mean elevation of the site is 1975 m (6478 ft). The mean slope of the site is 25%, with a South aspect of 191 degrees./g
+:wq
+vi rangeland_C04-273.html
+:g/The site elevation.*$/s//The mean elevation of the site is 1931 m (6335 ft). The mean slope of the site is 3%, with a Southeast aspect of 151 degrees./g
+:wq
+vi rangeland_C04-288.html
+:g/The site elevation.*$/s//The mean elevation of the site is 1871 m (6139 ft). The mean slope of the site is 26%, with a Northeast aspect of 37 degrees./g
+:wq
+vi rangeland_C04-295.html
+:g/The site elevation.*$/s//The mean elevation of the site is 1944 m (6378 ft). The mean slope of the site is 2%, with a North aspect of 19 degrees./g
+:wq

@@ -1,0 +1,1671 @@
+.\" use ms macros
+.\" this header is for putting the page numbers at the bottom of the page
+.\" set line length, page offset, vertical spacing
+.nr LL 6.3i
+.ll 6.3i
+.nr PO 1.0i
+.po 1.0i
+.nr VS 12
+.vs 12
+.\" set header and footer margins (default is 1.0i)
+.nr FM 1.00i
+.fm 1.00i
+.nr HM 1.00i
+.hm 1.00i
+.\" set no date here, MUST be before CF definition, because ND sets CF
+.\" set date, so don't do .ND
+.\" LH CH RH are left, center, right header strings
+.\" LF CF RF are left, center, right footer strings
+.\" default is CH is defined as: .ds CH "\(hy \\n(PN \(hy
+.ds LH "SPECPR Users' Manual
+.ds CH
+.ds RH "Page 8.\\n(PN
+.\" setup complete
+.nf
+SPECPR Users' Manual                                                   Page 8.1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.ce
+.B
+CHAPTER 8
+.R
+
+
+
+
+
+.ce
+.B
+MATH OPERATIONS
+.R
+
+
+
+
+.fi
+.bp
+.B
+8.1  Introduction
+.PP
+All mathematical operations are carried out in Math Operations
+except for extinction analysis.  The math routines also contain the
+"special functions."  Special functions do some operation on a data
+set, or generate a data set.  While most special functions are math
+related, they need not be (for example sort a data set into
+increasing wavelengths).  The general sequence the user sees in the
+Math Operations section is the following:
+
+.nr LL 5.3i
+.ll 5.3i
+
+.in 11n
+.ti -3n
+\(bu  At the math main menu, the user enters a math command
+
+.ti -3n
+\(bu  The math function displays what it is going to do and the user
+works his/her way through the function-specific menus.
+
+.ti -3n
+\(bu  When the math function completes normally, the user is asked
+where the data should be written (which v, w, d, u, or y data file
+and what record number).  The data are not written at this time;
+that is the second to last step below.  The ultimate location is
+requested at this point so that the spectrum is properly
+identified in case print-outs are made.
+
+.ti -3n
+\(bu  The user is asked to type in a title to the data set.
+
+.ti -3n
+\(bu  The data are plotted in the graphics terminal (with the crt plot
+routines, see Chapter 9).  In the crt plot routines, the user can
+change or add to the header information.
+
+.ti -3n
+\(bu  The data are written to the data file when the user soft exits
+from the crt plot routines (exit with e).  See warnings
+and important rules below.
+
+.ti -3n
+\(bu  The user is returned to the math operations menu.
+
+.in 0n
+.KS
+.nr LL 6.3i
+.ll 6.3i
+
+.B
+WARNING: the number of data channels operated on by any math routine
+is determined by the number of channels in the data set in use
+(displayed in the top few lines of each routine).  It is UP TO THE
+USER to be sure the number of channels is set properly.  Improper
+number of channels is a very common reason for improper results.
+.R
+.KE
+
+.KS
+.B
+WARNING: the number of channels in the data set written by the math
+routines is controlled by the number of channels in use AT THE TIME
+the user EXITS the CRT PLOT ROUTINES.  If you change the number of
+channels in the header routines, it will have no effect--that value
+is overridden by the math writing routine.
+.R
+.KE
+
+.KS
+.B
+IMPORTANT RULE: the wavelength pointer will be set automatically by
+the math routine at the time the data are written to the data file
+IF the wavelength set in use IS IN THE SAME DATA FILE.
+.R
+.KE
+
+.in 8n
+For example, if you divide two spectra in data file "w", and write
+the results in data file "v", use a wavelength set that is already
+in "v".  Thus if:
+
+.in 14n
+.nf
+w 10 = wavelengths with 56 channels
+w 11 = data set "a"
+w 12 = data set "b"
+.in 8n
+.fi
+
+and you want to divide w11 by w12, first put a copy of w10 into the
+"v" file (see Chapter 10 on how to copy/transfer), then assign the
+"v" wavelength set before you do the division.  The wavelength
+pointer will then be set automatically when the results from the math
+operation are written to the v-file.
+.in 0n
+
+
+.KS
+.B
+8.1.1  Multiple commands from the math command menu.
+.R
+.PP
+One entire line (80 characters)
+of commands may be typed in for execution.  Each math command must
+be separated by a comma.
+.KE
+
+.in 8n
+Example:
+
+.nf
+.B
+           w11/w12,v23*c5.62e,y236/w12
+.R
+.fi
+.in 0n
+
+After each math operation is completed, the next command is executed
+without returning to the math menu.
+
+
+
+.KS
+.B
+8.1.2  Menu Information
+.R
+.PP
+The information in the Math menu can be turned off by typing
+
+.in 20n
+.B
+in
+.R
+.in 0n
+
+or turned back on by typing
+
+.in 20n
+.B
+i
+.R
+.in 0n
+
+and nothing else on the command line.
+.KE
+
+
+
+.KS
+.B
+8.2  Subtraction, Multiplication, and Division
+.R
+.PP
+Generally these operations contain a file ID (v, w, u, d, or y),
+record number, operation sign
+
+.nf
+.in 14n
+-  for subtraction,
+*  for multiplication, and
+/  for division,
+.in 0n
+.fi
+.KE
+
+.in 0n
+then the second file ID (v,
+w, d, c, u, y, or s; s is used in division only), the second record
+number, and the options.  Options include:
+
+.in 14n
+.KS
+.nf
+.B
+e  to include 1 sigma error bars,
+n  to do a subtraction without airmass calculation,
+b  for turn on band normalization (section 8.9),
+bn for turn off band normalization,
+t  for change sidereal time in subtraction with airmass calculation,
+r  for change RA and declination in subtraction calculation, and
+p  for production processing.
+.R
+.fi
+.KE
+.in 0n
+
+.PP
+The production processing option
+stops only to request the title and writes the result to device v
+without doing the CRT plot.  This option (p) makes processing
+equivalent to the time spent in performing batch processing.
+When you enter the output title (section 8.8), you may turn off (or
+on) production processing by typing "pn" (or "po" for on) after 
+the title.  See section 8.8.
+.PP
+The
+.B
+c
+.R
+in place of the second file ID is for constant.  The value of the
+constant is then placed where the second record number is located.
+
+.KS
+.in 15n
+Example:
+
+.in 14n
+w10-11, w12-13, v10*c1.3, v23/46eb, v12-d10np bn
+.KE
+
+Here file w record 11 is subtracted from 10 (the default when
+the second file ID is left out is the first file ID).  Next w13
+is subtracted from w12, then v10 is multiplied by the constant
+1.3, next v23 is divided by v46 with 1 sigma standard deviation
+(errors) included and also a band normalization performed.
+.PP
+On the math command line, spaces may be included at any point except
+within a number, or they
+may be completely left out.  The program processes the commands
+sequentially.  When performing each operation, the program enters
+the appropriate routine, writes the titles of the requested files
+on the CRT, and pauses for a continue command (unless the
+Production option has been set).  If you type
+
+.in 14n
+.B
+x
+.R
+.in 0n
+
+here, the program exits directly to math operations.  If you type
+
+.in 14n
+.B
+e
+.R
+.in 0n
+
+the program exits that operation and begins processing of the next
+operation if one exists.  The production option is set to no
+production at the end of each operation whereas the band
+normalization option stays on until turned off by a
+
+.in 14n
+.B
+bn
+.R
+.in 0n
+
+command.
+.PP
+When the operation is completed, the program goes to section 8.1.
+.PP
+Math Operations can be used to change the wavelength file set in
+use.  Example:
+
+.in 14n
+.B
+v23/v45V2, v86*v27W46
+.R
+.in 0n
+
+where the capital file ID specifies a wavelength set within the
+corresponding data file.  The number of channels in use will then be read
+from the wavelength set.
+
+
+
+.KS
+.B
+Special Note on the Division Routine
+.R
+.PP
+Division by a small number (-10\u-36\d to +10\u-36\d) is defined as a
+deleted point
+
+.in 15n
+(-1.23x10\u+34\d = A DELETED POINT)
+.in 0n
+
+x by this program.
+.KE
+
+
+.KS
+.B
+Special Notes on the Subtraction Routine
+.R
+.PP
+Normal subtraction calculates airmass based on the coordinates
+found in the first 13 characters of the title of the first input
+file; if these coordinates are not entered in the correct format
+(HHMMSS+DDMMSS no spaces, declination sign must be explicitly
+specified as plus or minus, and any one of the first six digits
+must be non-zero), the routine issues the command
+.KE
+
+.in 10n
+TYPE IN RIGHT ASCENSION AND DECLINATION
+.in 0n
+
+and awaits a correct response.  The routine repeats this message
+until a correct response is encountered--e and x are NOT correct
+responses.  The correct response is up to six numbers separated
+by spaces, any one of the first three of which must be non-zero,
+the fourth of which should be signed only if negative, and all
+the rest of which should be unsigned.
+
+TO GET OUT OF THIS LOOP, enter any single non-zero number, and
+type e or x at the next possible opportunity.
+
+(This format may be confusing because the interpretation routine
+from the first 13 characters requires an explicitly specified plus
+or minus sign for the declination, and the request for RA and DEC
+cannot interpret plus signs.)
+
+
+
+.KS
+.B
+8.3  Addition Routine
+.R
+.PP
+The addition routine can add from 2 to 128 spectra with deletion
+of zeros or requested points.  To access the addition routine,
+type + and any options:
+
+.in 14n
+.nf
++     no options
++e    addition with propagation of existing error bars
++s    sum
++a    average
++se   sum with errors
++ae   average with errors
+.fi
+.in 0n
+.KE
+
+with no other math
+operations after that on the input line (because they will not be
+processed due to a programming restriction).  Upon entering the
+addition routine, you will be asked whether you want to average or
+sum (unless you specified the a or s option as given above).  Type
+
+.KS
+.in 14n
+.nf
+a    to Average,
+s    to Sum and,
+.in 0n
+.fi
+.KE
+
+Next type:
+
+.KS
+.in 14n
+.nf
+z   to DELETE ZEROS in the input data,
+v   to DELETE data values outside a user set limit, and/or
+s   to DELETE data values outside a certain standard deviation limit.
+
+.in 0n
+.fi
+.KE
+
+Next you will be given instructions
+on entering the files to be added or summed.  Type in the file ID
+[v, w, d, u, y or c (for constant)] and the record number or
+constant.
+.PP
+If you wish to delete points from this record, type
+d after the record number or constant.  If you elect to delete
+channels, you may start the channel number list after the "d".
+You may use more than one line to
+input these numbers, but each channel to be deleted from the sum
+or average must be listed.  When you are through entering
+numbers to be deleted, type a "c" to continue.
+.PP
+Example:
+
+.in 14n
+.nf
+.B
+v23                    \\# normal input, no deletions,
+v23 d 1 2 26t32 c      \\# delete channels 1, 2, 26 through 32.
+.fi
+.in 0n
+
+.PP
+When you are through entering record numbers, type
+
+.in 14n
+.B
+b
+.R
+.in 0n
+
+to begin analysis.
+.PP
+.B
+Note only 1 constant can be entered per addition run.
+.R
+.PP
+If you type
+
+.in 14n
+.B
+e
+.R
+.in 0n
+or
+.in 14n
+.B
+x
+.R
+.in 0n
+
+the program will exit directly back to math operations;
+otherwise, after the analysis is complete, the program goes to
+section 8.7.
+
+
+
+.KS
+.B
+8.4  Error Analysis
+.R
+.PP
+Error analyses are included in addition, multiplication and division,
+and subtraction and many of the special functions (see individual
+functions - section 8.6) In all cases of error analysis, the data
+numbers should be within the range of
+
+.in 15n
+1.0\(mu10\u-15\d to 1.0\(mu10\u+15\d
+.in 0n
+.KE
+
+to avoid overflow.  If overflow occurs, the error is
+set to zero.  If the data is zero in the multiplication or division
+routines, when using the propagation of errors, the error is set to zero
+for that channel.  The errors represent 1 sigma standard deviation of
+the mean and are normally first computed in the addition routine as a
+standard deviation of the mean computation.  The equations used in
+propagating errors are as follows:  .KE
+.PP
+Given  a\(+- \(*s\da\u,  b \(+- \(*s\db\u ,  c \(+- \(*s\dc\u
+and the result x \(+- \(*s\dx\u  the equations used are:
+
+.KS
+.ul
+division:
+.EQ "(eqn 8.4.1)"
+.nr 99 \n(.s
+.nr 98 \n(.f
+.ps 10
+.ft 1
+.ds 11 "X
+.ds 12 "\ 
+.as 11 "\|\*(12
+.ds 12 "\(eq
+.as 11 "\|\*(12
+.ds 12 "\ 
+.as 11 "\|\*(12
+.ds 12 "a
+.ds 13 "b
+.nr 12 \w'\s10\*(12'
+.nr 13 \w'\s10\*(13'
+.nr 14 \n(12
+.if \n(13>\n(14 .nr 14 \n(13
+.ds 12 \v'20u'\h'\n(14u-\n(13u/2u'\*(13\
+\h'-\n(13u-\n(12u/2u'\v'-40u'\*(12\
+\h'-\n(14u-\n(12u-2u/2u'\v'0u'\l'\n(14u'\v'20u'
+.as 11 "\*(12
+.ds 12 "\(*s
+.ds 13 "X
+.as 12 \v'20u'\*(13\v'-20u'
+.ds 13 "\ 
+.as 12 "\|\*(13
+.ds 13 "\(eq
+.as 12 "\|\*(13
+.ds 13 "\ 
+.as 12 "\|\*(13
+.ds 13 "\(*s
+.ds 14 "a
+.as 13 \v'20u'\*(14\v'-20u'
+.ds 14 "a
+.nr 13 \w'\s6\*(13'
+.nr 14 \w'\s6\*(14'
+.nr 15 \n(13
+.if \n(14>\n(15 .nr 15 \n(14
+.ds 13 \v'20u'\h'\n(15u-\n(14u/2u'\*(14\
+\h'-\n(14u-\n(13u/2u'\v'-60u'\*(13\
+\h'-\n(15u-\n(13u-2u/2u'\v'20u'\l'\n(15u'\v'20u'
+.ds 13 \|\v'-10u'\b'\(lt\(bv\(lb'\v'10u'\*(13\|\v'-10u'\b'\(rt\(bv\(rb'\v'10u'
+.ds 14 "\f12\fP
+.as 13 \v'-60u'\*(14\v'60u'
+.ds 14 "\(pl
+.as 13 "\*(14
+.ds 14 "\(*s
+.ds 15 "b
+.as 14 \v'20u'\*(15\v'-20u'
+.ds 15 "b
+.nr 14 \w'\s6\*(14'
+.nr 15 \w'\s6\*(15'
+.nr 16 \n(14
+.if \n(15>\n(16 .nr 16 \n(15
+.ds 14 \v'20u'\h'\n(16u-\n(15u/2u'\*(15\
+\h'-\n(15u-\n(14u/2u'\v'-60u'\*(14\
+\h'-\n(16u-\n(14u-2u/2u'\v'20u'\l'\n(16u'\v'20u'
+.ds 14 \|\v'-10u'\b'\(lt\(bv\(lb'\v'10u'\*(14\|\v'-10u'\b'\(rt\(bv\(rb'\v'10u'
+.ds 15 "\f12\fP
+.as 14 \v'-60u'\*(15\v'60u'
+.as 13 "\*(14
+.ds 13 \|\v'-10u'\b'\(lc\(bv\(bv\(lf'\v'10u'\*(13\|\v'-10u'\b'\(rc\(bv\(bv\(rf'\v'10u'
+.ds 14 "\f11\fP
+.ds 15 "\f12\fP
+.nr 14 \w'\s6\*(14'
+.nr 15 \w'\s6\*(15'
+.nr 16 \n(14
+.if \n(15>\n(16 .nr 16 \n(15
+.ds 14 \v'20u'\h'\n(16u-\n(15u/2u'\*(15\
+\h'-\n(15u-\n(14u/2u'\v'-40u'\*(14\
+\h'-\n(16u-\n(14u-2u/2u'\v'0u'\l'\n(16u'\v'20u'
+.as 13 \v'-40u'\*(14\v'40u'
+.as 12 "\*(13
+.ds 13 "X
+.as 12 "\*(13
+.nr 11 \w'\s6\*(11'
+.nr 13 \n(11
+.nr 12 \w'\s6\*(12'
+.if \n(12>\n(13 .nr 13 \n(12
+.ds 13 \v'200u'\h'0u*\n(13u'\
+\v'-60u'\h'\n(13u-\n(12u/2u'\*(12\h'-\n(13u-\n(12u/2u'\v'0-180u'\
+\v'-20u'\h'\n(13u-\n(11u/2u'\*(11\h'-\n(13u-\n(11u/2u'\v'0-80u'\
+\v'140u'\h'1u*\n(13u'
+.ds 13 \x'0'\x'0-60u'\f1\s10\*(13\s\n(99\f\n(98\x'180u'
+.nr 13 \w'\*(13'
+.nr MK 0
+.if 320>\n(.v .ne 320u
+.rn 13 10
+\*(10
+.ps \n(99
+.ft \n(98
+.EN
+.KE
+
+
+.KS
+.ul
+multiplication:
+.EQ "(eqn 8.4.2)"
+.nr 99 \n(.s
+.nr 98 \n(.f
+.ps 10
+.ft 1
+.ds 11 "X
+.ds 12 "\ 
+.as 11 "\|\*(12
+.ds 12 "\(eq
+.as 11 "\|\*(12
+.ds 12 "\ 
+.as 11 "\|\*(12
+.ds 12 "a
+.as 11 "\|\*(12
+.ds 12 "b
+.as 11 "\|\*(12
+.ds 12 "\(*s
+.ds 13 "X
+.as 12 \v'20u'\*(13\v'-20u'
+.ds 13 "\ 
+.as 12 "\|\*(13
+.ds 13 "\(eq
+.as 12 "\|\*(13
+.ds 13 "\ 
+.as 12 "\|\*(13
+.ds 13 "\(*s
+.ds 14 "a
+.as 13 \v'20u'\*(14\v'-20u'
+.ds 14 "a
+.nr 13 \w'\s6\*(13'
+.nr 14 \w'\s6\*(14'
+.nr 15 \n(13
+.if \n(14>\n(15 .nr 15 \n(14
+.ds 13 \v'20u'\h'\n(15u-\n(14u/2u'\*(14\
+\h'-\n(14u-\n(13u/2u'\v'-60u'\*(13\
+\h'-\n(15u-\n(13u-2u/2u'\v'20u'\l'\n(15u'\v'20u'
+.ds 13 \|\v'-10u'\b'\(lt\(bv\(lb'\v'10u'\*(13\|\v'-10u'\b'\(rt\(bv\(rb'\v'10u'
+.ds 14 "\f12\fP
+.as 13 \v'-60u'\*(14\v'60u'
+.ds 14 "\(pl
+.as 13 "\*(14
+.ds 14 "\(*s
+.ds 15 "b
+.as 14 \v'20u'\*(15\v'-20u'
+.ds 15 "b
+.nr 14 \w'\s6\*(14'
+.nr 15 \w'\s6\*(15'
+.nr 16 \n(14
+.if \n(15>\n(16 .nr 16 \n(15
+.ds 14 \v'20u'\h'\n(16u-\n(15u/2u'\*(15\
+\h'-\n(15u-\n(14u/2u'\v'-60u'\*(14\
+\h'-\n(16u-\n(14u-2u/2u'\v'20u'\l'\n(16u'\v'20u'
+.ds 14 \|\v'-10u'\b'\(lt\(bv\(lb'\v'10u'\*(14\|\v'-10u'\b'\(rt\(bv\(rb'\v'10u'
+.ds 15 "\f12\fP
+.as 14 \v'-60u'\*(15\v'60u'
+.as 13 "\*(14
+.ds 13 \|\v'-10u'\b'\(lc\(bv\(bv\(lf'\v'10u'\*(13\|\v'-10u'\b'\(rc\(bv\(bv\(rf'\v'10u'
+.ds 14 "\f11\fP
+.ds 15 "\f12\fP
+.nr 14 \w'\s6\*(14'
+.nr 15 \w'\s6\*(15'
+.nr 16 \n(14
+.if \n(15>\n(16 .nr 16 \n(15
+.ds 14 \v'20u'\h'\n(16u-\n(15u/2u'\*(15\
+\h'-\n(15u-\n(14u/2u'\v'-40u'\*(14\
+\h'-\n(16u-\n(14u-2u/2u'\v'0u'\l'\n(16u'\v'20u'
+.as 13 \v'-40u'\*(14\v'40u'
+.as 12 "\*(13
+.ds 13 "X
+.as 12 "\*(13
+.nr 11 \w'\s6\*(11'
+.nr 13 \n(11
+.nr 12 \w'\s6\*(12'
+.if \n(12>\n(13 .nr 13 \n(12
+.ds 13 \v'200u'\h'0u*\n(13u'\
+\v'-60u'\h'\n(13u-\n(12u/2u'\*(12\h'-\n(13u-\n(12u/2u'\v'0-180u'\
+\v'0u'\h'\n(13u-\n(11u/2u'\*(11\h'-\n(13u-\n(11u/2u'\v'0-60u'\
+\v'100u'\h'1u*\n(13u'
+.ds 13 \x'0'\x'0-20u'\f1\s10\*(13\s\n(99\f\n(98\x'180u'
+.nr 13 \w'\*(13'
+.nr MK 0
+.if 280>\n(.v .ne 280u
+.rn 13 10
+\*(10
+.ps \n(99
+.ft \n(98
+.EN
+.KE
+
+
+.KS
+.ul
+subtraction:
+.EQ
+.nr 99 \n(.s
+.nr 98 \n(.f
+.ps 10
+.ft 1
+.ds 11 "X
+.ds 12 "\ 
+.as 11 "\|\*(12
+.ds 12 "\(eq
+.as 11 "\|\*(12
+.ds 12 "\ 
+.as 11 "\|\*(12
+.ds 12 "a
+.as 11 "\|\*(12
+.ds 12 "\(mi
+.as 11 "\|\*(12
+.ds 12 "b
+.as 11 "\|\*(12
+.ds 12 "\(*s
+.ds 13 "X
+.as 12 \v'20u'\*(13\v'-20u'
+.ds 13 "\ 
+.as 12 "\|\*(13
+.ds 13 "\(eq
+.as 12 "\|\*(13
+.ds 13 "\ 
+.as 12 "\|\*(13
+.ds 13 "\(*s
+.ds 14 "a
+.ds 15 "\f12\fP
+.nr 14 \w'\s6\*(14'
+.nr 15 \w'\s6\*(15'
+.nr 16 \n(15
+.if \n(14>\n(16 .nr 16 \n(14
+.as 13 \v'20u'\*(14\h'-\n(14u'\v'-40u'\
+\*(15\h'-\n(15u+\n(16u'\v'20u'
+.ds 14 "\(pl
+.as 13 "\|\*(14
+.ds 14 "\(*s
+.ds 15 "b
+.ds 1eqn: syntax erroreqn: syntax erroreqn: syntax error6 "\f12\fP
+.nr 15 \w'\s6\*(15'
+.nr 16 \w'\s6\*(16'
+.nr 17 \n(16
+.if \n(15>\n(17 .nr 17 \n(15
+.as 14 \v'20u'\*(15\h'-\n(15u'\v'-40u'\
+\*(16\h'-\n(16u+\n(17u'\v'20u'
+.as 13 "\|\*(14
+.ds 13 \|\v'0u'\b'\(lt\(lk\(lb'\v'0u'\*(13\|\v'0u'\b'\(rt\(rk\(rb'\v'0u'
+.ds 14 "\f11\fP
+.ds 15 "\f12\fP
+.nr 14 \w'\s6\*(14'
+.nr 15 \w'\s6\*(15'
+.nr 16 \n(14
+.if \n(15>\n(16 .nr 16 \n(15
+.ds 14 \v'20u'\h'\n(16u-\n(15u/2u'\*(15\
+\h'-\n(15u-\n(14u/2u'\v'-40u'\*(14\
+\h'-\n(16u-\n(14u-2u/2u'\v'0u'\l'\n(16u'\v'20u'
+.as 13 \v'-40u'\*(14\v'40u'
+.as 12 "\|\*(13
+.nr 11 \w'\s6\*(11'
+.nr 13 \n(11
+.nr 12 \w'\s6\*(12'
+.if \n(12>\n(13 .nr 13 \n(12
+.ds 13 \v'160u'\h'0u*\n(13u'\
+\v'-40u'\h'\n(13u-\n(12u/2u'\*(12\h'-\n(13u-\n(12u/2u'\v'0-160u'\
+\v'0u'\h'\n(13u-\n(11u/2u'\*(11\h'-\n(13u-\n(11u/2u'\v'0-60u'\
+\v'100u'\h'1u*\n(13u'
+.ds 13 \x'0'\x'0-20u'\f1\s10\*(13\s\n(99\f\n(98\x'140u'
+.nr 13 \w'\*(13'
+.nr MK 0
+.if 240>\n(.v .ne 240u
+.rn 13 10
+\*(10
+.ps \n(99
+.ft \n(98
+.EN
+.KE
+
+
+.KS
+.ul
+addition
+(when errors already exist):
+.EQ "(eqn 8.4.3)"
+.nr 99 \n(.s
+.nr 98 \n(.f
+.ps 10
+.ft 1
+.ds 11 "\f1(\fPsum\|\f1)\fP\|\f1:\fP
+.ds 12 "\ 
+.as 11 "\|\*(12
+.ds 12 "\ 
+.as 11 "\|\*(12
+.ds 12 "X
+.as 11 "\|\*(12
+.ds 12 "\ 
+.as 11 "\|\*(12
+.ds 12 "\(eq
+.as 11 "\|\*(12
+.ds 12 "\ 
+.as 11 "\|\*(12
+.ds 12 "a
+.as 11 "\|\*(12
+.ds 12 "\(pl
+.as 11 "\|\*(12
+.ds 12 "b
+.as 11 "\|\*(12
+.ds 12 "\(pl
+.as 11 "\|\*(12
+.ds 12 ".
+.as 11 "\*(12
+.ds 12 ".
+.as 11 "\*(12
+.ds 12 ".
+.as 11 "\*(12
+.ds 12 "\(plc\|\f1,\fP
+.as 11 "\*(12
+.ds 12 "\(*s
+.ds 13 "x
+.as 12 \v'20u'\*(13\v'-20u'
+.ds 13 "\ 
+.as 12 "\|\*(13
+.ds 13 "\(eq
+.as 12 "\|\*(13
+.ds 13 "\ 
+.as 12 "\|\*(13
+.ds 13 "\(*s
+.ds 14 "a
+.ds 15 "\f12\fP
+.nr 14 \w'\s6\*(14'
+.nr 15 \w'\s6\*(15'
+.nr 16 \n(15
+.if \n(14>\n(16 .nr 16 \n(14
+.as 13 \v'20u'\*(14\h'-\n(14u'\v'-40u'\
+\*(15\h'-\n(15u+\n(16u'\v'20u'
+.ds 14 "\(pl
+.as 13 "\|\*(14
+.ds 14 "\(*s
+.ds 15 "b
+.ds 16 "\f12\fP
+.nr 15 \w'\s6\*(15'
+.nr 16 \w'\s6\*(16'
+.nr 17 \n(16
+.if \n(15>\n(17 .nr 17 \n(15
+.as 14 \v'20u'\*(15\h'-\n(15u'\v'-40u'\
+\*(16\h'-\n(16u+\n(17u'\v'20u'
+.as 13 "\|\*(14
+.ds 14 "\(pl
+.as 13 "\|\*(14
+.ds 14 ".
+.as 13 "\*(14
+.ds 14 ".
+.as 13 "\*(14
+.ds 14 ".
+.as 13 "\*(14
+.ds 14 "\(pl
+.as 13 "\*(14
+.ds 14 "\(*s
+.ds 15 "c
+.ds 16 "\f12\fP
+.nr 15 \w'\s6\*(15'
+.nr 16 \w'\s6\*(16'
+.nr 17 \n(16
+.if \n(15>\n(17 .nr 17 \n(15
+.as 14 \v'20u'\*(15\h'-\n(15u'\v'-40u'\
+\*(16\h'-\n(16u+\n(17u'\v'20u'
+.as 13 "\|\*(14
+.ds 13 \|\v'0u'\b'\(lt\(lk\(lb'\v'0u'\*(13\|\v'0u'\b'\(rt\(rk\(rb'\v'0u'
+.ds 14 "\f11\fP
+.ds 15 "\f12\fP
+.nr 14 \w'\s6\*(14'
+.nr 15 \w'\s6\*(15'
+.nr 16 \n(14
+.if \n(15>\n(16 .nr 16 \n(15
+.ds 14 \v'20u'\h'\n(16u-\n(15u/2u'\*(15\
+\h'-\n(15u-\n(14u/2u'\v'-40u'\*(14\
+\h'-\n(16u-\n(14u-2u/2u'\v'0u'\l'\n(16u'\v'20u'
+.as 13 \v'-40u'\*(14\v'40u'
+.as 12 "\|\*(13
+syntax error.nr 13 \w'\*(13'
+.nr MK 0
+.if 240>\n(.v .ne 240u
+.rn 13 10
+\*(10
+.ps \n(99
+.ft \n(98
+.EN
+
+
+
+.EQ
+.nr 99 \n(.s
+.nr 98 \n(.f
+.ps 10
+.ft 1
+.ds 11 "\f1(\fPaverage
+.ds 12 "\ 
+.as 11 "\|\*(12
+.ds 12 "o\^f\|
+.as 11 "\|\*(12
+.ds 12 "\ 
+.as 11 "\|\*(12
+.ds 12 "n
+.as 11 "\|\*(12
+.ds 12 "\ 
+.as 11 "\|\*(12
+.ds 12 "spectra\|\f1)\fP\|\f1:\fP
+.as 11 "\|\*(12
+.ds 12 "\ 
+.as 11 "\|\*(12
+.ds 12 "\ 
+.as 11 "\|\*(12
+.ds 12 "X
+.as 11 "\|\*(12
+.ds 12 "\ 
+.as 11 "\|\*(12
+.ds 12 "\(eq
+.as 11 "\|\*(12
+.ds 12 "\ 
+.as 11 "\|\*(12
+.ds 12 "\f1(\fPa
+.as 11 "\|\*(12
+.ds 12 "\(pl
+.as 11 "\|\*(12
+.ds 12 "b
+.as 11 "\|\*(12
+.ds 12 "\(pl
+.as 11 "\|\*(12
+.ds 12 ".
+.as 11 "\*(12
+.ds 12 ".
+.as 11 "\*(12
+.ds 12 ".
+.as 11 "\*(12
+.ds 12 "c\|\f1)\fP
+.as 11 "\*(12
+.ds 12 "\(sl
+.as 11 "\|\*(12
+.ds 12 "n
+.as 11 "\|\*(12
+.ds 11 \x'0'\f1\s10\*(11\|\s\n(99\f\n(98
+syntax error.nr 11 \w'\*(11'
+.nr MK 0
+.if 40>\n(.v .ne 40u
+.rn 11 10
+\*(10
+.ps \n(99
+.ft \n(98
+.EN
+
+
+.EQ
+.nr 99 \n(.s
+.nr 98 \n(.f
+.ps 10
+.ft 1
+.ds 11 "\(*s
+.ds 12 "x
+.as 11 \v'20u'\*(12\v'-20u'
+.ds 12 "\ 
+.as 11 "\|\*(12
+.ds 12 "\(eq
+.as 11 "\|\*(12
+.ds 12 "\ 
+.as 11 "\|\*(12
+.ds 12 "\(*s
+.ds 13 "a
+.ds 14 "\f12\fP
+.nr 13 \w'\s6\*(13'
+.nr 14 \w'\s6\*(14'
+.nr 15 \n(14
+.if \n(13>\n(15 .nr 15 \n(13
+.as 12 \v'20u'\*(13\h'-\n(13u'\v'-40u'\
+\*(14\h'-\n(14u+\n(15u'\v'20u'
+.ds 13 "\(pl
+.as 12 "\|\*(13
+.ds 13 "\(*s
+.ds 14 "b
+.ds 15 "\f12\fP
+.nr 14 \w'\s6\*(14'
+.nr 15 \w'\s6\*(15'
+.nr 16 \n(15
+.if \n(14>\n(16 .nr 16 \n(14
+.as 13 \v'20u'\*(14\h'-\n(14u'\v'-40u'\
+\*(15\h'-\n(15u+\n(16u'\v'20u'
+.as 12 "\|\*(13
+.ds 13 "\(pl
+.as 12 "\|\*(13
+.ds 13 ".
+.as 12 "\*(13
+.ds 13 ".
+.as 12 "\*(13
+.ds 13 ".
+.as 12 "\*(13
+.ds 13 "\(pl
+.as 12 "\*(13
+.ds 13 "\(*s
+.ds 14 "c
+.ds 15 "\f12\fP
+.nr 14 \w'\s6\*(14'
+.nr 15 \w'\s6\*(15'
+.nr 16 \n(15
+.if \n(14>\n(16 .nr 16 \n(14
+.as 13 \v'20u'\*(14\h'-\n(14u'\v'-40u'\
+\*(15\h'-\n(15u+\n(16u'\v'20u'
+.as 12 "\|\*(13
+.ds 12 \|\v'0u'\b'\(lt\(lk\(lb'\v'0u'\*(12\|\v'0u'\b'\(rt\(rk\(rb'\v'0u'
+.ds 13 "\f11\fP
+.ds 14 "\f12\fP
+.nr 13 \w'\s6\*(13'
+.nr 14 \w'\s6\*(14'
+.nr 15 \n(13
+.if \n(14>\n(15 .nr 15 \n(14
+.ds 13 \v'20u'\h'\n(15u-\n(14u/2u'\*(14\
+\h'-\n(14u-\n(13u/2u'\v'-40u'\*(13\
+\h'-\n(15u-\n(13u-2u/2u'\v'0u'\l'\n(15u'\v'20u'
+.as 12 \v'-40u'\*(13\v'40u'
+.as 11 "\|\*(12
+.ds 12 "\(sl
+.as 11 "\|\*(12
+.ds 12 "n
+.as 11 "\|\*(12
+.ds 11 \x'0'\x'0-80u'\f1\s10\*(11\|\s\n(99\f\n(98\x'20u'
+syntax error.nr 11 \w'\*(11'
+.nr MK 0
+.if 180>\n(.v .ne 180u
+.rn 11 10
+\*(10
+.ps \n(99
+.ft \n(98
+.EN
+.KE
+
+
+.KS
+standard deviation of the mean is derived from (generate errors
+for the first time):
+
+.nf
+.in 20n
+     \(lt  n       _   \(rt\(12
+     \(br  \(*S (x\di\u - x)2 \(br
+\(*s\dx\u = \(br i=1          \(br
+     \(br \(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em \(br
+     \(lb   (n - 1)    \(rb
+.in 0n
+.fi
+
+where n = number of spectra, x\di\u = each spectrum, and
+.EQ
+.nr 99 \n(.s
+.nr 98 \n(.f
+.ps 10
+.ft 1
+.ds 11 "x
+.nr 11 \w'\s10\*(11'
+.nr 10 0u
+.ds 12 \v'-1'\l'\n(11u'\v'1'
+.nr 12 \w'\s10\*(12'
+.as 11 \h'-\n(11u-\n(12u/2u'\v'0-\n(10u'\*(12\v'\n(10u'\h'-\n(12u+\n(11u/2u'
+.ds 12 "\ 
+.as 11 "\|\*(12
+.ds 12 "\(eq
+.as 11 "\|\*(12
+.ds 12 "\ 
+.as 11 "\|\*(12
+.ds 12 "\f11\fP
+.ds 13 "n
+.nr 12 \w'\s10\*(12'
+.nr 13 \w'\s10\*(13'
+.nr 14 \n(12
+.if \n(13>\n(14 .nr 14 \n(13
+.ds 12 \v'20u'\h'\n(14u-\n(13u/2u'\*(13\
+\h'-\n(13u-\n(12u/2u'\v'-40u'\*(12\
+\h'-\n(14u-\n(12u-2u/2u'\v'0u'\l'\n(14u'\v'20u'
+.as 11 "\*(12
+.ds 12 \(*S
+.ds 13 "i\|\(eq\|\f11\fP
+.ds 14 "n
+.nr 12 \w'\s10\*(12'
+.nr 15 \n(12
+.nr 13 \w'\s7\*(13'
+.if \n(13>\n(15 .nr 15 \n(13
+.nr 14 \w'\s7\*(14'
+.if \n(14>\n(15 .nr 15 \n(14
+.ds 15 \v'40u'\h'\n(15u-\n(13u/2u'\s7\*(13\s10\h'-\n(15u-\n(13u/2u'\v'-40u'\
+\h'\n(15u-\n(12u/2u'\*(12\h'\n(15u-\n(12u+2u/2u'\
+\v'-40u'\h'-\n(15u-\n(14u/2u'\s7\*(14\s10\h'\n(15u-\n(14u/2u'\v'40u'\
+
+.as 11 "\*(15
+.ds 12 "x
+.ds 13 "i
+.as 12 \v'20u'\*(13\v'-20u'
+.as 11 "\*(12
+.ds 11 \x'0'\x'0-20u'\f1\s10\*(11\|\s\n(99\f\n(98\x'20u'
+.nr 11 \w'\*(11'
+.nr MK 0
+.if 120>\n(.v .ne 120u
+.rn 11 10
+\*(10
+.ps \n(99
+.ft \n(98
+.EN
+.KE
+
+
+
+.KS
+.B
+8.5  Algebraic and Trigonometric Functions "
+.R
+.PP
+A complete set of algebraic, trigonometric, and power functions
+exists similar to those on a scientific calculator.  No error
+analysis is included with any of these functions.  The functions
+are accessed by file ID, file number, colon (:), and the name of
+the function.  Functions are:
+
+.in 10n
+.nf
+                   Exponential:  exp
+             Natural logarithm:  ln
+              Common logarithm:  log
+         Ten to spectrum power:  10**x
+                       Inverse:  1/x
+Spectrum to the constant power:  x**c
+Constant to the spectrum power:  c**x
+             Sine (in radians):  sin
+           Cosine (in radians):  cos
+          Tangent (in radians):  tan
+             Sine (in degrees):  sind
+           Cosine (in degrees):  cosd
+          Tangent (in degrees):  tand
+        Inverse sine (radians):  invsin
+      Inverse cosine (radians):  invcos
+     Inverse tangent (radians):  invtan
+        Inverse sine (degrees):  invsind
+      Inverse cosine (degrees):  invcosd
+     Inverse tangent (degrees):  invtand
+     Hyperbolic sine (radians):  sinh
+   Hyperbolic cosine (radians):  cosh
+  Hyperbolic tangent (radians):  tanh
+                Absolute value:  abs
+                 Integer value:  int
+               Fractional part:  frac
+.in 0n
+.fi
+.KE
+
+Examples:
+
+.in 14n
+.nf
+.B
+v397:ln       \\# natural log of v397
+w76:cos       \\# cosine of w76.
+.R
+.fi
+.in 0n
+.PP
+In both the spectrum to the constant power and constant to the
+spectrum power, the value of the constant is after the command
+(x**c or c**x):
+
+.in 14n
+.nf
+.B
+v397:x**c3.65       \\# v397 to the 3.65 power,
+v397:c**x3.65       \\# constant 3.65 to the v397 power
+.R
+.fi
+.in 0n
+
+No options are valid with any of these operations
+including errors (except 1/x can include errors), band
+normalization, and production processing.
+This is due to programming limits (there has to be some).  Since
+these routines are not used too often, this should make little
+difference.  What are they used for?  Normal spectral processing
+does not need them, but say you wanted to make a plot of a phase
+function for a Lambert sphere:
+
+.EQ "(eqn 8.5.1)"
+.nr 99 \n(.s
+.nr 98 \n(.f
+.ps 10
+.ft 1
+.ds 11 "\(*F
+.ds 12 "\f1(\fP
+.as 11 "\|\*(12
+.ds 12 "\(*a
+.as 11 "\|\*(12
+.ds 12 "\f1)\fP
+.as 11 "\|\*(12
+.ds 12 "\ 
+.as 11 "\|\*(12
+.ds 12 "\(eq
+.as 11 "\|\*(12
+.ds 12 "\ 
+.as 11 "\|\*(12
+.ds 12 "\f11\fP
+.ds 13 "\(*p
+.nr 12 \w'\s10\*(12'
+.nr 13 \w'\s10\*(13'
+.nr 14 \n(12
+.if \n(13>\n(14 .nr 14 \n(13
+.ds 12 \v'20u'\h'\n(14u-\n(13u/2u'\*(13\
+\h'-\n(13u-\n(12u/2u'\v'-40u'\*(12\
+\h'-\n(14u-\n(12u-2u/2u'\v'0u'\l'\n(14u'\v'20u'
+.as 11 "\*(12
+.ds 12 "\f1sin\fP
+.ds 13 "\ 
+.as 12 "\|\*(13
+.ds 13 "\(*a
+.as 12 "\|\*(13
+.ds 13 "\(pl
+.as 12 "\|\*(13
+.ds 13 "\f1(\fP
+.as 12 "\|\*(13
+.ds 13 "\(*p
+.as 12 "\|\*(13
+.ds 13 "\(mi
+.as 12 "\|\*(13
+.ds 13 "\(*a
+.as 12 "\|\*(13
+.ds 13 "\f1)\fP
+.as 12 "\|\*(13
+.ds 13 "\f1cos\fP
+.as 12 "\|\*(13
+.ds 13 "\ 
+.as 12 "\|\*(13
+.ds 13 "\(*a
+.as 12 "\|\*(13
+.ds 12 \|\v'0u'\b'\(lc\(lf'\v'0u'\*(12\|\v'0u'\b'\(rc\(rf'\v'0u'
+.as 11 "\*(12
+.ds 11 \x'0'\f1\s10\*(11\|\s\n(99\f\n(98
+.nr 11 \w'\*(11'
+.nr MK 0
+.if 80>\n(.v .ne 80u
+.rn 11 10
+\*(10
+.ps \n(99
+.ft \n(98
+.EN
+
+.PP
+You could generate data for \(*a increasing from 0 to 180\(de
+using the wavelength routines and then this function using the
+math functions.  The result can then be plotted on the Gould
+printer plotter using the plot routines.
+
+
+.KS
+.B
+8.6  Special Functions
+.R
+.PP
+Special function subroutines are additional routines for operating
+on any kind of data.  They do any operation: for example a data list,
+a data editor, or a specific computation.  Some special functions
+operate on a data set (for example, a smoothing function) while
+others may create a new data set (for example, read one from an ascii
+text file or digitize one on a digitizing tablet, or simply compute
+one, like a Plank black body).
+.PP
+Special functions are called from math operations by one of two
+methods, depending on whether or not the function operates on an
+existing data set.  If a function requires a data set, you enter the
+file id, record number, an "f" followed by the function number.  For
+example, to smooth (function 7) data set v23, you would enter the
+command:
+
+.in 14n
+.B
+v23f7
+.R
+.in 0n
+.KE
+
+Special functions also have alias names.  For example, the smoothing
+function f7 has the alias "smooth".  Thus
+
+.in 14n
+.B
+v23f7
+.R
+.in 0n
+and
+.in 14n
+.B
+v23smooth
+.R
+.in 0n
+
+are equivalent.
+.PP
+Some special functions do not need an input data set.  In that case,
+just specify the function or its alias.  For example, to compute a
+Planck black body, type:
+
+.in 14n
+.B
+f6
+.R
+.in 0n
+or
+.in 14n
+.B
+planck
+.R
+.in 0n
+
+and the function will be started.
+.PP
+Note there is no colon in the command line for special functions as
+compared to the algebraic and trig routines.
+.PP
+Special function 1 is a function which lists a catalog of all available
+special functions.  Just type "f1" from the math operations command
+line.  This list contains a code at the end of the short description
+which tells if the function needs a data file input before the
+function on the command line.  If this is the case, you will see an
+"(f)" at the end of the description.  If the function can also
+propagate the error bars to the data set, it will have an "(f,e)"
+at the end of the description.
+.PP
+To propagate error bars for those routines that support error
+propagation, you must specify an "e" option on the command line.  For
+example, to propagate error bars in the cubic spline interpolation
+routine, function f12, alias cspline, and operate on data set v23,
+type the command:
+
+.in 14n
+.B
+v23f12e
+.R
+.in 0n
+or
+.in 14n
+.B
+v23cspline e
+.R
+.in 0n
+
+
+Specpr is designed to add special functions easily.  Subroutine calls
+already exist in the
+program for many as yet unwritten routines.  These routines are
+designed for easy linking to the present program.  New routines can
+be user written with less effort than a completely separate
+program since, in most cases, SPECPR handles all the data
+management.  
+
+
+
+.KS
+8.7  Return from a Math Operation or Function
+.PP
+When a routine such as addition, subtraction, special function,
+trig. function, etc., has finished, the program asks the user
+where he/she wishes the data to be written.  The data can be
+written to any of the files:  v, w, d, u, or y if allowed by the
+protection.  If the protection on the device is positive or zero,
+the data can only be written to the protection value plus 1.  Thus,
+it is not necessary to type in this value since it is the only
+value possible.  Simply type the file letter ID and return; the
+record number will be set automatically.
+.PP
+The data set is not written
+at this point.  It is written after the CRT plot routines.  The
+user may also exit the current operation from this point.  By
+typing
+
+.in 14n
+.B
+e
+.R
+.in 0n
+.KE
+
+the current operation is terminated and the program begins
+execution of the next command if there is one
+or returns to Math
+Operations if there are no other command requests.  If the user
+types
+
+.in 14n
+.B
+x
+.R
+.in 0n
+
+all processing stops, and the program returns directly to Math
+Operations.
+.PP
+If the user requests the data to be stored, then the program
+continues to the titles routine (section 8.8).
+
+
+
+.KS
+.B
+8.8  The Titles Routine
+.R
+.PP
+The titles routine displays 2 titles on the CRT which may be
+selected for the new data, or one of 25 user stored titles can be
+recalled, or the user can type in a new title and store it.  The 2
+titles displayed are as follows.
+
+.in 24n
+.ti -24n
+The "option p title"    This is the "present title" of the first data
+set read in for 2 file operations or the title
+of the last data set in the addition routine or many other routines.
+Some special functions may generate a suggested present title.
+
+.ti -24n
+The "option l title"    This is the title requested for the last
+operation.
+.in 0n
+.KE
+
+.PP
+In the subtraction routine, the program decodes an "object-sky"
+title as the option p title.  This is based on inputs from the
+"Wedge" CVF spectrometer data system and may not be valid with
+other types of subtraction.
+.PP
+All titles are 40 characters long, so
+to select the option p or l titles, type
+
+.in 14n
+.B
+p
+.R
+.in 0n
+or
+.in 14n
+.B
+l
+.R
+.in 0n
+
+with no other characters in columns to 40.  To recall one of the
+stored titles, type
+
+.in 14n
+.B
+t#
+.R
+.in 0n
+
+where the "#" is the title number (1 to 25).  There can be no
+other characters in columns 1 to 40.  If other characters are
+detected here, the program will think this is a new title and use it.
+The title used, whether recalled or new, is stored in title file t1.
+To list the contents of the title file, type
+
+.in 14n
+.B
+tl
+.R
+.in 0n
+
+with no other characters on the command line.  The titles will be listed
+and the program will again ask for a title.
+.PP
+Once a title has
+been selected (recalled or new), further commands can be placed in
+columns 40 or greater.  To store a title, type
+
+.in 14n
+.B
+t#
+.R
+.in 0n
+
+where the "#" is the title number (3 to 25 are valid).  Remember, the
+"t#" must be positioned in columns 41 or greater with the requested
+title (recalled or new) in columns 1 through 40.
+.PP
+The Band
+normalization or Production processing options can also be turned
+on or off by control characters in columns 41 or greater.  Type
+
+.in 14n
+.B
+b
+.R
+.in 0n
+
+to turn on or
+
+.in 14n
+.B
+bn
+.R
+.in 0n
+
+to turn off Band normalization.  Type
+
+.in 14n
+.B
+p
+.R
+.in 0n
+
+to turn on or
+
+.in 14n
+.B
+pn
+.R
+.in 0n
+
+to turn off the Production processing option (the n is for none).
+.PP
+The vertical scale of the pending crt plot can also be changed
+after column 41 of the title command line.  Simply type "c and the
+lower and upper range.  For example, to change the scale from 0.92
+to 1.63, type
+
+.in 14n
+.B
+c 0.92 1.63
+.R
+.in 0n
+
+after column 41.
+.PP
+An example of a complete title entry would be
+
+.in 14n
+.B
+Scapolite HS351 / Halon 4x resol .2-3um   t5 b c .5 1.5
+.R
+.in 0n
+
+which means to make the title of the current data set "Scapolite
+HS351 / Halon 4x resol .2-3um", store it in title location 5,
+turn on band normalization and change scale of the pending CRT plot
+to lower bound 0.5 and upper bound 1.5.
+.PP
+The current operation can be terminated as in section 8.7 by
+typing
+
+.in 14n
+.B
+e
+.R
+.in 0n
+or
+.in 14n
+.B
+x
+.R
+.in 0n
+
+with no other characters on the line.  Typing "e"
+will terminate the present operation, and the program will begin
+the next operation if there is one.  Otherwise, it will return to
+Math Operations.  Typing "x"
+will terminate all operations and will go directly to Math
+Operations.
+.PP
+If a title is requested, the program will then go to the Band
+Normalization Routine (section 8.9) if the Band Normalization option is
+on or to the CRT plot routines if the Band Normalization and Production
+options are off.  If the Production and Band Normalization options are
+on, the program will go to the Band Normalization; otherwise, if only
+the Production option is on it will write the data and begin processing
+the next command.
+
+
+
+.KS
+8.9  Band Normalization
+.PP
+The Band Normalization is a least squares analysis over a user
+selected band with the spectrum scaled so the middle of the band
+is scaled to unity.  The band can be one channel or however many
+channels are in the spectrum.  The Band
+Normalization routine is called after each operation if the Band
+Normalization option is on.
+.PP
+When you are in the band normalization routine, you have several options
+to control the region that will be normalized.
+.KE
+.PP
+Channels can be deleted inside the region of normalization by typing
+the
+
+.in 14n
+.B
+d
+.R
+.in 0n
+
+command.  The program then asks for the points.  One line can be
+filled with points to be deleted (numbers, no characters).
+.PP
+The band limits can be moved by typing the
+
+.in 14n
+.B
+m
+.R
+.in 0n
+
+command.  Deleted channels can be reinserted by typing the
+
+.in 14n
+.B
+r
+.R
+.in 0n
+
+command.
+.PP
+The band area with the fitted line along
+with the correlation coefficient, the previous Band Normalization
+factor (the normalization factor of the data before this
+normalization), the current normalization factor (as determined
+by this normalization), and the future normalization factor (if
+this normalization is carried out) are plotted on the CRT.  The
+future normalization
+factor equals the previous times the current factors.
+.PP
+.B
+WARNING:
+if the
+previous normalization factor was zero when the Band
+Normalization routine is entered, it is reset to 1.0.
+.R
+.PP
+To perform the normalization of the data, type
+
+.in 14n
+.B
+b
+.R
+.in 0n
+
+otherwise, type
+
+.in 14n
+.B
+e
+.R
+.in 0n
+
+to exit the routine without changing the normalization factor.  The
+"e" soft exit continues to the next step which will normally be the
+CRT plot routine unless production processing is turned on.  If
+production processing is turned on, the specpr will write the data
+when exiting band normalization with an "e" soft exit.
+.PP
+A hard exit, command "x" from the Band Normalization routine, will
+terminate all pending commands and return to the Math Operations
+command line.
+.PP
+Default Band Normalization limits when program is begun are 30
+to 38.

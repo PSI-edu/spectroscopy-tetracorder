@@ -1,0 +1,88 @@
+#
+# Should only need to edit the next group.
+#
+# note: in SSPPFLAGS, set TERMDELAY if you need extra delays by the
+# cpu for graphics terminal graphics.
+export SSPPFLAGS='LINUX -INTEL  -XWIN '
+export SPECPR=/src/local/specpr
+export RANDRET=32767
+export SP_LOCAL=/usr/local
+export SP_BIN=bin
+#
+# the following is needed for Linux red Hat 8, 9, ....
+# but not before. So comment out the one not needed
+
+### old: does not work setenv LDLIBS '/usr/lib/libc.a -L/usr/X11R6/lib -lX11'
+export SP_LDFLAGS=-L/usr/lib64
+export SP_LDLIBS='-L/usr/X11R6/lib -lX11'
+
+# pre RedHat 8:
+
+#export LDLIBS='-lX11 -lm'
+
+#
+# The following should be fine as is, except FFLAGS might need
+#               floating point accelerator flags
+#               (e.g. on sun add -ffpa if you have an accelerator)
+#
+export SPSDIR=syslinux
+export SPSYSOBJ='${SP_OBJ}/syslinux.o'
+export RANLIB='ranlib'
+export SSPP='sspp'
+export SP_DBG='${SPECPR}/debug'
+export SP_TMP='${SPECPR}/tmp'
+export SP_OBJ='${SPECPR}/obj'
+export SP_LIB='${SPECPR}/lib'
+
+export F77=gfortran
+export CC='cc'
+export AR='ar'
+export LD=ld
+export YACC=yacc
+export LEX=flex
+
+# choose the ratfor version that is on  your system:
+#export RF='ratfor'
+export RF='ratfor77'
+
+export SP_FFLAGS='-C -O -m64'
+export SP_FFLAGS1='-C -m64'
+export SP_FFLAGS2='-C -m64'
+export SPKLUDGE=LINUX
+
+# Added to following to not interrupt a backslash
+export BSLASH='-fno-backslash'
+
+export SP_FOPT='-O'
+export SP_FOPT1='-O'
+export SP_FOPT2='-O'
+export SP_RFLAGS='<'
+export SP_CFLAGS='-O -m64'
+export SP_ARFLAGS='rv'
+export SP_GFLAGS='-s'
+export SP_LFLAGS=' '
+export SP_YFLAGS=' '
+
+# used  in gfit/makefile (OPTIONAL COMPILE)
+#export GF1_LFLAGS ' '
+#export LIBPW ' '
+
+# needed at run time:
+
+# specpr run time environment variables change laser1 to your printer:
+export MY_HPGL_PLOTTER=laser1
+export MY_PS_PLOTTER=laser1
+export MY_PRINTER=laser1
+export MY_PRINTER_landscape_lines=49
+export MY_PRINTER_landscape=laser1
+export MY_PRINTER_portrait_lines=60
+
+export MY_DJET=dj650
+
+export EDITOR=vi
+
+# GFORTRAN:
+export GFORTRAN_UNBUFFERED_ALL=y
+export GFORTRAN_ERROR_BACKTRACE=y
+export GFORTRAN_ERROR_DUMPCORE=n
+

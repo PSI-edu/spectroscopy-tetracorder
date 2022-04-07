@@ -1,0 +1,111 @@
+.\" use ms macros
+.\" this header is for putting the page numbers at the bottom of the page
+.\" set line length, page offset, vertical spacing
+.nr LL 6.3i
+.ll 6.3i
+.nr PO 1.0i
+.po 1.0i
+.nr VS 12
+.vs 12
+.\" set header and footer margins (default is 1.0i)
+.nr FM 1.00i
+.fm 1.00i
+.nr HM 1.00i
+.hm 1.00i
+.\" set no date here, MUST be before CF definition, because ND sets CF
+.\" set date, so don't do .ND
+.\" LH CH RH are left, center, right header strings
+.\" LF CF RF are left, center, right footer strings
+.\" default is CH is defined as: .ds CH "\(hy \\n(PN \(hy
+.ds LH "SPECPR Users' Manual
+.ds CH
+.ds RH "Page 8-f8.\\n(PN
+.\" setup complete
+.nf
+SPECPR Users' Manual                                                   Page 8-f8.1
+
+
+.B
+F8:  Channel-Record Transpose                             Alias: tran[spose]
+.R
+.PP
+This routine transposes the array of channel (column) versus
+spectrum (rows) to spectrum versus channel.  For example, if you
+had 10 spectra of 5 channels each where each spectrum was taken
+at 1 hour intervals, this routine transposes the matrix so that
+there are 5 output "spectra" of 10 channels each where each
+"spectrum" is intensity at 10 different times.
+
+Example: given 4 spectra of 3 channels each:
+
+.in 14n
+.nf
+Spectrum |    Channel number
+Number   |  1       2       3
+         |---------------------
+     1   | 1.23   1.34    1.45
+     2   | 2.23   2.34    2.45
+     3   | 3.23   3.34    3.45
+     4   | 4.23   4.34    4.45
+
+.in 0n
+would be transposed to:
+
+.in 14n
+Spectrum |    Channel number
+Number   |  1       2       3       4
+         |-----------------------------
+     1   | 1.23   2.23    3.23    4.23
+     2   | 1.34   2.34    3.34    4.34
+     3   | 1.45   2.45    3.45    4.45
+.in 0n
+.fi
+    
+.PP
+.B
+WARNING:
+.R
+When you first enter the transpose routine, it prints the wavelength
+set in use.  The wavelength set controls the number of channels
+(and thus the potential number of output spectra), so it must be set
+to the right value.
+.PP
+The first input request is an option to delete channels.  If you
+delete input channels, the output spectrum will have that channel
+deleted.  You delete channels by typing "d" and the channels to be
+deleted (see plot routines for a more complete description of the
+delete points routine), and a "c" to continue to the next step.
+For example, say you had 20 spectra of 100 channels each,
+taken as a function of time
+and you wanted to only have a data set that was the intensity of
+channel 33.  You would delete all but channel 33:
+
+.in 14n
+.B
+d 1t32 34t100 c
+.R
+.in 0n
+
+(you may include spaces anywhere except within a number).
+.PP
+Next, you will be requested to enter each (non-deleted) channel.
+Input spectra are entered one per line (file letter ID and record
+number).  When all are typed in, type
+
+.in 14n
+.B
+b
+.R
+.in 0n
+
+to begin transpose.
+.PP
+The routine will next ask for the beginning
+output location (type in file letter ID and record number) and then
+a common title for all the output spectra.  The
+transpose will then begin and the
+output spectra will be output sequentially beginning at the
+beginning point in the file that you selected.
+.PP
+The number of output spectra is equal to
+the number of channels in use minus the deleted channels.

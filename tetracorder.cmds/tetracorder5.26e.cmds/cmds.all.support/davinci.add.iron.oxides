@@ -1,0 +1,224 @@
+#!/usr/local/bin/davinci -f
+#####!/usr/bin/env -S davinci -f  
+
+###########################  was:  #!/usr/local/bin/davinci -f
+
+
+
+# add images together
+
+# restructured with mre diagnostics 9/2020 - RNC
+
+hemfg="group.1um/fe3+_hematite.fine.gr.all.fd"
+hemmg="group.1um/fe3+_hematite.med.gr.all.fd"
+hemlg="group.1um/fe3+_hematite.lg.gr.all.fd"
+hemall="group.1um/fe3+_hematite.all.fd"
+
+#############################################################
+# fine grained hematite
+
+      f1="group.1um/fe3+_hematite.fine.gr.fe2602.fd.gz"
+a=    read(filename=f1)
+        if (HasValue(a) ==0) {  # check that read worked
+              printf ("read ERROR on file: %s\n",f1)
+              printf ("setting to zero\n")
+              a=0
+        }
+      f1="group.1um/fe3+_hematite.fine.gr.gds76.fd.gz"
+b=    read(filename=f1)
+        if (HasValue(b) ==0) {  # check that read worked
+              printf ("read ERROR on file: %s\n",f1)
+              printf ("setting to zero\n")
+              b=0
+        }
+      f1="group.1um/fe3+_hematite.fine.gr.ws161.fd.gz"
+c=    read(filename=f1)
+        if (HasValue(c) ==0) {  # check that read worked
+              printf ("read ERROR on file: %s\n",f1)
+              printf ("setting to zero\n")
+              c=0
+        }
+
+h1 = byte (a + b + c)
+
+adim=dim(h1)
+if ( adim[1,,] > 5 || adim[2,,] > 5 ) {
+	write(h1,filename=hemfg,type=vicar)
+}
+
+#############################################################
+# med grained hematite
+
+      f1="group.1um/fe3+_hematite.med.gr.gds27.fd.gz"
+a=    read(filename=f1)
+        if (HasValue(a) ==0) {  # check that read worked
+              printf ("read ERROR on file: %s\n",f1)
+              printf ("setting to zero\n")
+              a=0
+        }
+      f1="group.1um/fe3+_hematite.med.gr.br25b.fd.gz"
+b=    read(filename=f1)
+        if (HasValue(b) ==0) {  # check that read worked
+              printf ("read ERROR on file: %s\n",f1)
+              printf ("setting to zero\n")
+              b=0
+        }
+
+h2 = byte (a + b)
+
+adim=dim(h2)
+if ( adim[1,,] > 5 || adim[2,,] > 5 ) {
+	write(h2,filename=hemmg,type=vicar)
+}
+
+#############################################################
+# large grained hematite
+
+      f1="group.1um/fe3+_hematite.lg.gr.br25a.fd.gz"
+a=    read(filename=f1)
+        if (HasValue(a) ==0) {  # check that read worked
+              printf ("read ERROR on file: %s\n",f1)
+              printf ("setting to zero\n")
+              a=0
+        }
+      f1="group.1um/fe3+_hematite.lg.gr.br25c.fd.gz"
+b=    read(filename=f1)
+        if (HasValue(b) ==0) {  # check that read worked
+              printf ("read ERROR on file: %s\n",f1)
+              printf ("setting to zero\n")
+              b=0
+        }
+      f1="group.1um/fe3+_hematite.lg.gr.br34c.fd.gz"
+c=    read(filename=f1)
+        if (HasValue(c) ==0) {  # check that read worked
+              printf ("read ERROR on file: %s\n",f1)
+              printf ("setting to zero\n")
+              c=0
+        }
+
+h3 = byte (a + b + c)
+
+adim=dim(h3)
+if ( adim[1,,] > 5 || adim[2,,] > 5 ) {
+	write(h3,filename=hemlg,type=vicar)
+}
+
+#############################################################
+#############################################################
+# all hematites
+
+h4 = byte (h1 + h2 + h3)
+
+adim=dim(h4)
+if ( adim[1,,] > 5 || adim[2,,] > 5 ) {
+	write(h4,filename=hemall,type=vicar)
+}
+
+
+#############################################################
+# med grained goethite
+
+      f1="group.1um/fe3+_goethite.medgr.ws222.fd.gz"
+a=    read(filename=f1)
+        if (HasValue(a) ==0) {  # check that read worked
+              printf ("read ERROR on file: %s\n",f1)
+              printf ("setting to zero\n")
+              a=0
+        }
+      f1="group.1um/fe3+_goethite+qtz.medgr.gds240.fd.gz"
+b=    read(filename=f1)
+        if (HasValue(b) ==0) {  # check that read worked
+              printf ("read ERROR on file: %s\n",f1)
+              printf ("setting to zero\n")
+              b=0
+        }
+#c=    load(filename="group.1um/goethite.medcoarsegr.mpc.fd.gz")
+
+g2= byte (a + b)
+
+adim=dim(g2)
+if ( adim[1,,] > 5 || adim[2,,] > 5 ) {
+	write(g2,filename="group.1um/fe3+_goethite.medgr.fd",type=vicar)
+}
+
+#############################################################
+# coarse grained goethite
+
+      f1="group.1um/fe3+_goethite.coarsegr.fd.gz"
+a=    read(filename=f1)
+        if (HasValue(a) ==0) {  # check that read worked
+              printf ("read ERROR on file: %s\n",f1)
+              printf ("setting to zero\n")
+              a=0
+        }
+      f1="group.1um/fe3+_goethite.medcoarsegr.mpc.trjar.fd.gz"
+b=    read(filename=f1)
+        if (HasValue(b) ==0) {  # check that read worked
+              printf ("read ERROR on file: %s\n",f1)
+              printf ("setting to zero\n")
+              b=0
+        }
+
+g3 = byte (a + b)
+
+adim=dim(g3)
+if ( adim[1,,] > 5 || adim[2,,] > 5 ) {
+	write(g3,filename="group.1um/fe3+_goethite.coarsegr.ALL.fd",type=vicar)
+}
+#############################################################
+# AMD oxides
+
+      f1="group.1um/fe3+mix_AMD.assemb1.fd.gz"
+a=    read(filename=f1)
+        if (HasValue(a) ==0) {  # check that read worked
+              printf ("read ERROR on file: %s\n",f1)
+              printf ("setting to zero\n")
+              a=0
+        }
+      f1="group.1um/fe3+mix_AMD.assemb2.fd.gz"
+b=    read(filename=f1)
+        if (HasValue(b) ==0) {  # check that read worked
+              printf ("read ERROR on file: %s\n",f1)
+              printf ("setting to zero\n")
+              b=0
+        }
+
+a2 = byte (a + b)
+
+adim=dim(a2)
+if ( adim[1,,] > 5 || adim[2,,] > 5 ) {
+	write(a2,filename="group.1um/fe3+mix_AMD.assemb1+2.fd",type=vicar)
+}
+
+
+####### old file names
+#group.1um/Fe2+_and_hematite_br5b.fd.gz
+#group.1um/Fe2+_hematite_weathering.fd.gz
+#
+#group.1um/hematite.thincoat.fd.gz
+#
+#group.1um/nanohematite.BR34b2.fd.gz
+#
+#group.1um/hematite.fine.gr.fe2602.fd.gz
+#group.1um/hematite.fine.gr.gds76.fd.gz
+#group.1um/hematitews161.fd.gz  -> hematite.fine.gr.ws161
+#
+#group.1um/hematite.fine.gr.gds27.fd.gz    -> med
+#group.1um/hematite_lg_gr_br25b.fd.gz    -> med
+#
+#group.1um/hematite_lg_gr_br25a.fd.gz
+#group.1um/hematite_lg_gr_br25c.fd.gz
+#group.1um/hematite_md_gr_br34c.fd.gz    -> large
+#
+#group.1um/AMD.assemb1.fd.gz
+#group.1um/AMD.assemb2.hem.fd.gz
+#
+#group.1um/goethite.fingr.fd.gz
+#group.1um/goethite.thincoat.fd.gz
+#group.1um/goethite.medgr.fd.gz
+#group.1um/goethite+qtz.medgr.fd.gz
+#group.1um/goethite.medcoarsegr.fd.gz
+#group.1um/goethite.coarsegr.fd.gz
+#
+#group.1um/biot+goeth+muscphy.fd.gz   -> Fe2++goeth+musc
+#group.1um/goeth+jarosite.fd.gz

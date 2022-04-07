@@ -1,0 +1,248 @@
+.sh 1 "WAVELENGTH ASSIGNMENTS " 6
+
+
+.sh 2 "Wavelengths "
+.pp
+The wavelengths can be stored in any of 20 "wavelength files".
+Wavelength file 1 can contain up to 256 points while files 2
+through 20 can contain up to 255 points.  Although it is called a
+wavelength file, it is really the horizontal axis values which
+correspond to the data files (the vertical axis data values).
+The "wavelength file" could actually be time, phase angle, or
+whatever you wish to plot.  Then, when you actually do a plot, you
+can label the horizontal axis (and vertical axis) anything you
+want (e.g. time, phase angle, wavelength, etc.).  This makes the
+program more than a spectrum processing program.  Wavelengths will
+be assumed to be in the wavelength file for the rest of this
+manual, but it is understood that it could be other data (e.g.
+time).
+.pp
+The wavelength assignments also sets the number of channels to be
+processed (2 to 256).  The number of channels is stored in memory
+for wavelength file 1 and in channel 256 for files 2 through 20.
+
+
+.sh 2 "'Wedge' CVF Wavelengths "
+.pp
+Wavelengths of the standard "Wedge" CVF spectrometer can be
+generated with small calibration shifts by typing
+.ul
+W
+and then the calibration shift in angstroms when asked.  The
+program will then ask which wavelength file to store the
+wavelengths.  The number of channels is set to 120.  Table 6.2.1
+shows the CVF wavelengths.
+
+
+.sh 2 "PDS Nominal Wavelengths "
+.pp
+The Nominal wavelengths of the PDS photometer are generated and
+stored by typing
+.ul
+P.
+Then type in the wavelength file number.  The number of
+channels is set to 25.  Table 6.3.1 shows the PDS nominal
+wavelengths.
+
+
+.sh 2 "Read Wavelengths "
+.pp
+To read data from V, W, D, U, or Y and put it in the wavelength
+file, type
+.ul
+R.
+Now type in the file ID (V, W, D, U, or Y), the file number, a
+space, and the number of channels.  Next type in the wavelength
+file number.
+
+
+.sh 2 "Write Wavelengths "
+.pp
+To write data from the wavelength file to tape or disc (V or D),
+type
+.ul
+T.
+Next type in the file ID (V or D) and file number of where to
+write the wavelengths.  The file number is set to the protected
+file plus 1 for device V, but you must give a nonzero number.
+For example, type
+.ul
+V1
+and, if the protection is 153, the wavelengths will be written to
+V154.  You will also have to type in a title, history, manual
+history, date, and the wavelength file number before the data is
+written.
+
+
+.sh 2 "Type In Your Own Wavelengths "
+.pp
+To type in your own wavelengths, type
+.ul
+Y.
+Then type in the number, and return for each channel.  When you
+are through typing in wavelengths, type
+.ul
+N.
+The number of channels will be set.  Then type in the wavelength
+file number.  If you wish to stop input and not write the
+wavelengths to the wavelength file, type
+.ul
+X.
+
+
+.sh 2 "Change Channel Number "
+.pp
+To change the number of channels, type
+.ul
+C.
+Then type in the number of channels and the wavelength file
+number.
+
+
+.sh 2 "Edit Wavelengths "
+.pp
+Type
+.ul
+D
+to edit the wavelength file.  The wavelength file number given in
+the header information will be read into memory for editing.
+Then type
+.ul
+P
+to print the wavelengths or
+.ul
+X
+to exit the editor.  To edit, you type in the channel number and
+the wavelength of that channel.  The numbers must be between
+1.0E-7
+and 1.0E+6 or -1.0.  A value of -1.0 is no wavelength value
+for this channel.  Then type in the wavelength file number of
+where you wish to store the edited wavelengths.
+
+
+.sh 2 "Wavelength Routine Capabilities "
+.pp
+The capabilities of the wavelength routines allow you to generate
+your own wavelengths by typing them in yourself, creating them
+from math operations or editing.  Since the wavelengths can be
+treated as data when written to V or D, you can create your own
+data or edit existing data.  Similarly data written to the
+wavelength file can be treated as wavelengths, time, phase angle,
+or whatever you wish.
+.bp
+
+
+.sh 1 "PROGRAM OPERATIONS CONTROL "
+
+
+.sh 2 "Introduction "
+.pp
+The Program Operations Control is the main part of the program
+which allows access to math operations, file list, overlay,
+transfer, display, plot, file assignments and initialization.
+This is also the only point where the program should be
+terminated.
+
+
+.sh 2 "Screen Information "
+.pp
+Information on the screen can be suppressed by typing
+.ul
+IN
+or restored by typing
+.ul
+I.
+
+
+.sh 2 "Calling File List "
+.pp
+To list the contents of the devices (V, W, D, U, or Y), type in
+the corresponding letter.  See section 11 for further
+instructions.
+
+
+.sh 2 "Terminating Program "
+.pp
+To terminate the program, type
+.ul
+EX.
+All files and devices will be closed properly.
+
+
+.sh 2 "Calling File Display, Transfer, and Overlap "
+.pp
+To transfer files, or display or overlap spectra on the CRT, type
+.ul
+T.
+See section 10 for further information.
+
+
+.sh 2 "Changing Initialization Parameters "
+.pp
+To change the initialization parameters or return to the
+wavelength assignment routines, type
+.ul
+B.
+The B is left over from the MIT program version meaning go back
+to the Beginning of the program.  From here you can change the
+observatory location (section 4.3), device names (section 4.4),
+return to the wavelength assignments (section 6), change the
+device protection (section 4.2), or return to Device and File
+Assignments (section 5).  A multiple command is allowed to go
+from Program Operations Control directly to the initialization
+parameter of interest.  To do this, type
+.ul
+B
+and then the control letter(s) of the parameter to be changed;
+then press return.  For example, to change protection, you could
+type
+.ul
+B,
+return, then the program lists options, then you type
+.ul
+CP
+to change protection, or you could type
+.ul
+BCP
+from Program Operations Control to get to the same point faster
+(see Figure 2.1-1 for the control structure).
+
+
+.sh 2 "Calling Device and File Assignments "
+.pp
+To go the Device and File Assignments, type
+.ul
+R
+(section 5).
+
+
+.sh 2 "Calling Extinction Routines "
+.pp
+To create a starpack or list the starpack file by titles, type
+.ul
+S
+(section 12).
+
+
+.sh 2 "Calling EOF Routines "
+.pp
+To write an end of file on the magnetic tapes, type
+.ul
+F
+(section 14).
+
+
+.sh 2 "Calling Gould Plot Routines "
+.pp
+To plot spectra on the Gould Printer Plotter, type
+.ul
+P
+(section 13).
+
+
+.sh 2 "Calling Math Operations "
+.pp
+Press return or type
+.ul
+M
+to go to math operations (section 8).

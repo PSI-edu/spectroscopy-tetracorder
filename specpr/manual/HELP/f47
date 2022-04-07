@@ -1,0 +1,63 @@
+
+
+
+
+
+
+SPECPR Users' Manual                                            Page 8-f47.1
+
+
+_F_4_7:  _S_p_e_c_t_r_u_m _R_e_c_r_e_a_t_i_o_n _f_r_o_m _F_4_6 _o_u_t_p_u_t               _A_l_i_a_s = _a_b_a_s_p_e_c_r_e_c
+
+     This routine reads specpr f46 spectral features output and attempts  to
+use  the  feature parameters to compute the original spectrum.  The features
+are triangular in shape at the bottom because  straight  line  segments  are
+used  from the band center to the Full width at Quarter Maximum and the Full
+width at Half Maximum and to the continuum level.  The routine is useful  to
+see how well the f45 automated band analysis routine works.
+
+     In the initial evaluation of f45, this routine proved useful.  The  key
+in  evaluating  the  output  is the question "is the spectrum identifiable?"
+For example, do the features for the spectrum of kaolinite  get  reassembled
+into  a spectrum that is recognizable as kaolinite?  The authors tested many
+spectra and concluded "yes."
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

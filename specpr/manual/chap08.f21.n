@@ -1,0 +1,83 @@
+.\" use ms macros
+.\" this header is for putting the page numbers at the bottom of the page
+.\" set line length, page offset, vertical spacing
+.nr LL 6.3i
+.ll 6.3i
+.nr PO 1.0i
+.po 1.0i
+.nr VS 12
+.vs 12
+.\" set header and footer margins (default is 1.0i)
+.nr FM 1.00i
+.fm 1.00i
+.nr HM 1.00i
+.hm 1.00i
+.\" set no date here, MUST be before CF definition, because ND sets CF
+.\" set date, so don't do .ND
+.\" LH CH RH are left, center, right header strings
+.\" LF CF RF are left, center, right footer strings
+.\" default is CH is defined as: .ds CH "\(hy \\n(PN \(hy
+.ds LH "SPECPR Users' Manual
+.ds CH
+.ds RH "Page 8-f21.\\n(PN
+.\" setup complete
+.nf
+SPECPR Users' Manual                                            Page 8-f21.1
+
+
+.B
+F21: Calculate Nth Term Polynomials                        Alias: calc[poly]
+.R
+.PP
+This routine calculates nth term polynomials where the maximum
+number of terms or coefficients is 256.  This routine operates on
+the data set entered from math operations.  Then it prompts you
+for a data set of coefficients (file ID and record number)
+for the polynomial:
+
+.in 20n
+Y(n) = C(1) + C(2)X(n) + C(3)X(n)\u2\d + C(4)X(n)\u3\d + ...,
+.in 0n
+
+where Y is the output array, X is the input array, C is the
+coefficient array.
+.PP
+To execute the f21 function, in math operations type the file id
+and record number of the input file and f21.  For example:
+
+.in 14n
+.B
+v23f21
+.R
+.in 0n
+or
+.in 14n
+.B
+v23calc
+.R
+.in 0n
+
+After the routine
+title is printed type in the file id and record number of the
+file containing the coefficient values, then a space, then the
+number of terms of the polynomial.  For example, if the coefficients
+were in v24 and there were 6 coefficients, you would type:
+
+.in 14n
+.B
+v24 6
+.R
+.in 0n
+
+.PP
+The program will then do the
+calculations and return to the math routine prompting you for the
+location to put the output file and the title etc.
+
+.PP
+.B
+WARNING:
+.R
+be careful of overflows!  When the number of terms, n, becomes large
+(like near or greater than 10), x\un\d can get very large if x >
+1.0.

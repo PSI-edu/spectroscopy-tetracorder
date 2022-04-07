@@ -1,0 +1,198 @@
+
+
+
+SPECPR Users' Manual                                                Page 3.2
+
+
+_3._1  _S_t_a_r_t_i_n_g _S_p_e_c_p_r _o_n _U_n_i_x
+
+     To run specpr you must first log in to the system.  It is advisable  to
+do  specpr  work  for  a particular project in a separate directory.  Specpr
+uses protective locks on files to prevent simultaneous specpr sessions  from
+overwriting  data.  Thus, if you are starting a new project, create a direc-
+tory in which to start, then cd to that directory.
+
+
+     You can start specpr in one of five ways, using the following commands.
+
+
+          specpr              starts specpr, first  with  current  messages,
+                              then  a  start "from scratch" where a complete
+                              setup is required.  After  the  word  "specpr"
+                              type a carriage return.
+
+
+          specpr rfile        starts specpr in restart mode, where the  res-
+                              tart file "rfile" contains all the information
+                              saved  from  the  previous  session.    Before
+                              specpr   is   started,  current  messages  are
+                              displayed.
+
+
+          specpr rfile -gN    starts  specpr  in  restart  mode,  where  the
+                              restart   file   "rfile"   contains   all  the
+                              information saved from the  previous  session.
+                              The  -gN  option,  where  N  is  the  graphics
+                              terminal type integer number given in  section
+                              5.7,  sets  the  graphics  type  as  specpr is
+                              started.  The "N"  may  also  be  one  of  the
+                              strings   "xterm"  or  "hpterm"  (without  the
+                              quotes.   Thus  the  command   "specpr   rfile
+                              -gxterm"   starts  specpr  with  restart  file
+                              "rfile" and starts an xterm X-windows graphics
+                              session.
+
+
+          specpr rfile -      starts  specpr  in  restart  mode,  where  the
+                              restart   file   "rfile"   contains   all  the
+                              information saved from the  previous  session.
+                              The  minus sign suppresses messages unless new
+                              messages have been added since the  last  time
+                              "rfile"  has  been  written.   After  a  basic
+                              setup, this is the command you  will  want  to
+                              use to restart specpr (or the command below).
+
+
+
+
+
+
+
+
+
+
+                             February 20, 2002
+
+
+
+
+
+SPECPR Users' Manual                                                Page 3.3
+
+
+
+          specpr rfile -gN -  starts  specpr  in  restart  mode,  where  the
+                              restart   file   "rfile"   contains   all  the
+                              information saved from the  previous  session.
+                              The  -gN  option,  where  N  is  the  graphics
+                              terminal type integer number given in  section
+                              5.7,  sets  the  graphics  type  as  specpr is
+                              started.  The "N"  may  also  be  one  of  the
+                              strings   "xterm"  or  "hpterm"  (without  the
+                              quotes.  The minus  sign  suppresses  messages
+                              unless  new messages have been added since the
+                              last timer "rfile" has been written.  After  a
+                              basic setup, this is the command you will want
+                              to use  to  restart  specpr  (especially  when
+                              starting  specpr  from  X-windows).   Thus the
+                              command "specpr rfile -gxterm -" starts specpr
+                              with  restart file "rfile" and starts an xterm
+                              X-windows graphics session.
+
+
+
+     The restart file contains all information  for  restarting  specpr  and
+putting  it  in  the  same  state as when you last quit the program.  Specpr
+periodically updates the restart file during a processing session in case of
+a system or program crash.
+
+     The specpr startup messages are notes and  information  about  changes,
+additions and bugs in the current version of specpr.
+
+
+_3._2  _H_E_L_P!
+
+     The user may get help at any keyboard input point in the  program.   To
+get help, you simply type
+
+              _h_e_l_p
+or
+              _h_e_l_p <_k_e_y_w_o_r_d>
+
+where "<keyword>" is a key word to search on.  The index of key words and  a
+description is displayed by just typing help.
+
+     Once in help, help is  read  with  the  Unix  command  defined  by  the
+environment  variable  PAGER  (see section 3.3), or if PAGER is not defined,
+the Unix "more" command is used.  When reading help, if there is  more  than
+one  page you must follow the directions for that Unix command (e.g. for the
+more command, press the space bar to get to the next page or a  "q"  command
+to  quit).   When  you  have  completed  reading the index page or a keyword
+entry, the following message is displayed:
+
+        ----------------------------------------- PRESS RETURN  TO  CONTINUE
+        with  program,  Type a keyword for help on that topic, or Type  help
+        for the index page -----------------------------------------
+
+
+
+
+                             February 20, 2002
+
+
+
+
+
+SPECPR Users' Manual                                                Page 3.4
+
+
+If you want to read about another keyword, simply type  that  key  word  and
+press  return.   If  you  want  to  redisplay  the  index pages, type "help"
+(without the quotes) as the key word.
+
+Example:  to get help on file protection at any point in specpr, type
+
+              _h_e_l_p _p_r_o_t_e_c_t_i_o_n
+
+or, type
+
+              _h_e_l_p
+
+and once in the help facility, type the
+
+              _p_r_o_t_e_c_t_i_o_n
+
+key word.
+
+
+_3._3  _C_o_n_f_i_g_u_r_a_t_i_o_n _o_f _E_n_v_i_r_o_n_m_e_n_t _V_a_r_i_a_b_l_e_s
+
+     Specpr currently recognizes two environment variables.  An  environment
+variable is a variable that is set from the Unix command line.  For example,
+in the c-shell, you type
+
+              setenv PAGER myprog
+
+to set the environment variable PAGER.  See your local system  documentation
+on setting environment variables for other Unix shells.
+
+     Commonly, users define these variables in the login startup  files,  so
+they get activated each time the user logs in.
+
+     The environment variables currently used and defined by specpr are:
+
+    PAGER  The program used for listing to the terminal  screen.   Currently
+            it  is  used  by the help facility.  Default program if PAGER is
+            not defined is the Unix "more" command.
+
+    EDITOR  The editor to use.  Currently, this is the editor  to  use  when
+            editing  specpr  text  records  in the header information change
+            routines.  Default editor is "vi".
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                             February 20, 2002
+
+

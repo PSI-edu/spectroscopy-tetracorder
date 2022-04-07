@@ -1,0 +1,19 @@
+#!/usr/local/bin/davinci -f
+#####!/usr/bin/env -S davinci -f  
+
+###########################  was:  #!/usr/local/bin/davinci -f
+
+
+
+if ( $argc < 2 ) {
+        printf ("form:\n")
+        printf ("      davinci.envi.to.vicar-bil input.envi.file  output.v\n")
+        exit (1)
+}
+
+a=read(filename=$1)
+a=a*20000
+a=short(a)
+a=bil(a)
+write (a,filename=$2,type=vicar)
+

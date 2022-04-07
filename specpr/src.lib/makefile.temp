@@ -1,0 +1,48 @@
+# @(#) makefile 2.7@(#)
+
+SHELL=/bin/sh
+
+OBJ=	\
+lib_bytorder.o \
+lib_swab4order.o \
+lib_chkbit.o \
+redspr.o \
+readtx.o \
+wrtspr.o
+
+sputil.a:	$(OBJ)
+	rm -f $(SP_LIB)/sputil.a
+	$(AR) $(ARFLAGS) $(SP_LIB)/sputil.a $(OBJ)
+	$(RANLIB) $(SP_LIB)/sputil.a
+
+.SUFFIXES:
+.SUFFIXES: .o .r .c
+	
+lib_bytorder.o:		lib_bytorder.r
+	$(RF) $(RFLAGS) bytorder.r > bytorder.f
+	$(F77) $(FFLAGS) -c bytorder.f
+	rm -f bytorder.f
+
+lib_swab4order.o:	lib_swab4order.c
+	$(CC) $(CFLAGS) -c swab4order.c
+
+lib_chkbit.o:		lib_chkbit.c
+	$(CC) $(CFLAGS) -c chkbit.c
+
+redspr.o:		redspr.r
+	$(RF) $(RFLAGS) redspr.r > redspr.f
+	$(F77) $(FFLAGS) -c redspr.f
+	rm -r redspr.f
+
+readtx.o:		readtx.r
+	$(RF) $(RFLAGS) readtx.r > readtx.f
+	$(F77) $(FFLAGS) -c readtx.f
+	rm -f readtx.f
+
+wrtspr.o:		wrtspr.r
+	$(RF) $(RFLAGS) wrtspr.r > wrtspr.f
+	$(F77) $(FFLAGS) -c wrtspr.f
+	rm -f wrtspr.f
+
+clean:
+	rm -f *.o

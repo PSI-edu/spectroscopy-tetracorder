@@ -1,0 +1,68 @@
+.\" use ms macros
+.\" this header is for putting the page numbers at the bottom of the page
+.\" set line length, page offset, vertical spacing
+.nr LL 6.3i
+.ll 6.3i
+.nr PO 1.0i
+.po 1.0i
+.nr VS 12
+.vs 12
+.\" set header and footer margins (default is 1.0i)
+.nr FM 1.00i
+.fm 1.00i
+.nr HM 1.00i
+.hm 1.00i
+.\" set no date here, MUST be before CF definition, because ND sets CF
+.\" set date, so don't do .ND
+.\" LH CH RH are left, center, right header strings
+.\" LF CF RF are left, center, right footer strings
+.\" default is CH is defined as: .ds CH "\(hy \\n(PN \(hy
+.ds LH "SPECPR Users' Manual
+.ds CH
+.ds RH "Page 8-f19.\\n(PN
+.\" setup complete
+.nf
+SPECPR Users' Manual                                            Page 8-f19.1
+
+
+.B
+F19:  Polynomial Fit (10 Term)                              Alias: poly[fit]
+.R
+.PP
+Special Function 19 does a least squares fit to a
+data set with a polynomial of the form:
+
+.in 15n
+.nf
+y = a\d1\u + a\d2\u x + a\d3\u x\u3\d + a\d4\u x\u2\d + ... + a\dn\u x\un-1\d
+.fi
+.in 0n
+
+The program requests the number of terms to use for the polynomial
+fit and will currently handle up to ten terms. To run this
+routine type
+the file id and record number of the spectrum you wish to fit
+followed by f19, or use the alias:
+
+.in 14n
+.B
+v23f19
+.R
+.in 0n
+or
+.in 14n
+.B
+v13poly
+.R
+.in 0n
+
+The program will allow you to change the
+wavelength set if the current set is not the proper one. The
+program then
+calculates the least squares curve and prints
+the polynomial coefficients and the reduced chi square for the
+fit.
+.PP
+You have the option of saving the fitted curve, computed with the
+wavelength set in use, or saving the coefficients.  The
+coefficients can be used as input to f21 (calculate a polynomial).

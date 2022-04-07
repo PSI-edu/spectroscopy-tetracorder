@@ -1,0 +1,122 @@
+No new specpr news.
+ Restarting 
+restart file= r1                                                                              
+ v = spd0067 : f  152    w = spd0066 : f 3114    d = spd0073 : f  470
+ u = spd0068 : f   74    y = spd0069 : f  395    s = starpack: f    2
+ lp: spoolfile       obs lat=  19.826 deg   channels= 512 wav fl=Y  393 a   
+ file protect: v   1291,w  -3113,d  -3592,u    326,y    671,s 148 ltype= 1
+--------------------------------------------------------------------------
+
+                    PROGRAM RADTRAN:
+ This routine interfaces to radiative transfer routines
+
+
+ Enter  r  to call mreflect (reflectance computation) routines
+ Enter  a  to call abscoef (derive absorption coefficient) routi nes
+ Enter  u  to call unmix (derive abs coeff for unknown) routine
+ Enter  i  to call intarl (compute reflect of intimate-areal mix ) routine
+ Enter  n  to call k and n derivations routines
+
+
+ Enter  e or x to exit
+
+ <tmp.cmds
+ \# Radtran commands to compute scapolite reflectance spectra
+ r
+
+                    PROGRAM MREFLECT (version 3):
+ This routine computes reflectance given:     
+ wavelength, index of refractionand absorption coefficient
+
+
+ Enter  1  to compute a normal reflectance spectra
+           (you give mineral abundances and grain sizes)
+ Enter  2  to iterate to a optimum grain size on one mineral
+
+ To derive mineral abundances and grain sizes from a reflectance spectrum:
+ Enter  3  to use another method of convergence
+
+ 1
+ Type in the file id and record number of the wavelength set
+ Y393
+To DELETE channels, type d and the channels to be deleted
+  
+ type in the number of input optical index sets 9 = maximum
+ 1          \# one mineral
+x=  1.00000
+      1 optical index sets allowed in this computation
+type in the file ids and record numbers of the  real index of refraction,
+ for element  1
+ y399       \# index of ref for scapolite
+
+ index of refraction set
+      1     Scapolite (Xme=.8) est INDX REF .2-5um       channels=   512
+
+type in the file ids and record numbers of the  absorption coefficient,
+ for element  1
+ y401        \# absorption coefficient for scapolite
+
+absorption coefficient set
+      1     Scapolite HS351 ABS COEF .2-5um 512ch        channels=   512
+
+ For optical index data set  1 type in the following (on the same line):
+  grain size in centimeters  weight fraction  and density
+ 0.01 1 2.7   \# grain size, weight, density
+ Type in the angle of INCIDENCE, the angle of EMISSION and the PHASE angle in decimal degrees
+ or g for GEOMETRIC ALBEDO followed by the degree  increment
+  or <cr> for default increment
+ 0 30
+Do you want to normalize the computation to ideal reflectance
+standard at the same viewing geometry (enter y for yes)
+NOTE: for proper geom albed values must normalize
+ y
+Enter s value. (Default equals .3)
+  
+Enter grain size dependence parameters:
+          The grain size dependence equation has the form:
+
+                    d = ddflt/(1.0 + df * (w0 - wavelength))
+
+           where wavelength and w0 are in microns.
+          Enter df and w0  (example: df, w0= 0.1 2.5), default = 0.0 2.5.
+  
+type in a title
+---------------------------------------I
+ Scapolite HS351 .2-5um CMPREF d=0.01cm
+
+
+
+ type: c=Change SCALE e=EXIT routine, x=EXIT routine WITHOUT WRITING data record
+ for intarl: f=change weight fraction, i=change intimate spectru m
+                 p=change pure (second) spectrum
+ for refcom: u=change dwp of 1st component, v=change 2nd comp
+                  w=change whole thing
+ e
+
+
+Type in the file id and record number      of where to write the results
+ x     \# don't write results
+
+
+
+ Enter  r  to call mreflect (reflectance computation) routines
+ Enter  a  to call abscoef (derive absorption coefficient) routi nes
+ Enter  u  to call unmix (derive abs coeff for unknown) routine
+ Enter  i  to call intarl (compute reflect of intimate-areal mix ) routine
+ Enter  n  to call k and n derivations routines
+
+
+ Enter  e or x to exit
+
+> Updating Restart File 
+
+
+ specpr ending status:
+
+
+
+ v = spd0067 : f  152    w = spd0066 : f 3114    d = spd0073 : f  470
+ u = spd0068 : f   74    y = spd0069 : f  395    s = starpack: f    2
+ lp: spoolfile       obs lat=  19.826 deg   channels= 512 wav fl=Y  393 a   
+ file protect: v   1291,w  -3113,d  -3592,u    326,y    671,s 148 ltype= 1
+--------------------------------------------------------------------------

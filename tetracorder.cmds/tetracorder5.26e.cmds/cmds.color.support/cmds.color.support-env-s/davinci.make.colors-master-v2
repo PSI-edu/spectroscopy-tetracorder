@@ -1,0 +1,145 @@
+#!/usr/bin/env -S davinci -f  
+####!/usr/local/bin/davinci -f
+
+###########################  was:  #!/usr/local/bin/davinci -f
+
+
+
+# command line:
+# prog    gray_base_image  prefix-file-name   [dual|nodual]
+
+prog="davinci.make.water-1.9um.color.b"     # CHANGE THIS if program name changes
+
+####################  Begin static: no need to change inything in this section ################
+
+if ($argc < 2) {
+
+        printf("Insufficient input\n")
+        printf("%s input_gray_image  outputcolorimage\n", prog)
+        printf("exit 1\n")
+        exit(1)
+}
+
+
+dual    = 1     # default color + gray image 
+dualmax = 2000  # no dual if width is greater than this
+
+if ($argc >= 3) {
+
+	if ( "$3" == "nodual" ) {
+		dual = 0
+	}
+	if ( "$3" == "dual" ) {
+		dual = 1
+		dualmax = 999999 
+	}
+}
+
+# read base gray image
+
+gbase=read(filename=$1)
+if (HasValue(gbase) ==0) {                   # check that read worked
+      printf ("read ERROR on file: %s\n",$1)
+      printf ("^GEXIT 1\n")
+      exit(1)
+}
+
+# A master color set.  Just read in the files, assign the colors
+# and write the results.    R. Clark 4/16/2015 - 11/16/2015
+# execute this program in the same directory asthe source code below
+source ("davinci.master.colors")
+
+# 22 available colors:
+# c_red      c_green          c_blue       c_yellow        c_magenta       c_cyan      c_armygreen  
+# c_salmon   c_flesh          c_orange     c_deeppink      c_yellowgreen   c_lavender  c_bluegreen
+# c_skyblue  c_paleseagreen   c_white      c_redpink       c_gold          c_mudyellow c_lightpink
+# c_purple
+
+# a purple/magenta to red 12 spectral color sequence:
+#
+# c_magenta c_purple c_blue c_skyblue c_cyan c_green c_armygreen c_yellow c_gold c_salmon c_orange c_red
+
+# a = first input image, 3-band color, xcolor = the color output image, RGB float
+# colorout = the color output image, 3-byte RGB
+
+###################   End Static section ############################################
+
+###################   begin custom section ##########################################
+
+# read the input images, a, b, c, c1, c2, etc
+# a=read(filename=______)
+
+# PUT the custom read materials maps here
+# EXAMPLE:
+
+# first image:
+
+# c_white
+f1="group.1.9um/h20_ice_2.02um-77k-a.fd.gif"
+a=read(filename=f1)
+
+	if (HasValue(a) ==0) {  # check that read worked
+	      printf ("read ERROR on file: %s\n",f1)
+	      printf ("^GEXIT 1\n")
+	      exit(1)
+	}
+	q=cat(a,a,axis=z)  # make into 3-band image
+	a=cat(a,q,axis=z)  # make into 3-band image
+	# set up output image xcolor:
+	xcolor=float(a*0)
+	xdim=dim(a)
+
+	# now add the colors
+
+c=c_white
+xcolor= xcolor + a*( c /255.)   #   ice
+
+c=c_blue
+a=read(filename="group.1.9um/water_1.896_beryl.fd.gif")
+	q=cat(a,a,axis=z)  # make into 3-band image
+	a=cat(a,q,axis=z)  # make into 3-band image
+xcolor= xcolor + a*( c /255.)
+
+c=c_red
+a=read(filename="group.1.9um/water_1.924_perchlorate-na.fd.gif")
+	q=cat(a,a,axis=z)  # make into 3-band image
+	a=cat(a,q,axis=z)  # make into 3-band image
+xcolor= xcolor + a*( c /255.)
+a=read(filename="group.1.9um/water_1.918_perchlorate-mg.fd.gif")
+	q=cat(a,a,axis=z)  # make into 3-band image
+	a=cat(a,q,axis=z)  # make into 3-band image
+xcolor= xcolor + a*( c /255.)
+
+
+########### end custom, no need to change anything below this line ###############################
+
+xout=byte(xaz+0.5)   # output color image, byte
+xout = bip(xout)
+xdim=dim(xout)
+xdimx=xdim[1,,]      # color image width
+
+gbasedim=dim(gbase)
+x=gbasedim[1,,]      # base image width
+
+if (x > dualmax) {
+	dual = 0
+}
+
+if ( dual == 1 ) {
+	
+	gbase = bip(gbase)
+	xout = cat (xout, gbase, axis=x)
+}
+
+
+fout=$2 + "colors-master-v2.png"   # output file name
+
+
+adim=dim(xout)
+if ( adim[1,,] > 5 || adim[2,,] > 5 ) {
+	printf ("writing %s\n", fout)
+	write (xout, filename=fout, type=png)
+} else {
+	printf ("not writing %s\n", fout)
+	printf ("    image size < 6 pixels\n")
+}

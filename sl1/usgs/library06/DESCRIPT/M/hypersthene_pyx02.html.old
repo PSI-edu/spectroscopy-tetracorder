@@ -1,0 +1,181 @@
+<html>
+TITLE:Hypersthene PYX02-a DESCRIPT
+
+<p>
+DOCUMENTATION_FORMAT:MINERAL
+<p>
+SAMPLE_ID:NMNHC2368
+
+<p>
+MINERAL_TYPE:Inosilicate
+<p>
+MINERAL:Hypersthene (Fe-rich enstatite)(Pyroxene group)
+
+<p>
+FORMULA:(Mg,Fe+2)2Si2O6
+
+<p>
+FORMULA_HTML:(Mg,Fe<sup>+2</sup>)Si<sub>2</sub>O<sub>6</sub>
+
+<p>
+COLLECTION_LOCALITY:Bamble, Norway 
+<p>
+ORIGINAL_DONOR:Wards Scientific, and Robert B. Singer 
+<p>
+CURRENT_SAMPLE_LOCATION:U.S.G.S. Denver Spectroscopy Laboratory.
+<p>
+ULTIMATE_SAMPLE_LOCATION:U.S.G.S. Denver Spectroscopy Laboratory.
+
+<p>
+SAMPLE_DESCRIPTION:  
+<p>Intermediate member of the series Enstatite-Orthoferrosilite. <br>
+The original sample description and vis-nir spectrum was published by:<br> 
+Singer, R.B., 1981, Near-Infrared spectral reflectance of mineral mixtures: Systematic <br>
+combinations of pyroxenes, olivine, and iron oxides: J. Geophys Res., v. 86, p. 7967-7982.<br> 
+The sample is pure pyroxene except for a small (lt2%?) amount of tremolite. The tremoilte <br>
+shows in the spectra as weak (narrow) bands at 2.3 µm and 1.4 µm. Singer suspected the tremolite,<br>
+ but it is confirmed by higher resolution spectra in this library. </p>
+ <p>
+ The sample was ground and wet sieved in methanol at the USGS Denver Spectroscopy Laboratory by Roger Clark. Sieve intervals are: 
+
+5-10 µm (g) 
+10-20 µm (a) 
+20-30 µm (d) 
+30-45 µm (e) 
+45-104 µm (f) 
+104-150 µm (b) 
+150-250 µm (c) 
+>250 µm (h) 
+SEM photos were done by R. Clark on each sieve interval to characterize the grain sizes. 
+Letter denotes spectrum designation. 
+<p>
+
+END_SAMPLE_DESCRIPTION.
+
+<p>
+XRD_ANALYSIS:
+<p>None
+<p>
+END_XRD_ANALYSIS.
+
+<p>
+COMPOSITIONAL_ANALYSIS_TYPE:
+<BR>
+<BR>
+<TABLE BORDER=2>
+ <TR>
+<TD>COMPOSITION:</TD>      
+<TD>SiO2</TD><TD>   55.30 </TD><TD>wt%</TD>   
+<TD>SiO<sub>2</sub> </TD></TR>
+
+<TR>
+<TD>COMPOSITION:</TD>      
+<TD>TiO2</TD><TD>    0.05 </TD><TD>wt%</TD>   
+<TD>TiO<sub>2</sub> </TD></TR>
+
+<TR>
+<TD>COMPOSITION:</TD>     
+<TD>Al2O3</TD><TD>    0.12 </TD><TD>wt%</TD>   
+<TD>Al<sub>2</sub>O<sub>3</sub> </TD></TR>
+
+<TR>
+<TD>COMPOSITION:</TD>     
+<TD>Fe2O3</TD><TD> (as FeO)</TD><TD>wt%</TD>   
+<TD>Fe<sub>2</sub>O<sub>3</sub> </TD></TR>
+
+<TR>
+<TD>COMPOSITION:</TD>       
+<TD>FeO</TD><TD>    9.38 </TD><TD>wt%</TD>   
+<TD>FeO </TD></TR>
+
+<TR>
+<TD>COMPOSITION:</TD>       
+<TD>MnO</TD><TD>    0.15 </TD><TD>wt%</TD>   
+<TD>MnO </TD></TR>
+
+<TR>
+<TD>COMPOSITION:</TD>       
+<TD>MgO</TD><TD>   32.80 </TD><TD>wt%</TD>   
+<TD>MgO </TD></TR>
+
+<TR>
+<TD>COMPOSITION:</TD>      
+<TD>Na2O</TD><TD>    0.00 </TD><TD>wt%</TD>   
+<TD>Na<sub>2</sub>O </TD></TR>
+
+<TR>
+<TD>COMPOSITION:</TD>      
+<TD>P2O5</TD><TD>    0.01 </TD><TD>wt%</TD>   
+<TD>P<sub>2</sub>O<sub>5</sub> </TD></TR>
+
+<TR>
+<TD>COMPOSITION:</TD>       
+<TD>LOI</TD><TD>    2.00 </TD><TD>wt%</TD>   
+<TD>LOI </TD></TR>
+
+<TR>
+<TD>COMPOSITION:</TD>   
+<TD>Total</TD><TD>  100.28 </TD><TD>wt%</TD> 
+
+<TR>
+<TD>COMPOSITION:</TD>  
+<TD>O=Cl,F,S</TD><TD>         </TD><TD>wt%</TD>  
+<TD>#correction for Cl, F, S</TD></TR> <br>
+
+<TR>
+<TD>COMPOSITION:</TD> 
+<TD>New Total</TD><TD>  100.28 </TD><TD>wt%</TD> 
+ 
+</TABLE>
+<p>
+COMPOSITION_TRACE:
+
+<p>
+None
+
+<p>
+COMPOSITION_DISCUSSION:
+<p>The compositional analysis is from: 
+Singer, R.B., 1981, Near-Infrared spectral reflectance of mineral mixtures: Systematic combinations of pyroxenes, olivine, and iron oxides: J. Geophys Res., v. 86, p. 7967-7982. 
+
+All Fe2O3 is reported in the FeO amount. The analysis was performed by XRA Laboratory, Ontario Canada. FeO was by wet chemistry, all else by XRF. 
+
+
+<p>
+END_COMPOSITION_DISCUSSION.
+<p>
+MICROSCOPIC_EXAMINATION:
+
+<p>The sample appears to be pure pyroxene except for a small (lt~ 2%) amount of tremolite. 
+ 
+<p>
+END_MICROSCOPIC_EXAMINATION. 
+
+<p>
+SPECTROSCOPIC_DISCUSSION: 
+ 
+<p> 
+END_SPECTROSCOPIC_DISCUSSION. 
+ 
+<p> 
+
+SPECTRAL_PURITY:  1_2_3_4_
+ 
+<p> 
+LIB_SPECTRA_HED:  where         Wave Range  Av_Rs_Pwr  Comment 
+ 
+<p> 
+LIB_SPECTRA:  splib04a r 2263   0.2-3.0&#181;m      200     g.s.=350 &#181;m <br>
+LIB_SPECTRA:  splib04a r 2274   0.2-3.0&#181;m      200     g.s.=180 &#181;m <br>
+LIB_SPECTRA:  splib04a r 2285   0.2-3.0&#181;m      200     g.s.=120 &#181;m <br>
+LIB_SPECTRA:  splib04a r 2296   0.2-3.0&#181;m      200     g.s.=60 &#181;m <br>
+LIB_SPECTRA:  splib04a r 2308   0.2-3.0&#181;m      200     g.s.=34 &#181;m <br>
+LIB_SPECTRA:  splib04a r 2319   0.2-3.0&#181;m      200     g.s.=23 &#181;m <br>
+LIB_SPECTRA:  splib04a r 2330   0.2-3.0&#181;m      200     g.s.=12 &#181;m <br>
+LIB_SPECTRA:  splib04a r 2341   0.2-3.0&#181;m      200     g.s.= 7 &#181;m <br>
+ 
+<p>
+LIB_SPECTRA:  splib05a r ____   0.2-3.0&#181;m      200     g.s.=
+<p> 
+LIB_SPECTRA:  splib06a r ____    1.5-25&#181;m      250     g.s.= 
+</html> 

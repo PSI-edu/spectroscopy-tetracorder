@@ -1,0 +1,11 @@
+WARNING for HP-UX 9.0 compilers:
+
+3dio/redbil
+3dio/redbsq
+3dio/redbip
+fcn43-47/fft.o
+
+The +O3 +OP4 optimizer flags in FFLAGS seems to optimize away parts
+of the routines and they don't work right.  The solution is to
+change the optimizer flag to -O and compile these modules.
+

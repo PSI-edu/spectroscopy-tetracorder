@@ -1,0 +1,7 @@
+
+cmds.all.support/make.spreslt1.file.for.spectral.extractions
+
+./cmds.all.support/cmd.get.mapped.material.spectral.averages-v3 m3gc3iof.25x ../cube/m3g_simplcylr4RC1_iof-t-cor3-0.25x.v spreslt1  \
+	|& tee cmd.get.mapped.material.spectral.averages-v3.oout1.txt
+
+

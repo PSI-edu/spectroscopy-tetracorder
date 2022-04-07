@@ -1,0 +1,19 @@
+#!/usr/local/bin/davinci -f
+######!/usr/bin/env -S davinci -f  
+
+###########################  was:  #!/usr/local/bin/davinci -f
+
+
+
+# image ratio
+
+fout="group.2um/alunite+pyroph.added.fd"
+
+#############################################################
+
+a=    load(filename="group.2um/alunite+pyrophyl.fd.gz")
+b=    load(filename="group.2um/pyroph.5+alunit.5.fd.gz")
+
+f = byte (a + b)
+
+write(f,filename=fout,type=vicar)

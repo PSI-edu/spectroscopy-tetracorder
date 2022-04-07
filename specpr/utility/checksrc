@@ -1,0 +1,5 @@
+
+echo "Check the following list of files before doing make"
+
+ls -1 common | grep -v '^s.*' | grep -v '\.o$' | sed -e 's,^,common/,'
+ls -1 */*.[crf] | grep -v 's.*' | grep -v 'manual/' | grep -v 'wejfmt/' | grep -v 'dummy/'

@@ -1,0 +1,57 @@
+.ce
+Table \(*$n.1
+.TS
+center,tab(:);
+c s s s
+c c | c c.
+Greek character set
+_
+alpha:A:nu:N
+beta:B:xi:C
+gamma:G:omicron:O
+delta:D:pi:P
+epsilon:E:rho:R
+zeta:Z:sigma:S
+eta:Y:tau:T
+theta:H:upsilon:U
+iota:I:phi:F
+kappa:K:chi:X
+lambda:L:omega:W
+mu:M
+.TE
+
+.ce
+Table \(*$n.2
+.TS
+box,center,tab(:);
+c s s s
+c c | c c.
+Mathmatical Symbols
+_
+A:infinity:Z:->
+B:improper subset:a:up arrow
+C:proportional:b:down arrow
+D:union:c:section
+E:root extender:d:@
+F:bell:e:double dagger
+G:plus or minus:f:|
+H:less than or equal to:g:improper subset
+I:greater than or equal to:h:\
+J:square root:i:circle
+K:terminal sigma:j:partial
+L:integral:k:null set
+M:subset of:l:{
+N:superset of:m:}
+O:intersection:/:/
+P:not:":"
+Q:?????????:#:#
+R:element of:':'
+S:gradient:+:+
+T:times:-:-
+U:divide:*:*
+V:identically equal:<:<
+W:approximately equal:=:=
+X:not equal:>:>
+Y:<-:^:^
+_:_:`:`
+.TE

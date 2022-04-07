@@ -1,0 +1,135 @@
+      subroutine gcchan(ixx,iyy,xpos,ypos,imatch,nchans,xdata,ydata,ier)
+      implicit integer*4(i-n)
+!ccc  version date: 07/01/86
+!ccc  author(s): roger clark
+!ccc  language:  ratfor
+!ccc
+!ccc  short description:
+!ccc            this subroutine finds the closest channel to x and y, and
+!ccc            prints the data and error values.
+!ccc            Used under the graphics cursor read routines.
+!ccc  algorithm description: none
+!ccc  system requirements:   none
+!ccc  subroutines called:
+!ccc  argument list description:
+!ccc     argumrnts: none
+!ccc  parameter description:
+!ccc  common description:
+!ccc  message files referenced:
+!ccc  internal variables:
+!ccc  file description:
+!ccc  user command lines:
+!ccc  update information:
+!ccc  notes:
+!ccc
+!##### Beginning   ../common/lbl3
+!     /lbl3/ common:
+!       ictrl  : control flag for indicating errors are involved or a flag
+!         indicating overlaping spectra in the display routine.
+!       idad   : flag indicating that erorrs are included in the data (needs
+!         to be phased out ).
+!       ixit   : flag to indicate that user aborted routine and returned to
+!         the main routines.
+!
+      common /lbl3/ ictrl, idad, ibncon,ibncn2, ixit
+      integer*4 ictrl, idad, ibncon,ibncn2, ixit
+!######  error  : errors to the data ( 1 standard deviation of the mean ).
+      common /lblerr/ error(4864)
+      real*4 error
+!##### End   ../common/lbl3
+!##### Beginning   ../common/hptrm
+      common /hptrm/    igrmod,ihpout,imode,ixlast,iylast,ipen
+      common /hptrm/    iot
+      character*80      ihpout
+      integer*4         igrmod,imode,ixlast,iylast,ipen,iot
+!##### End   ../common/hptrm
+!##### Beginning   ../common/lundefs
+      integer*4 luntxt,ulun,ylun,ttyin,ttyout,dlun,vlun,wlun
+      integer*4 addlun,wavlun,lstlun,pltlun,wvhlun
+      integer*4 ttllun,cmdlun,slun,rlun,cpylun,wrtlun,redlun
+      parameter (luntxt=1)
+      parameter (ulun=3)
+      parameter (ylun=4)
+      parameter (ttyin=5)
+      parameter (ttyout=6)
+      parameter (dlun=7)
+      parameter (vlun=8)
+      parameter (wlun=9)
+      parameter (addlun=10)
+      parameter (redlun=10)
+      parameter (wrtlun=11)
+      parameter (wavlun=11)
+      parameter (lstlun=12)
+      parameter (pltlun=13)
+      parameter (wvhlun=14)
+      parameter (ttllun=15)
+      parameter (cmdlun=16)
+      parameter (slun=17)
+      parameter (rlun=18)
+      parameter (cpylun=19)
+!##### End   ../common/lundefs
+!##### Beginning   ../common/alphabet
+      common	/alpha/	iha,ihb,ihc,ihd,ihe,ihf,ihg,ihh,ihi,ihj,ihk,ihl,ihm&
+     &,ihn,iho,ihp,ihq,ihr,ihs,iht,ihu,ihv,ihw,ihx,ihy,ihz
+      common	/alpha/	ihca,ihcb,ihcc,ihcd,ihce,ihcf,ihcg,ihch,ihci,ihcj,i&
+     &hck,ihcl,ihcm,ihcn,ihco,ihcp,ihcq,ihcr,ihcs,ihct,ihcu,ihcv,ihcw,ih&
+     &cx,ihcy,ihcz
+      common	/digit/	ih0,ih1,ih2,ih3,ih4,ih5,ih6,ih7,ih8,ih9
+      common  /asciic/ihprd,ihandp
+      integer*4	iha,ihb,ihc,ihd,ihe,ihf,ihg,ihh,ihi,ihj,ihk,ihl,ihm,ihn,&
+     &iho,ihp,ihq,ihr,ihs,iht,ihu,ihv,ihw,ihx,ihy,ihz
+      integer*4	ihca,ihcb,ihcc,ihcd,ihce,ihcf,ihcg,ihch,ihci,ihcj,ihck,i&
+     &hcl,ihcm,ihcn,ihco,ihcp,ihcq,ihcr,ihcs,ihct,ihcu,ihcv,ihcw,ihcx,ih&
+     &cy,ihcz
+      integer*4	ih0,ih1,ih2,ih3,ih4,ih5,ih6,ih7,ih8,ih9
+      integer*4	ihprd,ihandp
+!##### End   ../common/alphabet
+      character*80 outline	
+! for xwindows writes
+      real xdata(4864), ydata(4864)
+!
+!  This means that gcrpos didn't exit normally, or the user quit
+!
+      if (ixx .eq. -1 .and. iyy .eq. -1) then
+       ier = ihe
+      end if
+      if (ier .eq. ihe .or. ier .eq. ihx .or. ier .eq. -1) then
+       return
+      end if
+      imatch =0
+      xmatch = 0.9e37
+      do jj = 1, nchans
+! find closest channel
+       tstmch = abs(xpos - xdata(jj))
+       if (tstmch < xmatch) then
+        imatch = jj
+        xmatch = tstmch
+      end if
+      end do 
+      if (imatch .eq. 0) then
+       call serase(0,318,511,348)
+       call movabs (0,338)
+       call sb(0)
+       write (ttyout, 40) ixx,iyy
+       call movabs (ixx, iyy)
+       ier = -1
+       return
+      end if
+      call serase(0,318,511,348)
+      call movabs (0,338)
+      call sb(0)
+      write (outline, 50) ixx,iyy,char(0)
+      call gwrite(outline)
+      write (outline, 51) xpos,ypos,char(0)
+      call gwrite(outline)
+      write (outline, 52)  imatch,xdata(imatch),ydata(imatch),char(0)
+      call gwrite(outline)
+      call movabs (ixx,iyy)
+      call sb(0)
+!RED Added commas just before each i4 and after last i4 in 40 format statement
+40	format(12x,'CANNOT FIND A CLOSE CHANNEL (',i4,',',i4,')')
+50	format('pixel coordinates:       x=',i4,'     y=',i4,a1)
+51	format('data coordinates:        x=',1pe13.6,'     y=',1pe13.6,a1)
+52	format('closest channel=',i6,'   x=',1pe13.6,'     y=',1pe13.6,a1)
+      return
+      end 

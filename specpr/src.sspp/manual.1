@@ -1,0 +1,82 @@
+NAME
+	sspp - Selective Soruce Pre-Processor
+
+SYNOPSIS
+	sspp -strings filename
+	sspp -r -strings filename
+	sspp -c -strings filename
+	sspp -f -strings filename
+
+DESCRIPTION
+	This program compares strings in the file "filename" and if
+a match is found, deletes the string from the line.  Each string
+must be at the beginning of a line.  The result is written to the
+standard output.  You can specify more than one string.
+
+OPTIONS
+	strings: any number of strings (one is required) of one or
+more characters in length.  Each string must have a "-" in front of
+it.
+
+        -r   Ratfor mode
+        -c   C mode
+        -f   Fortran Mode
+
+             In these modes, sspp appends/prepends the appropriate
+             comment characters for that language.  For example:
+
+                         sspp -r -XWIN test.r
+
+             would strip out strings #XWIN.  The -c option searches
+             for "/*string" and "string*/" while the -f option
+             searches for the strings "cstring" or "Cstring", where
+             "string" is any character string.
+
+EXAMPLES
+	Sspp can be used to select machine dependant code.  For
+example, the following is a sample from a makefile.  First, a get is
+done to get the current version of the source, then sspp selects
+machine dependent code from the ratfor source.  Then the ratfor is
+run and another sspp is run to select machine dependancies in
+fortran.  The strings "-/*HPUX" and "-HPUX*/" are the generic comment 
+separators for c source for machine HPUX, "-#HPUX" is for ratfor, 
+and "-cHPUX" is for fortran.  The make can be done on any machine by 
+setting a variable such as "MCHINE" to the target machine.  The use 
+of two passes of sspp allows differences between ratfor and fortran 
+to be selected.  For each string, the string is selected to begin 
+with the character sequence (after the dash) to indicate comment, so 
+if that string is not selected and deleted by sspp, the succeeding 
+compilation will pass by the line.
+
+  make MCHINE='"-/*HPUX" "-HPUX*/" "-#HPUX" "-cHPUX"'
+	get  -p s.program.r >program.x
+	sspp "-/*HPUX" "-HPUX*/" "-#HPUX" "-cHPUX" program.x > program.r
+	rm -f program.x 
+	ratfor -6% -C program.r > program.x
+	sspp "-/*HPUX" "-HPUX*/" "-#HPUX" "-cHPUX" program.x >../debug/program.f
+	rm -f program.x 
+	f77 -C -c ../debug/program.f
+	rm -f program.r
+
+However, it is now better to use the -r, -c or -f options (added in
+2/90), so that the above example would be:
+
+  make MCHINE=HPUX
+	get  -p s.program.r >program.x
+	sspp -r -HPUX program.x > program.r
+	rm -f program.x 
+	ratfor -6% -C program.r > program.x
+	sspp -f -HPUX program.x >../debug/program.f
+	rm -f program.x 
+	f77 -C -c ../debug/program.f
+	rm -f program.r
+
+Usually it is not neccessary to sspp both the ratfor and fortran,
+but only the ratfor.
+
+	 
+FILES
+	none
+
+AUTHOR
+	R. Clark

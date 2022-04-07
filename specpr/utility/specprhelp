@@ -1,0 +1,56 @@
+#!/bin/sh
+#
+# specpr help shell script.
+
+#
+# set the directory where info is found:
+#      dir is the directory path to the HELP directory,
+#      helpdir is the name of the HELP directory in $dir
+#
+
+dir=$SPECPR/manual
+helpdir=HELP
+
+#
+# set what pager is in use: typical options are more, less, or pg
+#
+# $PAGER is an environment variable
+#
+
+if [ $PAGER ]
+then
+	pager=$PAGER
+else
+	pager=more
+fi
+
+# change to directory where help directory is located
+
+cd $dir
+
+# set variable a (this is what gets tested for help keywords)
+
+a=$1
+
+#                if $1 was blank, no keyword, so show help contents
+if [ -z "$1" ]
+then
+	a=contents
+fi
+
+#             while user indicates help keywords, show help on that keyword
+while [ $a ]
+do
+	if [ "$a" = "help" ]
+	then
+		a=contents
+	fi
+
+	$pager $helpdir/$a
+	echo " "
+	echo "PRESS RETURN TO CONTINUE with program,"
+	echo "Type a keyword for help on that topic, or"
+	echo "Type  help  for the index page"
+	read a
+
+done

@@ -1,0 +1,2 @@
+temp fix:
+search.r: #NONHPUX commented out for linux (disable regex stuff)

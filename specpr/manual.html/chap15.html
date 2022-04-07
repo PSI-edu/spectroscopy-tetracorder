@@ -1,0 +1,757 @@
+<!-- Creator     : groff version 1.18.1.1 -->
+<!-- CreationDate: Tue Nov  9 14:21:33 2010 -->
+<html>
+<head>
+<meta name="generator" content="groff -Thtml, see www.gnu.org">
+<meta name="Content-Style" content="text/css">
+<title></title>
+</head>
+<body>
+
+<hr>
+<pre>SPECPR Users&rsquo; Manual                                                   Page 15.1
+
+</pre>
+
+<p align=center>CHAPTER 15</p>
+
+<p align=center>STANDALONE UTILITIES</p>
+
+<p>15.1 Introduction This chapter describes specpr support
+utilities. They are independent programs to do tasks related
+to specpr. Each utility has a Unix-style manual page. You
+may want to copy these manual pages and put them into your
+local list of user-available commands.</p>
+
+<p>Spprint is a routine that prints the contents of a
+specpr file, similar to the &quot;list&quot; function in
+specpr (section 11 of the specpr manual), but the advantage
+in using it is you do not have to start a specpr process,
+assign a file, and then go to the list routines. It is
+useful for checking the contents of a specpr file you happen
+across. This routine is used to provide rapidly searchable
+lists of online specpr files at the U.S. Geological Survey,
+Denver Spectroscopy Laboratory. Spprint is described in
+section 15.2. Spfeatures is a program that reads a data file
+created by specpr special function f46. Thus, spfeatures
+queries a spectral features database and allows a user to
+find spectra with certain user-defined features. Spfeatures
+is described in section 15.3. The data translation routines
+are used to convert specpr data files to ascii and those
+ascii files back to specpr format data files.</p>
+
+<p>15.2 Spprint</p>
+<pre>NAME
+     spprint - print a summary of a specpr format file
+
+SYNOPSIS
+     spprint  file
+
+DESCRIPTION
+     This program uses the specpr listing routines to provide a listing
+to the standard output of the header and data, similar to the specpr
+list routines, Chapter 11 of the specpr manual.
+
+FILES
+     &quot;file&quot; is a user-specified specpr file
+
+AUTHOR
+     Matthew Klejwa
+
+
+<p>15.3 spfeatures</p>
+
+<p>NAME<br>
+spfeatures - search spectral features data base</p>
+
+<p>SYNOPSIS<br>
+spfeatures [-c range] [-w range] [-d range] [-e range]</p>
+<!-- TABS -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>[-a range] [-F file] [-o file] [-h] [-v] [-b]</p>
+</td>
+</table>
+
+<p>DESCRIPTION<br>
+This program searches the spectral features database
+selecting<br>
+entries based on the band center, width, depth, asymmetry,
+or error on the<br>
+depth of the feature. All numbers refer to microns in the
+database.</p>
+
+<p>Options:</p>
+<!-- TABS -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>-c c1 c2 : Band Center -- Causes program to select</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>all features with a band center within</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>the bounds of c1 and c2. c2 must be</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>greater than or equal to c1.</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>-w w1 w2 : Band Width -- Causes program to select</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>all features with a band width within</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>the bounds of w1 and w2. w2 must be</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>greater than or equal to w1.</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>-d d1 d2 : Band Depth -- Causes program to select</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>all features with a band depth within</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>the bounds of d1 and d2. d2 must be</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>greater than or equal to d1.</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>-e e1 e2 : Error on band depth -- Causes program</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>to select all features with an error</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>on the band depth that is within the</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>bounds of e1 and e2. e2 must be</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>greater than or equal to e1.</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>-a a1 a2 : Band Asymmetry -- Causes program to</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>select all features with a band asymmetry</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>within the bounds of a1 and a2. a2</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>must be greater than or equal to a1.</p>
+</td>
+</table>
+
+<p>-F file : Database file -- Causes program to use</p>
+<!-- TABS -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>&quot;file&quot; as a database, rather than the</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>default file.</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>-o file : Output file -- Causes output to be written</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>to &quot;file&quot;, rather than standard output.</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>&quot;File&quot; is outputted in binary form, and</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>is not compatible with the &quot;-b&quot; option.</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>(-h and -v are ignored)</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>-h : Header -- Causes the appropriate header</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>to be included in the output.</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>(default is no header)</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>-v : Verbose -- Prints the entire title and the</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>comments to each band. (default is a</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>seventeen character name, and no comments)</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>-b : Bandanal format -- Causes program to use</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>the output from Specpr Interactive Band</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>Analysis routine, see section 9.8 of the specpr</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>manual. This option is not compatible with the</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>-o option, and causes a fatal error. (-v is</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p>ignored, and -h header is changed)</p>
+</td>
+</table>
+
+<p>When more than one option is given, the search is by
+&quot;and&quot; as<br>
+compared to an &quot;or&quot; search. If an &quot;or&quot;
+search is desired, run the<br>
+program separately, and append the output to a file.</p>
+
+<p>EXAMPLES</p>
+
+<p>Find all features with a center between 1.38 and 1.41
+microns:</p>
+
+<p>spfeatures -c 1.38 1.41</p>
+
+<p>Find all features between 1.38 and 1.41 microns with a
+full width at<br>
+half maximum less than 0.01 micron:</p>
+
+<p>spfeatures -c 1.38 1.41 -w 0 0.01</p>
+
+<p>Find all features between 1.38 and 1.41 microns with
+full width at<br>
+half maximum less than 0.01 micron, and belonging to
+Alunite:</p>
+
+<p>spfeatures -c 1.38 1.41 -w 0 0.01 | grep Alunite</p>
+
+<p>Find all features between 1.38 and 1.41 microns with
+full width at<br>
+half maximum greater than 0.01 micron, and all features
+between 2.1<br>
+and 2.4 microns that belong to Alunite, and put the output
+in a file<br>
+called temp1 with a header:</p>
+
+<p>spfeatures -h -c 1.38 1.41 -w 0.01 9999 | grep Alunite
+&gt; temp1<br>
+spfeatures -c 2.1 2.4 | grep Alunite &gt;&gt; temp1</p>
+
+<p>FILES<br>
+/d1/samples/features/FWHM_46 binary features database<br>
+/d1/samples/features/FWHM bandanl features database<br>
+* user&rsquo;s features database<br>
+NOTE: the above files are be site dependent.</p>
+
+<p>NOTES<br>
+1) There will be no output if there are no options (null
+default).</p>
+
+<p>AUTHORS<br>
+Noel Gorelick, Roger Clark, Matthew Klejwa</p>
+
+<p>15.4 Data Translation</p>
+
+<p>15.4.1 sptoascii</p>
+
+<p>NAME<br>
+sptoascii - convert a specpr format file to ascii data</p>
+
+<p>SYNOPSIS<br>
+sptoascii file</p>
+
+<p>DESCRIPTION<br>
+This program converts a specpr file to ascii so that it may
+be<br>
+easily transferred to a different machine and retranslated
+to the<br>
+local machine format, thus avoiding the writing of special
+floating<br>
+point number conversion routines.</p>
+
+<p>FILES<br>
+&quot;file&quot; user-specified specpr file</p>
+
+<p>AUTHOR<br>
+Robert Burtzlaff</p>
+
+<p>15.4.2 asciitosp</p>
+
+<p>NAME<br>
+asciitosp - convert an ascii data file to specpr format</p>
+
+<p>SYNOPSIS<br>
+asciitosp file &lt; asciifile</p>
+
+<p>DESCRIPTION<br>
+This program converts an ascii file to specpr format,
+version 2<br>
+(version 3 specpr has the same format as version 2). The
+ascii format<br>
+must be the same as that generated by sptoascii or
+oldsptoascii.</p>
+
+<p>FILES<br>
+&quot;file&quot; user-specified specpr file</p>
+
+<p>AUTHOR<br>
+Robert Burtzlaff</p>
+
+<p>15.4.3 oldsptoascii</p>
+
+<p>NAME<br>
+oldsptoascii - convert a specpr version 1 format file on a
+DEC<br>
+VAX to ascii data</p>
+
+<p>SYNOPSIS<br>
+oldsptoascii file</p>
+
+<p>DESCRIPTION<br>
+This program converts a specpr version 1 file to ascii so
+that it<br>
+may be easily transferred to a different machine (or the
+same machine)<br>
+and retranslated to the local machine format, thus avoiding
+the writing<br>
+of special floating point number conversion routines.</p>
+
+<p>This program MUST be compiled and run on a VAX Unix (or
+VAX<br>
+Eunice) system.</p>
+
+<p>The output is written to standard out, which may be
+redirected<br>
+to another file.</p>
+
+<p>FILES<br>
+&quot;file&quot; user-specified specpr file</p>
+
+<p>AUTHOR<br>
+Robert Burtzlaff</p>
+
+<p>15.4.4 cgastosp</p>
+
+<p>NAME<br>
+cgastosp - convert an ascii data file from the NASA
+Infrared<br>
+Telescope Facility, Cooled Grating Array<br>
+Spectrometer (CGAS) to specpr format</p>
+
+<p>SYNOPSIS<br>
+cgastosp file &lt; asciifile</p>
+
+<p>DESCRIPTION<br>
+This program converts an ascii file made at the University
+of<br>
+Hawaii, from the NASA Infrared Telescope Facility, Cooled
+Grating Array<br>
+Spectrometer (CGAS) to specpr format, version 2<br>
+(version 3 specpr has the same format as version 2).</p>
+
+<p>FILES<br>
+&quot;file&quot; user-specified specpr file</p>
+
+<p>AUTHOR<br>
+Roger N. Clark</p>
+<hr>
+</body>
+</html>

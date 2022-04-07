@@ -1,0 +1,19 @@
+
+Model 1) Relative linear band depth as a proxy for abundance.
+         Linear Band Depth  method:
+         Scale band depth to band depth of pure mineral.
+         Assume linear scaling of this scaled band depth = fractional abundance
+
+         RA = RAB * BDO / BDR,   RA = Relative Abundance
+
+         where:
+                RAB = Reference material abundance in the reference spectrum.
+                BDO = Band depth in the observed spectrum (the unknown).
+                BDR = Band depth in the reference spectrum.
+
+
+Model 2) future 
+
+Model 3) future
+
+Model 4) future

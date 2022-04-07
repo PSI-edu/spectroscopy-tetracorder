@@ -1,0 +1,40 @@
+.nr % 35
+.nr CN 8
+.bp 36
+.sh 3 "F23: Mathmatical Parser" 8 6 23
+.pp
+This routine allows the user to type in arbitrary mathmatical
+expressions involving spectral data, wavelength records, and
+constants. The
+expressions allowed are any combination of addition, subtraction,
+multiplication, division, and exponentiation (exponentiation is
+represented by ^).
+.pp
+To use f23 type f22 (or f22e if errors are to be included in the
+computation) from math operations. The program will list which
+wavelength record and the number of channels it will be using. To
+change the wavelength record at this point type
+.ul
+a
+followed by the desired wavelength record number. If the default
+wavelength record is acceptable just type a carriage return. If
+you wish to abort the routine type
+.ul
+e
+or
+.ul
+x.
+After choosing the appropriate wavelength record the routine will
+print out the current file protections and allow you to type in
+the expression to be evaluated. For example, If you wanted to add
+file v record 21 to a gaussian with a height -1.5, half width of 2.3
+microns (at 1/e
+point), centered at 1.32 microns you would type:
+.br
+.ul
+v21+-1.5*2.71828e0^(-((a3-1.32)/2.3)^2)
+.br
+(assuming you are using wavelength record 3). When you type a
+carriage return at the end of the line. The routine will return
+to math operations and ask where the data is to be written (see
+section 8.7).

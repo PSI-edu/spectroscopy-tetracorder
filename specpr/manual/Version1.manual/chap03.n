@@ -1,0 +1,37 @@
+.nr % 0
+.nr CN 3
+.bp
+.sh 1 "STARTING SPECPR ON THE LSI 11/23 COMPUTER " 3
+
+To run SPECPR:
+.pp
+The terminal should display a login message like the following:
+
+
+.ul
+Login:
+
+at which point you can login by typing in your user id and
+password.
+
+.pp
+The system will respond by typing
+
+.ul
+$
+or your own specified prompt
+
+then you type
+
+specpr
+
+and SPECPR will begin running.
+.pp
+You can also start up SPECPR by typing
+
+
+specpr filename
+
+where filename is the name of your (existing) restart file.
+Starting in this manner will skip some of the initial steps of
+specpr.

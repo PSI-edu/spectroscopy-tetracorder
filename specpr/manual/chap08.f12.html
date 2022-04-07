@@ -1,0 +1,238 @@
+<!-- Creator     : groff version 1.18.1.1 -->
+<!-- CreationDate: Tue Nov  9 14:21:31 2010 -->
+<html>
+<head>
+<meta name="generator" content="groff -Thtml, see www.gnu.org">
+<meta name="Content-Style" content="text/css">
+<title></title>
+</head>
+<body>
+
+<hr>
+<pre>SPECPR Users&rsquo; Manual                                            Page 8-f12.1
+
+F12:  Cubic Spline Interpolation                             Alias: cspl[in]
+F12:  Derivative
+This routine fits a cubic spline to an input data set, and then computes
+a new data set based on a new wavelength set specified by the user.
+This allows you to smoothly interpolate one data set to another (not
+this is not a convolution).  Errors, if specified, are also
+interpolated.  The input data set and its associated wavelengths are
+used to derive a cubic spline describing the curve.  The curve may then
+be recomputed at other wavelengths, or because the curve is described by
+a set of polynomials, the derivative of the curve may be computed.
+The input wavelength set can be the same as the
+output wavelength set, then with selected parts of the spectrum
+deleted, a continuum can be computed.  For example, in this mode,
+you would simply delete all the channels comprising a particular
+absorption band.  The computed spectrum is then the input spectrum
+without the absorption band.  See
+
+    Clark, R.N., Water Frost and Ice:  The Near-Infrared Spectral
+          Reflectance 0.65-2.5 &mu;m,
+          J. Geophys. Res.,
+          3087-3096, 1981.
+or
+     Clark, R.N. and T.L. Roush, Reflectance Spectroscopy:
+          Quantitative Analysis Techniques for Remote Sensing Applications,
+          J. Geophys. Res.,
+          6329-6340, 1984.
+
+for examples of continua and a discussion of the theoretical
+aspects of continua.
+The program requires that the input data set and its
+error bars, if any, be specified when called from Math Operations.
+For example;
+
+              v23f14e
+or
+              v23csplin e
+</pre>
+
+<p>Upon entering the routine, the title to the data to be
+splined is displayed and you are asked select normal spline
+or derivative mode:</p>
+<pre>              &lt;return&gt; for cubic spline mode,
+              d        for derivative mode,
+              e  or  x to exit.
+</pre>
+
+<p>Next, you will be asked to input two wavelength data
+sets, the first for the input data set, the second for the
+output interpolation. The wavelength sets should be entered
+with capital letter file IDs. Example:</p>
+<pre>              V24 U46
+or
+              V15 V15
+</pre>
+
+<p>where the first interpolates to a new wavelength set,
+and the second example interpolates to the same wavelength
+set, presumably with the intent of deleting some channels to
+use the result as a continuum. Finally, you are asked if you
+want to delete points. If you do, just type in the channels
+to be deleted, separated by spaces, or ranges separated by a
+&quot;t&quot;, and then terminated by a &quot;c&quot;. For
+example:</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>1 2 59t63 120 c</p></td>
+</table>
+
+<p>deletes channels 1, 2, 59, 60, 61, 62, 63, and 120. You
+can use more than one line, and the deletion routine is not
+finished until it gets the &quot;c&quot;. WARNING: Cubic
+splining can be tricky. For example, glitches in data could
+lead to erroneous results, so you should delete those
+channels. The cubic spline routine used requires each
+wavelength set to be sorted in increasing order, and the
+interpolated wavelength to be within the bounds of the other
+wavelength set. F12 handles this, minimizing errors that
+could occur. However, it seems common to have problems. If
+you get one of the following &quot;F12 errors,&quot; note
+the number and other pertinent information (e.g. data sets
+in use) and submit a bug report if you can&rsquo;t figure
+out a cause. NOTE, HOWEVER that a usual cause is bad input,
+most likely due to two wavelengths that have the same value
+(causing an infinite slope), and an extremely high data
+value (causing a near infinite slope), or some channel or
+wavelength not what you think it is (like not in the proper
+overlap range). Check your data carefully before reporting
+bugs. If you have problems, you should carefully check all
+your data by both plotting it and examining the values with
+the data editor, f14. For example, if you find deleted
+channels in the input wavelength data set, you should
+include those channels in the list of channels to be deleted
+in the spline routine (f12).</p>
+
+<p>Error codes from the cubic spline routine:</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="5%"></td>
+<td width="94%">
+<p>33: Found value(s) in interpolated wavelength set less
+than input wavelength set.</p>
+<!-- INDENTATION -->
+<p>34: Found value(s) in interpolated wavelength set greater
+than input wavelength set.</p>
+<!-- INDENTATION -->
+<p>129: The dimension of spline coefficient matrix is less
+than one less the number of channels.</p>
+<!-- INDENTATION -->
+<p>130: The number of channels is less than 2 (user should
+check wavelength data sets in use).</p>
+<!-- INDENTATION -->
+<p>131: Wavelength files are not ordered. (Since the routine
+sorts the data, this should not happen. It may indicate
+fundamental problem with the input data).</p></td>
+</table>
+
+<p>The spline function is very useful for interpolating
+data to new wavelength values and also for generating
+continua. When interpolating to a new wavelength set, the
+resolution of the spectra should be equal (use the smoothing
+function of F17 to degrade a high resolution spectrum to
+that of the low resolution spectrum). Spurious data points
+should be deleted. For generating a continuum to a spectrum,
+specify the same wavelength file for the input and output
+spectra, then delete data points which are not on the
+&quot;continuum.&quot; This can be tricky depending on the
+data and what you are trying to do so talk to people who
+have used the routine first (e.g. Roger Clark or Bob
+Singer).</p>
+
+<p align=center>How the Cubic Spline Interpolating Function
+Works</p>
+
+<p>The cubic spline interpolating function may be
+visualized as follows. Bend a flexible strip (like a plastic
+ruler) so that it passes through each of the data points in
+the spectrum to be interpolated</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="18%"></td>
+<td width="81%">
+<p>[f(x1), f(x2), . . . f(xn)].</p></td>
+</table>
+
+<p>The physics of the bent strip shows that the equation of
+the strip can be represented as a series of cubic
+polynomials with appropriate boundary conditions. A
+different cubic polynomial is calculated for each interval
+in the spectrum</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="18%"></td>
+<td width="81%">
+<p>[i.e. S1(x) on the interval (x1, x2),</p>
+<!-- INDENTATION -->
+<p>S2(x) on (x2, x3) . . . S{n-1}(x) on (x{n-1},
+xn)</p></td>
+</table>
+
+<p>where Sn represents a cubic polynomial</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="18%"></td>
+<td width="81%">
+<p>Anx3 + Bnx2 + Cnx + Dn = Sn(x)].</p></td>
+</table>
+
+<p>The boundary conditions are that the spline must go
+through each function value</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="18%"></td>
+<td width="81%">
+<p>[S1 (x1) = f(x1), S1 (x2) = f(x2) = S2(x2) =
+etc.],</p></td>
+</table>
+
+<p>and the first and second derivatives of the cubic
+polynomials are continuous</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="18%"></td>
+<td width="81%">
+<p>[S{m-1}&rsquo;(xm) = Sm&rsquo;(xm), S{m-1}&quot;(xm) =
+Sm&quot;(xm)</p></td>
+</table>
+
+<p>for m on the interval 2 to (n-1) (inclusive)]. Finally,
+the curvature is forced to zero at the endpoints</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="18%"></td>
+<td width="81%">
+<p>[S1&quot;(x1) = 0, S{n-1}&quot;(xn) = 0].</p></td>
+</table>
+
+<p>The spline used here is NOT a smoothing function.
+Therefore, data with large noise spikes present should be
+pre-smoothed before fitting with the interpolating spline
+(or the data points with anomalous values should be
+deleted). For a more complete discussion see Carnahan and J.
+O. Wilkes, &quot;Digital Computing and Numerical
+Methods,&quot; John Wiley &amp; Sons, New York, New York. p
+307. (1973).</p>
+<hr>
+</body>
+</html>

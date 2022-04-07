@@ -1,0 +1,3 @@
+This directory is not used.  In place to facilitate single method of
+processing the HPUX, LINUX and SOLARIS kludge directories by makefile
+in parent directory depending on KLUDGE environment setting.

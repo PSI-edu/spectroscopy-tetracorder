@@ -1,0 +1,115 @@
+      subroutine wtochbin (waves, ichans, w1, w2, ich1, ich2, ier)
+      implicit integer*4 (i-n)
+!ccc  name: wtochbin
+!ccc  version date: 10/22/91
+!ccc  author(s): Roger N. Clark
+!ccc  language: Ratfor
+!ccc
+!ccc  short description: Given wavelength array "waves" of ichans
+!ccc                     length, and wavelength interval w1 to w2, find
+!ccc                     first set of channels (ich1, ich2) inside the
+!ccc                     wavelength interval.
+!ccc
+!ccc  algorithm description:
+!ccc  system requirements: none
+!ccc  subroutines called: none
+!ccc  argument list description: see short description
+!ccc  parameter description: none
+!ccc  common description: none
+!ccc  message files referenced: none
+!ccc  internal variables:
+!ccc  file description: none
+!ccc  user command lines: none
+!ccc  update information:
+!ccc  NOTES:
+!ccc
+!##### Beginning   ../common/lundefs
+      integer*4 luntxt,ulun,ylun,ttyin,ttyout,dlun,vlun,wlun
+      integer*4 addlun,wavlun,lstlun,pltlun,wvhlun
+      integer*4 ttllun,cmdlun,slun,rlun,cpylun,wrtlun,redlun
+      parameter (luntxt=1)
+      parameter (ulun=3)
+      parameter (ylun=4)
+      parameter (ttyin=5)
+      parameter (ttyout=6)
+      parameter (dlun=7)
+      parameter (vlun=8)
+      parameter (wlun=9)
+      parameter (addlun=10)
+      parameter (redlun=10)
+      parameter (wrtlun=11)
+      parameter (wavlun=11)
+      parameter (lstlun=12)
+      parameter (pltlun=13)
+      parameter (wvhlun=14)
+      parameter (ttllun=15)
+      parameter (cmdlun=16)
+      parameter (slun=17)
+      parameter (rlun=18)
+      parameter (cpylun=19)
+!##### End   ../common/lundefs
+      real*4 waves(ichans), w1, w2
+      integer*4 ich1, ich2, ier, i
+      ich1 = 0
+      ich2 = 0
+      ier = 0
+!DEBUG:
+!	write (ttyout,*) 'DEBUG: number of channels= ',ichans
+!	write (ttyout,*) 'DEBUG: waves 52, 53, 60, 61:',waves(52),waves(53),
+!				waves(60),waves(61)
+!	write (ttyout,*) 'DEBUG: wavelength interval=', w1, w2
+!END_DEBUG
+      if (w2 < w1) then
+       ier = 1
+       write (ttyout,1) w1, w2
+1		format      ('ERROR in wavelength to channel conversion:',/,'      fi&
+     &rst wavelength (',f12.5,') is less than the second (',f12.5,')',/)
+       return
+      end if
+      do i = 1, ichans  
+       if (w1 .le. waves(i)) then
+        ich1 = i
+        ich2 = ich1
+        do j = i, ichans  
+         if (w2 < waves(j)) then
+          go to 100
+        end if
+         ich2 = j
+        end do 
+        go to 100
+      end if
+      end do 
+      write (ttyout,2) w1
+2	format      ('ERROR: wavelength ',f7.5,' not in range',/)
+      ier = 1   
+! w1 never found
+      return
+100          continue
+      if ((ich1 .eq. ich2) .and. (w1 .le. waves(ich1)) .and. (w2 .ge. wa&
+     &ves(ich2))) then
+      !                        wavelength range bounds the channel found,
+      !                        so dont move it.
+       return
+      else if (ich1 .eq. ich2) then
+      ! if one channel found, check if it is
+      ! the closest channel
+      ! if above condition doesn't
+      ! hold, which means the range does
+      ! not actually encompas the channel.
+       if ((ich1 > 1) .and. (ich1 .le. ichans)) then
+        if (abs(waves(ich1)-w1) > abs(waves(ich1-1)-w1)) then
+         ich1 = ich1 - 1
+         ich2 = ich1
+         return
+        end if
+      end if
+       if ((ich1 > 0) .and. (ich1 < ichans)) then
+        if (abs(waves(ich1)-w1) > abs(waves(ich1+1)-w1)) then
+         ich1 = ich1 + 1
+         ich2 = ich1
+         return
+        end if
+      end if
+      end if
+      return
+      end 

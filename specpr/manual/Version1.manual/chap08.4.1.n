@@ -1,0 +1,28 @@
+.nr % 24
+.nr CN 8
+.bp 25
+.sh 3 "F15:  Formats Gaussian Parameter File " 8 6 15
+.pp
+This program takes GFIT data from the SPECPR files and formats
+the data in a neat, legible manner.  If no file was input, an error
+message is written, and the program soft exits.  The program also
+checks to make sure that the input file is the correct one.  If
+not, the program soft exits.
+.pp
+First, the program writes out the gaussian terms (if there are
+any), followed by the continuum terms (if there are any); these
+are followed by the integrated intensities which are equal to the
+height times the width of the gaussian and percent error of the
+gaussians and the mean value and sigma.
+.pp
+The program then checks the manual history to see if the fit was
+in inverse wavelength space or natural logarithm space.  If the fit was
+in inverse wavelength space, then the data is converted to
+wavelength space for the center positions and widths.  If the fit
+was done in log space, then the items printed are (1) the relative
+band depth which is equal to 1 - EXP (Height), (2) Band depth -
+Error = 1 - EXP (Height - Error) and (3) Band depth + Error = 1 -
+EXP (Height + Error).  In all divisions, the denominator is checked
+for zero.  If it is zero, it is reset to @1.0 times 10 sup -36@,
+and an error
+message is printed on user's terminal.

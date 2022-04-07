@@ -1,0 +1,63 @@
+
+
+
+
+
+
+SPECPR Users' Manual                                            Page 8-f15.1
+
+
+_F_1_5:  _F_o_r_m_a_t_s _G_a_u_s_s_i_a_n _P_a_r_a_m_e_t_e_r _F_i_l_e                      _A_l_i_a_s: _g_a_u_s[_s_f_m_t]
+
+     _N_O_T_E: At this version of specpr, GFIT is not implemented beyond  specpr
+version  1.   However,  f15  is  still included to format Gaussian parameter
+files from GFIT output done for those sites still running version  1  specpr
+and GFIT.  A future implementation of specpr may include GFIT.
+
+     This routine takes GFIT data from the SPECPR files and formats the data
+in  a neat, legible manner.  If no file was input, an error message is writ-
+ten, and the routine soft exits.  The routine also checks to make sure  that
+the input file is of the the correct type.  If not, the routine soft exits.
+
+     First, the routine writes out the Gaussian terms (if  there  are  any),
+followed  by  the  continuum terms (if there are any); these are followed by
+the integrated intensities which are equal to the height times the width  of
+the Gaussian, the percent error of the Gaussians, the mean value and sigma.
+
+     The routine then checks the manual history to see if  the  fit  was  in
+inverse  wavelength  space  or  natural  logarithm space.  If the fit was in
+inverse wavelength space, then the data are converted  to  wavelength  space
+for the center positions and widths.  If the fit was done in log space, then
+the items printed are
+
+     (1) the relative band depth which is equal to 1 - EXP (Height),
+     (2) Band depth - Error = 1 - EXP (Height - Error) and
+     (3) Band depth + Error = 1 - EXP (Height + Error).
+
+In all divisions, the denominator is checked for zero.  If it is zero, it is
+reset to 1.0x108-369, and an error message is printed on user's terminal.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

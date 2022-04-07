@@ -1,0 +1,16 @@
+#!/bin/sh
+# make both hpdaemon and hpdaemon2
+
+set -x
+
+if [ -f "makefile" ]
+then
+	echo "makefile already exists, not doing a get"
+	make CMODE=HPIB CUTTER=CUTTER hpdaemon
+	make CMODE=HPIB CUTTER=NOCUTTER hpdaemon2
+else
+	get -s -p SCCS/s.makefile > makefile
+	make CMODE=HPIB CUTTER=CUTTER hpdaemon
+	make CMODE=HPIB CUTTER=NOCUTTER hpdaemon2
+	rm makefile
+fi

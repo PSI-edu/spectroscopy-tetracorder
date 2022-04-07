@@ -1,0 +1,4 @@
+To do backslash character that is machine independent, do:
+
+	character*1 ihbcksl
+	ihbcksl = char(92)  # this is the backslash character

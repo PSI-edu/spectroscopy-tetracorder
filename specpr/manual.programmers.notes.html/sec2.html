@@ -1,0 +1,938 @@
+<!-- Creator     : groff version 1.18.1.1 -->
+<!-- CreationDate: Wed Nov 10 14:17:27 2010 -->
+<html>
+<head>
+<meta name="generator" content="groff -Thtml, see www.gnu.org">
+<meta name="Content-Style" content="text/css">
+<title></title>
+</head>
+<body>
+
+<hr>
+
+<p>HTML-IMAGE.nr 0C 0 HTML-IMAGE-END.lf 1 -</p>
+
+<p align=center>System Dependent Routines</p>
+
+<p>HTML-IMAGE.nr 3c 0</p>
+<pre>      DREAD
+
+
+</pre>
+
+<p>An unbuffered direct access read routine</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="10%"></td>
+<td width="89%">
+<pre>DRITE
+
+
+</pre>
+</td>
+</table>
+
+<p>An unbuffered direct access write routine</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="10%"></td>
+<td width="89%">
+<pre>IFORK
+
+
+</pre>
+</td>
+</table>
+
+<p>Create a new process</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="10%"></td>
+<td width="89%">
+<pre>IEXEC
+
+
+</pre>
+</td>
+</table>
+
+<p>Execute new program</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="10%"></td>
+<td width="89%">
+<pre>IWAIT
+
+
+</pre>
+</td>
+</table>
+
+<p>Wait for a process to complete</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="10%"></td>
+<td width="89%">
+<pre>SETFIL
+
+
+</pre>
+</td>
+</table>
+
+<p>A routine to assign a UNIX filename to a fortran logical
+unit</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="10%"></td>
+<td width="89%">
+<pre>ARGFIL
+
+
+</pre>
+</td>
+</table>
+
+<p>A routine to use an argument to the main routine as a
+UNIX filename and assign the UNIX file to a fortran logical
+unit</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="10%"></td>
+<td width="89%">
+<pre>SETMOD
+
+
+</pre>
+</td>
+</table>
+
+<p>A routine to set the file status word</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="10%"></td>
+<td width="89%">
+<pre>IARGC
+
+
+</pre>
+</td>
+</table>
+
+<p>A function to get the number of arguments to the main
+progran</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="10%"></td>
+<td width="89%">
+<pre>T2P
+
+
+</pre>
+</td>
+</table>
+
+<p>A routine to convert from TI-980b floating point format
+to LSI-11 floating point format</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="10%"></td>
+<td width="89%">
+<pre>P2T
+
+
+</pre>
+</td>
+</table>
+
+<p>A routine to convert from LSI-11 floating point format
+to TI-980b floating point format</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="10%"></td>
+<td width="89%">
+<pre>REWIND
+
+
+</pre>
+</td>
+</table>
+
+<p>A routine to rewind a magnetic tape unit</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="10%"></td>
+<td width="89%">
+<pre>FRDREC
+
+
+</pre>
+</td>
+</table>
+
+<p>A routine to forward space a magnetic tape unit by
+physical records</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="10%"></td>
+<td width="89%">
+<pre>BKREC
+
+
+</pre>
+</td>
+</table>
+
+<p>A routine to backward space a magnetic tape unit by
+physical records</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="10%"></td>
+<td width="89%">
+<pre>ABSBIN
+
+
+</pre>
+</td>
+</table>
+
+<p>Converts integers to HP2648A or HP2623A display absolute
+binary coordinates</p>
+
+<p>HTML-IMAGE-END.bp</p>
+
+<p align=center>SUBROUTINE DREAD</p>
+
+<p>This subroutine does a direct access read from a fortran
+logical unit.</p>
+
+<p>Calling sequence: CALL DREAD(LUN,IREC,LRECL,BUF,IER)</p>
+
+<p>Arguments: HTML-IMAGE.nr 3c 0</p>
+<pre>      LUN:
+
+
+</pre>
+
+<p>The fortran logical unit to be read.</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="10%"></td>
+<td width="89%">
+<pre>IREC:
+
+
+</pre>
+</td>
+</table>
+
+<p>The number of the record to be read. (The first record
+is record number 0)</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="10%"></td>
+<td width="89%">
+<pre>LRECL:
+
+
+</pre>
+</td>
+</table>
+
+<p>The logical record length in bytes of each record.</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="10%"></td>
+<td width="89%">
+<pre>BUF:
+
+
+</pre>
+</td>
+</table>
+
+<p>The array to which the data will be read.</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="10%"></td>
+<td width="89%">
+<pre>IER:
+
+
+</pre>
+</td>
+</table>
+
+<p>An error flag. Set to zero if the read completes
+normally. Set to -1 if an end of file is encountered. Set to
+UNIX error number if any I/O error occurs.</p>
+
+<p>HTML-IMAGE-END.bp</p>
+
+<p align=center>SUBROUTINE DRITE</p>
+
+<p>This subroutine does a direct access write to a fortran
+logical unit.</p>
+
+<p>Calling sequence: CALL DRITE(LUN,IREC,LRECL,BUF,IER)</p>
+
+<p>Arguments: HTML-IMAGE.nr 3c 0</p>
+<pre>      LUN:
+
+
+</pre>
+
+<p>The fortran logical unit to be written.</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="10%"></td>
+<td width="89%">
+<pre>IREC:
+
+
+</pre>
+</td>
+</table>
+
+<p>The number of the record to be written. (The first
+record is record number 0)</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="10%"></td>
+<td width="89%">
+<pre>LRECL:
+
+
+</pre>
+</td>
+</table>
+
+<p>The logical record length in bytes of each record.</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="10%"></td>
+<td width="89%">
+<pre>BUF:
+
+
+</pre>
+</td>
+</table>
+
+<p>The array to which the data will be written.</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="10%"></td>
+<td width="89%">
+<pre>IER:
+
+
+</pre>
+</td>
+</table>
+
+<p>An error flag. Set to zero if the write completes
+normally. Set to UNIX error number if any I/O error
+occurs.</p>
+
+<p>HTML-IMAGE-END.bp</p>
+
+<p align=center>FUNCTION IFORK()</p>
+
+<p>This function executes the UNIX fork system call which
+creates a child process.</p>
+
+<p>Calling sequence: I = IFORK()</p>
+
+<p>Function value: The value returned is 0 in the child
+process and is the process id number of the child process in
+the parent process.</p>
+
+<p>See IWAIT for an example of the use of this
+function.</p>
+
+<p align=center>FUNCTION IEXEC(PROGNAME,ARG0,ARG1,...)</p>
+
+<p>This function executes another program.</p>
+
+<p>Arguments: HTML-IMAGE.nr 3c 0</p>
+<pre>     PROGNAME:
+
+
+</pre>
+
+<p>The file name of the file to be executed.</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="8%"></td>
+<td width="91%">
+<pre>ARGi:
+
+
+</pre>
+</td>
+</table>
+
+<p>A variable number of character string arguments to be
+passed to the executed program. By convention ARG0 should be
+the name of the program.</p>
+
+<p>HTML-IMAGE-END Function value: This function normally
+never returns. If it returns the program could not be
+executed.</p>
+
+<p>See IWAIT for an example of the use of IEXEC.</p>
+
+<p align=center>FUNCTION IWAIT(ISTAT)</p>
+
+<p>This function causes the program to wait for the
+termination of a child process.</p>
+
+<p>Arguments: HTML-IMAGE.nr 3c 0</p>
+<pre>      ISTAT:
+
+
+</pre>
+
+<p>ISTAT is set to the termination status of the child
+process.</p>
+
+<p>HTML-IMAGE-END Function value: The returned value is the
+process id of the terminating child or -1 if no child
+exists.</p>
+
+<p>Example: To execute another program and wait for its
+completion a combination of IFORK, IEXEC and IWAIT must be
+used. For example, to get a long listing of the contents of
+the current working directory one could use the following
+sequence.</p>
+<pre>        .
+        .
+        .
+
+       ipid = ifork()
+        if ( ipid.ne.0) goto 100
+            ii = iexec(&rsquo;/bin/ls&rsquo;,&rsquo;ls&rsquo;,&rsquo;-l&rsquo;)
+            write(6,10)
+10          format(&rsquo; exec failed on /bin/ls&rsquo;)
+            stop
+100     ii = iwait(istat)
+        if (ii.ne.ipid .and. ipid.ne.-1) goto 100
+        if (istat.ne.0) write(6,20) istat
+20      format(&rsquo; /bin/ls returned status=&rsquo;,i7)
+
+       .
+        .
+        .
+</pre>
+
+<p align=center>SUBROUTINE SETFIL</p>
+
+<p>SETFIL allows any unix filename to be associated with a
+fortran unit number. The channel must not be open.</p>
+
+<p>Calling sequence: CALL SETFIL(N,H[,M] )</p>
+
+<p>e.g., call
+setfil(2,&rsquo;../turner/somefile&rsquo;)</p>
+
+<p>Arguments: HTML-IMAGE.nr 3c 0</p>
+<pre>      N:
+
+
+</pre>
+
+<p>N is the fortran logical unit.</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="10%"></td>
+<td width="89%">
+<pre>H:
+
+
+</pre>
+</td>
+</table>
+
+<p>H must be a null-terminated string of characters
+comprising the file-name. It should be noted that the
+compiler automatically null-terminates any text enclosed in
+single quotes as a subroutine argument.</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="10%"></td>
+<td width="89%">
+<pre>M:
+
+
+</pre>
+</td>
+</table>
+
+<p>if present, is used as the status word for the
+channel.</p>
+
+<p>HTML-IMAGE-END.PP The status word determines various
+file I/O parameters as follows:</p>
+<pre>        Bit    Name        Meaning
+
+       15(MSB) input   sequential files -
+                                set: file is input
+                                reset: file is output
+                        random files -
+                                set: file is read-only
+                                reset: file is read-write
+
+       14      random  all -
+                                set: file is random access
+                                reset: file sequential access
+
+       13      create  random -
+                                set: force creation of file
+                                reset: open existing file,
+                                        if possible
+
+       12      append  sequential -
+                                set: if files exists on output,
+                                        append to it.
+                                reset: create output file
+
+       11      carctl  sequential, ascii -
+                                set: first byte of record is
+                                        carriage control
+                                reset: terminate record with
+                                        new-line
+
+       10      ascspc  sequential -
+                                set: ascii special mode
+                                reset: ascii normal mode
+
+       9       binspc  sequential -
+                                set: binary special mode
+                                reset: binary normal mode
+
+       8       lstbin  sequential -
+                                set: last i/o access binary
+                                reset: last i/o access ascii
+
+       7       flush   sequential -
+                                set: purge buffer on output
+                                        after each i/o op.
+                                reset: buffer output to 512 bytes
+
+       6       delete  all -
+                                set: delete file on endfile
+
+       5       open    all -
+                                set: file is open
+
+       4       rgood   sequential -
+                                backspace is possible on file
+</pre>
+
+<p align=center>FUNCTION IARGC</p>
+
+<p>IARGC returns the number of arguments the main program
+was invoked with.</p>
+
+<p>Calling sequence: N = IARGC(X)</p>
+
+<p>Arguments: HTML-IMAGE.nr 3c 0</p>
+<pre>      X:
+
+
+</pre>
+
+<p>A dummy argument. Not used.</p>
+
+<p>HTML-IMAGE-ENDFunction value: The number of
+arguments.</p>
+
+<p>See Subroutine ARGFIL for example</p>
+
+<p align=center>SUBROUTINE ARGFIL</p>
+
+<p>ARGFIL is like SETFIL except that the K&rsquo;th
+argument to the main program is used as the file name.
+Remember that the 1st argument, by convention, is the name
+of the program being run. Therefore, K should almost always
+be &ge;2.</p>
+
+<p>Calling sequence: CALL ARGFIL(N, K [,M] )</p>
+
+<p>Arguments: HTML-IMAGE.nr 3c 0</p>
+<pre>      N:
+
+
+</pre>
+
+<p>The fortran logical unit number.</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="10%"></td>
+<td width="89%">
+<pre>K:
+
+
+</pre>
+</td>
+</table>
+
+<p>The argument number.</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="10%"></td>
+<td width="89%">
+<pre>M:
+
+
+</pre>
+</td>
+</table>
+
+<p>if present, is used as the status word for the channel.
+(see SETFIL)</p>
+
+<p>HTML-IMAGE-END EXAMPLE: Fortran program:</p>
+<pre>c    variables lun = logical unit number of a file device
+c              append = append mode (see subroutine setfil)
+c
+        integer n,lun,append
+        lun = 4
+        append = 20480
+c   see function iargc
+        n = iargc(x)
+        if ( n .eq. 2 ) call argfil (lun,2,append)
+        if ( n .ne. 2 ) call setfil (lun,&rsquo;../turner/somefile&rsquo;)
+                        .
+                        .
+                        .
+
+</pre>
+
+<p align=center>SUBROUTINE SETMOD</p>
+
+<p>SETMOD sets the status word of channel n to m.</p>
+
+<p>Calling sequence: CALL SETMOD(N,M)</p>
+
+<p>Arguments: HTML-IMAGE.nr 3c 0</p>
+<pre>      N:
+
+
+</pre>
+
+<p>The fortran logical unit number.</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="10%"></td>
+<td width="89%">
+<pre>M:
+
+
+</pre>
+</td>
+</table>
+
+<p>The new status word. (see SETFIL)</p>
+
+<p>HTML-IMAGE-END.bp</p>
+
+<p align=center>FUNCTION T2P</p>
+
+<p>This function translates one TI-980b format floating
+point number to a LSI-11 format floating point number.</p>
+
+<p>Calling sequence: F = T2P(FTI)</p>
+
+<p>Arguments: HTML-IMAGE.nr 3c 0</p>
+<pre>      FTI:
+
+
+</pre>
+
+<p>A 4-byte (real*4 or integer*4) input value which
+actually contains a TI-980b format floating point value.</p>
+
+<p>HTML-IMAGE-ENDFunction value: The value returned is the
+LSI-11 format floating point value.</p>
+
+<p align=center>FUNCTION P2T</p>
+
+<p>This function translates one LSI-11 format floating
+point number to a TI-980b format floating point number.</p>
+
+<p>Calling sequence: F = P2T(FLSI)</p>
+
+<p>Arguments: HTML-IMAGE.nr 3c 0</p>
+<pre>      FLSI:
+
+
+</pre>
+
+<p>A real*4 input value</p>
+
+<p>HTML-IMAGE-ENDFunction value: The value returned is the
+TI-980b format floating point value.</p>
+
+<p align=center>SUBROUTINE REWIND</p>
+
+<p>REWIND rewinds a magnetic tape unit.</p>
+
+<p>Calling sequence: CALL REWIND(LUN,IER)</p>
+
+<p>Arguments HTML-IMAGE.nr 3c 0</p>
+<pre>      LUN:
+
+
+</pre>
+
+<p>Fortran logical unit to be rewound.</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="10%"></td>
+<td width="89%">
+<pre>IER:
+
+
+</pre>
+</td>
+</table>
+
+<p>Error flag. IER is set equal to zero if no error occurs.
+If an error occurs then IER is set to the UNIX error
+number.</p>
+
+<p>HTML-IMAGE-END.bp</p>
+
+<p align=center>SUBROUTINE FRDREC</p>
+
+<p>This routine forward spaces a magnetic tape unit.</p>
+
+<p>Calling sequence: CALL FRDREC(LUN,NUM,IER)</p>
+
+<p>Arguments: HTML-IMAGE.nr 3c 0</p>
+<pre>      LUN:
+
+
+</pre>
+
+<p>The fortran logical unit.</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="10%"></td>
+<td width="89%">
+<pre>NUM:
+
+
+</pre>
+</td>
+</table>
+
+<p>The number of records to space forward.</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="10%"></td>
+<td width="89%">
+<pre>IER:
+
+
+</pre>
+</td>
+</table>
+
+<p>Error flag. IER is set equal to zero if no error occurs.
+If an error occurs then IER is set to the UNIX error
+number.</p>
+
+<p>HTML-IMAGE-END.bp</p>
+
+<p align=center>SUBROUTINE BKREC</p>
+
+<p>This routine backward spaces a magnetic tape unit.</p>
+
+<p>Calling sequence: CALL BKREC(LUN,NUM,IER)</p>
+
+<p>Arguments: HTML-IMAGE.nr 3c 0</p>
+<pre>      LUN:
+
+
+</pre>
+
+<p>The fortran logical unit.</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="10%"></td>
+<td width="89%">
+<pre>NUM:
+
+
+</pre>
+</td>
+</table>
+
+<p>The number of records to space backwards.</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="10%"></td>
+<td width="89%">
+<pre>IER:
+
+
+</pre>
+</td>
+</table>
+
+<p>Error flag. IER is set equal to zero if no error occurs.
+If an error occurs then IER is set to the UNIX error
+number.</p>
+
+<p>HTML-IMAGE-END.bp</p>
+
+<p align=center>SUBROUTINE ABSBIN</p>
+
+<p>This subroutine converts the integers INX and INY to
+binary absolute HP2648A format in the variables IOUTX,
+IOUTY.</p>
+
+<p>Calling sequence: CALL ABSBIN (INX, INY, INOUTX,
+IOUTY)</p>
+
+<p>Arguments: HTML-IMAGE.nr 3c 0</p>
+<pre>   INX,INY:
+
+
+</pre>
+
+<p>x and y coordinates of a point to be displayed on the
+HP2648A graphics terminal</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="5%"></td>
+<td width="94%">
+<pre>INOUTX,INOUTY:
+
+
+</pre>
+</td>
+</table>
+
+<p>x and y coordinates in A2 format to be sent to
+HP2648A</p>
+
+<p>HTML-IMAGE-END BINARY ABSOLUTE FORMAT is plotted with
+respect to an origin at 0,0. Four bytes are required to
+specify a single end point. A ten(10) bit coordinate in the
+range 0-1023, is sent for both x and y.</p>
+
+<p>The bytes are ordered as follows: HTML-IMAGE.nr 3c 0</p>
+<pre>            Bit   7   6    5    4    3    2    1
+
+
+
+
+
+         BYTE 1   0   1   X9   X8   X7   X6   X5    HI X
+
+
+
+
+
+         BYTE 2   0   1   X4   X3   X2   X1   X0   LOW X
+
+
+
+
+
+         BYTE 3   0   1   Y9   Y8   Y7   Y6   Y5    HI Y
+
+
+
+
+
+         BYTE 4   0   1   Y4   Y3   Y2   Y1   Y0   LOW Y
+
+
+
+</pre>
+
+<p>HTML-IMAGE-END EXAMPLE:</p>
+<pre>x = 360 = 01011 01000           y = 180 = 00101 10100
+          HI X  LOW X                     HI Y  LOW Y
+
+       BYTE 1 = 01 01011 = +  HI X
+        BYTE 2 = 01 01000 = (  LOW X
+        BYTE 3 = 01 00101 = %  HI Y
+        BYTE 4 = 01 10100 = 4  LOW Y
+</pre>
+<hr>
+</body>
+</html>

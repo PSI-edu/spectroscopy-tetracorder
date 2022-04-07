@@ -1,0 +1,15 @@
+WAVELENGTHS
+
+     Wavelengths are any data set in a specpr data file.  For example
+in v23 could be a 1-dimensional array of reflectance values, 256
+channels in length, and in v24 is a 256-channel array of wavelength
+values.  From the display routines, you could plot reflectance on the
+vertical axis and wavelength on the horizontal axis with the command
+"v23V24".  Alternatively, you could plot wavelength on the vertical
+axis versus reflectance on the horizontal axis with the command
+"v24V23".  In all cases, the "wavelengths" are obtained by using a
+capital letter for the data file and a record number.
+
+     The wavelength set can also be changed when in the CRT plot routines.
+Just type in the capital leter ID and the record number of any data set.
+

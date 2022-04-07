@@ -1,0 +1,26 @@
+#include <stdlib.h>
+
+initrand_()
+{
+	int i;
+	i= (int) time(0);
+	srand48(i);
+}
+initrand()
+{
+	initrand_();
+}
+
+frandom(f)
+float *f;
+{
+	*f = drand48();
+}
+
+/* below is identical to above except _ added */
+
+frandom_(f)
+float *f;
+{
+	*f = drand48();
+}

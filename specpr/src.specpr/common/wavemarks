@@ -1,0 +1,35 @@
+#       wavelength markers for plots
+
+#       Added 08/20/2013 RNC
+
+# note: common block adapted from overlays, not all variable may be used
+#       or perhaos will use un the future (e.g. wmops)
+
+#       wmrflg  = -1 not defined  
+#               = 0 do not show marks
+#               = 1 show marks
+
+#       wmrflgb = stored setting of wmrflg when the mark gets turned off
+#                 when turned back on, wmrflg(n) = wmrflgb(n)
+
+#       wmrclr  =     color (to be defined, future)
+
+#       wmrwav  = wavelength markers (up to 9)
+
+#       wmnum   = number of wavelength markers (up to 9)
+
+#       wmops   = mark options
+#       wmflgmenu = 1 if show overlays defined on crt plot, else =0
+
+	common /wmrly1/   wmrflg, wmrflgb, wmrclr
+	common /wmrly1/   wmrwav, wmnum, wmops, wmflgmenu
+
+	real*4 wmrwav(9,6)
+
+	integer*4 wmrflg(6)
+	integer*4 wmrflgb(6)
+	integer*4 wmrclr(6)
+	integer*4 wmnum(6)
+	integer*4 wmflgmenu
+
+	character*4  wmops(6)

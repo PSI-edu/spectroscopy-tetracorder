@@ -1,0 +1,237 @@
+.sh 3 "Special Function 15:  Formats Gaussian Parameter File " 8 6 15
+.pp
+This program takes GFIT data from the SPECPR files and formats
+the data in a neat, legible manner.  If no file was input, an error
+message is written, and the program soft exits.  The program also
+checks to make sure that the input file is the correct one.  If
+not, the program soft exits.
+.pp
+First, the program writes out the gaussian terms (if there are
+any), followed by the continuum terms (if there are any); these
+are followed by the integrated intensities which are equal to the
+height and width of the gaussian and percent error of the
+gaussians and the mean value and sigma.
+.pp
+The program then checks the manual history to see if the fit was
+in inverse wavelength space or log base E space.  If the fit was
+in inverse wavelength space, then the data is converted to
+wavelength space for the center positions and widths.  If the fit
+was done in log space, then the items printed are (1) the relative
+band depth which is equal to 1 - EXP (Height), (2) Band depth -
+Error = 1 - EXP (Height - Error) and (3) Band depth + Error = 1 -
+EXP (Height + Error).  In all divisions, the denominator is checked
+for zero.  If it is zero, it is reset to 1.0E-36, and an error
+message is printed on user's terminal.
+
+
+.sh 3 "Special Function 16:  Line Segment Generator "
+.pp
+Given data values at specific wavelengths or channels typed in by
+the user, this routine computes line segments between the points
+the user has input.  Upon entering the program, the user has the
+option of changing the current wavelength file in use by typing
+the letter "A" and the file number, or assigning the channel
+numbers as "wavelengths values" with the maximum number of
+channels given by the wavelength file.  To do this, type H and
+the wavelength file number to assign channel numbers with the
+number of channels given by the wavelength file number.
+.pp
+After this initialization, the program asks for the first two
+data values--the coordinates for point #1.  Enter the data
+values separated by a space.  Now, the program will be in a loop
+asking for the point coordinates Xn, Yn where n is in a loop
+going from 1 to 256.  At this stage, a number of control options
+can be entered:
+
+.ip 1)
+E or X will cause the program to exit.
+
+.ip 2)
+Rn - return to step n, where n is the step number (1 to 256).
+This allows the return to any previous input step so it may be
+changed (and then you may return to the last step you were at).
+Note that you cannot change an X value (wavelength) to a value
+greater than that in the next step--to do that, you must delete
+the following steps.
+
+.ip 3)
+Dn - delete steps.  Using this command, all data values after and
+including step n will be deleted; program control returns to the
+first step deleted.
+
+.ip 4)
+Ln is a list command which will list up to 25 entries previously
+entered with the step number.  Here (n) is optional.  If it is
+used, the program lists from that step number to the 24th step
+following.
+
+.ip 5)
+B for begin analysis.  Program calculates all data values in the
+array between each set of ordered pairs.
+.pp
+No input spectrum is required since you are creating data, not
+operating on data.  If an input file was called, an error message
+is printed, and program will hard exit.
+.pp
+All operations are checked for validity.  If a given operation
+produces an error, a message will be printed stating what caused
+the error and whether or not the program can continue.  If it
+can, the program reasks the data.  If not, the program will exit,
+hard or soft, depending on the severity of the condition.  Note
+that all X data values must be in increasing order, or error
+messages will result.
+
+Sample outputs are included (see next pages).
+
+Graph #1 was done in wavelength space with Planetary Geosciences
+cooled IR CVF default wavelength values using the following input
+values:
+.l(
+
+                .5              .2
+                .8              .9
+               1.6              .4
+               2.7              .6
+.l)
+
+Graph #2 was done in channel space but plotted in
+wavelength space using the Planetary Geosciences cooled IR CVF
+default wavelength values.
+.l(
+
+                1               .2
+               17               .9
+               74               .4
+              120               .6
+.l)
+
+.sh 3 "Special Function 17:  High To Low Resolution Convolution "
+.pp
+Subroutine F17 inputs up to 256 spectral bandpass files and convolves
+each bandpass file around the high resolution input spectrum that
+is entered from SPECPR before entering F17.  The routine outputs
+two data files:  (1) the resultant wavelength values (center
+values) and (2) the convolved spectrum.  The output of the center
+values is optional.
+.pp
+To run the function, go to the SPECPR math routine and enter the
+file ID and number for the input spectrum and F17 (example
+V23F17).  The routine starts with a query for the use of the
+default wavelength assignment, which is displayed at the top of
+the screen.  To change the default assignment, the user enters
+"A" followed by the wavelength new file number.  Next, the
+spectral bandpass information is entered.  Start with the
+desired file ID, beginning file number, and ending file number.  The files
+are then read, the output spectrum is calculated, and then the user
+is queried on whether or not to output the center value
+wavelengths.  If you wish to write the center values, enter "Y"
+for yes; then enter the title for the center values, the file ID
+and number for output when asked by the program.
+ Note that F17 cannot include errors in its calculations.
+
+The equation used to calculate the resultant is equation 8.6.17.1
+in appendix C.
+
+Where R is a data point in the resultant spectrum, X is
+the first value of the input spectrum, X is the last value of the
+input spectrum, S is the input spectrum, and B is the spectral
+bandpasses.
+.pp
+The center values are calculated by equation 18.6.17.2
+.pp
+Where C is the center value for that particular spectral bandpass,
+x, S & B and x are the same as first equation, x is the
+wavelength.
+.pp
+The integrals are approximated by summing the data points as in
+equation \*($n.3  for each convolved channel (j).
+
+Where n is the number of channels and \(*Dx is the spectral
+bandpass of channel i (equation \*($n.4).
+and similarly, the center values (wavelength) of each convolved
+channel is computed from equation \*($n.5.
+.pp
+During the calculations, divide operations are checked for a zero
+denominator.  If this were to happen, an error message is printed
+for the user, and the denominator is reset to 1.0E-36 instead of
+crashing the program.
+.pp
+If no file has been input to the program at the start, an error
+message will be printed, and the routine exits.
+.pp
+Note that for the spectral bandpass information, the difference
+between the beginning and ending file number cannot be greater
+than 256.  Also, note that, if the number of bandpass files times
+five is greater than the number of channels, a warning message
+will be printed explaining that, with data arranged in such a
+manner, the resulting accuracy of the data is questionable.
+This is due to using the summations (equations 3 and 5) and the
+equation 4 to approximate the integrals.  The message is only a
+warning--you must determine if the bandpasses are complex enough
+that accuracy may actually be in error due to a small sample.
+
+
+.sh 3 "Special Function 18:  Block Averages and Statistics "
+.pp
+Subroutine F18 averages data blocks into single data channels and
+computes the statistics (standard deviation of the mean) for each
+block.  The size of the block is defined by the user.
+.pp
+The user is first asked to enter "N" followed by the blocksize.
+On the same line, the user can also enter "A" and the new file
+number to change the default wavelength file assignment.  No
+further user input is required (example N5A3 or A3N5 do the same
+thing).  The block size must be less than or equal to the number
+of channels.
+.pp
+The average of a block j is computed from equation \*($n.1
+.pp
+where (n - n +1)= N if n is less than or equal to the number of
+channels.
+.pp
+If errors have been included, the standard deviation is
+calculated by equation \*($n.2.
+.pp
+where j is the new standard deviation.  If the errors have not
+been read in, equation \*($n.3 is used:
+
+.sh 3 "Special Function 19:  Polynomial Fit (10 Term) "
+
+.sh 3 "Unused"
+.sh 3 "Unused "
+
+.sh 3 "Unused "
+
+.sh 3 "Unused "
+
+.sh 3 "Unused "
+
+.sh 3 "Unused "
+
+.sh 2 "Return from a Math Operation or Function "
+.pp
+When a routine such as addition, subtraction, special function,
+trig. function, etc., has finished, the program asks the user
+where he/she wishes the data to be written.  The data can be
+written to any of the files:  V, W, D, U, or Y if allowed by the
+protection.  If the protection on the device is positive or zero,
+the data can only be written the protection value plus 1.  Thus,
+it is not necessary to type in this value since it is the only
+value possible.  Simply type the file letter ID and return; the
+file number will be set automatically.  The data is not written
+at this point.  It is written after the CRT plot routines.  The
+user may also exit the current operation from this point.  By
+typing
+.ul
+E,
+the current operation is terminated and the program begins
+execution of the next command if there is one or returns to Math
+Operations if there are no other command requests.  If the user
+types
+.ul
+X,
+all processing stops, and the program returns directly to Math
+Operations.
+.pp
+If the user requests the data to be stored, then the program
+continues to the titles routine (section 8.8).

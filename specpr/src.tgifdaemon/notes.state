@@ -1,0 +1,40 @@
+        /* state(                                                    */
+        /*             0, page_style      PORTRAIT=0 LANDSCAPE=1     */
+        /*            32, fileVersion     (cur max is 37)            */
+        /*            50, printMag        (vs 100.0)                 */
+        /*             0, drawOrigX,      "X Draw Origin"            */
+        /*             0, drawOrigY,      "Y Draw Origin"            */
+        /*             0, zoomScale,      "Zoom scale"               */
+        /*             8, xyEnglishGrid,  "English Grid"             */
+        /*             1, snapOn,         "Grid"                     */
+        /*             0, colorIndex,     "Color"                    */
+        /*             1, horiAlign,      "Horizontal Align"         */
+        /*             1, vertAlign,      "Vertical Align"           */
+        /*             0, lineWidth,      "Line Width"               */
+        /*             0, curSpline,      "Spline"                   */
+        /*             1, lineStyle,      "Line Style"               */
+        /*             0, objFill,        "Fill Pattern"             */
+        /*             1, penPat,         "Pen Pattern"              */
+        /*             0, textJust,       "Text Justify"             */
+        /* 'Times-Roman', font_str,       "Font Name String"         */
+        /*             0, curStyle,       "Font Style"               */
+        /*            20, font_sz,        "Font Size"                */
+        /*             0, compat_dpi,     "Font DPI"                 */
+        /*             0, curDash,        "Dash Style"               */
+        /*             0, gridSystem,     "Grid System"              */
+        /*            10, xyMetricGrid,   "Metric Grid"              */
+        /*             0, textVSpace,     "Text Vertical Spacing"    */
+        /*             0, zoomedIn,       "Zoomed In"                */
+        /*             1, gridShown,      "Grid Shown"               */
+        /*             1, moveMode,       "Move Mode")               */
+        /*             0, rotate,         "Text Rotation"            */
+        /*            16, rcbRadius,      "RCBox Radius"             */
+        /*             0, useGray,        "Use Gray Scale"           */
+        /*             0, pageLayoutMode, "Page Layout Mode"         */
+        /*             1, page_arg1,      "Page Layout Subarg 1"     */
+        /*             1, page_arg2,      "Page Layout Subarg 2"     */
+        /*             1, pageLineShownInTileMode,"Page Lines Shown" */
+        /*             0, colorDump,      "Print In Color"           */
+        /*          2000, one_page_width, "One Page Width"           */
+        /*          2400, one_page_height,"One Page Height"          */
+

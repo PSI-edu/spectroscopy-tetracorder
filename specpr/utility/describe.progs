@@ -1,0 +1,52 @@
+
+
+output=${1-../describe.out}
+debug=${2-../debug}
+sysdepend=syshpux
+
+for i in \
+common	\
+add	\
+band	\
+crtp	\
+dtol	\
+dvml	\
+extn	\
+fass	\
+fcn1	\
+fcn2	\
+fcn3	\
+fcn4	\
+fcn5	\
+fcn6	\
+fcn7	\
+fcn8	\
+fcn9	\
+free	\
+gould	\
+hed	\
+hpgraph	\
+hppen	\
+init	\
+io	\
+lib	\
+main	\
+mth1	\
+mth2	\
+newplot	\
+parser	\
+rst	\
+sub	\
+syslib	\
+talg	\
+wav	
+do
+cd $i
+echo ============= $i ============== >>$output 2>&1
+for j in `ls -1 s.* | tr "\012" " " `
+do
+	echo ROUTINE: $j >> $output
+	get -s -p $j  |  grep \#ccc >> $output 2>&1
+done
+cd ..
+done

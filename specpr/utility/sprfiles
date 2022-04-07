@@ -1,0 +1,4 @@
+#!/bin/sh
+
+grep '^i[vwduy]fl=' ${1-r1} | sed -e 's/=/= /'
+

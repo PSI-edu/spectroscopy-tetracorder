@@ -1,0 +1,34 @@
+# @(#) makefile 2.7@(#)
+
+SHELL=/bin/sh
+
+OBJ=	\
+redspr.o \
+readtx.o \
+wrtspr.o
+
+sputil.a:	$(OBJ)
+	rm -f $(SP_LIB)/sputil.a
+	$(AR) $(ARFLAGS) $(SP_LIB)/sputil.a $(OBJ)
+	$(RANLIB) $(SP_LIB)/sputil.a
+
+.SUFFIXES:
+.SUFFIXES: .o .r .c
+	
+redspr.o:		redspr.r
+	$(RF) $(RFLAGS) redspr.r > redspr.f
+	$(F77) $(FFLAGS) -c redspr.f
+	rm -r redspr.f
+
+readtx.o:		readtx.r
+	$(RF) $(RFLAGS) readtx.r > readtx.f
+	$(F77) $(FFLAGS) -c readtx.f
+	rm -f readtx.f
+
+wrtspr.o:		wrtspr.r
+	$(RF) $(RFLAGS) wrtspr.r > wrtspr.f
+	$(F77) $(FFLAGS) -c wrtspr.f
+	rm -f wrtspr.f
+
+clean:
+	rm -f *.o

@@ -1,0 +1,942 @@
+<!-- Creator     : groff version 1.18.1.1 -->
+<!-- CreationDate: Tue Nov  9 14:21:33 2010 -->
+<html>
+<head>
+<meta name="generator" content="groff -Thtml, see www.gnu.org">
+<meta name="Content-Style" content="text/css">
+<title></title>
+</head>
+<body>
+
+<hr>
+<pre>SPECPR Users&rsquo; Manual                                                   Page 9.1
+
+</pre>
+
+<p align=center>CHAPTER 9</p>
+
+<p align=center>CRT PLOT ROUTINES</p>
+
+<p>9.1 Introduction The CRT plot routines are a set of
+routines for data display, overlay, header information
+display and change, data print-out, and specific
+graphics-oriented routines to read data values off of the
+plot and to analyze specific absorption features. The CRT
+plot routines are called from the completion of a Math
+Operation (Chapter 8) or from the File Display, Transfer and
+Overlay routines (Chapter 10). Any x-y paired data may be
+plotted. The horizontal axis may be labeled to properly
+describe the data; the default horizontal-axis label is
+&quot;Wavelength (microns)&quot;, but the default can be
+overridden. Data may also be plotted as a function of
+channel number, or the x-axis values inverted in which case
+the default units of microns is assumed and the program
+converts the units to wavenumber in inverse centimeters. The
+CRT plot routines also have a facility for removing spikes
+or glitches in data by assuming the glitch was caused by a
+bad bit in the data. The user may also elect to change any
+channel to a deleted point.</p>
+
+<p>9.2 Plotting Mode The plot mode is selected by the
+command letters</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<pre>h    for channel,
+a    for wavelength, or
+n    for energy (inverse wavelength).
+</pre>
+</td>
+</table>
+
+<p>When you have a plot on the screen, change the plot type
+by entering h, a, or n and return. The menu for these
+commands is always located at the bottom of the plot screen.
+Note the characters chosen are the second letter of channel,
+wavelength, and energy since the first letters are used for
+other commands. The energy mode assumes the wavelengths are
+in microns, and the inverse wavelengths are computed in
+wavenumber.</p>
+
+<p>9.3 Changing Scale The scale of the CRT plot is
+controlled by four values: the minimum and maximum for the
+horizontal (&quot;wavelength&quot;) axis and similarly for
+the vertical axis. The plot scale may be changed by a
+command where the user types the desired limits, or by
+graphically selecting a window within the current
+window.</p>
+
+<p>9.3.1 Changing Scale by Typing in the Range The scale is
+changed by typing the</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>c</p></td>
+</table>
+
+<p>command. You are then given the following menu.</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="3%"></td>
+<td width="96%">
+<pre>______________________________________________________________________________
+ Current Scale: VERTICAL= 0.0000E+00   2.0000E+00
+                HORIZ.  = Automatic
+
+To scale the plot, type in the mode (n or w) and horizontal axis limits first.
+ When the vertical scale is entered, the routine will exit to the plot.
+
+HORIZONTAL:
+ type  n  and left and right hand limits for INVERSE WAVELENGTH, or:
+ type  w  and left and right hand WAVELENGTH limits
+          (if you type  w  only,  the program will AUTOSCALE the limits
+          from the current wavelength set)
+
+VERTICAL:
+ Type lower bound and upper bound values for the VERTICAL AXIS, or:
+ type  A  to AUTO SCALE (the VERTICAL AXIS), or:
+______________________________________________________________________________
+</pre>
+<!-- INDENTATION -->
+<p>In order to change the horizontal axis range, you MUST
+change its range before the vertical axis. As soon as the
+vertical axis range has been changed, the routine
+automatically exits and the plot is redone. For example, to
+change the scale from 0.0 to 1.1 from the CRT plot, type</p>
+<!-- INDENTATION -->
+<pre>            c
+            0 1.2
+</pre>
+<!-- INDENTATION -->
+<p>command sequence. If you wish to change the horizontal
+scale to 0.2 to 3.0 and the vertical scale to 0.5 to 1.3,
+type the</p>
+<!-- INDENTATION -->
+<pre>            c
+            w.2 3
+            0.5 3
+</pre>
+<!-- INDENTATION -->
+<p>command sequence. The format is completely free: there is
+no need to add a decimal point on integers. If you type a
+mistake, the routine will flag it and ask you to retype the
+values. Specpr allows commands to be separated by
+semicolons, so it is often desirable to see the plot while
+changing the scale. This can be done all from the CRT plot
+screen: enter the &quot;c&quot; command and the ranges
+separated by semicolons. Thus</p>
+</td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>c;w.2 3;0.5 3</p></td>
+</table>
+
+<p>is equivalent to the</p>
+<pre>              c
+              w.2 3
+              0.5 3
+</pre>
+
+<p>command sequence. In order to autoscale the horizontal
+range, type a &quot;w&quot; command with no minimum or
+maximum. To autoscale the vertical range within the current
+horizontal range window, type an &quot;A&quot; command. Thus
+to autoscale both the horizontal and vertical ranges from
+the CRT plot screen, type the</p>
+<pre>              c
+              w
+              A
+</pre>
+
+<p>or</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>c;w;A</p></td>
+</table>
+
+<p>command sequence.</p>
+
+<p>9.3.2 Changing Scale by Graphics Sub-Window A window
+within the current window may be selected to change the plot
+scale using the graphics cursor. NOTE: this option currently
+only works on X-windows or Hewlett Packard compatible
+graphics terminals. To change the sub-window, type the</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>S</p></td>
+</table>
+
+<p>command from the CRT plot command screen. The CRT menu
+will be erased and a new menu written asking you to position
+the graphics cursor at the position on the plot where you
+want the upper left corner of the new sub-window. Place the
+graphics cursor at the correct position and press the return
+key. Next you will be instructed to select the lower right
+corner. Place the graphics cursor at the desired lower right
+corner and then press the return key. The CRT plot will then
+be rescaled to the new window. Note that you can not use
+this command to scale to windows larger than the current
+window. It is, however, a very useful command for enlarging
+small features on the plot.</p>
+
+<p>9.4 Line Type Each data set on a CRT plot may have a
+specific line type. The line types available may be
+dependent on the terminal type, but the line type also has a
+few different ways of plotting the data, for example by
+including a small cross at the actual point on the plot.
+Typing the</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>l</p></td>
+</table>
+
+<p>command (the lower case letter L) followed by a number
+from 0 to 9 will change the line type used in the CRT plot.
+The following shows the characteristics of line types on HP
+series graphics terminals.</p>
+<pre>        Line             Description
+         0      error bars included, crosses, not connected (+ + +)
+         1      error bars included, crosses, connected (+&mdash;+&mdash;+)
+         2      error bars excluded, points connected ( &mdash;&mdash;&mdash;&mdash; )
+         3      only small error bars excluded, points connected ( &mdash;&mdash;&mdash;&mdash; )
+         4      error bars excluded,  line: &mdash; - &mdash; - &mdash;
+         5      error bars excluded,  line: &mdash;&mdash;&mdash; &mdash;&mdash;&mdash; &mdash;&mdash;&mdash;
+         6      error bars excluded,  line: &mdash;&mdash;  &mdash;&mdash;  &mdash;&mdash;
+         7      error bars excluded,  line: ...........
+         8      error bars excluded,  line: &mdash;&mdash; - &mdash;&mdash; - &mdash;&mdash; -
+         9      error bars excluded,  line: --- --- ---
+</pre>
+
+<p>9.5 Horizontal Axis Labels The default axis label for
+the specpr CRT plot is &quot;Wavelength (microns)&quot;, but
+this label can be changed. The change is done in the
+wavelength set by changing line 4 of the manual history. For
+example, say you had a data set of intensity versus time,
+and the time data set was in seconds. Change line 4 of the
+manual history to read &quot;\\W Time (seconds)&quot; (no
+quotes in the manual history), and the CRT plot horizontal
+axis label will read &quot;Time (seconds)&quot;. The key
+sequence for axis labels is the \\W (the backslash is
+important).</p>
+
+<p>9.6 Changing the Wavelength Set The wavelength set
+contains the &quot;x-axis values&quot; which make the plot
+of x-y paired data possible. The number of channels plotted
+is also controlled by the wavelength set in use. For Math
+operations, the number of channels that are written to the
+data file is controlled by the wavelength set in use AT THE
+TIME THE USER EXITS THE CRT PLOT ROUTINES. A different
+wavelength set can be selected by entering the upper-case
+file-ID-letter and the record number. For example:</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>V234</p></td>
+</table>
+
+<p>selects file &quot;v&quot;, data set record 234 as the
+current wavelength set. You may also assign channel numbers
+to the &quot;wavelength set&quot; by typing a &quot;C&quot;
+and the number of channels. For example:</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>C2314</p></td>
+</table>
+
+<p>sets channel 1 to be &quot;wavelength&quot; 1.0, channel
+2 to be 2.0, and so on to channel 2314 which is set to
+2314.0.</p>
+
+<p>9.7 Graphics Cursor Position</p>
+
+<p>WARNING: the graphics cursor read routine currently only
+works with X-windows or HP-compatible graphics terminals.
+Often you want to know a particular data value that is
+displayed on a plot. The graphics cursor read routine allows
+you to place the cursor on a particular data point, press
+return, and the closest channel number, wavelength, and data
+value are displayed, along with the equivalent wavelength
+and data value for the cursor position on the graph. This
+position capability also allows you to graphically
+interpolate a value if you are trying to estimate a data
+value. To begin the graphics cursor read routine, type a</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>G</p></td>
+</table>
+
+<p>command (be certain it is upper case g, because lower
+case g is the glitch removal routine). Next, use the
+graphics cursor arrow keys on the graphics terminal to
+position the cursor to the desired location on the CRT plot.
+Then press return to get the position displayed. To exit the
+cursor position routine, type an</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>e</p></td>
+</table>
+
+<p>or</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>x</p></td>
+</table>
+
+<p>command.</p>
+
+<p>9.8 Interactive Band Analysis The interactive band
+analysis routine is a graphically oriented absorption band
+analysis system. The user selects continuum points
+graphically, the system then removes the continuum, and the
+user can select the band center or let the routine find it.
+The Full Width at Half Maximum (FWHM) works similarly. The
+routine can write the results in ascii to a user selected
+file. WARNING: this routine currently ONLY works with
+X-windows or Hewlett-Packard compatible graphics terminals.
+The routine is entered from the CRT plot routines by typing
+an</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>A</p></td>
+</table>
+
+<p>command. The routine then prompts the user for one of
+three actions: the changing of the vertical and horizontal
+scales, the opening of a new file, or the analysis of a
+band. The changing of the plot scales is by a</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>c</p></td>
+</table>
+
+<p>command. The scale change command calls the plot scale
+routine, so it proceeds exactly as the normal scale changing
+is done in plotting a spectrum (see section 9.3). If the
+user wishes to open a new output file for writing the ascii
+results of the analysis, type an</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>o</p></td>
+</table>
+
+<p>command. You will then be prompted for the file name and
+a title for the data which is to be written. The
+&quot;automated, interactive band analysis&quot; is started
+by issuing an</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>a</p></td>
+</table>
+
+<p>command. You are first prompted for the first point
+which lies on the continuum which surrounds the band of
+interest. After this prompt is given, you are expected to
+use the graphics cursor position keys to move the cursor to
+the first continuum point and then to enter a return. A box
+is then drawn around the nearest channel in the data set
+(i.e. the continuum points can be selected by locating their
+proper horizontal position alone and ignoring the current
+vertical position of the graphics cursor). After the first
+point has been selected you are then asked whether this
+point is at the right position, if it is not, you may redo
+it by typing an</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>r</p></td>
+</table>
+
+<p>or you may continue by entering a return. Once you have
+selected the first continuum point, the process is then
+repeated for the second continuum point. If both points are
+correct you enter a return and the data are scaled by
+dividing out the continuum and then the continuum-removed
+spectrum is plotted. At this point in the analysis you must
+determine whether you would like to move the locations of
+the continuum points (command &quot;m&quot;), change the
+plot scales (command &quot;c&quot;) or have the band center
+selected (return). If you decide to do another continuum the
+new one is done using the same process by which the original
+continuum was selected. The only exception is that the data
+for the y axis which is used to select the new continuum is
+no longer the original data but is instead the
+continuum-removed spectrum currently displayed on the
+screen. If you wish to rescale the data, it is done in the
+same manner as in the normal spectrum plotting routine. If
+you decide that all is correct and the band center should
+now be selected, the program begins its analysis with a
+return command. The program first searches the
+continuum-removed data to find the minimum channel between
+the two selected continuum points. Once the minimum point
+has been found, a parabola is fit to the minimum point and
+the two points nearest to this minimum. The center
+wavelength (x-coordinate) of this parabola is then
+calculated as well as the reflectance (y-coordinate) on the
+parabola at this point. A solid vertical line is then
+plotted from this calculated set of coordinates to the
+continuum. The reflectance level of the Full Width Half Max
+(FWHM) is then calculated and the FWHM is then itself drawn
+as a dashed line between the sides of the band with its
+endpoints being solid boxes. A vertical dashed line at the
+mid-point of the FWHM is then drawn from the reflectance
+level of the absorption feature to the continuum. If there
+are enough channels (10 channels are currently being used as
+the limit) between the two end-points of the FWHM the
+routine will draw a cross at the Full Width Quarter Max
+(FWQM). This routine repeats this process determining
+whether it is possible to find the subsequent full widths
+(e.g. Full Width Eighth Max) by examining the number of
+channels as determined by the previous full width. The last
+full width that can be determined is the Full Width
+Sixty-fourth Max. The last FWQM (if present) or subsequent
+width which has been located is drawn as a dotted line with
+its endpoints being two small solid boxes. The center of
+this width is then computed and a vertical dotted line is
+draw from its intersection with the data to the continuum.
+You are now asked whether you would prefer to use the fit
+selected center (return) or to manually select the band
+center by an</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>s</p></td>
+</table>
+
+<p>command. If the fit selected center is chosen the FWHM
+is calculated, as well as the asymmetry parameter and the
+band depth with the band center and FWHM being written to
+the terminal. If you choose to manually select the band
+center you must manually move the graphics cursor (as
+before) to the correct horizontal position. A Full Width
+Half Max is then drawn on the graphics screen and is
+calculated and then written to the terminal. After the band
+center has been selected you have the option to redo the
+center with an</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>r</p></td>
+</table>
+
+<p>command, or to venture forward (return). Next, you have
+the option to select the FWHM manually with an</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>f</p></td>
+</table>
+
+<p>command, or to have the width selected automatically. If
+manual selection is chosen, a horizontal line is drawn at
+the proper reflectance level and you then select two points
+on that line in a manner similar to chosing the original
+continuum (Note: with noisy data, manual selection may need
+to be used). After the FWHM has been determined by either of
+the methods above, you are then asked whether the error
+associated with the horizontal data should be determined
+automatically (return) or picked by the user with an</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>m</p></td>
+</table>
+
+<p>command. The automatic error selection finds the first
+two points on either side of the channel nearest the band
+center and takes their absolute difference divided by four
+as the horizontal error value. If you wish to determine the
+horizontal error manually, you enter two points in a fashion
+similar to the selection of the continuum or the manual
+determination of the FWHM. Once the error has been obtained
+by either method, you are asked whether the data should be
+written to an ascii text file (default). If you choose not
+to write the data to a file with an</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>n</p></td>
+</table>
+
+<p>command, the routine then asks if you would like to exit
+(command e) or begin the entire process again (return). If,
+however, you wish to write the data, the program prompts you
+for a file and title for the data if a file is not currently
+open. You then receive a prompt for a 15 character comment
+(longer comments are silently truncated) which describes the
+band (you may wish to standardize the content of this field
+when analyzing many bands). After a comment has been entered
+the program asks you if you want to exit with an</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>e</p></td>
+</table>
+
+<p>command or to begin the entire process once more.</p>
+
+<p>Known crashes: 1) If one attempts to run the program to
+analyze a band with a large number of deleted channels, the
+routine seems to get confused and crashes specpr.</p>
+
+<p>9.9 Deleting Individual Data Channels Individual data
+channels may be marked as deleted by typing the</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>r</p></td>
+</table>
+
+<p>command followed by a list of channel numbers followed
+by a</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>c</p></td>
+</table>
+
+<p>command. Internal to specpr, the deletion is done by
+setting the value of the data in the specified channels to
+-1.23&times;1034. Thus, once a data point has been deleted,
+its value has been changed and it can&rsquo;t be undeleted.
+The list of channel numbers consists of numbers separated by
+spaces and by pairs of numbers separated by a &quot;t&quot;
+(meaning to or through). For example:</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>r 1 2 55t63 77 117 t 120 c</p></td>
+</table>
+
+<p>means to delete channels 1, 2, 55, 56, 57, 58, 59, 60,
+61, 62, 63, 77, 117, 118, 119, and 120. If you forget the
+&quot;c&quot;, the routine will ask for another line of
+deleted points until a c, for complete, continue, is
+entered.</p>
+
+<p>9.10 Glitch Removal Typing</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>g</p></td>
+</table>
+
+<p>from the CRT plot will call the glitch removal routine.
+The routine tries to identify glitches by looking for data
+points which are greater than 6 percent of the total data
+range and, by the use of a simple pattern recognition
+routine, checks 4 conditions. The data points which are
+thought to be glitches are identified by a small diamond
+shaped symbol. The user can then select which data points
+are &quot;actual&quot; glitches and can then correct them.
+The glitches are assumed to be wrong by some power of 2 from
+the true data. This follows from a binary counter where one
+of the bits has been set wrong. This routine was written
+specifically for the University of Hawaii &quot;Wedge&quot;
+CVF spectrometer which has these type of counters, but most
+modern digital instruments are similar and this routine may
+work for them. WARNING: once the data have been multiplied
+or divided, the glitch removal is an estimate of the actual
+data and thus strictly speaking, is &quot;fudging&quot; the
+data. The user indicates which channels are to be
+&quot;deglitched&quot; by selecting all data points marked
+on the graph, only those indicated by a list, or all those
+selected by the program except for those in a list. By
+typing an</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>a</p></td>
+</table>
+
+<p>command, the user tells the program that ALL the points
+identified plus the channels typed in after the
+&quot;a&quot; are glitches to be corrected. By typing an</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>o</p></td>
+</table>
+
+<p>command, the user tells the program ONLY those channels
+typed in after the letter &quot;o&quot; are to be corrected
+as glitches. By typing the</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>b</p></td>
+</table>
+
+<p>command, all the channels identified by the program are
+glitches BUT those channels which are typed in after the
+&quot;b&quot;. At least one space must occur between channel
+numbers. The glitch routine searches for 15 glitches at one
+time so it may take more than one pass to remove a lot of
+glitches. Sometimes more than one bit is wrong, and it will
+take more than one pass. Glitches which occur next to each
+other are not recoverable by this routine since the routine
+tries to correct the point to the surrounding data using the
+nearest power of 2. If after 2 passes on the same point the
+data value is not restored, it is probably lost. A note on
+removing glitches: you are fudging the data. If you are not
+very careful and use the utmost restraint, you may create
+some absorption or emission features you had not counted
+on!</p>
+
+<p>9.11 Information Display and Information Change Every
+standard specpr data set contains extensive header
+information, including the title, history, dates and times
+of data acquisition and data processing, as well as many
+others. Appendix A lists the specpr format, and all the
+header information values may be displayed and changed in
+the Information Change routines. To change header
+information, type the</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>i</p></td>
+</table>
+
+<p>command from the CRT plot screen. The header information
+is contained on many pages, the first of which displays the
+title. Pressing return goes to the next page, and typing</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>r</p></td>
+</table>
+
+<p>from any page returns to the first page. To change
+information on any page, type the indicated letter. You will
+then be instructed to input the appropriate data. In the
+case of the manual history, which is displayed in 4 lines
+and can be changed one line at a time type</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>m</p></td>
+</table>
+
+<p>and the line number or simply the line number 1, 2, 3,
+or 4, or to change all four lines, type &quot;m&quot;and no
+line number. In the case of the Band Normalization factor,
+scan time, or total integrating time, the number can be
+integer, floating point, or scientific notation. In the case
+of scientific notation, the number is typed in as an integer
+or real number, then the letter e, then the exponent (to the
+power of 10, an integer). Thus</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>1.4e12</p></td>
+</table>
+
+<p>is equivalent to</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>1400000000000.</p></td>
+</table>
+
+<p>There are 3 ways to exit the information change routine.
+When at the last page, pressing return with no input will
+exit to the CRT plot. Typing</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>g</p></td>
+</table>
+
+<p>from any page will also exit to the CRT (graph) plot.
+Typing</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>e</p></td>
+</table>
+
+<p>will return to the calling routine (Math Operations or
+File Display and Transfer). The &quot;e&quot; exit command
+will not terminate other processing; it only skips the CRT
+plot. Thus, if a file write is pending (as in the Math
+Operation, Chapter 8, or file transfer with display, Chapter
+10), it will be completed in the type e exit. If you wish to
+exit and terminate pending file writes, type</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>x</p></td>
+</table>
+
+<p>for a hard exit. Note that, from the data display
+routine (Chapter 10), no information is changed on the
+stored data unless there is a transfer involved (see Chapter
+10).</p>
+
+<p>9.12 Printer Listings and Printer Plots The entire
+header information and data (in scientific notation) can be
+listed on the printer by typing the</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>pd</p></td>
+</table>
+
+<p>(print data) command. The data can be plotted as a
+printer plot with the current vertical scale by typing</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>p</p></td>
+</table>
+
+<p>and the number of copies (10 or less). The data can be
+plotted in a printer plot only as a function of channel
+number. The vertical-axis resolution is 1 part in 100 (100
+print positions for the plot). For each data point printed,
+the wavelength, channel number, and data number are given.
+Four pages are required for 256 data points and 2 pages for
+120 points. When the number of channels is less than 120,
+the plot is scaled to fit from 1 to 2 pages.</p>
+
+<p>9.13 Multiple Commands in the CRT Plot Routines One
+entire line (80 characters) can be input to the CRT plot
+routine at one time for execution. For example, to change
+the wavelength data set to file v, record 2, change scale,
+print a printer plot, and set the line type to 3, you would
+type the</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>V2cpl3</p></td>
+</table>
+
+<p>or</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>V2 c p l3</p></td>
+</table>
+
+<p>Spaces can be inserted wherever desired but are not
+necessary. This multiple command capability greatly speeds
+up processing since it may take several seconds to plot the
+data on the CRT and would take a long time to replot the CRT
+after each command (on a standard graphics terminal;
+X-windows is typically only a fraction of a second).</p>
+
+<p>9.14 Exiting the CRT Plot Routines There are 3 commands
+for exiting the CRT plot. The normal method of exiting the
+CRT plot routines is by typing an</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>e</p></td>
+</table>
+
+<p>command. In this case, the user soft exits from the CRT
+plot in the normal fashion and the program executes the next
+command. The &quot;hard exit&quot;, terminate all pending
+commands, is the</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>x</p></td>
+</table>
+
+<p>command. With the &quot;x&quot; exit command, specpr
+returns to the calling routine (which is either Math
+Operations or File Display, Transfer, and Overlay). After a
+soft exit (e) from the CRT plot under Math Operations, the
+data set is written to the requested location (see section
+8.7). If errors are included, the program writes on the CRT
+where they will be written and gives the user the option of
+not writing the error data set (by typing an</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>x</p></td>
+</table>
+
+<p>command). Otherwise, press return or type a</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>c</p></td>
+</table>
+
+<p>command to continue. After a soft exit from the CRT plot
+under File Display and Transfer, the data set is written
+only if there is a transfer (see Chapter 10); otherwise, the
+next command is executed. The third way to exit the CRT plot
+routines applies to the Math Operations routine only. If the
+Band Normalization option was not turned on, the user may
+type a</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>b</p></td>
+</table>
+
+<p>command. This will turn on the Band Normalization
+option, exit the CRT plot, and go to the Band Normalization
+routine (section 8.9). When the Band Normalization routine
+is left, the program will return to the CRT plot. If the
+&quot;b&quot; command is entered while in the file display,
+transfer, and overlay routines, the CRT plot will soft exit
+(as a type &quot;e&quot; exit above).</p>
+<hr>
+</body>
+</html>

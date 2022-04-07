@@ -1,0 +1,158 @@
+#!/bin/sh
+#
+# This script adds envi image geometry info to all tetracorder products
+# Roger N. Clark,   2012
+
+# usage:
+#        cmd.1   [cube]
+#
+
+# Note: either include the full path to the image cube, or edit the following
+# cube definition line to be the full path
+
+# the ../cubes/f060506t01p00r09.acorn6_MASKED.rtgc will get changed
+#                to the cube file by the cmd-install
+#                script (lunix/unix).  If not, then it can be passed on
+#                the command line, or simply hard coded by hand here.
+
+# The cube can be a relative or absolute path
+# for example, a full lunix/unix path is:
+# cube=/data/mountains/2006.aviris/cubes/f060506t01p00r09.rtgc
+# If a relative path, like:
+#   ../cubes/f060506t01p00r09.rtgc
+# the scripts which change directories will attempt to add a
+# relative path, but for non standard implimentations, the path
+# might not be found.  If that problem occurs, it should be detected
+# and the script will stop.
+
+# Note: tetracorder (12/2019) wants the cube file name without the .hdr envi
+#       extension, but davinci scripts want the .hdr extension to read
+#       envi files.  So for the scripts here, check that the file
+#       has the .hdr extension when needed.  - RNC 12/03/2019
+
+
+if [ ! -z "$1" ]
+then
+	cube=$1
+else
+	# hard code the cube path inthe following line, if desired.
+	# uncomment the definition and then comment out the
+	# echo lines and the exit1
+
+	# cube=../cubes/f060506t01p00r09.acorn6_MASKED.rtgc
+
+	echo "ERROR: No cube specified"
+	echo "usage:"
+	echo "       $0  cube_file_name"
+	exit 1
+fi
+
+# check that we can find the cube and that it is an envi header
+# the file name coude be for a cube, or a header file
+# and the directory path could be absolute or relative
+
+bhdr="header_not_found"    # default
+ahdr="header_not_found"    # default
+
+abspath=0                       # default: path to cube is relative
+a=`echo $cube | cut -c 1-1 `
+if [ $a = "/" ]
+then
+	abspath=1               # path is absolute
+#	echo "file $cube is an absolute path"
+#else
+#	echo "file $cube is a relative path"
+fi
+
+if [ ! -f "$cube" -a "$abspath" != "0" ]   # path is absolute and we can't find the cube
+then
+	echo "ERROR: file not found: $cube"
+	echo "usage:"
+	echo "       $0  cube_file_name"
+	echo "exit 2"
+	exit 2
+fi
+
+# is the cube the image data or the envi header file?
+
+isheader=0                           # default: assume not a header file
+a=`echo $cube | grep '.hdr\$'`
+if [ ! -z "$a" ]
+then
+	isheader=1   # header found
+fi
+
+#echo " DEBUG: isheader= $isheader"
+
+ahdr=$cube
+if [ "$isheader" = "0" ]   # cube is not .hdr, so add it.
+then
+	ahdr=${cube}.hdr         # add .hdr to path
+fi
+
+# test if we can find the hdr file
+
+p=`pwd`
+if [ ! -f "$ahdr" -a "$abspath" = "0" ]  # absolute path and file not found
+then
+	echo "envi header file not found: $ahdr from $p"
+	echo "usage:"
+	echo "       $0  cube_file_name"
+	echo "exit 3"
+	exit 3
+fi
+
+if [ -f "$ahdr" -a "$abspath" != "0" ]  # absolute path and file found
+then
+	bhdr=$ahdr   # absolute path
+fi
+
+if [ -f "$ahdr" -a "$abspath" = "0" ]   # file found and relative path
+then
+	bhdr=../${ahdr}    # relative path when we cd down another directory
+fi
+
+e=`head -2 $ahdr | grep ENVI`  # check that the file is an envi file
+if [ -z "$e" ]
+then
+        echo "ERROR: $ahdr does not appear to be an envi file"
+	echo "       $0  cube_file_name"
+        echo "exit 4"
+        exit 4
+fi
+
+#echo " DEBUG: ahdr= $ahdr"
+#echo " DEBUG: bhdr= $bhdr"
+#echo " "
+
+############### add envi geometry to all output files (envi header files)
+
+for i in `ls -d group.* case*`
+do
+	echo "==========================================================="
+	echo "Adding geometry to ENVI headers in $i"
+	echo "==========================================================="
+
+	cd $i
+	a=`ls *.hdr`
+	if [ -f "$bhdr" ]
+	then
+		if [ ! -z "$a" ]
+		then
+			for j in $a
+			do
+				echo "add.geometry.to.envi.header $bhdr $j"
+				add.geometry.to.envi.header $bhdr $j
+			done
+		fi
+	else
+		p=`pwd`
+		echo "ERROR: ENVI hdr file $bhdr not found from $p"
+		echo "usage:"
+		echo "       $0  cube_file_name"
+	fi
+	cd ..
+done
+
+###############
+

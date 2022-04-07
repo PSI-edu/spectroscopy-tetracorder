@@ -1,0 +1,58 @@
+=============================================================
+TO INSTALL
+=============================================================
+
+make 
+make install
+
+Unless changed the psplotdaemon program will be installed in 
+/usr/local/bin
+
+=============================================================
+TO USE psplotdaemon
+=============================================================
+
+   cat inputfile | psplotdaemon [-c] > outputfile.ps
+
+All input and output is done via stdin and stdout respectively.
+
+The INPUT is expected to be an ascii specpr which includes the
+information such as the specpr vector and text plot files.
+Example content:
+	V/usr/spool/gplot/p0N141930996v
+	T/usr/spool/gplot/p0N141930996t
+	R/usr/spool/gplot/aa0N141930996
+	R/usr/spool/gplot/p0N141930996v
+	R/usr/spool/gplot/p0N141930996t
+	C   1
+
+The resulting postscript OUTPUT is always directed to stdout.
+
+Example1:
+
+	cat aa0N141930996 | psplotdaemon > output.ps
+
+	This creates Postscript 2 output to output.ps
+	with the graph line consisting of a line between
+	any two points.
+
+Example2:
+
+	cat aa0N141930996 | psplotdaemon -c > output.ps
+
+	This creates PostScript 2 output to output.ps
+	with the graph line consisting of a series of
+	Bezieir cubic curves with each curve consisting
+	of 3 points and the last ending point (4 total).
+
+===========================================================
+LOGS
+===========================================================
+
+Unless psdaemon.h logfile is changed, errors are logged to
+/usr/log/psplotdaemon.  It is suggested that /usr/log be a link
+to the appropriate log directora.  For Example: /var/log on Linux
+or /var/adm on HPUX or a subdirectory under that like: 
+
+	HPUX: /usr/log -> /var/adm/splog
+

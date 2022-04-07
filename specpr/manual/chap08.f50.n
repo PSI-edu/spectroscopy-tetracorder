@@ -1,0 +1,116 @@
+.\" use ms macros
+.\" this header is for putting the page numbers at the bottom of the page
+.\" set line length, page offset, vertical spacing
+.nr LL 6.3i
+.ll 6.3i
+.nr PO 1.0i
+.po 1.0i
+.nr VS 12
+.vs 12
+.\" set header and footer margins (default is 1.0i)
+.nr FM 1.00i
+.fm 1.00i
+.nr HM 1.00i
+.hm 1.00i
+.\" set no date here, MUST be before CF definition, because ND sets CF
+.\" set date, so don't do .ND
+.\" LH CH RH are left, center, right header strings
+.\" LF CF RF are left, center, right footer strings
+.\" default is CH is defined as: .ds CH "\(hy \\n(PN \(hy
+.ds LH "SPECPR Users' Manual
+.ds CH
+.ds RH "Page 8-f50.\\n(PN
+.\" setup complete
+.nf
+SPECPR Users' Manual                                            Page 8-f50.1
+
+
+.B
+F50:  Wavelength Registration                           Alias = wavreg
+.R
+.PP
+This function allows for calibration of the wavelengths of a
+spectrum against a reference spectrum.
+It was originally designed to correct the wavelengths of the Mariner
+6 and 7 infrared spectrometer data sets, using a spectrum of a
+carbon dioxide atmosphere.  Four files are required to run the
+registration.
+
+,in 8n
+1) The original data which requires calibration in wavelength.
+
+2) An approximate wavelength file for (1)
+
+3) Data for a reference spectrum, which contains absorptions
+   at known wavelengths.
+
+4) The wavelength file for the reference data (3).
+.in 0n
+
+The output of the function is a new wavelength set for the original
+data.  (1) and (2) should have the same number of channels as should
+(3) and (4) however the original data and the reference do not need
+to have the same number of channels.
+.PP
+To begin F50,from math operations, input the file ID and file number for
+the original data and f50.  Then enter the wavelength file for this data.
+If this wavelength file is the default wavelength file no input is
+required.  You will be prompted to enter the wavelength file and data
+file for the reference spectrum.  The function will then overlay a plot
+of the original and reference spectra The reference spectrum will be in
+the dotted line.  If the reference spectrum needs to be scaled
+vertically, that can be done at this point.
+.PP
+It is useful to determine the number of "plot windows" or
+regions required to adequately cover all the absorption features
+which will be used for calibration.  Both the reference and original
+absorption feature must appear in the plot window.  To determine the number
+of plot windows use the standard crt plot scale changing commands (see
+section 9.3).  Enter the number of plot windows and change scale to the
+plot window at the smallest wavelength.
+.PP
+Within a plot window determine the number of absorption features that
+will be used for wavelength calibration.  The program currently
+allows for 20 features total to be used.  Then, using the graphics
+cursor, position the cursor on the absorption in the reference
+spectrum.  The program uses only the horizontal position so the
+vertical position of the cursor is irrelevant.  Then position the
+cursor on the corresponding absorption feature in the original
+spectrum.  Repeat this process for each feature in the plot window and in
+subsequent plot windows.  Be sure to always move from shorter to longer
+wavelengths.
+.PP
+The accuracy of the wavelengths is limited by the graphics
+resolution, so be sure your plot windows magnify each set of features
+adequately for the wavelength precision you desire.
+.PP
+The program uses the wavelength value obtained from the reference
+spectrum and the channel number from the original spectrum.  
+In this way, the channel of a particular absorption feature in the
+original data is associated with a new (correct) wavelength.  A
+linear interpolation in wavelength
+between each absorption feature is then constructed and used to
+determine the wavelengths for all channels of the original data.
+If the first and last absorption feature are not the first and last
+channel then 
+the interpolation derived for the first and
+second (or last and second-to-last) absorption features
+is extrapolated to the end channels.
+.PP
+It should be noted that an "absorption feature" can be a peak or a
+spike or any feature of the original spectrum that can be associated
+with a definitive wavelength.  Also these features need not
+necessarily be present in the reference spectrum, if the wavelength
+value is accurately known from other means. (In this case, just pick
+the wavelength value off the x-axis, rather than from the reference
+spectrum).
+.PP
+Finally, the program will re-display the reference spectrum and the
+original spectrum, now using the newly derived wavelengths for the
+original.  If the calibration was reasonably successful this new
+wavelength file can be saved.  If not, you can begin again with
+more, or different calibration points.  In practice, this seems to
+work best if you exit the function and then start completely over
+again.
+.PP
+This routine and manual page was written by Wendy Calvin.

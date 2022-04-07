@@ -1,0 +1,21 @@
+     NAME
+	  sptoascii - convert specpr formatted data to an ascii file
+
+     SYNOPSIS
+	  sptoascii  [specpr.filename]  >  [ascii.filename]
+
+     DESCRIPTION
+	  This program takes specpr data previously converted by
+	  spectrans and outputs it into a textfile where changes
+	  can easily be made to the data or text added.
+	  Translation takes approximately 15-20 seconds per
+	  record, so translating very large files will not break
+	  any speed records.
+
+
+     FILES
+	  Source files: /usr/src/cmd/specpr/datatran
+	  Executable :  /usr/bin
+
+     AUTHOR
+	  Roger	N. Clark & R. Burtzlaff

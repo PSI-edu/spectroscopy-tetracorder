@@ -1,0 +1,12 @@
+#!/bin/sh
+
+for i in $*
+do
+	if [ "$i" = "chap08.n" ]
+	then
+		neqn $i | lroffI1 | laser3ne -os
+	else
+		lroffI1 $i | laser3ne -os
+	fi
+done
+

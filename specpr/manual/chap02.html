@@ -1,0 +1,1353 @@
+<!-- Creator     : groff version 1.18.1.1 -->
+<!-- CreationDate: Tue Nov  9 14:21:30 2010 -->
+<html>
+<head>
+<meta name="generator" content="groff -Thtml, see www.gnu.org">
+<meta name="Content-Style" content="text/css">
+<title></title>
+</head>
+<body>
+
+<hr>
+<pre>SPECPR Users&rsquo; Manual                                                   Page 2.1
+
+</pre>
+
+<p align=center>CHAPTER 2</p>
+
+<p align=center>PROGRAM STRUCTURE</p>
+
+<p>2.1 Block Diagram of Program Structure Specpr is a menu
+driven program. The main menu allows access to the
+processing parts of specpr. From here the user types a
+letter or sequence of letters to get to other parts of the
+program, such as math or display. The main menu looks
+like:</p>
+<pre>  __________________________________________________________________________
+   v = spdemos : f    1    w = *unasnd*: f    1    d = *unasnd*: f    1
+   u = *unasnd*: f    1    y = *unasnd*: f    1    s = starpack: f    1
+   lp: spoolfile       obs lat=    .000 deg   channels= 256 wav fl=C  256 h
+   file protection: v    53,w     0,d     0,u     0,y     0,s     0 ltype= 0
+  --------------------------------------------------------------------------
+   MAIN MENU: ********** Program Operations Control *********************
+
+    INFO:     &quot;in&quot; to turn OFF information
+
+    LIST:      l followed by v,w,d,u,or y  to list the contents
+                           of the corresponding file
+     DISPLAY:   t  to DISPLAY on screen, OVERLAP on screen
+     MATH:      m  to do MATH operations
+     TRANSFER:  t  to TRANSFER (COPY) files
+
+    PLOT:      p  to PLOT SPECTRA on PLOTTER/printer
+     SETUP:     b  to change SETUP PARAMETERS
+     FILES:     r  to REASSIGN files and devices
+     STARPACK:  s  to create a STARPACK for extinction corrections
+     PRINT RST: f  to print summary of the current restart file
+
+    EXIT:      EX  to exit program
+  __________________________________________________________________________
+</pre>
+
+<p>Figure 2.1-1 shows the basic user control structure and
+the commands used by the user to access each section.</p>
+
+<p>2.2 File Structure from the User&rsquo;s View The file
+structure of SPECPR is the most complicated portion of the
+program. As far as the user is concerned, there are 6
+&quot;Devices&quot; each labeled by a single letter (called
+&quot;file ID letters&quot;). Originally, these IDs referred
+to a style of processing (e.g. put raw data in the
+&quot;rawfile&quot; and processed data in the
+&quot;savefile&quot;. Specpr has evolved beyond this simple
+concept, but the file ID letters are still in place, so the
+ID letters are now historical. They are:</p>
+<pre>          v= saVefile (Vfile)
+          w= raWfile (Wfile)
+          d= workfile (formerly Diskfile at MIT) (Dfile)
+          s= Starpack file
+          u= Ufile
+          y= Yfile
+</pre>
+
+<p>Normally the user assigns, via the file assignment
+routine (section 5), all of the &quot;devices&quot; to disc
+files. Sometimes, processed data is stored on magnetic tape
+and thus needs to be transferred to the disc. Originally,
+devices u and y were intended to be used only for transfer
+and display and were not used in any math operation.
+However, due to increased needs, they have been made full
+working files (in version 1 specpr). Each of the 5 main data
+files (v, w, d, u, and y) may contain up to 9,999,999
+records and may be assigned in the program to the named disc
+files or to magnetic tape drives. The starpack file contains
+a maximum of 50 extinction correction &quot;starpacks&quot;
+on disc. The philosophy behind single letter file IDs is to
+minimize user typing. After all, why type a 10 or more
+character file name every time you want to access a
+spectrum. In practice, users quickly learn this abbreviation
+method to associate a single letter with a data file.</p>
+
+<p>(WARNING: some operating system limitations may preclude
+implementation of direct tape I/O--check with your local
+administrator.)</p>
+
+<p>(WARNING: with a limit of 9,999,999 records per specpr
+file, large specpr files will not fit on most tapes.)</p>
+
+<p>Error bars (1 sigma standard deviations) are stored in
+the next record after the data when generated. This saves
+room since many files do not contain error values. In this
+manual as well as in the program, the word &quot;error&quot;
+is used to mean the error bars: the errors to the data, and
+not program errors, user command errors, or input/output
+(I/O) errors. Input/output errors and user command errors
+will be referred to more specifically. In Specpr, many
+spectra are contained in one data file. The alternative
+method is to put each spectrum in a single file, and other
+data processing systems do this. The disadvantage to one
+spectrum per file is that each file must be unique in name,
+so you must type in long or complicated names to get access
+to a particular spectrum. Also, rapid access to many spectra
+quickly (like a library search) would be slow with extra
+overhead to open and close each file. With many spectra in
+one file, the user can list the file and see long titles to
+recognize the spectrum he or she wants and then type just a
+few characters to access it. Access to any single spectrum
+or a group of spectra is very quick--no open or close is
+necessary, just a simple read or write. Each I/O operation
+is analyzed for I/O errors by the program. If an I/O error
+occurs, the error encountered is listed on the CRT so the
+user can try to figure out what happened.</p>
+
+<p>2.2.1 Deleted point values All data values for
+&quot;data&quot; or &quot;wavelength&quot; (y or x data)
+points are valid except</p>
+
+<p>-1.23x10+34</p>
+
+<p>which is taken to be a deleted point.</p>
+
+<p>2.2.2 General data file I/O The user accesses a data
+array (spectrum) by typing in the File ID letter and the
+record number in the file. In general, a lower case letter
+means to read (or write) a particular data set. An upper
+case letter means read (write is not allowed in this
+context) the particular data set, but treat the data as
+horizontal axis values (the x values of x-y paired data). In
+the case of spectra, a capital letter would signify the
+wavelengths.</p>
+<pre>      Examples:    v23           # read data set in file v, at record 23.
+                   w126 W15      # read data set w126 and read data set
+                                   w15 as the &quot;wavelengths&quot; (or
+                                   horizontal axis array).
+</pre>
+
+<p>Also, transfers between all combinations of v, w, d, u,
+y, and s are allowed if the user-selected file protection
+permits such transfers (see File Protection, section
+2.3).</p>
+
+<p>2.2.3 Transfer Restrictions If the device names are
+equal, one of the special restrictions below will be
+applied. For instance, if the name of &quot;Vfile&quot; is
+the same as the name of the &quot;Ufile&quot; (e.g. a data
+tape is on MT0 as &quot;Ufile&quot; and is to be transferred
+to the &quot;Vfile&quot; on disc), the restriction applies
+to tape to disc, disc to tape, disc to disc, and tape to
+tape transfers. These restrictions are enforced in an effort
+to preserve the histories which refer to a specific spectrum
+by data tape name and record number (sometimes called file
+number). Transfers to tape including disc to tape and tape
+to tape transfers must be to corresponding record numbers
+but do not have to begin with record 1 (if the data file
+names are equal). Transfers of tape to disc, but not disc to
+disc, must begin with record number 1 (if the data file
+names are equal). Transfers of disc to disc must be to
+corresponding record numbers but do not have to begin with
+record 1 (if the data file names are equal).</p>
+
+<p>2.3 File Protection All files may be totally or
+partially protected, or completely unprotected. The fourth
+line of the CRT header gives the protection status for all
+six devices (devices v, w, d, u, v, and s).</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="5%"></td>
+<td width="94%">
+<p>&bull; If the protection number is positive or zero, the
+device is a read/write device where you can read up to and
+including the protection, but you can only write to the
+protection +1 record. For example, a value of 637 means you
+can read the first 637 records, and you can only write to
+record 638.</p>
+<!-- INDENTATION -->
+<p>&bull; A protection number of -1 means totally
+unprotected so you may read or write anywhere in the file
+randomly.</p>
+<!-- INDENTATION -->
+<p>&bull; A protection number of less than -1 means the
+device is a read-only device where you can read up to the
+absolute value protection number. For example, a value of
+-264 means 264 records are read only and you can&rsquo;t
+write to the file.</p>
+</td>
+</table>
+
+<p>You can set the protections on many files on one command
+line. Example:</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="18%"></td>
+<td width="81%">
+<p>v0 d-1 u432 y-600 w-600 s-50</p></td>
+</table>
+
+<p>where v0 means to protect 0 files on device v (write to
+file 1 only, 0 files can be read); u432 means to protect up
+to record 432 (write to record 433); y-600 means that y is a
+read-only device with 600 records; similarly for w; and s is
+a read-only file with 50 records. If the protection number
+is zero or positive, it is incremented each time the device
+is written to.</p>
+
+<p>2.3.1 Use of SPECPR File Protection The SPECPR file
+protection is designed to protect the user from destroying
+existing data and to allow use of the program with minimal
+thinking of where data is going (so the user can be thinking
+about the science). Protection should be used at all times
+unless there is some necessary reason for not using it.
+Remember that a mistake is what will destroy data in an
+unprotected file--and everyone makes mistakes. The following
+is an example of the use of protection when using specpr
+tape I/O. Some groups have a different philosophy regarding
+specpr tapes. For example, at the U. S. Geological Survey,
+Denver spectroscopy laboratory, specpr tape I/O is not used.
+Instead, specpr files are kept on line on disk and written
+to tape only with normal system backups. In any event, the
+following example illustrates the proper use of protections
+to prevent data loss, as well as to maintain histories.
+Start SPECPR. Say you have 2 tapes to be transferred to disc
+and then do some processing. Load the tapes (we will call
+them A01 and B01): A01 on MT0, and B01 on MT1. Plan to
+assign u to MT0, y to MT1, v and w to disk files. Set the
+protection on v and w to 0 (this is the default). Type in
+the names of the devices u and v = A01; y and w = B01.
+Assign the devices as noted above. Now here is where the
+protection comes in. First, let us transfer the tape on MT0
+(A01 = u). The protection is -9999. Say on the label on the
+tape, there are 673 records--do not believe this. We could
+have set the protection to -673, but what if the last time
+you added stuff to the tape you forgot to update the number
+or someone else added stuff and did not update it? If that
+happened and you then added stuff after record 673 and wrote
+it back to the tape, someone might get very mad. So--let the
+computer find the end of the data. Go to file transfer and
+type &quot;u1 + 9999tv1&quot;. All the records up to the end
+of file mark will be transferred. Say there were really 729
+records on the tape. Then, after the transfer, the
+protection on v would be 729 and -9999 on u. Now transfer
+MT1 to the disc: &quot;y1 + 1999tw1&quot;. Say there are 463
+records on MT1. The protection after the transfer would be
+463 on w and -9999 on y. Now go back to change protection
+routine and make the protection on u-729 and on y-463. All
+your data are fully protected. Now say you did some
+processing and added 47 records to v and 21 to w. You must
+then transfer the stuff back to the tapes. Take the tape off
+MT0 and put in a write ring (if you had a write ring in
+before, you are asking for trouble). Go to the change
+protection routine and change the protection u from -729 to
+729. If the tape was not at the load point when you put in
+the write ring, you must reset the record pointer in the
+program. This can be done in one of several ways: (1) change
+the tape name (change the name of u from A01 to A01 (yes,
+the same name); when the name is changed, the tape is
+rewound); (2) display record u1; or (3) transfer u1 to
+somewhere else (this is faster than a display). If d is
+assigned to disc and it is used as a workfile (protection =
+-1), transfer &quot;u1td1&quot; or &quot;u1td1000&quot;. If
+d is assigned to /dev/null, it will read u1 before you get
+the &quot;illegal transfer, device assigned to
+/dev/null&quot; message. Now that the tape record pointer is
+reset, you transfer your stuff from v to u. Type &quot;v730
++ 999tu730&quot;. Note 730 is one more than the current
+protection. The transfer will continue up to the protection
+limit on v (776), and after transferring v776 to u776 the
+message &quot;FILE REQUEST GREATER THAN FILE
+PROTECTION&quot; will come on--press return.</p>
+
+<p>It is now a good idea to list the tape from just before
+the point at which data was added to the end of file to make
+sure the tape does not have any obvious errors. Now you must
+transfer the stuff on w to the tape. Change the protection
+on u to 463; then change the name of u to B01 (this puts in
+the correct name and resets the record pointer). Now go to
+file transfer and type &quot;w464 + 99tu464&quot;. The
+program will stop at the protection limit on w of 484,
+transferring the added 21 records. Now list the type as
+before to check the newly added records. Following this
+method will maximize the safety of your data. Failure to do
+so will cause no sympathy from the person whose data you
+accidentally destroy (and you must recreate it for him or
+her). The specpr protection is closely tied to the history
+philosophy of specpr. The specpr history uses the &quot;tape
+name&quot; and record number as a unique identifier for a
+spectrum. Proper use of the history mechanism necessitates
+proper protection. Don&rsquo;t set the protection to -1 and
+write over data. Later data could be referencing specific
+records earlier in a file. For example if record 36 was a
+sample minus dark spectrum, and record 167 was record 36
+divided by a standard, and then you wrote over 36 with
+another data set, then the history would be broken.
+Similarly, it is vital to keep file names indicative of the
+final archive source. Don&rsquo;t do work in a file called
+&quot;junk&quot; or &quot;temp&quot; and then rename it
+XYZ001 because all histories will be referring to file
+&quot;junk&quot; or &quot;temp&quot; and you will have no
+idea what that file really was a year from now.</p>
+
+<p>2.4 Command Interpretation The specpr terminal input
+routine looks for various special characters in the input.
+These special characters are: &lt;, &gt;, ?, %, =, !, ;, {,
+[, and $. All of these characters except ; {, [, and $ have
+special meaning only when it is the first non-blank
+character on the line. Additional special character
+sequences are also interpreted: &quot;\#&quot;,
+&quot;\\#&quot;, &quot;==&quot;, and &quot;px(&quot;. If a
+&quot;{&quot; or &quot;[&quot; is found on the command then
+the corresponding bracket, &quot;}&quot; or &quot;]&quot;,
+will also have a special meaning. The effect of these
+characters is as follows:</p>
+
+<p>This character when followed by a file name causes
+specpr to read input from that file. You can also specify a
+starting and ending line number. For example</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="37%"></td>
+<td width="62%">
+<p>&lt;inputcommands 20 40</p></td>
+</table>
+
+<p>will read commands from a file called inputcommands
+starting at line 20 and stopping after line 40 of the file.
+If the ending line number is omitted, the file will be read
+until the end of the file is reached. If the starting line
+number is also omitted the file is read starting at the
+first line. When commands are being read from an input file,
+that command file may read commands from another input file.
+That input file can then read from yet another file, up to 9
+deep. In a sense, a command file could set several variables
+and read another command file similar to a subroutine. In
+this case, the &quot;subroutine&quot; has access to all
+variables, thus it is similar to subroutines used in the
+Basic programming language. When one command file finishes,
+commands are read from the next line of the previous command
+file. For example, given two command files:</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="5%"></td>
+<td width="94%">
+<p>file &quot;a1&quot; file &quot;a2&quot;<br>
+---------- ------------<br>
+line 1 line 1<br>
+line 2 line 2<br>
+&lt;a2 line 3<br>
+line 4<br>
+&lt;a2<br>
+line 6</p>
+<!-- INDENTATION -->
+<p>then the command sequence would be as follows.</p>
+<!-- INDENTATION -->
+<pre>                 &lt;a1     # terminal input from user
+                 a1 line 1
+                 a1 line 2
+                 a2 line 1
+                 a2 line 2
+                 a2 line 3
+                 a1 line 4
+                 a2 line 1
+                 a2 line 2
+                 a2 line 3
+                 a1 line 6
+                 # back to terminal input
+
+This character when followed by a file name causes specpr to copy
+all user input into the named file. When not followed by a
+file name it terminates the copying of the input.  Example:
+
+                &gt; outputfile     # copies all commands to file &quot;outputfile&quot;
+
+                &gt;                # turns off copying of commands to &quot;outputfile&quot;
+
+This character when followed by any string will pass that string
+to the UNIX shell (/bin/sh, see the UNIX manual) for execution.
+For example typing
+
+                !ls
+
+will give you a listing of the files in the current directory.
+
+A semicolon anywhere in an input line is treated as if the user
+had typed a carriage return instead of a semicolon. For example
+typing
+
+                c;0 1
+
+is equivalent to typing
+
+                 c
+                 0 1
+</pre>
+<!-- INDENTATION -->
+<p>The special characters ?, %, =, and $ involve the
+&quot;command file&quot; which automatically keeps a record
+of the last 20 commands the user has typed, and in addition
+can contain up to 80 permanent commands saved by the user.
+The commands in the command file are numbered 1 to 100 with
+commands 1-20 being the last twenty commands typed by the
+user and commands 21-100 being the permanent commands. The
+effect of these 4 special characters is as follows:</p>
+<!-- INDENTATION -->
+<p>This character lists the contents of the command file on
+the user&rsquo;s terminal. The commands are printed in five
+groups of twenty commands. If the ? is followed by a digit
+from 1 to 5 the corresponding group of commands will be
+printed. If no digit is specified, the first group of twenty
+commands is listed. For example,</p>
+</td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="37%"></td>
+<td width="62%">
+<p>?2</p></td>
+</table>
+
+<p>will list commands 21-40.</p>
+
+<p>This command allows the user to type in the permanent
+commands. The = should be followed by the number of the
+command to be entered. The system will prompt the user with
+a question mark at which time the user should type in up to
+80 characters for the new command. For example,</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="37%"></td>
+<td width="62%">
+<p>=25</p></td>
+</table>
+
+<p>allows the user to type in command 25.</p>
+
+<p>This command allows the user to copy a command from one
+entry in the command file to another. Commands may be copied
+only from commands 1-20 to commands 21-100. For example</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="37%"></td>
+<td width="62%">
+<p>% 10 25</p></td>
+</table>
+
+<p>will copy command 10 to command 25.</p>
+
+<p>This command when followed by a number from 1 to 100
+extracts the corresponding entry from the command file. For
+example, if command 25 contains</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="37%"></td>
+<td width="62%">
+<p>0.574</p></td>
+</table>
+
+<p>then typing</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="37%"></td>
+<td width="62%">
+<p>0 $25</p></td>
+</table>
+
+<p>is equivalent to typing</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="37%"></td>
+<td width="62%">
+<p>0 0.574</p></td>
+</table>
+
+<p>Care is needed when the command number is followed by
+another number. If the command ends with a number then the
+user should follow the command number with a comma if the
+number following the command is part of the desired final
+number. For example, if command 25 contains</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="37%"></td>
+<td width="62%">
+<p>0.574</p></td>
+</table>
+
+<p>then typing</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="37%"></td>
+<td width="62%">
+<p>0 $25,7</p></td>
+</table>
+
+<p>is equivalent to typing</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="37%"></td>
+<td width="62%">
+<p>0 0.5747</p></td>
+</table>
+
+<p>while typing</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="37%"></td>
+<td width="62%">
+<p>0 $25 7</p></td>
+</table>
+
+<p>is equivalent to typing</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="37%"></td>
+<td width="62%">
+<p>0 0.574 7</p></td>
+</table>
+
+<p>is used to parse internal variables. See section
+2.6.</p>
+
+<p>is used to parse aliases. See section 2.5.</p>
+
+<p>\# The character sequence &quot;\#&quot; means
+everything after and including these characters are comments
+and not to be interpreted by the command processor. If \#
+occurs as the first two characters on the command line, then
+the line is ignored.</p>
+
+<p>\\# The character sequence \\# is an &quot;escaped&quot;
+comment meaning interpret the characters as \# and pass them
+to the command processor, in effect uncommenting the
+comment.</p>
+
+<p>The character string == means an alias function follows.
+See section 2.5 below.</p>
+
+<p>The character sequence &quot;px(&quot; means a pixel
+coordinate of the form px(i+j,k+l,m+n) where i, j, k, l, m,
+and n are integers describing an extraction from a 3D file.
+See section 6.2 for more details.</p>
+
+<p>2.5 Alias Definitions and Substitutions While running
+specpr, an alias list of common commands can be created
+using this option. This is used to reduce the amount of
+typing needed by substituting short alias words for long
+commands. Alias words can be created for any type of command
+used in specpr. These alias words can either be read into
+specpr from a file or set up every time specpr is run.</p>
+
+<p>2.5.1 Creating Alias Words Alias words can be created
+for any command used in specpr. These alias words are
+defined by typing ==[alias word] translation. The alias word
+must be inside square brackets and followed by its
+translation. An alias word can consist of any letters or
+numbers inside square brackets. If you use four or more
+capital letters, you do not need to use square brackets when
+you type the alias. At any point in the program specpr, an
+alias word can be defined or translated.</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+<p>EXAMPLES ==[hi] hello This sets the alias word
+&rsquo;hi&rsquo; to<br>
+translate into &rsquo;hello&rsquo;<br>
+==[DIRL] !ls This sets the alias word &rsquo;DIRL&rsquo;
+to<br>
+give a listing of the current directory</p>
+</td>
+</table>
+
+<p>2.5.2 Translating Alias Words For an alias word to be
+translated, it must either be inside square brackets or be
+one word of four or more capital letters. The alias word can
+be entered at any point in the program and the translation
+will take place. The line will be reprinted on the screen
+showing the translation and then executing the command.</p>
+<!-- TABS -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="3" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="15%"></td>
+<td width="0%">
+
+<p>EXAMPLES</p>
+</td>
+<td width="84%">
+
+<p>[hi]</p>
+</td>
+<tr valign="top" align="left">
+<td width="15%"></td>
+<td width="0%"></td>
+<td width="84%">
+
+<p>The alias word is translated into hello</p>
+</td>
+<tr valign="top" align="left">
+<td width="15%"></td>
+<td width="0%">
+</td>
+<td width="84%">
+</td>
+<tr valign="top" align="left">
+<td width="15%"></td>
+<td width="0%"></td>
+<td width="84%">
+
+<p>hello</p>
+</td>
+<tr valign="top" align="left">
+<td width="15%"></td>
+<td width="0%">
+</td>
+<td width="84%">
+</td>
+<tr valign="top" align="left">
+<td width="15%"></td>
+<td width="0%"></td>
+<td width="84%">
+
+<p>DIRL</p>
+</td>
+<tr valign="top" align="left">
+<td width="15%"></td>
+<td width="0%"></td>
+<td width="84%">
+
+<p>This alias word does not need brackets</p>
+</td>
+<tr valign="top" align="left">
+<td width="15%"></td>
+<td width="0%">
+</td>
+<td width="84%">
+</td>
+<tr valign="top" align="left">
+<td width="15%"></td>
+<td width="0%"></td>
+<td width="84%">
+</td>
+<tr valign="top" align="left">
+<td width="15%"></td>
+<td width="0%"></td>
+<td width="84%">
+
+<p>because it consists of four capital letters.</p>
+</td>
+<tr valign="top" align="left">
+<td width="15%"></td>
+<td width="0%">
+</td>
+<td width="84%">
+</td>
+<tr valign="top" align="left">
+<td width="15%"></td>
+<td width="0%"></td>
+<td width="84%">
+
+<p>!ls</p>
+</td>
+<tr valign="top" align="left">
+<td width="15%"></td>
+<td width="0%"></td>
+<td width="84%">
+
+<p>It translates into this command which then</p>
+</td>
+<tr valign="top" align="left">
+<td width="15%"></td>
+<td width="0%">
+</td>
+<td width="84%">
+</td>
+<tr valign="top" align="left">
+<td width="15%"></td>
+<td width="0%"></td>
+<td width="84%">
+</td>
+<tr valign="top" align="left">
+<td width="15%"></td>
+<td width="0%"></td>
+<td width="84%">
+
+<p>will execute a listing of the current directory</p>
+</td>
+</table>
+
+<p>2.5.3 Listing and Saving Alias Words and Translations
+The current list of alias words and translations is printed
+onto the screen using the command</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="37%"></td>
+<td width="62%">
+<p>==list</p></td>
+</table>
+
+<p>as the only character sequence on the command line. If a
+filename is typed after the list command, the list of alias
+words and translations will be saved in the specified
+file.</p>
+<!-- TABS -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="3" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="15%"></td>
+<td width="0%">
+
+<p>EXAMPLES</p>
+</td>
+<td width="84%">
+
+<p>==list</p>
+</td>
+<tr valign="top" align="left">
+<td width="15%"></td>
+<td width="0%"></td>
+<td width="84%">
+</td>
+<tr valign="top" align="left">
+<td width="15%"></td>
+<td width="0%"></td>
+<td width="84%">
+
+<p>This lists all the alias words</p>
+</td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="15%"></td>
+<td width="84%">
+<p>onto the screen</p></td>
+</table>
+<!-- TABS -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="24%"></td>
+<td width="75%">
+</td>
+<tr valign="top" align="left">
+<td width="24%"></td>
+<td width="75%">
+
+<p>==[hi] hello</p>
+</td>
+<tr valign="top" align="left">
+<td width="24%"></td>
+<td width="75%">
+</td>
+<tr valign="top" align="left">
+<td width="24%"></td>
+<td width="75%">
+
+<p>==[DIRL] !ls</p>
+</td>
+<tr valign="top" align="left">
+<td width="24%"></td>
+<td width="75%">
+</td>
+<tr valign="top" align="left">
+<td width="24%"></td>
+<td width="75%">
+
+<p>==list alias.list This saves all the alias words and</p>
+</td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="15%"></td>
+<td width="84%">
+<p>translations in the file alias.list</p></td>
+</table>
+
+<p>2.5.4 Reading Alias Words into specpr from a File To
+read a file of saved alias words and translations into
+specpr, type &lt; and the filename. This will allow all the
+alias words in the file to be used in specpr.</p>
+<!-- TABS -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="3" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="15%"></td>
+<td width="0%">
+
+<p>EXAMPLE</p>
+</td>
+<td width="84%">
+</td>
+<tr valign="top" align="left">
+<td width="15%"></td>
+<td width="0%"></td>
+<td width="84%">
+
+<p>&lt;alias.list</p>
+</td>
+<tr valign="top" align="left">
+<td width="15%"></td>
+<td width="0%"></td>
+<td width="84%">
+
+<p>This reads the alias words</p>
+</td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="15%"></td>
+<td width="84%">
+<p>and translations from the<br>
+file alias.list into specpr</p></td>
+</table>
+<!-- TABS -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="24%"></td>
+<td width="75%">
+</td>
+<tr valign="top" align="left">
+<td width="24%"></td>
+<td width="75%">
+
+<p>==[hi] hello</p>
+</td>
+<tr valign="top" align="left">
+<td width="24%"></td>
+<td width="75%">
+</td>
+<tr valign="top" align="left">
+<td width="24%"></td>
+<td width="75%">
+
+<p>==[DIRL] !ls</p>
+</td>
+</table>
+
+<p>2.5.5 Deleting or Writing Over an Alias Word An alias
+word can be deleted by entering ==![alias word] anywhere in
+specpr. This will not delete it from a file of stored alias
+words unless the alias list is resaved into the file. An old
+alias can be overwritten by redefining the same alias word.
+The list must also be resaved for this alias translation to
+be changed in the file.</p>
+<!-- TABS -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="3" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="15%"></td>
+<td width="0%">
+
+<p>EXAMPLE</p>
+</td>
+<td width="84%">
+</td>
+<tr valign="top" align="left">
+<td width="15%"></td>
+<td width="0%"></td>
+<td width="84%">
+
+<p>==![DIRL]</p>
+</td>
+<tr valign="top" align="left">
+<td width="15%"></td>
+<td width="0%"></td>
+<td width="84%">
+
+<p>This deletes the alias word DIRL</p>
+</td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="15%"></td>
+<td width="84%">
+<p>and its translation from the list</p>
+</td>
+</table>
+
+<p>2.6 Variable Parsing Variable parsing is done on strings
+enclosed in curly braces &quot;{}&quot;. Variables may be
+set, incremented, decremented, or other simple math may be
+performed and the result inserted in place of the curly
+brackets on the command line. Variable parsing is useful in
+specpr command files. The variable parsing routine has a
+limited understanding of math functions and variable
+parsing. The variables currently incorporated are:</p>
+<!-- TABS -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+
+<p>ia-iz -- 26 user integer variables<br>
+ra-rz -- 26 user real variables (floating point)<br>
+iprtv -- protection of file v,<br>
+iprtw -- protection of file w,<br>
+iprtd -- protection of file d,<br>
+iprtu -- protection of file u,<br>
+iprty -- protection of file y,</p>
+</table>
+
+<p>The routines only understand the math functions of
+equivalence and addition (although addition of negative
+numbers is allowed). Here are a few examples of valid
+variable substitution strings.</p>
+<pre>   {iprtv}        # replaced with the protection of device &quot;v&quot;
+</pre>
+<!-- TABS -->
+
+<table width="100%" border=0 rules="none" frame="void"
+       cols="3" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+
+<p>{ib=54}</p>
+<td width="5%"></td>
+<td width="0%"></td>
+<td width="94%">
+</td>
+<tr valign="top" align="left">
+<td width="5%"></td>
+<td width="0%"></td>
+<td width="94%">
+
+<p># not replaced (sets ib to 54)<br>
+{ib+-5}</p>
+</td>
+<tr valign="top" align="left">
+<td width="5%"></td>
+<td width="0%"></td>
+<td width="94%">
+</td>
+<tr valign="top" align="left">
+<td width="5%"></td>
+<td width="0%"></td>
+<td width="94%">
+
+<p># replace with 49 (ib=54-5) (addition of negative
+numbers)<br>
+{ib=ib+iprtv}</p>
+</td>
+<tr valign="top" align="left">
+<td width="5%"></td>
+<td width="0%"></td>
+<td width="94%">
+
+<p># not replaced, (sets ib)<br>
+{ra+2.3+-6.5}</p>
+</td>
+<tr valign="top" align="left">
+<td width="5%"></td>
+<td width="0%"></td>
+<td width="94%">
+
+<p># replaced with -4.2 (user variables are initialized to
+zero)<br>
+{2056+1123+-43+iprtd+ia+ib}</p>
+</td>
+<tr valign="top" align="left">
+<td width="5%"></td>
+<td width="0%"></td>
+<td width="94%">
+
+<p># (Only limit is 80 characters per line)</p>
+</td>
+</table>
+
+<p>NOTE: a minus in front of a variable, such as
+&quot;{-ib}&quot; will not work.</p>
+
+<p>2.7 Order of Substitution and Command Interpretation In
+specpr, the order of the interpretation of the special
+characters is $ substitution, {, ;, ?, ==, =, %, &gt;, !,
+&lt;, alias translation, and \#. Any of these special
+characters can be used in an alias translation because the
+program loops back to the beginning when a translation is
+performed. The special characters would then be interpreted
+the second time through the loop. This program would
+continue looping until all of the translations are finished.
+The $ substitutions can contain alias words because the
+translation takes place after the $ substitution is done.
+Both the $ substitutions and the alias translations can
+contain ; which are later processed. However, the \# comment
+statement can not contain a &quot;;&quot; because it is
+processed before the comment statement is found and
+everything after the ; would be stripped off for the next
+command. The flow chart below shows the order of these
+command interpretations.</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="15%"></td>
+<td width="84%">
+<pre>EXAMPLES  ==[lv] lv;;;0 99        Assigning this alias would
+                                        give the list command, return
+                                        three lines,and list from 0
+                                        to 99
+</pre>
+</td>
+</table>
+<!-- TABS -->
+
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="24%"></td>
+<td width="75%">
+</td>
+<tr valign="top" align="left">
+<td width="24%"></td>
+<td width="75%">
+
+<p>==[lst] $21 This would assign the alias lst to</p>
+</td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="15%"></td>
+<td width="84%">
+<p>the command in file number 21<br>
+If 21 has [DIRL] in it, the alias<br>
+would translate to !ls</p></td>
+</table>
+
+<p>2.7.1 Flow Chart for Command Interpretation Order</p>
+<pre> ____________
+| input line |             command
+|____________|               file     alias   $ sub.            copy to
+     |      var p.  return   list      def.     def.     copy     file
+  ___|___    ___     ___      ___      ____      ___      ___      ___
+ |   $   |  |   |   |   |    |   |    |    |    |   |    |   |    |   |
+ | subs. |-&gt;| { |--&gt;| ; |---&gt;| ? |---&gt;| == |---&gt;| = |---&gt;| % |---&gt;| &gt; |
+ |_______|  |___|   |___|    |___|    |____|    |___|    |___|    |___|
+     ^                                                              |
+     |                                                              |
+</pre>
+<!-- TABS -->
+
+<table width="100%" border=0 rules="none" frame="void"
+       cols="3" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+
+<p>|</p>
+<td width="9%"></td>
+<td width="-9%"></td>
+<td width="99%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="-9%"></td>
+<td width="99%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="-9%"></td>
+<td width="99%">
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="-9%"></td>
+<td width="99%">
+
+<p>_______ ___ ___ |<br>
+|</p>
+</td>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="-9%"></td>
+<td width="99%">
+
+<p>alias translation | alias | | | | | |</p>
+</td>
+</table>
+
+<p>---------&lt;---------------| trans |&lt;---| &lt;
+|&lt;---| ! |&lt;---------<br>
+done |_______| |___| |___|<br>
+no alias | read UNIX<br>
+____ trans. | from<br>
+_____ | | done | file<br>
+| end |&lt;----| |_____| |____|<br>
+comment</p>
+
+<p>2.8 Specpr File Types and Content The specpr I/O
+routines support multiple file types. There are
+&quot;standard specpr files&quot; and other files.
+Currently, the other file types include 3-dimensional image
+type files, which me be Band Interleaved by Line (BIL), Band
+Interleaved by Pixel (BIP), or Band SeQuential (BSQ) files,
+with any header size, with any data type. Currently routines
+exist that read 16-bit integer (I*2) 32-bit integer (I*4)
+and and 32-bit real (Real*4) data, but others can be added.
+It turns out that this general I/O package can read just
+about any format, because a 3D file can also access a 2D or
+1D file since the higher dimensions have a dimension of 1.
+The standard specpr record, however, is optimized for x-y
+paired data.</p>
+
+<p>2.8.1 The Standard Specpr File Content Specpr files are
+random access files, 1536 bytes per record. The data types
+are described in the file format document in the specpr
+programmers notes. Currently, there are four basic types of
+data formats (although many more can be easily defined for
+specific disciplines):</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+<pre>1) beginning spectrum (512 bytes of header and 256 channels),
+2) continuation records for spectra with more than 256 data channels,
+3) character records where the data space is ascii text, and
+4) text continuation text records.
+</pre>
+</td>
+</table>
+
+<p>A data set can consist of as little as a single record
+(a single one-dimensional array) or have up to 12
+continuation records (there is planned expansion to
+substantially increase the number of continuation records).
+A spectrum typically consists of a wavelength set, data
+(e.g. reflectance) and the error bar. In specpr a data set
+is only one array, not three (e.g. waves, reflectance and
+error). The wavelengths are kept in an independent record.
+The error bars are kept in the record after the data values.
+Some data do not have error bars, so space is saved. A
+sample specpr file might look like this to the user (this is
+extracted from an actual data file):</p>
+
+<p align=center>Table 2-1</p>
+
+
+<p>-------------------------------------------------------------------------------<br>
+record title channels time date<br>
+
+-------------------------------------------------------------------------------<br>
+0 reserved for future: intended for file<br>
+description. This record has no user<br>
+access.</p>
+
+<p>1 ************ SPLIB001 ****************** 36 Characters
+of TEXT<br>
+.<br>
+. other data records<br>
+.<br>
+15 USGS Denver Beckman STD wavelengths 1x 512 02:57:26.00
+10/15/1985<br>
+17 USGS Denver BKMN 1x resolution 512 02:57:26.00
+10/15/1985<br>
+.<br>
+. other data records<br>
+.<br>
+73 Description of Alunite Hunt 295.?B 3132 Characters of
+TEXT<br>
+76 Alunite 295.3B .2-3um 1x ABS REF 512 12:03:14.00
+08/20/1985<br>
+78 errors to previous record 76 512 12:03:14.00
+08/20/1985<br>
+80 Alunite 295.3B .9-2.6um 2x ABS REF 680 09:49:27.00
+08/21/1985<br>
+83 errors to previous record 80 680 09:49:27.00
+08/21/1985<br>
+.<br>
+.<br>
+.<br>
+
+-------------------------------------------------------------------------------</p>
+
+<p>In the case of record 76, the number of data channels is
+more than 256, so one continuation record is used (record
+77; hidden from user view). Similarly, records 16, 18, 74,
+75, 79, 81 and 82 are continuation records. The following
+table shows how the data are spread over continuation
+records:</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="18%"></td>
+<td width="81%">
+<p align=center>Table 2-2</p></td>
+</table>
+
+
+<p>-------------------------------------------------------------<br>
+Continuation number of channels Data channel range<br>
+record number in record<br>
+
+-------------------------------------------------------------<br>
+- 256 1 - 256<br>
+1 383 257 - 639<br>
+2 383 640 - 1022<br>
+3 383 1023 - 1405<br>
+4 383 1406 - 1788</p>
+
+<p>5 383 1789 - 2171<br>
+6 383 2172 - 2554<br>
+7 383 2555 - 2937<br>
+8 383 2938 - 3320</p>
+
+<p>9 383 3321 - 3703<br>
+10 383 3704 - 4086<br>
+11 383 4087 - 4469<br>
+12 383 4470 - 4852<br>
+
+-------------------------------------------------------------</p>
+
+<p>The following table shows how text data are spread over
+continuation records. Note that there is also a pointer to
+additional text, so the real text size is limited only by
+disk space.</p>
+
+<p align=center>Table 2-3</p>
+
+
+<p>-------------------------------------------------------------<br>
+Continuation number of characters Character range<br>
+record number in record<br>
+
+-------------------------------------------------------------<br>
+- 1476 1 - 1476<br>
+1 1532 1477 - 3008<br>
+2 1532 3009 - 4540<br>
+3 1532 4541 - 6072<br>
+4 1532 6073 - 7604</p>
+
+<p>5 1532 7605 - 9136<br>
+6 1532 9137 - 10668<br>
+7 1532 10669 - 12200<br>
+8 1532 12201 - 13732</p>
+
+<p>9 1532 13733 - 15264<br>
+10 1532 15265 - 16796<br>
+11 1532 16797 - 18328<br>
+12 1532 18329 - 19860<br>
+
+-------------------------------------------------------------</p>
+
+<p>2.9 &quot;Wavelengths&quot; and Other Concepts of x-y
+Paired Data &quot;Wavelengths&quot; and other axes are
+simply a data set and a label in specpr. The default label
+for the &quot;x-axis&quot; is &quot;Wavelengths
+(microns)&quot; and any data set in the specpr data files
+can be used as the x-axis values. The x-axis label can be
+changed to something else by changing the fourth line of the
+manual history of the x-axis data record to: &quot;\W
+string&quot; where &quot;string&quot; is the character
+string for the label.</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="15%"></td>
+<td width="84%">
+<pre>Example:      v23V19     # the data set is v23, the x-axis values
+                           are in record v19 (specified as a capital
+                           letter file id).
+
+Then if the fourth line of the manual history is:
+
+           \W Intensity (seconds)
+
+</pre>
+<!-- INDENTATION -->
+<p>the crt plot would label the horizontal axis
+&quot;Intensity (seconds)&quot;. There is a special case for
+specifying a wavelength set: instead of a file ID, use a
+capital c, &quot;C&quot;, and the number of channels and the
+x-axis values will be set equal to the channel number.</p>
+<!-- INDENTATION -->
+<pre>Example:          C236     sets the x-axis values to 1 in channel 1,
+                           2 in channel 2, etc., to 236 in
+                           channel 236.
+</pre>
+</td>
+</table>
+
+<p>A data set can be called up with wavelengths specified
+by the data set if the wavelength pointer is set in the
+header info to that particular data set. For example, if v23
+has its wavelength pointer set to 19, then the default
+x-axis data set is in record 19 of the same data file. The
+default x-axis values are found by specifying the character
+&quot;&amp;&quot; instead of the upper case file ID and
+record number. Then</p>
+<pre>                    v23V19
+and
+                    v23&amp;
+</pre>
+
+<p>are equivalent.</p>
+
+<p>2.10 Help! Specpr has a help facility where you may type
+the word help on the command line at any point and go to the
+help routines. You may also type help and a key word to get
+help on a particular subject. The help command with no
+keyword will show you a list of key words to choose from.
+See Chapter 3 for more details.</p>
+<hr>
+</body>
+</html>

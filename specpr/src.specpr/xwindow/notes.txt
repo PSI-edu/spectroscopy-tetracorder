@@ -1,0 +1,7 @@
+http://www.rahul.net/kenton/40errs.html
+
+ERROR 16. Window background.
+
+X automatically maintains a window's background if the window's background pixel or background pixmap attributes are set. If you change these attributes after the window is created, however, the change may not be immediately drawn on your screen. X only updates the window's background when an exposure occurs. If you need to force the window's background to be redrawn, you can force an exposure with Xlib functions like XClearArea() and XClearWindow(). 
+
+

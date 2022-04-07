@@ -1,0 +1,39 @@
+#	@(#)filenames.h	2.2	05/15/85	16:40:27
+#  02/04/2002 RED
+#             Modified to accommodate IA64 Fortran90
+#  04/08/2002 RED
+#             Modified to get rid of define statements
+
+		character*9 NULL
+		character*8 TTY
+		character*9 DTAPE
+		integer*4 TAPELEN
+		character*8 TABLET
+		character*4 COMMAND
+		character*6 WAVFILE
+		character*6 WAVHEAD
+		character*6 TITLE
+		character*29 PLTDAT
+		character*30 PLTCMD
+		character*26 SPLDAT
+		character*26 SPLCMD
+		character*26 SPLTMP
+		character*7 SPLFILE
+		character*9 SPOOLFL
+
+		parameter (NULL = '/dev/null')
+		parameter (TTY = '/dev/tty')
+		parameter (DTAPE = '/dev/nrmt')
+		parameter (TAPELEN = 0)
+		parameter (TABLET = '/dev/tab')
+		parameter (COMMAND = '.cmd')
+		parameter (WAVFILE = '.spwav')
+		parameter (WAVHEAD = '.wvhed')
+		parameter (TITLE = '.spttl')
+		parameter (PLTDAT = '/usr/spool/gplot/pNNxxxxxxxxx')
+		parameter (PLTCMD = '/usr/spool/gplot/aaNNxxxxxxxxx')
+		parameter (SPLDAT = '/usr/spool/lpd/spxxxxxxxxx')
+		parameter (SPLCMD = '/usr/spool/lpd/dfxxxxxxxxx')
+		parameter (SPLTMP = '/usr/spool/lpd/tmxxxxxxxxx')
+		parameter (SPLFILE = 'spooler')
+		parameter (SPOOLFL = 'spoolfile')

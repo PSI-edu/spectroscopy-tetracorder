@@ -1,0 +1,199 @@
+to compile cygwin (32bit):
+
+cd /src/local/specpr
+
+cd config
+source ./shenv.cygwin (Nov. 2, 2010; same as shenv.cygwin-1_7_9-WinXP-Win7)
+cd ../src.specpr
+make really_clean
+make
+
+(./specpr/src.specpr/dspecpr.exe uses cygwin DLLs)
+
+
+-------------------------------------------------------------
+to compile mingw32 using the cygwin environment:
+
+cd /src/local/specpr
+
+cd config
+source ./shenv.cygwin_i686-w64-mingw32 (Oct. 17, 2012;
+	 				SP_LDFLAGS='-L/usr/lib -lregex' required) ?
+cd ../src.specpr
+
+
+Modify ./syslib/SRC.LINUX.kludge/makefile edit 'CFLAGS' to 'SP_CFLAGS'
+
+Modify files:
+
+./syslib/bkrec.c
+./syslib/frdrec.c
+./syslib/rewinf.c
+./syslib/SRC.LINUX.kludge/bkrec.c
+./syslib/SRC.LINUX.kludge/frdrec.c
+
+by commenting out (use #ifdef WIN) the line:  #include <sys/ioctl.h>
+
+/* ioctl.h is non-standard that controls tape operations here
+ * MinGW does not have this header
+ * since MS-Windows does not use tape drive, we can break this function
+ */
+#ifdef WIN
+/* do not include iocrl.h */
+#else
+   #include <sys/ioctl.h>
+#endif
+
+
+
+Modify file:
+
+./syslib/frandom.c
+
+by changing statements (use #ifdef WIN) the line:
+
+/* srand() & drand48()
+ * MinGW does not have these POSIX functions
+ * srand() peusdo-random initialization prevented, drand48() replaced
+ */
+#ifdef WIN
+/* do not use: srand48(i); */
+#else
+   srand48(i);
+#endif
+
+#ifdef WIN
+   *f = (float)(rand())/RAND_MAX;
+#else
+   *f = drand48();
+#endif
+
+
+
+Modify file:
+
+./syslib/fcuser.c
+
+by changing statements (use #ifdef WIN) the line:
+
+/* cuserid()
+ * MinGW does not have these POSIX functions
+ * cuserid set to NULL for Windows
+ */
+#ifdef WIN
+	buff = GetUserName(uname,256);
+#else
+	buff = cuserid(uname);   /* get userid */
+#endif
+
+
+
+Modify file:
+
+./syslib/ilink.c
+
+by changing statements (use #ifdef WIN) the line:
+
+/* link()
+ * MinGW does not have this function
+ * i = 1 set error number to 1
+ */
+
+#ifdef WIN
+	i = 1;  /* link function missing in mingw */
+#else
+	i = link(buf1,buf2);
+#endif
+
+
+
+Modify makefile (master makefile in root dir) to exclude xwindow directory
+
+.
+.
+.
+DIRS= \
+common 3dio add band crtp dtol dummy dvml extn fass \
+fcn01-08 fcn09-11 fcn12-13 fcn14-16 fcn17-19 \
+fcn20-25 fcn35-39 fcn40-42 fcn43-47 fcn48-51 \
+free gould hed hpgraph init interbandanl io lib main \
+mingw-regex \
+mth1 mth2 newplot parser rst sub syslib $(SPSDIR) talg wav xwindow
+
+OBJ_INIT= \
+$(SP_OBJ)/3dio.o $(SP_OBJ)/add.o $(SP_OBJ)/band.o $(SP_OBJ)/crtp.o \
+$(SP_OBJ)/dtol.o $(SP_OBJ)/dummy.o $(SP_OBJ)/dvml.o $(SP_OBJ)/extn.o \
+$(SP_OBJ)/fass.o $(SP_OBJ)/fcn01-08.o $(SP_OBJ)/fcn09-11.o \
+$(SP_OBJ)/fcn12-13.o $(SP_OBJ)/fcn14-16.o $(SP_OBJ)/fcn17-19.o \
+$(SP_OBJ)/fcn20-25.o $(SP_OBJ)/fcn35-39.o $(SP_OBJ)/fcn40-42.o \
+$(SP_OBJ)/fcn43-47.o $(SP_OBJ)/fcn48-51.o $(SP_OBJ)/free.o \
+$(SP_OBJ)/gould.o $(SP_OBJ)/hed.o $(SP_OBJ)/hpgraph.o $(SP_OBJ)/init.o \
+$(SP_OBJ)/interbandanl.o $(SP_OBJ)/io.o $(SP_OBJ)/lib.o $(SP_OBJ)/main.o \
+$(SP_OBJ)/mth1.o $(SP_OBJ)/mth2.o $(SP_OBJ)/newplot.o \
+$(SP_OBJ)/parser.o $(SP_OBJ)/rst.o $(SP_OBJ)/sub.o \
+$(SP_OBJ)/syslib.o $(SPSYSOBJ) $(SP_OBJ)/talg.o \
+$(SP_OBJ)/wav.o \
+
+ifdef WIN
+	OBJ= $(OBJ_INIT) $(SP_OBJ)/mingw-regex.o
+else
+	OBJ= $(OBJ_INIT) $(SP_OBJ)/xwindow.o
+endif
+.
+.
+.
+copy mingw-regex to src.specpr
+edit regex.c, change: 
+#include <regex.h> to #include "regex.h"
+
+
+edit ./crtp/wriout.r to add XWIN SSPPFLAGS-keyword (include X calls)
+#XWIN					call xset_color(0)   # black
+
+no need to edit ./crtp/makefile to add SSPPFLAGS: (already in use)
+
+
+
+edit ./hpgraph/hpline.r to add SSPPFLAGS:
+#XWIN		call xsetline(iline)
+
+edit ./hpgraph/gwrite.r to add SSPPFLAGS: (multiple)
+#XWIN		call xwrite(ixlast, iylast,line)
+
+edit ./hpgraph/makefile to add SSPPFLAGS:
+hpline.o:		hpline.r
+	$(SSPP) -r -$(SSPPFLAGS)  hpline.r >hpline.x
+	$(RF) $(SP_RFLAGS) hpline.x > hpline.f
+	$(F77) $(SP_FFLAGS) -c hpline.f
+	rm -f hpline.x hpline.f
+
+gwrite.o:		gwrite.r
+	$(SSPP) -r -$(SSPPFLAGS)  gwrite.r >gwrite.x
+	$(RF) $(SP_RFLAGS) gwrite.x > gwrite.f
+	$(F77) $(SP_FFLAGS) -c gwrite.f
+	rm -f gwrite.x gwrite.f
+
+
+
+edit ./interbandanl/replot.r to add SSPPFLAGS: (multiple)
+#XWIN							call xset_color(iov+1)
+
+edit ./interbandanl/makefile to add SSPPFLAGS:
+replot.o:		replot.r
+	$(SSPP) -r -$(SSPPFLAGS)  replot.r >replot.x
+	$(RF) $(SP_RFLAGS) replot.x > replot.f
+	$(F77) $(SP_FFLAGS) -c replot.f
+	rm -f replot.x replot.f
+
+
+
+
+
+
+
+
+make really_clean
+make
+
+(./specpr/src.specpr/dspecpr.exe runs directly within MS-Windows Command-window)
+

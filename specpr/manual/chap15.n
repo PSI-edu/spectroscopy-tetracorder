@@ -1,0 +1,148 @@
+.\" use ms macros
+.\" this header is for putting the page numbers at the bottom of the page
+.\" set line length, page offset, vertical spacing
+.nr LL 6.3i
+.ll 6.3i
+.nr PO 1.0i
+.po 1.0i
+.nr VS 12
+.vs 12
+.\" set header and footer margins (default is 1.0i)
+.nr FM 1.00i
+.fm 1.00i
+.nr HM 1.00i
+.hm 1.00i
+.\" set no date here, MUST be before CF definition, because ND sets CF
+.\" set date, so don't do .ND
+.\" LH CH RH are left, center, right header strings
+.\" LF CF RF are left, center, right footer strings
+.\" default is CH is defined as: .ds CH "\(hy \\n(PN \(hy
+.ds LH "SPECPR Users' Manual
+.ds CH
+.ds RH "Page 15.\\n(PN
+.\" setup complete
+.nf
+SPECPR Users' Manual                                                   Page 15.1
+
+
+
+
+
+
+
+
+
+
+
+
+
+.ce
+.B
+CHAPTER 15
+.R
+
+
+
+
+
+.ce
+.B
+STANDALONE UTILITIES
+.R
+
+
+
+
+.fi
+.bp
+.B
+15.1  Introduction
+.R
+.PP
+This chapter describes specpr support utilities.  They are
+independent programs to do tasks related to
+specpr.  Each utility has a
+Unix-style manual page.  You may want to copy these manual pages and
+put them into your local list of user-available commands.
+
+.PP
+.B
+Spprint
+.R
+is a routine that prints the contents of a specpr file, similar to
+the "list" function in specpr (section 11 of the specpr manual), but the
+advantage in using it is you do not have to start a specpr process,
+assign a file, and then go to the list routines.  It is useful for
+checking the contents of a specpr file you happen across.  This routine
+is used to provide rapidly searchable lists of online specpr files at
+the U.S.  Geological Survey, Denver Spectroscopy Laboratory.  Spprint is
+described in section 15.2.
+.PP
+.B
+Spfeatures
+.R
+is a program that reads a data file created by specpr special
+function f46.  Thus, spfeatures queries a spectral features database
+and allows a user to find spectra with certain user-defined
+features.  Spfeatures is described in section 15.3.
+.PP
+The
+.B
+data translation
+.R
+routines are used to convert specpr data files to ascii and those
+ascii files back to specpr format data files.
+
+
+.bp
+.B
+15.2  Spprint
+.R
+
+.nf
+.so spprint.1
+
+.bp
+.B
+15.3 spfeatures
+.R
+
+.nf
+.so spfeatures.1
+
+
+.bp
+.B
+15.4  Data Translation
+.R
+
+.B
+15.4.1  sptoascii
+.R
+
+.nf
+.so sptoascii.1
+
+.bp
+.B
+15.4.2  asciitosp
+.R
+
+.nf
+.so asciitosp.1
+
+.bp
+.B
+15.4.3  oldsptoascii
+.R
+
+.nf
+.so oldsptoascii.1
+
+.bp
+.B
+15.4.4  cgastosp
+.R
+
+.nf
+.so cgastosp.1

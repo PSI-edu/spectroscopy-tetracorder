@@ -1,0 +1,59 @@
+
+# set parameters for maximum values for the entire program
+
+	integer*4 SPMAXCHAN     # maximum channels in a spectrum
+	integer*4 SPMAXTEXT     # maximum character of text
+	integer*4 SPMAXREC      # maximum records in a specpr file
+	integer*4 SPMAXCONREC   # maximum continuation records in a specpr file
+	integer*4 SPMAXADDRECL  # record length for add routine to save a spectrum
+				#    SPMAXADDRECL= 4*SPMAXCHAN
+	integer*4 imax3pt       # maximum defined 3-point band depth features for plot
+	integer*4 imaxtet       # maximum defined tetracorder features for plot
+	integer*4 maxcline      # maximum character on an input line
+
+
+# parameters used up to 10/24/2015:
+#	parameter       (SPMAXCHAN=4852)      # maximum channels in a spectrum pre 10/2015
+#	parameter       (SPMAXTEXT=19860)     # maximum character of text
+#	parameter       (SPMAXCONREC=25)      # maximum continuation records in a specpr file
+#					      # SPMAXCONREC = (SPMAXCHAN-256)/383
+#	parameter       (SPMAXADDRECL=19408)  # record length for add routine to save a spectrum
+
+# 2015 to 09/25/2016:
+#	parameter       (SPMAXREC=999999)     # maximum records in a specpr file
+#
+#	parameter       (SPMAXCHAN=32428)     # maximum channels in a spectrum 10/25/2015
+#	parameter       (SPMAXTEXT=129712)    # maximum character of text
+#	parameter       (SPMAXCONREC=84)      # maximum continuation records in a specpr file
+#					      # SPMAXCONREC = (SPMAXCHAN-256)/383
+#
+#	parameter       (SPMAXADDRECL=129712) # record length for add routine to save a spectrum
+#					      #    SPMAXADDRECL= 4*SPMAXCHAN
+
+# as of 09/26/2016: 
+
+	parameter       (SPMAXREC=999999)     # maximum records in a specpr file
+
+	parameter       (SPMAXCHAN=69398)     # maximum channels in a spectrum 10/25/2015
+	parameter       (SPMAXTEXT=278000)    # maximum characters of text
+	parameter       (SPMAXCONREC=182)     # maximum continuation records in a specpr file
+					      # SPMAXCONREC = (SPMAXCHAN-256)/383
+
+	parameter       (SPMAXADDRECL=129712) # record length for add routine to save a spectrum
+					      #    SPMAXADDRECL= 4*SPMAXCHAN
+
+	parameter       (imax3pt=9)           # maximum defined 3-point band depth features for plot
+
+	parameter	(imaxtet=9)           # maximum defined tetracorder features for plot
+
+	parameter       (maxcline=80)         # maximum character on an input line
+                                              # note, this is for future--need to retrofit
+                                              # all iopcon 80 to  maxcline
+                                              #   R. Clark 11/2018
+
+# NOTE: SPMAXTEXT  can not do: characters*SPMAXTEXT variable, so search for SPMAXTEXT
+#                  and change by hand.  Known locations:
+#                        common/label1
+
+# note for future: f43 still has some hard coded arrays, limiting ftt's to 3648 channels
+# fft hard coded to 7926

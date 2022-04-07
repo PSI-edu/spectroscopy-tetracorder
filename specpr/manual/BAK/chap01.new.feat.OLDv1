@@ -1,0 +1,76 @@
+.sp
+.ce
+New Features of SPECPR
+.PP
+During the changeover from the TI-980 computer to the LSI 11/23
+running the UNIX operating system, several important new features
+have been added to SPECPR.  These changes include modifications to
+the file assignment procedures, the addition of a mathematical
+parsing system, and modifications to the free format input
+routine to allow the user to save often used commands in a
+command file, to read input from a disk file, and to copy all
+user input to a disk file.
+.sp
+.ce
+Mathematical Parsing System
+.PP
+A mathematical parsing system has been added to allow the user to
+type in complicated equations for evaluation.  For example, one
+would type in
+.ce
+(v322^2+v327^2+v326^2)^0.5
+to calculate the RMS value of three spectra.
+.sp
+.ce
+Free Format Input Routine
+.PP
+The free format input routine has been modified so that it keeps
+a record of the last twenty commands typed in by the user, and
+allows the user to re-execute any of these commands.  The system
+also allows the user to store up to 80 commonly used commands so
+that the user can execute these with a minimum of typing.  Every
+point of input to the program (e.g. a title input for a spectrum)
+is performed by this routine.  Another feature of the input
+routine allows the user to specify a disk file from which
+the program should read commands.  This allows batch input to
+begin anywhere in the program.  Another important feature is
+variable substitution.  Anywhere on an input line "variables" may
+be substituted.  The "variable" is one of 100 saved command
+lines.  All command files and the saved commands can be edited with
+any of the UNIX system editors.  Also any other program (system
+or user) can be executed at any point in the program (e.g. mail a
+message, edit a file, or even run another SPECPR).  When the
+program is finished, the user is returned to the exact point at
+which he left SPECPR.  These new features provide extremely
+powerful processing capabilities, save typing, increase speed,
+and reduce mistakes.
+.sp
+.ce
+Special Function for Data Input
+.PP
+A special function was created to read data from a text file in
+any format and also write data to a text file in a known format.
+The advantage of this routine is that users can write new
+spcialized programs without learning SPECPR.  For example, after
+entering the function, the user would instruct the program to
+write the spectral data to a file (say its name is "filea").  Then
+he could run the program (e.g. called "program") by:
+.ce
+!program <filea >fileb
+Program reads data from "filea" and writes data to "fileb".  The
+"!" is the escape from SPECPR to run system and user programs.
+The program can be as short as 5 lines in FORTRAN:  a read,
+compute, write, a format statement, and end.  Of course, the
+program can be any language (Basic, "C", etc.)
+.PP
+Once "program" has written the data, the SPECPR routine is then
+instructed to read fileb, the data is then plotted and written.
+New applications can be programmed in minutes.
+.sp
+.ce
+File Assignment
+.PP
+The version of SPECPR which runs on the TI-980 used a set of
+fixed file names for storing the users data.  This restriction
+has been removed in the UNIX version of SPECPR.  The user can now
+access any file on the UNIX system.

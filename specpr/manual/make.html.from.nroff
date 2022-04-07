@@ -1,0 +1,63 @@
+#!/bin/sh
+
+for i in \
+chap01.n    \
+chap02.n    \
+chap03.n    \
+chap04.n    \
+chap05.n    \
+chap06.n    \
+chap07.n    \
+chap08.f10.n    \
+chap08.f11.n    \
+chap08.f12.n    \
+chap08.f13.n    \
+chap08.f14.n    \
+chap08.f15.n    \
+chap08.f16.n    \
+chap08.f17.n    \
+chap08.f18.n    \
+chap08.f19.n    \
+chap08.f1.n    \
+chap08.f20.n    \
+chap08.f21.n    \
+chap08.f22.n    \
+chap08.f23.n    \
+chap08.f24.n    \
+chap08.f25.n    \
+chap08.f2.n    \
+chap08.f39.n    \
+chap08.f3.n    \
+chap08.f40.n    \
+chap08.f41.n    \
+chap08.f42.n    \
+chap08.f43.n    \
+chap08.f44.n    \
+chap08.f45.n    \
+chap08.f46.n    \
+chap08.f47.n    \
+chap08.f48.n    \
+chap08.f49.n    \
+chap08.f4.n    \
+chap08.f50.n    \
+chap08.f5.n    \
+chap08.f6.n    \
+chap08.f7.n    \
+chap08.f8.n    \
+chap08.f9.n    \
+chap08.n    \
+chap09.n    \
+chap10.n    \
+chap11.n    \
+chap12.n    \
+chap13.n    \
+chap14.n    \
+chap15.n    \
+contents.n    \
+titlepage.n    
+do
+	a=`basename $i .n`
+	b=${a}.html
+	echo "groff -T html $i > $b"
+	groff -T html $i > $b
+done

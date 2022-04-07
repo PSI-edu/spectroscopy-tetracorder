@@ -1,0 +1,58 @@
+From rclark Tue Feb  6 08:05 MST 1990
+Received: by speclab; Tue, 6 Feb 90 08:05:49 mst
+Date: Tue, 6 Feb 90 08:05:49 mst
+From: Roger N. Clark <rclark>
+Return-Path: <rclark>
+To: mnelson%pirl.lpl.arizona.edu@csm9a.uucp
+Subject: Re: making radtran
+Cc: rclark
+Status: RO
+
+That is the stupidest thing I have ever heard!  Radtran is PART of
+specpr.  It needs specpr routines.  It is only a separate program
+because it has special needs.  There will be a whole series of programs
+that are extensions of specpr.  For example:
+
+        spprint:    print a list of the contents to a specpr file
+                    (you have this one, if you haven't compiled it,
+                    you should--it is in the specpr directory).
+        spsearch:   Relational database for spectral libraries
+                    (complete, release this spring)
+        radtran:    version 2 of radtran with more functions
+                    (release this spring).
+        bdmap:      Band depth map to complex features using
+                    spectral libraries (complete, release fall 90)
+        imfeatures: Imaging spectrometer features analysis using
+                    automatic continuum removal and band picking
+                    (under development, release after 1990)
+        imfeatanal: Analysis of imfeatures output with a spectral
+                    library to identify features (under development,
+                    release after 1990).
+
+The spring releases above will coincide with version 3 specpr (which
+includes 3D I/O to imaging spectrometer files) and a large spectrum
+library with versions convolved to AVIRIS, HIRIS, VIMS, GER, and
+NIMS resolution.
+
+So your system manager should let you link specpr object files!
+It is true that there is a library specpr.a and it does contain
+almost all subroutines, but the latest ones may not be there; it
+depends on the development cycle.  It really shouldn't matter which
+one you use.  Use specpr.a, and if modules are not found, then add
+specific .o files.  I don't see what the fuss is all about.  All you
+are doing is reading them!
+
+I hope (assuming I have the time) to totally reorganize the specpr
+directories for the next release.  Right now it is somewhat of a
+mess.  As part of the reorganization, I hope to improve the make
+files considerably so the programmers can make with SCCS or gotten
+SCCS files (that's really hard--I've been working with a Unix wizard
+and he was stumped too!).  I've also improved sspp and will be able
+to construct the makefiles so that you will not have to have a shell
+driver script that set variables, you will just type make.
+
+Hope this helps.
+
+Roger
+
+

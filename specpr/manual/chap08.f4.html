@@ -1,0 +1,34 @@
+<!-- Creator     : groff version 1.18.1.1 -->
+<!-- CreationDate: Tue Nov  9 14:21:32 2010 -->
+<html>
+<head>
+<meta name="generator" content="groff -Thtml, see www.gnu.org">
+<meta name="Content-Style" content="text/css">
+<title></title>
+</head>
+<body>
+
+<hr>
+<pre>SPECPR Users&rsquo; Manual                                                   Page 8-f4.1
+
+F4:  Sequential Processor (No User Access)                 Alias: none
+This function sets up the commands from function f3 for execution
+and thus has no user access.
+The f4 function makes a command to do an operation followed by a
+comma and f4.  Thus f4 calls itself.  Internally, it stores the
+sequential command and counters in an internal array and increments them
+each time the program returns to the f4 function.  For example, f4 may
+build a command sequence like
+
+             v23/w26e,f4
+
+so that the first operation (v23/w26e) is done and then f4 is called
+again.  The f4 routine then increments whatever the user had
+requested and generates a new command and returns to the command
+interpreter.
+When all incrementing is complete, f4 returns to the user command
+input routine.
+</pre>
+<hr>
+</body>
+</html>

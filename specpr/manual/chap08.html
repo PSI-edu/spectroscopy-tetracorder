@@ -1,0 +1,990 @@
+<!-- Creator     : groff version 1.18.1.1 -->
+<!-- CreationDate: Tue Nov  9 14:21:33 2010 -->
+<html>
+<head>
+<meta name="generator" content="groff -Thtml, see www.gnu.org">
+<meta name="Content-Style" content="text/css">
+<title></title>
+</head>
+<body>
+
+<hr>
+<pre>SPECPR Users&rsquo; Manual                                                   Page 8.1
+
+</pre>
+
+<p align=center>CHAPTER 8</p>
+
+<p align=center>MATH OPERATIONS</p>
+
+<p>8.1 Introduction All mathematical operations are carried
+out in Math Operations except for extinction analysis. The
+math routines also contain the &quot;special
+functions.&quot; Special functions do some operation on a
+data set, or generate a data set. While most special
+functions are math related, they need not be (for example
+sort a data set into increasing wavelengths). The general
+sequence the user sees in the Math Operations section is the
+following:</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="15%"></td>
+<td width="84%">
+<p>&bull; At the math main menu, the user enters a math
+command</p>
+<!-- INDENTATION -->
+<p>&bull; The math function displays what it is going to do
+and the user works his/her way through the function-specific
+menus.</p>
+<!-- INDENTATION -->
+<p>&bull; When the math function completes normally, the
+user is asked where the data should be written (which v, w,
+d, u, or y data file and what record number). The data are
+not written at this time; that is the second to last step
+below. The ultimate location is requested at this point so
+that the spectrum is properly identified in case print-outs
+are made.</p>
+<!-- INDENTATION -->
+<p>&bull; The user is asked to type in a title to the data
+set.</p>
+<!-- INDENTATION -->
+<p>&bull; The data are plotted in the graphics terminal
+(with the crt plot routines, see Chapter 9). In the crt plot
+routines, the user can change or add to the header
+information.</p>
+<!-- INDENTATION -->
+<p>&bull; The data are written to the data file when the
+user soft exits from the crt plot routines (exit with e).
+See warnings and important rules below.</p>
+<!-- INDENTATION -->
+<p>&bull; The user is returned to the math operations
+menu.</p>
+</td>
+</table>
+
+<p>WARNING: the number of data channels operated on by any
+math routine is determined by the number of channels in the
+data set in use (displayed in the top few lines of each
+routine). It is UP TO THE USER to be sure the number of
+channels is set properly. Improper number of channels is a
+very common reason for improper results.</p>
+
+<p>WARNING: the number of channels in the data set written
+by the math routines is controlled by the number of channels
+in use AT THE TIME the user EXITS the CRT PLOT ROUTINES. If
+you change the number of channels in the header routines, it
+will have no effect--that value is overridden by the math
+writing routine.</p>
+
+<p>IMPORTANT RULE: the wavelength pointer will be set
+automatically by the math routine at the time the data are
+written to the data file IF the wavelength set in use IS IN
+THE SAME DATA FILE.</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="15%"></td>
+<td width="84%">
+<p>For example, if you divide two spectra in data file
+&quot;w&quot;, and write the results in data file
+&quot;v&quot;, use a wavelength set that is already in
+&quot;v&quot;. Thus if:</p>
+</td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="15%"></td>
+<td width="84%">
+<p>w 10 = wavelengths with 56 channels<br>
+w 11 = data set &quot;a&quot;<br>
+w 12 = data set &quot;b&quot;</p>
+<!-- INDENTATION -->
+<p>and you want to divide w11 by w12, first put a copy of
+w10 into the &quot;v&quot; file (see Chapter 10 on how to
+copy/transfer), then assign the &quot;v&quot; wavelength set
+before you do the division. The wavelength pointer will then
+be set automatically when the results from the math
+operation are written to the v-file.</p></td>
+</table>
+
+<p>8.1.1 Multiple commands from the math command menu. One
+entire line (80 characters) of commands may be typed in for
+execution. Each math command must be separated by a
+comma.</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="15%"></td>
+<td width="84%">
+<p>Example:</p>
+<!-- INDENTATION -->
+<pre>           w11/w12,v23*c5.62e,y236/w12
+</pre>
+</td>
+</table>
+
+<p>After each math operation is completed, the next command
+is executed without returning to the math menu.</p>
+
+<p>8.1.2 Menu Information The information in the Math menu
+can be turned off by typing</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="37%"></td>
+<td width="62%">
+<p>in</p></td>
+</table>
+
+<p>or turned back on by typing</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="37%"></td>
+<td width="62%">
+<p>i</p></td>
+</table>
+
+<p>and nothing else on the command line.</p>
+
+<p>8.2 Subtraction, Multiplication, and Division Generally
+these operations contain a file ID (v, w, u, d, or y),
+record number, operation sign</p>
+<pre>              -  for subtraction,
+              *  for multiplication, and
+              /  for division,
+</pre>
+
+<p>then the second file ID (v, w, d, c, u, y, or s; s is
+used in division only), the second record number, and the
+options. Options include:</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<pre>e  to include 1 sigma error bars,
+n  to do a subtraction without airmass calculation,
+b  for turn on band normalization (section 8.9),
+bn for turn off band normalization,
+t  for change sidereal time in subtraction with airmass calculation,
+r  for change RA and declination in subtraction calculation, and
+p  for production processing.
+</pre>
+</td>
+</table>
+
+<p>The production processing option stops only to request
+the title and writes the result to device v without doing
+the CRT plot. This option (p) makes processing equivalent to
+the time spent in performing batch processing. When you
+enter the output title (section 8.8), you may turn off (or
+on) production processing by typing &quot;pn&quot; (or
+&quot;po&quot; for on) after the title. See section 8.8. The
+c in place of the second file ID is for constant. The value
+of the constant is then placed where the second record
+number is located.</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="28%"></td>
+<td width="71%">
+<p>Example:</p>
+</td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>w10-11, w12-13, v10*c1.3, v23/46eb, v12-d10np bn</p>
+<!-- INDENTATION -->
+<p>Here file w record 11 is subtracted from 10 (the default
+when the second file ID is left out is the first file ID).
+Next w13 is subtracted from w12, then v10 is multiplied by
+the constant 1.3, next v23 is divided by v46 with 1 sigma
+standard deviation (errors) included and also a band
+normalization performed. On the math command line, spaces
+may be included at any point except within a number, or they
+may be completely left out. The program processes the
+commands sequentially. When performing each operation, the
+program enters the appropriate routine, writes the titles of
+the requested files on the CRT, and pauses for a continue
+command (unless the Production option has been set). If you
+type</p>
+<!-- INDENTATION -->
+<p>x</p></td>
+</table>
+
+<p>here, the program exits directly to math operations. If
+you type</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>e</p></td>
+</table>
+
+<p>the program exits that operation and begins processing
+of the next operation if one exists. The production option
+is set to no production at the end of each operation whereas
+the band normalization option stays on until turned off by
+a</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>bn</p></td>
+</table>
+
+<p>command. When the operation is completed, the program
+goes to section 8.1. Math Operations can be used to change
+the wavelength file set in use. Example:</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>v23/v45V2, v86*v27W46</p></td>
+</table>
+
+<p>where the capital file ID specifies a wavelength set
+within the corresponding data file. The number of channels
+in use will then be read from the wavelength set.</p>
+
+<p>Special Note on the Division Routine Division by a small
+number (-10-36 to +10-36) is defined as a deleted point</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="28%"></td>
+<td width="71%">
+<p>(-1.23x10+34 = A DELETED POINT)</p></td>
+</table>
+
+<p>x by this program.</p>
+
+<p>Special Notes on the Subtraction Routine Normal
+subtraction calculates airmass based on the coordinates
+found in the first 13 characters of the title of the first
+input file; if these coordinates are not entered in the
+correct format (HHMMSS+DDMMSS no spaces, declination sign
+must be explicitly specified as plus or minus, and any one
+of the first six digits must be non-zero), the routine
+issues the command</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="18%"></td>
+<td width="81%">
+<p>TYPE IN RIGHT ASCENSION AND DECLINATION</p></td>
+</table>
+
+<p>and awaits a correct response. The routine repeats this
+message until a correct response is encountered--e and x are
+NOT correct responses. The correct response is up to six
+numbers separated by spaces, any one of the first three of
+which must be non-zero, the fourth of which should be signed
+only if negative, and all the rest of which should be
+unsigned.</p>
+
+<p>TO GET OUT OF THIS LOOP, enter any single non-zero
+number, and type e or x at the next possible
+opportunity.</p>
+
+<p>(This format may be confusing because the interpretation
+routine from the first 13 characters requires an explicitly
+specified plus or minus sign for the declination, and the
+request for RA and DEC cannot interpret plus signs.)</p>
+
+<p>8.3 Addition Routine The addition routine can add from 2
+to 128 spectra with deletion of zeros or requested points.
+To access the addition routine, type + and any options:</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<pre>+     no options
++e    addition with propagation of existing error bars
++s    sum
++a    average
++se   sum with errors
++ae   average with errors
+</pre>
+</td>
+</table>
+
+<p>with no other math operations after that on the input
+line (because they will not be processed due to a
+programming restriction). Upon entering the addition
+routine, you will be asked whether you want to average or
+sum (unless you specified the a or s option as given above).
+Type</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<pre>a    to Average,
+s    to Sum and,
+</pre>
+<!-- INDENTATION -->
+<p>Next type:</p>
+<!-- INDENTATION -->
+<pre>z   to DELETE ZEROS in the input data,
+v   to DELETE data values outside a user set limit, and/or
+s   to DELETE data values outside a certain standard deviation limit.
+
+</pre>
+<!-- INDENTATION -->
+<p>Next you will be given instructions on entering the files
+to be added or summed. Type in the file ID [v, w, d, u, y or
+c (for constant)] and the record number or constant. If you
+wish to delete points from this record, type d after the
+record number or constant. If you elect to delete channels,
+you may start the channel number list after the
+&quot;d&quot;. You may use more than one line to input these
+numbers, but each channel to be deleted from the sum or
+average must be listed. When you are through entering
+numbers to be deleted, type a &quot;c&quot; to continue.
+Example:</p>
+<!-- INDENTATION -->
+<pre>v23                    \# normal input, no deletions,
+v23 d 1 2 26t32 c      \# delete channels 1, 2, 26 through 32.
+</pre>
+</td>
+</table>
+
+<p>When you are through entering record numbers, type</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>b</p></td>
+</table>
+
+<p>to begin analysis. Note only 1 constant can be entered
+per addition run. If you type</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>e</p></td>
+</table>
+
+<p>or</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>x</p></td>
+</table>
+
+<p>the program will exit directly back to math operations;
+otherwise, after the analysis is complete, the program goes
+to section 8.7.</p>
+
+<p>8.4 Error Analysis Error analyses are included in
+addition, multiplication and division, and subtraction and
+many of the special functions (see individual functions -
+section 8.6) In all cases of error analysis, the data
+numbers should be within the range of</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="28%"></td>
+<td width="71%">
+<p>1.0&times;10-15 to 1.0&times;10+15</p></td>
+</table>
+
+<p>to avoid overflow. If overflow occurs, the error is set
+to zero. If the data is zero in the multiplication or
+division routines, when using the propagation of errors, the
+error is set to zero for that channel. The errors represent
+1 sigma standard deviation of the mean and are normally
+first computed in the addition routine as a standard
+deviation of the mean computation. The equations used in
+propagating errors are as follows: .KE Given a&plusmn;
+&sigma;a, b &plusmn; &sigma;b , c &plusmn; &sigma;c and the
+result x &plusmn; &sigma;x the equations used are:</p>
+
+<p><i>division:</i> HTML-IMAGEcpile { X ~=~ a over b above
+sigma sub X ~=~ left [ left ( sigma sub a over a right ) sup
+2 + left ( sigma sub b over b right ) sup 2 right ] sup {1
+over 2} X } HTML-IMAGE-END.KE</p>
+
+<p><i>multiplication:</i> HTML-IMAGEcpile { X ~=~ a b above
+sigma sub X ~=~ left [ left ( sigma sub a over a right ) sup
+2 + left ( sigma sub b over b right ) sup 2 right ] sup {1
+over 2} X } HTML-IMAGE-END.KE</p>
+
+<p><i>subtraction:</i> HTML-IMAGEcpile { X ~=~ a - b above
+sigma sub X ~=~ left { sigma sub a sup 2 + sigma sub b sup 2
+right } sup { 1 over 2} } HTML-IMAGE-END.KE</p>
+
+<p><i>addition</i> (when errors already exist):
+HTML-IMAGE(sum):~~ X ~=~ a + b + . . . +c, HTML-IMAGE-END.EQ
+sigma sub x ~=~ left { sigma sub a sup 2 + sigma sub b sup 2
++ . . HTML-IMAGE-END</p>
+
+<p>HTML-IMAGE(average~ of~ n~ spectra):~~ X ~=~ (a + b + .
+. . c) / n above HTML-IMAGE-END.EQ sigma sub x ~=~ left {
+sigma sub a sup 2 + sigma sub b sup 2 + . .
+HTML-IMAGE-END.KE</p>
+
+<p>standard deviation of the mean is derived from (generate
+errors for the first time):</p>
+<pre>                         &#9581;  n       _   &#9582;&frac12;
+                         &#9474;  &Sigma; (xi - x)2 &#9474;
+                    &sigma;x = &#9474; i=1          &#9474;
+                         &#9474; &mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash; &#9474;
+                         &#9584;   (n - 1)    &#9583;
+</pre>
+
+<p>where n = number of spectra, xi = each spectrum, and
+HTML-IMAGEx bar ~=~ 1 over n sum from i=1 to n x sub i
+HTML-IMAGE-END.KE</p>
+
+<p>8.5 Algebraic and Trigonometric Functions &quot; A
+complete set of algebraic, trigonometric, and power
+functions exists similar to those on a scientific
+calculator. No error analysis is included with any of these
+functions. The functions are accessed by file ID, file
+number, colon (:), and the name of the function. Functions
+are:</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="18%"></td>
+<td width="81%">
+<pre>                   Exponential:  exp
+             Natural logarithm:  ln
+              Common logarithm:  log
+         Ten to spectrum power:  10**x
+                       Inverse:  1/x
+Spectrum to the constant power:  x**c
+Constant to the spectrum power:  c**x
+             Sine (in radians):  sin
+           Cosine (in radians):  cos
+          Tangent (in radians):  tan
+             Sine (in degrees):  sind
+           Cosine (in degrees):  cosd
+          Tangent (in degrees):  tand
+        Inverse sine (radians):  invsin
+      Inverse cosine (radians):  invcos
+     Inverse tangent (radians):  invtan
+        Inverse sine (degrees):  invsind
+      Inverse cosine (degrees):  invcosd
+     Inverse tangent (degrees):  invtand
+     Hyperbolic sine (radians):  sinh
+   Hyperbolic cosine (radians):  cosh
+  Hyperbolic tangent (radians):  tanh
+                Absolute value:  abs
+                 Integer value:  int
+               Fractional part:  frac
+</pre>
+<!-- INDENTATION -->
+<p>Examples:</p>
+</td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<pre>v397:ln       \# natural log of v397
+w76:cos       \# cosine of w76.
+</pre>
+</td>
+</table>
+
+<p>In both the spectrum to the constant power and constant
+to the spectrum power, the value of the constant is after
+the command (x**c or c**x):</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<pre>v397:x**c3.65       \# v397 to the 3.65 power,
+v397:c**x3.65       \# constant 3.65 to the v397 power
+</pre>
+</td>
+</table>
+
+<p>No options are valid with any of these operations
+including errors (except 1/x can include errors), band
+normalization, and production processing. This is due to
+programming limits (there has to be some). Since these
+routines are not used too often, this should make little
+difference. What are they used for? Normal spectral
+processing does not need them, but say you wanted to make a
+plot of a phase function for a Lambert sphere:</p>
+
+<p>HTML-IMAGEPHI ( alpha ) ~=~ 1 over pi left [ sin~ alpha
++ ( pi - alpha ) cos~ alpha right ] HTML-IMAGE-END You could
+generate data for &alpha; increasing from 0 to 180&deg;
+using the wavelength routines and then this function using
+the math functions. The result can then be plotted on the
+Gould printer plotter using the plot routines.</p>
+
+<p>8.6 Special Functions Special function subroutines are
+additional routines for operating on any kind of data. They
+do any operation: for example a data list, a data editor, or
+a specific computation. Some special functions operate on a
+data set (for example, a smoothing function) while others
+may create a new data set (for example, read one from an
+ascii text file or digitize one on a digitizing tablet, or
+simply compute one, like a Plank black body). Special
+functions are called from math operations by one of two
+methods, depending on whether or not the function operates
+on an existing data set. If a function requires a data set,
+you enter the file id, record number, an &quot;f&quot;
+followed by the function number. For example, to smooth
+(function 7) data set v23, you would enter the command:</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>v23f7</p></td>
+</table>
+
+<p>Special functions also have alias names. For example,
+the smoothing function f7 has the alias &quot;smooth&quot;.
+Thus</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>v23f7</p></td>
+</table>
+
+<p>and</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>v23smooth</p></td>
+</table>
+
+<p>are equivalent. Some special functions do not need an
+input data set. In that case, just specify the function or
+its alias. For example, to compute a Planck black body,
+type:</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>f6</p></td>
+</table>
+
+<p>or</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>planck</p></td>
+</table>
+
+<p>and the function will be started. Note there is no colon
+in the command line for special functions as compared to the
+algebraic and trig routines. Special function 1 is a
+function which lists a catalog of all available special
+functions. Just type &quot;f1&quot; from the math operations
+command line. This list contains a code at the end of the
+short description which tells if the function needs a data
+file input before the function on the command line. If this
+is the case, you will see an &quot;(f)&quot; at the end of
+the description. If the function can also propagate the
+error bars to the data set, it will have an
+&quot;(f,e)&quot; at the end of the description. To
+propagate error bars for those routines that support error
+propagation, you must specify an &quot;e&quot; option on the
+command line. For example, to propagate error bars in the
+cubic spline interpolation routine, function f12, alias
+cspline, and operate on data set v23, type the command:</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>v23f12e</p></td>
+</table>
+
+<p>or</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>v23cspline e</p></td>
+</table>
+
+<p>Specpr is designed to add special functions easily.
+Subroutine calls already exist in the program for many as
+yet unwritten routines. These routines are designed for easy
+linking to the present program. New routines can be user
+written with less effort than a completely separate program
+since, in most cases, SPECPR handles all the data
+management.</p>
+
+<p>8.7 Return from a Math Operation or Function When a
+routine such as addition, subtraction, special function,
+trig. function, etc., has finished, the program asks the
+user where he/she wishes the data to be written. The data
+can be written to any of the files: v, w, d, u, or y if
+allowed by the protection. If the protection on the device
+is positive or zero, the data can only be written to the
+protection value plus 1. Thus, it is not necessary to type
+in this value since it is the only value possible. Simply
+type the file letter ID and return; the record number will
+be set automatically. The data set is not written at this
+point. It is written after the CRT plot routines. The user
+may also exit the current operation from this point. By
+typing</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>e</p></td>
+</table>
+
+<p>the current operation is terminated and the program
+begins execution of the next command if there is one or
+returns to Math Operations if there are no other command
+requests. If the user types</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>x</p></td>
+</table>
+
+<p>all processing stops, and the program returns directly
+to Math Operations. If the user requests the data to be
+stored, then the program continues to the titles routine
+(section 8.8).</p>
+
+<p>8.8 The Titles Routine The titles routine displays 2
+titles on the CRT which may be selected for the new data, or
+one of 25 user stored titles can be recalled, or the user
+can type in a new title and store it. The 2 titles displayed
+are as follows.</p>
+
+<p>The &quot;option p title&quot; This is the &quot;present
+title&quot; of the first data set read in for 2 file
+operations or the title of the last data set in the addition
+routine or many other routines. Some special functions may
+generate a suggested present title.</p>
+
+<p>The &quot;option l title&quot; This is the title
+requested for the last operation.</p>
+
+<p>In the subtraction routine, the program decodes an
+&quot;object-sky&quot; title as the option p title. This is
+based on inputs from the &quot;Wedge&quot; CVF spectrometer
+data system and may not be valid with other types of
+subtraction. All titles are 40 characters long, so to select
+the option p or l titles, type</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>p</p></td>
+</table>
+
+<p>or</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>l</p></td>
+</table>
+
+<p>with no other characters in columns to 40. To recall one
+of the stored titles, type</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>t#</p></td>
+</table>
+
+<p>where the &quot;#&quot; is the title number (1 to 25).
+There can be no other characters in columns 1 to 40. If
+other characters are detected here, the program will think
+this is a new title and use it. The title used, whether
+recalled or new, is stored in title file t1. To list the
+contents of the title file, type</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>tl</p></td>
+</table>
+
+<p>with no other characters on the command line. The titles
+will be listed and the program will again ask for a title.
+Once a title has been selected (recalled or new), further
+commands can be placed in columns 40 or greater. To store a
+title, type</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>t#</p></td>
+</table>
+
+<p>where the &quot;#&quot; is the title number (3 to 25 are
+valid). Remember, the &quot;t#&quot; must be positioned in
+columns 41 or greater with the requested title (recalled or
+new) in columns 1 through 40. The Band normalization or
+Production processing options can also be turned on or off
+by control characters in columns 41 or greater. Type</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>b</p></td>
+</table>
+
+<p>to turn on or</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>bn</p></td>
+</table>
+
+<p>to turn off Band normalization. Type</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>p</p></td>
+</table>
+
+<p>to turn on or</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>pn</p></td>
+</table>
+
+<p>to turn off the Production processing option (the n is
+for none). The vertical scale of the pending crt plot can
+also be changed after column 41 of the title command line.
+Simply type &quot;c and the lower and upper range. For
+example, to change the scale from 0.92 to 1.63, type</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>c 0.92 1.63</p></td>
+</table>
+
+<p>after column 41. An example of a complete title entry
+would be</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>Scapolite HS351 / Halon 4x resol .2-3um t5 b c .5
+1.5</p></td>
+</table>
+
+<p>which means to make the title of the current data set
+&quot;Scapolite HS351 / Halon 4x resol .2-3um&quot;, store
+it in title location 5, turn on band normalization and
+change scale of the pending CRT plot to lower bound 0.5 and
+upper bound 1.5. The current operation can be terminated as
+in section 8.7 by typing</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>e</p></td>
+</table>
+
+<p>or</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>x</p></td>
+</table>
+
+<p>with no other characters on the line. Typing
+&quot;e&quot; will terminate the present operation, and the
+program will begin the next operation if there is one.
+Otherwise, it will return to Math Operations. Typing
+&quot;x&quot; will terminate all operations and will go
+directly to Math Operations. If a title is requested, the
+program will then go to the Band Normalization Routine
+(section 8.9) if the Band Normalization option is on or to
+the CRT plot routines if the Band Normalization and
+Production options are off. If the Production and Band
+Normalization options are on, the program will go to the
+Band Normalization; otherwise, if only the Production option
+is on it will write the data and begin processing the next
+command.</p>
+
+<p>8.9 Band Normalization The Band Normalization is a least
+squares analysis over a user selected band with the spectrum
+scaled so the middle of the band is scaled to unity. The
+band can be one channel or however many channels are in the
+spectrum. The Band Normalization routine is called after
+each operation if the Band Normalization option is on. When
+you are in the band normalization routine, you have several
+options to control the region that will be normalized.
+Channels can be deleted inside the region of normalization
+by typing the</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>d</p></td>
+</table>
+
+<p>command. The program then asks for the points. One line
+can be filled with points to be deleted (numbers, no
+characters). The band limits can be moved by typing the</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>m</p></td>
+</table>
+
+<p>command. Deleted channels can be reinserted by typing
+the</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>r</p></td>
+</table>
+
+<p>command. The band area with the fitted line along with
+the correlation coefficient, the previous Band Normalization
+factor (the normalization factor of the data before this
+normalization), the current normalization factor (as
+determined by this normalization), and the future
+normalization factor (if this normalization is carried out)
+are plotted on the CRT. The future normalization factor
+equals the previous times the current factors. WARNING: if
+the previous normalization factor was zero when the Band
+Normalization routine is entered, it is reset to 1.0. To
+perform the normalization of the data, type</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>b</p></td>
+</table>
+
+<p>otherwise, type</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>e</p></td>
+</table>
+
+<p>to exit the routine without changing the normalization
+factor. The &quot;e&quot; soft exit continues to the next
+step which will normally be the CRT plot routine unless
+production processing is turned on. If production processing
+is turned on, the specpr will write the data when exiting
+band normalization with an &quot;e&quot; soft exit. A hard
+exit, command &quot;x&quot; from the Band Normalization
+routine, will terminate all pending commands and return to
+the Math Operations command line. Default Band Normalization
+limits when program is begun are 30 to 38.</p>
+<hr>
+</body>
+</html>

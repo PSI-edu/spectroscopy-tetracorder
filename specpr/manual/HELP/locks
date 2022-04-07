@@ -1,0 +1,14 @@
+_4._2  _P_r_o_t_e_c_t_i_v_e _L_o_c_k_s
+
+     Protective Locks are enforced to prevent more than one user at  a  time
+from  running  specpr in a directory.  When specpr is started, a file called
+LOCK.specpr is created in the directory.  If another specpr is  started,  it
+will see that file and give you a message and quit.  You should check to see
+if a user is really running specpr, and even ask him or her why the lock  is
+still  there  if  specpr is no longer being run (maybe specpr was terminated
+abnormally).  If no one is running specpr, then you may delete the lock file
+and  proceed  as  normal.  When specpr terminates normally, the lock will be
+deleted.  If specpr crashes, the lock will still be deleted because the lock
+activities are done in the startup shell for specpr.
+
+

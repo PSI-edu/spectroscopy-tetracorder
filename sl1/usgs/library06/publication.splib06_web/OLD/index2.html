@@ -1,0 +1,1579 @@
+<HTML>
+<TITLE>USGS Spectroscopy Lab - Clark and others 2007 Spectral Library splib06a
+</TITLE>
+</HEAD>
+<BODY>
+
+<table width="100%" border="0" height="70" bgcolor="black">
+  <tr>
+    <td>
+       <A HREF="http://www.usgs.gov/">
+       <IMG SRC="USGSearthsat2.gif"  border=0
+                  ALT="U.S. Geological Survey home page">
+       </A>
+   </td>
+  </tr>
+</table>
+
+<br clear=all>
+
+<P>
+
+<H2>
+<B>USGS Digital Spectral Library splib06a</B>
+</H2>
+
+<P>
+By Roger N. Clark,<SUP>1</SUP>
+Gregg A. Swayze,<SUP>1</SUP>
+Richard A. Wise,<SUP>1</SUP>
+K. Eric Livo,<SUP>2</SUP>
+Todd M. Hoefen,<SUP>1</SUP>
+Raymond F. Kokaly,<SUP>1</SUP>
+and
+Stephen J. Sutley<SUP>2</SUP><br>
+
+<P>
+<SUP>1</SUP>U.S. Geological Survey Crustal Imaging and Characterization Team<br>
+<SUP>2</SUP>U.S. Geological Survey Central Region Minerals Team<br>
+
+
+
+<P>
+U.S. Geological Survey <br>
+Box 25046 Denver Federal Center <br>
+Denver, CO 80225 <br>
+
+
+<P>
+U.S. Geological Survey Data Series 231
+
+<P>Director's Approval  September 13, 2007
+
+<P>
+First Published: September 19, 2007<br>
+Revised: September 19, 2007
+
+<P>
+How to reference:<br>
+<font color="#007700">
+Clark, R.N., Swayze, G.A., Wise, R., Livo, E., Hoefen, T., Kokaly, R., Sutley,
+S.J., 2007, USGS digital spectral library splib06a: U.S. Geological Survey,
+Digital Data Series 231: http://speclab1.cr.usgs.gov/spectral.lib06.
+<font color="#000000">
+
+
+
+
+<P>(Any use of trade, product, or firm names is for descriptive purposes only and does not
+imply endorsement by the U.S. Government.)
+
+<P>
+<B>Contents</B>
+<P>
+<ul>
+<li><A HREF="#intro">    <B> Introduction                            </B></A>
+<li><A HREF="#TOM">      <B> Types of Materials                      </B></A>
+<li><A HREF="#SLCO">     <B> Spectral Library Chapter Organization   </B></A>
+<li><A HREF="#spectr">   <B> Spectrometers                           </B></A>
+<li><A HREF="#sampnam">  <B> Sample Naming                           </B></A>
+<li><A HREF="#sampdoc">  <B> Sample Documentation                    </B></A>
+<li><A HREF="#digphoto"> <B> Digital Photographs                          </B></A>
+<li><A HREF="#SPSRF">    <B> Spectral Purity and Spectral Range Flags </B></A>
+<li><A HREF="#SMSE">     <B> Spectral Measurement Side Effects       </B></A>
+<li><A HREF="#wavp">     <B> Wavelength Precision                    </B></A>
+<li><A HREF="#SPDP">     <B> Spectral Plots and Data Precision       </B></A>
+<li><A HREF="#MMOC">     <B> Mineral Mixtures and Optical Constants  </B></A>
+<li><A HREF="#Ddf">      <B> The Digital Data File                   </B></A>
+<li><A HREF="#ISL">      <B> Instrument Spectral Libraries           </B></A>
+<li><A HREF="#ASCIID">   <B> ASCII Spectral Data                     </B></A>
+<li><A HREF="#datatabl"> <B> Table of Spectral Data                  </B></A>
+   <ul>
+<li><B> <A target="_blank" HREF="datatable.html"> Digital Spectral Library Data Table.
+                             (Plots, ASCII lists, sample descriptions)   </B></A>
+   </ul>
+<li><A HREF="#Ack">      <B> Acknowledgments                        </B></A>
+<li><A HREF="#Ref">      <B> Selected References                    </B></A>
+</ul>
+
+
+
+<P>
+<A NAME="intro">
+<B>Introduction</B>
+</A>
+
+<P>
+We have assembled a digital reflectance spectral library that
+covers the wavelength range from the ultraviolet to far infrared along with
+sample documentation.  The library includes samples of minerals, rocks,
+soils, physically constructed as well as mathematically computed
+mixtures, plants, vegetation communities, microorganisms, and man-made
+materials.  The samples and spectra collected were assembled for the
+purpose of using spectral features for the remote detection of these and
+similar materials.
+
+<P>
+Analysis of spectroscopic data from laboratory, aircraft, and
+spacecraft instrumentation requires a knowledge base.  The spectral library
+discussed here forms a knowledge base for the spectroscopy of minerals
+and related materials of importance to a variety of research programs
+being conducted at the U.S. Geological Survey.  Much of this library
+grew out of the need for spectra to support imaging spectroscopy studies
+of the Earth and planets.  Imaging spectrometers, such as the National 
+Aeronautics and Space Administration (NASA) Airborne Visible/Infra Red
+Imaging Spectrometer (AVIRIS) or the NASA Cassini Visual and Infrared
+Mapping Spectrometer (VIMS) which is currently orbiting Saturn, have
+narrow bandwidths in many contiguous spectral channels that
+permit accurate definition of absorption features in spectra from a variety of
+materials.  Identification of materials from such data requires a
+comprehensive spectral library of minerals, vegetation, man-made
+materials, and other subjects in the scene.
+
+<P>
+Our research involves the use of the spectral library to identify the
+components in a spectrum of an unknown.  Therefore, the quality of the
+library must be very good.  However, the quality required in a spectral
+library to successfully perform an investigation depends on the
+scientific questions to be answered and the type of algorithms to be
+used.  For example, to map a mineral using imaging spectroscopy and the
+mapping algorithm of Clark and others </I>  (1990a, 2003b), one simply needs a
+diagnostic absorption band.  The mapping system uses continuum-removed
+reference spectral features fitted to features in observed spectra.
+Spectral features for such algorithms can be obtained from a spectrum of
+a sample containing large amounts of contaminants, including those that
+add other spectral features, as long as the shape of the diagnostic feature
+of interest is not modified.  If, however, the data are needed for
+radiative transfer models to derive mineral abundances from reflectance
+spectra, then completely uncontaminated spectra are required.  This
+library contains spectra that span a range of quality, with purity
+indicators to flag spectra for (or against) particular uses.
+
+<P>
+Acquiring spectral measurements and performing sample characterizations for this
+library has taken about 15 person-years of effort.  Software to manage
+the library and provide scientific analysis capability is provided
+(Clark, 1980, 1993).  A personal computer (PC) reader for the library is
+also available (Livo and others, 1993).  The program reads specpr binary files
+(Clark, 1980, 1993) and plots spectra.  Another program that reads
+the specpr format is written in IDL (Kokaly, 2005).
+
+<P>
+In our view, an ideal spectral library consists of samples covering a
+very wide range of materials, has large wavelength range with very high
+precision, and has enough sample analyses and documentation to establish
+the quality of the spectra.  Time and available resources
+limit what can be achieved.
+
+<P>
+Ideally, for each mineral, the sample analysis would include X-ray
+diffraction (XRD), electron microprobe (EM) or X-ray fluorescence (XRF),
+and petrographic microscopic analyses.  For some minerals, such as iron
+oxides, additional analyses such as Mossbauer would be helpful.  We have
+found that to make the basic spectral measurements, provide XRD, EM or
+XRF analyses, and microscopic analyses, document the results, and
+complete an entry of one spectral library sample, all takes about 1
+person-week.  Collecting additional spectra of the same sample (such as, a
+grain size series) increases the time by approximately 0.5 day per
+spectrum (mostly for sample preparation).  We had hoped that as our experience
+increased, this time would decrease, but it has not in our experience
+of more than 20 years of developing this and previous spectral databases.
+
+<P>
+Vegetation samples and vegetated areas can also have exacting demands
+for data collection and documentation.  For leaf samples measured in the
+laboratory or field spectra of single plants, basic documentation
+requirements include the date of sample collection and measurement and
+correct species identification.  Additional documentation is desired on
+leaf water and pigment concentrations, requiring the associated laboratory
+analysis of those samples.  For field-level measurements of vegetated
+areas (vegetation communities), the species in the measured area and
+the associated percent cover of each species are desired.  A single plot
+can take up to 4 hours to measure, with data reduction, reviewing, and
+compiling taking nearly as long.
+
+<P>
+This release of this library does not have all samples completely
+characterized.  The characterization of samples will continue as our
+resources allow, and results will be added in future releases of the
+database.  This library, however, contains more extensive sample
+documentation and fills in gaps present in the documentation for the
+splib05a library (Clark and others, 2003c).  A new component of the
+splib06a library is that many samples now include digital photos, as
+well as spectra with greater wavelength range.  Some mineral samples
+were found to be more contaminated than previous support data indicated,
+so some samples have been renamed from earlier versions of the library.
+If you cannot find a sample by its name from a previous library, search
+by using its sample number. 
+
+<P>
+This report describes spectral library 06:  splib06a.  Libraries 01, 02,
+and 03 were unpublished experimental exercises that investigated what
+to include in a spectral library.  Library 04 (splib04a, Clark and
+others, 1993), was our first release.  Clark and others
+(splib05a, 2003c), has been our main working library until this release.
+The splib06a library includes all spectra from the splib04a and splib05a
+libraries with additional documentation derived since publication of
+those libraries.
+
+
+
+<P>
+<A NAME="TOM">
+<B>Types of Materials</B>
+</A>
+
+
+<P>
+Minerals from arsenate, borate, carbonate, element, halide, hydroxide,
+nitrate, oxide, phosphate, silicate (cyclosilicate, inosilicate,
+phyllosilicate, nesosilicate, sorosilicate, and tectosilicate), sulfate,
+and sulfide classes are represented.  X-ray and chemical analyses are
+tabulated for many of the entries, and all samples have been evaluated
+for spectral purity.  The library also contains end and intermediate
+members for the olivine, garnet, scapolite, montmorillonite, muscovite,
+jarosite, and alunite solid-solution series.  We have included
+representative spectra of H<sub>2</sub>O ice, kerogen, ammonium-bearing
+minerals, rare earth oxides, desert varnish coatings, kaolinite
+crystallinity series, kaolinite-smectite series, zeolite series, and an
+extensive evaporite series.
+
+<P>
+Because of the importance of vegetation to terrestrial studies, we have
+included spectra of trees, shrubs, grasses, flowers, leaves, and lichens and
+other microorganisms.  Also included are vegetation community spectra.
+Laboratory spectra of leaves from a single plant and field spectra of a
+single species, or of a plant in its entirety, are listed by the common
+name of the species.  Scientific names of vegetation are given in the
+supporting documentation.  Field and AVIRIS spectra of vegetation
+communities are listed by the dominant species (for example, lodgepole pine), or
+by biome (such as grassland or shrubland), or by a land-use term (such as
+rangeland).  The vegetation types are representative of the types that we
+have encountered and studied in our published works.
+
+<P>
+Terrestrial remote sensing also encounters man-made
+materials, so we have included spectra of plastics, roofing materials,
+processed wood, paint, and other man-made materials.  Spectra of liquids
+from water to organic liquids mixed with minerals are also included.
+Together, the spectral library encompasses a broad range of materials
+that may exist in a remotely sensed image.
+
+<P>
+In some cases, several spectra were measured to provided a series that
+spans a compositional solid-solution series or a grain-size series or
+both.  We tried to include spectra of all mineral classes, particularly
+those important to hyperspectral remote sensing.  In other cases,
+we have studied particular solid-solution series because we are mapping
+them in the field with imaging spectroscopy or studying that mineral in
+detail.  This explains, for example, why there are so many alunite,
+olivine, and topaz samples in the database.  Future releases of the
+database will probably include additional spectra of other solid-solution series.
+
+<P>
+<A NAME="SLCO">
+<B>Spectral Library Chapter Organization</B>
+</A>
+
+<P>
+The digital spectral library splib06a is organized in chapters:
+
+<ul>
+<li> Chapter 1: M = Minerals
+<li> Chapter 2: S = Soils, Rocks, and Mixtures (except those with vegetation)
+<li> Chapter 3: C = Coatings
+<li> Chapter 4: L = Liquids, Liquid Mixtures, Water, Other Volatiles, and Frozen Volatiles
+<li> Chapter 5: A = Artificial (Man Made) Including Manufactured Chemicals
+<li> Chapter 6: V = Plants, Vegetation Communities, Mixtures with
+                    Vegetation, and Microorganisms
+</ul>
+
+<P>
+The placing of some samples into a particular chapter was not always
+clear cut.  For example, pure minerals are often difficult to find, or
+it may be difficult to process the sample to purify the mineral.  Such a
+sample could be considered a mixture.  We placed some samples of this
+type in the minerals chapter (Chapter 1:  M) because we are using the
+sample and its spectra to match to pure minerals.  We tended to place in
+the mixture chapter (Chapter 2:  S) spectra of samples that show
+specific spectral properties of mixtures that we use for identification
+and mapping of those mixtures.  Usually these include overlapping
+absorption features.
+
+
+<P>
+<A NAME="spectr">
+<B>Spectrometers</B>
+</A>
+
+<P>
+The spectra in our library were measured on at least one of four different
+spectrometers:  (1) a Beckman 5270 covering the spectral range 0.2 to 3
+&#181;m (micrometers), (2) an Analytical Spectral Devices (ASD) portable field
+spectrometer covering the range from 0.35 to 2.5 &#181;m, (3) a Nicolet
+Fourier Transform Infra-Red (FTIR) Interferometer Spectrometer covering
+the range from about 1.3 to 150 &#181;m, and (4) the NASA Airborne
+Visible/Infra-Red Imaging Spectrometer AVIRIS, covering the range 0.4
+to 2.5 &#181;m.  The spectral resolution of these instruments is shown
+in figure 1.
+
+<!#########################>
+<BR CLEAR=all>
+<hr>
+<center>
+ 
+<A  target="_blank" HREF="FIGURES/plot.bandpasses.tgif.gif">
+<img src="FIGURES/plot.bandpasses.tgif.sml.gif" align="center"
+                  BORDER=1 ALT="image FIGURES/plot.bandpasses.tgif.gif">
+ 
+<BR CLEAR=all>
+ Larger       15 KB image </A>
+ 
+<p>Figure 1<I>A</I>.  The spectral bandpass for the spectrometers used to obtain
+spectra for digital spectral library splib06a.  The bandpass is
+expressed as the full width at half maximum (FWHM) in micrometers.
+
+ 
+</center>
+<BR CLEAR=all>
+<!#########################>
+<BR CLEAR=all>
+<hr>
+<center>
+ 
+<A  target="_blank" HREF="FIGURES/plot.fig1a.nic_fwhm_bp_um.gif">
+<img src="FIGURES/plot.fig1a.nic_fwhm_bp_um.sml.gif" align="center"
+                  BORDER=1 ALT="image FIGURES/plot.fig1a.nic_fwhm_bp_um.gif">
+ 
+<BR CLEAR=all>
+ Larger       15 KB image </A>
+ 
+<p>Figure 1<I>B</I>.  The spectral bandpass for the Nicolet spectrometer in the
+near-infrared.  The bandpass is expressed as the full width at half
+maximum (FWHM) in micrometers.  The bandpass is a constant 4 wavenumbers
+(cm<sup>-1</sup>) over the entire range of the instrument, for the data
+discussed in this document.
+
+ 
+</center>
+<BR CLEAR=all>
+
+
+<P>
+Spectra run on our modified Beckman 5270 spectrometer from 0.2 to 3.0
+&#181;m were corrected to absolute reflectance.  This instrument
+measures directional-conical light as described in Clark and others
+(1990b).  Samples were run with a signal-to-noise ratio of at least 500
+at a reference reflectance level of 1.0.  A few minerals were also run
+over a slightly smaller wavelength range because of sample size
+limitations.  For example, small sample quantities, necessary for
+purity, were measured by using apertures in the beam to restrict the
+spot size of the spectrometer.  This reduced light made integration
+times longer, and the achievable range was sometimes reduced, typically
+to 0.3 to 2.7 &micro;m.  In some cases, this also limited the
+signal-to-noise ratio that was achievable.  It is not possible with the
+current Beckman instrumentation to substantially improve the spectral data on
+small volume samples.  The ice sample, measured at 77 Kelvin, only
+includes the infrared range, 0.8 to 3.0 &micro;m.
+
+<P>
+Spectra measured on the ASD spectrometer used a directional light source
+and fiber-optic probe to collect light.  The incidence angle was
+variable but typically ranged from 20 to 40 degrees, as did the emission
+angle.  Spectra are corrected to absolute reflectance by using a Spectralon
+standard with correction methods similar to that described in Clark 
+and others (1990b).  Field spectra measured using the ASD spectrometer
+have been collected under various sky conditions.  Most are collected
+under optimum conditions of clear skies and within an hour of noon.
+Because of limited time for field work, some spectra have been collected
+under partly cloudy skies and up to 3 hours before or after solar noon.
+
+<P>
+Spectra were also run on a commercial Nicolet Fourier Transform
+Infra-Red (FTIR) interferometer spectrometer.  Most spectra were run on
+a Nicolet model 740 until 1998 when spectra were run on a Nicolet
+Magna-IR 760 spectrometer.  Spectra were measured over a range from
+about 1.3 to 150 &#181;m.  To cover the factor of 100 in wavelength
+range from 1.5 to 150 &#181;m, two detectors (some samples used three
+detectors) and two beam splitters had to be used.  For all samples, the
+near IR (1.3 to 5 &#181;m, referred to here as the NIR) and the mid-IR
+(~2.5 to 25 &#181;m, MIR) were measured with the same beam splitter and
+with no change in the sample.  On the Nicolet 740, only a change in
+light source was required:  a simple change of a lever.  On the Nicolet
+Magna, an internal mirror automatically switched the light source and
+detector.  With some setup changes in an instrument or between
+instruments, a wavelength region was measured at a different time; thus,
+each sample was put back in its bottle between measurements.  There was
+sufficient overlap in the data to confirm consistency across the
+spectral boundary.
+
+<P>
+The AVIRIS spectra in this library are of samples where it would be
+difficult to make measurements with normal field portable spectrometers,
+such as tall trees (requiring cranes or other means to lift the
+spectrometer and operator above the sample).  Calibration of AVIRIS data
+is discussed in Clark and others (2003a).
+
+<P>
+<A NAME="sampnam">
+<B>Sample Naming</B>
+</A>
+<P>
+The name for each sample occurs in three places: (1) in the specpr (Clark,
+1993) title field for the spectrum, (2) in the specpr title field for the
+description entry, and (3) after the keyword in the description.  We have
+tried to use only proper mineral names as given in Fleischer (1980),
+Fleischer and Mandarino (1995), and Klein and Hurlbut (1999).  Some
+users of the library may be unfamiliar with all the mineral names.  For
+example, if you want to find all scapolites, you would have to know that
+dipyre is a scapolite if you only looked at the specpr title fields.
+Because of the 40-character limit in a specpr title field, we could not
+include all common names there; however, we used the keywords
+(described below) in the description for each sample.  Here you could
+search for scapolite and find all entries in the "scapolite
+group" (dipyre, marialite, meionite, and mizzonite).
+
+<P>
+We have used specific mineral names except in a few cases where we still
+do not have sufficient data.  For example, in the database, we avoid
+the general term "hornblende" where possible, instead using names
+like ferro-hornblende and magnesio-hornblende, which due
+to space limitation we call Hornblende_Fe and Hornblende_Mg
+respectively.  We do have two samples where we cannot make the distinction,
+so they are labeled hornblende (samples HS16.3B and HS177.3B).
+
+<P>
+The specpr title field is limited to 40 characters.  Some sample names,
+especially mixtures, are too long to fit in this space; thus, names are abbreviated.
+The abbreviations used in this library are listed here: 
+<A target="_blank" HREF="abbreviations.asc"> click here. </A>
+
+
+
+<P>
+<A NAME="sampdoc">
+<B>Sample Documentation</B>
+</A>
+
+<P>
+Each spectrum has a sample description page describing the origin
+and sample purity from available data.  The sample description pages
+follow those from Clark and others (1993, 2003c) with keyword=value
+or keyword followed by text and end_keyword.  The description
+pages are in html format.  The html format still contains the
+keyword organization.  Different sample types have different documentation
+formats.  For example, minerals require some different documentation
+from plants.
+
+<P>
+Templates for the documentation types are:
+
+<ul>
+<li> <A target="_blank" HREF="DESCRIPT.mineral.template.html"> Minerals (Chapter 1)  </A>
+<li> <A target="_blank" HREF="DESCRIPT.element.template.html"> Elements (Chapter 1) </A>
+<li> <A target="_blank" HREF="DESCRIPT.mixture.template.html"> Soils, Rocks, Mixtures,and Coatings (Chapters 2, 3) </A>
+<li> <A target="_blank" HREF="DESCRIPT.volatile.template.html"> Liquids, Liquid Mixtures, Water, and Other Volatiles Including Frozen Volatiles (Chapter 4) </A>
+<li> <A target="_blank" HREF="DESCRIPT.artificial.template.html"> Artificial (Man Made) Including Manufactured Chemicals (Chapter 5)  </A>
+<li> <A target="_blank" HREF="DESCRIPT.plant.template.html"> Plants, Vegetation Communities, and Mixtures with Vegetation (Chapter 6) </A>
+<li> <A target="_blank" HREF="DESCRIPT.microorganisms.template.html"> Micro Organisms (Chapter 6) </A>
+</ul>
+
+<P>
+Every entry in the description pages is not complete for every sample.
+Thus, the description pages reflect the growing and evolving 
+state of a dynamic spectral library.
+
+
+<P>
+This spectral library includes an updated set of sample description
+pages that also apply to the Clark and others (1993, 2003c) libraries.  Many
+new X-ray diffraction (XRD) analyses have been completed, so most
+mineral samples now have XRD data.
+
+<P>
+<A NAME="digphoto">
+<B> Digital Photographs </B>
+</A>
+
+<P>
+Many samples now include digital photographs.  For minerals, all digital photos
+are at a scale of 8 &#181;m per pixel.  For the splib06a library, these photos
+were obtained in the laboratory with a 180 mm macro lens on a 6-megapixel
+digital camera (a Canon D60).  Photos were obtained in raw mode and included
+in splib06a as jpeg conversions from the raw data with no manipulation.
+The photos were obtained with standard meter settings using a spectralon
+reflectance target, the same reference surface used for the ASD field spectrometer
+reflectance calibration.  By using one reference target, intensities can be
+compared between samples.  In a future release, the raw camera data may
+be reduced to produce 16-bit tif reflectance calibrated images.
+
+<P>
+The digital photos of vegetation are field photos and are at various
+scales.
+
+
+
+<P>
+<A NAME="SPSRF">
+<B>Spectral Purity and Spectral Range Flags </B>  
+</A>
+
+<P>
+Each spectrum has coded into the Specpr title the spectral wavelength
+range, the spectral resolution and spectrometer used, and spectral
+purity information.  In the Clark and others (1993) spectral
+library, the code was:  W1R1Bx.  The "W" stands for "wavelength range"
+followed by the wavelength range measured, which is given as
+W1-W4 (table 1).  Range W1, for example, is a nominal range of 0.2 to 3.0
+&#181;m.  The "R" stands for "resolution" followed by the resolution
+index.  For the first version of the spectral library (splib04a), only Resolution 1
+of the Beckman spectrometer (R1B) was used.  The "x" is a non-numerical
+character (a, b, c, d, ?, or _) describing the spectral purity in the
+indicated spectral range and is further defined below. 
+
+
+<P>
+<center>
+<B>Table 1</B>
+</center>
+
+<TABLE BORDER="1" WIDTH="100%" SUMMARY="Table 2: Spectral Ranges">
+<TR><TH COLSPAN="3" ALIGN="CENTER"><B>Spectral Ranges</B></TH></TR>
+<TR><TH ALIGN="CENTER" scope="col">
+Spectral Range Number</TH> <TH COLSPAN="2" ALIGN="CENTER" scope="col">Range</TH></TR>
+
+<TR><TD ALIGN="CENTER" scope="row">
+W1</TD> <TD ALIGN="CENTER">0.2 - 3 &#181;m</TD>  <TD ALIGN="CENTER">(50,000 - 3,333 cm<SUP>-1</SUP>)</TD></TR>
+<TR><TD ALIGN="CENTER" scope="row">
+W2</TD> <TD ALIGN="CENTER">1.5 - 6 &#181;m</TD>  <TD ALIGN="CENTER">(6,666 - 1,666 cm<SUP>-1</SUP>)</TD></TR>
+<TR><TD ALIGN="CENTER" scope="row">
+W3</TD> <TD ALIGN="CENTER">6  - 25 &#181;m </TD> <TD ALIGN="CENTER">(1,666 - 400 cm<SUP>-1</SUP>)</TD></TR>
+<TR><TD ALIGN="CENTER" scope="row">
+W4</TD> <TD ALIGN="CENTER">20 - 150 &#181;m</TD> <TD ALIGN="CENTER">(500 - 66.7 cm<SUP>-1</SUP>)</TD></TR>
+</TABLE>
+
+<P>
+The wavelength, resolution, and spectrometer codes in this new library
+are given in tables 1 and 2 and are more complex to reflect the additional
+spectrometers, their resolutions, and wavelength ranges.  In the new
+library, B=Beckman spectrometer, F=ASD field spectrometer, N=Nicolet
+spectrometer, and A=AVIRIS (Table 2).  Two additional spectral range
+numbers are used:  W5, consisting of W2 + W3, and W9, consisting of
+ranges W2 + W3 + W4.  Three additional spectrometers are listed, where
+F=ASD field spectrometer, N=Nicolet spectrometer, and A=AVIRIS (table 2).
+Additional purity codes may also be used depending on the number of
+spectral ranges measured.  For example, W9 has three spectral ranges,
+hence three spectral purity codes listed in increasing wavelength order.
+
+
+<P>
+<center>
+<B>
+Table 2. Spectral range, spectral resolution, spectrometer used, and spectral purity coding.
+</B>
+</center>
+<ul>
+<li> W1R1Bx where <B> R1B </B> = <B>R</B>esolution <B>1</B> of the <B>B</B>eckman spectrometer.
+<li> W1R1Fx where <B> R1F </B> = <B>R</B>esolution <B>1</B> of the ASD <B>F</B>ieldspec spectrometer.
+<li> W2R4Nx where <B> R4N </B> = <B>R</B>esolution <B>4</B> of the <B>N</B>icolet  spectrometer (4cm<sup>-1</sup> resolution).
+<li> W1R1Ax where <B> R1A </B> = <B>R</B>esolution <B>1</B> of the <B>A</B>VIRIS spectrometer.
+<li> W5R4Nxx_ where <B> R4N </B> = <B>R</B>esolution <B>4</B> of the <B>N</B>icolet spectrometer, 
+                          <B>W5</B> = ranges W2 + W3.  In this case, there are two
+                          spectral purities, xx, for spectral ranges W2 and W3.
+<li> W9R4Nxxx where <B> R4N </B> = <B>R</B>esolution <B>4</B> of the <B>N</B>icolet spectrometer,
+                          <B>W9</B> = ranges W2 + W3 + W4.  In this case, there are three
+                          spectral purities, xxx, for spectral ranges W2, W3 and W4.
+</ul>
+
+
+<P>
+For this release, splib06a, some spectra have all spectral regions
+measured and evaluated. 
+
+<P>
+Spectral purity codes are defined below:
+
+
+<P>
+<B>a</B>:  The spectrum and sample are pure based on
+significant supporting data available to the authors.  The sample purity
+from other methods (for example, XRD, microscopic examination) indicates
+essentially no other contaminants.  Spectrally, no contaminants are seen
+in the spectrum.
+
+
+<P>
+<B>b</B>:  The spectrum appears spectrally pure.  However,
+other sample analyses indicate the presence of other minerals that
+probably affect the absolute reflectance level to a small degree, but do
+not add any significant spectral features in that region.  The spectral
+features of the primary minerals may be slightly less intense, but the
+feature positions and shapes should be representative.  For example, in
+the visible-NIR wavelength regions (W1 or W2), quartz would tend to
+increase the reflectance level and decrease absorption band strength
+but would not add any measurable features to the spectrum.  Such a
+sample would rate a "b."  In a few cases, where we have little support
+data but the spectra for that mineral are well known, we assigned the
+spectral purity based on the spectral data, possibly along with
+information derived from a microscopic examination of the sample.  There
+are a few "b" ratings assigned this way.  AVIRIS data of vegetated
+areas have been assigned a "b" rating due to the imperfect atmospheric
+correction that can be performed on remotely sensed spectra.
+
+
+<P>
+<B>c</B>:  The spectrum is spectrally pure except for some weak features
+with depths of a few percent or less caused by other contaminants.  For
+example, some minerals may have some slight alteration that is apparent.
+Spectroscopic detection of alteration minerals is easier for more
+transparent minerals.  For example, some of the albite spectra show weak
+2.2-&#181;m features due to alteration.  From the knowledge of the
+mineral formula, one can often tell which spectral features do not
+belong to the mineral.  Albite, for instance, does not have OH in the
+formula, so water or hydroxyl features (1.4, 1.9, and 2.2 &#181;m in the
+spectrum) are not due to albite.  However, one could argue that
+incipient alteration due to weathering is common in minerals at the
+Earth's surface.  Thus, spectral bands due to weathering are somewhat
+characteristic of many samples (such as feldspars), even if they are not a
+property of the pure mineral.  Spectral features of alteration minerals
+might be useful in some cases, but such alteration and their spectral
+effects still reduce spectral purity as far as this library is
+concerned.  Note, also, that almost every sample has some absorption
+near 3 &#181;m due to water in the sample.  Water adsorbs onto mineral
+grains and is common.  Water absorptions at 3 &#181;m are not considered
+contaminants and do not affect spectral purity.
+
+
+<P>
+<B>d</B>:  Significant spectral contamination.  The spectrum is included
+in the library only because it is the best sample of its type currently
+available, and because the primary spectral features can still be
+recognized (it may also have a better spectral purity in another
+wavelength range).  However, the spectrum should be used with care.  The
+sample description should be consulted as a guide to which spectral
+features are due to the actual mineral.  This sample may be purged
+from the database in future releases as better samples become available.
+
+
+<P>
+<B>?</B>:  There are insufficient analyses or
+knowledge (or both) of the spectral properties of this material to evaluate its
+spectral purity.  In general we have included such samples because we
+believe their spectra to be representative.  These are samples for which
+we are concentrating future analyses in order to resolve the purity
+issue. Note that there may be sufficient
+knowledge to assign spectral purity in one spectral region but not
+in another.
+
+<P>
+<B>_</B>: The spectral range was not measured, but a place holder is included
+for the future.
+
+<P>
+Mixtures, soils, rocks, and coatings can be spectrally complex.  The
+spectral purity of complex mixtures can still be high (assigned "a"
+status; see the section on Spectral Purity, if the goal is to
+document the spectral features in such a mixture.  Mixtures that have
+unintentional contamination have a lower spectral purity than if
+contaminants were not present, following the guidelines jus given.
+
+<P>
+The spectral purity should be consulted before use of spectra to see if
+the sample is appropriate for the intended purpose.  For example,
+examination of the spectra for hypersthene PYX02 will show that the
+spectral purity is a "c," meaning contaminating spectral features
+overlap diagnostic hypersthene spectral features.  However, as
+documented in the sample description, the pyroxene sample contains a
+small amount of tremolite alteration.  Whereas the tremolite absorptions
+are narrow absorptions at 1.4 and 2.3 &#181;m, the pyroxene absorptions
+are very broad.  If your spectral analysis can ignore the contaminant's narrow
+absorptions, then this sample's spectrum can be used as an excellent reference
+spectrum for hypersthene.
+
+<P>
+For another example of spectral purity, consider the spectrum of
+orthoclase sample NMNH142137.  The spectral purity is a "b."  There are
+weak alteration mineral absorptions in the 2 to 2.5 &#181;m spectral
+region that are not indicative of feldspars.  Most feldspars for which
+we have seen or measured spectra show evidence of alteration to muscovite at 1.4
+&#181;m and at 2 to 2.5 &#181;m.  These absorptions are not due to
+feldspar and should not be used to identify feldspars.
+
+<P>
+The spectrum for each mineral should be evaluated for contaminant features
+and how those features might interfere with a particular analysis.
+Knowledge of the spectral properties of minerals and other materials is
+important in using any spectral database's reference spectra for identifying
+other minerals and materials.  See Clark (1999) and references therein
+for discussions of spectral properties of materials and principles of
+spectroscopy.
+
+
+
+<P>
+<A NAME="SMSE">
+<B>Spectral Measurement Side Effects</B>
+</A>
+
+<P>
+<B>1) Residual Water Absorptions in the Samples.</B>
+Even anhydrous minerals show an absorption near 3 &#181;m due to water
+adsorbed onto the surfaces of the mineral grains.  Our experience has
+shown that these water absorptions are still present, although slightly
+weaker in dry nitrogen purged environments.  Consequently, the spectra
+measured on the Nicolet in a dry atmosphere will have different
+absorption than will those same samples measured by other spectrometers
+such as the Beckman in a normal room atmosphere.  Spectra of similar
+samples obtained at other facilities - those in Hawaii or on the east
+coast of the United States - have shown that the water absorptions in
+the spectra from relatively dry Colorado are really quite small in
+comparison.  Placing the sample in a dry nitrogen atmosphere or in a
+vacuum oven has little effect on the water absorption because water from
+the atmosphere will readsorb onto the sample by the time it reaches the
+spectrometer.  Experiments at the University of Hawaii have also shown
+that most of the adsorbed water remains, even under a strong vacuum at
+room temperatures (Clark, 1981).  In general we decided not to heat our
+samples in order to avoid any temperature-induced alteration.
+
+<P>
+<B>2) Low Signal Artifacts.</B> The Nicolet FTIR near-infrared
+measurements have an artifact toward shorter wavelengths.  From
+wavelengths of about 2 &#181;m down to 1.3 &#181;m, the reflectance
+often decreases giving a convex shape to the spectrum.  This rollover is
+not correct.  Attempts to derive a correction have not been successful
+because the amount of rollover is variable from sample to sample.  We
+include this spectral range because the very high spectral resolution
+can be quite useful for studying narrow spectral features.  The rollover
+becomes more intense at wavelengths shorter than about 1.5 &#181;m.  We
+sometimes include data to 1.3 &#181;m if narrow spectral features are
+present, but the broader upward convex curvature should not be
+interpreted as spectral structure.
+
+
+<P>
+<B>3) Purged Samples and Residual Atmospheric Features.
+</B>All Nicolet samples in this library were measured in a dry nitrogen
+atmosphere, scrubbed of H<SUB>2</SUB>O and CO<SUB>2</SUB> by a Balston
+air purification system.  The sample and the reflectance standard were
+each placed in the sample chamber, and a period of time was allowed to
+pass before a measurement was made.  The standard and reference were
+each measured at approximately the same time after installation into the
+chamber, so the purge and any residual atmospheric gases which could
+cause absorptions should be roughly comparable and therefore should
+cancel.  This method did not always work perfectly, and residual
+atmospheric absorptions (H<SUB>2</SUB>O and CO<SUB>2</SUB>) are
+sometimes present at a low level (for example, see Salisbury and others,
+1991).  Such residual absorptions (fig.  2A, B) are difficult to remove
+completely because of the intense nature of the absorptions.  Similar
+features are reported in other databases covering this spectral region
+(for example, Salisbury and others , 1991).  For field and AVIRIS spectra of
+vegetation, the spectrometer channels that are strongly influenced by
+atmospheric absorptions have been set to the deleted point value of
+-1.23x10<sup>34</sup>.
+
+<!#########################>
+<BR CLEAR=all>
+<hr>
+
+<P>
+<A target="_blank"  HREF="FIGURES/plot.fig2a.H2O.compare.tgif.gif">
+<IMG SRC="FIGURES/plot.fig2a.H2O.compare.tgif.sml.gif"
+                  BORDER=1 ALT="Figure 2a. Residual atmospheric H<sub>2</sub>O absorptions.">
+<BR CLEAR=all>
+Larger       15 KB image </A>
+
+<P>Figure 2<I>A</I>. Residual atmospheric H<sub>2</sub>O absorptions are seen in the andesine
+spectrum (arrows) but are almost absent in the annite spectrum.  Residual H<sub>2</sub>O
+can also be seen near 6 &#181;m (not shown).
+
+<!#########################>
+<BR CLEAR=all>
+<hr>
+
+<P>
+<A target="_blank"  HREF="FIGURES/plot.fig2b.CO2.compare.tgif.gif">
+<IMG SRC="FIGURES/plot.fig2b.CO2.compare.tgif.sml.gif"
+                  BORDER=1 ALT="Figure 2b. Residual atmospheric CO<sub>2</sub> absorptions.">
+<BR CLEAR=all>
+Larger       15 KB image </A>
+
+<P>Figure 2<I>B</I>. Residual atmospheric CO<sub>2</sub> absorptions are seen in the analcime
+spectrum (arrows) but are absent in the muscovite spectrum.
+<BR CLEAR=all>
+
+
+<P>
+<B>4) Spectral Measurement Geometry.</B> The measurement of reflectance
+with our Nicolet spectrometer results in an unusual side effect due to a
+small beam size.  The basic geometry of the Nicolet spectrometer
+biconical reflectance attachment is shown in figures 3A and 3B.  The
+reflectance attachment focuses the spectrometer beam onto a spot about 2
+mm in diameter (fig. 3B) via an elliptical mirror.  A second mirror
+collects the reflected light and sends it to a detector.  The small spot
+size produces side effects at wavelengths where the sample is weakly
+absorbing and multiple scattering of reflected photons is a significant
+portion of the signal.  Some photons will scatter from grain to grain,
+leaving the surface outside the focus of the collection mirror, and
+therefore are not seen by the detector (fig. 3B).  This results in a
+relative loss in signal and a lower measured reflectance at wavelengths
+where multiple scattering is significant.  This phenomenon is
+illustrated in figure 4, where a Nicolet measurement is compared to a
+spectrum from the Clark and others  (1993) library. In general, the
+Nicolet spectra are scaled to match the reflectance measured with the
+Beckman and (or) ASD spectrometers at 2.25 &#181;m.  In figure 4 the Nicolet
+measurements show weaker 2.16, 1.75, and 2.3 &#181;m absorptions due to
+this effect.  The Nicolet measurement is also lower in reflectance at
+wavelengths smaller than 2 &#181;m due to this effect.  The
+increased spectral structure in the Nicolet spectrum near 2.5 &#181;m is
+due to its higher spectral resolution compared to that of the Beckman
+spectrometer. 
+
+<!#########################>
+<BR CLEAR=all>
+<hr>
+
+<img src="FIGURES/fig3a.nicolet.sample.gif" align="center"
+                  BORDER=1 ALT="Figure 3a.  Sample viewing geometry.">
+<BR CLEAR=all>
+<P>Figure 3<I>A</I>.  The sample viewing geometry for the Nicolet spectrometer
+is biconical. The measurement has maximum
+60-degree entrance and exit beams (30-degree average), with about a 60 phase
+angle.
+
+
+<BR CLEAR=all>
+
+
+<!#########################>
+<BR CLEAR=all>
+<hr>
+
+<IMG SRC="FIGURES/fig3b.nicolet.sample.edge.gif"
+                  BORDER=1 ALT="Figure 2b. The small spot measured by the Nicolet spectrometer.">
+<BR CLEAR=all>
+<P>Figure 3<I>B</I>.  The small spot measured by the Nicolet spectrometer
+results in some loss of photons (labeled B) when the photons are
+multiply scattered.  Only photons scattered within the exit field of view
+(labeled A) are measured.  This edge effect is insignificant in the
+mid-infrared where absorption coefficients are higher.
+
+<BR CLEAR=all>
+
+<!#########################>
+<BR CLEAR=all>
+<hr>
+
+<P>
+<A target="_blank"  HREF="FIGURES/plot.fig4.nic+beck.overlap.tgif.gif">
+<IMG SRC="FIGURES/plot.fig4.nic+beck.overlap.tgif.sml.gif"
+                  BORDER=1 ALT="Figure 4">
+<BR CLEAR=all>
+Larger       15 KB image </A>
+
+<P>Figure 4.  The sample viewing geometry and small spot size of the
+Nicolet spectrometer reflectance attachment (fig. 3) results in some
+loss of photons.  Here, a Nicolet measurement is compared to a spectrum
+from the Clark and others  (1993) library.  The spectra are scaled to
+match at 2.25 &#181;m.  The Nicolet measurements show weaker 2.16, 1.75,
+and 2.3 &#181;m absorptions due to the light loss effect.  The Nicolet
+measurement is also lower in reflectance at wavelengths smaller than 2
+&#181;m due to this effect.  The increased spectral structure in
+the Nicolet spectrum near 2.5 &#181;m is due to the much better spectral
+resolution compared to that of the Beckman spectrometer.
+ 
+
+
+<BR CLEAR=all>
+
+
+<P>
+The narrow focus range of the Nicolet measurement geometry results in large
+changes in reflectance level with small changes in the position of the
+surface of the sample.  Because of this uncertainty, data from the Clark
+and others  (1993, 2003c) visible-near-infrared libraries and
+newer spectra were used as a guide to scale the Nicolet to the correct
+reflectance levels.  Because of the light loss effect described above,
+the reflectance level of samples high in reflectance (greater than about
+0.4) in the 1.5-2.5 &#181;m spectral range is accurate only to about
+10 percent.  Darker samples should have more accurate reflectance levels.
+
+<P>
+Organic materials at low concentrations can leave residual spectral
+features (fig.  5).  This usually affects only spectral features in the
+region near 3.4 &#181;m.  However, organic compounds can be very
+absorbing at other wavelengths, especially in the ultraviolet.  Organic
+compounds can darken the spectrum from the ultraviolet to infrared,
+lowering reflectance levels.  In reflectance, these effects are nonlinear,
+with a small abundance of dark material having a large influence
+on reflectance (Clark, 1983, 1999).  Users of the library wanting to
+derive optical constants or to conduct other quantitative work should
+consult the sample documentation and evaluate the data for what effect
+contaminants would have on an analysis.
+
+
+<!#########################>
+<BR CLEAR=all>
+<hr>
+
+<P>
+<A target="_blank"  HREF="FIGURES/plot.fig5a.actin-hs22.tgif.gif">
+<IMG SRC="FIGURES/plot.fig5a.actin-hs22.tgif.sml.gif"
+                  BORDER=1 ALT="Figure 5. Illustration of an organic contaminant.">
+<BR CLEAR=all>
+Larger       15 KB image </A>
+
+<p>Figure 5. Illustration of an organic contaminant in Nicolet spectrometer
+data.
+<BR CLEAR=all>
+
+
+
+
+<P>
+<A NAME="wavp">
+<B>Wavelength Precision </B>  
+</A>
+
+<P>
+The wavelength precision of our custom-modified,
+computer-controlled Beckman spectrometer was checked using
+Holmium Oxide filters in the visible and using the positions of known
+mineral absorptions in the near infrared.  In particular, we developed
+pyrophyllite as a wavelength standard because of its many narrow
+absorptions (Clark and others, 1990b).  The positions of the
+absorptions have been checked, using the same pyrophyllite
+standard, on three FTIR spectrometers.  In general, the wavelength
+accuracy is on the order of 0.0005 &#181;m (0.5 nm) in the near-IR
+and 0.0002 &#181;m (0.2 nm) in the visible, always a small fraction
+of the spectral resolution.  Wavelength precision for this instrument
+is further discussed in Clark and others (1990a).
+
+<P>
+The wavelength precision of the ASD portable field spectrometer was
+monitored using REE impregnated glass and a mylar plastic sheet with
+strong absorption features.  The instrument was also calibrated annually
+by the manufacturer.  The position of the mylar spectral features was
+precisely measured with our Nicolet FTIR instrument, described next.
+
+<P>
+The wavelength precision of a Fourier Transform Spectrometer is
+accurate to better than the bandwidth of the system.  The Nicolet FTIR
+systems use a red laser wavelength as a fringe counter in the
+interferometer, a fraction of the shortest wavelength measured in this
+library.  We also confirmed wavelength positions with our pyrophyllite
+standard (Clark and others 1990b, 1993) and its many narrow
+absorption bands, which were measured using three different
+FTIR spectrometers and our Beckman spectrometer and found to be very
+consistent.
+
+<P>
+The wavelength calibration of the NASA AVIRIS system was performed
+by NASA/JPL (Green and others, 1990, 1996).
+
+
+
+<P>
+<A NAME="SPDP">
+<B>Spectral Plots and Data Precision </B>
+</A>
+
+<P>
+Plots of the spectra presented here are limited to one of several
+vertical scales (including 0.0 to 0.1, 0.15, 0.25, 0.4, 0.5, 0.6, 0.7, 0.8,
+1.0, or 1.1) and use the same horizontal range for easy comparison.  The
+overlapping vertical ranges ensure the spectrum is framed well yet
+still shows spectral detail, and the range that best shows the spectrum
+was selected for each plot.  The error bars are plotted only when they
+are above a threshold that allows them to be distinguished on the plot.
+Most error bars are too small to be distinguished.  Each plot shows the
+specpr title, date and time of acquisition, file name, record number,
+and wavelength set.  Not all spectra include error estimates.
+
+<P>
+Each spectrum was run with a desired signal-to-noise ratio of at least
+500 relative to unity reflectance.  In practice, it would take too long
+to obtain such a signal-to-noise ratio in regions where the
+signal is low, so an upper limit to the integration time per channel was
+also specified with our Beckman spectrometer.  Thus, typically at the
+ends of the spectra (both short and long wavelength ends), the precision
+drops slightly.  Refer to the error bars for each spectrum or examine
+the channel-to-channel noise to determine the precision at a given
+wavelength for any individual spectral channel.  The ASD and Nicolet
+spectrometers typically have higher signal-to-noise ratios but do not
+report error data.  Thus, signal-to-noise ratios must be estimated by the
+spectral channel-to-channel variability.
+
+
+
+<P>
+<A NAME="MMOC">
+<B>  Mineral Mixtures and Optical Constants </B>  
+</A>
+
+
+<P>
+This spectral library contains pure materials as well as mixtures.
+For computing intimate mineral mixtures (such as rocks or soils),
+radiative transfer algorithms using the Hapke reflectance model (Hapke,
+1981) are part of the specpr package.  To compute mixture or pure
+end-member spectra, a set of optical constants are required as a
+function of wavelength.  The algorithms use optical constants so that spectra
+can be calculated as a function of grain size, abundance in a mixture,
+and viewing geometry.  Reflectance spectra of grain-size distributions
+can also be simulated by computing a mixture of the same mineral (or
+even several minerals) at several grain sizes.
+
+<P>
+Pure samples are extremely rare.  Spectroscopy, especially over the
+0.2 to 150 &#181;m spectral range (a factor of 750 in wavelength range), is
+very sensitive to low-level contaminants at some wavelengths.
+Spectroscopy can detect a trace contaminant even in samples ground from
+single crystals that appear pure.  Thus, most samples in this library
+could be considered  mixtures at some level.  In other cases, deliberate
+mixtures are included because of the common associations in which they
+occur.  If you intend to use a spectrum for a particular purpose,
+confirm the spectral purity to be sure it is appropriate for your needs.
+
+<P>
+<A NAME="Ddf">
+<B>The Digital Data File</B>
+</A>
+
+<P>
+The digital spectral library data are all included in one file in
+<A target="_blank" HREF="specpr-format.html">
+"specpr" format </A> (see Clark, 1993).  This file, splib06a, is 51
+megabytes in size and has been assembled and managed using the spectral
+processing software package, specpr.  The data are in IEEE binary
+floating point format.  The entire library is assembled, plotted, and
+printed by command files consisting of Unix shell commands, which in
+turn generate specpr commands to build the library.
+
+<P>
+<A target="_blank" HREF="http://speclab.cr.usgs.gov/specpr.html"> Specpr
+</A> runs on Unix workstations.  If the binary file is read on an IBM-PC
+compatible machine, the floating point numbers need their bytes swapped
+(this is automatically done with the program by Livo and others, 1993).
+ASCII versions of all spectra along with plots are presented in the
+<B>data table</B> at the end of this Web document.
+
+<P>
+The specpr data file can also be read using the "View_SPECPR" ENVI/IDL
+software (Kokaly, 2005; see link to URL in reference section).  This
+software is a set of IDL programs that can be downloaded and installed
+on computers running the commercial ENVI/IDL software.  The View_SPECPR
+program allows the user to 1) list the contents of SPECPR spectral
+library files, 2) plot and overplot spectra in the library, and 3) view
+and print the supporting documentation and photos.
+
+<P>
+The organization of the binary data file, in the form of a specpr
+listing, is shown in table 3.  The listing shows the record number,
+title, length of the data set (number of channels for spectra; number of
+bytes for text), and the time and date of data acquisition.  Records
+containing the wavelength sets for the spectra and records containing
+ the spectral resolution data sets occur one time near the beginning
+of the file.  The resolution for each spectrometer is shown in figure 1.
+Entries with the keyword "DESCRIPT" are sample description records and
+contain all the sample documentation.  After the DESCRIPT are (usually)
+two empty records (title ..)  for future expansion of the description.
+Next comes the reflectance data, with the keyword AREF, RREF, or RTGC.  The
+identifier such as "W1R1Bx" signifies the wavelength range,
+resolution, spectrometer, and spectral purity, which was described earlier
+(the "x" is a lower case spectral purity letter code).  After the
+reflectance record is the "errors to previous data" record.  These are
+the standard deviations of the mean for each reflectance value if those
+values exist, or otherwise a placeholder of zeros.  The next record in the
+listing contains the feature analysis for the spectrum.  This feature
+analysis was done using the specpr f45 special function and is described
+in Clark (1987) and Clark and others (1993).
+
+
+<P>
+The reflectance type, AREF, RREF, or RTGC, is defined as follows.
+AREF is absolute reflectance using standards as described in
+Clark and others (1990b).  RREF is relative reflectance.  All Nicolet
+spectra used a stainless steel mirror as the standard and are
+therefore relative to the reflectance of stainless steel.
+RTGC stands for "Radiative Transfer Ground Calibrated," the method
+used for all AVIRIS spectra and defined in Clark and others (2003a).
+
+<P>
+<B>
+Table 3. Organization of the binary Specpr data file
+</B>
+
+<pre>
+     1  USGS Digital Spectral Library: splib06a    397 Characters of TEXT
+     2  ****************************************    41 Characters of TEXT
+     3  ****************************************    41 Characters of TEXT
+     4  ****************************************    41 Characters of TEXT
+     5  ..                                          41 Characters of TEXT
+     6  Wavelengths USGS Denver Beckman STD 1x     480  02:57:26.00  10/15/1985
+     8  Bandpass (FWHM) USGS Denver Beckman STD    480  02:57:26.00  10/15/1985
+    10  Wavelengths Standard ASD FR 0.35-2.5um    2151  21:54:44.00  02/05/2002
+    16  Bandpass (FWHM) ASD FR 0.35-2.5um         2151  00:00:00.00  01/28/2003
+    22  Wavelengths to Nicolet 1.3 - 5.2 microns  3325  00:00:00.00  02/07/1994
+    32  Bandpass (FWHM) Nicolet FTIR 1.3-5.3 um   3325  12:30:00.00  03/24/1988
+    42  Wavelengths to Nicolet 1.3-150 microns    4280  00:00:00.00  12/29/1992
+    54  Bandpass (FWHM) Nicolet 1.3-150 microns   4280  19:39:49.00  06/16/1998
+    66  Wavelengths AVIRIS 1996 0.4-2.5 microns    224  00:00:00.00  01/01/1996
+    67  Bandpass (FWHM) AVIRIS 1996 0.4-2.5 um     224  00:00:00.00  01/01/1996
+    68  ****************************************    41 Characters of TEXT
+    69  ****************************************    41 Characters of TEXT
+    70  ----------------------------------------    41 Characters of TEXT
+    71  Acmite NMNH133746 Pyroxene      DESCRIPT  5732 Characters of TEXT
+    75  ..                                          41 Characters of TEXT
+    76  ..                                          41 Characters of TEXT
+    77  Acmite NMNH133746 Pyroxene   W1R1Ba AREF   480  15:18:47.00  03/23/1988
+    79  errors to previous data                    480  15:18:47.00  03/23/1988
+    81  Acmite NMNH133746 Pyroxene       FEATANL   315  15:18:47.00  03/23/1988
+    83  ----------------------------------------    41 Characters of TEXT
+    84  Actinolite HS116.3B             DESCRIPT  6080 Characters of TEXT
+    89  ..                                          41 Characters of TEXT
+    90  ..                                          41 Characters of TEXT
+    91  Actinolite HS116.3B          W1R1Bb AREF   480  08:41:01.00  07/11/1991
+    93  errors to previous data                    480  08:41:01.00  07/11/1991
+    95  Actinolite HS116.3B              FEATANL   396  08:41:01.00  07/11/1991
+
+</pre>
+
+<P>
+The full listing of the splib06a data file can be found here:
+<A target="_blank" HREF="splib06a.list.asc"> <B> splib06a.list.asc </B> </A>
+
+<P>
+In the spectral library, any value of -1.23x10<sup>34</sup> is
+considered a deleted point.  Because of the inherent floating point
+inaccuracies of single precision numbers on various computers, values in
+the range -1.23001x10<sup>34</sup> to -1.22999x10<sup>34</sup> should be
+considered deleted points.  In the ASCII listings, deleted points are
+expressed as a string of asterisks (*).
+
+<P>
+The spectral library containing the spectra,
+standard deviation error values, sample description pages, and a spectral
+feature analysis of each spectrum is compiled in a specpr-format
+binary file.  Binary files of the original and instrument-convolved spectral
+libraries will be maintained for ftp file transfer from
+<A target="_blank" HREF="http://speclab.cr.usgs.gov/spectral-lib.html">
+http://speclab.cr.usgs.gov/spectral-lib.html</A>.
+
+<P>
+Information describing the samples is stored in the specpr file as
+"DESCRIPT" records.  These records contain the sample documentation in
+html format and are located in records preceding the spectral data.
+The information in these records is described in the sample
+documentation section.
+
+<P>
+<A NAME="ISL">
+<B>  Instrument Spectral Libraries </B>  
+</A>
+
+<P>
+The intent of the spectral library is to serve as a knowledge base for
+spectral analysis.  Comparison of spectral data is best done when the
+spectral resolutions of the knowledge base and the spectra undergoing
+analysis are identical.  The specpr software (Clark, 1993) has tools for
+convolving the spectral library to the resolution and sampling interval
+of any instrument.  The native (laboratory) spectral library will also
+be convolved to AVIRIS spectral resolution and sampling for the
+terrestrial instruments, and to Galileo NIMS, MGS-TES, and Cassini VIMS
+for the planetary imaging spectrometer instruments.  Other
+instrument-specific spectral libraries will be convolved as the
+instruments become operational and when wavelength and bandpass
+information becomes available.  These convolved data files, as well as
+specpr command files for convolving the database to your own instruments,
+will be made available on the spectroscopy lab web site <A
+target="_blank" HREF="http://speclab.cr.usgs.gov/spectral-lib.html">
+(http://speclab.cr.usgs.gov/spectral-lib.html) </A> and in the anonymous
+ftp directory.  Each convolved instrument library will be provided in
+both binary specpr and ascii formats.
+
+<P>
+<A NAME="ASCIID">
+<B> ASCII Spectral Data </B>
+</A>
+
+<P>
+ASCII data for each spectrum are accessible via the
+web-based <B>Data Table</B> (below).  The ASCII data consist of three columns:
+wavelength, reflectance, and standard deviation of the mean.
+
+<P>
+Other resources on spectroscopy can be found at
+<A target="_blank" HREF="http://speclab.cr.usgs.gov"> http://speclab.cr.usgs.gov</A>.
+
+<P>
+<hr>
+<P>
+<A NAME="datatabl">
+<B>Table of Spectral data </B>
+</A>
+<P>
+The table of links to sample descriptions, plots of spectra and ASCII
+data can be found by following the link below.
+
+<P>
+<h2>
+<B> <A target="_blank" HREF="datatable.html">
+        Click Here for the Digital Spectral Library Data Table. </A>
+</B>
+</h2>
+
+
+<hr>
+<P>
+<A NAME="Ack">
+<B>  Acknowledgments </B>  
+</A>
+
+<P>
+A successful spectral library has extensive sample documentation.
+We are indebted to J. S. Huebner and Judy Konnert of the USGS for
+their support in analyzing the X-ray diffraction data on minerals for
+the last couple of years in the splib04 library (Clark and others, 1993),
+from which part of this library was derived.  We thank the late Norma
+Vergo for many of the earlier X-ray analyses.  Norma's attention to
+detail has certainly made this spectral library a quality product, and
+we miss her.  Without these dedicated people providing superb analysis
+and feedback, this library would not have been possible.
+
+
+<P>
+Of course, a spectral library needs quality samples.  We are indebted to
+Charlie Alpers, Jim Crowley, Skip Cunningham, Jim Post, Fred Kruse, Jim
+Post, Jack Salisbury, Richard V. Morris, and Roger Stoffregen for
+donating excellent samples.  Thanks to the British Museum and the
+National Museum of Natural History for mineral samples.  We thank Trude
+King, Brad Dalton, and Barnaby Rockwell for contributing some samples
+and spectra.  We thank Robert McDougal for help in reducing spectral
+data on the artificial samples and early examinations of lists of
+spectra to be included.
+
+
+<P>	This project has been funded by the USGS Minerals Program,
+the NASA Mars Global Surveyor Thermal Emission Spectrometer Team
+(R. Clark, Co-I), and the NASA Cassini VIMS Team (R. Clark, Team Member).
+
+
+<P>
+<hr>
+
+
+<P>
+<A NAME="Ref">
+<B>  References </B>  
+</A>
+
+<P>	
+
+<P>
+Akhundov, Yu.A, Mamedov, KH.S., Belov, N.V., 1961,
+Crystal structure of clintonite: Journal of
+Structural Chemistry, v. 19. p. 244.
+
+<p>
+Akizuki, M., Konno, Y., 1985, Crystal structure of the
+orthorhombic groth sector of stilbite:
+American Mineralogist, v. 70. p. 814-821.
+
+<p>
+Bailey, S.W., 1984, Reviews in mineralogy, Vol. 13-Micas:
+Mineralogical Society America., 584p.
+
+<p>
+Bailey, S. W. 1988, Chlorites, structures and crystal chemistry:
+Reviews in Mineralogy and Geochemistry, v. 19, no.1, p. 347-403.
+
+<p>
+Borg, I.Y., Smith, D. K., 1969, Calculated X-ray powder patterns for
+silicate minerals: Geological Society America, v. 122, p. 296-315.
+
+<p>
+Brindley, G. W., Brown, G., 1980, Crystal structures of clay
+minerals and their identification: Mineralogical Society Monograph
+NO. 5. Mineralogical Society, London.
+
+<p>
+Chatterjee, N.D., 1974, Synthesis and upper thermal stability limit of
+2M-margarite: Contributions to Mineralogy and Petrology, v. 34, p. 288-303.
+
+<P>
+Clark, R.N., 1980, A large scale interactive one dimensional array
+processing system: Publications of the Astronomical Society of the Pacific,
+v. 92, p. 221-224.
+
+<P>
+Clark, R.N., 1981, The spectral reflectance of water-mineral mixtures at low
+temperatures: Journal of Geophysical Research, v. 86, p. 3074-3086.
+
+<P>
+Clark, R.N., 1983, Spectral properties of mixtures of montmorillonite
+and dark carbon grains:  Implications for remote sensing minerals
+containing chemically and physically adsorbed water: Journal of Geophysical
+Research, v. 88, p. 10635-10644.
+
+<p>
+Clark, R. N., and Lucey, P. G., 1984, Spectral properties of
+ice-particulate mixtures and implications for remote sensing I:
+Intimate mixtures: Journal of Geophysical Research, v. 89, p.
+6341-6348.
+
+<P>
+Clark, R.N., 1993, SPECtrum Processing Routines user's manual version 3
+(program SPECPR):  U.S.  Geological Survey Open File Report 93-595,
+210p.  (Software online at <A target="_blank"
+HREF="http://speclab.cr.usgs.gov">
+<B>http://speclab.cr.usgs.gov</B></A>).
+
+<P>
+<A target="_blank" HREF="http://speclab.cr.usgs.gov/PAPERS.refl-mrs/refl4.html">
+Clark, R.N., 1999, Chapter 1:  Spectroscopy of rocks and minerals and
+principles of spectroscopy:  Manual of Remote Sensing, (A.N.  Rencz,
+ed.), John Wiley and Sons, New York, p. 3-58.</A>
+
+<P>
+Clark, R.N., King, T.V.V., and Gorelick, N.S., 1987, Automatic
+continuum analysis of reflectance spectra:   Proceedings of the
+Third Airborne Imaging Spectrometer Data Analysis Workshop, JPL
+Publication 87-30, p. 138-142.
+
+<P>
+Clark, R.N., Gallagher, A.J., and Swayze, G.A., 1990a, Material
+absorption band depth mapping of imaging spectrometer data using a
+complete band shape least-squares fit with library reference spectra:
+Proceedings of the Second Airborne Visible/Infrared Imaging
+Spectrometer (AVIRIS) Workshop, JPL Publication 90-54, p. 176-186.
+
+<P>
+Clark, R.N., King, T.V.V., Klejwa, M., Swayze, G., and Vergo, N., 
+1990b,  High spectral resolution reflectance spectroscopy of minerals:
+Journal of Geophysical Research, v. 95, p. 12653-12680.
+
+
+<P>
+Clark, R.N., Swayze, G.A., Gallagher, A., King, T.V.V., and 
+Calvin, W.M., 1993, The U.S. Geological Survey, digital spectral library:
+version 1:  0.2 to 3.0 microns:  U.S. Geological Survey Open File Report
+93-592, 1340p.  <A target="_blank" HREF="http://speclab.cr.usgs.gov">
+<B>http://speclab.cr.usgs.gov</B></A>
+
+<P>
+Clark, R.N., Swayze, G.A., Livo, K.E., Kokaly, R.F., King, T.
+V.V., Dalton, J.B., Vance, J.S., Rockwell, B.  W., Hoefen, T., and
+McDougal, R.R., 2003a, Surface reflectance calibration of terrestrial
+imaging spectroscopy data: a tutorial using AVIRIS: AVIRIS Workshop
+Proceedings, p. 43-63.  Online at:  <A target="_blank"
+HREF="http://speclab.cr.usgs.gov/PAPERS.calibration.tutorial">
+http://speclab.cr.usgs.gov/PAPERS.calibration.tutorial</A>
+
+<P>
+Clark, R.N., Swayze, G.A., Livo, K.E., Kokaly, R.F., Sutley, S.
+J., Dalton, J.B., McDougal, R.R., and Gent, C.A., 2003b, Imaging
+spectroscopy: Earth and planetary remote sensing with the USGS
+Tetracorder and expert systems: Journal of Geophysical Research, v.
+108(E12), 5131, doi:10.1029/2002JE001847, p. 5-1 to 5-44, December.  <A
+target="_blank" HREF="http://speclab.cr.usgs.gov/PAPERS/tetracorder">
+http://speclab.cr.usgs.gov/PAPERS/tetracorder </A>
+
+<P>
+Clark, R.N., Swayze, G.A., Wise, R., Livo, E., Hoefen, T., Kokaly,
+R., Sutley, S.J., 2003c, USGS digital spectral library splib05a: U.S.
+Geological Survey Open-File Report 03-395.
+<A target="_blank" HREF="http://pubs.usgs.gov/of/2003/ofr-03-395">
+http://pubs.usgs.gov/of/2003/ofr-03-395 </A>
+
+<P>
+Crowley, J.K., 1991, Visible and near-infrared (0.4-2.5 micron)
+reflectance spectra of playa evaporite minerals: Journal of
+Geophysical Research, v. 96 no. B10, p. 16231-16240.
+
+<p>
+Deer, W.H., Howie, R.A., Zussman, J., 1963, Rock-Forming Minerals:
+Vol. 4 Framework Silicates hardcover.
+
+<P>
+Deer, W.H., Howie, R.A., Zussman, J., 1962, Rock-forming Minerals:
+Volume 1 Ortho-And Ring Silicates hardcover, Longmons, Longdon,
+333p.
+
+<P>
+Despain, D.G., 1990, Yellowstone Vegetation, Consequences of
+Environment and History in a Natural Setting: Roberts Rinehart
+Publishing, Boulder, Colorado, 239p.
+
+<P>
+Fleischer, M., 1980, Glossary of Mineral Species: Mineralogical
+Record, Tucson, 192p.
+
+<P>
+Fleischer, M., and Mandarino, J.A., 1995, Glossary of Mineral Species
+1995: The Mineralogical Record Inc., Tucson, 280p.
+
+<P>
+Ghose and others, 1978, Structure refinement, polyanion
+configuration, hydrogen bonding, and fiber optics: American
+Mineralogist, v. 63, p. 160-171.
+
+<P>
+Green, R. O., Conel, J. E., Carrere, V., Bruegge, C. J., 
+Margolis, J. S., Rast, M., and Hoover, G., 1990, Determination
+of the in-flight spectral and radiometric characteristics of the
+Airborne Visible/Infrared Imaging Spectrometer (AVIRIS): in Proceedings
+of the Second Airborne Visible/Infrared Imaging Spectrometer (AVIRIS)
+Workshop, JPL Publication 90-54, p. 15-22.
+
+<P>
+Green, R.O., Roberts, D.A.,  Conel, J.A., 1996, Summaries of the Sixth
+Annual JPL Airborne Earth Science Workshop, JPL Publication 96-4, p.
+135-146.
+
+<P>
+Hapke, B., 1981, Bidirectional reflectance spectroscopy 1.
+Theory: Journal of Geophysical Research, v. 86, p. 3039-3054.
+
+<P>
+Hawthorne, F.C. 1981, Crystal chemistry of the amphiboles: In
+Amphiboles (D.R. Veblen, ed.), Rev. Mineral. 9A, p. 1-102.
+
+<P>
+Holland, T.B.J., 1979, Experimental determination of the reaction
+paragonite etc.: Contributions Mineralogy and Petrology, v.68, p.
+293-301.
+
+<p>
+Hunt, G.R., 1977, Spectral signatures of
+particulate minerals, in the visible and
+near-infrared: Geophysics, v. 42,
+p. 501-513.
+
+<p>
+Hunt, G.R., 1979, Near-infrared (1.3-2.4 &#181;m)
+spectra of alteration minerals-Potential
+for use in remote sensing, Geophysics
+v. 44, p. 1974-1986.
+
+<p>Hunt, G.R., 1982, Spectroscopic properties of
+rocks and minerals, in Handbook of
+Physical properties of rocks: Volume I,
+(R. S. Carmichael, ed.) CRC Press, Boca
+Raton, p. 295-385.
+
+<p>
+Hunt, G.R., and Salisbury, J.W., 1970, Visible
+and near infrared spectra of minerals and
+rocks: I. Silicate minerals, Modern
+Geology  v. 1, p. 283-300.
+
+<p>
+Hunt, G.R., and Salisbury, J.W., 1971, Visible
+and near infrared spectra of minerals and
+rocks: II. Carbonates, Modern Geology, v. 2,
+p. 23-30.
+
+<p>
+Hunt, G.R., Salisbury, J.W. and Lenhoff, C.J.,
+1971a, Visible and near infrared spectra
+of minerals and rocks: III. Oxides and
+hydroxides, Modern Geology, v. 2, p. 195-205.
+
+<p>
+Hunt, G.R., Salisbury, J.W. and Lenhoff, C.J.,
+1971b, Visible and near infrared spectra
+of minerals and rocks: IV. Sulphides and
+sulphates, Modern Geology, v. 3, p. 1-14.
+
+<p>
+Hunt, G.R., Salisbury, J.W. and Lenhoff, C.J.,
+1972, Visible and near infrared spectra
+of minerals and rocks: V. Halides,
+arsenates, vanadates, and borates, Modern
+Geology, v. 3, p. 121-132.
+
+<p>
+Hunt, G.R., Salisbury, J.W. and Lenhoff, C.J.,
+1973, Visible and near infrared spectra
+of minerals and rocks: VI. Additional
+silicates, Modern Geology, v. 4, p. 85-106.
+
+<P>
+Joint Committee on Powder Diffraction Standards (JCPDS), 1982:
+#9-427, DHZ, v. 1a.
+
+
+<P>
+Klein, C., and Hurlbut, Jr., C.S., 1999, Manual of mineralogy:
+21st edition, John Wiley and Sons, 681p.
+
+<P>
+Kokaly, R.F., 2005, View_SPECPR software, installation procedure,
+and user's guide: U.S. Geological Survey Open-File Report 2005-1348, 18 p.
+<A target="_blank" HREF="http://pubs.usgs.gov/of/2005/1348">
+http://pubs.usgs.gov/of/2005/1348</A>
+
+<P>
+Kroll, H., 1983, Lattice parameters and determinative methods for plagioclase
+and ternary feldspars: Feldspar Mineralogy, Vol. 2 (2nd ed.), Reviews in
+Mineralogy, Mineralogical Soc America, p. 101-119.
+
+<P>
+Livo, E., Clark, R.N., and Knepper, D., 1993, SPVIEW Spectral Plot
+Program for accessing the U.S. Geological Survey Digital Spectral
+Library Database with MS-DOS Personal Computers: U.S. Geological
+Survey, Open File Report 93-593, 26 p.  (Software online at
+<A target="_blank" HREF="http://speclab.cr.usgs.gov">
+http://speclab.cr.usgs.gov</A>).
+
+<P>
+Matthews, H. E., lrvine, W. M., Friberg, P., Brown, R. D., Godfrey,
+P. D., 1984, Chemical evolution and the origin of life Solid State
+15N NMR Investigations: Origins of Life, v. 14, 243-250.
+
+<P>
+Parker, R. L., 1962, Isomorphous substitution in natural and synthetic alunite:
+American Mineralogist, v. 47, p. 127-136.
+
+<P>
+Salisbury, J.W., Walter, L.S., Vergo, N., and D'Aria, D.M., 1991,
+Infrared (2.1-25 microns) spectra of minerals: The Johns Hopkins University
+Press, Baltimore, 267 p.
+
+<P>
+Srodon and Eberl, 1984, Illite: Reviews in Mineralogy and Geochemistry,
+Vol. 13;1; p. 495-544. 
+
+<P>
+Swayze, G.A., 1997, The Hydrothermal and Structural History of the Cuprite
+Mining District, Southwester Nevada:  An Integrated Geological and
+Geophysical Approach, Ph.D.  Thesis, Univ.  Of Colorado, 399p.
+
+<P>
+Szymanski 1985, International Centre for Diffraction Data (JCPDS)
+#18-698, 22-827, and 5-417.
+
+<P>
+Ryuji Tada and Azuma Iijima, 1983, Petrology and diagenetic changes of Neogene
+siliceous rocks in northern Japan: Journal of Sedimentary Research, v. 53,
+p. 911-930.
+
+<P>
+Takeuchi, Y., 1965, Structures of brittle micas: Clays and clay
+minerals: Proceedings of the 13th National Conference 1964,
+Madison, Pergamon Press, Oxford, p. 1-25.
+
+<P>
+Tschernich, R. W., 1992, Zeolites of the World: Geoscience
+Press, Inc., Phoenix, Arizona, 563 p.
+
+<P>
+White, William B., 1967, Diffuse-reflectance spectra of rare
+earth oxides: Applied Spectroscopy, v. 21, p. 167-171.
+
+<P>
+Wright, T.L., 1968, X-ray and optical study of alkali feldspars: II.
+An X-ray method for determining the composition and structural
+state from measurements of 20 values for three reflections:
+American Mineralogist, v. 53, p. 88-104.
+

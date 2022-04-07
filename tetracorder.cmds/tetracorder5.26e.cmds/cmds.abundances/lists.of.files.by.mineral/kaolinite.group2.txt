@@ -1,0 +1,26 @@
+# Kaolinite    based on cmd.lib.setup.t5.2d3
+#
+#  DN scale = what band depth = 255 in the tetracorder output image (from 5.2a2 expert system)
+#  BD factor = band depth =1 for pure, fraction in mixture
+#  splib06conv1, sprlb06conv1 = convolved spectrum ID, valid for spectra for 1 - 2171 channels.
+#
+#                                                                 DN     BD    Band                                   convolved
+#              file                                             scale  factor  depth      title                       reference spectrum
+group.2um/kaolgrp_kaolinite_wxl.depth.gz                          0.5   0.97  0.3651  Kaolinite CM9                   splib06conv1 2676
+group.2um/kaolgrp_kaolinite_pxl.depth.gz                          0.5   1.00  0.3106  Kaolinite KGa-2 (pxl)           splib06conv1 2718
+group.2um/kaolgrp_halloysite.depth.gz                             0.5   0.99  0.4099  Halloysite NMNH106237           splib06conv1 2040
+group.2um/kaolgrp_dickite.depth.gz                                0.5   1.00  0.5162  Dickite NMNH106242              sprlb06conv1  708
+group.2um/kaolin.5+smect.5.depth.gz                               0.5   0.5   0.2144  Kaolin_Smect H89-FR-2 .5Kaol    splib06conv1 5868
+group.2um/kaolin.3+smect.7.depth.gz                               0.5   0.3   0.2053  Kaolin_Smect H89-FR-5 .3Kaol    splib06conv1 5880
+group.2um/kaol.75+pyroph.25.depth.gz                              0.5   0.73  0.3122  Pyrophyl.25+wxlKaol.75 AMX17    splib06conv1 6054
+group.2um/alunite.5+kaol.5.depth.gz                               0.5   0.475 0.3502  Alunite0.5+Kaol_KGa-1 AMX3      splib06conv1 5406
+group.2um/kaol.75+alun.25.depth.gz                                0.5   0.73  0.3792  Kaolwxl.75+Alun_HS295 AMX14     splib06conv1 5910
+group.2um/Kalun+kaol.intmx.depth.gz                               0.5   0.4   0.4078  Kalun+kaol+gth mv2-ar3          splib06conv1 5820
+group.2um/Na-alun+kaol.intmx.depth.gz                             0.5   0.32  0.2589  Alun_Na+Kaol+Hemat  MV00-11a    splib06conv1 5364
+group.2um/kaolin.5+muscov.medAl.depth.gz                          0.5   0.485 0.3232  Kaol.5+MuscCU91-250A AMX13      splib06conv1 5832
+group.2um/kaolin.5+muscov.medhighAl.depth.gz                      0.5   0.485 0.3501  Kaol_Wxl+0.5Musc_Ruby AMX12     splib06conv1 5838
+group.2um/kaolin+musc.intimat.depth.gz                            0.5   0.485 0.2215  Kaol+Musc_intimate CU93-5C      sprlb06conv1  870
+group.2um/alunite.33+kaol.33+musc.33.depth.gz                     0.5   0.313 0.3265  Alun.33+Kaol.33+Musc.33 AMX2    splib06conv1 5346
+group.2um/carbonate_calcite+0.2kaolwxl.depth.gz                   0.5   0.19  0.1504  Calcite.80wt+Kaol_CM9 GDS213    splib06conv1 5580
+group.2um/carbonate_calcite0.7+kaol0.3.depth.gz                   0.5   0.19  0.2145  Calcite.7+Kaolwxl.3 AMX9        splib06conv1 5562
+group.2um/sulfate+kaolingrp_natroalun+dickite.depth.gz            0.5   0.485 0.2929  Alunite+Dickite MV99-6-26b      splib06conv1 5382

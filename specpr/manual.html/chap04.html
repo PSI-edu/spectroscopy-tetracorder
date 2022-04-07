@@ -1,0 +1,167 @@
+<!-- Creator     : groff version 1.18.1.1 -->
+<!-- CreationDate: Tue Nov  9 14:21:31 2010 -->
+<html>
+<head>
+<meta name="generator" content="groff -Thtml, see www.gnu.org">
+<meta name="Content-Style" content="text/css">
+<title></title>
+</head>
+<body>
+
+<hr>
+
+<pre>SPECPR Users&rsquo; Manual                                                   Page 4.1
+
+</pre>
+
+<p align=center>CHAPTER 4</p>
+
+<p align=center>IMPORTANT RULES</p>
+
+<p>4.1 IMPORTANT RULES The following rules are important
+because they have been found to protect your data and make
+specpr operate properly. Study them well and follow them
+closely.</p>
+
+<p>4.2 Protective Locks Protective Locks are enforced to
+prevent more than one user at a time from running specpr in
+a directory. When specpr is started, a file called
+LOCK.specpr is created in the directory. If another specpr
+is started, it will see that file and give you a message and
+quit. You should check to see if a user is really running
+specpr, and even ask him or her why the lock is still there
+if specpr is no longer being run (maybe specpr was
+terminated abnormally). If no one is running specpr, then
+you may delete the lock file and proceed as normal. When
+specpr terminates normally, the lock will be deleted. If
+specpr crashes, the lock will still be deleted because the
+lock activities are done in the startup shell for
+specpr.</p>
+
+<p>4.3 Make Specpr Files Read Only When Outside Your
+Directory There have been instances of people writing over
+data in specpr. On Unix systems, two users are allowed to
+write to the same file, and of course such incidents
+happened on occasion. Basically, two specpr users, working
+in different directories, assigned the same file (somewhere
+in the Unix file system) and each began writing to it. Of
+course, disastrous results followed as they wrote over each
+other&rsquo;s data! To prevent this, follow the simple rule:
+If a specpr file is located outside your directory, give it
+READ ONLY protection (protection value negative). Do not
+write to a file unless it is in your directory. If you need
+to write to a file not in your directory, move to that
+directory and run specpr from there. If that directory is
+owned by another user, check with that user before adding to
+a file. If they are logged on, check that they are not
+running specpr from the same directory. If two people run
+specpr from the same directory, restart files, command
+history, and data files will be overwritten (ordinarily this
+is prevented by the lock file discussed in the previous
+section, but could happen if someone deletes the lock)! If
+you add data to someone else&rsquo;s files, send them mail
+so they will not be surprised (and accidentally write over
+data).</p>
+
+<p>4.4 Bug Reports Whenever you encounter a bug, you should
+report all details so others can see them (and at least
+avoid them) and the specpr manager can fix them. Send bug
+reports directly from specpr with the command:</p>
+<pre>                    !specpr.bugs
+                      enter your report
+                    &lt;control d&gt;  meaning type a &quot;control d&quot;
+</pre>
+
+<p>If you are not in specpr, enter the same command without
+the &quot;!&quot;.</p>
+
+<p>4.5 Keep Track of the Number of Channels and the
+Wavelength Set! Specpr supports a &quot;number of
+channels&quot; value that ranges between 1 and 4852. You
+should be sure that the correct number of channels value is
+set BEFORE completing ANY MATH OPERATION. This is VERY
+Important. Further, if the operation requires
+&quot;wavelengths&quot;, such as a Planck black body
+function, be sure the correct wavelength set is assigned.
+Novice users seem to have the most problems with this
+concept. For example, if 32 channels are assigned, and you
+divide two arrays with 100 channels, only the first 32
+channels are actually acted upon. If you then reset the
+number of channels to 100 after the operation, like in the
+CRT plot routines, 100 channels will be written to the data
+file after you finish with the plot. But channels 33 to 100
+are actually garbage!</p>
+
+<p>4.5.1 Rules of Operation for Channels The math routines
+use the number of channels controlled by the wavelength set
+to determine what to operate on. For example if you have two
+512 point spectra, and the wavelengths are set to 81
+channels, then any math (e.g. divide) will only work on 81
+channels. There are some exceptions (f14: edit, it will work
+on all 4852 channels). If you have any doubt, set the number
+of channels BEFORE entering the routine, or if it gives you
+the option, when you first enter it. All routines that
+operate on a certain number of channels inform you of how
+many channels they will use. When a math operation is
+complete, the program goes to the CRT plot routines. The
+NUMBER OF CHANNELS RECORDED IN THE HEADER of the data is set
+after you exit the plot routines using the number of
+channels given by the wavelength set in use. For example,
+consider you had just divided two spectra of 512 channels.
+When you exit the CRT plot routines and the data are
+written, the number of channels is set by the wavelength set
+currently in use. If you changed the wavelength set in the
+CRT plot routines to 22 channels, when you exit the plot the
+program sets the channels to 22, copies 22 channels to the
+output I/O buffer and writes the results to disk and you
+don&rsquo;t get all your data. So, be careful. Most routines
+that have different output channels from input channels will
+automatically set the output to the correct values (e.g.,
+f17: convolution).</p>
+
+<p>4.5.2 If You Must Change The Number Of Channels MATH:
+CHANGE the WAVELENGTH SET number of channels. DO NOT go to
+the header information change routines and change the value
+there: it gets overwritten by the value from the wavelength
+set when the data are written to disk (after you exit the
+CRT plot routines). DISPLAY: Change protection on the data
+file to -1. Then transfer the data to itself. For example,
+if the data you wanted to change was in v23 and had a length
+of 512 channels and you really wanted 510, then you would
+set the protection on v to -1, and from transfer routines,
+use the command &quot;v23citv23&quot; (see section 10.3.1),
+then change the number of channels value and exit the
+information change routines using &quot;e&quot; (exit and do
+pending write of the data back to disk). BE CAREFUL: if you
+change the channels to a bigger number, there is really no
+data in those new channels. Also, if you increase the number
+of channels too much, you will go over a record boundary and
+the next record could be written over other data! If you use
+a much smaller number, the output data could take up fewer
+records and then there would be a record that had its
+continuation bit turned on, but has no beginning data to it.
+A list of the data file will cause a read error at that
+record. In that case, you need to write a dummy data set in
+that record. To do that, copy (transfer) a data set whose
+number of channels is less than or equal to 256 to that
+record. BE SURE and RESET protection to the end of the file
+so you do not overwrite other data!</p>
+
+<p>4.5.3 Setting Channels Sometimes you must set the number
+of channels to a value that you do not have a wavelength set
+for. Use the capital c &quot;C&quot; and a number. For
+example, you have just started specpr in a new directory and
+have no data in any file. You can not display something
+because you have nothing to display. Go to MATH and operate
+on something that doesn&rsquo;t need input data. For
+example, do f16 (line segment generator). When you enter
+f16, set the number of channels to whatever you want and
+type in some values (e.g. set channel 1 to 0 and channel 2
+to 0 and exit to the CRT plot). You can then write that data
+as a dummy data set. Many specpr users usually start every
+data file with a dummy data set where the title has the name
+of the data file (archive tape name) and maybe a description
+of the project.</p>
+<hr>
+</body>
+</html>

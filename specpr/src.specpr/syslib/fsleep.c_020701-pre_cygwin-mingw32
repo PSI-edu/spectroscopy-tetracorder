@@ -1,0 +1,18 @@
+/*   fortran interface to the C sleep routine, with machine
+     dependencies.  rewritten 3/25/85 by Roger Clark       */
+
+fsleep(time)
+
+unsigned long *time;
+{
+	sleep(*time);
+}
+
+/* below is identical to above except _ added */
+
+fsleep_(time)
+
+unsigned long *time;
+{
+	sleep(*time);
+}

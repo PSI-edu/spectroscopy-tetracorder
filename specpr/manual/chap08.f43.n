@@ -1,0 +1,46 @@
+.\" use ms macros
+.\" this header is for putting the page numbers at the bottom of the page
+.\" set line length, page offset, vertical spacing
+.nr LL 6.3i
+.ll 6.3i
+.nr PO 1.0i
+.po 1.0i
+.nr VS 12
+.vs 12
+.\" set header and footer margins (default is 1.0i)
+.nr FM 1.00i
+.fm 1.00i
+.nr HM 1.00i
+.hm 1.00i
+.\" set no date here, MUST be before CF definition, because ND sets CF
+.\" set date, so don't do .ND
+.\" LH CH RH are left, center, right header strings
+.\" LF CF RF are left, center, right footer strings
+.\" default is CH is defined as: .ds CH "\(hy \\n(PN \(hy
+.ds LH "SPECPR Users' Manual
+.ds CH
+.ds RH "Page 8-f43.\\n(PN
+.\" setup complete
+.nf
+SPECPR Users' Manual                                            Page 8-f43.1
+
+
+.B
+F43:  Fast Fourier Transform (FFT) and Inverse FFT      Alias = fft
+.R
+.PP
+This routine performs a Fast Fourier Transform (FFT) on a spectrum.  The
+spectrum can be any number of channels; the algorithm pads the
+spectrum with zeros to a power or 2 number of channels in order to
+do the FFT.  For example, if you have 931 channels, the algorithm pads the
+data to 1024 channels.  The resulting FFT is NOT folded: zero frequency occurs
+at channel 1 and the maximum channel, and the maximum frequency occurs in
+the middle channel.
+.PP
+The f43 routine does not save both the real and imaginary components
+at this time.  Thus the user must run f42 twice: once to save the
+real component and the second time to save the imaginary component.
+.PP
+The inverse FFT requires both real and imaginary components.  If you
+have only the real, you could use a data set of zeros for the
+imaginary components (but this is not strictly valid).

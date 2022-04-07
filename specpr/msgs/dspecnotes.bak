@@ -1,0 +1,445 @@
+                       dspecpr changes/additions
+                       -------------------------
+
+11/2018:   3-point band depths on plot, up to 9 features can be defined
+
+                  label      left1   left2  center1  center2   right1  right2
+            bd1= 1.04um   W  0.958   0.986   1.02     1.05      1.080   1.110 box
+            bd2= 1.25um   W  1.12    1.16    1.25     1.29      1.34    1.38  box
+            bd3= 1.5um    W  1.35    1.41    1.50     1.55      1.76    1.81  box
+            bd4= 2.0um    W  1.79    1.845   2.01     2.04      2.22    2.259 box
+            bd9= 2.3um    W  2.22    2.259   2.34     2.37      2.43    2.475 box
+
+              The  W  means wavelengths,  C  means channels
+              box is optional: if box is specified, a box is drawn on the plot
+              Without the box, just the 3-point band depth is computed.
+
+           showbd   displays band depth calculations in the plot window
+           show  or showmenu    turns off all things on the plot and shows the original menu
+           showall shows oll things, overlays, 3-point band depths, tetracorder features,
+                    and wavelength shifts on the plot
+           redraw  # redraw the plot
+
+
+11/2018:   tetracorder feature definitions on plot, 9 features can be fdefined
+
+           tf1 throught tf9, label (not speces) and a copy of the
+                feature definition from tetracorder.  Examples
+
+           tf1= Snow.H2O f1a DLw 0.958   0.986   1.080   1.110  ct 0.08
+           tf2= Snow.H2O f2a DLw 1.150   1.178   1.315   1.345  ct 0.08 lct/rct> 0.9 1.1
+
+           #u1347 U22  Alunite GDS97 K  Syn (150C)  W2R4Na RREF  3325 
+           tf1= Alunite f1a DLw 2.0687  2.0867  2.2376  2.2568 ct .04 r*bd> 0.002 0.004
+           tf2= Alunite f2a DLw 1.4446  1.4554  1.5054  1.5243 ct .05 r*bd> 0.002 0.004
+
+           # from group 2: Muscovite+Chlorite CU91-253D W2R4Na,  4 features:
+
+           #u6061U22   \# splib06a
+           tf1= Musc+Chlor f1a DLw 2.134   2.164   2.226   2.248  ct .04 r*bd> 0.002 0.004
+           tf2= Musc+Chlor f2a DLw 2.057   2.088   2.130   2.154  ct .04 r*bd> 0.002 0.004
+           tf3= Musc+Chlor f3a DLw 2.226   2.248   2.277   2.299  ct .04 r*bd> 0.002 0.004
+           tf4= Musc+Chlor f4a DLw 2.277   2.299   2.386   2.406  ct .05 r*bd> 0.002 0.004
+
+           showtet displays the tetracorder feature info in the plot window
+           show  or showmenu    turns off all things on the plot and shows the original menu
+           showall shows oll things, overlays, 3-point band depths, tetracorder features,
+                    and wavelength markers on the plot
+           redraw  # redraw the plot
+           
+
+
+10/22/2013: Wavelength shift in crt plots
+
+            Change the wavelengths in the crt plots with the
+                          wavshift=
+            keyword.  The shift stays active while in the plot,
+            including interactive band analysis, but the shift
+            is reset to zero when leaving the plot.  This is useful
+            for diagnosing wavelength shifts.
+
+10/17/2013: Wavelength Markers
+
+            You can now have wavelength markers on CRT/LCD plots
+            in 6 colors and 9 markers per color.
+
+            wavelength marker 1 = red
+            wavelength marker 2 = blue
+            wavelength marker 3 = green
+            wavelength marker 4 = orange
+            wavelength marker 5 = cyan
+            wavelength marker 6 = magenta
+
+            Specify wavelength markers with wm#= and the wavelengths.
+            Examples:
+
+            wm1= 2.05 3.1   4.26
+            wm2= 1.6  3.15  4.25 4.9 5.05
+            wm3= 0.43
+
+            The color scheme is the same as for overlays.
+
+
+10/17/2013: Show the list of overlays or wavelength markers in color
+            on the CRT/LCD plot.
+
+            In the plot command window, type:
+
+            show    # the standard menu
+            showov  # show overlay info
+            showwm  # show wavelength marker info
+
+            redraw  # redraw the plot
+
+
+02/23-24/2012: New features with color overlays.
+
+            We now have 6 color overlays, each with auto scaling and
+            deleted points.
+
+            overlay 1 = red
+            overlay 2 = blue
+            overlay 3 = green
+            overlay 4 = orange
+            overlay 5 = cyan
+            overlay 6 = magenta
+
+            overlays can be auto scaled in 3 ways (plus not auto scale):
+
+            A  = standard min max auto scale
+            A0 = auto scale max, zero stays at zero
+            A2 = min, max autoscale but leave 2% of the max-min range as
+                 space on the top and bottom.
+
+            Example:
+                     ov2=v60V4 A2 d1t5 36 78t82c
+
+            The autoscaling also works with any plot.  For example, compare
+            a reference spectrum to a bunch of spectra in a sequence:
+
+            ov1=v60V4 A2
+            v62+999 A2
+
+            Overlays can now be turned on and off anywhere and assigned in the
+            plot or in the display routine.
+            Sometimes you may need to refresh the plot, so type:
+            redraw
+
+            In a plot, change the scalling and add deleted points:
+
+            ov1=on A0 d36c
+            ov1=on A2 d222c
+            ov1=off
+            ov1=on N        # no autoscaling
+
+            Overlays also work in the interactive band analysis routine, and
+            do continuum removal on all overlays.  The need for sheets of paper
+            with plots held up to the light are no longer needed!
+
+            ovlist   will list the overlays anywhere in specpr
+
+            Known bug: the first plot done after entering specpr
+            will not autoscale.
+
+	xwd does not work correctly on linux, and sometimes gets extraneous
+	data from other windows.  The new program for dumping x-windows is
+	import.  Example:
+
+	       import test1.gif
+	       import test2.jpg
+
+	Import creates the file format based on the extension, so works much better
+	than xwd. 
+
+	Also, a lot of specpr code was fixed to improve portability between
+	32-bit and 64-bit machines.  Some variables were not declared
+	a specific size (like real instead of real*4) so they would come out
+	different sizes on different architectures.  Also, I did some general
+	code clean up to prepare for future expansion to larger spectra.
+	Please let me know if you encounter any problems. 
+		
+
+08/19/2011: On linux to get specpr to flush the buffers when you write
+            a spectrum to disk, set the environment variable 
+            GFORTRAN_UNBUFFERED_ALL = y
+  
+            In csh or tcsh. this would be:
+
+            setenv GFORTRAN_UNBUFFERED_ALL  y
+
+            also useful:
+
+            setenv GFORTRAN_ERROR_BACKTRACE y
+            setenv GFORTRAN_ERROR_DUMPCORE  n
+
+08/18/2011: Color is now an option for crt plots.
+
+            # Colors are defined as:
+            #
+            #   black     0
+            #   gray      1 
+            #   red       2
+            #   blue      3
+            #   green     4
+            #   orange    5
+            #   cyan      6
+            #   magenta   7
+            #   purple    8
+            #   brown     9
+            #   white    10
+
+            Set line color with capital L in the display, transfer and overlay
+            routines.  Example:
+
+            v100V6oL2 V200oL3 V300ol0   \# red, blue and black spectra overlaid
+
+            in the crt plot routine, change line color by specifying L#, where
+            number is 0-9.
+
+            defined overlays are:
+
+            overlay 1 = red
+            overlay 2 = blue
+            overlay 3 = green
+
+            Define an overlay in the main or display, transfer and overlay with:
+
+            ov1=d1804D6
+            ov2=u3894U6
+
+            turn overlays on and off with:
+
+            ov1=off
+            ov1=on
+
+
+08/16/2011: Major upgrade to x-window graphics.
+		specify -gxterm2 for double size and double resolution
+                graphics window.
+
+            Major side effect: old graphics terminal output is broken.
+
+                -gxterm3 makes a triple sizes window, but resolution
+                         is still only double.
+
+            original graphics window is 390 x 512 pixels.
+            new resolution is 780 x 1024 pixels
+
+            Resizing the window by hand scales the plot size and resolution,
+            If the window is greater than 780 x 1024 pixels, scaling still occurs,
+            but resolution does not increase.  (It would not be hard
+            to increase real resolution further.)
+
+08/16/2011: Added x-axis offset in plotting routines.
+
+            e.g.:
+		v1804 V6 Cp0l3 x-0.5
+
+circa 2005?: Added data offset and multipliers to plot routines
+
+            e.g.:
+                v1804 V6 Cp0l3 o*0.5 o+0.2
+
+            above multiplies by 0.5 then adds 0.2
+
+11/27/2001: added x-window plot refresh after bringing window
+            to foreground!
+
+09/16/2001: added shoulderness parameters to interactive band
+            analysis.
+
+07/19/2000: added readout to the interactive band analysis routines:
+            continuum channels, continuum wavelengths, and
+            continuum ratios.
+
+10/7/96: dspecpr: major addition to f17 convolution.  F17 now has
+         lower limit to the bandpass in the computation.  The default
+         is now 1x10^-7, any gaussian or filter value below this
+         value will be ignored in the computation.  The typical speedup
+         is a factor of 3 compute time.  Also a "s" to suppress
+         some warnings was added.  Also added code to use the dates
+         and times of data acquisition from the input spectrum on the
+         output spectra.
+
+7/11/95: Recompiled dspecpr.  Dspecpr had a number of bugs generated by
+         the optimizing compiler.  The new dspecpr is compiled with
+         lower level of optimization, so hopefully the bugs will go
+         away.
+
+
+5/4/94:  dspecpr:  The copy commands to a file (the >filename command) now
+		   checks to see if the file exists and if it does will
+		   no longer clobber it.  Specpr will not open it, so
+		   you must select another (new) file name.
+
+3/29/94: dspecpr:  New command line feature: suppress user prompts during
+                   reading of command files.  The command is:
+
+                            CMD crt verbose=n
+
+		   where n = 0, 1, 2, 3, 4, or 5.  The C in CMD must be
+		   on column 1 and the spaces are required as shown.
+		   The integer specifies the level of suppression.  Zero
+		   is no suppression, 1 is suppress alias translations,
+		   variable substitutions, command line echoing, etc.
+		   Higher numbers are application dependent, being
+		   defined by the programmer.  As of this writing, only
+		   tricorder 2.0 has these defined.  Other specpr
+		   routines will be added on an as needed basis.  It
+		   turns out that most of the time in executing a specpr
+		   command file is due to waiting for screen scrolling,
+		   so use of this feature can make command files run
+		   hundreds of times faster!
+
+3/29/94: dspecpr:  Errors which occur during reading of a command file
+		   now enable a trap which disables further processing
+		   from the command file.  This trap occurs only if the
+		   routine calls the subroutine "what," so it may not
+		   stop exactly when the error occurs (unless that
+		   routine has been cleaned up and what called for every
+		   error--tricorder should be robust on this issue).  We
+		   will add what calls to make this more robust
+		   everywhere, but it will be done as other routines are
+		   edited for other reasons.  If you have a particular
+		   problem, let Roger know.
+
+9/2/93: dspecpr:   In May 1993: Specpr was compiled with the highest level
+                   optimization (+O3 +OP4) and found the 3dio read 
+                   routines and the fft subroutine had parts
+                   optimized away and they no longer worked.  These
+                   routines have been recompiled without full optimization
+                   and should be fine now.
+
+8/19/93: dspecpr:  changed division routine to set normalization
+                   constants to 1.0 when they become nearly zero
+                   (10**-36).  Warning messages will appear when
+                   this happens.  This is to prevent crashes
+                   on floating underflows or overflows.
+
+2/25/93: dspecpr: compiled on an HP700 and the compiler identifed
+		   numerous warnings, like unitialized variables (turns
+		   out some were misspelled).  So all were corrected.
+		   Hopefully there are no side effects.  One of note:
+		   multiplication, division, and subtraction using a
+		   constant and error bars didn't appear like the code
+		   would do the right thing.  It should now, if it
+		   didn't before.  I also added some screen erase
+                   stuff for X-windows, like after crt plot scale change.
+                   The overlay plot routines now put the file id's
+		   in the plot window, and the vertical axis numbers are
+		   right justified.  In x-window mode, extraneous alpha
+		   window text is erased so things should be less
+                   confusing when doing crt plots.
+
+10/5/92: dspecpr only: The x,y positions in hp pen plotter
+                        text positions is now in centimeters.
+                        No need to scale by 1.025 and 0.79.
+
+9/4/91:  dspecpr only: The graphics mode can now be specified on
+         the command line when going a restart.  The command is:
+
+                 dspecpr restart_file -g"graphics_type"
+
+         where graphics type is -gxhp   = X-windows hpterm
+                                -gxterm = X-windows xterm
+                                -g4     = hp graphics terminal normal
+                                -g#     = # = graphics mode number
+                                              (see specpr manual)
+
+         For example, run dspecpr, restart file r1 graphics type
+         X-windows, hpterm, skip the startup messages:
+
+                     dspecpr r1 -gxhp -
+
+1/24/91: dspecpr only: the wavenumber mode on crt plot is not fixed
+         (caused by the X-windows conversion).
+
+8/23/90: (dspecpr only) Addition has undergone major surgery.
+         The error bars now give exactly the right results if error
+         bars were already included (they were off s few percent when adding
+         a few data sets together; the error in the errors decreases with
+         more data sets).  The user interface has been streamlined.
+
+8/23/90: (dspecpr only) Variable parsing is complete.  The ascii
+         characters "{" and "}" now delimit variable parsing.  You can read
+         specpr internal variables (like the file protections) or set your
+         own.  Variables ia through iz are user settable integers and ra
+         through rz are user settable real variables.
+
+8/23/90: (dspecpr only) X-windows support is now complete.  From an
+         X-display system, start specpr in an hpterm or xterm window and set
+         the graphics type to g50 (hpterm) or g51 (xterm).  You will have to
+         do this each time you enter specpr, even with a restart file.
+
+3/27/90: The hardcopy plot routines can now offset the data.
+         Use a "o" and the offset.  Example:
+
+                      v24V22Cp0l3o0.5
+                      v23V22Cp0l3
+
+         would offset v24 by 0.5 data units.  Note that because v24
+         will (usually) come out above v23, plot it first so the title at the
+         bottom of the plot will come out on top.  That way it makes it asier
+         to figure out which title goes with the proper curve.
+
+3/13/90: f20 has an addition for reading files: you can select how
+         often you want the input data stream to be printed on the terminal.
+         On long files, the read is greatly speeded up.  For example, a 4000
+         point spectrum takes about 4 minutes when every data point is
+         printed, but less than about 10 seconds if you print only every
+         100th line!
+
+11/8/89: Changed file assignments to check if a file exists or not.
+         If the file exists, a message is printed that says the file
+         is being opened, and another when the open is successful.
+         If the file does NOT exist, a message is printed that says
+         the file does not exist and asks if you want to create it.
+         To create the file, you must type y.  If you type any other
+         character, the file will not be created.
+
+         This addition will prevent users from creating duplicate
+         files in other directories.  At least if you are expecting to
+         assign an existing file and it says it doesn't exist, you have
+         the chance to not create it.
+
+11/9/89: Added math function 50.  This function registers the
+	 wavelengths of a file to those in a reference spectrum.
+	 That is, for a given absorption feature, the actual
+	 wavelength is chosen from a reference spectrum, and the channel
+	 number is taken from the file that is being adjusted.  The actual
+	 wavelength is assigned to that channel.  Wavelengths in
+	 between features are assigned by a linear interpolation.
+
+
+11/9/89: BLOCK EXTRACTION ROUTINE
+
+	 Path:		/usr/src/cmd/specpr/3dio
+	 Programmer:	Barry J. Middlebrook
+	 Description:
+	 The subroutine blkext.r (block extraction) is now a working,
+	 although not completely tested, part of dspecpr.  The entry
+	 point to this routine is a branch under the DISPLAY and OVERLAP
+	 (or t option from the main menu) section of dspecpr.  It can be
+	 accessed correctly only after assigning a 3-d data file to one
+	 of the appropriate letters (v,u,w,y).  Once this criteria is met
+	 (and the user indicates a block extraction) the subroutine 
+	 calculates the coordinates of the block to be extracted.  From
+	 this point, the multiple extractions are executed in exactly the
+	 same manner as a single extraction except that certain arrays
+	 accumulate the sum, squared sum and a count of the number of
+	 elements comprising the sum.  Once the block extraction has
+	 terminated these are used to calculate the block average (data
+	 array) and standard deviation (error array).  For further
+	 information read /u/bmiddleb/notes/DOC/blkext.doc .
+
+
+1/30/90: 3DIO BUG FIX (Barry J. Middlebrook)
+
+         While working on the band depth mapping routines I noticed
+         that the coordinates were squeexed - x appeared as the
+         vertical axis and y as the vertical.  I have now fixed that
+         to correspond to a more conventional coordinate system 
+         (instead of the programmer's perspective).  x is now the 
+         horizontal axis and y is now the vertical axis.  Better?
+
+3/18/91: "G"raphics Cursor Read Routines -- Y Scaling Bug Fixed.  NsG

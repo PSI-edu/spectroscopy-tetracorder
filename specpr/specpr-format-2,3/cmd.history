@@ -1,0 +1,4 @@
+# vi foo2
+# cp foo2 specpr-format-v2.txt
+# pr -t -m -w 200 foo2 foo2 > specpr-format-v2+proposed-v3.txt
+

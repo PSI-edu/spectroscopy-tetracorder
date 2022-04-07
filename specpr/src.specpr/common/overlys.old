@@ -1,0 +1,47 @@
+#       overlay arrays for plots
+
+#       ovrflg* = -1 not defined  
+#               = 0 do not overlay
+#               = 1 overlay
+#               = 2 overlay with autoscale 2% margin
+#               = 3 overlay with autoscale to min max
+#               = 4 overlay with autoscale to max, min stays as original
+
+#       ovrclr* =     color (to be defined, future)
+
+#       ovrchn* = channels in spectrum
+ 
+#       ovrdat* = original data for overlay
+#       ovrwav* = wavelengths
+#       ovrdsc* = auto-scaled data
+
+#       Added 12/22/2009 RNC, updates from 3 to 6 overlays +autoscale 02/22/2012
+
+#was:
+#	common /ovrly1/   ovrflg1, ovrflg2, ovrflg3, ovrflg4, ovrflg5
+#        common /ovrly1/   ovrflg6 
+#	common /ovrly1/   ovrclr1, ovrclr2, ovrclr3, ovrclr4, ovrclr5
+#	common /ovrly1/   ovrclr6
+#	common /ovrly1/   ovrchn1, ovrchn2, ovrchn3, ovrchn4, ovrchn5
+#	common /ovrly1/   ovrchn6
+
+	common /ovrly1/   ovrflg, ovrclr, ovrchn
+
+        common /ovrly1/   ovrdat1, ovrdat2, ovrdat3, ovrdat4, ovrdat5
+        common /ovrly1/   ovrdat6 
+	common /ovrly1/   ovrwav1, ovrwav2, ovrwav3, ovrwav4, ovrwav5
+	common /ovrly1/   ovrwav6
+	common /ovrly1/   ovrdsc1, ovrdsc2, ovrdsc3, ovrdsc4, ovrdsc5
+	common /ovrly1/   ovrdsc6
+
+	real*4 ovrdat1(4864), ovrwav1(4864), ovrdsc1(4864)
+	real*4 ovrdat2(4864), ovrwav2(4864), ovrdsc2(4864)
+	real*4 ovrdat3(4864), ovrwav3(4864), ovrdsc3(4864)
+	real*4 ovrdat4(4864), ovrwav4(4864), ovrdsc4(4864)
+	real*4 ovrdat5(4864), ovrwav5(4864), ovrdsc5(4864)
+	real*4 ovrdat6(4864), ovrwav6(4864), ovrdsc6(4864)
+
+	integer*4 ovrflg(6)
+	integer*4 ovrclr(6)
+	integer*4 ovrchn(6)
+

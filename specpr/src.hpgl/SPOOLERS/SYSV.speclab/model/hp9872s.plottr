@@ -1,0 +1,14 @@
+
+# UNISRC_ID: @(#)HP9872S plotter        09/27/1985
+# lp spooler interface for HP9872S plotter
+#
+
+# The remaining arguments is the control file for hpdaemon
+
+shift; shift; shift; shift; shift
+
+	cd /usr/spool/gplot
+	echo "IN;" 
+	/usr/lib/hpdaemon < $1
+
+	sleep 5

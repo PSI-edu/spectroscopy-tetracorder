@@ -1,0 +1,9 @@
+# Goethite    based on cmd.lib.setup.t5.2d3
+#
+#  DN scale = what band depth = 255 in the tetracorder output image (from 5.2a2 expert system)
+#  BD factor = band depth =1 for pure, fraction in mixture
+#  splib06conv1, sprlb06conv1 = convolved spectrum ID, valid for spectra for 1 - 2171 channels.
+#
+#                                                                 DN     BD    Band                                   convolved
+#              file                                             scale  factor  depth      title                       reference spectrum
+group.1um/fe3+_goethite.coarsegr.depth.gz                         0.5   1.00  0.4869  Goethite WS222 Coarse Gr.       sprlb06conv1  894

@@ -1,0 +1,16 @@
+
+
+sprlb06a:
+1545 Nanohematite BR93-34B2b      W1R1Hb:
+
+tf1= nHem         f1a  DLw  0.4400  0.4550  0.6117  0.6315   0.0000
+tf2= nhem         f2a  OLw  0.7600  0.7950  1.0800  1.1100   0.0000
+
+Interpolate over the .95 3rd overtone of muscovite to make a clean
+hematite band
+
+delete: 1180 t 1273
+
+revised spectrum sprlb06a:
+  1725  Nanohematite BR93-34B2b ed1  W1R1Hb AREF  4301  13:45:33.90  08/25/2021     80     92
+

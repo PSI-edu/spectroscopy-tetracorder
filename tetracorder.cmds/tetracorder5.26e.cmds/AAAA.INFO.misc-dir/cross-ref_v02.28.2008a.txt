@@ -1,0 +1,339 @@
+      Tetracorder Command File Cross Reference
+
+tetracorder                               convolv
+4.1a3          splib04a slpib05a splib06a s06*    Titla
+aviris         native   native   native   small
+
+Group 0
+
+splib04  496                     29889      7170 Fir_Tree IH91-2              W1R1Ba AREF
+sprlb01   51                     31008      7614 Grass_dry.7+.3green    AMX30 W1R1Ba AREF
+splib04  182                     26841      6216 H2O-Ice GDS136 77K           W1R1Ba AREF
+sprlf01   14                     26997      6258 Melting_snow mSnw1a          W1R1Fa AREF
+sprlf01   15                     27044      6270 Melting_snow mSnw3           W1R1Fa AREF
+sprlf01   18                     27137      6294 Melting_snow mSnw8           W1R1Fa AREF
+sprlf01   19                     27185      6306 Melting_snow mSnw9  (slush)  W1R1Fa AREF
+sprlf01   23                     26925      6240 Melting_snow mSnw16 (slush)  W1R1Fa AREF
+sprlf01   25                     27021      6264 Melting_snow mSnw1a+0.5_veg  W1R1Fa AREF
+sprlf01   28                     27209      6312 Melting_snow mSnw9+0.5_veg   W1R1Fa AREF
+sprlb01   66                     27251      6324 Seawater_Coast_Chl SW1       W1R1Ba AREF
+sprlb01   67                     27262      6330 Seawater_Open_Ocean SW2 lwch W1R1Ba AREF
+sprlf01   12                     27230      6318 Red_Coated_Algea_Water RCAW1 W1R1Fa AREF
+sprlf01   77                     27324      6348 Water+Montmor SWy-2+16.5g/l  W1R1Fa AREF
+sprlf01   75                     27348      6354 Water+Montmor SWy-2+5.01g/l  W1R1Fa AREF
+sprlf01   76                     27299      6342 Water+Montmor SWy-2+1.67g/l  W1R1Fa AREF
+sprlf01   74                     27273      6336 Water+Montmor SWy-2+0.5g/l   W1R1Fa AREF
+sprlf01  124                     28978      6840 Plastic_PVC GDS338 White     W1R1Fa AREF
+sprlf01  125                     29036      6858 Plastic_Tarp GDS339 Green    W1R1Fa AREF
+
+Group 1
+
+sprlf01  125                     29036      6858 Plastic_Tarp GDS339 Green    W1R1Fa AREF
+splib04  193                     25384      5790 Hematite.02+Quartz.98 GDS76  W1R1Ba AREF
+splib04  171                      8447      1908 Goethite WS222 Medium Gr.    W1R1Ba AREF
+sprlb01   82                     25198      5736 Goethite0.02+Quartz GDS240   W1R1Ba AREF
+sprlb01  111                      8351      1878 Goethite MPCMA2-B FineGr adj W1R1Bb AREF
+sprlb01  113                      8365      1884 Goethite MPCMA2-C M-Crsgrad2 W1R1Bb AREF
+sprlb01  101                      8459      1914 Goethite WS222 Coarse Gr.    W1R1Ba AREF
+sprlb01  106                     26742      6168 Goethite_Thin_Film WS222     W1R1Ba AREF
+sprlb01   85                     25184      5730 Goeth+qtz.5+Jarosite.5 AMX11 W1R1Bb AREF
+sprlb01   81                     26297      6042 Pyrite LV95-6A Weath on Tail W1R1Bb AREF
+sprlb01   83                     20097      4476 Schwertmannite BZ93-1        W1R1Bb AREF
+sprlb01   84                     26691      6144 Blck_Mn_Coat_Tailngs LV95-3  W1R1Bb AREF
+sprlf01    9                     23775      5316 Acid_Mine_Dr Assemb1-Fe3+    W1R1Fb AREF
+sprlf01   10                     23799      5322 Acid_Mine_Dr Assemb2-Fe3+    W1R1Fb AREF
+splib04  456                     11469      2568 Jarosite GDS99 K 200C Syn    W1R1Ba AREF
+splib04  259                     12600      2808 Lepidocrosite GDS80 (Syn)    W1R1Bb AREF
+sprlb01   88                     24855      5634 Chlorite+Muscovite CU93-65A  W1R1Ba AREF
+sprlb01   89                     26143      6000 Muscovite-medhi-Al CU91-252D W1R1Fc AREF
+sprlb01   91                     24750      5604 Chlor+Goethite CU93-4B Phyl  W1R1Ba AREF
+splib04  127                      6583      1446 Cummingtonite HS294.3B       W1R1Bc AREF
+splib04  014                       235      5256 Vesuvianite HS446.3B Idocras W1R1Ba AREF
+splib04  011                       105        42 Actinolite HS22.3B           W1R1Bb AREF
+splib04  215                     10348      2334 Hypersthene NMNHC2368        W1R1Bb AREF
+splib04  139                      7035      1548 Diopside NMNHR18685 ~160 Pyx W1R1Bb AREF
+splib04  230                     11155      2502 Jadeite HS343.3B             W1R1Bb AREF
+splib04  368                     17843      3966 Pigeonite HS199.3B           W1R1Bb AREF
+splib04  149                      7546      1668 Epidote GDS26.a 75-200um     W1R1Bb AREF
+sprlb01    9                     25174      5724 Fe-Hydroxide SU93-106 amorph W1R1Bb AREF
+splib04  158                      7822      1740 Ferrihydrite GDS75 Syn, F6   W1R1Bb AREF
+splib04  194                      9282      2106 Hematite GDS27               W1R1Ba AREF
+sprlb01  104                     26800      6198 Hematite_Thin_Film GDS27     W1R1Ba AREF
+splib04  204                      9271      2100 Hematite FE2602              W1R1Bb AREF
+splib04  203                      9776      2208 Hematite WS161               W1R1Bb AREF
+splib04  330                     15991      3558 Nontronite NG-1.a            W1R1Bb AREF
+sprlb01   26                     23822      5328 Actinolite-Hornfels BR93-5a  W1R1Bc AREF
+sprlb01   27                     25904      5934 Magnetite_skarn BR93-5B      W1R1Bb AREF
+sprlb01   28                     23833      5334 Actinolite-Tremolit BR93-22C W1R1Bb AREF
+sprlb01   29                      7490      1656 Epidote BR93-33a             W1R1Bb AREF
+sprlb01   30                     24407      5490 Biotite-Chlorite_Mx BR93-36A W1R1Bb AREF
+sprlb01   31                     24263      5460 Basalt_weathered BR93-43     W1R1Bb AREF
+sprlb01   32                     24252      5454 Basalt_fresh BR93-46B        W1R1Bb AREF
+sprlb01   25                     26778      6186 Hematite_Coatd_Qtzt BR93-25A W1R1Bb AREF
+sprlb01   38                     26756      6174 Hematite_Coatd_Qtz BR93-25B  W1R1Bb AREF
+sprlb01   24                     26789      6192 Hematite_Coatd_Qtzt BR93-25C W1R1Bb AREF
+sprlb01  108                     15589      3468 Nanohematite BR93-34B2       W1R1Bb AREF
+sprlb01   35                     26767      6180 Hematite_Coatd_Qtz BR93-34C  W1R1Ba AREF
+sprlb01   34                     26829      6210 Jarosite_on_Qtzite BR93-34A2 W1R1Bb AREF
+sprlb01   33                     23844      5340 Actinolite_Dolomit BR93-60B  W1R1Bb AREF
+sprlb01   39                     26287      6036 Phlogopite_Sand_Mix BR93-20  W1R1Ba AREF
+sprlb01   10                     29317      6942 Renyolds_TnlSldgWet SM93-15w W1R1Ba AREF
+splib04  106                      5327      1176 Clinochlore GDS158 Flagst    W1R1Bb AREF
+splib04  104                      5444      1200 Clinochlore NMNH83369        W1R1Bb AREF
+splib04  451                     21910      4890 Thuringite SMR-15.c  32um    W1R1Ba AREF
+splib04   65                      3357       720 Azurite WS316                W1R1Ba AREF
+splib04  370                     17952      3990 Pitch_Limonite GDS104 Cu     W1R1B? AREF
+splib04  274                     13289      2964 Malachite HS254.3B           W1R1Bb AREF
+sprlb01   12                     24417      5496 Blue_Efflorscnt_Min SU93-300 W1R1Bb AREF
+sprlb01   11                     28199      6594 Green_Slime SM93-14A Summitv W1R1Ba AREF
+splib04  343                     16681      3696 Olivine HS285.4B Fo80        W1R1Bb AREF
+splib04  351                     16520      3666 Olivine GDS71.a Fo91 65um    W1R1Bb AREF
+splib04  394                     19222      4278 Rhodochrosite HS338.3B       W1R1Bb AREF
+splib04  419                     20461      4560 Siderite HS271.3B            W1R1Ba AREF
+splib04  400                     19614      4362 Riebeckite NMNH122689 Amph   W1R1Ba AREF
+splib04  121                      6341      1386 Coquimbite GDS22             W1R1Bc AREF
+splib04  120                      6285      1374 Copiapite GDS21              W1R1Bb AREF
+splib04  101                      5163      1134 Chrysocolla HS297.3B         W1R1Bb AREF
+splib04  325                     15715      3498 Neodymium_Oxide GDS34        W1R1Ba AREF
+splib04  406                     19806      4410 Samarium_Oxide GDS36         W1R1Ba AREF
+splib04   64                      3302       708 Axinite HS342.3B             W1R1Bb AREF
+splib04  435                     21169      4728 Staurolite HS188.3B          W1R1Bb AREF
+splib04   25                       911       216 Almandine WS479 Garnet       W1R1Bb AREF
+splib04   61                      3180       678 Augite NMNH120049            W1R1Bb AREF
+splib04   72                      3757       810 Bronzite HS9.3B Pyroxene     W1R1Bc AREF
+splib04   77                      3947       858 Butlerite GDS25              W1R1Ba AREF
+splib04   78                      4058       882 Bytownite HS106.3B Plagio    W1R1Bc AREF
+splib04   90                      4557      1002 Chalcopyrite HS431.3B        W1R1Bb AREF
+splib04  100                      5107      1122 Chromite HS281.3B            W1R1Bb AREF
+splib04  103                      5270      1164 Cinnabar HS133.3B            W1R1Bc AREF
+splib04  128                      6639      1458 Cuprite HS127.3B             W1R1Bb AREF
+splib04  131                     26719      6156 Desert_Varnish GDS141        W1R1Ba AREF
+splib04  132                     26731      6162 Desert_Varnish GDS78A Rhy    W1R1Ba AREF
+splib04  148                      7435      1644 Enstatite NMNH128288         W1R1Bc AREF
+splib04  191                      9218      2088 Hedenbergite NMNH119197      W1R1Bb AREF
+splib04  258                     12545      2796 Lazurite HS418.3B            W1R1Bb AREF
+splib04  270                     13124      2928 Maghemite GDS81 Syn (M-3)    W1R1Bb AREF
+splib04  272                     13178      2940 Magnetite HS195.3B           W1R1Bb AREF
+splib04  275                     18732      4158 Pyrolusite HS138.3B          W1R1Bb AREF
+splib04  284                     13639      3042 Microcline HS103.3B Feldspar W1R1Bc AREF
+splib04  335                       512       132 Albite HS143.3B Plagioclase  W1R1Bc AREF
+splib04  356                     17349      3852 Orthoclase NMNH142137 Fe     W1R1Bb AREF
+splib04  361                     17443      3882 Pectolite NMNH94865.a        W1R1Bb AREF
+splib04  396                     19388      4314 Rhodonite NMNHC6148 >250um   W1R1Bb AREF
+splib04  439                     21389      4776 Sulfur GDS94 Reagent         W1R1Ba AREF
+splib04  495                     29812      7128 Dry_Long_Grass AV87-2        W1R1Ba AREF
+sprlf01  138                     30093      7248 Grass_Golden_Dry GDS480      W1R1Fa AREF
+sprlf01  179                     29218      6912 Plywood GDS365 Fresh Pine    W1R1Fa AREF
+sprlf01  159                     29055      6864 Plastic_Tarp GDS340 Blu_Wovn W1R1Fa AREF
+sprlf01  163                     29096      6876 Plastic_Vinyl GDS372 White   W1R1Fa AREF
+sprlf01  166                     28077      6558 Fiberglass GDS337 Grn Roofng W1R1Fa AREF
+sprlf01  182                     29297      6936 Polystyrene GDS345 BluInsul  W1R1Fa AREF
+sprlf01  208                     28894      6816 Plastic_PETE GDS380 Clear    W1R1Fa AREF
+sprlf01  210                     28874      6810 Plastic_PETE GDS379 TrnslBrn W1R1Fa AREF   Cmd File T4.1A3 should be 210 and not 208 (fixed in cmd file).
+sprlf01  218                     28542      6714 Plastic_HDPE GDS393 GlosWhTr W1R1Fa AREF
+sprlf01  143                     28401      6672 Painted_Aluminum GDS333 LgGr W1R1Fa AREF
+sprlf01  207                     28958      6834 Plastic_PETE GDS383 Clrbluis W1R1Fa AREF
+sprln01   14                      1347       300 Alunite GDS97 K  Syn (150C)  W2R4Na RREF
+sprln01   16                      1308       294 Alunite GDS96 K  Syn (250C)  W2R4Na RREF
+sprln01   18                      1468       324 Alunite RES-2 K Syn (450C)   W2R4Na RREF
+sprln01   13                      1269       288 Alunite GDS95 Na Syn (150C)  W2R4Na RREF
+sprln01   15                      1546       336 Alunite RES-4 Na Syn (300C)  W2R4Na RREF
+sprln01   17                      1507       330 Alunite RES-3 Na Syn (450C)  W2R4Na RREF
+splib04   28                      1063       246 Alunite GDS82 Na82           W1R1Bb AREF
+sprlf01  126                     23945      5382 Alunite+Dickite MV99-6-26b   W1R1Fc AREF
+splib04   27                      1079       252 Alunite GDS83 Na63           W1R1Bb AREF
+sprln01   26                      1585       342 Alunite RES-9 Summitv (400C) W2R4Nb RREF
+sprln01   48                      1187       276 Alunite GDS84 Na03           W2R4Na RREF
+sprln01   43                      1624       348 Alunite RES10 NA56% Syn 450C W2R4Na RREF
+sprln01   49                      1663       354 Alunite RES12 NA78% Syn 450C W2R4Na RREF
+sprln01   40                     24001      5394 Alunite0.35K+.65Na CU91-217H W2R4Nb RREF
+sprln01   41                     24090      5418 Alunite0.73K+.27Na CU91-217D W2R4Na RREF
+sprln01   42                     24051      5412 Alunite0.66K+.34Na CU91-217A W2R4Nb RREF
+sprln01   12                     26022      5832 Muscovite CU91-250A med Al   W2R4Nb RREF
+splib04  311                     15059      3348 Muscovite GDS113 Ruby        W1R1Bb AREF
+splib04  360                     17429      3876 Paragonite GDS109            W1R1Ba AREF
+splib04  226                     11041      2478 Illite IMt-1.b <2um          W1R1Ba AREF
+splib04  224                     10903      2442 Illite GDS4 (Marblehead)     W1R1Bb AREF
+sprln01   10                     14848      3306 Muscovite CU93-1 low-Al Phyl W2R4Nb RREF
+splib04  313                     15173      3372 Muscovite GDS116 Tanzania    W1R1Ba AREF
+splib04  241                     11962      2676 Kaolinite CM9                W1R1Bb AREF
+splib04  243                     12176      2718 Kaolinite KGa-2 (pxl)        W1R1Bb AREF
+splib04  185                      8999      2040 Halloysite NMNH106237        W1R1Ba AREF
+splib04  135                      6820      1500 Dickite NMNH106242           W1R1Bb AREF
+splib04  180                      8796      1986 Gypsum HS333.3B (Selenite)   W1R1Ba AREF
+splib04  251                     25636      5868 Kaolin_Smect H89-FR-2 .5Kaol W1R1Bb AREF
+splib04  252                     25691      5880 Kaolin_Smect H89-FR-5 .3Kaol W1R1Bb AREF
+splib04  296                     14688      3270 Montmorillonite SWy-1        W1R1Bb AREF
+splib04  297                     14498      3228 Montmorillonite SAz-1        W1R1Bb AREF
+splib04   89                      4502       990 Chalcedony CU91-6A           W1R1Ba AREF
+splib04  134                      6765      1488 Diaspore HS416.3B            W1R1Bb AREF
+splib04  383                     18885      4188 Pyrophyllite PYS1A fine gr   W1R1Ba AREF
+sprlb01  185                     25812      5910 Kaolwxl.75+Alun_HS295 AMX14  W1R1Bb AREF
+sprlb01   44                     26348      6060 Pyrophyl.50+Ca-Mont.50 AMX16 W1R1Ba AREF
+sprlb01   47                     23881      5358 Alun366+.50PyroPYS1A GDS222  W1R1Bb AREF
+sprlb01   64                     23913      5370 Alunite+Pyrophyl SD1093A     W1R1Bb AREF
+sprlf01   71                     26313      6048 Pyrophyl+Muscovite JH_PYRM1  W1R1Fb AREF
+sprlf01   72                     26100      5988 Muscovite+Pyrophyl JH_PYRP1  W1R1Fb AREF
+sprlb01  173                     23867      5352 Alun0.3+Musc0.4+Pyro0.3 AMX1 W1R1Ba AREF
+sprlb01   55                     24039      5406 Alunite0.5+Kaol_KGa-1 AMX3   W1R1Bb AREF
+sprlb01  181                     25812      5910 Kaolwxl.75+Alun_HS295 AMX14  W1R1Bb AREF
+sprlf01  141                     25474      5820 Kalun+kaol+gth mv2-ar3       W1R1Fb AREF
+sprlf01  142                     23894      5364 Alun_Na+Kaol+Hemat  MV00-11a W1R1Fc AREF
+sprlb01   56                     25507      5832 Kaol.5+MuscCU91-250A AMX13   W1R1Bb AREF
+sprlb01  126                     25521      5838 Kaol_Wxl+0.5Musc_Ruby AMX12  W1R1Ba AREF
+sprlb01   92                     25494      5826 Kaol+Musc_intimate CU93-5C   W1R1Ba AREF
+sprlb01   87                     26008      5970 Muscov+Jaros CU93-314 coatng W1R1Bb AREF
+sprlf01  127                     25237      5748 Gyp+jar+ill BRCM1 Marysvale  W1R1Fb AREF
+sprlb01  189                     25287      5766 Gyp.5+Kjar.3+hAlmsc.2 AMX24  W1R1Ba AREF
+sprlb01  191                     25272      5760 Gyp.4+jr20+msc.2+dic.2 AMX23 W1R1Ba AREF
+sprlb01  196                     25258      5754 Gyp.3+jr.1+msc.4+dic.2 AMX22 W1R1Ba AREF
+sprlb01  198                     24965      5670 Dic.4+msc.3+gyp.2+jr.1 AMX20 W1R1Ba AREF
+sprlb01   57                     23965      5388 Alunite.5+MuscCU91-250A AMX4 W1R1Ba AREF
+sprlb01   58                     23855      5346 Alun.33+Kaol.33+Musc.33 AMX2 W1R1Ba AREF
+sprln01   33                     26061      5982 Muscovite+Chlorite CU91-253D W2R4Na RREF
+splib04   35                      1757       372 Ammonio-Illite/Smectit GDS87 W1R1Bb AREF
+splib04   75                      3924       846 Buddingtonite GDS85 D-206    W1R1Bb AREF
+sprln01   39                     24428      5502 Buddingtnt+Na-Mont CU93-260B W2R4Nb RREF
+splib04   32                     24175      5436 Alunite_NH4+Jaro NMNH145596A W1R1Bb AREF
+splib04   34                      1851       390 Ammonio-Jarosite SCR-NHJ     W1R1Ba AREF
+splib04  141                      7116      1572 Dolomite HS102.3B            W1R1Bb AREF
+splib04   14                       235        72 Actinolite NMNHR16485        W1R1Bb AREF
+splib04   37                      1875       402 Amphibole NMNH78662          W1R1Bb AREF
+splib04   70                      3590       774 Biotite HS28.3B              W1R1Bb AREF
+sprlb01   43                     24951      5664 Chlorite_Serpentine BR93-22B W1R1Bb AREF
+splib04   96                      4908      1080 Chlorite SMR-13.b 60-104um   W1R1Ba AREF
+splib04  106                      5327      1176 Clinochlore GDS158 Flagst    W1R1Bb AREF
+splib04  451                     21910      4890 Thuringite SMR-15.c  32um    W1R1Ba AREF
+splib04  149                      7546      1668 Epidote GDS26.a 75-200um     W1R1Bb AREF
+splib04  209                     10071      2274 Hornblende_Fe HS115.3B       W1R1Bc AREF
+splib04  235                     11320      2538 Jarosite GDS24 Na            W1R1Bb AREF
+splib04  231                     11469      2568 Jarosite GDS99 K 200C Syn    W1R1Ba AREF
+splib04  239                     11629      2604 Jarosite SJ-1 H3O,10-20%     W1R1Bb AREF
+splib04  365                     17673      3930 Phlogopite HS23.3B           W1R1Bb AREF
+splib04  473                     23052      5142 Tremolite HS18.3             W1R1Bc AREF AREF Should this be HS18.3B ???
+splib04  441                     21499      4800 Talc GDS23 74-250um fr       W1R1Ba AREF
+splib04  443                     21626      4830 Talc WS659                   W1R1Bb AREF
+sprlf01  129                     24536      5538 Calcite+Talc PC99-1G         W1R1Fc AREF
+sprlf01  130                     25017      5682 Dolomit+Calcite+Talc PC99-1E W1R1Fc AREF
+sprlb01   40                     24629      5568 Calcite.8+Ca-Montmor.2 AMX15 W1R1Bb AREF
+splib04  271                     25848      5922 Magnesite+Hydroma HS47.3B    W1R1Ba AREF
+splib04   79                      4159       912 Calcite WS272                W1R1Ba AREF
+sprlb01   93                     24521      5532 Calcite+Dolomite.5 AMX8      W1R1Bb AREF
+sprlb01  117                     25052      5694 Dolomite.50+Ca-Montmor AMX10 W1R1Bb AREF
+sprlb01   94                     24480      5514 Calc.25+dolo.25+mont.5 AMX18 W1R1Bb AREF
+sprlb01  119                     24466      5508 Calc.25+Dolo.25+Ca-Mon AMX7  W1R1Bb AREF
+splib04  419                     20461      4560 Siderite HS271.3B            W1R1Ba AREF
+splib04  330                     15991      3558 Nontronite NG-1.a            W1R1Bb AREF
+splib04  190                      9107      2064 Hectorite SHCa-1.Ac-B        W1R1Bb AREF
+splib04  410                     19990      4452 Saponite SapCa-1.AcB         W1R1Bb AREF
+splib04  413                     20225      4506 Sepiolite SepNev-1.AcB       W1R1Ba AREF
+sprlb01   41                     24644      5574 Calcite.80+Mont_Swy-1 GDS212 W1R1Ba AREF
+sprlb01  118                     24507      5526 Calcite+.50Ca-Mont AMX6      W1R1Bb AREF
+sprlb01  120                     24493      5520 Calcite+.33Muscov AMX5 Ruby  W1R1Ba AREF
+sprlb01  116             sprlb06:             30 Grass_dry+0.17%Na-Mont AMX35 W1R1Ba AREF
+sprlb01   95                     25039      5688 Dolomite.5+Na-mont.5 AMX21   W1R1Bb AREF
+sprlb01   98                     24558      5544 Calcite.33+Ca-mont.67 AMX19  W1R1Bb AREF
+sprlb01   42                     24657      5580 Calcite.80wt+Kaol_CM9 GDS213 W1R1Ba AREF
+sprlb01  168                     24615      5562 Calcite.7+Kaolwxl.3 AMX9     W1R1Ba AREF
+splib04  114                      6008      1314 Clintonite NMNH126553        W1R1Bc AREF
+splib04  359                     17415      3870 Palygorskite PFL-1 Attapulg  W1R1Bb AREF
+splib04  489                     23707      5298 Zoisite HS347.3B             W1R1Bb AREF
+splib04  146                      7367      1626 Elbaite NMNH94217-1.c <74    W1R1Bb AREF
+splib04  168                      8111      1824 Gibbsite WS214               W1R1Bb AREF
+splib04  328                     15935      3546 Niter GDS43 (K-Saltpeter)    W1R1Ba AREF
+splib04  467                     22595      5040 Topaz Mt._Antero_#5          W1R1Bb AREF
+splib04  394                     19222      4278 Rhodochrosite HS338.3B       W1R1Bb AREF
+splib04  485                     23583      5268 Witherite HS273.3B           W1R1Ba AREF
+splib04  293                     14141      3150 Mizzonite HS351.3BS Scapolte W1R1Bc AREF
+splib04  291                     14023      3126 Mizzonite BM1931,12 Scapolte W1R1Bc AREF
+splib04  369                     17898      3978 Pinnoite NMNH123943          W1R1Ba AREF
+splib04  371                     17962      3996 Polyhalite NMNH92669-4       W1R1Ba AREF
+splib04  402                     19626      4368 Rivadavite NMNH170164 Amph   W1R1Ba AREF
+splib04  212                     10180      2298 Howlite GDS155               W1R1Ba AREF
+splib04  476                     23270      5190 Ulexite HS441.3B             W1R1Ba AREF
+sprlf01   11                     26567      6114 White_Crust LV30 starkeyite  W1R1Fc AREF
+splib04   38                      1930       414 Analcime GDS1 Zeolite        W1R1Ba AREF
+splib04   74                      3867       834 Brucite HS247.3B             W1R1Bc AREF
+splib04   83                      4283       942 Carnallite NMNH98011         W1R1Bb AREF
+splib04  116                      6019      1320 Colemanite GDS143            W1R1Bb AREF
+splib04  129                      6695      1470 Datolite HS442.3B            W1R1Bb AREF
+splib04  213                     10236      2310 Hydrogrossular NMNH120555    W1R1Bb AREF
+splib04  263                     12832      2862 Lepidolite NMNH88526-1       W1R1Ba AREF
+splib04  276                     13344      2976 Margarite GDS106             W1R1Bc AREF
+splib04  279                     13511      3012 Mascagnite GDS65.b (fr)      W1R1Ba AREF
+splib04  289                     13967      3114 Mirabilite GDS150 Na2SO4     W1R1Ba AREF
+splib04  322                     15604      3474 Natrolite HS169.3B Zeolite   W1R1Bb AREF
+splib04  399                     19500      4338 Richterite NMNH150800 HCl    W1R1Bb AREF
+sprlf01  136                      5230      1152 Chrysotile ML99-12A Coar Fib W1R1Fb AREF
+sprlf01  135                      5250      1158 Chrysotile ML99-12C Fine Fib W1R1Fb AREF
+splib04  102                      5218      1146 Chrysotile HS323.1B          W1R1Ba AREF
+splib04  403                     19682      4380 Roscoelite EN124             W1R1Bb AREF
+splib04  438                     21334      4764 Strontianite HS272.3B        W1R1Bb AREF
+splib04  440                     21444      4788 Syngenite GDS139             W1R1Ba AREF
+splib04  101                      5163      1134 Chrysocolla HS297.3B         W1R1Bb AREF
+splib04   65                      3357       720 Azurite WS316                W1R1Ba AREF
+splib04  274                     13289      2964 Malachite HS254.3B           W1R1Bb AREF
+sprlb01   69  closest match:     27924      6522 Cyanide_Cadmium_Potassium    W2R4Na RREF
+sprlb01   69       from sprlb01a rec 195 not in splib05 or 06.
+                   Note the only file that matches this is a 
+                   nicollet spectra 27924 Cyanide_Cadmium_Potassium.
+
+sprlb01   70  closest match:      27962     6528 Cyanide_Nickel_Potassium     W2R4Na RREF
+sprlb01   70       Note the only file that matches this is a 
+                   nicollet spectra 27962 Cyanide_Nickel_Potassium.
+sprlb01   71                     28000      6534 Cyanide_Trihydrate CT1       W1R1Ba AREF
+sprlb01   72                     28065      6552 Cyanide_Potassium_Ferro      W1R1Ba AREF
+sprlb01   73                     28013      6540 Cyanide_Zinc_Potassium       W1R1Ba AREF
+sprlb01   75                     28462      6690 Plastic GGA-54 Grnhouse Roof W1R1Ba AREF
+sprlb01   76                     28220      6606 Montmorill+Benzene SWy 1ml   W1R1Ba AREF
+sprlb01   77                     28256      6624 Montmorill+Trichlor SWy 1ml  W1R1Ba AREF
+sprlb01   78                     28244      6618 Montmorill+Toluene SWy .5ml  W1R1Ba AREF
+sprlb01   79                     28268      6630 Montmorill+Unleaded_Gas SWy  W1R1Ba AREF
+sprlb01   80                     28232      6612 Montmorill+TCE SWy saturated W1R1Ba AREF
+sprlb01  186                     23761      5310 Zunyite GDS-241B <150um      W1R1B? AREF
+sprlf01  226                     29526      7008 WTC_Dust_Debris WTC01-2      W1R1Fa AREF
+sprlf01  225                     29548      7014 WTC_Dust_Debris WTC01-28     W1R1Fa AREF
+sprlf01  229                     27843      6498 Coated_Steel_Girder WTC01-8  W1R1Fa AREF
+sprlf01  224                     18015      4008 Portlandite GDS525 Ca(OH)2   W1R1Fa AREF
+splib04  498                     30123      7260 Lawn_Grass GDS91 (Green)     W1R1Ba AREF
+sprlb01  115                     33813      8208 Stonwll_Ply+.2grnGrass AMX34 W1R1Ba AREF
+sprlb01   51                     31008      7614 Grass_dry.7+.3green    AMX30 W1R1Ba AREF
+splib04  495                     29812      7128 Dry_Long_Grass AV87-2        W1R1Ba AREF
+splib04  325                     15715      3498 Neodymium_Oxide GDS34        W1R1Ba AREF
+splib04  406                     19806      4410 Samarium_Oxide GDS36         W1R1Ba AREF
+splib04  467                     22595      5040 Topaz Mt._Antero_#5          W1R1Bb AREF
+sprlb01   60                     31126      7638 Lawn_Grass GDS91 shifted 3nm W1R1Ba AREF
+sprlb01   63                     31107      7650 Lawn_Grass GDS91 /shiftd 3nm W1R1Ba AREF
+splib04  498                     30123      7260 Lawn_Grass GDS91 (Green)     W1R1Ba AREF
+splib04  490                     29665      7050 Aspen_Leaf-A DW92-2          W1R1Ba AREF
+splib04  496                     29889      7170 Fir_Tree IH91-2              W1R1Ba AREF
+splib04  497                     30112      7254 Juniper_Bush IH91-4B         W1R1Ba AREF
+splib04  500                     30708      7464 Pinon_Pine ANP92-14A needle  W1R1Ba AREF
+splib04  503                     30741      7482 Sage_Brush IH91-1B           W1R1Ba AREF
+splib04  506                     30841      7536 Walnut_Leaf SUN (Green)      W1R1Ba AREF
+splib04  492                     29695      7068 Blackbrush ANP92-9A leaves   W1R1Ba AREF
+splib04  493                     29705      7074 Blue_Spruce DW92-5 needle    W1R1Ba AREF
+splib04  499                     30659      7446 Maple_Leaves DW92-1          W1R1Ba AREF
+splib04  501                     30718      7470 Rabbitbrush ANP92-27         W1R1Ba AREF
+splib04  502                     30728      7476 Russian_Olive DW92-4         W1R1Ba AREF
+splib04  504                     30812      7518 Saltbrush ANP92-31A          W1R1Ba AREF
+splib04  496                     29889      7170 Fir_Tree IH91-2              W1R1Ba AREF
+splib04  496                     29889           Fir_Tree IH91-2              W1R1Ba AREF
+splib04  496                     29889           Fir_Tree IH91-2              W1R1Ba AREF
+splib04   79                      4159       912 Calcite WS272                W1R1Ba AREF
+splib04  149                      7546      1668 Epidote GDS26.a 75-200um     W1R1Bb AREF
+sprlf01   44                      5556      1224 Clinochlore_Fe GDS157.b      W1R1Fa AREF
+#                                                note old title was:
+#                                                GDS307 Chlorite Ripidolite 75-150um
+sprlf01   47                     24594      5556 Calcite.67+Epidote.33 GDS310 W1R1Fa AREF
+sprlf01   48                     24573      5550 Calcite.33+Epidote.67 GDS311 W1R1Fa AREF
+sprlf01   49                     24789      5616 Chlor.2+Epid.6+Calc.2 GDS312 W1R1Fa AREF
+sprlf01   50                     24811      5622 Chlor.6+Epid.2+Calc.2 GDS313 W1R1Fa AREF
+sprlf01   51                     24766      5610 Chlor.2+Epid.2+Calc.6 GDS314 W1R1Fa AREF
+sprlf01   52                     24833      5628 Chlorit.33+Calcite.67 GDS315 W1R1Fa AREF
+sprlf01   53                     24892      5646 Chlorite.67+Calcit.33 GDS316 W1R1Fa AREF
+sprlf01   54                     24914      5652 Chlorite.67+Epidot.33 GDS317 W1R1Fa AREF
+sprlf01   55                     24870      5640 Chlorite.33+Epidot.67 GDS318 W1R1Fa AREF
+sprlf01   56                     24727      5598 Chl.33+Epid.33+Cal.33 GDS319 W1R1Fa AREF
+
+sprlb01   61                     31090      7644 Lawn_Grass GDS91 +const 1.0  W1R1Ba AREF

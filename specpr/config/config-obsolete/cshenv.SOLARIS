@@ -1,0 +1,50 @@
+#
+# Should only need to edit the next group.
+#
+# note: in SSPPFLAGS, set TERMDELAY if you need extra delays by the
+# cpu for graphics terminal graphics.
+setenv SPKLUDGE SOLARIS
+setenv SSPPFLAGS 'SOLARIS -XWIN -SYSV'
+setenv SPECPR /src/local/specpr
+setenv LDLIBS '-lX11 -lm'
+setenv LDFLAGS ' '
+setenv LSTRING '-lstrings'
+setenv RANDRET 32767
+setenv SP_LOCAL /usr/local
+setenv SP_BIN securebin
+#
+# The following should be fine as is, except FFLAGS might need
+#               floating point accelerator flags
+#               (e.g. on sun add -ffpa if you have an accelerator)
+#
+setenv SPSDIR syssun
+setenv SPSYSOBJ '${SP_OBJ}/syssun.o'
+setenv RANLIB 'ranlib'
+setenv SSPP 'sspp'
+setenv SP_DBG '${SPECPR}/debug'
+setenv SP_TMP '${SPECPR}/tmp'
+setenv SP_OBJ '${SPECPR}/obj'
+setenv SP_LIB '${SPECPR}/lib'
+setenv F77 'f77'
+setenv CC 'cc'
+setenv AR 'ar'
+setenv RF 'ratfor'
+setenv FFLAGS '-C -O'
+setenv FFLAGS1 '-C '
+setenv FFLAGS2 '-C '
+setenv FOPT1 '-O'
+setenv FOPT2 '-O'
+setenv RFLAGS '-C -6%'
+setenv CFLAGS '-O'
+setenv ARFLAGS 'rv'
+setenv GFLAGS '-s'
+
+setenv LIBPW '/lib/libPW.a'
+
+setenv GF1_CFLAGS '-g'
+setenv GF1_FFLAGS '-C +T -T2 +Vc +Vf'
+setenv GF1_LFLAGS ''
+setenv GF2_CFLAGS '-g'
+setenv GF2_FFLAGS '-C +T -I2 +Vc'
+setenv GF2_LFLAGS '-z'
+

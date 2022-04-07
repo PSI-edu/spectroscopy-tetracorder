@@ -1,0 +1,61 @@
+.\" use ms macros
+.nr LL 6.5i
+.ll 6.5i
+.nr PO 1.1i
+.po 1.1i
+.nr VS 12
+.vs 12
+.nf
+8.6.24. F24:  Star Moon Thermal Removal
+              Manual entry to be written
+
+8.6.25. F25:  Two Component Areal Mix Least Squares
+              Manual entry to be written
+
+8.6.26. F26:  not developed yet
+8.6.27. F27:  not developed yet
+8.6.28. F28:  not developed yet
+8.6.29. F29:  not developed yet
+8.6.30. F30:  not developed yet
+8.6.31. F31:  not developed yet
+8.6.32. F32:  not developed yet
+8.6.33. F33:  not developed yet
+8.6.34. F34:  not developed yet
+8.6.35. F35:  not developed yet
+8.6.36. F36:  not developed yet
+8.6.37. F37:  not developed yet
+8.6.38. F38:  not developed yet
+8.6.39. F39:  not developed yet
+8.6.40. F40:  under development
+8.6.42. F42:  under development
+
+8.6.43. F43:  FFT and Inverse FFT
+              Manual entry to be written
+              Notes: the FFT is not folded (zero frequency is at
+              beginning and end of output data set.  Also: the frequencies
+              for the second half of the FFT are not correct (they are
+              still increasing; they should decrease from the mid-point).
+
+8.6.44. F44:  Segmented Upper Hull Continuum
+              Manual entry to be written
+                 Reference to the method: Clark, R.N., King, T.V.V., and
+              Gorelick, N.S., 1987, Automatic Continuum Analysis of
+              Reflectance Spectra: Proceedings of the Third Airborne
+              Imaging Spectrometer Data Analysis Workshop, JPL
+              Publication 87-30, 138-142.
+
+8.6.45. F45:  Automatic Band Analysis (under development)
+              Manual entry to be written
+
+8.6.46. F46:  Band Analysis Output (Under Development)
+              Manual entry to be written
+
+8.6.47. F47:  Spectrum Recreation from F46 output (Under Development)
+              Manual entry to be written
+
+8.6.48. F48:  HP Graphics Terminal Tablet Digitization
+              Manual entry to be written
+
+8.6.49. F49:  Linear Interpolation (under development)
+              Manual entry to be written
+

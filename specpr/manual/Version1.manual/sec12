@@ -1,0 +1,184 @@
+.sh 2 "File Input and Options " 13 6
+.pp
+The files to be plotted are input as the file ID (V, W, OR D),
+the file number, and the options.  For all data files input, the
+wavelength file assumed is file 1.  If another file is to be used,
+this must be requested as an option.  A maximum of 15 spectra may
+be plotted at one time.  These may be all on one graph or
+separated into many plots by an option request.  The options are
+listed below.
+.ba 5
+.ip "Option E" 15
+is include Errors.
+.ip "Option C" 15
+means to Connect the data points.  If the wavelengths are not in
+sequence, or a channel has been deleted, the points involved are
+not connected.
+.ip "Option N" 15
+means that, if a point lies outside the lower or upper bound, it
+should be deleted.  If this specification is not given, the point
+will be plotted at the limit of the graph.
+.ip "Option A" 15
+followed by a number (1 to 10) means the wavelength file is the
+number.  The default file is 1.
+.ip "Option P" 15
+followed by a number is the point size.  This number can be 0 to
+5.  If the number is zero, no point will be plotted.  Point size 1 is
+about 1.27mm on a side, size 2 is twice this, size 3 is three
+times, etc.  Note, if point size zero is specified and points are
+not connected, no data will be plotted, and you will have a blank
+plot!  A line drawing can be made by specifying point size zero and
+connect points.  The point size default varies with the total
+number of channels per spectrum.  It is size 3 for 30 channels or
+less, size 2 for 31 to 150 channels, and size 1 for more than 150
+channels.  The symbol type changes with each spectrum plotted.
+See Table 13.6.1.
+.ip "Option L" 15
+followed by a number 1, 3, 5, or 7 selects the line size
+(missing) for the axis is fixed at 3.  The number 1, 3, 5, or 7
+is the number of Gould units the line thickness is.   Size 1 is
+about 1/200 of an inch (0.127 mm).  The line size changes error
+bars and the line connecting points.  The default is size 1.
+.ip "Option G" 15
+means the spectrum after this one is to be plotted on a new
+graph.  Thus, 15 spectra may be plotted on a single graph
+(overlaid), or they may be plotted singly or any
+combination.  The G (new Gould plot) selects when a new plot
+is to begin.  Fifteen plots, plotted singly, may take
+90 minutes or more.
+.ip "Option D" 15
+means to delete points from this spectrum only (as opposed to
+delete from all spectra input as in section 13.4).  The program
+will ask for channels to be typed in when it is ready.  More than
+one line may be used to input the channels to be deleted (256
+channels maximum).  When you are finished inputting channels,
+type
+.ul
+C
+to continue.
+.ip "Option M" 15
+More copies:  In the options, specify "M" and the number of copies
+desired (1 to 9) default=1.  Note you need this option only on
+the last spectrum to be put on the plot.
+.ip "Option S" 15
+Symbol type:  To change symbol type, specify "S" and the symbol
+number (1 to 8).  See manual for symbols.  The symbol size is
+given by the "P" specification (point symbol size).  The symbol
+type is incremented for each spectrum input and is reset to 1 for
+each new Gould plot ("G" specification).  See table 13.6.1.
+.ip "Option R" 15
+Since mistakes are bound to happen when typing in all these
+spectra, you may return to the last step for re-inputting your
+data.  This is done by typing an "R" in place of a file ID and
+file number.  Example:  You type in the spectra
+.l(
+
+        1)  "V23EA2P3"
+        2)  "V29EP4"
+        3)  "V30A3P1C"
+        4)  "V33A5".
+
+.l)
+You now notice the step #3 should have been "V31A3P1C".  You are
+at step 5:  you type "R"; the computer says
+
+        "RETURN TO 4; CONTINUE".
+
+You then type "R" again, and the computer responds
+
+        "RETURN TO 3; CONTINUE".
+
+You may then retype step 3 (and also all steps after 3).  You
+may not return to a step before the first spectrum input (if you
+need to, you must "E" or "X" to exit).
+.ip "Option T" 15
+means to include text on the graph.  Text may be written as 11
+sets of 20 characters per set for each spectrum entered.  The
+text position is given in centimeters [horizontal direction (x),
+then vertical (y)] from the lower left-hand corner of the axes of
+the plot.  After the x and y position, input the text angle
+(90\(de is horizontal with the text rotating counterclockwise
+with increasing angle) and then the text to be input (20
+characters maximum).  All that goes on one line.  When you are
+finished inputting text, type
+.ul
+C
+in place of the horizontal text position number.  One
+character=0.34 cm wide use line feed of 0.60 cm.
+
+.ba 0
+.pp
+.ul
+Text entry:
+You may also return to the previous text entry using the "R"
+specification as with the file input.  You may not return to a
+previous entry before text entry 1.  If you have an error in a
+previous file entry, type "C" to continue to next step after text
+entry; then return to last file input as described above.  The "S"
+in the text entry is used for symbol entry.  When at a text entry
+point, type "S" then the following numbers:  symbol type (1 to 8),
+the symbol size (1 to 6), and the x (0-25 centimeters) and y (0-19
+centimeters) coordinates of the symbol position.  Separate
+numbers by spaces.
+.pp
+The SPECPR Gould plot routines allow subscripting, superscripting,
+and backspacing of text.  Special characters are used to enter
+the different modes and can be used wherever text is written on
+the plot (horizontal or vertical axis labels or other text).  The
+characters are:
+.TS
+center,tab(!);
+l l.
+T{
+.ul
+Character
+T}!T{
+.ul
+Effect
+T}
+\ (Backslash)!Backspace to previous character
+{ (Left Brace)!Go into subscript mode
+} (Right Brace)!go into superscript mode
+@ (At sign)!End last scripting mode
+.TE
+.pp
+It was assumed that these characters would not need to be printed
+so they have been reserved for the above special use.  Backslash
+can be used to cause characters to be overprinted.  An "at sign"
+terminates the last use of a brace.  All characters in between
+are printed in script mode.
+
+Examples:
+.l(
+
+                O\-             Will print as O-
+                A{1             Will print as A1
+                SAM\\\___       Will print as SAM___
+                X}2@-Y          Will print as X2-Y
+
+.l)
+.pp
+Typing
+.ul
+X
+in place of a file D will cause the program to return to the beginning
+of the routine (section 13.2).  Typing
+.ul
+B
+will begin building the plot on the disc.  Note you must turn on
+the Gould printer plotter and press the remote button (next to the
+on button).  If you do not, when the plot is dumped to the Gould,
+it will not be ready; and messages will appear on the system
+console.
+
+
+.sh 2 "Building Plot "
+.pp
+Each stage of the plot will be printed on the CRT.  When the
+plotting is finished, the program asks if you want additional
+copies (this applies only to the present plot and not previous
+plots which were generated under the
+.ul
+G
+option).  If you wish to exit, type zero and the program will
+return to the beginning of the plot routines (section 13.2).

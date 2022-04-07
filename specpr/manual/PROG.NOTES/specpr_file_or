@@ -1,0 +1,94 @@
+               Specpr File Organization
+
+Specpr files are random access files, 1536 bytes per record.  The data
+types are described in the file format document in the specpr
+programmers notes.  Currently, there are four basic types of data
+format:
+
+1) beginning spectrum (512 bytes of header and 256 channels),
+2) continuation records for spectra with more than 256 data channels,
+3) Character records where the data space is ascii text, and
+4) text continuation text records.
+
+A data set can consist of as little as a single record (a single one
+dimensional array) or have up to 12 continuation records.
+
+A spectrum consists of a wavelength set, data (e.g. reflectance) and
+the error bar.  In specpr a data set is only one array, not three
+(e.g. waves, reflectance and error).  The wavelengths are kept in an
+independent record.  The error bars are kept in the record after the
+data values.  Some data do not have error bars, so space is saved.
+A sample specpr file might look like this to the user (this is extracted
+from an actual data file):
+
+  record          title                          channels   time       date
+-------------------------------------------------------------------------------
+     1  ************ SPLIB001 ******************    36 Characters of TEXT
+     .
+     .  other data records
+     .
+    15  USGS Denver Beckman STD wavelengths 1x     512  02:57:26.00  10/15/1985
+    17  USGS Denver BKMN 1x resolution             512  02:57:26.00  10/15/1985
+     .
+     .  other data records
+     .
+    73  Description of Alunite   Hunt 295.?B      3132 Characters of TEXT
+    76  Alunite 295.3B .2-3um 1x ABS REF           512  12:03:14.00  08/20/1985
+    78  errors to previous file   76               512  12:03:14.00  08/20/1985
+    80  Alunite 295.3B .9-2.6um 2x ABS REF         680  09:49:27.00  08/21/1985
+    83  errors to previous file 80                 680  09:49:27.00  08/21/1985
+     .
+     .
+     .
+
+In the case of record 76, the number of data channels is more than
+256, so one continuation record is used (record 77; hidden from
+user view).  Similarly, records 81 and 82 are continuation records.
+
+
+The following table shows the how data are spread over continuation
+records:
+
+Continuation    number of channels        Data channel range
+record number     in record                                 
+-------------------------------------------------------------
+    -                256                        1 -  256
+    1                383                      257 -  639
+    2                383                      640 - 1022
+    3                383                     1023 - 1405
+    4                383                     1406 - 1788
+
+    5                383                     1789 - 2171
+    6                383                     2172 - 2554
+    7                383                     2555 - 2937
+    8                383                     2938 - 3320
+
+    9                383                     3321 - 3703
+   10                383                     3704 - 4086
+   11                383                     4087 - 4469
+   12                384                     4470 - 4852
+-------------------------------------------------------------
+
+The following table shows how text data are spread over continuation
+records.  Note that there is also a pointer to additional text, so
+the real text size is limited only by disk space.
+
+Continuation    number of characters      Character range
+record number      in record                                 
+-------------------------------------------------------------
+     -               1476                      1 -  1476
+     1               1532                   1477 -  3008
+     2               1532                   3009 -  4540
+     3               1532                   4541 -  6072
+     4               1532                   6073 -  7604
+
+     5               1532                   7605 -  9136
+     6               1532                   9137 - 10668
+     7               1532                  10669 - 12200
+     8               1532                  12201 - 13732
+
+     9               1532                  13733 - 15264
+    10               1532                  15265 - 16796
+    11               1532                  16797 - 18328
+    12               1532                  18329 - 19860
+-------------------------------------------------------------

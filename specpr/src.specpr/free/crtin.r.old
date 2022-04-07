@@ -1,0 +1,420 @@
+	subroutine crtin
+	implicit integer*4 (i-n)
+
+#ccc  version date: @(#)crtin.r	2.25 12/13/89 08:55:41
+#ccc  author(s): Roger Clark & Jeff Hoover
+#ccc  language:  Ratfor
+#ccc
+#ccc  short description:
+#ccc         This subroutine reads one line from the
+#ccc         terminal and returns it in iopcon, if the first
+#ccc         character is <,!,?,$,%, or > this is a command
+#ccc         of some type and it is handled appropriately.
+#ccc  algorithm description: none
+#ccc  system requirements:   none
+#ccc  subroutines called:
+#ccc          wjfren,list,typein,xfer,copyin,system,refile
+#ccc  argument list description: none
+#ccc  parameter description:
+#ccc  common description:
+#ccc  message files referenced:
+#ccc  internal variables:
+#ccc  file description:
+#ccc  user command lines:
+#ccc  update information:
+#ccc  NOTES:
+#ccc
+#####################################################################
+############### new version of crtin using FORTRAN-77 ###############
+#####################################################################
+
+	include "../common/lbl4"
+	include "../common/cmd"
+	include "../common/lundefs"
+	include "../common/alphabet"
+	include "../common/filenames"
+	include "../common/key1"
+	include "../common/ioftyp"
+	include "../common/hptrm"
+	include "../common/pipes"
+	include "../common/iocontrol"
+	include "../common/overlys"
+#RED
+	integer*4 ihchar    # function ihchar
+	integer*4 varpar    # function varpar
+	integer*4 lnb       # function lnb
+
+	character*1     irespo, chtmp, ihbcksl, rbrakt
+	character*80	txtbuf, ipxtxt
+	logical         ixit,savflg,keycon
+	integer*4 varsub, idummy, ipxflg, ipxstr, ipxend, cmdverbose
+
+	ihbcksl = char(92)  # this is the backslash character
+	rbrakt  = char(123) # right curly bracket
+
+#RED Initialize to 1
+	ipxstr = 1
+
+	if (icoman<=0 | icoman>20) icoman = 1
+
+	ipxflg = 0   # no pixel coordinate processing (yet)
+
+999     icontin = 1  # begin repeat block
+	repeat {
+		#write (*,*) 'DEBUG: crtin start repeat loop'
+    #########################################################
+    ##### read input line from terminal or command file #####
+    ########## or get next logical line from copcon #########
+    #########################################################
+1000	if (cndx==0) {
+			if (!redire) {
+				write(ttyout,'(a1,$)') iprom
+				ioutverbose = 0  # if not redirecting
+						# output, then output
+						# all user prompts
+			} else {
+				if (inline>iend) goto 2000
+				inline = inline + 1
+			}
+#
+# inpipe is a pointer to an array of integers which specify the
+# unit number of additional files to be read from.  This stuff is
+# all managed by the END case on this read, and the subroutine refile
+#
+			inpipe = pipe(pipelv)
+			read(inpipe,1,end=2000,err=2000) iopcon
+			#write (*,*) 'DEBUG: iopcon=', iopcon
+			savflg = .true.
+			ilast = lnb(iopcon)
+			if (copy) {
+				write(cpylun,1) iopcon(1:ilast)
+			}
+			if (redire) {
+				if (ioutverbose == 0) {
+					write(ttyout,4) iopcon(1:ilast)
+				}
+			}
+		} else {
+			iopcon = copcon(2:80)
+			#write (*,*) 'DEBUG crtin 12'
+			ilast = lnb(iopcon)
+			if (ioutverbose == 0) {
+				write(ttyout,4) iopcon(1:ilast)
+			}
+		}
+#
+# $ substitution is done
+#
+10		if (index(iopcon,'$')!=0 & varsub(idummy)==-1) {
+			write(ttyout,2)           #line overflow condition
+			write(ttyout,'(a1,$)') iprom
+			if (!redire) {
+				read(ttyin,1,end=1000,err=1000) irespo
+				if (irespo=='r') next
+			} else goto 2000
+		}
+#
+# Value variable substitution
+#
+		ivv = index(iopcon,rbrakt)
+		if (ivv > 1) {
+			chtmp = iopcon(ivv-1:ivv-1)
+		} else {
+			chtmp = ' '
+		}
+		if (chtmp == ihbcksl) {  # erase back slash
+			iopcon(ivv-1:79) = iopcon(ivv:80)
+			iopcon(80:80) = ' '
+		}
+		if ((ivv > 0) & (chtmp != ihbcksl)) {
+			itmp = varpar(idummy)
+			if (itmp == -1) {
+				write(ttyout,*) 'Error in variable substitution'
+				goto 2000
+			} else if (itmp ==1) {
+# Just a set.
+				ixit = .false.
+			}
+
+		}
+#
+# ; processing done
+#
+		inchar=1
+		call wjfren(inchar,x,ifchar)
+		#write (*,*) 'DEBUG: in crtin: wjfren 1: i=',inchar
+		if (inchar > 80) inchar=80
+		if ((ifchar != ihchar('='))|(iopcon(inchar:inchar)!='=')
+				&(inchar < 80)) { 
+			cndx = index(iopcon,';')      #not alias definition
+			if (cndx!=0) {
+				copcon = iopcon(cndx:80)
+				iopcon(cndx:80) = ' '
+			}
+		}
+#
+# pixel processing done on 3d files
+#
+		ipxflg = 0   # no pixel coordinate processing (yet)
+		ipx = index(iopcon,'p')
+		if (ipx > 1 && ipx < 77) {
+			if (iopcon(ipx:ipx+2) == 'px(' &
+				iopcon(ipx-1:ipx-1) != ihbcksl ) { # found pixel
+				ipxtxt = iopcon            # save original text
+                                                           # and its not escaped
+				ipxstr = ipx               # save start position
+				call prpixl (ipx,ipxend,igo)    # process pixel
+				if (igo == 1000) go to 1000 # error
+				ipxflg = 1    # pixel coords have been processed
+			}
+		}
+#
+############# pixel processing complete
+#
+#
+############ overlay on/off processing
+#
+
+		inchar = 1
+		call wjfren(inchar,x,ifchar)
+		#write (*,*) 'DEBUG: in crtin: wjfren 2: i=',inchar
+		if (inchar < 74 && ifchar == iho) {
+			if (iopcon(inchar-1:inchar+4) == 'ov1=on') { #overlay1
+				ovrflg1=1
+				go to 1000
+			}
+			if (iopcon(inchar-1:inchar+4) == 'ov2=on') { #overlay2
+				ovrflg2=1
+				go to 1000
+			}
+			if (iopcon(inchar-1:inchar+4) == 'ov3=on') { #overlay3
+				ovrflg3=1
+				go to 1000
+			}
+			if (iopcon(inchar-1:inchar+5) == 'ov1=off') { #overlay1
+				ovrflg1=0
+				go to 1000
+			}
+			if (iopcon(inchar-1:inchar+5) == 'ov2=off') { #overlay2
+				ovrflg2=0
+				go to 1000
+			}
+			if (iopcon(inchar-1:inchar+5) == 'ov3=off') { #overlay3
+				ovrflg3=0
+				go to 1000
+			}
+		}
+
+#
+############ help processing
+#
+		inchar = 1
+		call wjfren(inchar,x,ifchar)
+		#write (*,*) 'DEBUG: in crtin: wjfren 2: i=',inchar
+		if (inchar < 78 ) {
+			if (iopcon(inchar:inchar+2) == 'elp') { #help requested
+				call sphelp (iopcon)
+				go to 1000
+			}
+		}
+
+#
+############ user prompt verbose level processing done
+#
+#               need: CMD crt verbose=n, n = 0, 1, 2, 3, 4 , 5
+
+		inchar = 1
+		call wjfren(inchar,x,ifchar)
+		#write (*,*) 'DEBUG: in crtin: wjfren 3: i=',inchar
+		if (inchar < 73 & ifchar == ihcc) {
+			if (iopcon(inchar:inchar+14) == 'MD crt verbose=') { 
+				inchar= inchar+15
+				call wjfren(inchar,x,ifchar)
+				#write (*,*) 'DEBUG: in crtin: wjfren 4: i=',inchar
+				ii = x +0.5
+				itmp = cmdverbose(ii)
+				#write (ttyout,*) 'DEBUG: ioutverbose=',itmp, ioutverbose
+
+				cndx = 0
+				ixit = .false.
+				go to 1000
+			}
+		}
+
+
+# other special character processing
+
+		inchar = 1
+		call wjfren(inchar,x,ifchar)
+		#write (*,*) 'DEBUG: in crtin: wjfren 5: i=',inchar
+		ixit = .true.
+
+
+	###############################
+	###### list command file ######
+	###############################
+		if (ifchar == ihchar('?')) {
+			call list (inchar)
+			go to 1000           # next
+		}
+
+      ################################################################
+      #####   function is to directly type in permanent command  #####
+      #####   or do alias functions.                             #####
+      ################################################################
+		if (ifchar == ihchar('=')) {
+			ier = 0
+			if (iopcon(inchar:inchar) == '=') { #alias definition
+				call setkey
+				cndx = 0
+			} else {                            #define $variable
+				call typein (inchar,ier)
+			}
+			if (ier!=0) go to 1000           # next
+			ixit = .false.
+		}
+
+########################################################################
+###   function is to transfer rolling command to permanent command   ###
+########################################################################
+		if (ifchar == ihchar('%')) {
+			call xfer (inchar,ier)
+			if (ier!=0) {
+				go to 1000           # next
+			}
+			ixit = .false.
+		}
+
+
+	#########################################################
+	#########    copy input to an output file       #########
+	#########################################################
+		if (ifchar == ihchar('>')) {
+			call copyin (inchar)
+			ixit = .false.
+		}
+
+	  ####################################################
+	  #####   function is to execute shell command   #####
+	  ####################################################
+		if (ifchar == ihchar('!')) {
+			call keytrn (keycon)  # translate any aliases
+			call system(iopcon(inchar:80) // char(0))
+			ixit = .false.
+			write(ttyout,'("!",/,a1,$)') iprom
+		}
+
+	#########################################################
+	#######         redirect input from file        #########
+	#########################################################
+		if (ifchar == ihchar('<')) {
+			call refile (inchar,ier)
+			if (ier!=0) go to 1000           # next
+			ixit = .false.
+		}
+
+##############################################################
+#*********************  just return line *********************
+##############################################################
+
+		#write (*,*) 'DEBUG: crtin: end of repeat loop'
+
+		#} # end of repeat here or much below?
+
+		if (savflg) {
+			ilast = lnb(iopcon)
+			if (cndx==0) {
+				txtbuf = iopcon
+				if (ipxflg == 1) {    # restore pixel coords
+					if (ipxstr >= 1 & ipxend <= 80
+						& ipxstr <= ipxend) {
+						txtbuf(ipxstr:ipxend) =
+							ipxtxt(ipxstr:ipxend)
+						}
+				}
+				write(cmdlun,rec=icoman) txtbuf(1:80)
+			} else if (cndx==1) {
+				write(cmdlun,rec=icoman) copcon(1:80)
+			} else {
+				txtbuf = iopcon
+				if (ipxflg == 1) {    # restore pixel coords
+					if (ipxstr >= 1 & ipxend <= cndx-1
+						& ipxstr <= ipxend) {
+						txtbuf(ipxstr:ipxend) =
+							ipxtxt(ipxstr:ipxend)
+						}
+				}
+				write(cmdlun,rec=icoman) txtbuf(1:cndx-1),
+							copcon(1:80-cndx)
+			}
+			icoman = icoman + 1
+			if (icoman >20) icoman = 1
+			savflg = .false.
+		}
+
+#
+# alias substitution done
+#
+		if (ixit) {
+			keycon = .false.
+			call keytrn (keycon)
+			if (keycon) {  #check for cases(==,=,%,<,>,!)
+					#in translated string
+				if (inchar > 1) inchar=inchar - 1
+                       		ixit = .false.
+				go to 10    
+			}
+		}
+
+
+		#write (*,*) 'DEBUG: in crtin ibefore ixit block 2'
+		if (ixit) { 
+
+			#write (*,*) 'DEBUG: in crtin return block 1'
+			ii = 1
+			while (ii < 80) {
+				#write (*,*) 'DEBUG: in crtin return block 2'
+				if (iopcon(ii:ii+1) == ihbcksl //'#') { #comment
+					if (ii == 1) go to 1000  # read new line
+					if (ii > 1 &
+						iopcon(ii-1:ii-1) != ihbcksl) {
+#
+#							if no backslash to
+#							escape the \# then
+#							remove comment.
+#
+						do i = ii, 80 {
+							iopcon(i:i) = ' '
+						}
+					}
+					#write (*,*) 'DEBUG: leaving crtin 1'
+					return
+				}
+				ii = ii +1
+			}
+			#write (*,*) 'DEBUG: leaving crtin 2'
+			return
+		}
+	}
+
+# close command redirection from files.
+
+# note if the following section is modified, a similar section
+#      in the subriutine "what" may also need to be changed.
+
+2000	close(pipe(pipelv))
+	if (pipelv == 1) {
+		open(5,file=TTY)
+		redire = .false.
+	} else {
+		pipelv = pipelv -1
+		if (pipelv == 1) redire = .false.
+	}
+	goto 1000
+
+1	format (a)
+2	format (' LINE OVERFLOW, Return to continue, r to REENTER input')
+%3	format (1x,a1,$)
+4	format (1x,a)
+%5	format (' INVALID PIXEL SPECIFICATION, reenter line',/,a1,$)
+	end

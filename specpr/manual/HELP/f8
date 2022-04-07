@@ -1,0 +1,122 @@
+
+
+
+
+
+
+SPECPR Users' Manual                                                   Page 8-f8.1
+
+
+_F_8:  _C_h_a_n_n_e_l-_R_e_c_o_r_d _T_r_a_n_s_p_o_s_e                             _A_l_i_a_s: _t_r_a_n[_s_p_o_s_e]
+
+     This routine transposes the array of channel (column)  versus  spectrum
+(rows)  to spectrum versus channel.  For example, if you had 10 spectra of 5
+channels each where each spectrum was taken at 1 hour intervals,  this  rou-
+tine  transposes the matrix so that there are 5 output "spectra" of 10 chan-
+nels each where each "spectrum" is intensity at 10 different times.
+
+Example: given 4 spectra of 3 channels each:
+
+              Spectrum |    Channel number
+              Number   |  1       2       3
+                       |---------------------
+                   1   | 1.23   1.34    1.45
+                   2   | 2.23   2.34    2.45
+                   3   | 3.23   3.34    3.45
+                   4   | 4.23   4.34    4.45
+
+would be transposed to:
+
+              Spectrum |    Channel number
+              Number   |  1       2       3       4
+                       |-----------------------------
+                   1   | 1.23   2.23    3.23    4.23
+                   2   | 1.34   2.34    3.34    4.34
+                   3   | 1.45   2.45    3.45    4.45
+
+
+     _W_A_R_N_I_N_G: When you first enter the  transpose  routine,  it  prints  the
+wavelength  set  in use.  The wavelength set controls the number of channels
+(and thus the potential number of output spectra), so it must be set to  the
+right value.
+
+     The first input request is an option to delete channels.  If you delete
+input  channels,  the  output  spectrum will have that channel deleted.  You
+delete channels by typing "d" and the channels to be deleted (see plot  rou-
+tines  for  a more complete description of the delete points routine), and a
+"c" to continue to the next step.  For example, say you had  20  spectra  of
+100 channels each, taken as a function of time and you wanted to only have a
+data set that was the intensity of channel 33.  You  would  delete  all  but
+channel 33:
+
+              _d _1_t_3_2 _3_4_t_1_0_0 _c
+
+(you may include spaces anywhere except within a number).
+
+     Next, you will be requested to enter each (non-deleted) channel.  Input
+spectra  are  entered one per line (file letter ID and record number).  When
+all are typed in, type
+
+              _b
+
+
+
+
+
+to begin transpose.
+
+     The routine will next ask for the beginning output  location  (type  in
+file letter ID and record number) and then a common title for all the output
+spectra.  The transpose will then begin and the output spectra will be  out-
+put  sequentially  beginning  at  the  beginning  point in the file that you
+selected.
+
+     The number of output spectra is equal to the number of channels in  use
+minus the deleted channels.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

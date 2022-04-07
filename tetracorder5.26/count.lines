@@ -1,0 +1,12 @@
+#/bin/sh
+#         count.lines <file with list of files>
+#             output to STDOUT
+echo "1 is "$1
+j=0
+cat $1 | while read _SFILE
+do
+	i=`grep -c "" $_SFILE`
+#	grep -c "" $_SFILE 
+	let j=j+i
+done
+echo $j

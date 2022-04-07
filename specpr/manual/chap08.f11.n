@@ -1,0 +1,112 @@
+.\" use ms macros
+.\" this header is for putting the page numbers at the bottom of the page
+.\" set line length, page offset, vertical spacing
+.nr LL 6.3i
+.ll 6.3i
+.nr PO 1.0i
+.po 1.0i
+.nr VS 12
+.vs 12
+.\" set header and footer margins (default is 1.0i)
+.nr FM 1.00i
+.fm 1.00i
+.nr HM 1.00i
+.hm 1.00i
+.\" set no date here, MUST be before CF definition, because ND sets CF
+.\" set date, so don't do .ND
+.\" LH CH RH are left, center, right header strings
+.\" LF CF RF are left, center, right footer strings
+.\" default is CH is defined as: .ds CH "\(hy \\n(PN \(hy
+.ds LH "SPECPR Users' Manual
+.ds CH
+.ds RH "Page 8-f11.\\n(PN
+.\" setup complete
+.nf
+SPECPR Users' Manual                                            Page 8-f11.1
+
+
+.B
+F11:  Lunar Thermal Removal                             Alias = luna[rtherm]
+.PP
+This routine removes the thermal component from
+the reflectance object spectrum using the equation:
+
+.in 5n
+.nf
+     \(lt      R\do\u'(1\(emR\ds\u)P\ds\u   P\do\u\(rt \(lt    P\do\u\(rt\u\(em1\d
+R\do\u = \(lkR\do\u' + \(em\(em\(em\(em\(em\(em\(em\(em\(em\(em\(em \(em \(em\(em\(rk \(lk1 \(em \(em\(em\(rk                   (eqn 8.f11.1)
+     \(lb          R\ds\uF       F \(rb \(lb    F \(rb
+.fi
+.in 0n
+
+.PP
+Refer to R. Clark, 1979, Planetary Reflectance Measurements
+in the Region of Planetary Thermal Emission,
+.I
+Icarus
+.R
+.B 40,
+.R
+94-103 (equation 14) for more information.
+
+.B
+Variable definitions:
+.R
+
+.in 11n
+.ti -5n
+R\do\u  = Reflectance of object with thermal component removed.
+
+.ti -5n
+R\do\u' = Reflectance of object with thermal component.
+
+.ti -5n
+R\ds\u  = Reflectance of standard with no thermal component.
+
+.ti -5n
+P\do\u  = Temperature for Planck function of object (in Degrees Kelvin).
+
+.ti -5n
+P\ds\u  = Temperature for Planck function of standard (in Degrees Kelvin).
+
+.ti -5n
+F   = (solar flux/\(*p)/(distance from sun in A.U.)\u2\d
+.in 0n
+
+.PP
+The program requires that the file ID and record number of
+R\do\u' and the e to include errors, if any, be specified when called from Math
+operations.  The program will ask for:
+
+.in 11n
+.ti -5n
+R\ds\u: The file ID and record number.
+
+.ti -5n
+The albedo at the normalization wavelength for
+R\do\u and R\ds\u (0.0 < A \(<= 1.0).  If the data are already in
+albedo (reflectance), then this constant should = 1.0 (the spectra
+are multiplied by this constant).
+
+.ti -5n
+The wavelength data set (File ID and record number).
+
+.ti -5n
+P\do\u and P\ds\u in degrees Kelvin (10 < T < 10\u5\d).
+
+.ti -5n
+Solar flux/\(*p data set (file ID and record number).
+
+.ti -5n
+Distance from sun in A.U. (>0.0)
+.in 0n
+
+.PP
+After entering albedo at normalization, the user has an option of
+either continuing, exiting, or changing what has been input so
+far (for the current screen information).  User also has a similar
+option after entering distance from the sun.  In calculating the
+thermal removal, R\do\u and R\ds\u spectra are multiplied by their
+respective albedos at the normalization point.  Errors are
+propagated by multiplying individual error values by the R\do\u albedo
+at the normalization point.

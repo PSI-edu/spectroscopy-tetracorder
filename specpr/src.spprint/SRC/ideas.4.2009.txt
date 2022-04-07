@@ -1,0 +1,54 @@
+I just had an idea that can solve a lot of our problems with the
+specpr 40 character title limit.
+
+I have thought about building a new specpr that would have a larger
+record size for more space.  The problem is that is a lot of code
+and implications for compatibility, including updating many programs from
+specpr, tetracorder, spprint, sptospecpr, nictospecpr, davinci.
+These would be major code changes.
+
+An alternative is to create key words and store data in the manual history.
+
+Then we will need to add code to properly parse the lines in the spectrometer
+translation programs, and change spprint to print out the new data.
+
+For example, on the Nicolet or Field spectrometer, you could do something like:
+
+carbonate, whereisitstan 2/2009 T=390K SID=GDS327
+         11111111112222222222333333333344444444445555555555666666666677777777778
+12345678901234567890123456789012345678901234567890123456789012345678901234567890
+
+The title would be everything up to the first recognized key word.
+The SID=GDS327 would be put in the manual history where you have 
+74 characters times 4 lines.  The specpr listing routine, sp and spprint
+would be modified to extract the SID= data and print it.
+
+Now we just need to define the key words.  Here is a start:
+(note the period and a space ends the string for each entry.)
+
+SID= sample ID.
+GRAINSIZE=  grain size.
+TEMPK= temperature in Kelvin.
+TEMPC= temperature in centigrade.
+
+others?  The sample ID alone will solve a lot of the problems we have had
+with spectral library entries.  Should we set a maximum size for each
+entry?  E.g. sample ID max = 15 characters?
+
+The second limitation we have with specpr is the number of channels.
+That is a fairly large but not too bad of a fix.  We will need to increase
+internal array sizes and increase the number of continuation
+records.  We need to understand the maximum record length allowed by
+Fortran for scratch files to do this.
+
+Roger
+
+from Todd:
+
+SPCTRMTR= spectrometer name.   or SPEC=
+CAL= ASD calibration number.
+DET= detector.
+or
+REGION = wavelength region,
+TYPE= REFL EMISS TRANS.
+

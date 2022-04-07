@@ -1,0 +1,340 @@
+      subroutine crtpsc (igo,bbnd,ubnd,nchans,datac,error,wmina,wmaxa,i,&
+     &dataa)
+      implicit integer*4 (i-n)
+      !ccc  version date: 06/01/83
+      !ccc  author(s): Roger Clark & Jeff Hoover
+      !ccc  language:  Ratfor
+      !ccc
+      !ccc  short description:
+      !ccc                   This subroutine allows the user to set the
+      !ccc                   horizontal and vertical scales for the crt
+      !ccc                   plotting routine.
+      !ccc  algorithm description: none
+      !ccc  system requirements:   none
+      !ccc  subroutines called:
+      !ccc                    crtin,rlchng,wjfren,er,eralph
+      !ccc  argument list description:
+      !ccc     arguments: igo,bbnd,ubnd,nchans,datac,error,wmina,wmaxa,i
+      !ccc  parameter description:
+      !ccc  common description:
+      !ccc  message files referenced:
+      !ccc  internal variables:
+      !ccc  file description:
+      !ccc  user command lines:
+      !ccc  update information:
+      !ccc  NOTES:
+      !ccc
+      !################################################################
+      !                                                               #
+      !       this routine allows the user to set the horizontal      #
+      !       and vertical scale for the crt plotting routine.        #
+      !                                                               #
+      !       Author: Roger N. Clark                                  #
+      !       Modified:       JAH 03-01-83                            #
+      !                                                               #
+      !################################################################
+      !##### Beginning   ../common/hptrm
+      common /hptrm/    igrmod,ihpout,imode,ixlast,iylast,ipen
+      common /hptrm/    iot
+      character*80      ihpout
+      integer*4         igrmod,imode,ixlast,iylast,ipen,iot
+      !##### End   ../common/hptrm
+      !##### Beginning   ../common/lundefs
+      integer*4 luntxt,ulun,ylun,ttyin,ttyout,dlun,vlun,wlun
+      integer*4 addlun,wavlun,lstlun,pltlun,wvhlun
+      integer*4 ttllun,cmdlun,slun,rlun,cpylun,wrtlun,redlun
+      parameter (luntxt=1)
+      parameter (ulun=3)
+      parameter (ylun=4)
+      parameter (ttyin=5)
+      parameter (ttyout=6)
+      parameter (dlun=7)
+      parameter (vlun=8)
+      parameter (wlun=9)
+      parameter (addlun=10)
+      parameter (redlun=10)
+      parameter (wrtlun=11)
+      parameter (wavlun=11)
+      parameter (lstlun=12)
+      parameter (pltlun=13)
+      parameter (wvhlun=14)
+      parameter (ttllun=15)
+      parameter (cmdlun=16)
+      parameter (slun=17)
+      parameter (rlun=18)
+      parameter (cpylun=19)
+      !##### End   ../common/lundefs
+      !##### Beginning   ../common/alphabet
+      common	/alpha/	iha,ihb,ihc,ihd,ihe,ihf,ihg,ihh,ihi,ihj,ihk,ihl,ihm&
+     &,ihn,iho,ihp,ihq,ihr,ihs,iht,ihu,ihv,ihw,ihx,ihy,ihz
+      common	/alpha/	ihca,ihcb,ihcc,ihcd,ihce,ihcf,ihcg,ihch,ihci,ihcj,i&
+     &hck,ihcl,ihcm,ihcn,ihco,ihcp,ihcq,ihcr,ihcs,ihct,ihcu,ihcv,ihcw,ih&
+     &cx,ihcy,ihcz
+      common	/digit/	ih0,ih1,ih2,ih3,ih4,ih5,ih6,ih7,ih8,ih9
+      common  /asciic/ihprd,ihandp
+      integer*4	iha,ihb,ihc,ihd,ihe,ihf,ihg,ihh,ihi,ihj,ihk,ihl,ihm,ihn,&
+     &iho,ihp,ihq,ihr,ihs,iht,ihu,ihv,ihw,ihx,ihy,ihz
+      integer*4	ihca,ihcb,ihcc,ihcd,ihce,ihcf,ihcg,ihch,ihci,ihcj,ihck,i&
+     &hcl,ihcm,ihcn,ihco,ihcp,ihcq,ihcr,ihcs,ihct,ihcu,ihcv,ihcw,ihcx,ih&
+     &cy,ihcz
+      integer*4	ih0,ih1,ih2,ih3,ih4,ih5,ih6,ih7,ih8,ih9
+      integer*4	ihprd,ihandp
+!##### End   ../common/alphabet
+!##### Beginning   ../common/lbl7
+!     /lbl7/ common:
+!       the following are device control variables:
+!       idevc (1) : file w
+!       idevc (2) : file v
+!       idevc (3) : file d
+!       idevc (4) : file s
+!
+!       idevc  = 0:  dummy
+!       idevc  =-1:  disk 1
+!       idevc  =-2:  disk 0
+!       idevc  =-3:  mag tape 0
+!       idevc  =-4:  mag tape 1
+!
+!       idvc  : used to indicate v file and w file device:
+!         idvc (1,j) = mag tape, idvc (2,j) = disk.
+!       idevc and idvc were originally used in the mit version of the program
+!         but need to be phased out ( they're partially phased out now )
+!         completely.  use the volume numbers for this control now.  (in
+!             /lblvol/ common).
+!       itrol (1) : wavelength file id: V W D U or Y in use
+!       itrol (2) : wavelength record currently in use.
+!       itrol (3) : channel, wavelength, energy plot control flag.
+!       itl  : title option l selected by the user in math operations.
+!
+      common /lbl7/   idevc(4), idvc(2,4), itl, itrol(3)
+      character*40    itl
+      integer*4  idevc, idvc, itrol
+!##### End   ../common/lbl7
+      dimension datac(4864),error(4864),dataa(4864)
+      character*1 iichar
+!
+      inflag=0  
+! inverse wavelength mode
+      izflag=0  
+! bbnd = 0 autoscale mode
+!
+!     this subroutine determines the crt plot scale (horizontal and
+!     vertical axes).
+!
+      if (igo .eq. 6) then
+       call eralph
+      end if
+      if (igo .eq. 6) then
+       go to 6
+      end if
+      if (igo .eq. 8) then
+       go to 8
+      end if
+!
+!     auto scale if desired
+!
+9          continue
+      bbnd= 0.9e+30
+      ubnd= -0.9e+30
+      jb=nchans
+      ja=1
+      xmax = wmaxa
+      xmin = wmina
+      if (xmax < xmin) then
+       xmax = wmina
+       xmin = wmaxa
+!write (ttyout,*) 'DEBUG: xmax < xmin',xmax, xmin
+      end if
+      if (itrol(3).eq.ihn) then
+!write (ttyout,*) 'DEBUG: converting xmin, xmax to wavenumber'
+       if (abs(xmax) < 0.1e-25) then
+        xmax = 0.1e-25
+      end if
+       if (abs(xmin) < 0.1e-25) then
+        xmin = 0.1e-25
+      end if
+       xtmp = xmin
+       xmin = 10000.0/xmax
+       xmax = 10000.0/xtmp
+      end if
+!write (ttyout,*) 'DEBUG: xmin= ',xmin,'  xmax=', xmax, '  x(3654)=',dataa(3654)
+      do jmn= ja, jb   
+       if (datac(jmn) .eq. -1.23e34) then
+        cycle
+      end if
+       if (dataa(jmn)>xmax .or. dataa(jmn)<xmin) then
+        cycle
+      end if
+       xx= datac(jmn)+ error(jmn)
+       yy= datac(jmn)- error(jmn)
+       if (yy < bbnd) then
+        bbnd= yy
+      end if
+       if (xx > ubnd) then
+        ubnd= xx
+      end if
+      end do 
+      if (izflag .eq. 1) then
+       bbnd = 0.0
+      end if
+!
+!     if difference between upper and lower bound is too small, default
+!     to 0.0 to 2.0
+!
+      diff= ubnd-bbnd
+      if (diff < 0) then
+       go to 6
+      end if
+      if (ubnd > 0.0) then
+       ubnd= ubnd*1.02
+      else
+       ubnd= ubnd*0.98
+      end if 
+      if (bbnd > 0.0) then
+       bbnd= bbnd*0.98
+      else
+       bbnd= bbnd*1.02
+      end if 
+      call er
+8          continue
+      if (i .ne. ihc) then
+       go to 7
+      end if
+!
+6          continue
+      if (wmaxa .le. wmina) then
+       write (ttyout,62) bbnd,ubnd
+      else
+       write (ttyout,61) bbnd,ubnd,wmina,wmaxa
+      end if 
+      write (ttyout, 3)
+      call crtin
+      j= 1
+!
+!     decode lower and upper bound
+!
+      call rlchng(j, xx, il)
+      inflag=0
+      izflag=0
+      if (j.ge.80) then
+       go to 4
+      end if
+!	if (il == ihn) go to 4
+      if (il .eq. ihw) then
+       go to 19
+      end if
+      if (il .eq. ihn) then
+       inflag=1
+       go to 19
+      end if
+      if (il .eq. ihca) then
+       call getiopconchar(j,iichar)
+       if (iichar.eq.'0') then
+        izflag=1
+      end if
+       if (iichar.eq.'z') then
+        izflag=1
+      end if
+       write (*,*) 'DEBUG: autoscale zero flag= ',iichar
+       i= 0
+       call hreset(1)
+       go to 9
+      end if
+      if (il .ne. 0) then
+       call what(j)  
+! error encountered
+       go to 16
+      end if
+      bbnd=xx
+      call rlchng(j, xx, il)
+      if (j.ge.80) then
+       go to 4
+      end if
+      if (il .ne. 0) then
+       call what(j)  
+! error encountered
+       go to 16
+      end if
+      ubnd=xx
+!
+      call er
+      if (igrmod .eq. 50 .or. igrmod .eq. 51) then
+! X-windows case only
+       call eralph
+      end if
+      igo=0
+      return
+!
+19          continue
+      call rlchng(j,xx,il)
+      if (il .ne. 0) then
+       call what(j)  
+! error encountered
+       go to 16
+      end if
+      call rlchng(j,yy,il)
+      if (il .ne. 0) then
+       call what(j)  
+! error encountered
+       go to 16
+      end if
+      if (yy < xx) then
+       go to 16
+      end if
+      if ((yy .eq. xx) .and. (xx .ne. 0.)) then
+       go to 16
+      end if
+      if (inflag.eq.1) then
+       if (xx.ne.0) then
+        xx=10000.0/xx
+       else
+        xx=0
+      end if 
+       if (yy.ne.0) then
+        yy=10000.0/yy
+       else
+        yy=0
+      end if 
+       if (xx>yy) then
+        xtmp=xx
+        xx=yy
+        yy=xtmp
+      end if
+      end if
+      wmina=xx
+      wmaxa=yy
+      go to 6
+4          continue
+      igo=4
+      call er
+      if (igrmod .eq. 50 .or. igrmod .eq. 51) then
+! X-windows case only
+       call eralph
+      end if
+      return
+7          continue
+      igo=7
+      if (igrmod .eq. 50 .or. igrmod .eq. 51) then
+! X-windows case only
+       call eralph
+      end if
+      return
+16          continue
+      write (ttyout,17)
+      go to 6
+17           format (' ** ERROR: reenter')
+62           format (' Current Scale: VERTICAL=', 1pe11.4,'  ', 1pe11.4,&
+     & /,'                HORIZ.  = Automatic')
+! RED Added comma before first 1pe11.4 in second line
+61           format (' Current Scale: VERTICAL=',1pe11.4, '  ', 1pe11.4,&
+     & /,'                HORIZ.  =',1pe11.4, '  ', 1pe11.4)
+3            format( /,' To scale the plot, type in the mode (n or w) an&
+     &d ','horizontal axis limits first.',/,' When the vertical scale is&
+     & entered, ','the routine will exit to the plot.',//,' HORIZONTAL:'&
+     &,/,' type  n  and left and right hand limits in ','INVERSE WAVELEN&
+     &GTH, or:',/,' type  w  and left and right hand WAVELENGTH limits',&
+     & /,'          (if you type  w  only,  the program will ','AUTOSCAL&
+     &E the limits ', /,'          from the current wavelength set)', //&
+     &,' VERTICAL:',/,' Type lower bound and upper bound values for ','t&
+     &he VERTICAL AXIS, or:',/,' type  A  to AUTO SCALE (the VERTICAL AX&
+     &IS), or:',/)
+      end 

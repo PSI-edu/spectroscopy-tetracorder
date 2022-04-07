@@ -1,0 +1,343 @@
+.\" use ms macros
+.nr LL 6.5i
+.ll 6.5i
+.nr PO 1.1i
+.po 1.1i
+.nr VS 12
+.vs 12
+.ce
+TABLE OF CONTENTS
+
+     Acknowledgements
+
+.nf
+.B
+1    INTRODUCTION
+.R
+     1.1  Introduction
+     1.2  History of Specpr
+     1.3  Specpr Design Philosophy
+
+.B
+2    PROGRAM STRUCTURE
+.R
+     2.1  Block Diagram of Program Structure
+     2.2  File Structure from the Users View
+            2.2.1  Deleted point values
+            2.2.2  General data file I/O
+            2.2.3  Transfer Restrictions
+     2.3  File Protection
+            2.3.1  Use of Specpr File Protection
+     2.4  Command Interpretation
+     2.5  Alias Definitions and Substitions
+            2.5.1  Creating Alias Words
+            2.5.2  Translating Alias Words
+            2.5.3  Listing and Saving Alias Words and Translations
+            2.5.4  Reading Alias Words into specpr from a File
+            2.5.5  Deleting or Writing Over an Alias Word
+     2.6  Variable Parsing
+     2.7  Order of Substitution and Command Interpretation 
+            2.7.1  Flow Chart for Command Interpretation Order
+     2.8  Specpr File Types and Content
+            2.8.1  The Standard File Content
+     2.9  "Wavelengths" and other concepts of x-y paired data
+     2.10  Help!
+     
+.KS
+.B
+3    STARTING SPECPR
+.R
+     3.1  Starting Specpr on Unix
+.B
+     3.2  HELP
+.R
+     3.3  Configuring Your Environment
+.KE
+
+.KS
+.B
+4    IMPORTANT RULES
+.R
+     4.1  Important Rules
+     4.2  Protective Locks
+     4.3  Make Specpr Files Read Only When Outside Your Directory
+     4.4  Bug Reports
+     4.5  Keep Track of the Number of Channels and
+                      the Wavelength Set!
+            4.5.1  Rules of Operation for Channels
+            4.5.2  If You Must Change The Number Of Channels
+            4.5.3  Setting Channels
+.KE
+ 
+.KS
+.B
+5    PROGRAM INITIALIZATION
+.R
+     5.1  Introduction
+     5.2  Beginning
+     5.3  Protection
+     5.4  Observatory Location
+     5.5  Device and File Assignments
+     5.6  Data File Names
+     5.7  Graphics Options
+     5.8  Automatically Checking File Protection
+.KE
+
+.KS
+.B
+6    DEVICE AND FILE ASSIGNMENTS
+.R
+     6.1  Device and File Assignments
+     6.2  3D File Types
+          6.2.1  3D File Parameters
+          6.2.2  3D Algorithm Description
+          6.2.3  3D I/O Setup Examples
+          6.2.4  3D I/O Suggestions
+          6.2.5  3D I/O Demonstration
+.KE
+     
+.KS
+.B
+7    MAIN MENU: PROGRAM OPERATIONS CONTROL 
+.R
+     7.1  Introduction 
+     7.2  Menu Information
+     7.3  Listing the Contents of a Data File
+     7.4  Terminating Program 
+     7.5  File Display, Transfer, and Overlap 
+     7.6  Changing Initialization Parameters 
+     7.7  Device and File Assignments 
+     7.8  Extinction Routines 
+     7.9  Plot Routines (to Hardcopy Plotters)
+     7.10  Math Operations 
+     7.11  Restart Summary 
+.KE
+
+.KS
+.B
+8    MATH OPERATIONS 
+.R
+     8.1  Introduction
+            8.1.1  Multiple commands from the math command menu.
+            8.1.2  Menu Information
+     8.2  Subtraction, Multiplication, and Division
+     8.3  Addition Routine
+     8.4  Error Analysis
+     8.5  Algebraic and Trigonometric Functions
+     8.6  Special Functions
+     8.7  Return from a Math Operation or Function
+     8.8  The Titles Routine
+     8.9  Band Normalization
+.KE
+            8.f1   F1:  List of Special Functions 
+            8.f2   F2:  Shift 
+            8.f3   F3:  Sequential Processor 
+            8.f4   F4:  Sequential Processor (No User Process) 
+            8.f5   F5:  Continuum Removal 
+            8.f6   F6:  Black Body Computation 
+            8.f7   F7:  Smoothing Function 
+            8.f8   F8:  Channel-File Transpose 
+            8.f9   F9:  Band Removal (Reflection Method) 
+            8.f10  F10:  Sorting Routine
+            8.f11  F11:  Lunar Thermal Removal
+            8.f12  F12:  Cubic Spline Interpolation
+            8.f13  F13:  Merge Two Spectra to One
+            8.f14  F14:  Edits Spectral Data and Error Value
+            8.f15  F15:  Formats Gaussian Parameter File
+            8.f16  F16:  Line Segment Generator
+            8.f17  F17:  High To Low Resolution Convolution
+            8.f18  F18:  Block Averages and Statistics
+            8.f19  F19:  Polynomial Fit (10 Term)
+            8.f20  F20:  Text File Input
+                     8.f20.1  Using Function 20
+                     8.f20.2  Setting Up the Text File
+                     8.f20.3  Example
+            8.f21  F21:  Calculate N term Polynomial
+            8.f22  F22:  Tablet Graphics (TABGRAF)
+            8.f23  F23:  Mathmatical Parser
+            8.f24  F24:  Star Moon Thermal Removal
+            8.f25  F25:  Two Component Areal Mix Least Squares
+            8.f26  F26:  not developed yet
+            8.f27  F27:  not developed yet
+            8.f28  F28:  not developed yet
+            8.f29  F29:  not developed yet
+            8.f30  F30:  not developed yet
+            8.f31  F31:  not developed yet
+            8.f32  F32:  not developed yet
+            8.f33  F33:  not developed yet
+            8.f34  F34:  not developed yet
+            8.f35  F35:  not developed yet
+            8.f36  F36:  not developed yet
+            8.f37  F37:  not developed yet
+            8.f38  F38:  not developed yet
+            8.f39  F39:  Noise Generator
+            8.f40  F40:  least squares between two spectra (Under Dev.)
+            8.f41  F41:  Binning Routine (Under Development)
+            8.f42  F42:  Fit Band Profile from a Reference Spectrum
+            8.f43  F43:  FFT and Inverse FFT
+            8.f44  F44:  Segmented Upper Hull Continuum
+            8.f45  F45:  Automatic Band Analysis
+            8.f46  F46:  Band Analysis Output
+            8.f47  F47:  Spectrum Recreation from F46 output
+            8.f48  F48:  HP Graphics Terminal Tablet Digitization
+            8.f49  F49:  Linear Interpolation
+            8.f50  F50:  Wavelength Registration
+
+.KS
+.B
+9    CRT PLOT ROUTINES
+.R
+     9.1  Introduction
+     9.2  Plotting Mode
+     9.3  Changing Scale
+            9.3.1  Changing Scale by Typing in the Range
+            9.3.2  Changing Scale by Graphics Sub-Window
+     9.4  Line Type
+     9.5  Horizontal Axis Labels
+     9.6  Changing the Wavelength Set
+     9.7  Graphics Cursor Position
+     9.8  Interactive Band Analysis
+     9.9  Deleting Individual Data Channels
+     9.10  Glitch Removal
+     9.11  Information Display and Information Change 
+     9.12  Printer Listings and Printer Plots
+     9.13  Multiple Commands in the CRT Plot Routines
+     9.14  Exiting the CRT Plot Routines
+.KE
+
+.KS
+.B
+10   DATA DISPLAY, TRANSFER, AND OVERLAY 
+.R
+     10.1  Introduction
+     10.2  Data Display
+     10.3  File Transfer
+             10.3.1  File Tranfer with Plot or Information Change
+             10.3.2 Starpack Transfers
+     10.4  Overlaying Data Sets
+     10.5  Multiple Commands in Data Display Transfer and Overlay
+     10.6  Extraction of Data from 3D Files for Display and Transfer
+.KE
+
+.KS
+.B
+11   DATA FILE LIST 
+.R
+     11.1  Introduction
+     11.2  Listing Mode
+     11.3  CRT Listing Options
+     11.4  Printer Listing Options
+     11.5  Search Capability
+     11.6  Listing Limits
+     11.7  Continuing/Ending the List
+     11.8  Sample Listing
+.KE
+
+.KS
+.B
+12   EXTINCTION ROUTINES 
+.R
+     12.1  Introduction 
+     12.2  Starpack List and Display 
+     12.3  Extinction Calculation 
+     12.4  CRT Plot 
+     12.5  Airmass Versus Log Intensity Plots and Deletion
+           and Restoration of Runs and Channels
+     12.6  Writing a Starpack 
+     12.7  Starpack Manual History 
+.KE
+
+.KS
+.B
+13   PLOTTING ROUTINES FOR WORK AND PUBLICATION
+.R
+     13.1  Introduction
+     13.2  Plotting Mode Type
+             13.2.1 User-selected wavelength limits:
+     13.3  Vertical Axis Label
+     13.4  Delete From All Spectra
+     13.5  Scale of Plot
+     13.6  Plot Scale Factors
+     13.7  Data Set Input and Options
+.KE
+
+.KS
+.B
+14   RADIATIVE TRANSFER ROUTINES
+.R
+.KE
+
+.KS
+.B
+15   STANDALONE UTILITIES
+.R
+     15.1  Introduction
+     15.2  Spprint
+     15.3  Spfeatures
+     15.4  Data Translation
+             15.4.1  sptoascii
+             15.4.2  asciitosp
+             15.4.3  oldsptoascii
+             15.4.4  cgastosp
+.KE
+
+.KS
+APPENDICES
+.B
+A    SPECPR STANDARD FORMAT OF DATA FILES
+B    HOW TO OBTAIN SPECPR
+.R
+.KE
+
+.bp
+.ce
+.B
+Acknowledgements
+.R
+.PP
+This manual documents the specpr program.  However, the specpr
+program itself is the product of many people, some professional
+programmers, others scientists and students.  The effort to write
+this manual pales in comparison to the programming time spent by
+myself and many others.  Without these people, specpr would have
+died long ago.
+.PP
+Rodney Kam and Jeff
+Hoover were programmers at the University of Hawaii who shaped the
+software into the Unix environment and converted the early code from
+Fortran 66.  Rodney and Jeff co-authored the first version of the
+specpr users manual in 1982.  I often think of Jeff, a true
+Unix guru, and wish he were still alive.  Lucy McFadden wrote some
+of the early special functions.
+.PP
+After I moved to the U.S. Geological Survey, specpr underwent many
+changes and extensions.  Programmers at the University of
+Hawaii continued to make improvments and bug fixes in the new
+version.  Kathy Kierein wrote the alias section, added to the
+radiative transfer routines and other code.  Barry Middlebrook wrote
+the 3D read routines, a vital contribution for working with the new
+AVIRIS and GER imaging spectrometer data.  Noel Gorelic wrote many
+sections, including the X-windows interface, variable parsing, the
+graphics window scaling, 
+the continuum analysis and spectral features special functions, as
+well as bug fixes and enhancements to other parts of the program.
+Matthew Klejwa wrote the interactive band analysis routines.
+Wendy Calvin extended the radiative transfer routines and wrote the
+wavelength registration special function.
+Bob Brown and Pam Owensby have made numerous bug fixes and improvements.
+.PP
+Users contributed a lot to the development of specpr.  They
+contributed ideas, found bugs and ways to work around around them,
+ways to improve the program and occasionally fixed the bugs
+themselves.  Some of the more vocal users (probably because I have
+worked closely with them) are Gregg Swayze, Marcia Nelson, Trude
+King, and Pam Owensby.
+.PP
+A little known fact is the origin of the name specpr.  The name was
+suggested by Karl Hinck at the University of Hawaii in 1977 and the
+name has stuck ever since.  Thanks Karl for a lasting name for a
+lasting program (smile).
+.PP
+There are probably several people I have forgotten.  If I have
+forgotten you, I'm sorry.  It simply reflects the large effort by so
+many people that have gone into this program.

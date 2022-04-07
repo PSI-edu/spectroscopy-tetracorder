@@ -1,0 +1,63 @@
+
+
+
+
+
+
+SPECPR Users' Manual                                            Page 8-f23.1
+
+
+_F_2_3: _M_a_t_h_e_m_a_t_i_c_a_l _P_a_r_s_e_r                                      _A_l_i_a_s: _p_a_r_s[_e]
+
+     This routine allows the user to type in arbitrary mathematical  expres-
+sions  involving  data  sets  and constants. The expressions allowed are any
+combination of addition, subtraction, multiplication, division, and exponen-
+tiation (exponentiation is represented by ^).
+
+     _W_A_R_N_I_N_G: f23 is site specific because of  the  interdependency  between
+Fortran  and C so it may not be linked at all sites.  Check with your system
+administrator.
+
+     To use f23 type from math operations:
+
+              _f_2_3
+or
+              _f_2_3_e
+
+if errors are to be included in the computation. The program will  list  the
+wavelength  data  set and the number of channels it will be using. To change
+the wavelength record at this point type the file ID (upper  case)  and  the
+record  number  of the new wavelength set.  If the default wavelength set is
+acceptable just type a carriage return.  If you wish to  abort  the  routine
+type
+
+              _e
+or
+              _x
+
+After choosing the appropriate wavelength set the routine will print out the
+current  file  protections  and  allow  you  to type in the expression to be
+evaluated.  For example, if you wanted to add data set  v21  to  a  Gaussian
+with a height of -1.5, half width of 2.3 microns (at 1/e point), centered at
+1.32 microns you would type:
+
+              _v_2_1+-_1._5*_2._7_1_8_2_8_e_0^(-((_v_3-_1._3_2)/_2._3)^_2)
+
+assuming you are using wavelength set v3  (note  that  the  wavelengths  are
+treated as data here, so the wavelength set uses a lower case file ID).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,121 @@
+.nr LT 6.5i
+.lt 6.5i
+.nr PO 0.875i
+.po 0.875i
+.TL
+.EQ
+delim $$
+gfont R
+.EN
+.LP
+
+     The following are multiple character commands used in Math
+Operations [8.5]:
+
+
+.nf
+.na
+abs:                    Absolute Value
+c**x:                   Constant to the spectrum power
+cos:                    Cosine (in radians)
+cosd:                   Cosine (in degrees)
+cosh:                   Hyperbolic cosine (radians)
+exp:                    Exponential
+frac:                   Fractional Part
+int:                    Integer value
+invcos:                 Inverse cosine (radians)
+invcosd:                Inverse cosine (degrees)
+invsin:                 Inverse sine (radians)
+invsind:                Inverse sine (degrees)
+invtan:                 Inverse tangent (radians)
+invtand:                Inverse tangent (degrees)
+ln:                     Natural logarithm
+log:                    Common logarithm
+sin:                    Sine (in radians)
+sind:                   Sine (in degrees)
+sinh:                   Hyperbolic sine (radians)
+tan:                    Tangent (in radians)
+tand:                   Tangent (in degrees)
+tanh:                   Hyperbolic tangent
+x**c:                   Spectrum to the constant power
+1/x:                    Inverse
+1/xe:                   Inverse with error calculation
+.fi
+.ad
+
+.bp
+
+.ce
+Miscellaneous Commands
+
+
+
+.IP +
+Initial file plus specified amount of additional files (used
+mainly in file transfers).  [2.3] [10.1]
+
+.IP +
+Addition operator [8.2] [8.6.23]
+
+.IP -
+Subtraction [8.2] [8.6.23]
+
+.IP *
+Multiplication [8.2] [8.6.23]
+
+.IP /
+Division [8.2] [8.6.23]
+
+.IP ^
+Exponentiation [8.6.23]
+
+.IP 6
+User defines vertical axis of plot [13.3]
+
+.IP 7
+User defines vertical axis of plot in log (base 10) space [13.3]
+
+.IP \\\\
+Backspace to previous character [13.6]
+
+.IP {
+Go to subscript mode [13.6]
+
+.IP }
+Go to superscript mode [13.6]
+
+.IP @
+End last scripting mode [13.6]
+
+.IP !
+Toggle greek/normal mode [13.6]
+
+.IP !
+execute UNIX shell command [2.4]
+
+.IP |
+Toggle math/normal mode [13.6]
+
+.EQ
+delim off
+.EN
+.IP $
+Variable substitution [2.4]
+
+.IP %
+Transfer rolling command to permanent command [2.4]
+
+.IP ?
+List saved commands [2.4]
+
+.IP >
+copy user input to text file [2.4]
+
+.IP <
+read input from text file [2.4]
+
+.IP =
+type in permanent command [2.4]
+
+.IP ;
+equivalent to carriage return [2.4]

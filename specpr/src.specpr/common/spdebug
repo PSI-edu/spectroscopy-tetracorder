@@ -1,0 +1,6 @@
+
+        common/spdebug/  bugcount,bugstop
+
+        integer*4  bugcount,bugstop
+
+# bustop 199515 init bugcount to 0

@@ -1,0 +1,133 @@
+.nr % 0
+.nr CN 11
+.bp
+.sh 1 "FILE LIST "  11
+.sh 2 "File List "
+.pp
+From the Program Operations Control, file transfer, and Math
+operations,
+type
+.ul
+l
+and the device file ID (v, w, d, u, or
+y) to call the file list routines.  You will then be given a list
+of options.  The CRT list contains only the record
+number, title, the number of revolutions, civil/Universal time,
+sidereal time, date, and the airmass.  The options are for the
+lineprinter list (make sure the spooler is assigned if you
+want a lineprinter list).  Pressing return will list only on the CRT.
+.pp
+Typing
+.ul
+p
+will list on the lineprinter, and typing
+.ul
+a
+will do an "automatic" list on the lineprinter.  The difference
+between the p and a specification is that, with the p
+specification, the program halts after every 25 lines and asks
+the user to type
+.ul
+c
+to continue,
+.ul
+x
+to exit,
+.ul
+t
+to go to file Transfer,
+.ul
+m
+to go to math operations, or type in new file limits to
+list (see below) or a new p or a specification.  With the a specification, the
+screen is erased when the screen is full, and the list continues
+until the limit is reached or an I/O error occurs.  If this limit
+is reached and the user typed c to continue, the a specification
+changes to a p specification so that the program will not list
+forever.  Typing
+.ul
+e
+or
+.ul
+x
+will exit the routine.  Typing an option character after the p or
+a specification (on the same line) will change what is printed on
+the lineprinter.  No option prints the record number, title,
+revolutions, integration time, civil/Universal time, sidereal
+time, date, airmass, and the normalization factor on one line and
+the history just below the title.  For the case of average or
+summation in the history, the manual history is also printed since
+this contains an extension of the history.  Option
+.ul
+b
+prints all header information except the manual history and the
+data.  Option
+.ul
+c
+prints all the header information but not the data.  Option
+.ul
+d
+prints all the header information and the data. The manual
+history will always be printed on the line printer if there are 2
+asterisks in the first two columns of each line. Only the lines
+with the asterisks will be printed.
+.pp
+After this, you will be asked to type in the beginning and ending
+records to be listed.  Typing
+.ul
+e
+or
+.ul
+x
+will exit the routine.  If the second number is less than or
+equal to zero, the routine will exit as with typing e or x.  If
+the first record number is less than or equal to zero, it is set to
+1.
+.pp
+When the program halts for input, you may type
+.ul
+c
+to continue,
+.ul
+e
+or
+.ul
+x
+to exit,
+.ul
+t
+to go to File Display, Transfer, and Overlay,
+.ul
+m
+to go to Math operations.  You may also type
+in new limits (beginning and ending record numbers) to list, or you
+may type the
+.ul
+p
+or
+.ul
+a
+specification with options
+.ul
+b,
+.ul
+c,
+or
+.ul
+d
+to change the type of list depending on the record number.  If you
+type
+.ul
+p
+or
+.ul
+a,
+you will be asked to type in new record limits.  The line printer
+may also be turned off (no list on lineprinter) by typing
+.ul
+n.
+You will then be instructed to type in new record limits again.
+.pp
+Thus, when listing an entire data file, you may change the
+information printed to save time and paper and suppress
+information which will never be looked at or is not needed.

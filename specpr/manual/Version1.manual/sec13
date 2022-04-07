@@ -1,0 +1,207 @@
+2.4  Types of Data
+
+The compiler recognizes five types of data as input for
+processing.  These types and the number of words of machine
+storage they occupy are as follows:
+
+The following paragraphs describe each of these data types.  Data
+type declarations (described in paragraph 2.3) are used to
+specify a particular data type for use in a program.
+
+There are two other types of data for which data type declarations
+do not exist.  They are Hollerith data, discussed in paragraph
+2.5, and functions, discussed in paragraph 2.8.  Declarations for
+Hollerith data and functions are handled in a different manner.
+
+
+2.4.1  Integers
+
+Integers are whole numbers whose least significant digit
+represents the one's position.  Integers may be positive,
+negative, or zero.  If unsigned, they are assumed to be
+positive.  If not explicitly declared, an integer variable name must start
+with the letter I, J, K, L, M, or N.
+
+Integers cannot contain a decimal point.  The compiler assumes
+that the decimal point is located to the right of the rightmost
+digit position.  A comma may not be used in the number (to
+separate the thousands digit from the hundreds digit,
+for example).  Only numbers are valid characters in the integer.
+
+Since integers occupy one 16-bit word, with the high-order bit
+reserved for the sign, the range of integers in 980 FORTRAN is
+-32768 to +32767 (-2 to +2-1).
+
+For example, the following numbers are valid integers for input to
+the compiler:
+
+  3298
+ -3298
++23287
+     0
+  0001
+
+The following numbers are not valid integers for input to the
+compiler:
+
+3,287   Commas cannot be used in integer data.
+42.     Decimal points cannot be used in integer data.
+34310   This number exceeds the upper bound of 32767 for integer
+        values.
+
+
+2.4.2  Real Numbers
+
+Real numbers contain up to six significant decimal digits and
+must have a decimal point in the input.  Real numbers can
+represent any value within the range 10 to 10 (2 to 2), including
+zero.  A real number may be represented in either of two forms:
+
+Digits and decimal point, which may be preceded by plus or minus
+sign
+
+Power-of-ten form:  a number times 10 raised to an integral power
+
+The power-of-ten form is as follows:
+
+zzzEn
+
+where the letters "zzz" represent a numerical value of six or
+fewer digits that may or may not contain a decimal point.  The
+letter E indicates that the number following it, represented by
+"n", is a power of ten.  The power may be positive, negative, or
+zero.  The number must be within the specified range for real
+numbers.
+
+An unsigned number is assumed to be positive.  Commas cannot
+appear in the data input.  If not explicitly declared, a real
+variable name must start with a letter of the alphabet other than
+I, J, K, L, M, or N.
+
+
+2.4.2.1  Examples of Real Numbers
+
+The following numbers are correct presentations of real numbers:
+
+ 1387.
+
+ 1.23456
+
+ 1.37E2         (1.37 x 10)
+
+ 137E-2         (137 x 10 or 1.37)
+
+-4.53716E2      (-4.53716 x 10)
+
+ 3E3            (3 x 10)
+
+The following numbers are not correctly formulated real numbers
+for input to the compiler:
+
+Numbers not in exponential form require a decimal point.
+
+The exponent value has been omitted after the letter E.
+
+Commas cannot be used in real number data input.
+
+Non-integral exponent of ten is not allowed.
+
+Number larger than upper bound of permissible range.
+
+
+2.4.2.2  Memory Representation
+
+The real numbers described in paragraphs 2.4.2 and 2.4.2.1 are
+single precision.  Single precision real numbers are stored in
+memory in two 16-bit words as illustrated in figure 2-1.  The
+most significant bit of the first word is the sign bit; it is 0
+if the number is positive and 1 if the number is negative.  Bits
+1 through 15 of the first word and bits 0 through 7 of the second
+word contain a numerical binary value that provides the six
+significant decimal digit accuracy for the number.  Bits 8
+through 15 of the second word contain a binary value that
+represents the power of two in the exponential portion of the
+number.
+
+The exponent represented in memory may be a number from 00 to FF.
+These numbers stand for base 2 exponents from -128 to +127, or
+values from 2 to 2.  The value 2 corresponds to 80 in memory;
+positive exponents are represented by numbers greater than 80 and
+negative exponents by numbers less than 80.  For example, 7D in
+the exponent field in memory represents a value of 2.  Note that
+the first (high order) bit in the exponent field indicates the
+sign of the exponent; it is 1 if the exponent is positive or
+zero and 0 if the exponent is negative.
+
+
+SPECPR FILE STATUS CHECKING
+
+
+.UL
+DEVLUN
+
+After decoding a file ID letter and file number, find the logical
+unit number by calling
+
+DEVLUN (I, IDLETR, LUN)
+
+where  IDLETR = the file letter ID
+       LUN    = Logical unit number of the device
+       I      = which devices are valid:
+
+                = 0 : all units (V, W, D, U, Y, and S)
+                = 1 : all but U and Y
+                = 2 : all but U, Y, and S
+                = 3 : only V and D
+                = 4 : all but S
+                = 5 : all but W
+                = 6 : all but W and S
+
+for normal Math Operations and Special Functions the variable I is
+4.  The variables I and IDLETR do not have to be variables in the
+calling program
+
+[e.g. CALL DEVLUN (4, 1HV, LUN)], but LUN
+
+must be a variable.
+
+
+.UL
+DEVSTA
+
+After the file logical unit number has been found, the device
+status must be checked (e.g. offline, not assigned, etc.).  The
+call is
+
+CALL DEVSTA (LUN, ISTA, I, IPRT)
+where  LUN  = logical unit number
+
+       ISTA = returned status condition:
+
+              >  0 : device online, record pointer to the value
+                     ISTA
+              =  0 : assigned but offline
+              = -1 : assigned to "DUMMY"
+              = -2 : not assigned
+              = -3 : illegal device (not LUN of V, U, D, W, Y, or
+                    S)
+
+       I    = 0 : return without printing
+
+              =  1 : print message reflecting above status
+
+       IPRT = Device Protection
+
+              = -1 : read/write random access (no protection)
+                 0 : protected.  Read up to protection number,
+                     write only to protection number +1.
+              < -1 : read device (up to absolute value of the
+                     protection number).
+
+The variable ISTA and IPRT must be variables in the calling
+program.
+
+After the routines DEVLUN and DEVSTA have been called, check the
+value of ISTA to be sure it is greater than zero and the file
+number being accessed is allowed by the protection (IPRT).
+.bp

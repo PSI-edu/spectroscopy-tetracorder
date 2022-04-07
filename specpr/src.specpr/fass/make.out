@@ -1,0 +1,25 @@
+	ratfor90 < chkdev.r > chkdev.f
+	f90 -C +fp_exception -O -c chkdev.f
+chkdev.f
+Warning 4040 :  -C flag is not yet supported for IA F90 compiler. 
+   external subroutine CHKDEV
+
+133 Lines Compiled
+	rm -f chkdev.f
+	ratfor90 < dfasin.r > dfasin.f
+	f90  -C +fp_exception -O -c dfasin.f
+dfasin.f
+Warning 4040 :  -C flag is not yet supported for IA F90 compiler. 
+   external subroutine DFASIN
+
+532 Lines Compiled
+	rm -f dfasin.f
+	ratfor90 < rmpath.r > rmpath.f
+	f90  -C +fp_exception -O -c rmpath.f
+rmpath.f
+Warning 4040 :  -C flag is not yet supported for IA F90 compiler. 
+   external subroutine RMPATH
+
+149 Lines Compiled
+	rm -f rmpath.f
+	ld  -r -o /src/local/specpr/obj/fass.o chkdev.o  dfasin.o  rmpath.o

@@ -1,0 +1,533 @@
+.\" use ms macros
+.\" this header is for putting the page numbers at the bottom of the page
+.\" set line length, page offset, vertical spacing
+.nr LL 6.3i
+.ll 6.3i
+.nr PO 1.0i
+.po 1.0i
+.nr VS 12
+.vs 12
+.\" set header and footer margins (default is 1.0i)
+.nr FM 1.00i
+.fm 1.00i
+.nr HM 1.00i
+.hm 1.00i
+.\" set no date here, MUST be before CF definition, because ND sets CF
+.\" set date, so don't do .ND
+.\" LH CH RH are left, center, right header strings
+.\" LF CF RF are left, center, right footer strings
+.\" default is CH is defined as: .ds CH "\(hy \\n(PN \(hy
+.ds LH "SPECPR Users' Manual
+.ds CH
+.ds RH "Page 10.\\n(PN
+.\" setup complete
+.nf
+SPECPR Users' Manual                                                   Page 10.1
+
+
+
+
+
+
+
+
+
+
+
+
+
+.ce
+.B
+CHAPTER 10
+.R
+
+
+
+
+
+.ce
+.B
+DATA DISPLAY, TRANSFER, AND OVERLAY
+.R
+
+
+
+
+.fi
+.bp
+.B
+10.1  Introduction
+.R
+.PP
+The data display, transfer, and overlay routines are used to display
+data on the graphics terminal (or X-window device), transfer data
+records from one file to another (or to another place in the same file),
+and overlay data on X-windows or graphics terminals.  To transfer means
+to copy; specpr does not (nor is it intended to be able to) remove the
+original.  Historically, the transfer routines were written to
+"transfer" a copy of the data on a magnetic tape to a disk file.
+Because of this need, there are restrictions when transferring data
+records from disk to tape or tape to disk so that the records will
+properly coincide and the proper histories will be maintained.
+
+
+.B
+10.2  Data Display
+.PP
+A spectrum can be displayed on the CRT using the CRT plot
+routines (section 9) by typing in the file ID (v, w, d, u, or y),
+the record number, and any options.  For example,
+
+.in 14n
+.B
+v23
+.R
+.in 0n
+
+displays the data in file v, record 23 with the current wavelength
+set and graphics line types.  Options can be included to change the
+wavelength set in use, change the number of channels, include error bars
+and do other things.
+
+.nf
+.in 5n
+Options:
+
+.in 14n
+e   to include error bars,
+a   to auto scale within the current plotting window,
+b   to auto scale and make a printer plot.
+l#  to change the graphics line type (see Chapter 9),
+i   to display header information first, not the graphics,
+&   use the wavelength pointer with the data to get
+        the wavelength set.
++n  sequentially plot the next "n" records, where n is
+        an integer.
+
+V, W, D, U, or Y, followed by the record number sets the
+    wavelength set in use to the new value.
+C#  sets the wavelengths equal to channel number with
+        the number of channels = "#".
+h   sets the plot type to channel mode.
+.in 0n
+.fi
+
+For example, if v23 contains a reflectance spectrum of the mineral
+Alunite, and v20 contains the wavelengths to the spectrum, you
+could type
+
+.in 14n
+.B
+v23V20
+.R
+.in 0n
+
+to plot reflectance on the vertical axis versus wavelength.
+Alternatively, if you typed:
+
+.in 14n
+.B
+v20V23
+.R
+.in 0n
+
+the plot would have wavelength on the vertical axis and reflectance
+on the horizontal axis.
+.PP
+If many records in sequence are to be plotted, then
+directly after the record number type "+" and the number of records to
+be plotted.  Thus, to plot spectra from device v, records 10 to 32,
+type
+
+.in 14n
+.B
+v10+22
+.R
+.in 0n
+
+
+where the +22 means the next 22 records after the requested
+record should also be processed.  Note that the + specification will
+yield strange results with option e (include errors) since the
+record increment is always 1.  Thus, after plotting data with errors
+(e.g. record v10 = data and record v11 = errors), the record increment
+will be one, and the errors will be plotted as data with the next
+record plotted as the errors to the errors! To plot many spectra
+in sequence which all have error records, they must be typed in
+sequentially such as v10e v12e v14e v16e v18e v20e v22e.  Note no
+spaces are required, but they can be inserted if desired.  No
+commas are necessary (this is different from Math Operations).
+.PP
+If your spectra take up more than one record, you must count by records,
+not spectra.  Because the increment is by records, multiple records to
+one spectrum increments the counter by the number of records not by the
+number of spectra.  For example, if you have 512 channel spectra, and
+you want to overlay 3 spectra (each spectrum takes 2 records in the data
+file) you would use the current spectrum record number plus 5 records.
+If the first spectrum was at v20, then the next two are at v22 and v24,
+so type "v20+5" (which is equivalent to "v20 v22 v24").
+
+
+.B
+10.3  File Transfer
+.R
+.PP
+Files can be transferred by specifying the file ID, record number,
+the transfer specification
+
+.in 14n
+.B
+t
+.R
+.in 0n
+
+and the file ID and record number where the transfer is to go.
+Note that "transfer" means to copy.
+Many records may be transferred sequentially by using the plus
+specification.  For example,
+
+.in 14n
+.B
+v10td23
+.R
+.in 0n
+
+transfers (makes a copy of) file v record 10 to file d record
+23.  Also,
+
+.in 14n
+.B
+v10+99td23
+.R
+.in 0n
+
+transfers file v record 10 plus the next 99
+records to file d record 23 plus the next 99 records.  Thus, file
+v record 109 will be the last record transferred and will go to file d
+record 99 + 23 = 122.
+
+
+.B
+10.3.1  File Transfer with Plot or Information Change
+.R
+.PP
+Records that are going to be transferred can be plotted (and thus
+can have points deleted,
+deglitched, or information changed, see section 9) before the
+transfer is actually carried out by the option
+
+.in 14n
+.B
+c
+.R
+.in 0n
+
+which stands for "crt plot routines."
+Thus, to transfer v10
+plus the next 5 records to d23 and display them before
+transferring, type:
+
+.in 14n
+.B
+v10 + 5 ct d23
+.R
+.in 0n
+
+(the spaces are not necessary, but are included for clarity).
+The first file ID and record
+number represent a request to read the data.  The "t" option means
+to set up a transfer (copy).  The "c" option means to also enter the
+crt plot routines for anything you may wish to do.  The transfer is
+always the last step processed
+.I
+regardless
+.R
+of the order of the options.  However, the destination of the
+transfer must come after all other options.
+.PP
+If information only needs to be changed, the CRT plot can be
+skipped and the information change routine called directly by a
+
+.in 14n
+.B
+cit
+.R
+.in 0n
+
+specification as in
+
+.in 14n
+.B
+v10 + 5 cit d23.
+.R
+.in 0n
+
+The c is required since the information change routine is part of
+the CRT plot routines.  The "i"
+then signals the CRT plot routines that the information change
+routine only is requested.
+.PP
+.B
+Note,
+.R
+when transferring data to a
+protected (positive or zero protection value) file, the record
+number to transfer to must be 1 plus the protection value.
+For example, if you transfer to v1 but 100
+records are protected, the program will say there is a protection
+violation.  However, you do not need to specify the destination record number if
+the file is protected with write at the end of the file (protection
+value is positive).  For example, to transfer from w36 to file v
+whose protection is 100,
+
+.in 14n
+.B
+w36tv
+.R
+.in 0n
+and
+.in 14n
+.B
+w36tv101
+.R
+.in 0n
+
+are equivalent.
+
+
+.B
+10.3.2 Starpack Transfers
+.R
+.PP
+Starpack transfers involve 3 regular data records.  Thus,
+transferring starpack 1 (s1) to v10 (s1tv10) will result in the
+starpack being put into v10, v11, and v12.  When the starpack is
+transferred back, the program automatically collects the 3 records
+for starpack s1.  Thus, to transfer 6 starpacks (1 - 6) to file v
+starting at record 29, type
+
+.in 14n
+.B
+s1 + 5t v29.
+.R
+.in 0n
+
+The starpack will be put in records 29
+through 46.  To transfer these starpacks back, type
+
+.in 14n
+.B
+v29 + 5 t s1.
+.R
+.in 0n
+
+When the program sees that starpacks are being transferred, it
+knows the +5 means 5 starpacks at 3 regular records per starpack.
+
+
+.B
+10.4  Overlaying Data Sets
+.R
+.PP
+Overlaying spectra on the CRT is an excellent way to compare
+data for reproducibility.  The overlay is an option used in
+file display (see section
+10.2).  To overlay spectra, type the file ID, record number, and the
+option letter o.  The o must be included in every spectrum to be
+overlaid.  Errors can be included, and the overlay can be plotted
+as a function of channel, wavelength, or inverse wavelength (the
+program assumes the wavelength values are in microns and converts
+the values to wavenumber).  Also, you can change the graphics line
+type with each spectrum so that all data sets are distinguishable.
+For example, to overlay v23, v30 and w56 on the same plot, each with
+a different line type, you could type:
+
+.in 14n
+.B
+v23ol3 v30ol5 w56ol7
+.R
+.in 0n
+
+where the line types 3, 5, and 7 are used (see Chapter 9 for
+descriptions of the line types).  To overlay data sets with
+different wavelength sets, include the wavelength set as an option.
+For example if y25 has wavelength set y20 and d104 has wavelength
+set d3, you could type:
+
+.in 14n
+.B
+y25Y20ol3 d104D3ol7
+.R
+.in 0n
+
+
+.PP
+The plot type (wavelength, inverse wavelength, or channel) can be set as an
+option on the first file to be overlaid.  
+However, when in wavelength mode, you should not be in the
+auto-scale mode.  The minimum and maximum wavelengths can be different
+for different data sets; thus the CRT plot routine will scale the
+data differently if the wavelengths are auto-scaled.  To avoid this
+problem, simply set the minimum and maximum wavelengths to accept
+the range of all of your data sets.
+.PP
+Many spectra in sequence can be plotted and overlaid by using the
+plus specification as in section 10.2.  The program tells you
+when the last file in a sequence is overlaid on the CRT.  The
+plus specification will give strange results when including
+errors as noted in section 10.2.
+.PP
+Another example of overlaying many spectra is:
+
+.in 14n
+.B
+v10V8l6o v11el3o d23D20 + 5o y51oY30.
+.R
+.in 0n
+
+Note that the letter o is required on the last file to be overlaid.
+Note that the "o" is not always in the same place:  it doesn't matter
+what order the options are in.  The "e" means include error bars.  If an "o"
+option is not included with each spectrum, the screen will be erased, and that
+particular spectrum will be
+displayed as in section 10.2.
+
+Note that the wavelength set stays the same until it is changed
+again.
+
+
+.KS
+.B
+10.5  Multiple Commands in Data Display Transfer and Overlay
+.R
+.PP
+One entire line (80 characters) can be input for execution.
+These commands can be mixed freely between data displays, file
+transfers, or data overlays.  Spaces may be included anywhere on
+the line, but none are necessary.  An example of multiple commands
+is:
+
+.nf
+.in 8n
+.B
+v1+3ctd1 w34+10W4 v23+14oV6 v38eo v102+243tv236 v346+10citd480.
+.R
+.in 0n
+.KE
+
+
+First there is a display and transfer of 4 spectra, then 11 spectra
+are displayed, then 16 spectra overlaid (the last with error
+bars), next 244 records are transferred, then 11 are transferred
+with information change first.
+.PP
+In any of these routines, typing an
+
+.in 14n
+.B
+e
+.R
+.in 0n
+
+will exit to the next command,
+(including the next one in sequence)
+and typing
+
+.in 14n
+.B
+x
+.R
+.in 0n
+
+
+will exit back to Data Display, Transfer and Overlay
+(except in the information change, see section 9) without
+execution of the remaining commands.
+
+
+.B
+10.6  Extraction of Data from 3D Files for Display and Transfer
+.R
+.PP
+The 3-dimensional (3D) data extraction routines are best used from the
+data display and transfer routines.  Here, for example a spectrum
+can be extracted from an imaging spectrometer data cube, displayed on
+the graphics device and the copy transferred to a regular specpr
+format data file for further processing.
+.PP
+.B
+IMPORTANT NOTE:
+.R
+Because of the history mechanism, it is strongly recommended that
+you extract data from 3D files in this routine rather than directly
+in the math routine.  When a 3D data segment is extracted, a title
+and history that describes the exact data set is created.  If the
+extraction was done in math as an input to a routine, the math
+history generated loses the 3D file origin and will only give the
+file name and the first record number (of the extraction sequence).
+The proper way to track histories then is to extract the 3D data,
+transfer the data to a standard format specpr file and do math
+operations, plotting and other functions from the regular specpr
+file.
+
+.PP
+Examples.  If file v is assigned to an AVIRIS imaging spectrometer
+data cube containing 512 lines, 614 samples (across track) and 224
+bands and you wish to display the spectrum at pixel (line,sample) =
+(200,132) you would type
+
+.in 14n
+.B
+vpx(200,132,*)
+.R
+.in 0n
+
+If you wanted to extract a block with the upper left pixel at
+200,132 and 3 lines by 5 samples, you would type
+
+.in 14n
+.B
+vpx(200+2,132+4,*)
+.R
+.in 0n
+
+and 15 spectra would be extracted and the error bars (the standard deviation
+of the mean) would be computed.
+.PP
+To transfer a copy of the extracted data to a regular specpr file
+(which in the example below we will use file w), you would simply do
+a transfer using "t":
+
+.in 14n
+.B
+vpx(200+2,132+4,*) t w56.
+.R
+.in 0n
+
+The result of the 15 pixel average would be copied to file w
+record 56 and the error bars put in record 57.
+.PP
+As described in the file assignments chapter (Chapter 6, section
+6.2), the extraction direction can be in any one of the 3 orthogonal
+directions.  For example, to extract a profile across track (along
+the "sample" direction) at line 200, wavelength channel 12, you would
+type
+
+.in 14n
+.B
+vpx(200,*,12)
+.R
+.in 0n
+
+and the data would be plotted on the graphics device.
+.PP
+To extract a profile along the flight line at sample 132, wavelength
+channel 12, you would type
+
+.in 14n
+.B
+vpx(*,132,12)
+.R
+.in 0n
+
+and the data would be plotted on the graphics device.

@@ -1,0 +1,548 @@
+	subroutine f17(ic,idv1,ifil)
+	implicit integer*4 (i-n)
+
+#ccc  name: f17
+#ccc  version date: 1/15/86
+#ccc  author(s): Roger N. Clark and M. Klejwa
+#ccc  language: Ratfor
+#ccc
+#ccc  short description: Convolution from high to low resolution
+#ccc
+#ccc  algorithm description: see specpr manual
+#ccc  system requirements: none
+#ccc  subroutines called:
+#ccc  argument list description: 
+#ccc  parameter description:
+#ccc  common description:
+#ccc  message files referenced: none
+#ccc  internal variables:
+#ccc  file description: none
+#ccc  user command lines:
+#ccc  update information:
+#ccc  NOTES:
+#ccc
+
+	include "../common/spmaxes"   # max parameters, must be first
+
+	include "../common/blank"
+	include "../common/label1"
+	include "../common/lblg"
+	include "../common/lbl7"
+	include "../common/lbl8"
+	include "../common/lbl3"
+	include "../common/lbl4"
+	include "../common/lundefs"
+	include "../common/alphabet"
+	include "../common/dscrch"
+
+#RED
+	integer*4 iwidok     # function
+	integer*4 devres
+
+	integer*4 fileno,outno,bfilno,efilno,devltr,outid,outchn
+
+#	Variables relevant to change of 1/8/86
+
+	real*4 ctwave(SPMAXCHAN),bwidth(SPMAXCHAN)	    
+	integer*4 devctw,fnctw
+	integer*4 devbdw,fnbdw
+	integer*4 tmpctw,tmpbdw
+	integer*4 numctw,numbdw
+	integer*4 nbndps
+	integer*4 erflag
+	integer*4 gmode,nmode
+
+	integer*4 imode,jline,isamp
+
+	integer*4 fnres
+
+	real*4    tlim
+
+
+	logical cnvlot,rtflag
+	real*4 c(SPMAXCHAN),s(SPMAXCHAN),r(SPMAXCHAN)
+	real*4 t(SPMAXCHAN),x(SPMAXCHAN)
+	character*8 inam,inam2
+	character*8 inamwi   #file name of input wavelength set
+	character*8 inmirs   #file name of input resolution set (gmode 1 only)
+	character*8 inmows   #file name of output wavelength set (gmode 1 only)
+	character*8 inmors   #file name of output resolution set (gmode 1 only)
+
+	character*15 nmstr
+
+    equivalence  (c(1),error(1)),(s(1),datac(1)),(r(1),datab(1))
+    equivalence   (x(1),dataa(1)),(t(1), data(1)) 
+    equivalence (ctwave(1),datsc1(1)),(bwidth(1),datsc2(1))
+
+
+#*********************************************************************
+#                       program definitions:                         *
+#      input spectrum  :   r(x) <> datab(x)                          *
+#   spectral bandpasses:   t(x) <> data(x)                           *
+#        wavelengths   :   x    <> dataa                             *
+#   output spectrum    :   s(x) <> datac(x)                          *
+#     center values    :   c    <> error                             *
+#*********************************************************************
+#
+
+
+	if (ictrl==-1) {
+		ic=ihe
+		write(ttyout,45)
+		go to 1000
+	}
+
+	if (ictrl==ihe) {
+		write(ttyout,55)
+	}
+
+	do i=1,maxchn
+		r(i)=dataa(i)
+
+
+100     call eralph
+	call whedr2
+101	write(ttyout,115) idv1,ifil,ititl
+	call crtin
+	i=1
+	call wjfren (i,a,il)
+	if (il == ihe || il == ihx) {
+		ic = ihe
+		goto 1000
+	}
+	if (iwidok(il) == 1) {
+		iwtmpf = il
+		call wjfren (i,b,ik)
+		if ((b>0)&(((iwtmpf==ihcc)&(b<=maxchn))|
+				((iwtmpf!=ihcc)&(b<=maxrec)))) {
+			ifilno=b
+		} else {
+			call what(i)
+			write(ttyout,125)
+			go to 101
+		}
+#
+#
+        } else if (i>=80) {
+		iwtmpf=itrol(1)
+		ifilno=itrol(2)
+        } else {
+        	write(ttyout,125)
+        	go to 101
+        }
+
+	call wavlng(iwtmpf,ifilno,ier)
+	if (ier!=0) go to 101
+
+	call whedr2
+#
+
+
+600	write(ttyout,601)
+601	format(/,'Enter  n  if you wish your files to be NORMALIZED',/,
+		'         after the n enter lower bandpass cutoff limit ',
+				'(default = 1x10^-7)',/,
+	       'Enter  return  for NO NORMALIZATION or just the limit value',/,
+		'Enter  z  to set lower limit to zero')
+
+	nmode=0
+	tlim = 0.1e-7
+
+610 	call crtin
+	i=1
+615	call wjfren(i,a,il)
+	if (il==ihe | il==ihx) {
+		ic=ihe
+		goto 1000
+	}
+		
+	if (il==ihn) nmode=1 
+	if (il==ihz) tlim = 0.0
+
+	if ((il == 0) & (a > 0.0)) tlim = a
+
+	if ((il == 0) & (a < 0.0)) {
+		call what(i)
+		write (ttyout,*) 'ERROR: lower limit must be > 0.0'
+		write (ttyout,*) 'press return to continue'
+		call wjfren(i,a,il)
+		go to 600
+	}
+				# now look for tlim
+	call wjfren(i,a,il)
+	if (il==ihe | il==ihx) {
+		ic=ihe
+		goto 1000
+	}
+		
+	if (il==ihz) tlim = 0.0
+
+	if ((il == 0) & (a > 0.0)) tlim = a
+
+	if ((il == 0) & (a < 0.0)) {
+		call what(i)
+		write (ttyout,*) 'ERROR: lower limit must be > 0.0'
+		write (ttyout,*) 'press return to continue'
+		call wjfren(i,a,il)
+		go to 600
+	}
+
+#  Option : 1/8/86
+#  Select whether bandpasses will be input from a set of records or
+#  calculated by a Gaussian fitting routine (gmode =1)
+
+
+	write(ttyout,701)
+701	format(/,'Enter g to use Gaussian routine for BANDPASSES',/,
+		'        This option generates bandpasses from a',
+		' resolution set',/,
+	       'Return if you wish to ENTER BANDPASSES SETS from',
+	       'a specpr data FILE')
+
+
+
+  	gmode=0    # default gmode =0 is read in bandpass profiles, one for
+                   # each output channel
+710 	call crtin
+	i=1
+715	call wjfren(i,a,il)
+	if (il==ihe | il==ihx) {
+		ic=ihe
+		goto 1000
+	}
+		
+	if (il==ihg)
+		gmode=1    # bandpasses are Gaussians generated by input wavelengths
+                           # and input FWHM (bandpasses)
+  
+	if (gmode==1)  {
+		call gfiles(x,ctwave,bwidth,devctw,devbdw,devres,fnctw,fnbdw,
+		            fnres,numbdw,nchans,erflag)	
+		if (erflag==1) {   # error in read or requested exit
+			ic=ihx
+			goto 1000	
+		}	
+		nbndps=numbdw
+	}else{				#gmode != 1
+				
+
+#     *** enter spectral bandpass file information ***
+200 write(ttyout,205)
+
+210 call crtin
+	i=1
+	call wjfren (i,a,il)
+	if (il == ihe || il == ihx) {
+		ic = ihe
+		goto 1000
+	}
+	if (il==0) {
+		call what (i)
+		write(ttyout,125)
+		go to 210
+	} else {
+		devltr=il
+		call devlun (4,devltr,lun)
+		if (lun==0) {
+			call what (i)
+			write(ttyout,125)
+			go to 200
+		}
+
+220     call wjfren (i,b,il)
+		if (il!=0 || b<=0) {
+			call what (i)
+			write(ttyout,125)
+			go to 200
+		} else {
+			bfilno=b
+			stfile=bfilno
+230         call wjfren (i,d,il)
+			if (il!=0 || d<=0) {
+				call what (i)
+				write(ttyout,125)
+#was go to 230
+				go to 200
+			} else nbndps=d
+		}
+	}
+
+
+#
+
+	do i=1,maxchn
+		s(i)=0.0
+
+
+	fileno=bfilno-1
+
+	}		# end else gmode != 1
+
+
+
+
+#
+#
+#
+	if ( gmode == 0  && (nbndps*5)>nchans) {
+		write(ttyout,285) nbndps, nchans
+		call crtin
+		i=1
+		call wjfren (i,a,il)
+		if (il==0) go to 400
+		ic=ihe
+		go to 1000
+	}
+
+
+
+
+400 outchn=0
+
+	imode = 0      # convol controls
+	jline = 1
+	isamp = 1
+
+	if (gmode==1)   {
+
+#
+#	      *** begin computation loop ***
+#  	      ********* gmode =1 **********
+#
+
+		do j=1,numbdw  {
+			outchn=outchn+1
+			if ( bwidth(j)==-1.23e34 )  {
+				s(outchn)=-1.23e34
+			} else  {	
+			call ggauss(ctwave(j),bwidth(j),nchans,x,t)
+			call convol(outchn,nchans,t,r,x,s,c,nmode,
+					imode,jline,isamp,tlim)
+			}
+		}
+
+
+#
+#	***  end computation loop *****
+#	*********  gmode =1 *********
+
+	}else {				# gmode  != 1  
+
+
+#
+#	*** begin computation loop ***
+#       ********* gmode  != 1 *********
+#
+	do jf = 1, nbndps {
+		outchn=outchn+1
+		fileno=fileno+1
+		call devok (4,devltr,fileno,lun,ier)
+		if (ier!=0) {
+			write(ttyout,155)
+			ic=ihx
+			go to 1000
+		} else {
+			call redfil (fileno,lun,ier)
+		}
+
+		call convol(outchn,nchans,t,r,x,s,c,nmode,
+				imode,jline,isamp,tlim)
+	}		# end while
+
+	}			# end else gmode != 1		
+
+#
+#       *** end of computation loop ***
+#       *********  gmode  != 1  ********* 	
+
+
+#
+#     *** check for center value output ***
+#
+390 write(ttyout,395)
+	cnvlot = .false.
+	call crtin
+	i=1
+	call wjfren (i,a,id)
+	if (i>=80) go to 490
+	cnvlot = .true.
+	if (id==0) {
+		call what (i)
+		write(ttyout,125)
+		go to 390
+	} else {
+		outid=id
+		call wjfren (i,b,il)
+		if (b==0) {
+			write(ttyout,125)
+			go to 390
+		} else outno=b
+	}
+401 write(ttyout,405)
+#
+	call crtin
+	ititl = iopcon
+#
+#     *** write center values if applicable ***
+#
+	if (cnvlot) {
+		do i=1, nchans
+			data(i)=c(i)
+	}
+	if (nchans < maxchn) {
+		do i=nchans+1, maxchn
+			data(i)=0.0
+	}
+#
+# fix added 08/20/87 NSG
+#
+	itchan=nchans
+#
+#
+#     *** write history to center values***
+#
+
+	ihist = ' f17: center wavelengths to following data set'
+	call namdev(idv1,inam)
+	call namdev(devltr,inam2)
+	call namdwv(itrol(1),inamwi)  #name of input wavelength set
+
+	if (gmode != 1) {
+		write(mhist(1:74),486) inam,ifil,nbndps,inam2,bfilno
+		write(mhist(75:148),487) inamwi, itrol(2)
+	}
+#
+#
+	call devlun (4,outid,lun)
+	call devsta (lun,ista,ier,iprt)
+	if (ier!=0 || iprt==-1) {
+		write(ttyout,155)
+		go to 390
+	}
+#
+	call wrifil (outno,lun,ier)
+#
+490     continue
+        if (nmode == 1) {
+		nmstr='auto normailzed'
+	} else {
+		nmstr='un-normalized  '
+	}
+
+	if (gmode==1) {
+	
+		call namdev (idv1,inam)
+		call namdwv(itrol(1),inamwi)  #name of input wavelength set
+		call namdev(devres,inmirs)    #name of input resolution set
+		call namdwv(devctw,inmows)    #name of output wave set
+		call namdev(devbdw,inmors)    #name of output resolution set
+
+		write (ihist,800) inam, ifil
+800		format ('f17:convlvd ',a,' r',i6,
+			' Gaussian convolution, see mhist')
+		write (mhist,802) inamwi, itrol(2), nchans, inmows, fnctw,
+					inmors, fnbdw, numbdw, nmstr,
+					inmirs, fnres
+802		format ('**f17: input wave: ',a,' r',i6,' ch=',i5,
+			' output wave: ',a,' r',i6,
+                        '**f17: output resolution: ',
+			a,' r',i6, ' output ch=',i5,' ',a,
+			'**f17: input resolution (FHWM): ', a,' r', i7,
+				' generated Gaussians            ')
+
+	} else {
+
+	call namdev (idv1,inam)
+	call namdev(devltr,inam2)
+	call namdwv(itrol(1),inamwi)  #name of input wavelength set
+
+	write (ihist,495) inam,ifil,nbndps,inam2, bfilno
+	write(mhist(1:74),487) inamwi, itrol(2), nmstr
+#
+	mhist (75:296) = ' '
+
+	} 		#end  else gmode != 1
+
+	if (gmode == 1) {        # set new wavelength set
+		itrol(1)=devctw
+		itrol(2)=fnctw
+	}
+
+        # reset dates and times of input spectrum 
+
+	iscta = mcta1
+	isctb = mctb1
+	istb  = mstb1
+	jdatea= mdatea1
+	jdateb= mdateb1
+
+
+#
+#     *** program end ***
+#
+1000 return
+
+45      format(/, ' *** ERROR -- NO data set input to program ***.',/,
+	'      program will EXIT.',/)
+
+55      format(/,
+	' *** NOTE: f17 Cannot include ERRORS. They will be IGNORED.',/)
+
+115     format( ' Function f17: High Low Convolution',//,
+	5x,'This function convolves a HIGH resolution spectrum to a LOW ',/,
+	5x,'resolution spectrum in one of two modes: ',/,
+	10x,'1) assuming Gaussian response curves, generate the bandpass',/,
+	10x,'   functions from the center wavelengths of the output data set',/,
+	10x,'   and the resolution (FWHM) as a function of wavelength',/,
+	10x,'2) Get the bandpass response curves directly from a specpr',/,
+	10x,'   data file (good for complex bandpasses).',/,
+	/,5x,'Operating on: ',a,i7,':',a,//,
+	5x,'Press RETURN for default wavelength assignment or ',/,
+	5x,'the NEW WAVELENGTH FILE id (upper case) ',
+			'and record number:',/)
+
+125     format ( ' ***--ERROR--INVALID INPUT to program.  re-enter: ',/)
+
+155     format ( ' ***--ERROR-- INVALID File Protection ***',/)
+
+205     format (//,
+	' Enter file id,  FIRST record number and NUMBER OF BANDPASSES',/,
+	'     for spectral bandpass data sets :',/)
+
+255     format (//,
+	' ***--ERROR--: difference between ending and beginning record no. >',i5,/,
+	'     TOO MANY DATA RECORDS.'/)
+
+285     format (/,
+	' *** WARNING : number of bandpass sets >> ',i3,
+	' times five exceeds the number of channels >> ',i3,/,
+	'     resulting accuracy questionable.....',//,
+	'     to CONTINUE, press return, or to EXIT press e or x.',/)
+
+335     format (/,
+	' *** WARNING ***: DIVISION BY ZERO ***',/,
+	' channel no. ',i4,' in output spectrum has been reset to -1.23e34.',/,
+	'data will be affected.',/)
+
+395     format (/,' Convolution has computed the CENTER ',
+	'WAVELENGTH values for the',/,
+	'      convolved output spectrum. If you want these values written:',/,
+	' Enter file id and record number for CENTER VALUE OUTPUT :',/,
+	' RETURN To Ignore',/)
+
+405      format (/, ' enter title for center values :',/,
+	' --------------------------------------|',/)
+
+485   format (1x,a)
+
+486   format('**f17: convlvd ',a,' r',i6,';',i4,
+	' Bandpasses: ',a,' r',i6,'-',i5)
+
+487   format('**f17: input wavelength set: ',a,' r',i6,2x,a)
+
+495   format ( 'f17:convlvd ',a,' r',i6,';',i4,' Bndpss: ', a,' r',i6)
+
+505   format (a)
+10000 format(a)
+
+end

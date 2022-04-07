@@ -1,0 +1,63 @@
+
+
+
+
+
+
+SPECPR Users' Manual                                            Page 8-f39.1
+
+
+_F_3_9:  _R_a_n_d_o_m _N_u_m_b_e_r _N_o_i_s_e _G_e_n_e_r_a_t_o_r                     _A_l_i_a_s = _n_o_i_s_e
+
+     This routine uses the system random number generator to generate  noise
+with  a  normal  distribution and a standard deviation of 1.0.  The user can
+then multiply the resulting numbers by a constant to generate noise  with  a
+different standard deviation, and the noise may be added to a spectrum.
+
+     The routine generates a random number for each  channel  in  use.   The
+user  then  gives a scale factor to scale the noise to the desired interval.
+For example if you wanted noise of 3%  (standard  deviation  of  0.03),  you
+would scale the noise by 0.03.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,69 @@
+
+#	load data and wavelengths
+	if (ictrl==-1) {
+		ic=ihx
+		write(ttyout,55)
+		return
+	}
+
+	do i=1,maxchn {
+		data(i)=0.0
+		datab(i)=dataa(i)
+		datac(i)=0.0
+		error(i)=0.0
+	}
+
+
+	call eralph
+	call whedr2
+	write(ttyout,115) idv1,ifl1,ititl
+
+140	call crtin
+	i=1
+150	call wjfren (i,a,il)
+	if (iwidok(il) == 1) {
+		iwtmpf = il
+		call wjfren (i,b,ik)
+		if (b<=0 || b>maxrec) {
+			call what (i)
+			write(ttyout,165)
+			go to 140
+		} else {
+			irecw=b
+			call wavlng (iwtmpf,irecw,ier)
+			if (ier != 0) {
+				write (ttyout,165)
+				go to 140
+			}
+			itrol(1) = iwtmpf
+			itrol(2) = irecw
+			call whedr2
+		}
+		if (ik!=0) i=i-1
+		go to 150
+	} else  if (il==ihx || il==ihe)  {
+		ic=il
+		return
+	} else {
+			irecw=itrol(2)
+			iwtmpf = itrol(1)
+			call wavlng (iwtmpf,irecw,ier)
+			if (ier != 0) {
+				write (ttyout,165)
+				go to 140
+			}
+	}
+	
+55      format (_
+' *** error -- invalid file status ***',/,
+'     program will exit.',/)
+
+115     format (_
+' Function f45: Feature Analysis',//,
+'     This function will do a full feature analysis, from a series of ', //,
+'     upper hulls operating on : ',a,i4,':',a,//,/,
+'     Enter new wavelength file id and record number, (e.g. V23),',//,
+'     or press return, or "e", or "x" to exit:',/)
+
+165     format (_
+' *** error -- invalid input re-enter ***:',/)

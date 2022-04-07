@@ -1,0 +1,211 @@
+<!-- Creator     : groff version 1.18.1.1 -->
+<!-- CreationDate: Tue Nov  9 14:21:31 2010 -->
+<html>
+<head>
+<meta name="generator" content="groff -Thtml, see www.gnu.org">
+<meta name="Content-Style" content="text/css">
+<title></title>
+</head>
+<body>
+
+<hr>
+<pre>SPECPR Users&rsquo; Manual                                                   Page 3.1
+
+</pre>
+
+<p align=center>CHAPTER 3</p>
+
+<p align=center>STARTING SPECPR</p>
+
+<p>3.1 Starting Specpr on Unix To run specpr you must first
+log in to the system. It is advisable to do specpr work for
+a particular project in a separate directory. Specpr uses
+protective locks on files to prevent simultaneous specpr
+sessions from overwriting data. Thus, if you are starting a
+new project, create a directory in which to start, then cd
+to that directory.</p>
+
+<p>You can start specpr in one of five ways, using the
+following commands.</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="18%"></td>
+<td width="81%">
+<p>starts specpr, first with current messages, then a start
+&quot;from scratch&quot; where a complete setup is required.
+After the word &quot;specpr&quot; type a carriage
+return.</p>
+<!-- INDENTATION -->
+<p>starts specpr in restart mode, where the restart file
+&quot;rfile&quot; contains all the information saved from
+the previous session. Before specpr is started, current
+messages are displayed.</p>
+<!-- INDENTATION -->
+<p>starts specpr in restart mode, where the restart file
+&quot;rfile&quot; contains all the information saved from
+the previous session. The -gN option, where N is the
+graphics terminal type integer number given in section 5.7,
+sets the graphics type as specpr is started. The
+&quot;N&quot; may also be one of the strings
+&quot;xterm&quot; or &quot;hpterm&quot; (without the quotes.
+Thus the command &quot;specpr rfile -gxterm&quot; starts
+specpr with restart file &quot;rfile&quot; and starts an
+xterm X-windows graphics session.</p>
+<!-- INDENTATION -->
+<p>starts specpr in restart mode, where the restart file
+&quot;rfile&quot; contains all the information saved from
+the previous session. The minus sign suppresses messages
+unless new messages have been added since the last time
+&quot;rfile&quot; has been written. After a basic setup,
+this is the command you will want to use to restart specpr
+(or the command below).</p>
+<!-- INDENTATION -->
+<p>starts specpr in restart mode, where the restart file
+&quot;rfile&quot; contains all the information saved from
+the previous session. The -gN option, where N is the
+graphics terminal type integer number given in section 5.7,
+sets the graphics type as specpr is started. The
+&quot;N&quot; may also be one of the strings
+&quot;xterm&quot; or &quot;hpterm&quot; (without the quotes.
+The minus sign suppresses messages unless new messages have
+been added since the last timer &quot;rfile&quot; has been
+written. After a basic setup, this is the command you will
+want to use to restart specpr (especially when starting
+specpr from X-windows). Thus the command &quot;specpr rfile
+-gxterm -&quot; starts specpr with restart file
+&quot;rfile&quot; and starts an xterm X-windows graphics
+session.</p>
+</td>
+</table>
+
+<p>The restart file contains all information for restarting
+specpr and putting it in the same state as when you last
+quit the program. Specpr periodically updates the restart
+file during a processing session in case of a system or
+program crash. The specpr startup messages are notes and
+information about changes, additions and bugs in the current
+version of specpr.</p>
+
+<p>3.2 HELP! The user may get help at any keyboard input
+point in the program. To get help, you simply type</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>help</p></td>
+</table>
+
+<p>or</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>help &lt;keyword&gt;</p></td>
+</table>
+
+<p>where &quot;&lt;keyword&gt;&quot; is a key word to
+search on. The index of key words and a description is
+displayed by just typing help. Once in help, help is read
+with the Unix command defined by the environment variable
+PAGER (see section 3.3), or if PAGER is not defined, the
+Unix &quot;more&quot; command is used. When reading help, if
+there is more than one page you must follow the directions
+for that Unix command (e.g. for the more command, press the
+space bar to get to the next page or a &quot;q&quot; command
+to quit). When you have completed reading the index page or
+a keyword entry, the following message is displayed:</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="15%"></td>
+<td width="84%">
+<p>----------------------------------------- PRESS RETURN TO
+CONTINUE with program, Type a keyword for help on that
+topic, or Type help for the index page
+-----------------------------------------</p></td>
+</table>
+
+<p>If you want to read about another keyword, simply type
+that key word and press return. If you want to redisplay the
+index pages, type &quot;help&quot; (without the quotes) as
+the key word.</p>
+
+<p>Example: to get help on file protection at any point in
+specpr, type</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>help protection</p></td>
+</table>
+
+<p>or, type</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>help</p></td>
+</table>
+
+<p>and once in the help facility, type the</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>protection</p></td>
+</table>
+
+<p>key word.</p>
+
+<p>3.3 Configuration of Environment Variables Specpr
+currently recognizes two environment variables. An
+environment variable is a variable that is set from the Unix
+command line. For example, in the c-shell, you type</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="73%">
+<p>setenv PAGER myprog</p></td>
+</table>
+
+<p>to set the environment variable PAGER. See your local
+system documentation on setting environment variables for
+other Unix shells. Commonly, users define these variables in
+the login startup files, so they get activated each time the
+user logs in. The environment variables currently used and
+defined by specpr are:</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="7%"></td>
+<td width="92%">
+<p>PAGER The program used for listing to the terminal
+screen. Currently it is used by the help facility. Default
+program if PAGER is not defined is the Unix &quot;more&quot;
+command.</p>
+<!-- INDENTATION -->
+<p>EDITOR The editor to use. Currently, this is the editor
+to use when editing specpr text records in the header
+information change routines. Default editor is
+&quot;vi&quot;.</p>
+</td>
+</table>
+<hr>
+</body>
+</html>

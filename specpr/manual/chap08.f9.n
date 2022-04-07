@@ -1,0 +1,94 @@
+.\" use ms macros
+.\" this header is for putting the page numbers at the bottom of the page
+.\" set line length, page offset, vertical spacing
+.nr LL 6.3i
+.ll 6.3i
+.nr PO 1.0i
+.po 1.0i
+.nr VS 12
+.vs 12
+.\" set header and footer margins (default is 1.0i)
+.nr FM 1.00i
+.fm 1.00i
+.nr HM 1.00i
+.hm 1.00i
+.\" set no date here, MUST be before CF definition, because ND sets CF
+.\" set date, so don't do .ND
+.\" LH CH RH are left, center, right header strings
+.\" LF CF RF are left, center, right footer strings
+.\" default is CH is defined as: .ds CH "\(hy \\n(PN \(hy
+.ds LH "SPECPR Users' Manual
+.ds CH
+.ds RH "Page 8-f9.\\n(PN
+.\" setup complete
+.nf
+SPECPR Users' Manual                                                   Page 8-f9.1
+
+
+.B
+F9:  Band Removal (Reflection Method)                     Alias: band[rem]
+.R
+.PP
+This absorption band removal routine
+takes one half of an absorption band and reflects
+it about the band minimum then, divides a given reflection
+spectrum by the calculated band.
+.PP
+The routine will request:
+
+"Type in the file id and file # to be processed, e to include
+errors, followed by l or r for left- or right-side of band to be
+reflected.  type e or x to exit."
+.PP
+The "l" or "r" refers to left- or right-side of the band minimum when the
+spectrum is stored in increasing wavelength from left to right.
+It refers to the side of the band that you want to be reflected to
+the other side.
+.PP
+Next you will be instructed to:
+
+"enter outer limits of band (2 values), estimated half height
+point on side to be reflected followed by h, a, n (channel,
+wavelength, inverse wavelength), and wavelength file id and number.  
+type e or x to exit."
+.PP
+The two outer limits are on either side of the band minimum.  The
+first limit tells where to stop the reflection process, the second
+tells where to stop looking for the band minimum.  The program
+types "WORKING" and is doing the following:
+
+.in 2n
+.ti -2n
+\(bu correlating the given band limits to channels in the wavelength
+file, default is that the limits are given in terms of channels.
+
+.ti -2n
+\(bu searching for the band minimum by looking for a datum that is
+smaller than the three values on either side of it, between the
+limits of the \(12 height and the second outer band limit.
+
+.ti -2n
+\(bu puts values of one side of band into the position symmetrically
+opposite to it relative to the band minimum.
+
+.ti -2n
+\(bu divides spectrum by reflected band.
+
+.ti -2n
+\(bu scales the errors by a factor of (the residual \(di the original
+spectrum).
+
+.ti -2n
+\(bu calculates title and history.
+.in 0n
+
+.PP
+.B
+WARNING:
+.R
+This is a primitive means of removing a band.  It was used in the
+1970's but does not take into account the nonlinear nature of
+reflection spectra.  The results for reflectance spectroscopy are
+not quantitative.
+
+Original author: Lucy Mcfadden

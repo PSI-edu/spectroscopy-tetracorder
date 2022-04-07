@@ -1,0 +1,46 @@
+# define  features for plotting continuum and band depths 
+# to show a tetracorder feature definition
+#
+# 11/2018 - R. Clark
+
+# example entries:
+#
+# tf1= mineral1 f1a DLw 2.150   2.210   2.390   2.430  ct 0.04 r*bd> 0.002 0.004
+# tf2= mineral1 f2a DLw 2.199   2.230   2.275   2.290  ct 0.04 r*bd> 0.002 0.004
+
+# tf1= Snow.H2O f1a DLw 0.958   0.986   1.080   1.110  ct 0.08
+# tf2= Snow.H2O f2a DLw 1.150   1.178   1.315   1.345  ct 0.08 lct/rct> 0.9 1.1
+
+	common /tetfeat/ tleftwave, tctrwave, trightwave, tbdepth
+	common /tetfeat/ tleftchan, tctrchan, trightchan
+	common /tetfeat/ tfeatname, tfmode, tetonoff
+	common /tetfeat/ tetflgmenu, tetfna, tetfnc, tfcont
+	common /tetfeat/ tlcavg, tbbavg, trcavg, tetfline
+
+        real*4 tleftwave(2,imaxtet)        # left continuum interval
+        real*4 tctrwave(2,imaxtet)         # band bottom interval
+        real*4 trightwave(2,imaxtet)       # right continuum interval
+
+        integer*4 tleftchan(2,imaxtet)     # left continuum interval
+        integer*4 tctrchan(2,imaxtet)      # band bottom interval
+        integer*4 trightchan(2,imaxtet)    # right continuum interval
+
+        real*4 tbdepth(imaxtet)            # band depth
+
+	integer*4 tfmode(imaxtet)          # mode: 0=not defined, 1=channels, 2=waves
+	integer*4 tfcont(imaxtet)          # tetracorder continuum mode: 0=not defined, 1=linear, 2=curved
+
+        character*12 tfeatname(imaxtet)    # feature name (no spaces)
+
+	character*4  tetfna(imaxtet)       # tetracorder descriptor, e.g. f1a f2a
+	character*4  tetfnc(imaxtet)       # tetracorder descriptor, e.g. DLw or DCw
+
+	integer*4 tetonoff(imaxtet)        # 0=off, 1=on
+
+	integer*4 tetflgmenu               # 0=off, 1=on to print band depths on plot
+        
+	real*4 tlcavg(imax3pt)             # left continuum data average
+	real*4 tbbavg(imax3pt)             # band center data average
+	real*4 trcavg(imax3pt)             # right continuum data average
+
+	character*80 tetfline(imaxtet)     # the full user line.

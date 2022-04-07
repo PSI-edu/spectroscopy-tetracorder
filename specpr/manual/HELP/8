@@ -1,0 +1,924 @@
+
+
+
+SPECPR Users' Manual                                                Page 8.2
+
+
+_8._1  _I_n_t_r_o_d_u_c_t_i_o_n
+
+     All mathematical operations are carried out in Math  Operations  except
+for  extinction analysis.  The math routines also contain the "special func-
+tions."  Special functions do some operation on a data set,  or  generate  a
+data  set.   While most special functions are math related, they need not be
+(for example sort a data set  into  increasing  wavelengths).   The  general
+sequence the user sees in the Math Operations section is the following:
+
+
+        o+  At the math main menu, the user  enters  a
+           math command
+
+        o+  The math  function  displays  what  it  is
+           going to do and the user works his/her way
+           through the function-specific menus.
+
+        o+  When the math function completes normally,
+           the user is asked where the data should be
+           written (which v, w, d, u, or y data  file
+           and what record number).  The data are not
+           written at this time; that is  the  second
+           to last step below.  The ultimate location
+           is requested at this  point  so  that  the
+           spectrum  is  properly  identified in case
+           print-outs are made.
+
+        o+  The user is asked to type in  a  title  to
+           the data set.
+
+        o+  The data are plotted in the graphics  ter-
+           minal  (with  the  crt  plot routines, see
+           Chapter 9).  In the crt plot routines, the
+           user  can  change  or  add  to  the header
+           information.
+
+        o+  The data are written to the data file when
+           the user soft exits from the crt plot rou-
+           tines (exit with  e).   See  warnings  and
+           important rules below.
+
+        o+  The user is returned to  the  math  opera-
+           tions menu.
+
+
+_W_A_R_N_I_N_G: _t_h_e _n_u_m_b_e_r _o_f _d_a_t_a _c_h_a_n_n_e_l_s _o_p_e_r_a_t_e_d _o_n  _b_y  _a_n_y  _m_a_t_h  _r_o_u_t_i_n_e  _i_s
+_d_e_t_e_r_m_i_n_e_d  _b_y  _t_h_e  _n_u_m_b_e_r _o_f _c_h_a_n_n_e_l_s _i_n _t_h_e _d_a_t_a _s_e_t _i_n _u_s_e (_d_i_s_p_l_a_y_e_d _i_n
+_t_h_e _t_o_p _f_e_w _l_i_n_e_s _o_f _e_a_c_h _r_o_u_t_i_n_e).  _I_t _i_s _U_P _T_O _T_H_E _U_S_E_R  _t_o  _b_e  _s_u_r_e  _t_h_e
+_n_u_m_b_e_r  _o_f  _c_h_a_n_n_e_l_s _i_s _s_e_t _p_r_o_p_e_r_l_y.  _I_m_p_r_o_p_e_r _n_u_m_b_e_r _o_f _c_h_a_n_n_e_l_s _i_s _a _v_e_r_y
+_c_o_m_m_o_n _r_e_a_s_o_n _f_o_r _i_m_p_r_o_p_e_r _r_e_s_u_l_t_s.
+
+
+
+
+
+
+
+                             February 20, 2002
+
+
+
+
+
+SPECPR Users' Manual                                                Page 8.3
+
+
+_W_A_R_N_I_N_G: _t_h_e _n_u_m_b_e_r _o_f _c_h_a_n_n_e_l_s _i_n _t_h_e _d_a_t_a _s_e_t _w_r_i_t_t_e_n _b_y _t_h_e _m_a_t_h _r_o_u_t_i_n_e_s
+_i_s  _c_o_n_t_r_o_l_l_e_d  _b_y  _t_h_e _n_u_m_b_e_r _o_f _c_h_a_n_n_e_l_s _i_n _u_s_e _A_T _T_H_E _T_I_M_E _t_h_e _u_s_e_r _E_X_I_T_S
+_t_h_e _C_R_T _P_L_O_T _R_O_U_T_I_N_E_S.  _I_f _y_o_u _c_h_a_n_g_e _t_h_e _n_u_m_b_e_r _o_f _c_h_a_n_n_e_l_s _i_n  _t_h_e  _h_e_a_d_e_r
+_r_o_u_t_i_n_e_s,  _i_t  _w_i_l_l  _h_a_v_e  _n_o  _e_f_f_e_c_t--_t_h_a_t  _v_a_l_u_e _i_s _o_v_e_r_r_i_d_d_e_n _b_y _t_h_e _m_a_t_h
+_w_r_i_t_i_n_g _r_o_u_t_i_n_e.
+
+_I_M_P_O_R_T_A_N_T _R_U_L_E: _t_h_e _w_a_v_e_l_e_n_g_t_h _p_o_i_n_t_e_r _w_i_l_l _b_e _s_e_t _a_u_t_o_m_a_t_i_c_a_l_l_y _b_y _t_h_e _m_a_t_h
+_r_o_u_t_i_n_e  _a_t _t_h_e _t_i_m_e _t_h_e _d_a_t_a _a_r_e _w_r_i_t_t_e_n _t_o _t_h_e _d_a_t_a _f_i_l_e _I_F _t_h_e _w_a_v_e_l_e_n_g_t_h
+_s_e_t _i_n _u_s_e _I_S _I_N _T_H_E _S_A_M_E _D_A_T_A _F_I_L_E.
+
+        For example, if you  divide  two  spectra  in
+        data  file "w", and write the results in data
+        file  "v",  use  a  wavelength  set  that  is
+        already in "v".  Thus if:
+
+              w 10 = wavelengths with 56 channels
+              w 11 = data set "a"
+              w 12 = data set "b"
+
+        and you want to divide w11 by w12, first  put
+        a  copy of w10 into the "v" file (see Chapter
+        10 on how to copy/transfer), then assign  the
+        "v"  wavelength  set  before you do the divi-
+        sion.  The wavelength pointer  will  then  be
+        set  automatically  when the results from the
+        math operation are written to the v-file.
+
+
+_8._1._1  _M_u_l_t_i_p_l_e _c_o_m_m_a_n_d_s _f_r_o_m _t_h_e _m_a_t_h _c_o_m_m_a_n_d _m_e_n_u.
+
+     One entire line (80  characters)  of  commands  may  be  typed  in  for
+execution.  Each math command must be separated by a comma.
+
+        Example:
+
+                   _w_1_1/_w_1_2,_v_2_3*_c_5._6_2_e,_y_2_3_6/_w_1_2
+
+After each math operation is completed, the next com-
+mand is executed without returning to the math menu.
+
+
+
+_8._1._2  _M_e_n_u _I_n_f_o_r_m_a_t_i_o_n
+
+     The information in the Math menu can be turned off by typing
+
+                    _i_n
+
+or turned back on by typing
+
+                    _i
+
+and nothing else on the command line.
+
+
+
+
+                             February 20, 2002
+
+
+
+
+
+SPECPR Users' Manual                                                Page 8.4
+
+
+_8._2  _S_u_b_t_r_a_c_t_i_o_n, _M_u_l_t_i_p_l_i_c_a_t_i_o_n, _a_n_d _D_i_v_i_s_i_o_n
+
+     Generally these operations contain a file ID (v, w, u, d, or y), record
+number, operation sign
+
+              -  for subtraction,
+              *  for multiplication, and
+              /  for division,
+
+then the second file ID (v, w, d, c, u, y, or s; s is
+used in division only), the second record number, and
+the options.  Options include:
+
+              _e  _t_o _i_n_c_l_u_d_e _1 _s_i_g_m_a _e_r_r_o_r _b_a_r_s,
+              _n  _t_o _d_o _a _s_u_b_t_r_a_c_t_i_o_n _w_i_t_h_o_u_t _a_i_r_m_a_s_s _c_a_l_c_u_l_a_t_i_o_n,
+              _b  _f_o_r _t_u_r_n _o_n _b_a_n_d _n_o_r_m_a_l_i_z_a_t_i_o_n (_s_e_c_t_i_o_n _8._9),
+              _b_n _f_o_r _t_u_r_n _o_f_f _b_a_n_d _n_o_r_m_a_l_i_z_a_t_i_o_n,
+              _t  _f_o_r _c_h_a_n_g_e _s_i_d_e_r_e_a_l _t_i_m_e _i_n _s_u_b_t_r_a_c_t_i_o_n _w_i_t_h _a_i_r_m_a_s_s _c_a_l_c_u_l_a_t_i_o_n,
+              _r  _f_o_r _c_h_a_n_g_e _R_A _a_n_d _d_e_c_l_i_n_a_t_i_o_n _i_n _s_u_b_t_r_a_c_t_i_o_n _c_a_l_c_u_l_a_t_i_o_n, _a_n_d
+              _p  _f_o_r _p_r_o_d_u_c_t_i_o_n _p_r_o_c_e_s_s_i_n_g.
+
+
+     The production processing option stops only to request  the  title  and
+writes  the  result to device v without doing the CRT plot.  This option (p)
+makes processing equivalent to the time spent in performing  batch  process-
+ing.   When  you  enter the output title (section 8.8), you may turn off (or
+on) production processing by typing "pn" (or "po" for on) after  the  title.
+See section 8.8.
+
+     The _c in place of the second file ID is for constant.  The value of the
+constant is then placed where the second record number is located.
+
+               Example:
+
+              w10-11, w12-13, v10*c1.3, v23/46eb, v12-d10np bn
+
+Here file w record 11 is subtracted from 10 (the  default  when  the  second
+file ID is left out is the first file ID).  Next w13 is subtracted from w12,
+then v10 is multiplied by the constant 1.3, next v23 is divided by v46  with
+1  sigma  standard deviation (errors) included and also a band normalization
+performed.
+
+     On the math command line, spaces may be included at  any  point  except
+within  a number, or they may be completely left out.  The program processes
+the commands sequentially.  When  performing  each  operation,  the  program
+enters  the appropriate routine, writes the titles of the requested files on
+the CRT, and pauses for a continue command (unless the Production option has
+been set).  If you type
+
+              _x
+
+here, the program exits directly to math operations.  If you type
+
+              _e
+
+
+
+                             February 20, 2002
+
+
+
+
+
+SPECPR Users' Manual                                                Page 8.5
+
+
+the program exits that operation and begins processing of the next operation
+if  one exists.  The production option is set to no production at the end of
+each operation whereas the band normalization option stays on  until  turned
+off by a
+
+              _b_n
+
+command.
+
+     When the operation is completed, the program goes to section 8.1.
+
+     Math Operations can be used to change the wavelength file set  in  use.
+Example:
+
+              _v_2_3/_v_4_5_V_2, _v_8_6*_v_2_7_W_4_6
+
+where the capital file ID specifies a wavelength set within the  correspond-
+ing  data  file.   The  number of channels in use will then be read from the
+wavelength set.
+
+
+
+_S_p_e_c_i_a_l _N_o_t_e _o_n _t_h_e _D_i_v_i_s_i_o_n _R_o_u_t_i_n_e
+
+     Division by a small number (-108-369 to +108-369) is defined as  a  deleted
+point
+
+               (-1.23x108+349 = A DELETED POINT)
+
+x by this program.
+
+
+_S_p_e_c_i_a_l _N_o_t_e_s _o_n _t_h_e _S_u_b_t_r_a_c_t_i_o_n _R_o_u_t_i_n_e
+
+     Normal subtraction calculates airmass based on the coordinates found in
+the  first  13  characters  of  the  title of the first input file; if these
+coordinates are not entered in the correct format (HHMMSS+DDMMSS no  spaces,
+declination  sign must be explicitly specified as plus or minus, and any one
+of the first six digits must be non-zero), the routine issues the command
+
+          TYPE IN RIGHT ASCENSION AND DECLINATION
+
+and awaits a correct response.  The routine repeats  this  message  until  a
+correct  response  is  encountered--e  and x are NOT correct responses.  The
+correct response is up to six numbers separated by spaces, any  one  of  the
+first  three of which must be non-zero, the fourth of which should be signed
+only if negative, and all the rest of which should be unsigned.
+
+TO GET OUT OF THIS LOOP, enter any single non-zero number, and type e  or  x
+at the next possible opportunity.
+
+(This format may be confusing because the interpretation  routine  from  the
+first  13 characters requires an explicitly specified plus or minus sign for
+the declination, and the request  for  RA  and  DEC  cannot  interpret  plus
+
+
+
+                             February 20, 2002
+
+
+
+
+
+SPECPR Users' Manual                                                Page 8.6
+
+
+signs.)
+
+
+
+_8._3  _A_d_d_i_t_i_o_n _R_o_u_t_i_n_e
+
+     The addition routine can add from 2 to 128  spectra  with  deletion  of
+zeros  or  requested points.  To access the addition routine, type + and any
+options:
+
+              +     no options
+              +e    addition with propagation of existing error bars
+              +s    sum
+              +a    average
+              +se   sum with errors
+              +ae   average with errors
+
+with no other math operations after that on the  input  line  (because  they
+will  not be processed due to a programming restriction).  Upon entering the
+addition routine, you will be asked whether  you  want  to  average  or  sum
+(unless you specified the a or s option as given above).  Type
+
+              a    to Average,
+              s    to Sum and,
+
+Next type:
+
+              z   to DELETE ZEROS in the input data,
+              v   to DELETE data values outside a user set limit, and/or
+              s   to DELETE data values outside a certain standard deviation limit.
+
+
+Next you will be given instructions on entering the files  to  be  added  or
+summed.   Type  in  the  file ID [v, w, d, u, y or c (for constant)] and the
+record number or constant.
+
+     If you wish to delete points from this record, type d after the  record
+number  or  constant.   If  you  elect to delete channels, you may start the
+channel number list after the "d".  You may use more than one line to  input
+these  numbers,  but each channel to be deleted from the sum or average must
+be listed.  When you are through entering numbers to be deleted, type a  "c"
+to continue.
+
+     Example:
+
+              _v_2_3                    \# _n_o_r_m_a_l _i_n_p_u_t, _n_o _d_e_l_e_t_i_o_n_s,
+              _v_2_3 _d _1 _2 _2_6_t_3_2 _c      \# _d_e_l_e_t_e _c_h_a_n_n_e_l_s _1, _2, _2_6 _t_h_r_o_u_g_h _3_2.
+
+
+     When you are through entering record numbers, type
+
+              _b
+
+to begin analysis.
+
+
+
+                             February 20, 2002
+
+
+
+
+
+SPECPR Users' Manual                                                Page 8.7
+
+
+     _N_o_t_e _o_n_l_y _1 _c_o_n_s_t_a_n_t _c_a_n _b_e _e_n_t_e_r_e_d _p_e_r _a_d_d_i_t_i_o_n _r_u_n.
+
+     If you type
+
+              _e
+or
+              _x
+
+the program will exit directly back to math operations; otherwise, after the
+analysis is complete, the program goes to section 8.7.
+
+
+
+_8._4  _E_r_r_o_r _A_n_a_l_y_s_i_s
+
+     Error analyses are included in addition, multiplication  and  division,
+and  subtraction and many of the special functions (see individual functions
+- section 8.6) In all cases of error analysis, the data  numbers  should  be
+within the range of
+
+               1.0x108-159 to 1.0x108+15
+
+9to avoid overflow.  If overflow occurs, the error is set to  zero.   If  the
+data is zero in the multiplication or division routines, when using the pro-
+pagation of errors, the error is set to zero for that channel.   The  errors
+represent 1 sigma standard deviation of the mean and are normally first com-
+puted in the addition routine as a standard deviation of the  mean  computa-
+tion.  The equations used in propagating errors are as follows:  .KE
+
+     Given  a+_ Y9a8,  b +_ Y9b8 ,  c +_ Y9c8 and the result x +_  Y9x8   the  equations
+used are:
+
+_d_i_v_i_s_i_o_n:
+
+                                                                        (eqn
+
+
+_m_u_l_t_i_p_l_i_c_a_t_i_o_n:
+
+                                                                 (eqn 8.4.2)
+
+
+_s_u_b_t_r_a_c_t_i_o_n:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                             February 20, 2002
+
+
+
+
+
+SPECPR Users' Manual                                                Page 8.8
+
+
+_a_d_d_i_t_i_o_n (when errors already exist):
+
+                                                                 (eqn 8.4.3)
+
+
+
+
+
+
+
+
+
+standard deviation of the mean is derived  from  (generate  errors  for  the
+first time):
+
+                         |  n       _   |1/2
+                         |  R (x9i8 - x)2 |
+                    Y9x8 = | i=1          |
+                         | ------------ |
+                         |   (n - 1)    |
+
+where n = number of spectra, x9i8 = each spectrum, and
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                             February 20, 2002
+
+
+
+
+
+SPECPR Users' Manual                                                Page 8.9
+
+
+_8._5  _A_l_g_e_b_r_a_i_c _a_n_d _T_r_i_g_o_n_o_m_e_t_r_i_c _F_u_n_c_t_i_o_n_s "
+
+     A complete set of algebraic, trigonometric, and power functions  exists
+similar  to those on a scientific calculator.  No error analysis is included
+with any of these functions.  The functions are accessed by  file  ID,  file
+number, colon (:), and the name of the function.  Functions are:
+
+                             Exponential:  exp
+                       Natural logarithm:  ln
+                        Common logarithm:  log
+                   Ten to spectrum power:  10**x
+                                 Inverse:  1/x
+          Spectrum to the constant power:  x**c
+          Constant to the spectrum power:  c**x
+                       Sine (in radians):  sin
+                     Cosine (in radians):  cos
+                    Tangent (in radians):  tan
+                       Sine (in degrees):  sind
+                     Cosine (in degrees):  cosd
+                    Tangent (in degrees):  tand
+                  Inverse sine (radians):  invsin
+                Inverse cosine (radians):  invcos
+               Inverse tangent (radians):  invtan
+                  Inverse sine (degrees):  invsind
+                Inverse cosine (degrees):  invcosd
+               Inverse tangent (degrees):  invtand
+               Hyperbolic sine (radians):  sinh
+             Hyperbolic cosine (radians):  cosh
+            Hyperbolic tangent (radians):  tanh
+                          Absolute value:  abs
+                           Integer value:  int
+                         Fractional part:  frac
+
+Examples:
+
+              _v_3_9_7:_l_n       \# _n_a_t_u_r_a_l _l_o_g _o_f _v_3_9_7
+              _w_7_6:_c_o_s       \# _c_o_s_i_n_e _o_f _w_7_6.
+
+     In both the spectrum to the constant power and constant to the spectrum
+power, the value of the constant is after the command (x**c or c**x):
+
+              _v_3_9_7:_x**_c_3._6_5       \# _v_3_9_7 _t_o _t_h_e _3._6_5 _p_o_w_e_r,
+              _v_3_9_7:_c**_x_3._6_5       \# _c_o_n_s_t_a_n_t _3._6_5 _t_o _t_h_e _v_3_9_7 _p_o_w_e_r
+
+No options are valid with any of these operations including  errors  (except
+1/x  can  include  errors),  band  normalization, and production processing.
+This is due to programming limits (there has to be some).  Since these  rou-
+tines  are not used too often, this should make little difference.  What are
+they used for?  Normal spectral processing does not need them, but  say  you
+wanted to make a plot of a phase function for a Lambert sphere:
+
+
+                                                                 (eqn 8.5.1)
+
+
+
+
+                             February 20, 2002
+
+
+
+
+
+SPECPR Users' Manual                                               Page 8.10
+
+
+     You could generate data for A increasing  from  0  to  1808o9  using  the
+wavelength  routines  and  then this function using the math functions.  The
+result can then be plotted on the Gould printer plotter using the plot  rou-
+tines.
+
+
+_8._6  _S_p_e_c_i_a_l _F_u_n_c_t_i_o_n_s
+
+     Special function subroutines are additional routines for  operating  on
+any  kind  of  data.  They do any operation: for example a data list, a data
+editor, or a specific computation.  Some special functions operate on a data
+set  (for  example, a smoothing function) while others may create a new data
+set (for example, read one from an ascii text file  or  digitize  one  on  a
+digitizing tablet, or simply compute one, like a Plank black body).
+
+     Special functions are  called  from  math  operations  by  one  of  two
+methods,  depending  on  whether or not the function operates on an existing
+data set.  If a function requires a data set, you enter the file id,  record
+number,  an  "f"  followed  by  the function number.  For example, to smooth
+(function 7) data set v23, you would enter the command:
+
+              _v_2_3_f_7
+
+Special functions also have alias names.  For example, the  smoothing  func-
+tion f7 has the alias "smooth".  Thus
+
+              _v_2_3_f_7
+and
+              _v_2_3_s_m_o_o_t_h
+
+are equivalent.
+
+     Some special functions do not need an input data set.   In  that  case,
+just  specify  the  function or its alias.  For example, to compute a Planck
+black body, type:
+
+              _f_6
+or
+              _p_l_a_n_c_k
+
+and the function will be started.
+
+     Note there is no colon in the command line  for  special  functions  as
+compared to the algebraic and trig routines.
+
+     Special function 1 is a function which lists a catalog of all available
+special  functions.   Just  type "f1" from the math operations command line.
+This list contains a code at the end of the short description which tells if
+the  function  needs  a  data  file input before the function on the command
+line.  If this is the case, you will see an "(f)" at the end of the descrip-
+tion.  If the function can also propagate the error bars to the data set, it
+will have an "(f,e)" at the end of the description.
+
+     To  propagate  error  bars  for  those  routines  that  support   error
+
+
+
+                             February 20, 2002
+
+
+
+
+
+SPECPR Users' Manual                                               Page 8.11
+
+
+propagation,  you must specify an "e" option on the command line.  For exam-
+ple, to propagate error bars in  the  cubic  spline  interpolation  routine,
+function f12, alias cspline, and operate on data set v23, type the command:
+
+              _v_2_3_f_1_2_e
+or
+              _v_2_3_c_s_p_l_i_n_e _e
+
+
+Specpr is designed  to  add  special  functions  easily.   Subroutine  calls
+already exist in the program for many as yet unwritten routines.  These rou-
+tines are designed for easy linking to the present  program.   New  routines
+can  be  user  written  with  less effort than a completely separate program
+since, in most cases, SPECPR handles all the data management.
+
+
+
+8.7  Return from a Math Operation or Function
+
+     When a routine such as addition, subtraction, special  function,  trig.
+function,  etc., has finished, the program asks the user where he/she wishes
+the data to be written.  The data can be written to any of the files:  v, w,
+d, u, or y if allowed by the protection.  If the protection on the device is
+positive or zero, the data can only be written to the protection value  plus
+1.   Thus,  it  is  not necessary to type in this value since it is the only
+value possible.  Simply type the file  letter  ID  and  return;  the  record
+number will be set automatically.
+
+     The data set is not written at this point.  It is written after the CRT
+plot  routines.   The  user  may  also  exit the current operation from this
+point.  By typing
+
+              _e
+
+the current operation is terminated and the program begins execution of  the
+next  command  if there is one or returns to Math Operations if there are no
+other command requests.  If the user types
+
+              _x
+
+all processing stops, and the program returns directly to Math Operations.
+
+     If the user requests the data to be stored, then the program  continues
+to the titles routine (section 8.8).
+
+
+
+
+
+
+
+
+
+
+
+
+
+                             February 20, 2002
+
+
+
+
+
+SPECPR Users' Manual                                               Page 8.12
+
+
+_8._8  _T_h_e _T_i_t_l_e_s _R_o_u_t_i_n_e
+
+     The titles routine displays 2 titles on the CRT which may  be  selected
+for  the  new  data, or one of 25 user stored titles can be recalled, or the
+user can type in a new title and store it.  The 2 titles  displayed  are  as
+follows.
+
+The "option p title"    This is the "present title" of the  first  data  set
+                        read  in  for  2 file operations or the title of the
+                        last data set in the addition routine or many  other
+                        routines.   Some  special  functions  may generate a
+                        suggested present title.
+
+The "option l title"    This is the title requested for the last operation.
+
+
+     In the subtraction routine, the program decodes an  "object-sky"  title
+as  the  option p title.  This is based on inputs from the "Wedge" CVF spec-
+trometer data system and may not be valid with other types of subtraction.
+
+     All titles are 40 characters long, so to  select  the  option  p  or  l
+titles, type
+
+              _p
+or
+              _l
+
+with no other characters in columns to 40.  To  recall  one  of  the  stored
+titles, type
+
+              _t#
+
+where the "#" is the title number (1 to 25).  There can be no other  charac-
+ters in columns 1 to 40.  If other characters are detected here, the program
+will think this is a new title and use it.  The title used, whether recalled
+or new, is stored in title file t1.  To list the contents of the title file,
+type
+
+              _t_l
+
+with no other characters on the command line.  The titles will be listed and
+the program will again ask for a title.
+
+     Once a title has been selected (recalled or new), further commands  can
+be placed in columns 40 or greater.  To store a title, type
+
+              _t#
+
+where the "#" is the title number (3 to 25 are valid).  Remember,  the  "t#"
+must  be  positioned  in  columns  41  or  greater  with the requested title
+(recalled or new) in columns 1 through 40.
+
+     The Band normalization or Production processing  options  can  also  be
+turned on or off by control characters in columns 41 or greater.  Type
+
+
+
+                             February 20, 2002
+
+
+
+
+
+SPECPR Users' Manual                                               Page 8.13
+
+
+              _b
+
+to turn on or
+
+              _b_n
+
+to turn off Band normalization.  Type
+
+              _p
+
+to turn on or
+
+              _p_n
+
+to turn off the Production processing option (the n is for none).
+
+     The vertical scale of the pending crt plot can also  be  changed  after
+column 41 of the title command line.  Simply type "c and the lower and upper
+range.  For example, to change the scale from 0.92 to 1.63, type
+
+              _c _0._9_2 _1._6_3
+
+after column 41.
+
+     An example of a complete title entry would be
+
+              _S_c_a_p_o_l_i_t_e _H_S_3_5_1 / _H_a_l_o_n _4_x _r_e_s_o_l ._2-_3_u_m   _t_5 _b _c ._5 _1._5
+
+which means to make the title of the current data  set  "Scapolite  HS351  /
+Halon  4x resol .2-3um", store it in title location 5, turn on band normali-
+zation and change scale of the pending CRT plot to lower bound 0.5 and upper
+bound 1.5.
+
+     The current operation can be terminated as in section 8.7 by typing
+
+              _e
+or
+              _x
+
+with no other characters on the line.  Typing "e" will terminate the present
+operation,  and  the  program will begin the next operation if there is one.
+Otherwise, it will return to Math Operations.  Typing "x" will terminate all
+operations and will go directly to Math Operations.
+
+     If a title is requested, the program will then go to the Band  Normali-
+zation  Routine  (section  8.9) if the Band Normalization option is on or to
+the CRT plot routines if the Band Normalization and Production  options  are
+off.   If  the Production and Band Normalization options are on, the program
+will go to the Band Normalization; otherwise, if only the Production  option
+is on it will write the data and begin processing the next command.
+
+
+
+
+
+
+
+                             February 20, 2002
+
+
+
+
+
+SPECPR Users' Manual                                               Page 8.14
+
+
+8.9  Band Normalization
+
+     The Band Normalization is a least squares analysis over a user selected
+band  with the spectrum scaled so the middle of the band is scaled to unity.
+The band can be one channel or however many channels are  in  the  spectrum.
+The  Band  Normalization  routine is called after each operation if the Band
+Normalization option is on.
+
+     When you are in  the  band  normalization  routine,  you  have  several
+options to control the region that will be normalized.
+
+     Channels can be deleted inside the region of  normalization  by  typing
+the
+
+              _d
+
+command.  The program then asks for the points.  One line can be filled with
+points to be deleted (numbers, no characters).
+
+     The band limits can be moved by typing the
+
+              _m
+
+command.  Deleted channels can be reinserted by typing the
+
+              _r
+
+command.
+
+     The band area with the fitted line along with the  correlation  coeffi-
+cient,  the  previous Band Normalization factor (the normalization factor of
+the data before this normalization), the current  normalization  factor  (as
+determined  by  this normalization), and the future normalization factor (if
+this normalization is carried out) are plotted on the CRT.  The future  nor-
+malization factor equals the previous times the current factors.
+
+     _W_A_R_N_I_N_G: _i_f _t_h_e _p_r_e_v_i_o_u_s _n_o_r_m_a_l_i_z_a_t_i_o_n _f_a_c_t_o_r _w_a_s _z_e_r_o  _w_h_e_n  _t_h_e  _B_a_n_d
+_N_o_r_m_a_l_i_z_a_t_i_o_n _r_o_u_t_i_n_e _i_s _e_n_t_e_r_e_d, _i_t _i_s _r_e_s_e_t _t_o _1._0.
+
+     To perform the normalization of the data, type
+
+              _b
+
+otherwise, type
+
+              _e
+
+to exit the routine without changing the normalization factor.  The "e" soft
+exit  continues to the next step which will normally be the CRT plot routine
+unless production processing is turned  on.   If  production  processing  is
+turned  on,  the  specpr will write the data when exiting band normalization
+with an "e" soft exit.
+
+     A hard exit, command "x" from  the  Band  Normalization  routine,  will
+
+
+
+                             February 20, 2002
+
+
+
+
+
+SPECPR Users' Manual                                               Page 8.15
+
+
+terminate  all  pending  commands  and return to the Math Operations command
+line.
+
+     Default Band Normalization limits when program is begun are 30 to 38.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                             February 20, 2002
+
+

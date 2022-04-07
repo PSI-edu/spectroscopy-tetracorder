@@ -1,0 +1,512 @@
+	sed	-e 's/^\.nr LL 6.3i/.nr LL 7.56i/' \
+		-e 's/^\.ll 6.3i/.ll 7.56i/' \
+		-e 's/^\.nr PO 1.0i/.nr PO 0.0i/' \
+		-e 's/^\.po 1.0i/.po 0.0i/' \
+		chap01.n | \
+	nroff -ms -o2-99 > HELP/1
+	sed	-e 's/^\.nr LL 6.3i/.nr LL 7.56i/' \
+		-e 's/^\.ll 6.3i/.ll 7.56i/' \
+		-e 's/^\.nr PO 1.0i/.nr PO 0.0i/' \
+		-e 's/^\.po 1.0i/.po 0.0i/' \
+		chap02.n | \
+	nroff -ms -o2-99 > HELP/2
+	sed	-e 's/^\.nr LL 6.3i/.nr LL 7.56i/' \
+		-e 's/^\.ll 6.3i/.ll 7.56i/' \
+		-e 's/^\.nr PO 1.0i/.nr PO 0.0i/' \
+		-e 's/^\.po 1.0i/.po 0.0i/' \
+		chap03.n | \
+	nroff -ms -o2-99 > HELP/3
+	sed	-e 's/^\.nr LL 6.3i/.nr LL 7.56i/' \
+		-e 's/^\.ll 6.3i/.ll 7.56i/' \
+		-e 's/^\.nr PO 1.0i/.nr PO 0.0i/' \
+		-e 's/^\.po 1.0i/.po 0.0i/' \
+		chap04.n | \
+	nroff -ms -o2-99 > HELP/4
+	sed	-e 's/^\.nr LL 6.3i/.nr LL 7.56i/' \
+		-e 's/^\.ll 6.3i/.ll 7.56i/' \
+		-e 's/^\.nr PO 1.0i/.nr PO 0.0i/' \
+		-e 's/^\.po 1.0i/.po 0.0i/' \
+		chap05.n | \
+	nroff -ms -o2-99 > HELP/5
+	sed	-e 's/^\.nr LL 6.3i/.nr LL 7.56i/' \
+		-e 's/^\.ll 6.3i/.ll 7.56i/' \
+		-e 's/^\.nr PO 1.0i/.nr PO 0.0i/' \
+		-e 's/^\.po 1.0i/.po 0.0i/' \
+		chap06.n | \
+	nroff -ms -o2-99 > HELP/6
+	sed	-e 's/^\.nr LL 6.3i/.nr LL 7.56i/' \
+		-e 's/^\.ll 6.3i/.ll 7.56i/' \
+		-e 's/^\.nr PO 1.0i/.nr PO 0.0i/' \
+		-e 's/^\.po 1.0i/.po 0.0i/' \
+		chap07.n | \
+	nroff -ms -o2-99 > HELP/7
+	sed	-e 's/^\.nr LL 6.3i/.nr LL 7.56i/' \
+		-e 's/^\.ll 6.3i/.ll 7.56i/' \
+		-e 's/^\.nr PO 1.0i/.nr PO 0.0i/' \
+		-e 's/^\.po 1.0i/.po 0.0i/' \
+		chap08.n | \
+	nroff -ms -o2-99 > HELP/8
+	sed	-e 's/^\.nr LL 6.3i/.nr LL 7.56i/' \
+		-e 's/^\.ll 6.3i/.ll 7.56i/' \
+		-e 's/^\.nr PO 1.0i/.nr PO 0.0i/' \
+		-e 's/^\.po 1.0i/.po 0.0i/' \
+		-e '/^.\\" setup complete/ s//\
+	.\\" setup complete\
+	.ds LF "ZZYYXX\
+	.ds LH "XXYYZZ/'	\
+		chap04.n  | \
+	nroff -ms -o2-99  | \
+	sed -n -e \
+		'/^..4\...4  ..B..u..g ..R/,/^..4\...5  ..K..e..e..p ..T/p' | \
+	grep -v '^..4\...5  ..K..e..e..p ..T' | \
+	sed -e '/^ZZYYXX/,/^XXYYZZ/d' > HELP/bugs
+	sed	-e 's/^\.nr LL 6.3i/.nr LL 7.56i/' \
+		-e 's/^\.ll 6.3i/.ll 7.56i/' \
+		-e 's/^\.nr PO 1.0i/.nr PO 0.0i/' \
+		-e 's/^\.po 1.0i/.po 0.0i/' \
+		-e '/^.\\" setup complete/ s//\
+	.\\" setup complete\
+	.ds LF "ZZYYXX\
+	.ds LH "XXYYZZ/'	\
+		chap02.n  | \
+	nroff -ms -o2-99  | \
+	sed -n -e \
+		'/^..2\...4  ..C..o..m..m/,/^..2...5  ..A..l..i..a..s ..D/p' | \
+	grep -v '^..2...5  ..A..l..i..a..s ..D' | \
+	sed -e '/^ZZYYXX/,/^XXYYZZ/d' > HELP/cmd
+	sed	-e 's/^\.nr LL 6.3i/.nr LL 7.56i/' \
+		-e 's/^\.ll 6.3i/.ll 7.56i/' \
+		-e 's/^\.nr PO 1.0i/.nr PO 0.0i/' \
+		-e 's/^\.po 1.0i/.po 0.0i/' \
+		-e '/^.\\" setup complete/ s//\
+	.\\" setup complete\
+	.ds LF "ZZYYXX\
+	.ds LH "XXYYZZ/'	\
+		chap08.f1.n  | \
+	nroff -ms -o1-99  | \
+	sed -e '/^ZZYYXX/,/^XXYYZZ/d' > HELP/f1
+	sed	-e 's/^\.nr LL 6.3i/.nr LL 7.56i/' \
+		-e 's/^\.ll 6.3i/.ll 7.56i/' \
+		-e 's/^\.nr PO 1.0i/.nr PO 0.0i/' \
+		-e 's/^\.po 1.0i/.po 0.0i/' \
+		-e '/^.\\" setup complete/ s//\
+	.\\" setup complete\
+	.ds LF "ZZYYXX\
+	.ds LH "XXYYZZ/'	\
+		chap08.f2.n  | \
+	nroff -ms -o1-99  | \
+	sed -e '/^ZZYYXX/,/^XXYYZZ/d' > HELP/f2
+	sed	-e 's/^\.nr LL 6.3i/.nr LL 7.56i/' \
+		-e 's/^\.ll 6.3i/.ll 7.56i/' \
+		-e 's/^\.nr PO 1.0i/.nr PO 0.0i/' \
+		-e 's/^\.po 1.0i/.po 0.0i/' \
+		-e '/^.\\" setup complete/ s//\
+	.\\" setup complete\
+	.ds LF "ZZYYXX\
+	.ds LH "XXYYZZ/'	\
+		chap08.f3.n  | \
+	nroff -ms -o1-99  | \
+	sed -e '/^ZZYYXX/,/^XXYYZZ/d' > HELP/f3
+	sed	-e 's/^\.nr LL 6.3i/.nr LL 7.56i/' \
+		-e 's/^\.ll 6.3i/.ll 7.56i/' \
+		-e 's/^\.nr PO 1.0i/.nr PO 0.0i/' \
+		-e 's/^\.po 1.0i/.po 0.0i/' \
+		-e '/^.\\" setup complete/ s//\
+	.\\" setup complete\
+	.ds LF "ZZYYXX\
+	.ds LH "XXYYZZ/'	\
+		chap08.f4.n  | \
+	nroff -ms -o1-99  | \
+	sed -e '/^ZZYYXX/,/^XXYYZZ/d' > HELP/f4
+	sed	-e 's/^\.nr LL 6.3i/.nr LL 7.56i/' \
+		-e 's/^\.ll 6.3i/.ll 7.56i/' \
+		-e 's/^\.nr PO 1.0i/.nr PO 0.0i/' \
+		-e 's/^\.po 1.0i/.po 0.0i/' \
+		-e '/^.\\" setup complete/ s//\
+	.\\" setup complete\
+	.ds LF "ZZYYXX\
+	.ds LH "XXYYZZ/'	\
+		chap08.f5.n  | \
+	nroff -ms -o1-99  | \
+	sed -e '/^ZZYYXX/,/^XXYYZZ/d' > HELP/f5
+	sed	-e 's/^\.nr LL 6.3i/.nr LL 7.56i/' \
+		-e 's/^\.ll 6.3i/.ll 7.56i/' \
+		-e 's/^\.nr PO 1.0i/.nr PO 0.0i/' \
+		-e 's/^\.po 1.0i/.po 0.0i/' \
+		-e '/^.\\" setup complete/ s//\
+	.\\" setup complete\
+	.ds LF "ZZYYXX\
+	.ds LH "XXYYZZ/'	\
+		chap08.f6.n  | \
+	nroff -ms -o1-99  | \
+	sed -e '/^ZZYYXX/,/^XXYYZZ/d' > HELP/f6
+	sed	-e 's/^\.nr LL 6.3i/.nr LL 7.56i/' \
+		-e 's/^\.ll 6.3i/.ll 7.56i/' \
+		-e 's/^\.nr PO 1.0i/.nr PO 0.0i/' \
+		-e 's/^\.po 1.0i/.po 0.0i/' \
+		-e '/^.\\" setup complete/ s//\
+	.\\" setup complete\
+	.ds LF "ZZYYXX\
+	.ds LH "XXYYZZ/'	\
+		chap08.f7.n  | \
+	nroff -ms -o1-99  | \
+	sed -e '/^ZZYYXX/,/^XXYYZZ/d' > HELP/f7
+	sed	-e 's/^\.nr LL 6.3i/.nr LL 7.56i/' \
+		-e 's/^\.ll 6.3i/.ll 7.56i/' \
+		-e 's/^\.nr PO 1.0i/.nr PO 0.0i/' \
+		-e 's/^\.po 1.0i/.po 0.0i/' \
+		-e '/^.\\" setup complete/ s//\
+	.\\" setup complete\
+	.ds LF "ZZYYXX\
+	.ds LH "XXYYZZ/'	\
+		chap08.f8.n  | \
+	nroff -ms -o1-99  | \
+	sed -e '/^ZZYYXX/,/^XXYYZZ/d' > HELP/f8
+	sed	-e 's/^\.nr LL 6.3i/.nr LL 7.56i/' \
+		-e 's/^\.ll 6.3i/.ll 7.56i/' \
+		-e 's/^\.nr PO 1.0i/.nr PO 0.0i/' \
+		-e 's/^\.po 1.0i/.po 0.0i/' \
+		-e '/^.\\" setup complete/ s//\
+	.\\" setup complete\
+	.ds LF "ZZYYXX\
+	.ds LH "XXYYZZ/'	\
+		chap08.f9.n  | \
+	nroff -ms -o1-99  | \
+	sed -e '/^ZZYYXX/,/^XXYYZZ/d' > HELP/f9
+	sed	-e 's/^\.nr LL 6.3i/.nr LL 7.56i/' \
+		-e 's/^\.ll 6.3i/.ll 7.56i/' \
+		-e 's/^\.nr PO 1.0i/.nr PO 0.0i/' \
+		-e 's/^\.po 1.0i/.po 0.0i/' \
+		-e '/^.\\" setup complete/ s//\
+	.\\" setup complete\
+	.ds LF "ZZYYXX\
+	.ds LH "XXYYZZ/'	\
+		chap08.f10.n  | \
+	nroff -ms -o1-99  | \
+	sed -e '/^ZZYYXX/,/^XXYYZZ/d' > HELP/f10
+	sed	-e 's/^\.nr LL 6.3i/.nr LL 7.56i/' \
+		-e 's/^\.ll 6.3i/.ll 7.56i/' \
+		-e 's/^\.nr PO 1.0i/.nr PO 0.0i/' \
+		-e 's/^\.po 1.0i/.po 0.0i/' \
+		-e '/^.\\" setup complete/ s//\
+	.\\" setup complete\
+	.ds LF "ZZYYXX\
+	.ds LH "XXYYZZ/'	\
+		chap08.f11.n  | \
+	nroff -ms -o1-99  | \
+	sed -e '/^ZZYYXX/,/^XXYYZZ/d' > HELP/f11
+	sed	-e 's/^\.nr LL 6.3i/.nr LL 7.56i/' \
+		-e 's/^\.ll 6.3i/.ll 7.56i/' \
+		-e 's/^\.nr PO 1.0i/.nr PO 0.0i/' \
+		-e 's/^\.po 1.0i/.po 0.0i/' \
+		-e '/^.\\" setup complete/ s//\
+	.\\" setup complete\
+	.ds LF "ZZYYXX\
+	.ds LH "XXYYZZ/'	\
+		chap08.f12.n  | \
+	nroff -ms -o1-99  | \
+	sed -e '/^ZZYYXX/,/^XXYYZZ/d' > HELP/f12
+	sed	-e 's/^\.nr LL 6.3i/.nr LL 7.56i/' \
+		-e 's/^\.ll 6.3i/.ll 7.56i/' \
+		-e 's/^\.nr PO 1.0i/.nr PO 0.0i/' \
+		-e 's/^\.po 1.0i/.po 0.0i/' \
+		-e '/^.\\" setup complete/ s//\
+	.\\" setup complete\
+	.ds LF "ZZYYXX\
+	.ds LH "XXYYZZ/'	\
+		chap08.f13.n  | \
+	nroff -ms -o1-99  | \
+	sed -e '/^ZZYYXX/,/^XXYYZZ/d' > HELP/f13
+	sed	-e 's/^\.nr LL 6.3i/.nr LL 7.56i/' \
+		-e 's/^\.ll 6.3i/.ll 7.56i/' \
+		-e 's/^\.nr PO 1.0i/.nr PO 0.0i/' \
+		-e 's/^\.po 1.0i/.po 0.0i/' \
+		-e '/^.\\" setup complete/ s//\
+	.\\" setup complete\
+	.ds LF "ZZYYXX\
+	.ds LH "XXYYZZ/'	\
+		chap08.f14.n  | \
+	nroff -ms -o1-99  | \
+	sed -e '/^ZZYYXX/,/^XXYYZZ/d' > HELP/f14
+	sed	-e 's/^\.nr LL 6.3i/.nr LL 7.56i/' \
+		-e 's/^\.ll 6.3i/.ll 7.56i/' \
+		-e 's/^\.nr PO 1.0i/.nr PO 0.0i/' \
+		-e 's/^\.po 1.0i/.po 0.0i/' \
+		-e '/^.\\" setup complete/ s//\
+	.\\" setup complete\
+	.ds LF "ZZYYXX\
+	.ds LH "XXYYZZ/'	\
+		chap08.f15.n  | \
+	nroff -ms -o1-99  | \
+	sed -e '/^ZZYYXX/,/^XXYYZZ/d' > HELP/f15
+	sed	-e 's/^\.nr LL 6.3i/.nr LL 7.56i/' \
+		-e 's/^\.ll 6.3i/.ll 7.56i/' \
+		-e 's/^\.nr PO 1.0i/.nr PO 0.0i/' \
+		-e 's/^\.po 1.0i/.po 0.0i/' \
+		-e '/^.\\" setup complete/ s//\
+	.\\" setup complete\
+	.ds LF "ZZYYXX\
+	.ds LH "XXYYZZ/'	\
+		chap08.f16.n  | \
+	nroff -ms -o1-99  | \
+	sed -e '/^ZZYYXX/,/^XXYYZZ/d' > HELP/f16
+	sed	-e 's/^\.nr LL 6.3i/.nr LL 7.56i/' \
+		-e 's/^\.ll 6.3i/.ll 7.56i/' \
+		-e 's/^\.nr PO 1.0i/.nr PO 0.0i/' \
+		-e 's/^\.po 1.0i/.po 0.0i/' \
+		-e '/^.\\" setup complete/ s//\
+	.\\" setup complete\
+	.ds LF "ZZYYXX\
+	.ds LH "XXYYZZ/'	\
+		chap08.f17.n  | \
+	nroff -ms -o1-99  | \
+	sed -e '/^ZZYYXX/,/^XXYYZZ/d' > HELP/f17
+	sed	-e 's/^\.nr LL 6.3i/.nr LL 7.56i/' \
+		-e 's/^\.ll 6.3i/.ll 7.56i/' \
+		-e 's/^\.nr PO 1.0i/.nr PO 0.0i/' \
+		-e 's/^\.po 1.0i/.po 0.0i/' \
+		-e '/^.\\" setup complete/ s//\
+	.\\" setup complete\
+	.ds LF "ZZYYXX\
+	.ds LH "XXYYZZ/'	\
+		chap08.f18.n  | \
+	nroff -ms -o1-99  | \
+	sed -e '/^ZZYYXX/,/^XXYYZZ/d' > HELP/f18
+	sed	-e 's/^\.nr LL 6.3i/.nr LL 7.56i/' \
+		-e 's/^\.ll 6.3i/.ll 7.56i/' \
+		-e 's/^\.nr PO 1.0i/.nr PO 0.0i/' \
+		-e 's/^\.po 1.0i/.po 0.0i/' \
+		-e '/^.\\" setup complete/ s//\
+	.\\" setup complete\
+	.ds LF "ZZYYXX\
+	.ds LH "XXYYZZ/'	\
+		chap08.f19.n  | \
+	nroff -ms -o1-99  | \
+	sed -e '/^ZZYYXX/,/^XXYYZZ/d' > HELP/f19
+	sed	-e 's/^\.nr LL 6.3i/.nr LL 7.56i/' \
+		-e 's/^\.ll 6.3i/.ll 7.56i/' \
+		-e 's/^\.nr PO 1.0i/.nr PO 0.0i/' \
+		-e 's/^\.po 1.0i/.po 0.0i/' \
+		-e '/^.\\" setup complete/ s//\
+	.\\" setup complete\
+	.ds LF "ZZYYXX\
+	.ds LH "XXYYZZ/'	\
+		chap08.f20.n  | \
+	nroff -ms -o1-99  | \
+	sed -e '/^ZZYYXX/,/^XXYYZZ/d' > HELP/f20
+	sed	-e 's/^\.nr LL 6.3i/.nr LL 7.56i/' \
+		-e 's/^\.ll 6.3i/.ll 7.56i/' \
+		-e 's/^\.nr PO 1.0i/.nr PO 0.0i/' \
+		-e 's/^\.po 1.0i/.po 0.0i/' \
+		-e '/^.\\" setup complete/ s//\
+	.\\" setup complete\
+	.ds LF "ZZYYXX\
+	.ds LH "XXYYZZ/'	\
+		chap08.f21.n  | \
+	nroff -ms -o1-99  | \
+	sed -e '/^ZZYYXX/,/^XXYYZZ/d' > HELP/f21
+	sed	-e 's/^\.nr LL 6.3i/.nr LL 7.56i/' \
+		-e 's/^\.ll 6.3i/.ll 7.56i/' \
+		-e 's/^\.nr PO 1.0i/.nr PO 0.0i/' \
+		-e 's/^\.po 1.0i/.po 0.0i/' \
+		-e '/^.\\" setup complete/ s//\
+	.\\" setup complete\
+	.ds LF "ZZYYXX\
+	.ds LH "XXYYZZ/'	\
+		chap08.f22.n  | \
+	nroff -ms -o1-99  | \
+	sed -e '/^ZZYYXX/,/^XXYYZZ/d' > HELP/f22
+	sed	-e 's/^\.nr LL 6.3i/.nr LL 7.56i/' \
+		-e 's/^\.ll 6.3i/.ll 7.56i/' \
+		-e 's/^\.nr PO 1.0i/.nr PO 0.0i/' \
+		-e 's/^\.po 1.0i/.po 0.0i/' \
+		-e '/^.\\" setup complete/ s//\
+	.\\" setup complete\
+	.ds LF "ZZYYXX\
+	.ds LH "XXYYZZ/'	\
+		chap08.f23.n  | \
+	nroff -ms -o1-99  | \
+	sed -e '/^ZZYYXX/,/^XXYYZZ/d' > HELP/f23
+	sed	-e 's/^\.nr LL 6.3i/.nr LL 7.56i/' \
+		-e 's/^\.ll 6.3i/.ll 7.56i/' \
+		-e 's/^\.nr PO 1.0i/.nr PO 0.0i/' \
+		-e 's/^\.po 1.0i/.po 0.0i/' \
+		-e '/^.\\" setup complete/ s//\
+	.\\" setup complete\
+	.ds LF "ZZYYXX\
+	.ds LH "XXYYZZ/'	\
+		chap08.f24.n  | \
+	nroff -ms -o1-99  | \
+	sed -e '/^ZZYYXX/,/^XXYYZZ/d' > HELP/f24
+	sed	-e 's/^\.nr LL 6.3i/.nr LL 7.56i/' \
+		-e 's/^\.ll 6.3i/.ll 7.56i/' \
+		-e 's/^\.nr PO 1.0i/.nr PO 0.0i/' \
+		-e 's/^\.po 1.0i/.po 0.0i/' \
+		-e '/^.\\" setup complete/ s//\
+	.\\" setup complete\
+	.ds LF "ZZYYXX\
+	.ds LH "XXYYZZ/'	\
+		chap08.f25.n  | \
+	nroff -ms -o1-99  | \
+	sed -e '/^ZZYYXX/,/^XXYYZZ/d' > HELP/f25
+	sed	-e 's/^\.nr LL 6.3i/.nr LL 7.56i/' \
+		-e 's/^\.ll 6.3i/.ll 7.56i/' \
+		-e 's/^\.nr PO 1.0i/.nr PO 0.0i/' \
+		-e 's/^\.po 1.0i/.po 0.0i/' \
+		-e '/^.\\" setup complete/ s//\
+	.\\" setup complete\
+	.ds LF "ZZYYXX\
+	.ds LH "XXYYZZ/'	\
+		chap08.f39.n  | \
+	nroff -ms -o1-99  | \
+	sed -e '/^ZZYYXX/,/^XXYYZZ/d' > HELP/f39
+	sed	-e 's/^\.nr LL 6.3i/.nr LL 7.56i/' \
+		-e 's/^\.ll 6.3i/.ll 7.56i/' \
+		-e 's/^\.nr PO 1.0i/.nr PO 0.0i/' \
+		-e 's/^\.po 1.0i/.po 0.0i/' \
+		-e '/^.\\" setup complete/ s//\
+	.\\" setup complete\
+	.ds LF "ZZYYXX\
+	.ds LH "XXYYZZ/'	\
+		chap08.f40.n  | \
+	nroff -ms -o1-99  | \
+	sed -e '/^ZZYYXX/,/^XXYYZZ/d' > HELP/f40
+	sed	-e 's/^\.nr LL 6.3i/.nr LL 7.56i/' \
+		-e 's/^\.ll 6.3i/.ll 7.56i/' \
+		-e 's/^\.nr PO 1.0i/.nr PO 0.0i/' \
+		-e 's/^\.po 1.0i/.po 0.0i/' \
+		-e '/^.\\" setup complete/ s//\
+	.\\" setup complete\
+	.ds LF "ZZYYXX\
+	.ds LH "XXYYZZ/'	\
+		chap08.f41.n  | \
+	nroff -ms -o1-99  | \
+	sed -e '/^ZZYYXX/,/^XXYYZZ/d' > HELP/f41
+	sed	-e 's/^\.nr LL 6.3i/.nr LL 7.56i/' \
+		-e 's/^\.ll 6.3i/.ll 7.56i/' \
+		-e 's/^\.nr PO 1.0i/.nr PO 0.0i/' \
+		-e 's/^\.po 1.0i/.po 0.0i/' \
+		-e '/^.\\" setup complete/ s//\
+	.\\" setup complete\
+	.ds LF "ZZYYXX\
+	.ds LH "XXYYZZ/'	\
+		chap08.f42.n  | \
+	nroff -ms -o1-99  | \
+	sed -e '/^ZZYYXX/,/^XXYYZZ/d' > HELP/f42
+	sed	-e 's/^\.nr LL 6.3i/.nr LL 7.56i/' \
+		-e 's/^\.ll 6.3i/.ll 7.56i/' \
+		-e 's/^\.nr PO 1.0i/.nr PO 0.0i/' \
+		-e 's/^\.po 1.0i/.po 0.0i/' \
+		-e '/^.\\" setup complete/ s//\
+	.\\" setup complete\
+	.ds LF "ZZYYXX\
+	.ds LH "XXYYZZ/'	\
+		chap08.f43.n  | \
+	nroff -ms -o1-99  | \
+	sed -e '/^ZZYYXX/,/^XXYYZZ/d' > HELP/f43
+	sed	-e 's/^\.nr LL 6.3i/.nr LL 7.56i/' \
+		-e 's/^\.ll 6.3i/.ll 7.56i/' \
+		-e 's/^\.nr PO 1.0i/.nr PO 0.0i/' \
+		-e 's/^\.po 1.0i/.po 0.0i/' \
+		-e '/^.\\" setup complete/ s//\
+	.\\" setup complete\
+	.ds LF "ZZYYXX\
+	.ds LH "XXYYZZ/'	\
+		chap08.f44.n  | \
+	nroff -ms -o1-99  | \
+	sed -e '/^ZZYYXX/,/^XXYYZZ/d' > HELP/f44
+	sed	-e 's/^\.nr LL 6.3i/.nr LL 7.56i/' \
+		-e 's/^\.ll 6.3i/.ll 7.56i/' \
+		-e 's/^\.nr PO 1.0i/.nr PO 0.0i/' \
+		-e 's/^\.po 1.0i/.po 0.0i/' \
+		-e '/^.\\" setup complete/ s//\
+	.\\" setup complete\
+	.ds LF "ZZYYXX\
+	.ds LH "XXYYZZ/'	\
+		chap08.f45.n  | \
+	nroff -ms -o1-99  | \
+	sed -e '/^ZZYYXX/,/^XXYYZZ/d' > HELP/f45
+	sed	-e 's/^\.nr LL 6.3i/.nr LL 7.56i/' \
+		-e 's/^\.ll 6.3i/.ll 7.56i/' \
+		-e 's/^\.nr PO 1.0i/.nr PO 0.0i/' \
+		-e 's/^\.po 1.0i/.po 0.0i/' \
+		-e '/^.\\" setup complete/ s//\
+	.\\" setup complete\
+	.ds LF "ZZYYXX\
+	.ds LH "XXYYZZ/'	\
+		chap08.f46.n  | \
+	nroff -ms -o1-99  | \
+	sed -e '/^ZZYYXX/,/^XXYYZZ/d' > HELP/f46
+	sed	-e 's/^\.nr LL 6.3i/.nr LL 7.56i/' \
+		-e 's/^\.ll 6.3i/.ll 7.56i/' \
+		-e 's/^\.nr PO 1.0i/.nr PO 0.0i/' \
+		-e 's/^\.po 1.0i/.po 0.0i/' \
+		-e '/^.\\" setup complete/ s//\
+	.\\" setup complete\
+	.ds LF "ZZYYXX\
+	.ds LH "XXYYZZ/'	\
+		chap08.f47.n  | \
+	nroff -ms -o1-99  | \
+	sed -e '/^ZZYYXX/,/^XXYYZZ/d' > HELP/f47
+	sed	-e 's/^\.nr LL 6.3i/.nr LL 7.56i/' \
+		-e 's/^\.ll 6.3i/.ll 7.56i/' \
+		-e 's/^\.nr PO 1.0i/.nr PO 0.0i/' \
+		-e 's/^\.po 1.0i/.po 0.0i/' \
+		-e '/^.\\" setup complete/ s//\
+	.\\" setup complete\
+	.ds LF "ZZYYXX\
+	.ds LH "XXYYZZ/'	\
+		chap08.f48.n  | \
+	nroff -ms -o1-99  | \
+	sed -e '/^ZZYYXX/,/^XXYYZZ/d' > HELP/f48
+	sed	-e 's/^\.nr LL 6.3i/.nr LL 7.56i/' \
+		-e 's/^\.ll 6.3i/.ll 7.56i/' \
+		-e 's/^\.nr PO 1.0i/.nr PO 0.0i/' \
+		-e 's/^\.po 1.0i/.po 0.0i/' \
+		-e '/^.\\" setup complete/ s//\
+	.\\" setup complete\
+	.ds LF "ZZYYXX\
+	.ds LH "XXYYZZ/'	\
+		chap08.f49.n  | \
+	nroff -ms -o1-99  | \
+	sed -e '/^ZZYYXX/,/^XXYYZZ/d' > HELP/f49
+	sed	-e 's/^\.nr LL 6.3i/.nr LL 7.56i/' \
+		-e 's/^\.ll 6.3i/.ll 7.56i/' \
+		-e 's/^\.nr PO 1.0i/.nr PO 0.0i/' \
+		-e 's/^\.po 1.0i/.po 0.0i/' \
+		-e '/^.\\" setup complete/ s//\
+	.\\" setup complete\
+	.ds LF "ZZYYXX\
+	.ds LH "XXYYZZ/'	\
+		chap08.f50.n  | \
+	nroff -ms -o1-99  | \
+	sed -e '/^ZZYYXX/,/^XXYYZZ/d' > HELP/f50
+	sed	-e 's/^\.nr LL 6.3i/.nr LL 7.56i/' \
+		-e 's/^\.ll 6.3i/.ll 7.56i/' \
+		-e 's/^\.nr PO 1.0i/.nr PO 0.0i/' \
+		-e 's/^\.po 1.0i/.po 0.0i/' \
+		-e '/^.\\" setup complete/ s//\
+	.\\" setup complete\
+	.ds LF "ZZYYXX\
+	.ds LH "XXYYZZ/'	\
+		chap04.n  | \
+	nroff -ms -o2-99  | \
+	sed -n -e \
+		'/^..4\...2  ..P..r..o..t/,/^..4\...3  ..M..a..k..e ..S/p' | \
+	grep -v '^..4\...3  ..M..a..k..e ..S' | \
+	sed -e '/^ZZYYXX/,/^XXYYZZ/d' > HELP/locks
+	sed	-e 's/^\.nr LL 6.3i/.nr LL 7.56i/' \
+		-e 's/^\.ll 6.3i/.ll 7.56i/' \
+		-e 's/^\.nr PO 1.0i/.nr PO 0.0i/' \
+		-e 's/^\.po 1.0i/.po 0.0i/' \
+		-e '/^.\\" setup complete/ s//\
+	.\\" setup complete\
+	.ds LF "ZZYYXX\
+	.ds LH "XXYYZZ/'	\
+		chap02.n  | \
+	nroff -ms -o2-99  | \
+	sed -n -e \
+		'/^..2\...3  ..F..i..l..e/,/^..2\...4  ..C..o..m..m..a/p' | \
+	grep -v '^..2\...4  ..C..o..m..m..a' | \
+	sed -e '/^ZZYYXX/,/^XXYYZZ/d' > HELP/protection
+	cat /dev/null > HELP/help.done

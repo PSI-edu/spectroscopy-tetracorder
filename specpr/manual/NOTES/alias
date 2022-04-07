@@ -1,0 +1,134 @@
+		Alias Substitution in SPECPR
+
+USE
+	While running SPECPR, an alias list of common commands can 
+be created using this option.  This is used to reduce the amount of
+typing needed by substituting short alias words for long commands.
+Alias words can be created for any type of commmand used in SPECPR.
+These alias words can either be read into SPECPR from a file or set
+up every time SPECPR is run.
+
+DESCRIPTION and EXAMPLES
+
+     Creating Alias Words
+
+	Alias words can be created for any command used in SPECPR.
+These alias words are defined by typing ==[alias word] translation.
+The alias word must be inside square brackets and followed by its
+translation.  An alias word can consist of any letters or numbers
+inside square brackets.  If you use four or more capital letters,
+you do not need to use square brackets when you type the alias.
+At any point in the program SPECPR, an alias word can be defined
+or translated.  
+
+EXAMPLES	==[hi] hello	This sets the alias word 'hi' to
+				translate into 'hello'
+		==[DIRL] !ls	This sets the alias word 'DIRL' to
+				give a listing of the current directory
+
+     Translating Alias Words
+
+	For an alias word to be translated, it must either be inside
+square brackets or one word of four or more capital letters.  The
+alias word can be entered at any point in the program and the
+translation will take place.  The line will be reprinted on the
+screen showing the translation and then executing the command.
+
+EXAMPLES	[hi]	The alias word is translated into hello
+		hello
+
+		DIRL	This alias word does not need brackets
+			because it consists of four capital letters.
+		!ls	It translates into this command which then
+			will execute a listing of the current directory
+
+     Listing and Saving Alias Words and Translations
+
+	The current list of alias words and translations is printed
+onto the screen by typing the command ==list.  If a filename is
+typed after the list command, the list of alias words and
+translations will be saved in the specified file.
+
+EXAMPLES	==list		This lists all the alias words onto
+				the screen
+		==[hi] hello
+		==[DIRL] !ls
+
+		==list alias.list  	This saves all the alias
+					words and translations in the                                                   file alias.list
+
+     Reading Alias Words into SPECPR from a File
+
+	To read a file of saved alias words and translations into
+SPECPR, type < and the filename.  This will allow all the alias
+words in the file to be used in SPECPR.
+
+EXAMPLE		<alias.list	This reads the alias words and
+				translations from the file alias.list 
+				into SPECPR
+		==[hi] hello
+		==[DIRL] !ls
+
+     Deleting or Writing Over an Alias Word
+
+	An alias word can be deleted by entering ==![alias word]
+anywhere in SPECPR.  This will not delete it from a file of stored
+alias words unless the alias list is resaved into the file.  An
+old alias can be overwriten by redefining the same alias word.
+The list must also be resaved for this alias translation to be
+changed in the file.
+
+EXAMPLE		==![DIRL]	This deletes the alias word DIRL and
+				its translation from the list
+
+	
+     Order of Substitution and Command Interpretation 
+
+	In SPECPR, the order of the interpretation of the special 
+characters is $ substitution,;,?,==,=,%,>,!,<,alias translation,and
+\#.  Any of these special characters can be used in an alias
+translation because the program loops back to the beginning when a
+translation is performed.  The special characters would then be
+interpreted the second time through the loop.  This program would
+continue looping until all of the translations are finished.   
+	The $ substitutions can contain alias words because the 
+translation takes place after the $ substitution is done.  Both the
+$ substitutions and the alias translations can contain ; which are
+later processed.  The \# comment statement can not contain a ;
+because it is processed before the comment statement is found and
+everything after the ; would be stripped off for the next command.
+The flow chart below shows the order of these command
+interpretations.
+
+
+EXAMPLES	==[lv] lv;;;0 99	Assigning this alias would
+					give the list command, return                                                   three lines,and list from 0 to 99
+		==[lst] $21	This would assign the alias lst to
+				the command in file number 21
+			If 21 has [DIRL] in it, the alias would
+			translate to !ls 
+
+
+
+
+     Flow Chart for Command Interpretation Order
+ ____________
+| input line |       command
+|____________|         file     alias   $ sub.            copy to
+     |       return    list      def.     def.     copy     file
+  ___|___      ___      ___      ____      ___      ___      ___
+ |   $   |    |   |    |   |    |    |    |   |    |   |    |   |
+ | subs. |--->| ; |--->| ? |--->| == |--->| = |--->| % |--->| > |
+ |_______|    |___|    |___|    |____|    |___|    |___|    |___|
+     ^                                                        |
+     |                                                        |
+     |				_______      ___      ___     |
+     |	          alias trans. | alias |    |   |    |   |    |
+      ---------<---------------| trans |<---| < |<---| ! |<---	
+                    done       |_______|    |___|    |___|
+                          no alias |         read     UNIX
+                      ____  trans. |         from
+          _____      |    |  done  |         file
+         | end |<----| \# |<-------
+         |_____|     |____|      
+                    comment

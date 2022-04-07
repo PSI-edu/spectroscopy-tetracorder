@@ -1,0 +1,63 @@
+# SIMPLE  =                    F
+# TELESCOP= 'NASA-IRTF         '
+# INSTRUME= 'CGAS (32 chan)    '
+# OBSERVER= 'UNKNOWN           '
+# SYSID   = '02/07/6'
+# OBJECT  = '                  '
+# COMMENT = '                                                  '
+# DATE-OBS= '27/08/88    102453' / dd/mm/yy hhmmss U.T. 
+# OBSNUM  =                   35
+# RA      =             10220.56
+# DEC     =              74938.3
+# EPOCH   =              UNKNOWN
+# HA      =            -23552.78
+# RA-OFF  =                  0.2
+# DEC-OFF =                  0.0
+# FILTER  =                    6
+# INT-TIME=               10.000
+# AMASS-B =                1.298 /Airmass at beginning
+# AMASS-E =                1.291 /Airmass at end
+# CHAN'S  =                   32
+# INTEG'S =                    1
+# POSIT'S =                    1
+# STEPSIZE=                    0
+# GSTEP-B =                 6977
+# SPACING =                  306 / Channel spacing in grating steps
+# OCTETS  =                    1 / No. of beamswitch cycles
+# MFLAG   =                    0 / MFLAG= 0: Octets, MFLAG= 1: Scans
+# COMMENT   Special Interim Format for CGAS (vers6/7) data
+# COLUMNS =                    7
+# ROWS    =                  128
+# COLUMN1 = 'Grating Step #    '
+# FORMAT1 = 'i10               '
+# COLUMN2 = 'Channel #         '
+# FORMAT2 = 'i5                '
+# COLUMN3 = 'A value           '
+# FORMAT3 = 'e13.4             '
+# COLUMN4 = 'B value           '
+# FORMAT4 = 'e13.4             '
+# COLUMN5 = 'Avg A-B           '
+# FORMAT5 = 'e13.4             '
+# COLUMN6 = 'Std-Dev of Avg    '
+# FORMAT6 = 'e13.4             '
+# COLUMN7 = 'Signal-to-noise ratio'
+# FORMAT7 = 'e13.4             '
+# END
+# OCTET  1: 1
+#      11873    1  -1.9501e-01  -3.8452e-02  -1.5656e-01   0.0000e+00   0.0000e+00
+#      11567    2   4.3823e-01  -2.1362e-02   4.5959e-01   0.0000e+00   0.0000e+00
+#        .
+#        .
+#        .
+#       2693   31   1.1639e+00   7.8735e-02   1.1221e+00   3.6926e-02   3.0389e+01
+#       2387   32   1.1185e+00   8.8806e-02   1.0658e+00   3.6164e-02   2.9472e+01
+# SUMMARY
+# 35   UT27/08/88 102453                                                     
+# 10.000     1   1   0   6   1 306  10220.56   74938.3 1.298 1.291   6977  32
+#    1  -4.3335e-02   5.2861e-02
+#    2   4.2877e-01   1.4326e-02
+#    .
+#    .
+#    .
+#   31   1.1192e+00   1.6643e-02
+#   32   1.0641e+00   1.6056e-02

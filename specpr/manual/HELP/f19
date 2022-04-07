@@ -1,0 +1,63 @@
+
+
+
+
+
+
+SPECPR Users' Manual                                            Page 8-f19.1
+
+
+_F_1_9:  _P_o_l_y_n_o_m_i_a_l _F_i_t (_1_0 _T_e_r_m)                              _A_l_i_a_s: _p_o_l_y[_f_i_t]
+
+     Special Function 19 does a least squares fit to a data set with a poly-
+nomial of the form:
+
+               y = a918 + a928 x + a938 x839 + a948 x829 + ... + a9n8 x8n-1
+
+9The program requests the number of terms to use for the polynomial  fit  and
+will  currently handle up to ten terms. To run this routine type the file id
+and record number of the spectrum you wish to fit followed by  f19,  or  use
+the alias:
+
+              _v_2_3_f_1_9
+or
+              _v_1_3_p_o_l_y
+
+The program will allow you to change the wavelength set if the  current  set
+is  not  the proper one. The program then calculates the least squares curve
+and prints the polynomial coefficients and the reduced chi  square  for  the
+fit.
+
+     You have the option of saving  the  fitted  curve,  computed  with  the
+wavelength  set in use, or saving the coefficients.  The coefficients can be
+used as input to f21 (calculate a polynomial).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

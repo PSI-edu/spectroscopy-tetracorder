@@ -1,0 +1,297 @@
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"><title>USGS Spectroscopy Lab - Specpr User Manual</title></head>
+
+<body><table height="70" width="100%" bgcolor="black" border="0">
+  <tbody><tr>
+    <td>
+       <a href="http://www.usgs.gov/">
+       <img src="specpr.manual_files/USGSearthsat2.gif" alt="U.S. Geological Survey home page" border="0">
+       </a>
+   </td>
+  </tr>
+
+</tbody></table>
+
+<hr>
+
+<h3>
+<p align="center"><b>SPECtrum Processing Routines</b>
+
+</p><p align="center"><b>Users Manual</b>
+
+</p><p align="center"><b>Version 3</b>
+</p></h3>
+
+<p align="center"><b>(program SPECPR)</b>
+
+</p><p align="center">by
+
+</p><p align="center">Roger N. Clark
+
+</p><p align="center">U.S. Geological Survey, MS 964<br>
+Box 25046 Federal Center<br>
+Denver, CO 80225-0046<br>
+(303) 236-1332</p>
+
+<p align="center">rclark@usgs.gov</p>
+
+
+<p align="center">USGS Open File Report no. 93-595</p>
+
+<p>
+Reference:<br>
+Clark, R.N., 1993, SPECtrum Processing Routines User's Manual Version 3 (program SPECPR),
+U.S. Geological Survey, Open File Report 93-595, 228 pages. 
+
+
+</p><hr>
+
+<p align="center">TABLE OF CONTENTS</p>
+
+<p>Acknowledgements
+
+</p><p>
+1    <a href="http://speclab.cr.usgs.gov/specpr.manual/chap01.html"> INTRODUCTION </a><br>
+     1.1  Introduction <br>
+     1.2  History of Specpr <br>
+     1.3  Specpr Design Philosophy <br>
+ <br>
+2    <a href="http://speclab.cr.usgs.gov/specpr.manual/chap02.html"> PROGRAM STRUCTURE </a><br>
+     2.1  Block Diagram of Program Structure <br>
+     2.2  File Structure from the Users View <br>
+            2.2.1  Deleted point values <br>
+            2.2.2  General data file I/O <br>
+            2.2.3  Transfer Restrictions <br>
+     2.3  File Protection <br>
+            2.3.1  Use of Specpr File Protection <br>
+     2.4  Command Interpretation <br>
+     2.5  Alias Definitions and Substitions <br>
+            2.5.1  Creating Alias Words <br>
+            2.5.2  Translating Alias Words <br>
+            2.5.3  Listing and Saving Alias Words and Translations <br>
+            2.5.4  Reading Alias Words into specpr from a File <br>
+            2.5.5  Deleting or Writing Over an Alias Word <br>
+     2.6  Variable Parsing <br>
+     2.7  Order of Substitution and Command Interpretation <br>
+            2.7.1  Flow Chart for Command Interpretation Order <br>
+     2.8  Specpr File Types and Content <br>
+            2.8.1  The Standard File Content <br>
+     2.9  "Wavelengths" and other concepts of x-y paired data <br>
+     2.10  Help! <br>
+ <br>
+3    <a href="http://speclab.cr.usgs.gov/specpr.manual/chap03.html"> STARTING SPECPR </a><br>
+     3.1  Starting Specpr on Unix <br>
+     3.2  HELP <br>
+     3.3  Configuring Your Environment <br>
+ <br>
+4    <a href="http://speclab.cr.usgs.gov/specpr.manual/chap04.html"> IMPORTANT RULES </a><br>
+     4.1  Important Rules <br>
+     4.2  Protective Locks <br>
+     4.3  Make Specpr Files Read Only When Outside Your Directory <br>
+     4.4  Bug Reports <br>
+     4.5  Keep Track of the Number of Channels and <br>
+                      the Wavelength Set! <br>
+            4.5.1  Rules of Operation for Channels <br>
+            4.5.2  If You Must Change The Number Of Channels <br>
+            4.5.3  Setting Channels <br>
+ <br>
+5    <a href="http://speclab.cr.usgs.gov/specpr.manual/chap05.html"> PROGRAM INITIALIZATION </a><br>
+     5.1  Introduction <br>
+     5.2  Beginning <br>
+     5.3  Protection <br>
+     5.4  Observatory Location <br>
+     5.5  Device and File Assignments <br>
+     5.6  Data File Names <br>
+     5.7  Graphics Options <br>
+     5.8  Automatically Checking File Protection <br>
+ <br>
+6    <a href="http://speclab.cr.usgs.gov/specpr.manual/chap06.html"> DEVICE AND FILE ASSIGNMENTS </a><br>
+     6.1  Device and File Assignments <br>
+     6.2  3D File Types <br>
+          6.2.1  3D File Parameters <br>
+          6.2.2  3D Algorithm Description <br>
+          6.2.3  3D I/O Setup Examples <br>
+          6.2.4  3D I/O Suggestions <br>
+          6.2.5  3D I/O Demonstration <br>
+ <br>
+7    <a href="http://speclab.cr.usgs.gov/specpr.manual/chap07.html"> MAIN MENU: PROGRAM OPERATIONS CONTROL </a><br>
+     7.1  Introduction <br>
+     7.2  Menu Information <br>
+     7.3  Listing the Contents of a Data File <br>
+     7.4  Terminating Program <br>
+     7.5  File Display, Transfer, and Overlap <br>
+     7.6  Changing Initialization Parameters <br>
+     7.7  Device and File Assignments <br>
+     7.8  Extinction Routines <br>
+     7.9  Plot Routines (to Hardcopy Plotters) <br>
+     7.10  Math Operations <br>
+     7.11  Restart Summary <br>
+ <br>
+8    <a href="http://speclab.cr.usgs.gov/specpr.manual/chap08.html"> MATH OPERATIONS </a><br>
+     8.1  Introduction <br>
+            8.1.1  Multiple commands from the math command menu. <br>
+            8.1.2  Menu Information <br>
+     8.2  Subtraction, Multiplication, and Division <br>
+     8.3  Addition Routine <br>
+     8.4  Error Analysis <br>
+     8.5  Algebraic and Trigonometric Functions <br>
+     8.6  Special Functions <br>
+     8.7  Return from a Math Operation or Function <br>
+     8.8  The Titles Routine <br>
+     8.9  Band Normalization <br>
+
+
+</p><p>
+            8.f1   <a href="http://speclab.cr.usgs.gov/specpr.manual/chap08.f1.html"> F1:  List of Special Functions </a><br>
+            8.f2   <a href="http://speclab.cr.usgs.gov/specpr.manual/chap08.f2.html"> F2:  Shift </a><br>
+            8.f3   <a href="http://speclab.cr.usgs.gov/specpr.manual/chap08.f3.html"> F3:  Sequential Processor </a><br>
+            8.f4   <a href="http://speclab.cr.usgs.gov/specpr.manual/chap08.f4.html"> F4:  Sequential Processor (No User Process) </a><br>
+            8.f5   <a href="http://speclab.cr.usgs.gov/specpr.manual/chap08.f5.html"> F5:  Continuum Removal </a><br>
+            8.f6   <a href="http://speclab.cr.usgs.gov/specpr.manual/chap08.f6.html"> F6:  Black Body Computation </a><br>
+            8.f7   <a href="http://speclab.cr.usgs.gov/specpr.manual/chap08.f7.html"> F7:  Smoothing Function </a><br>
+            8.f8   <a href="http://speclab.cr.usgs.gov/specpr.manual/chap08.f8.html"> F8:  Channel-File Transpose </a><br>
+            8.f9   <a href="http://speclab.cr.usgs.gov/specpr.manual/chap08.f9.html"> F9:  Band Removal (Reflection Method) </a><br>
+</p><p>
+            8.f10  <a href="http://speclab.cr.usgs.gov/specpr.manual/chap08.f10.html"> F10:  Sorting Routine </a><br>
+            8.f11  <a href="http://speclab.cr.usgs.gov/specpr.manual/chap08.f11.html"> F11:  Lunar Thermal Removal </a><br>
+            8.f12  <a href="http://speclab.cr.usgs.gov/specpr.manual/chap08.f12.html"> F12:  Cubic Spline Interpolation </a><br>
+            8.f13  <a href="http://speclab.cr.usgs.gov/specpr.manual/chap08.f13.html"> F13:  Merge Two Spectra to One </a><br>
+            8.f14  <a href="http://speclab.cr.usgs.gov/specpr.manual/chap08.f14.html"> F14:  Edits Spectral Data and Error Value </a><br>
+            8.f15  <a href="http://speclab.cr.usgs.gov/specpr.manual/chap08.f15.html"> F15:  Formats Gaussian Parameter File </a><br>
+            8.f16  <a href="http://speclab.cr.usgs.gov/specpr.manual/chap08.f16.html"> F16:  Line Segment Generator </a><br>
+            8.f17  <a href="http://speclab.cr.usgs.gov/specpr.manual/chap08.f17.html"> F17:  High To Low Resolution Convolution </a><br>
+            8.f18  <a href="http://speclab.cr.usgs.gov/specpr.manual/chap08.f18.html"> F18:  Block Averages and Statistics </a><br>
+            8.f19  <a href="http://speclab.cr.usgs.gov/specpr.manual/chap08.f19.html"> F19:  Polynomial Fit (10 Term) </a><br>
+</p><p>
+            8.f20  <a href="http://speclab.cr.usgs.gov/specpr.manual/chap08.f20.html"> F20:  Text File Input </a><br>
+                     8.f20.1  Using Function 20 <br>
+                     8.f20.2  Setting Up the Text File <br>
+                     8.f20.3  Example <br>
+</p><p>
+            8.f21  <a href="http://speclab.cr.usgs.gov/specpr.manual/chap08.f21.html"> F21:  Calculate N term Polynomial </a><br>
+            8.f22  <a href="http://speclab.cr.usgs.gov/specpr.manual/chap08.f22.html"> F22:  Tablet Graphics (TABGRAF) </a><br>
+            8.f23  <a href="http://speclab.cr.usgs.gov/specpr.manual/chap08.f23.html"> F23:  Mathmatical Parser </a><br>
+            8.f24  <a href="http://speclab.cr.usgs.gov/specpr.manual/chap08.f24.html"> F24:  Star Moon Thermal Removal </a><br>
+            8.f25  <a href="http://speclab.cr.usgs.gov/specpr.manual/chap08.f25.html"> F25:  Two Component Areal Mix Least Squares </a><br>
+
+            8.f26  <a href="http://speclab.cr.usgs.gov/specpr.manual/chap08.f26.html"> F26:  not developed yet </a><br>
+            8.f27  <a href="http://speclab.cr.usgs.gov/specpr.manual/chap08.f27.html"> F27:  not developed yet </a><br>
+            8.f28  <a href="http://speclab.cr.usgs.gov/specpr.manual/chap08.f28.html"> F28:  not developed yet </a><br>
+            8.f29  <a href="http://speclab.cr.usgs.gov/specpr.manual/chap08.f29.html"> F29:  not developed yet </a><br>
+            8.f30  <a href="http://speclab.cr.usgs.gov/specpr.manual/chap08.f30.html"> F30:  not developed yet </a><br>
+            8.f31  <a href="http://speclab.cr.usgs.gov/specpr.manual/chap08.f31.html"> F31:  not developed yet </a><br>
+            8.f32  <a href="http://speclab.cr.usgs.gov/specpr.manual/chap08.f32.html"> F32:  not developed yet </a><br>
+            8.f33  <a href="http://speclab.cr.usgs.gov/specpr.manual/chap08.f33.html"> F33:  not developed yet </a><br>
+            8.f34  <a href="http://speclab.cr.usgs.gov/specpr.manual/chap08.f34.html"> F34:  not developed yet </a><br>
+            8.f35  <a href="http://speclab.cr.usgs.gov/specpr.manual/chap08.f35.html"> F35:  not developed yet </a><br>
+            8.f36  <a href="http://speclab.cr.usgs.gov/specpr.manual/chap08.f36.html"> F36:  not developed yet </a><br>
+            8.f37  <a href="http://speclab.cr.usgs.gov/specpr.manual/chap08.f37.html"> F37:  not developed yet </a><br>
+            8.f38  <a href="http://speclab.cr.usgs.gov/specpr.manual/chap08.f38.html"> F38:  not developed yet </a><br>
+
+            8.f39  <a href="http://speclab.cr.usgs.gov/specpr.manual/chap08.f39.html"> F39:  Noise Generator </a><br>
+            8.f40  <a href="http://speclab.cr.usgs.gov/specpr.manual/chap08.f40.html"> F40:  least squares between two spectra (Under Dev.) </a><br>
+            8.f41  <a href="http://speclab.cr.usgs.gov/specpr.manual/chap08.f41.html"> F41:  Binning Routine (Under Development) </a><br>
+            8.f42  <a href="http://speclab.cr.usgs.gov/specpr.manual/chap08.f42.html"> F42:  Fit Band Profile from a Reference Spectrum </a><br>
+            8.f43  <a href="http://speclab.cr.usgs.gov/specpr.manual/chap08.f43.html"> F43:  FFT and Inverse FFT </a><br>
+            8.f44  <a href="http://speclab.cr.usgs.gov/specpr.manual/chap08.f44.html"> F44:  Segmented Upper Hull Continuum </a><br>
+            8.f45  <a href="http://speclab.cr.usgs.gov/specpr.manual/chap08.f45.html"> F45:  Automatic Band Analysis </a><br>
+            8.f46  <a href="http://speclab.cr.usgs.gov/specpr.manual/chap08.f46.html"> F46:  Band Analysis Output </a><br>
+            8.f47  <a href="http://speclab.cr.usgs.gov/specpr.manual/chap08.f47.html"> F47:  Spectrum Recreation from F46 output </a><br>
+            8.f48  <a href="http://speclab.cr.usgs.gov/specpr.manual/chap08.f48.html"> F48:  HP Graphics Terminal Tablet Digitization </a><br>
+            8.f49  <a href="http://speclab.cr.usgs.gov/specpr.manual/chap08.f49.html"> F49:  Linear Interpolation </a><br>
+            8.f50  <a href="http://speclab.cr.usgs.gov/specpr.manual/chap08.f50.html"> F50:  Wavelength Registration </a><br>
+ <br>
+</p><p>
+9    <a href="http://speclab.cr.usgs.gov/specpr.manual/chap09.html"> CRT PLOT ROUTINES </a><br>
+     9.1  Introduction <br>
+     9.2  Plotting Mode <br>
+     9.3  Changing Scale <br>
+            9.3.1  Changing Scale by Typing in the Range <br>
+            9.3.2  Changing Scale by Graphics Sub-Window <br>
+     9.4  Line Type <br>
+     9.5  Horizontal Axis Labels <br>
+     9.6  Changing the Wavelength Set <br>
+     9.7  Graphics Cursor Position <br>
+     9.8  Interactive Band Analysis <br>
+     9.9  Deleting Individual Data Channels <br>
+     9.10  Glitch Removal <br>
+     9.11  Information Display and Information Change <br>
+     9.12  Printer Listings and Printer Plots <br>
+     9.13  Multiple Commands in the CRT Plot Routines <br>
+     9.14  Exiting the CRT Plot Routines <br>
+ <br>
+10   <a href="http://speclab.cr.usgs.gov/specpr.manual/chap10.html"> DATA DISPLAY, TRANSFER, AND OVERLAY </a><br>
+     10.1  Introduction <br>
+     10.2  Data Display <br>
+     10.3  File Transfer <br>
+             10.3.1  File Tranfer with Plot or Information Change <br>
+             10.3.2 Starpack Transfers <br>
+     10.4  Overlaying Data Sets <br>
+     10.5  Multiple Commands in Data Display Transfer and Overlay <br>
+     10.6  Extraction of Data from 3D Files for Display and Transfer <br>
+ <br>
+11   <a href="http://speclab.cr.usgs.gov/specpr.manual/chap11.html"> DATA FILE LIST </a><br>
+     11.1  Introduction <br>
+     11.2  Listing Mode <br>
+     11.3  CRT Listing Options <br>
+     11.4  Printer Listing Options <br>
+     11.5  Search Capability <br>
+     11.6  Listing Limits <br>
+     11.7  Continuing/Ending the List <br>
+     11.8  Sample Listing <br>
+ <br>
+12   <a href="http://speclab.cr.usgs.gov/specpr.manual/chap12.html"> EXTINCTION ROUTINES </a><br>
+     12.1  Introduction <br>
+     12.2  Starpack List and Display <br>
+     12.3  Extinction Calculation <br>
+     12.4  CRT Plot <br>
+     12.5  Airmass Versus Log Intensity Plots and Deletion <br>
+           and Restoration of Runs and Channels <br>
+     12.6  Writing a Starpack <br>
+     12.7  Starpack Manual History <br>
+ <br>
+13   <a href="http://speclab.cr.usgs.gov/specpr.manual/chap13.html"> PLOTTING ROUTINES FOR WORK AND PUBLICATION </a><br>
+     13.1  Introduction <br>
+     13.2  Plotting Mode Type <br>
+             13.2.1 User-selected wavelength limits: <br>
+     13.3  Vertical Axis Label <br>
+     13.4  Delete From All Spectra <br>
+     13.5  Scale of Plot <br>
+     13.6  Plot Scale Factors <br>
+     13.7  Data Set Input and Options <br>
+ <br>
+14   <a href="http://speclab.cr.usgs.gov/specpr.manual/chap14.html"> RADIATIVE TRANSFER ROUTINES </a><br>
+ <br>
+15   <a href="http://speclab.cr.usgs.gov/specpr.manual/chap15.html"> STANDALONE UTILITIES </a><br>
+     15.1  Introduction <br>
+     15.2  Spprint <br>
+     15.3  Spfeatures <br>
+     15.4  Data Translation <br>
+             15.4.1  sptoascii <br>
+             15.4.2  asciitosp <br>
+             15.4.3  oldsptoascii <br>
+             15.4.4  cgastosp <br>
+</p><p>
+<b>APPENDICES</b> 
+</p><p>
+A    <a href="http://speclab.cr.usgs.gov/specpr.manual/specpr-format.html"> SPECPR STANDARD FORMAT OF DATA FILES </a><br>
+B    <a href="http://speclab.cr.usgs.gov/specpr.manual/obtain_specpr.html"> HOW TO OBTAIN SPECPR <br>
+ <br>
+ <br>
+
+</a><a href="http://speclab.cr.usgs.gov/specpr.manual/acknowledgements.html"> <b>Acknowledgements</b></a> <br>
+
+</p><hr>
+<p>
+<i><a href="http://www.usgs.gov/">U.S. Geological Survey</a>,
+a bureau of the <a href="http://www.doi.gov/">U.S. Department of the Interior</a>
+<br>
+<i>This page URL= http://speclab.cr.usgs.gov/specpr.manual.html </i><br>
+
+This page is maintained by: Dr. Roger N. Clark  <a href="mailto:rclark@usgs.gov"> rclark@usgs.gov
+</a><br>
+
+Last modified November 09, 2010.
+
+
+</i></p></body></html>

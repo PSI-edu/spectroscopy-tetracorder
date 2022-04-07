@@ -1,0 +1,424 @@
+.nr % 4
+.nr CN 8
+.bp 5
+.sh 2 "Special Functions " 8 6
+.pp
+Special function subroutines are additional routines for operating
+on any kind of data.  Subroutine calls already exist in the
+program for many as yet unwritten routines.  These routines are
+designed for easy linking to the present program.  New routines can
+be user written with less effort than a completely separate
+program since, in most cases, SPECPR handles all the data
+management.  The routines are called by the letter
+.ul
+f
+and the function number.  An example would be to call function
+2 to operate on file v record 10:
+.ul
+v10f2
+Note there is no colon as in the algebraic and trig routines.
+Some special functions do not require a file to be input before
+the function command.  An example is function 1 which is a list
+of all available functions (type
+.ul
+f1
+only).  Functions which require a file input before the function
+call will have an f in parenthesis in the list of functions (f1).
+Similarly, an e will also be in parenthesis if an error analysis
+can be included.  The available functions are described below.
+.bp
+.sh 3 "F1:  List of Special Functions "
+.pp
+List of all available special functions.
+.bp
+.sh 3 "F2:  Shift "
+.pp
+f2 shifts data left or right an integer or fractional number of
+channels.  A file input is required and errors can be included.
+Fractional shifts are done by linear interpolation.  When the
+routine has been entered, type in the number of channels to shift
+or type e or x to exit.  A positive number (integer or real)
+indicates a shift right and a negative number left.
+.pp
+If X is the number of channels to shift, the value of X is split
+into the integer part (n) and the fractional part (XN).  First,
+the integer part is shifted
+.EQ
+gfont R
+.EN
+.EQ  "eqn \*($n.1"
+        D sub {i+n} = D sub i
+.EN
+
+where @0 <= i + n <= 257@ and @ D sub i@
+is each data point in the spectrum.  Next,
+the fractional part is interpolated
+
+.EQ "eqn \*($n.2"
+        XN'>0.0;~~  D sub i = D sub {i+1} - D sub i * XN sup ' + D sub i
+.EN
+.EQ "eqn \*($n.3"
+        XN'<0.0;~~  D sub i = D sub i - D sub {i-1} * XN sup ' + D sub i
+.EN
+
+where XN' = -1.0 * XN.  Data channels not in the shifted
+region are set to zero.  The errors to the data are shifted in a
+similar manner.  Before June 24, 1979, there was a slight error
+in the program (XN' = XN) making the fractional shift appear to
+go in a different direction than the integer part shift.  The
+history has been modified to signal this new change
+.pp
+Old history (X = + 2.5 operation on WDG536 file 238):
+
+"F2:  WDG536 FILE 238 SHIFT RIGHT 2.5 CHANNELS"
+
+New History:
+
+"F2:  WDG536 FILE 238 SHIFT RIGHT (+) 2.5 CHANNELS".
+
+The subtle change is the sign (+ or -) in parentheses signifying
+the direction of the shift.
+.bp
+.sh 3 "F3:  Sequential Processor "
+.pp
+This routine is very useful for repetitive
+calculations on many records for multiplication, division,
+subtraction and special functions only.  For example, if you
+wanted to multiply file v records 10 to 23 by the constant
+1.3452, you would type f3 from Math Operations.  The program will
+ask for the operation.  You would type *.  (Other operations
+would be /, -, f2, f6 or any other function number except 3 and
+4).  Next the program will ask for the first file ID, beginning
+record number, ending record number and the record number
+increment.  For this
+example, you would type
+.ul
+v10 23 1.
+Record increments from 0 to 2000 are valid.  If the record increment
+was negative, it is set to zero.  Next you will be asked to type
+in the second file ID,  beginning and ending record numbers and
+increment.  For this case, you would type
+.ul
+c1.3452.
+You will then be asked to type in options.  If you wanted errors
+included, the record increment should have been 2 since the data and
+errors take up 2 records.  Note you can get in an infinite loop if
+the record increment is set to zero.  However, you can exit back to
+Math Operations by typing
+.ul
+x
+at any point.  If you type
+.ul
+e
+at any point in the processing, that operation will be skipped and
+the program will go on to the next operation.  The operations are
+performed just as if you had typed in the commands one at a time
+or all one line separated by commas in Math Operations.  This
+function should save a lot of time and typing.
+.bp
+.sh 3 "F4:  Sequential Processor (No User Access) "
+.pp
+This function sets up the commands from function 3 for execution
+and thus has no user access.
+.bp
+.sh 3 "F5: Continuum Removal "
+.ti 8n
+.ul
+author: Lucy Mcfadden
+.pp
+Type f5.
+.pp
+The directions follow on the CRT and will be given here.
+.pp
+"THIS ROUTINE MATCHES A CONTINUUM TO TWO GIVEN POINTS OF A
+SPECTRUM AND REMOVES THE CONTINUUM BY DIVIDING."
+.pp
+A continuum is any spectrum which the user generates by whatever
+means available.  However, the user must have a concrete file
+with a device name and number available before using this
+routine.  You can generate a continuum by using the special math
+functions or using Michael Gaffey's Fe2 modified spectrum or whatever you
+choose.
+.pp
+"ENTER TWO VALUES TO WHICH CONTINUUM IS TO BE MATCHED FOLLOWED BY
+H, A, OR N REPRESENTING UNITS OF CHANNEL, WAVELENGTH, AND ENERGY
+SPACE, AND THE WAVELENGTH FILE # (DEFAULT = H1).  ENTER E OR X TO
+EXIT."
+.pp
+The two points can be entered in whatever units are convenient
+for you, in free format (spaces between numbers, no commas).  The
+wavelength file is read, and the two values entered are correlated
+with the appropriate channel in the wavelength file.  If you
+do not specify a unit's code or a wavelength file, the program
+accesses wavelength file 1 and assumes your numbers entered are
+channels.  You can bail out of the routine here if you wish.
+.pp
+"ENTER SPECTRUM FILE ID AND #, E TO INCLUDE ERRORS FOLLOWED BY
+CONTINUUM FILE ID AND #.  TYPE X TO EXIT."
+.pp
+The message on the CRT will say "WORKING" when you hit the return
+button after entering the information.  The title of the files
+used will be printed on the CRT as they are accessed by the
+program.  The error file with the spectrum is accessed if asked
+for.  The continuum file is scaled to the spectrum file at the
+two given points by calculating a scaled slope and an intercept
+(or vertical offset) and converting each data point of the
+continuum to the scaled continuum through the relationship Y = mx
++ b where Y is the scaled continuum, m is the slope, x is the
+original continuum value at a give channel, and b is the
+intercept.  The spectrum is then divided by the scaled
+continuum.  The errors are scaled by a factor of (scaled spectrum \(di
+original spectrum).
+.pp
+Finally, the title and history are made and control is transferred
+back to the main program to write the file.
+.bp
+.sh 3 "F6:  Black Body Computation "
+.pp
+This function computes the Planck black body function
+at a given temperature (in degrees Kelvin) and any
+wavelength set.  Upon entering the routine, you are asked to type
+in the temperature and the wavelength record number.  If no
+wavelength file number is specified, the default is record 1.  The
+units are computed in Watts per meter squared per micron.  The
+wavelength values must be in microns.  When using extreme
+temperatures or extreme wavelengths, you should check the results
+for underflow or overflow in the CRT plot routines (section 9).
+No file or errors are needed since this routine generates a new
+file instead of an operation on an old one.  The equation used is
+.EQ "(eqn 8.6.6.1)"
+cpile { E sub i (T) ={ 8 pi h c sup 2 } over { lambda sup 5 }
+left [ e sup {{ h
+c}  over { lambda k T }} - 1 right ] sup -1
+        above
+        ={ 1.4966 times 10 sup -5 } over lambda sup -5 left [ e sup
+{13586 over { lambda T } } -1 right ] sup -1 }
+.EN
+where E is the energy for each channel at wavelength \(*l (in
+microns), T is the temperature (degrees Kelvin), c is the speed
+of light, h is the Planck constant (=@ 6.6252 times 10 sup -34@ Joule-seconds),
+and k is the Boltzmann constant (=@ 1.3806 times 10 sup -23@ Joule/\(deK).
+.bp
+.sh 3 "F7:  Smoothing Function "
+.pp
+This routine smoothes a spectrum by performing
+a weighted smoothing of adjacent channels.  First, the channels are
+sorted into increasing wavelengths; note that the smoothing is
+done in channel space.  The user then requests how many channels to
+include on each side of each data point.  Each point is weighted
+by the inverse power of 2 with the power increasing with
+increasing distance from the data point to be smoothed.  If the
+parameter giving the number of channels is n, then for n = 1 data
+point D is computed by
+.EQ "(eqn \*($n.1)"
+D sub i = left [ D sub {i-1} /2 + D sub i + D sub {i+1} /2
+right ] / 2 .
+.EN
+For n = 2
+.EQ "(eqn \*($n.2)"
+D sub i = left [ D sub {i-2} /4 + D sub {i-1} /2 + D sub i + D
+sub {i+1} /2 + D sub {i+2} /4 right ] /2.5 .
+.EN
+In general
+.EQ "(eqn \*($n.3)"
+D sub i = left { D sub {i-n} / {2 sup n} + . . . D sub {i-1} / 2 +
+D sub i +
+D sub {i+1} / 2 + . . . + D sub {i+n} / {2 sup n} right } over {(1 +
+2 over 2 sup 1 + . . . + 2 over 2 sup n ) }
+.EN
+and
+.EQ "(eqn 8.6.7.4)"
+sigma sub i = {left { sigma sub {i-n} sup 2 over 2 sup n + . . .
++ sigma sub {i-1} sup 2 over 2 + sigma sub i sup 2 + sigma sub
+{i+1} sup 2 over 2 + . . . + sigma sub {i+n} sup 2 over 2 sup n
+right } sup {1 over 2} } over { ( 1 + 2/2 sup 1 + . . . 2/2 sup
+n )}
+.EN
+.pp
+The parameter n can vary from 1 to the number of channels divided
+by 2.  When the smoothing is finished, the data is sorted into
+the original order.  The wavelength record default is the current
+wavelength set in use (and is printed on the CRT).  If another is desired,
+type
+.ul
+a
+and the wavelength file number on the same line as the parameter
+n (which must be first on the line).  Also, if data only in a
+certain range is to be considered, on the same line, type
+.ul
+l
+and the minimum and maximum data numbers to be included.  Default
+limits on L are @-1.0 times 10 sup 34@ to @+1.0 times 10 sup 34@.
+If certain channels
+should be deleted, type
+.ul
+d
+to delete points.  A message will then be printed to type in the
+points to be deleted.  When you are finished typing in points to
+be deleted, type
+.ul
+c
+to continue.  A file must be specified before the f7 command, and
+errors can be included.  The parameter n seems to give excellent
+results when it is 1 or 2.  When n gets large, there seems little
+change in the smoothed result.
+
+
+.bp
+.sh 3 "F8:  Channel-Record Transpose "
+.pp
+This routine transposes the array of channel (column) versus
+spectrum (rows) to spectrum versus channel.  For example, if you
+had 10 spectra of 50 channels each where each spectrum was taken
+at 1 hour intervals, this routine transposes the matrix so that
+there are 50 output "spectra" of 10 channels each where each
+"spectrum" is intensity at 10 different times.  The request for
+input spectra are input one per line (file letter ID and record
+number).  When all are typed in, type
+.ul
+b
+to begin transpose.  The program will then ask for the beginning
+output location (type in file letter ID and record number).  The
+output spectra will be output sequentially beginning at that
+point (but first the program asks for a common title for the
+output spectra).  The number of output spectra is equal to
+the number of channels in use.
+.bp
+.sh 3 "F9:  Band Removal (Reflection Method) "
+.ti 8
+.ul
+author: Lucy Mcfadden
+.pp
+Type f9.
+.pp
+This subroutine takes one half of an absorption band and reflects
+it about the band minimum then divides a given reflection
+spectrum by the calculated band.
+.pp
+"TYPE IN THE FILE ID AND FILE # TO BE PROCESSED, E TO INCLUDE
+ERRORS, FOLLOWED BY L OR R FOR LEFT- OR RIGHT-SIDE OF BAND TO BE
+REFLECTED.  TYPE E OR X TO EXIT."
+.pp
+L or R refers to left- or right-side of the band minimum when the
+spectrum is stored in increasing wavelength from left to right.
+It refers to the side of the band that you want to be reflected to
+the other side.
+.pp
+"ENTER OUTER LIMITS OF BAND (2 VALUES), ESTIMATED HALF HEIGHT
+POINT ON SIDE TO BE REFLECTED FOLLOWED BY H, A, N (CHANNEL,
+WAVELENGTH, ENERGY), AND WAVELENGTH FILE NUMBER.  (DEFAULT = H1), TYPE
+E OR X TO EXIT."
+.pp
+The two outer limits are on either side of the band minimum.  The
+first limit tells where to stop the reflection process, the second
+tells where to stop looking for the band minimum.  The program
+types "WORKING" and is doing the following:
+
+.ip 1:
+accessing the wavelength file, default is 1.
+
+.ip 2:
+correlating the given band limits to channels in the wavelength
+file, default is that the limits are given in terms of channels.
+
+.ip 3:
+searching for the band minimum by looking for a datum that is
+smaller than the three values on either side of it, between the
+limits of the \(12 height and the second outer band limit.
+
+.ip 4:
+puts values of one side of band into the position symmetrically
+opposite to it relative to the band minimum.
+
+.ip 5:
+divides spectrum by reflected band.
+
+.ip 6:
+scales the errors by a factor of (the residual \(di the original
+spectrum).
+
+.ip 7:
+calculates title and history.
+
+.ip 8:
+returns to the main program.
+
+.pp
+This is a primitive means of removing a band.  If there are any
+suggestions or improvements, please let me know.
+.bp
+.sh 3 "F10:  Sorting Routine "
+.pp
+The function arranges data into increasing wavelength order.
+Entry is by the usual method for special functions.  Errors may
+be included.  After entry, the files to be used are printed.  The
+user may change the wavelength file at this point.  Only the data
+file is sorted, but by specifying the wavelength file when
+calling f10, the wavelengths may be sorted also.
+.bp
+.sh 3 "F11:  Lunar Thermal Removal "
+.pp
+This routine removes the thermal component from
+the reflectance object spectrum using the equation:
+.EQ "(eqn 8.6.11.1)"
+R sub 0 = left ( R sub 0 sup \' + { R sub 0 sup \' (1 - R sub s ) P
+sub s } over {R sub s F} - P sub 0 over F right ) left ( 1 - P sub 0 over F
+right ) sup -1
+.EN
+.pp
+Refer to Roger Clark's paper, "Planetary Reflectance Measurements
+in the Region of Planetary Thermal Emission," equation 14
+(
+.i
+Icarus,
+.ul
+40,
+94-103, 1979).
+.l(
+
+Variable definitions:
+
+        @R sub 0@ = reflectance of object with thermal component removed
+
+        @R sub 0 sup \'@ = reflectance of object with thermal component
+
+        @R sub s@ = reflectance of standard with no thermal component
+
+        @P sub 0@ = temperature for Planck function of object (in Degrees
+                Kelvin)
+
+        @P sub s@ = temperature for Planck function of standard (in Degrees
+                Kelvin)
+
+        F = (solar flux/\(*p)/(distance from sun in A.U.@) sup 2@
+
+.l)
+.pp
+The program requires that the file ID and record number of
+@R sub 0 sup \'@ and
+the e to include errors, if any, be specified when called from Math
+operations.  The program will ask for:
+.l(
+
+        @R sub s@ file ID and number
+
+        Albedo at normalization for @R sub 0@ and @R sub s (0.0 < A <= 1.0)@
+
+        Wavelength record number @(1 <= N <= 99)@
+
+        @P sub 0@ and @P sub s@ in degrees Kelvin @(10 < T < 10 sup 5)@
+
+        Solar flux/\(*p file ID and number
+
+        Distance from sun in A.U. (>0.0)
+
+.l)
+.pp
+After entering albedo at normalization, the user has an option of
+either continuing, exiting, or changing what has been input so
+far (for the current screen information).  User also has a similar
+option after entering distance from the sun.  In calculating the
+thermal removal, @R sub 0@ and @R sub s@ values are multiplied by their
+respective albedo at the normalization point.  Errors are
+propagated by multiplying individual error values by the @R sub 0@ albedo
+at the normalization point.

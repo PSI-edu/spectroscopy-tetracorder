@@ -1,0 +1,66 @@
+<!-- Creator     : groff version 1.18.1.1 -->
+<!-- CreationDate: Tue Nov  9 14:21:33 2010 -->
+<html>
+<head>
+<meta name="generator" content="groff -Thtml, see www.gnu.org">
+<meta name="Content-Style" content="text/css">
+<title></title>
+</head>
+<body>
+
+<hr>
+<pre>SPECPR Users&rsquo; Manual                                                   Page 8-f9.1
+
+F9:  Band Removal (Reflection Method)                     Alias: band[rem]
+This absorption band removal routine
+takes one half of an absorption band and reflects
+it about the band minimum then, divides a given reflection
+spectrum by the calculated band.
+The routine will request:
+
+&quot;Type in the file id and file # to be processed, e to include
+errors, followed by l or r for left- or right-side of band to be
+reflected.  type e or x to exit.&quot;
+The &quot;l&quot; or &quot;r&quot; refers to left- or right-side of the band minimum when the
+spectrum is stored in increasing wavelength from left to right.
+It refers to the side of the band that you want to be reflected to
+the other side.
+Next you will be instructed to:
+
+&quot;enter outer limits of band (2 values), estimated half height
+point on side to be reflected followed by h, a, n (channel,
+wavelength, inverse wavelength), and wavelength file id and number.
+type e or x to exit.&quot;
+The two outer limits are on either side of the band minimum.  The
+first limit tells where to stop the reflection process, the second
+tells where to stop looking for the band minimum.  The program
+types &quot;WORKING&quot; and is doing the following:
+
+&bull; correlating the given band limits to channels in the wavelength
+  file, default is that the limits are given in terms of channels.
+
+&bull; searching for the band minimum by looking for a datum that is
+  smaller than the three values on either side of it, between the
+  limits of the &frac12; height and the second outer band limit.
+
+&bull; puts values of one side of band into the position symmetrically
+  opposite to it relative to the band minimum.
+
+&bull; divides spectrum by reflected band.
+
+&bull; scales the errors by a factor of (the residual &divide; the original
+  spectrum).
+
+&bull; calculates title and history.
+
+WARNING:
+This is a primitive means of removing a band.  It was used in the
+1970&rsquo;s but does not take into account the nonlinear nature of
+reflection spectra.  The results for reflectance spectroscopy are
+not quantitative.
+
+Original author: Lucy Mcfadden
+</pre>
+<hr>
+</body>
+</html>

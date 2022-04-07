@@ -1,0 +1,75 @@
+#
+# Should only need to edit the next group.
+#
+# note: in SSPPFLAGS, set TERMDELAY if you need extra delays by the
+# cpu for graphics terminal graphics.
+setenv SPKLUDGE HPUX
+#setenv SSPPFLAGS 'NOC2FUNDERBAR -HPUX -NONDEC -XWIN'
+setenv SSPPFLAGS 'IA64HPUX -NODEC -XWIN'
+setenv SPECPR /src/local/specpr
+#setenv LDLIBS '/usr/lib/libvec.a /usr/lib/X11R4/libX11.a -lm -lPW'
+#####setenv LDLIBS '/usr/lib/X11R4/libX11.sl -lm -lPW'
+#setenv LDLIBS '/usr/lib/X11R4/libX11.sl -lm'
+#setenv LDLIBS '/usr/lib/hpux32/libX11.so -lm'
+setenv LDLIBS '-lX11 -lm'
+setenv LDFLAGS '-N +U77'
+setenv LSTRING '' 
+#####setenv LIBPW '/usr/lib/libPW.a'
+setenv LIBPW ''
+setenv RANDRET 32767
+setenv SP_LOCAL /usr/local
+setenv SP_BIN securebin
+#
+# RANDRET is the max value that rand() returns on your system
+#
+setenv SPSDIR syshpux
+setenv SPSYSOBJ '${SP_OBJ}/syshpux.o'
+setenv RANLIB '/bin/true'
+#####setenv F77 'f77'
+setenv F77 'f90'
+setenv CC 'cc'
+setenv AR 'ar'
+setenv RF 'ratfor90'
+setenv SSPP 'sspp'
+#
+# select a variation of the following two FFLAGS lines (comment one out).
+# The -O3 -OP4 is valid on HP-UX 9.0 on 700 and 800 series machines
+# On HP-UX 10.0, +O3 +Oall may work best
+#     and gives the optimum speed, but some versions of HP-UX produced
+#     bad code!!   Suggest using -O on everything, but for certain
+#     subroutines, like bandmp, then select special optimization
+#     When special optimization is done in the makefiles,
+#                  FOPT1 and FFLAGS1 are used together, or
+#                  FOPT2 and FFLAGS2 are used together.
+#                  FFLAGS is used by itself.
+#     Use FOPT2 and FFLAGS2 for higesht optimization (e.g. used in banbdmp)
+#
+#####setenv FFLAGS  '-C +T -O'
+setenv FFLAGS '-C +nofp_exception -O'
+setenv FFLAGS1 '-C +nofp_exception'
+setenv FFLAGS2 '-C +nofp_exception'
+setenv FOPT1 '+O3'
+setenv FOPT2 '+O3 +Oall'
+setenv FFLAGOPS '-O'
+#
+######setenv RFLAGS '-C -6%'
+setenv RFLAGS ' <'
+setenv CFLAGS '-O'
+setenv ARFLAGS 'rvl'
+setenv GFLAGS '-s'
+setenv SP_DBG '${SPECPR}/debug'
+setenv SP_TMP '${SPECPR}/tmp'
+setenv SP_OBJ '${SPECPR}/obj'
+setenv SP_LIB '${SPECPR}/lib'
+
+# gfit
+setenv GF1_CFLAGS '-g'
+#####setenv GF1_FFLAGS '-C +T -T2 +Vc +Vf'
+setenv GF1_FFLAGS '-C +fp_exception'
+setenv GF1_LFLAGS ''
+setenv GF2_CFLAGS '-g'
+#####setenv GF2_FFLAGS '-C +T -I2 +Vc'
+#####         Note no replacement for -I2, -T2 +Vc and +Vf unknown to HPUX
+setenv GF2_FFLAGS '-C +fp_exception'
+setenv GF2_LFLAGS '-z'
+

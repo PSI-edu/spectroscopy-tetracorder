@@ -1,0 +1,504 @@
+#!/usr/local/bin/davinci -f
+#####!/usr/bin/env -S davinci -f  
+
+###########################  was:  #!/usr/local/bin/davinci -f
+
+
+#verbose=0
+
+##################################################
+# User:    roger    Date:  Mon Dec  7 21:52:58 2015, updated 11/2018
+###################################################
+
+# extract spectra from cube using an image mask of where to pick pixels.
+# mask derived from tetracorder results
+
+# davinci.get.avg.material.spectrum.from.tet+cube cuve  maskimage -cluser radius threshold -out outputmaskimage -specpr specprfilename title
+#
+
+if ($argc < 3 ) {
+	printf("Insufficient input\n\n")
+	printf("davinci.get.avg.material.spectrum.from.tet+cube cube  maskimage \n")
+	printf("      optional:\n")
+	printf("                    -cluser radius threshold -out outputmaskimage \n")
+	printf("                    -plot min max -wave specprfile recordnumber\n")
+	printf("                    -bland  specprfilenam  recordnumber\n")
+	printf("                    -weighted\n")
+	printf("                    -displaymask\n")
+	printf("                    -scale  scalefactor\n")
+	printf("                    -bbox upperleftx upperlefty lowerrightx lowerrighty\n")
+	printf("                    -specpr specprfilenam title ENDTITLE \n")
+	printf("                    \n")
+	printf("    If maskimage = the string one, then make a mask all eqial 1.0\n")
+	printf("    weighted means weight average by band depth\n\n")
+	printf("    Example: average spectrum in the bounding box:\n")
+	printf("    davinci.get.avg.material.spectrum.from.tet+cube cube  one  -bbox 10 20  100 120 -specpr spd1234test \"sptitle here\" ENDTITLE\n")
+	printf("\n    Example:\n")
+	printf("    davinci.get.avg.material.spectrum.from.tet+cube \n")
+	printf("         ./cubes2/FRT00003BFB_07_IF166J_MTR3.v group.1um/fe2+generic.all.fd.gz \n")
+	printf("         -out maskimages/group.1um.fe2+generic.all.fd.gif \n")
+	printf("         -cluster 7 15 -weighted \n")
+	printf("         -waves /mydata/spreslt1 6 \n")
+	printf("         -specpr  /mydata/spreslt1  FRT03BFB g1 fe2+gn.all                            ENDTITLE\n")
+	 exit(1)
+}
+
+# to get averages of all tetracorder mapping results, run:
+#
+#  cmd.get.mapped.avg.material.spectral.averages-v2
+#
+#  That runs:
+#
+# davinci.get.avg.material.spectrum.from.tet+cube $acube $bdepthfile \
+# 			-out $maskoutimage  \
+# 			-cluster 7 15 -weighted $ibland \
+# 			-waves /d1/rclark/data/crism_j/spd0523 6 \
+# 			-specpr  $spout  $sptitl ENDTITLE
+#
+# An example run of one image of tetracorder output:
+#
+#   davinci.get.avg.material.spectrum.from.tet+cube \
+#            ../cubes2/FRT00003BFB_07_IF166J_MTR3.v group.1um/fe2+generic.all.fd.gz 
+#            -out maskimages/group.1um.fe2+generic.all.fd.gif
+#            -cluster 7 15 -weighted  
+#            -waves /mydata/spreslt1 6 
+#            -specpr  /mydata/spreslt1  FRT03BFB g1 fe2+gn.all                            ENDTITLE 
+#
+#
+#
+# 
+ascale=20000.0    # note: need to change this when cube is float
+
+acubef = $1       # input cube name
+
+mimage = $2       # mask image
+
+if (fexists(acubef) == 0) {
+	printf("ERROR: cube not found %s\n", acubef)
+	exit(1)
+}
+if ( mimage != "one" ) {              # if not one, then it is a file
+	if (fexists(mimage) == 0) {
+		printf("ERROR: band depth (or mask) image not found %s\n", mimage)
+		exit(1)
+	}
+}
+
+
+docluster   = 0   # no cluster analysis
+moutflg     = 0   # no clulster image output
+spflg       = 0   # nospecpr output
+ifillmask   = 0   # no fill
+doplot      = 0   # no plot
+displaymask = 0   # do not display image masks
+
+waves   = 0      # no waves
+ibland  = 0      # ratio to a bland spectrum
+spbland = 1.0    # default spectrum to ratio
+
+iboxflg = 0      # no bounding box
+
+iweightflg = 0   # no weighting
+
+for (i=3; i<=$argc; i=i+1) {
+	atmp=$argv[i]
+	vmax=$argc
+	#printf ("DEBUG: i=%d  argv[i]=%s\n", i, $argv[i])
+	if (atmp == "-cluster" || atmp == "cluster") {     # do cluster analusis
+
+		docluster = 1
+		cradius = atoi($argv[i+1])
+		cthresh = atoi($argv[i+2])
+		i=i+2
+	}
+
+	if (atmp == "-out" || atmp == "out") {     # output mask image name
+	
+		moutflg = 1
+		moutname= $argv[i+1]
+		printf ("output mask image: %s\n", moutname)
+		i=i+1
+	}
+
+	if (atmp == "-weight" || atmp == "weight") {   # weight average bu band depth
+
+		iweightflg = 1
+	}
+
+	if (atmp == "-displaymask" || atmp == "displaymask") {   # display mask images
+
+		displaymask = 1
+	}
+
+	if (atmp == "-specpr" || atmp == "specpr") {     # specpr output
+
+		spflg = 1
+		spfile  = $argv[i+1]
+		sptitle = $argv[i+2]
+		printf("specpr title=%s\n", sptitle)
+		i=i+2
+		if (i <= vmax) {   # look for another word for the title
+
+			i = i+1
+			if ($argv[i] != "ENDTITLE") {
+
+				sptitle = sptitle + " " + $argv[i]
+				i = i+1
+
+				if (i <= vmax) {   # look for word 2 in the title
+
+					if ($argv[i] != "ENDTITLE") {
+
+						sptitle = sptitle + " " + $argv[i]
+						i = i+1
+						if (i <= vmax) {   # look for word 3 in the title
+
+							if ($argv[i] != "ENDTITLE") {
+
+								sptitle = sptitle + " " + $argv[i]
+								i = i+1
+								if (i <= vmax) {   # look for word 4 in the title
+
+									if ($argv[i] != "ENDTITLE") {
+
+										sptitle = sptitle + " " + $argv[i]
+										i = i+1
+									}
+								}
+							}
+						}
+					}
+				}
+			} else {
+				i = i+1
+			}
+		}
+	}
+
+	if (atmp == "-fill" || atmp == "fill") {     # fill mask
+		ifillmask = 1
+	}
+
+	if (atmp == "-plot" || atmp == "plot") {     # make a plot
+
+		doplot = 1
+		ymin=atof($argv[i+1])
+		ymax=atof($argv[i+2])
+		i=i+2
+	}
+
+	if (atmp == "-bbox" || atmp == "bbox") {     # bounding box
+
+		iboxflg = 1
+		lx = atoi($argv[i+1])   # upper left
+		ly = atoi($argv[i+2])
+		rx = atoi($argv[i+3])   # lower right
+		ry = atoi($argv[i+4])
+		i=i+4
+		printf ("box: upper left x y: %d %d    lower right x y: %d %d\n", lx, ly, rx, ry)
+	}
+
+	if (atmp == "-scale" || atmp == "scale") {     # bounding box
+
+		ascale =  atof($argv[i+1])   # cube scale factor to reflectance
+		if ( ascale < 0.000000001 || ascale > 100000000. ) {
+
+			printf ("scale factor: %f out of range, exit 1\n", ascale)
+			exit(1)
+		}
+		i = i +1
+	}
+	if (atmp == "-bland" || atmp == "bland") {     # ratio to a bland spectrum
+
+		ibland = 1
+		blanspf  = $argv[i+1]         # specpr file name
+		blandrec = atoi($argv[i+2])   # specpr record number
+		spbland =read (filename=blanspf, record=blandrec)
+		i=i+2
+	}
+
+	if (atmp == "-waves" || atmp == "waves" || atmp == "-wave" || atmp == "wave" ) {     # make a plot
+
+		wavfile = $argv[i+1]
+		wavrec  = atoi($argv[i+2])
+		waves=read (filename=wavfile, record=wavrec)
+
+		dwaves=dim(waves)
+		nwaves=dwaves[3,,]
+		printf("waves= %d channels\n", nwaves)
+		i=i+2
+	}
+}
+
+
+# printf("TEST TO HERE\n")
+
+
+
+cube  = read(filename=acubef)   # read image cube
+
+if (HasValue(cube) == 0) {    # cube not found
+	printf("ERROR: read error on cube %s\n", acubef)
+	exit(1)
+}
+
+if ( mimage == "one" ) {
+
+	amask = byte(cube[,,1]*0.0 + 255.)    # mask all high, 255 on 8bit scale
+	amask = bsq(amask)
+	printf ("no mask: averaging all pixels\n")
+
+} else {
+	printf ("reading image for mask: %s\n", mimage)
+	amask = read(filename=mimage)        # read image mask
+
+	if (HasValue(amask) == 0) {    # mask not found
+		printf("ERROR: mask not found %s\n", amask)
+		exit(1)
+	}
+
+	amask = bsq(amask)
+}
+
+bdepth=float(amask)/255.0       # relative band depths for weighting
+bdweight = bdepth
+
+if (iweightflg == 0) {
+
+	printf ("no weighting of pixels\n")
+	bdweight[ where (bdweight > 0.000001) ] = 1.0    # weighting =1 for all spectra
+}
+
+b=moment(bdweight)
+bdmax=b[2,,]   # max value
+bdweight = bdweight / bdmax
+
+dcube=dim(cube)
+nchans=dcube[3,,]   # number of channels
+
+damask=dim(amask)
+if ( damask[3,,] >1 ) {
+	printf("mask image must be single band %s\n", mimage)
+	printf("exit 1\n")
+	exit(1)
+}
+
+byte(amask)
+if ( displaymask == 1 ) {
+	display(amask)   # mask before cluster
+}
+
+#printf("amask moment:")
+#moment(amask)
+
+if ( docluster == 1 ) {
+	printf("doing cluster analysis....\n")
+	amask = cluster(amask, radius=cradius, threshold=cthresh)
+}
+
+
+if ( ifillmask == 1) {
+	mradius =2
+	printf("filling mask, radius=%d\n", mradius)
+	amask = jfjll(amask,radius=mradius)
+}
+
+amask = amask * bdweight    # weighted mask
+
+# now normalize mask
+printf ("normalizing mask\n")
+mamask=moment(amask)
+maxamask = mamask[2,,]
+if ( maxamask < 0.00001 ) {
+	maxamask =1.0
+}
+
+amask = 255.49 * float(amask) / maxamask     # final mask
+
+amask=byte(amask)   # mask as used to find pixels
+
+cdim=dim(cube)   # image cube
+xc=cdim[1,,]
+yc=cdim[2,,]
+zc=cdim[3,,]
+
+printf ("full cube dimensions: x y z: %d %d %d\n")
+
+#  cwav=read(filename="/d1/rclark/data/crism_j/spd0523", record=6)  # wavelengths
+
+ipxmin = 1
+ipxmax = xc
+ipymin = 1
+ipymax = yc
+
+if ( iboxflg == 1 ) {  # bounding box
+
+	printf ("applying bounding box to mask\n")
+	ipxmin = lx
+	ipxmax = rx
+	ipymin = ly
+	ipymax = ry
+
+}
+if (  ipxmin < 1 || ipymin < 1 ) {
+	printf ("bounding box out of range (<1): %d %d %d %d\n", lx, ly, rx, ry)
+	printf ("exit 1\n")
+	exit(1)
+}
+if ( ipxmax >  xc || ipymax > yc ) {
+	printf ("bounding box out of range (>max): %d %d %d %d\n", lx, ly, rx, ry)
+	printf ("exit 1\n")
+	exit(1)
+}
+
+if ( iboxflg == 1 ) {  # bounding box
+
+	# now mask out pixels outside box
+	printf ("bounding box: %d %d %d %d\n", lx, ly, rx, ry)
+
+	if (ipxmin > 1) {
+		amask[1:ipxmin-1,,] = 0
+	}
+	#display(amask)
+	if (ipymin > 1) {
+		amask[,1:ipymin-1,] = 0
+	}
+	#display(amask)
+	if (ipxmax < xc) {
+		amask[ipxmax+1:xc,] = 0
+	}
+	#display(amask)
+	if (ipymax < yc) {
+		amask[,ipymax+1:yc,] = 0
+	}
+}
+
+amask=byte(amask)   # mask as used to find pixels
+if ( displaymask == 1 ) {
+	display(amask)
+}
+
+if ( moutflg == 1) {        # output mask image
+	printf("writing output mask image: %s\n", moutname)
+	write(amask, filename=moutname, type=gif)
+}
+
+#   printf("press return to continue\n")
+#   a=system("read a")
+
+#######################################################
+### now apply box to make the cube analysis smaller
+
+if ( iboxflg == 1 ) {  # bounding box
+
+	printf ("subsetting cube and mask to the box size\n")
+
+	cube  = cube[lx:rx,ly:ry,]   # this frees memory
+	amask = amask[lx:rx,ly:ry,]
+
+	cdim=dim(cube)   # image cube new dimensions after applying box
+	xc=cdim[1,,]
+	yc=cdim[2,,]
+	zc=cdim[3,,]
+
+	ipxmin = 1
+	ipxmax = xc
+	ipymin = 1
+	ipymax = yc
+
+}
+
+printf("scaling cube:\n")
+xscale = bdweight / ascale   # bdweight =1 if no weighting
+cube=float(cube) * xscale
+
+# now get the average spectrum for the pixels indicated by the cluster analysis
+
+numspec = 0             # number of spectra
+sumspec = cube[1,1,]*0.0   # array for summing spectra
+
+aweight=0.0   #weighting sum
+
+printf("searching.....\n")
+
+for (ix=ipxmin; ix <= ipxmax; ix++) {
+	for (iy=ipymin; iy <= ipymax; iy++) {
+
+		lineweight = 0.0  # sum weights by line to minimize roundoff
+		if (amask[ix, iy, 1] > 0) {
+
+			sumspec[1, 1, ] = sumspec[1, 1, ] + cube[ix, iy, ]
+			numspec = numspec +1
+			lineweight = lineweight + bdweight[ix, iy, ]
+		}
+		aweight = aweight + lineweight
+	}
+}
+
+if (numspec > 0) {
+
+	#avspec=sumspec/float(numspec)   # avrage spectrum
+	avspec=sumspec/aweight   # avrage spectrum
+	printf("PIXELS FOUND = %d\n", numspec)
+	printf("WEIGHTED PIXELS = %f\n", aweight)
+} else {
+
+	printf("NO PIXELS FOUND, exit 1\n")
+	exit(101)
+}
+
+if ( ibland == 1 ) {
+
+	avspec = avspec / spbland
+}
+
+if ( doplot == 1 ) {
+
+	if (nchans != nwaves) {
+
+		printf("cube nchans= %d  nwaves= %d\n", nchans, nwaves)
+		printf("exit 1\n")
+		exit(1)
+	}
+
+	yrange=sprintf("set yrange=[%f:%f]", ymin, ymax)
+	#plot (avspec, axis=z, xaxis=waves, axis=z, yrange)
+	plot (avspec, axis=z, xaxis=waves, axis=z)
+	plot(yrange)
+	plot("replot")
+
+	#printf("press return to continue\n")
+	a=system("read a")
+	#a=system("sleep 4")
+}
+
+if ( spflg == 1) {         # output average spectrum
+
+	sptitle = sptitle + "                                               "  # make sure title is long
+	# add number of spectra to title, clip so fits
+	if ( numspec < 99999 ) {
+		sptitle = sprintf("%s av%d                     ", sptitle[1:32,,], numspec)
+	} else if ( numspec > 99999 && numspec < 999999 ) {
+		sptitle = sprintf("%s av%d                     ", sptitle[1:31,,], numspec)
+	} else if ( numspec > 999999 && numspec < 9999999 ) {
+		sptitle = sprintf("%s av%d                     ", sptitle[1:30,,], numspec)
+	} else {
+		sptitle = sprintf("%s av%d                     ", sptitle[1:28,,], numspec)
+	}
+	ititle = sptitle[1:40,,]
+	printf("output specpr file=%s\n", spfile)
+	printf("output specpr title=%s\n", ititle)
+	avspecmom = moment(avspec)
+	avdim = dim(avspec)
+	if ( avdim[1,,] != 1 || avdim[2,,] != 1 ) {
+
+		printf ("ERROR: avspec is not a single spectral array\n")
+	}
+	printf ("average spectrum min, max, mean= %f %f %f  channels=%d\n", avspecmom[1,,], avspecmom[2,,], avspecmom[3,,], avdim[3,,])
+	write (avspec, filename=spfile, title=ititle, type=specpr)
+
+	printf ("spprint %s\n", spfile)
+	sp1 = sprintf ("spprint %s | tail -2 | grep -v '^ done'", spfile)
+	system (sp1)
+}
+

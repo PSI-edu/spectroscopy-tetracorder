@@ -1,0 +1,10 @@
+
+	include ../common/blank
+	include ../common/lbl6
+	include ../common/lbl3
+	include ../common/label1
+	include ../common/lbl7
+	include ../common/lblg
+	include ../common/lundefs
+	include ../common/alphabet
+	include ../common/dscrch

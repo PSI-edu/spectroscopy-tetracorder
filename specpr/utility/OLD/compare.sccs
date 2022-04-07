@@ -1,0 +1,12 @@
+#!/bin/sh
+# compare source file with SCCS version
+
+for j in $*
+do
+	a=$j
+	get -s -p SCCS/s.$a > OLD.$a
+
+	echo '*****************' $a '****************'
+	diff $a OLD.$a
+	rm OLD.$a
+done

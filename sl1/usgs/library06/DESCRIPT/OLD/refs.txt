@@ -1,0 +1,126 @@
+A/kerogen_bk-cornell.html:15/N NMR Investigations, Origins of Life 14, 243 (1984).
+M/actinolite_hs315.html:References:  Borg and Smith (1969); Huebner's reference patterns <br>
+M/actinolite_hs315.html:(1969).  The identification of mica is based on one reflection
+M/almandine_hs114.html:References: Borg and Smith (1969), JCPDS #9-427, DHZ, v. 1a (1982),
+M/almandine_ws475.html:References: Borg and Smith (1969), JCPDS #9-427, DHZ, v. 1a (1982),
+M/almandine_ws476.html:File: alma476.out, *_mdi (smear mount on quartz plate) v. 1a (1982)<br>
+M/almandine_ws477.html:References: Borg and Smith (1969), JCPDS #9-427, DHZ, v. 1a(1982),
+M/almandine_ws478.html:References: Borg and Smith (1969), JCPDS #9-427, DHZ, v. 1a (1982),
+M/alunite_gds83.html:References: JCPDS #41-1467; Parker (1962)
+M/ammoniumillsmec_gds87.html:References:  Deer, Howie and Zussman (1962); Srodon and Eberl (1984); PDF2 #29-1496<br>
+M/ammoniumsmectite_gds86.html:References:  PDF2 #13-0259 43-0688 33-1161; Brindley and Brown (1980)<br>
+M/amphibole_nmnh78662.html:References: Borg and Smith (1969); Huebner's reference patterns<br>
+M/andradite_ws474.html:References: Borg and Smith (1969), JCPDS #15-742, DHZ, v. 1a (1982), Huebner's
+M/andradite_ws487.html:References: Borg and Smith (1969), JCPDS #10-288, DHZ, v. 1a (1982),
+M/andradite_ws488.html:References: Borg and Smith (1969), JCPDS #10-288, DHZ, v. 1a (1982),
+M/anthophyllite_hs286.html:References: JCPDS #13-558; Borg and Smith (1969); Huebner's reference patterns <br>
+M/augite_ws588.html:References:  Borg and Smith (1969); PDF2 #41-1370, 24-0201; Huebner's reference patterns
+M/bytownite_hs105.html:References:  Borg and Smith (1969); Kroll (1983); PDF2 #41-1486, 19-0926 <br>
+M/bytownite_hs106.html:References: Huebner's reference patterns, Borg and Smith (1969),
+M/bytownite_hs106.html:Reference: Huebner's reference patterns, Borg and Smith (1969), HS-201.3B
+M/chlorapatite_ws423.html:Reference: JCPDS #33-271 (synthetic chlorapatite); Hughes and others  (1989) <br>
+M/chlorapatite_ws423.html:communication, U.S.G.S., Reston, VA (1994)
+M/clinochlore_gds157.html: References: Bailey (1988), Huebner's reference patterns <br>
+M/clinozoisite_hs299.html:References: Borg and Smith (1969); Huebner's reference patterns <br>
+M/clintonite_nmnh126553.html:             (1969); JCPDS #20-321; 1M and 2M1 patterns calculated
+M/clintonite_nmnh126553.html:             by H.T. Evans, Jr., using Akhundov and others (1961) and
+M/clintonite_nmnh126553.html:             Takeuchi (1965) <br>
+M/diopside_hs15.html:References: Borg and Smith (1969); Huebner's reference patterns <br>
+M/dumotierite_hs190.html:References: Huebner's reference patterns; Borg and Smith (1969); JCPDS #7-71 <br>
+M/fluorapatite_ws416.html:communication, USGS, Reston, VA (1994)
+M/gaylussite_nmnh102876-2.html:1.5 &#181;m compared to the spectrum published in Crowley (1991) which
+M/gross_ws483.html:References: Borg and Smith (1969), JCPDS #39-368, DHZ, v. 1a (1982),
+M/gross_ws484.html:References: Borg and Smith (1969), JCPDS #39-368, DHZ, v. 1a(1982), Huebner's
+M/gross_ws485.html:References: Borg and Smith (1969), JCPDS #39-368, DHZ, v. 1a (1982),
+M/hornblende_hs115.html:References: Borg and Smith (1969) <br>
+M/hornblende_hs16.html:References: Borg and Smith (1969); Huebner's reference patterns <br>
+M/howlite_gds155.html:communication, USGS, Reston, VA (1993)
+M/hydrogrossular_nmnh120555.html:References: Borg and Smith (1969), JCPDS #10-288, DHZ, v. 1a (1982),
+M/hydroxylapatite_ws425.html:(OH)_38CL_33F_29]; Hughes and others (1989)
+M/hydroxylapatite_ws425.html:communication, USGS, Reston, VA (1994)
+M/jadeite_hs343.html:Reference: Borg and Smith (1969) <br>
+M/jarosite_pb_ws368.html:References: JCPDS #18-698, 22-827, and 5-417; Szymanski (1985);
+M/jarosite_pb_ws368.html:communication, USGS, Reston, VA (1994).
+M/kaolinite_gds11.html:  to Clark and Lucey (1984), but is probably closer to 10 &#181;m. From the visible-near-IR
+M/lepidolite_hs167.html:and Zussman (1962); Bailey (1984a,b); PDF2 #33-1161, 42-1399, 41-1480,
+M/lepidolite_nmnh105538.html:(1962); Bailey (1984a,b); PDF2 #24-062, 24-0594, 06-0263, 43-0685, 42-1399, 42-0604,
+M/magnetite_hs78.html:19-0629, 19-1184, 29-0733, 33-1161, 34-0192; Deer, Howie, and Zussman (1962) <br>
+M/microcline_hs103.html:  quite pure in hand specimen, but Deer and others (1963) note that alkali feldspars
+M/microcline_hs108.html:  not due to an alteration coating of ferric oxide. Deer and others (1963) point out
+M/microcline_hs151.html:  not due to an alteration coating of ferric oxide. Deer and others (1963) point out
+M/muscovite_gds107.html:References: Huebner's reference patterns; Bailey (1988); JCPDS
+M/muscovite_gds107.html:(1988) for muscovite polytypes, the mica is 2M1.  The pattern is
+M/natrolite_nmnh83380.html:References: JCPDS #41-1355, Borg and Smith (1969) for natrolite <br>
+M/neodymium_gds34.html:  oxide samples (Fig. 2) also has not been determined. Although White (1967) tentatively
+M/nepheline_hs19.html:References: Borg and Smith (1969) for nepheline; JCPDS 25-776 and
+M/oligoclase_hs110.html:References:  Huebner's reference patterns; Borg and Smith (1969); Kroll (1983) <br>
+M/oligoclase_hs110.html:standard.  All other peaks were indexed following Borg and Smith (1969) for
+M/oligoclase_hs110.html:the criteria of Wright (1968) indicate composition Ab96Or4 and intermediate
+M/opal_tm8896.html:References: Tada and Iijima (1983), Isaacs and others (1983) <br>
+M/opal_tm8896.html:communication, USGS, Reston, VA (1994)
+M/opal_tm8896.html:References:  Isaacs and others (1983); Tada and Ijima (1983) <br>
+M/paragonite_gds109.html:             pattern of Borg and Smith (1969); Huebner's reference
+M/paragonite_gds109.html:by Chatterjee (1974) and Holland (1979) for synthetic 2M<sub>1</sub>
+M/pigeonite_hs199.html:References: Borg and Smith (1969); Huebner's reference patterns. <br>
+M/praseodmium_gds35.html:  also has not been determined. Although White (1967) tentatively attributed similar
+M/pyroxene_hs119.html:References: Borg and Smith (1969); Huebner's reference patterns <br>
+M/quartz_avent_hs117.html:References:  Huebner's reference patterns; Borg and Smith (1969); PDF2 #06-0263,
+M/riebeckite_hs326.html:References:  PDF #23-1405, 45-1371, 33-1161, 21-1227; Borg and Smith (1969);
+M/riebeckite_hs326.html:Hawthorne (1981) <br>
+M/rutile_hs126.html:the blue is ascribed by Bevan and others  (1958) as an exciton band arising
+M/siderophyllite_nmnh104998.html:communication, USGS, Reston, VA (1994)
+M/smaragdite_hs290.html:References:  Huebner's reference patterns; Hawthorne (1981); Borg and Smith (1969);
+M/smaragdite_hs290.html:interpretation is so indefinite.  After indexing following Borg and Smith (1969),
+M/spessartine_ws480.html:References: Borg and Smith (1969), JCPDS #10354, DHZ, v. 1a (1982),
+M/sphene_hs189.html:References: Borg and Smith (1969); JCPDS #25-117; WAR-0612; Huebner's
+M/sphene_hs189.html:determination of the structural state by the method of Wright (1968)
+M/stilbite_hs482.html:References:  Tschernich (1992); PDF2 #24-0894, 25-0124, 26-584, 29-1185, 41-1356,
+M/stilbite_hs482.html:41-1357, 44-1479; Akizuki and Konno (1985) <br>
+M/thenardite_hs450.html:communication, USGS, Reston, VA (1994)
+M/ulexite_hs4413b.html:al. (1978) <br>
+M/ulexite_hs4413b.html:structure of Ghose and others (1978).  Reflections are very sharp,
+M/ulexite_hs4413b.html:communication, USGS, Reston, VA (1993)
+M/vesuvianite_hs446.html:References: Borg and Smith (1969); JCPDS #38-437 <br>
+M/zircon_ws522.html:Reference: Borg and Smith (1969). <br>
+S/alunite_cu91-217a.html:  (1997).
+S/alunite_cu91-217d.html:(1997).
+S/alunite_cu91-217h.html:D-O stretch bands according to the calibration in Swayze (1997).
+S/hema_qtz_gds76.html:References:  Huebner's reference patterns; Borg and Smith (1969); PDF2 #33-1161,
+V/grass-fescue-wheatg_ynp-fw-1.html:described by Despain (1990) as the wet phase (containing sticky geranium, <i>Geranium
+V/grass-fescue-wheatg_ynp-fw-1.html:Despain, D.G. (1990), <i>Yellowstone vegetation: Consequences of environment
+V/grass-fescue-wheatg_ynp-fw-2.html:described by Despain (1990) as the dry phase of the Idaho fescue/bearded
+V/grass-fescue-wheatg_ynp-fw-2.html:Despain, D.G. (1990), <i>Yellowstone vegetation: Consequences of environment
+V/grass-fescue-wheatg_ynp-fw-3.html:area of Yellowstone National Park. This area was described by Despain (1990) as
+V/grass-fescue-wheatg_ynp-fw-3.html:Despain, D.G. (1990), <i>Yellowstone vegetation: Consequences of environment
+V/grass-fescueneedleg_ynp-fn-1.html:(1990) as the Idaho fescue/Richardson&#8217;s needlegrass habitat. This average
+V/grass-fescueneedleg_ynp-fn-1.html:Despain, D.G. (1990), <i>Yellowstone vegetation: Consequences of environment
+V/lodgepole-pine_ynp-lp.html:lodgepole pine was classified as growth stage LP by Despain (1990).<span
+V/lodgepole-pine_ynp-lp.html:Despain, D.G. (1990), <i>Yellowstone vegetation: Consequences of environment
+V/lodgepole-pine_ynp-lp0-mod.html:  pine was classified as growth stage LP0 by Despain (1990).<span
+V/lodgepole-pine_ynp-lp0-mod.html:Despain, D.G. (1990), <i>Yellowstone vegetation: Consequences of environment
+V/lodgepole-pine_ynp-lp0-vig.html:  as growth stage LP0 by Despain (1990).<span style="mso-spacerun:
+V/lodgepole-pine_ynp-lp0-vig.html:Despain, D.G. (1990), <i>Yellowstone vegetation: Consequences of environment
+V/lodgepole-pine_ynp-lp1-a.html:classified as growth stage LP1 by Despain (1990).<span style="mso-spacerun:
+V/lodgepole-pine_ynp-lp1-a.html:Despain, D.G. (1990), <i>Yellowstone vegetation: Consequences of environment
+V/lodgepole-pine_ynp-lp1-b.html:lodgepole pine was classified as growth stage LP1 by Despain (1990).<span
+V/lodgepole-pine_ynp-lp1-b.html:Despain, D.G. (1990), <i>Yellowstone vegetation: Consequences of environment
+V/lodgepole-pine_ynp-lp1-c.html:was classified as growth stage LP1 by Despain (1990).<span style="mso-spacerun:
+V/lodgepole-pine_ynp-lp1-c.html:Despain, D.G. (1990), <i>Yellowstone vegetation: Consequences of environment
+V/lodgepole-pine_ynp-lp1-d.html:(1990).<span style="mso-spacerun: yes">&nbsp; </span>LP1 forests are 45-150
+V/lodgepole-pine_ynp-lp1-d.html:Despain, D.G. (1990), <i>Yellowstone vegetation: Consequences of environment
+V/lodgepole-pine_ynp-lp2-a.html:lodgepole pine was classified as growth stage LP2 by Despain (1990).<span
+V/lodgepole-pine_ynp-lp2-a.html:Despain, D.G. (1990), <i>Yellowstone vegetation: Consequences of environment
+V/lodgepole-pine_ynp-lp2-b.html:by Despain (1990).<span style="mso-spacerun: yes">&nbsp; </span>LP2 forests are
+V/lodgepole-pine_ynp-lp2-b.html:Despain, D.G. (1990), <i>Yellowstone vegetation: Consequences of environment
+V/lodgepole-pine_ynp-lp3-a.html:by Despain (1990).<span style="mso-spacerun: yes">&nbsp; </span>LP3 forests are
+V/lodgepole-pine_ynp-lp3-a.html:Despain, D.G. (1990), <i>Yellowstone vegetation: Consequences of environment
+V/lodgepole-pine_ynp-lp3-b.html:classified as growth stage LP3 by Despain (1990).<span style="mso-spacerun:
+V/lodgepole-pine_ynp-lp3-b.html:Despain, D.G. (1990), <i>Yellowstone vegetation: Consequences of environment
+V/sagebrush_ynp-ss-1.html:  by Despain (1990) as big sagebrush/Idaho fescue habitat. This average spectrum
+V/sagebrush_ynp-ss-1.html:Despain, D.G. (1990), <i>Yellowstone vegetation: Consequences of environment
+V/sagebrush_ynp-ss-2.html:by Despain (1990) as big sagebrush/Idaho fescue habitat. This average spectrum
+V/sagebrush_ynp-ss-2.html:Despain, D.G. (1990), <i>Yellowstone vegetation: Consequences of environment
+V/sagebrush_ynp-ss-3.html:(1990) as big sagebrush/Idaho fescue habitat. This average spectrum was
+V/sagebrush_ynp-ss-3.html:Despain, D.G. (1990), <i>Yellowstone vegetation: Consequences of environment
+V/sagebrush_ynp-ss-4.html:This area was described by Despain (1990) as big sagebrush/Idaho fescue
+V/sagebrush_ynp-ss-4.html:Despain, D.G. (1990), <i>Yellowstone vegetation: Consequences of environment

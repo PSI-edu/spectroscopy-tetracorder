@@ -1,0 +1,446 @@
+.nr % 0
+.nr CN 13
+.bp
+.sh 1 "GOULD PLOT ROUTINES " 13
+.sh 2 "The Gould Plot Routines "
+.pp
+The Gould 5200 plot routines are designed to provide nearly all
+types of plotting capability.  Plots can be in wavelength space,
+energy space (energy increasing to the right), reverse energy
+space (energy increasing to the left), or linear space with your
+own label.  The vertical scale can be either linear or
+logarithmic with the label selected from a list or typed in by
+the user.  Text can be inserted on the plot.  There
+are many options for controlling the type of plot.  The plot is
+built up on the disc as a binary image containing @5.0 times 10
+sup 6@ bits.
+The resolution of the plot is 200 lines per inch.  Each plot
+takes 6 to 8 minutes or more depending upon the number of
+jobs in the system.
+The plot routines are called from Program Operations by
+typing
+.ul
+p.
+.sh 2 "Plotting Space Type "
+.pp
+Upon entering the Plot routine, the plotting space options are
+given.  Type
+.ul
+w
+to plot in wavelength space,
+.ul
+n
+to plot in energy space (energy increasing to the right),
+.ul
+r
+to plot in reverse energy space (energy increasing to the left),
+or
+.ul
+y
+to type in your own horizontal axis label (the plot will be
+linear).  If you type
+.ul
+y,
+you will be asked to type in the horizontal axis label (24
+characters).  Here you might type:
+.ul
+TIME (SECONDS)
+or whatever your data corresponds to.  Thus, you may do any kind
+of one dimensional array processing you wish.
+.pp
+.ul
+User selected wavelength limits:
+You may select the wavelength limits for the plot, regardless of
+the wavelength files.  When you type in the "w" for wavelength
+space (or n, r, or y), also type (on the same line) the minimum
+and maximum wavelengths for the plot.  Type in wavelengths for
+energy space also.  Example:
+.(l
+
+        w 0.325        2.60
+        n 0.325        2.60
+        r 0.325        2.60
+        y 0.325        2.60
+
+.)l
+
+The actual limits on the plot will be 2% greater than the range
+(maximum-minimum) on each side (see section 13.5 for details).
+.pp
+The left bound is then minimum minus 2% of the
+maximum-minimum range, and the right bound is the maximum plus 2%
+of the maximum-minimum range.
+.pp
+To exit the plot routine, type
+.ul
+e
+or
+.ul
+x.
+If you choose a space, the program will proceed to the
+vertical axis label.
+
+
+.sh 2 "Vertical Axis Label "
+.pp
+Five vertical scale labels are displayed for you to select.  They
+are numbered 1 to 5.  To select one of these, type in the number.
+If you wish to type in your own label, type
+.ul
+6,
+and you will be instructed to type in the label (60 characters,
+maximum).  If you wish to plot the vertical axis in log (base 10)
+space, type
+.ul
+7,
+and you must type in your own vertical axis label.  The program
+will then proceed to the Delete From All Spectra section.  Type
+.ul
+e
+or
+.ul
+x
+to return to the beginning (section 13.2).
+
+
+.sh 2 "Delete From All Spectra "
+.pp
+If, from all the spectra you are going to plot, you wish to delete
+one or more channels common to all, type
+.ul
+d.
+You will then be instructed to type in the channels which will be
+deleted from all spectra to be plotted.  At least one space should
+be left between each pair of channels, and more than one line can be
+used for input.  All 256 channels may be deleted if desired.  When
+you are through, type
+.ul
+c
+to continue to the scale section.  Type
+.ul
+e
+or
+.ul
+x
+to return to the beginning (section 13.2).  When typing in a
+sequence of channels, you may give the beginning channel, a
+.ul
+t,
+and the end channel; for instance, to delete channels 1, 2, 3, 4,
+5, 6, 7, 8, 15, 16, 17, 23, and 24, type
+.ul
+d1t8 15t17 23 24c.
+
+
+.sh 2 "Scale of Plot "
+.pp
+The vertical scale of the plot is selected by the user.  Type in
+the lower and upper bound of the plot.  The plot size is 17
+centimeters (vertical axis) and 21 centimeters (horizontal
+axis) for the data plot area.
+.pp
+If your data is to be plotted in log space on the vertical axis,
+the lower and upper bound should be input as ordinary numbers.
+The program will convert the scale limits and data to logs.  The
+scale is then labeled as the log of the number.  Type
+.ul
+e
+or
+.ul
+x
+to return to the beginning of the plot routines (section 13.2);
+otherwise, the program will go to the file input section.
+.sh 2 "File Input and Options "
+.pp
+The data sets to be plotted are input as the file ID (v, w, u, y, or d),
+the record number, and the options.  For all data files input, the
+wavelength set assumed is record 1.  If another wavelength set is to be used,
+this must be requested as an option.  A maximum of 50 spectra may
+be plotted at one time.  These may be all on one graph or
+separated into many plots by an option request.  The options are
+listed below.
+.ba 5
+.ip "Option\ e" 15
+is include Errors.
+
+.ip "Option\ c" 15
+means to Connect the data points.  If the wavelengths are not in
+sequence, or a channel has been deleted, the points involved are
+not connected.
+
+.ip "Option\ C" 15
+means to Connect the data points.  This option permits the
+wavelengths to be NOT in sequence, but will connect them anyway.
+
+.ip "Option\ n" 15
+means that, if a point lies outside the lower or upper bound, it
+should be deleted.  If this specification is not given, the point
+will be plotted at the limit of the graph.
+
+.ip "Option\ a" 15
+followed by a number (1 to 99) means the wavelength set is the
+number.  The default record number is 1.
+
+.ip "Option\ p" 15
+followed by a number is the point size.  This number can be 0 to
+5.  If the number is zero, no point will be plotted.  Point size 1 is
+about 1.27mm on a side, size 2 is twice this, size 3 is three
+times, etc.  Note, if point size zero is specified and points are
+not connected, no data will be plotted, and you will have a blank
+plot!  A line drawing can be made by specifying point size zero and
+connect points.  The point size default varies with the total
+number of channels per spectrum.  It is size 3 for 30 channels or
+less, size 2 for 31 to 100 channels, and size 1 for more than 100
+channels.  The symbol type changes with each spectrum plotted.
+See Table \*($n.1.
+
+.ip "Option\ l" 15
+followed by a number 1, 3, 5, or 7 selects the line size
+for the plot. The line size for
+the axis is fixed at 3.  The number 1, 3, 5, or 7
+is the width of the line in Gould units. Size 1 is
+about 1/200 of an inch (0.127 mm).  The line size changes error
+bars and the line connecting points.  The default is size 1.
+
+.ip "Option\ g" 15
+means the spectrum after this one is to be plotted on a new
+graph.  Thus, 15 spectra may be plotted on a single graph
+(overlaid), or they may be plotted singly or any
+combination.  The g (new Gould plot) selects when a new plot
+is to begin.  Fifteen plots, plotted singly, may take
+90 minutes or more.
+
+.ip "Option\ d" 15
+means to delete points from this spectrum only (as opposed to
+delete from all spectra input as in section 13.4).  The program
+will ask for channels to be typed in when it is ready.  More than
+one line may be used to input the channels to be deleted (256
+channels maximum).  When you are finished inputting channels,
+type
+.ul
+c
+to continue.
+
+.ip "Option\ m" 15
+More copies:  In the options, specify "m" and the number of copies
+desired (1 to 9) default=1.  Note you need this option only on
+the last spectrum to be put on the plot.
+
+.ip "Option\ s" 15
+Symbol type:  To change symbol type, specify "s" and the symbol
+number (1 to 8). See table \*($n.1.  The symbol size is
+given by the "p" specification (point symbol size).  The symbol
+type is incremented for each spectrum input and is reset to 1 for
+each new Gould plot ("g" specification).
+
+.ip "Option\ r" 15
+Since mistakes are bound to happen when typing in all these
+spectra, you may return to the last step for re-inputting your
+data.  This is done by typing an "r" in place of a file ID and
+record number.  Example:  You type in the spectra
+.(l
+
+        1)  "v23ea2p3"
+        2)  "v29ep4"
+        3)  "v30a3p1c"
+        4)  "v33a5".
+
+.)l
+You now notice the step #3 should have been "v31a3p1c".  You are
+at step 5:  you type "r"; the computer says
+
+        "RETURN TO 4; CONTINUE".
+
+You then type "r" again, and the computer responds
+
+        "RETURN TO 3; CONTINUE".
+
+You may then retype step 3 (and also all steps after 3).  You
+may not return to a step before the first spectrum input (if you
+need to, you must "e" or "x" to exit).
+
+.ip "Option\ t" 15
+means to include text on the graph.  Text may be written as 11
+sets of 20 characters per set for each spectrum entered.  The
+text position is given in centimeters [horizontal direction (x),
+then vertical (y)] from the lower left-hand corner of the axes of
+the plot.  After the x and y position, input the text angle
+(90\(de is horizontal and 0\(de is vertical)
+and then the text to be input (20
+characters maximum).  All that goes on one line.  When you are
+finished inputting text, type
+.ul
+c
+in place of the horizontal text position number.  One
+character=0.40 cm wide use line feed of 0.70 cm.
+
+.ba 0
+.pp
+.ul
+Text entry:
+You may also return to the previous text entry using the "r"
+specification as with the file input.  You may not return to a
+previous entry before text entry 1.  If you have an error in a
+previous file entry, type "c" to continue to next step after text
+entry; then return to last file input as described above.  The "s"
+in the text entry is used for symbol entry.  When at a text entry
+point, type "s" then the following numbers:  symbol type (1 to 8),
+the symbol size (1 to 6), and the x (0-21 centimeters) and y
+(0-17
+centimeters) coordinates of the symbol position.  Separate
+numbers by spaces.
+.pp
+The SPECPR Gould plot routines allow subscripting, superscripting,
+backspacing and greek and math characters in the
+text.  Special characters are used to enter
+the different modes and can be used wherever text is written on
+the plot (horizontal or vertical axis labels or other text).  The
+characters are:
+.EQ
+delim off
+.EN
+.TS
+center,tab(#);
+l l.
+T{
+.ul
+Character
+T}#T{
+.ul
+Effect
+T}
+\\\\ (Backslash)#Backspace to previous character
+{ (Left Brace)#Go into subscript mode
+} (Right Brace)#Go into superscript mode
+@ (At sign)#End last scripting mode
+! (Exclaimation Point)#Toggle greek/normal mode (see table \*($n.2)
+| (Vertical Bar)#Toggle math/normal mode (see table \*($n.3)
+.TE
+
+.ce
+Table \*($n.2
+.TS
+box,center,tab(:);
+c s s s
+c c | c c.
+Greek character set
+_
+\(*A \(*a:A a:\(*N \(*n:N n
+\(*B \(*b:B b:\(*C \(*c:C c
+\(*G \(*g:G g:\(*O \(*o:O o
+\(*D \(*d:D d:\(*P \(*p:P p
+\(*E \(*e:E e:\(*R \(*r:R r
+\(*Z \(*z:Z z:\(*S \(*s:S s
+\(*Y \(*y:Y y:\(*T \(*t:T t
+\(*H \(*h:H h:\(*U \(*u:U u
+\(*I \(*i:I i:\(*F \(*f:F f
+\(*K \(*k:K k:\(*X \(*x:X x
+\(*L \(*l:L l:\(*W \(*w:W w
+\(*M \(*m:M m
+.TE
+Example:
+
+        1.04\(*mm
+would be inputed as:
+1.04!m!m
+
+
+.ce
+Table \*($n.3
+.TS
+box,center,tab(:);
+c s s s
+c c | c c.
+Mathmatical Symbols
+_
+A:infinity (\(if): _ : _ \
+
+B:improper subset (\(ip):a:\(ua
+C:proportional (\(pt):b:\(da
+D:union (\(cu):c:section (\(sc)
+E:root extender (\(rn):d:@
+F:bell (\(bs):e:double dagger (\(dd)
+G:plus or minus (\(+-):f:|
+H:less than or equal to (\(<=):g:improper subset (\(ib)
+I:greater than or equal to (\(>=):h:\\\\
+J:square root (\(sr):i:circle (\(ci)
+K:terminal sigma (\(ts):j:partial derivative (\(pd)
+L:integral sign (\(is):k:empty set (\(es)
+M:subset (\(sb):l:{
+N:superset (\(sp):m:}
+O:intersection (\(ca):/:/
+P:not (\(no):":"
+Q:clover leaf (\(ct):#:#
+R:angstrom (\(ag):':'
+S:gradient (\(gr):+:+
+T:times (\(mu):-:-
+U:divide (\(di):*:*
+V:identically equal (\(==):<:<
+W:approximately equal (\(~=): = : = \
+
+X:not equal (\(!=):>:>
+Y:\(<-:^:^
+Z:\(->:`:`
+.TE
+
+.pp
+It was assumed that these characters would not need to be printed
+so they have been reserved for the above special use.  Backslash
+can be used to cause characters to be overprinted.  An "at sign"
+terminates the last use of a brace.  All characters in between
+are printed in script mode.
+.EQ
+delim ??
+.EN
+
+Examples:
+.(l
+.ec #
+.ta 2i,3.5i
+        A{1@	Will print as ?A sub 1?
+        SAM\\\___	Will print as
+.u SAM
+        X}2@-Y	Will print as ?X sup 2 - Y?
+
+.ec \
+.)l
+.EQ
+delim @@
+.EN
+
+
+.pp
+Typing
+.ul
+x
+in place of a file ID will cause the program to return to the beginning
+of the routine (section 13.2).  Typing
+.ul
+b
+will begin building the vector and text files
+on the disc.  Note you must run the plotdaemon program and turn
+on
+the Gould printer plotter.
+
+.sh 2 "Building the Vector and Text files "
+.pp
+The gould plot routine builds a set of two files for each plot to be
+done. One of these files contains the vectors to be plotted and
+the other contains all the text and symbols to be plotted.
+Each stage of the plot will be printed on the CRT. These files
+are located in /usr/spool/gplot.
+
+.sh 2 "Running the plotdaemon routine"
+.pp
+After building the text and vector files you must run the
+plotdaemon program which takes these files and converts them into
+a raster file and dumps it onto the gould plotter. To run this
+routine from specpr type
+.ul
+!plotdaemon.
+This will start up the routine and return to specpr. Be sure that
+the program LSA is running on the TI and that the gould plotter
+is turned on and is online. Also be sure that there is sufficient
+paper in the gould for all the plots that will be built. (If you
+run out of paper you may lose some of your plots, and possibly
+someone elses plots too!)

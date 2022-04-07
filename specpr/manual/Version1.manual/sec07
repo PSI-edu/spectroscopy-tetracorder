@@ -1,0 +1,509 @@
+.sh 3 "Special Function 10:  Sorting Routine " 8 6 10
+.pp
+The function arranges data into increasing wavelength order.
+Entry is by the usual method for special functions.  Errors may
+be included.  After entry, the files to be used are printed.  The
+user may change the wavelength file at this point.  Only the data
+file is sorted, but by specifying the wavelength file when
+calling F10, the wavelengths may be sorted also.
+
+
+.sh 3 "Special Function F11:  Lunar Thermal Removal "
+.pp
+This routine removes the thermal component from
+the reflectance object file using equation 8.6.11.1 in appendix
+C.
+.pp
+Refer to Roger Clark's paper, "Planetary Reflectance Measurements
+in the Region of Planetary Thermal Emission," equation 14
+.ul
+(Icarus,
+.ul
+40,
+94-103).
+.l(
+
+Variable definitions:
+
+        Ro = reflectance of object with thermal component removed
+
+        Ro' = reflectance of object with thermal component
+
+        Rs = reflectance of standard with no thermal component
+
+        Po = temperature for Planck function of object (in Degrees
+                Kelvin)
+
+        Ps = temperature for Planck function of standard (in Degrees
+                Kelvin)
+
+        F = (solar flux/\(*p/(distance from sun in A.U.)**2
+
+.l)
+.pp
+The program requires that the file ID and file number of R' and
+the E to include errors, if any, be specified when called from Math
+operations.  The program will ask for:
+.l(
+
+        Rs file ID and number
+
+        Albedo at normalization for Ro and Rs (0.0 < A < 1.0)
+
+        Wavelength file number (1 <= N <= 20)
+
+        Po and Ps in degrees Kelvin (10 < T < 10E5)
+
+        Solar flux/\(*p file ID and number
+
+        Distance from sun in A.U. (>0.0)
+
+.l)
+.pp
+After entering albedo at normalization, the user has an option of
+either continuing, exiting, or changing what has been inputted so
+far (for the current screen information).  User also has a similar
+option after entering distance from the sun.  In calculating the
+thermal removal, Ro and Rs values are multiplied by their
+respective albedo at the normalization point.  Errors are
+propagated by multiplying individual error values by the Ro albedo
+at the normalization point.
+
+
+.sh 3 "Special Function F12:  Cubic Spline Interpolation "
+.pp
+This routine interpolates to find data values to a new wavelength file given a
+different data-wavelength set.  Errors, if specified, are also
+interpolated.  The program requires that the file and E to include
+errors be specified when called from Math Operations.  User will
+be asked to input two wavelength files, the first for the data
+file, the second for interpolation.  Since glitches in data could
+lead to erroneous results, user should delete those channels.
+Either individual channels or a range can be specified (type in
+the minimum channel number, the letter T, and the maximum channel
+number in the range).  Deletions may be placed on one or more
+lines, with a C to terminate delete mode and continue processing.
+Spaces are needed only between numbers.  For example
+.l(
+
+1 T 3 4 5 6 7C is the same as 1 2 3 4 as is 1 T 7
+                              5 T 7C        C
+
+.l)
+.pp
+The IMSL cubic spline routine used requires each wavelength file
+to be sorted in increasing order, and the interpolated wavelength to
+be within the bounds of the other wavelength file.  F12 handles
+this, minimizing errors that could occur.  If user gets one of
+the following "F12 error," note the number and other pertinent
+information (e.g. files using) on SPECPR bug sheet.
+
+.ip 33
+found value(s) in interpolated wavelength file less than other file
+
+.ip 34
+found value(s) in interpolated wavelength file greater than other
+file
+
+.ip 129
+dimension of spline coefficient matrix less than one less the
+number of channels
+
+.ip 130
+number of channels less than 2 (user should check wavelength
+files in use)
+
+.ip 131
+wavelength files are not ordered.
+
+.pp
+Note:  None of these errors should ever happen so, if they do,
+something is wrong.
+.pp
+The spline function is very useful for interpolating data to new
+wavelength values and also for generating continua.   When
+interpolating to a new wavelength set, the resolution of the
+spectra should be equal (use the smoothing function to degrade a
+high resolution spectrum to that of the low resolution
+spectrum).  Spurious data points should be deleted.  For generating a
+continuum to a spectrum, specify the same wavelength file for the
+input and output spectra, then delete data points which are not on
+the "continuum."  This can be tricky depending on the data and
+what you are trying to do so talk to people who have used the
+routine first (e.g. Roger Clark or Bob Singer).
+.ce
+.ul
+How the Cubic Spline Interpolating Function Works
+.pp
+The cubic spline interpolating function may be visualized as
+follows.  Bend a flexible strip (like a plastic ruler) so that it
+passes through each of the data points in the spectrum to be
+interpolated.  The physics of the bent strip shows that the
+equation of the strip can be represented as a series of cubic
+polynomials with appropriate boundary conditions.  A different
+cubic polynomial is calculated for each interval in the spectrum
+[i.e. S (x) on the interval where S represents a cubic
+polynomial].
+.pp
+The boundary conditions are that the spline must go through each
+function value [= etc.], and the first and second derivatives of
+the cubic polynomials are continuous [for m on the interval 2 to
+(n-1) (inclusive)].  Finally, the curvature is forced to zero at
+the endpoints.
+.pp
+The spline used here is
+.ul
+NOT
+a smoothing function.  Therefore, data with large noise spikes
+present should be pre-smoothed before fitting with the
+interpolating spline (or the data points with anomalous values
+should be deleted).  For a more complete discussion, see p. 307
+of
+.ul
+Digital Computing and Numerical Methods,
+B. Carnahan and J. O. Wilkes (in the PSL Library).
+
+
+.sh 3 "Special Function F13:  Merge Two Spectra to One "
+
+.pp
+This function will combine two input data files (of presumably
+different wavelengths) into a single output data file.  It will
+not automatically merge the two input files according to their
+respective wavelengths; rather, it will combine the two files
+according to a channel sequence specified at run time by the
+user.  (Errors will be included if specified at call time.)
+
+The following files must exist prior to calling the function:
+
+.ip A)
+a first input data file (+ errors)
+
+.ip B)
+a second input data file (+ errors)
+
+.ip C)
+a wavelength file with enough channels to accommodate the desired
+output file (the value of the wavelengths is inconsequential;
+only the number of channels matters--255 maximum)
+
+.pp
+The first input data file must be specified at call time; the
+wavelength file must also be specified at call time unless the
+last operation, overlay, or display in the program used a
+wavelength file with the same number of channels.
+
+Example of use:
+
+
+Given two input data files of different wavelengths:
+
+.l(
+        A)  W127  (25 channels) + errors
+        B)  V321 (120 channels) + errors
+.l)
+
+.ba +5
+.ip 1)
+Decide how the two files should be combined.  For this case,
+combine the two files so that W127 channels 1-24 are followed by
+V321 channels 4-57 and channels 63-115; all other channels will be
+omitted.
+
+.ip 2)
+Create a wavelength file with enough channels to accommodate the
+output file.  For this case, create A6 with 131 channels.
+
+.pp
+If necessary, create a specific wavelength file to match the
+desired output data file.  For this case, the wavelengths
+corresponding to W127 have been written to V444; the wavelengths
+for V321 have been written to V445.  The specific wavelength file
+to match the desired output data file may be created (via F13) as
+follows:
+
+.ba 10
+.ip a)
+In Math Operations, type
+        V444F13A6
+
+.ip b)
+When requested to enter File B, type
+        V445
+
+.ip c)
+When requested to enter the channel sequence, type
+        A 1 24 B 4 57 B 63 115
+
+.ip d)
+When the operation is completed, write the result.
+
+.ip e)
+Go to Program Operations and change the initialization
+parameters.
+
+.ip f)
+Change the wavelength calibration.
+
+.ip g)
+Read the file just written into the wavelength file; for this
+example, use wavelength file 6, 131 channels.
+
+.ip h)
+Return to Math Operations.
+
+.ba 5
+.ip 3)
+Combine the two data files, using F13, as follows:
+
+.ba 10
+.ip a)
+In Math Operations, type
+        W127 F13 E
+
+(the last wavelength file used as A6, 131 channels, so a
+wavelength file need not be specified this time)
+
+.ip b)
+Ignore any messages until requested to enter the second input
+file; then type
+        V321
+
+.ip c)
+When requested, enter the channel sequence desired for the output
+file as follows:
+A 1 24 B 4 57 B 63 115 C
+(Note:  The string specified here can be no longer than 74
+characters; spaces are required only between numbers.)
+
+.ip d)
+When the operation is completed, write the results (and errors) as
+you see fit.
+
+.ba 5
+.ip 4)
+If desired, the output data files (and the output wavelengths)
+may now be sorted into increasing wavelength order using F10.
+.ba 0
+
+.sh 3 "Special Function 14:  Edits Spectral Data and Error Value "
+
+(Note:  This function sets the HP terminal into scroll mode to
+allow automatic paging; as the function exits, the terminal is
+returned to SPECPR graphics mode.)
+
+.pp
+This function allows editing of a data file and, if E is
+specified at call time, its associated error file as well.
+
+.pp
+To call F14, specify the file and file number, F14, and, if errors
+are desired, E.
+
+Example:
+
+        V317F14E                    or               V317F14
+
+.pp
+F14 accepts the following formatted commands to perform particular
+tasks:
+
+.TS
+center,TAB(:);
+L L
+_ _
+L L.
+CHANNEL DATA/E ERROR:CHANGE
+D[C] CHANNEL [CHANNEL1 T CHANNEL2] C:DELETE
+I CHANNEL:INSERT AFTER
+L CHANNEL1 CHANNEL2:LIST (CRT)
+PD:PRINT DATA (LP)
+C:CONTINUE
+E or X:SOFT EXIT, HARD
+:  EXIT, RESPECTIVELY
+.TE
+
+.pp
+To CHANGE a data value (and its error, or just its error), specify
+the channel number of the value to be changed and the new data
+value (and the new error value); should you wish to change only the
+error, specify the channel number, E, and the new error value. (If
+you wish to change only the data value but you specified E at
+call time, you must specify three parameters; the channel number,
+the new data value, and the old error value.)  Incorrect or
+uninterpretable format will cause an error message to be printed
+on the terminal screen.  (Parameters may be entered either as
+integers or as real numbers but not in exponential format.)
+
+Examples:
+
+.TS
+center,tab(:);
+l l l.
+Call setup:Command:Task enacted
+
+V317F14:11 13.567:change channel 11 data value to 13.567
+V317F14E:11 13.4 .2:change ch. 11 data to 13.4, error to .2
+V317F14E:11 E .2:change ch. 11 error value to .2
+V317F14E:11 13.567:T{
+ILLEGAL ENTRY (errors were specified at
+call time, but no error value was entered)
+T}
+.TE
+
+.pp
+To DELETE data values, specify D (and the option C for compess);
+the routine will then accept only channel number or channel
+ranges until the parameter C \**
+.(f
+\** Do not confuse the parameter C with the option C.
+.)f
+is encountered, at which time the
+delete task is performed.  Without option C, the data values of
+all specified channels will be set to -1.23E+34 (the standard
+value for SPECPR deleted points) [and the associated errors will
+be set to 0.0].  However, if the option C is specified, the
+specified points will first be deleted, and then the channel
+space will be compressed to totally eliminate the specified
+channels.  (Note:  Compression of the channel space does not take
+effect until all specified points have first been deleted.)
+Channel numbers for the points to be deleted may be specified
+either individually or as ranges; the character T specifies a
+range of channels, starting with (and including) the number
+preceding T, and ending with (and including) the number following
+T, the command D, [the option C,] individual channels, channel
+ranges, and the parameter C may all be strung together; spaces
+are required as delimiters only between two numbers.
+
+Examples:
+
+.TS
+center,tab(!);
+c c
+l l.
+Command!Task enacted
+D6 7 12T13 18T21C!T{
+Data values for channels 6, 7, 12, 13, 18,
+19, 20, 21 are set to -1.23e34:[errors for same
+channels are et to 0.0]
+T}
+DC1T3 7C!T{
+channels 1, 2, 3, 7 are deleted totally; old ch. 4
+becomes new ch. 1; old ch. 5 becomes new 2; old 8
+becomes new 4.
+T}
+DC!T{
+routine requests "ENTER MORE DELETIONS OR
+TYPE C TO CONTINUE"
+T}
+.TE
+
+.pp
+To INSERT data [and error] values after a specified channel,
+specify I and the channel number after which you wish to insert
+values.  (If no channel is specified, the routine defaults to
+channel 0, in which case the insertions occur at the start of a
+spectrum.)  The routine will then accept only data [and error]
+values, one data [and error] value per line, until either a blank
+line or two carriage returns in a row are encountered; either
+integers or real numbers (but not exponential format) are
+acceptable for data and errors.
+
+Example:
+
+.TS
+center,tab(!);
+l l l
+l l l.
+Call setup!Command sequence!Task enacted
+V317F14E!I!T{
+routine prepares to accept data
+& errors, starting at channel 1
+T}
+!12 1.3!T{
+new channel 1: data = 12; error = 1.3;
+original ch. 1 becomes new channel 2
+T}
+!15.6 .9!T{
+new channel 2: data = 15.6; error = .9;
+original ch.1 becomes new channel 3
+T}
+!<return>!insertion routine stops
+!I2!T{
+routine prepares to accept data
+& errors starting after current
+channel 2
+T}
+!16 2!new channel 3: data = 16; error = 2
+!17.9!T{
+ILLEGAL ENTRY--no error was specified;
+routine requests last line to
+be retyped
+T}
+!17.9 1.6!T{
+new channel 4: data = 17.9; error = 1.6;
+original ch.1 is now ch.5
+T}
+!<return>!insertion routine stops
+.TE
+
+.pp
+To LIST data and error values on the terminal screen, specify L
+and either a channel number or else two channel limits.  Data
+[and error]  values will be listed in exponential format along
+with channel numbers.  (Spaces are required as delimiters between
+limits.)  All data values within the channel limits are listed
+first; error values follow.
+
+Example:
+
+.TS
+center,tab(!);
+C L
+l l.
+L 1 60!channel number & data value for channels 1 through
+!       60 are listed on the terminal [followed by channel
+!       number & error value for channels 1 through 60]
+L 5!5 and data value for ch. 5 [and 5 and error value for
+!       ch. 5] are listed on the terminal
+.TE
+
+.pp
+To PRINT the data [and error] values on the line printer, specify
+PD.  The output format is the same as when PD is specified in the
+CRT plot routine.
+
+.pp
+To CONTINUE normally and write the edited file, specify the
+command C; the routine will exit to the write-to-file routine.
+Note:  You cannot return to F14 and issue additional commands once
+CONTINUE is enacted.)
+
+.pp
+A SOFT or HARD EXIT will occur if at any time the commands E or
+X, respectively, are encountered; control will return to MATH
+OPERATIONS.  (Exception:  In CHANGE, E is not interpreted as an
+EXIT command if it follows a channel specification.)
+
+.pp
+IMPORTANT NOTE:  This routine does NOT record a history of the
+edit commands performed; should you desire a record of your
+editing commands, you must create a manual history yourself.
+
+Minor notes:
+
+.pp
+All channel numbers should be positive integers; if a real number
+is entered by mistake, the routine will truncate it to integer
+form.  All channel range limits must list the lower bound first
+and the upper bound last.
+
+.pp
+If at any time during this routine you find yourself lost or
+confused, try pressing <return> once or twice until the EDIT
+COMMAND FORMAT message appears.  Alternatively, you may type E or
+X to exit F14.
+
+.pp
+You may insert spaces as delimiters to improve the clarity of
+commands; use of such spaces will not affect the operation of F14.

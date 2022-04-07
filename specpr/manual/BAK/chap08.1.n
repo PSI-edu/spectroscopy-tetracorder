@@ -1,0 +1,467 @@
+.\" use ms macros
+.\" this header is for putting the page numbers at the bottom of the page
+.\" set line length, page offset, vertical spacing
+.nr LL 6.3i
+.ll 6.3i
+.nr PO 1.0i
+.po 1.0i
+.nr VS 12
+.vs 12
+.\" set header and footer margins (default is 1.0i)
+.nr FM 1.00i
+.fm 1.00i
+.nr HM 1.00i
+.hm 1.00i
+.\" set no date here, MUST be before CF definition, because ND sets CF
+.\" set date, so don't do .ND
+.\" LH CH RH are left, center, right header strings
+.\" LF CF RF are left, center, right footer strings
+.\" default is CH is defined as: .ds CH "\(hy \\n(PN \(hy
+.ds LH "SPECPR Users' Manual
+.ds CH
+.ds RH "Page 8.\\n(PN
+.\" setup complete
+.nf
+SPECPR Users' Manual                                                   Page 8.1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.ce
+.B
+CHAPTER 8
+.R
+
+
+
+
+
+.ce
+.B
+MATH OPERATIONS
+.R
+
+
+
+
+.fi
+.bp
+.B
+8.1  Introduction
+.PP
+All mathematical operations are carried out in Math Operations
+except for extinction analysis.  The math routines also contain the
+"special functions."  Special functions do some operation on a data
+set, or generate a data set.  While most special functions are math
+related, they ned not be (for example sort a data set into
+increaseing wavelengths).  The general sequence the user sees in the
+Math Operations section is the following:
+
+.in 11n
+.ti -2n
+\(bu  At the math main menu, the user enters a math command
+
+.ti -2n
+\(bu  The math function displays what it is going to do and the user
+works hie/her way through the function specific menus.
+
+.ti -2n
+\(bu  When the math function completes normally, the user is asked
+where the data should be written (which v, w, d, u, or y data file
+and what record number).  The data are not written at this time;
+that is the last step below.  The ultimate location is requested at
+this point so that the spectrum is properly identified in case
+print-outs are made.
+
+.ti -2n
+\(bu  The user is asked to type in a title to the data set.
+
+.ti -2n
+\(bu  The data are plotted in the graphics terminal (with the crt plot
+routines, see Chapter 9).  In the crt plot routines, the user can
+change or add to the header information.
+
+.ti -2n
+\(bu  The data are written to the data file when the user soft exits
+from the crt plot routines (exit with e).  See warnings
+and important rules below.
+
+.ti -2n
+\(bu  The user is returned to the math operations menu.
+
+.in 0n
+.KS
+.B
+WARNING: the number of data channels operated on by any math routine
+is determined by the number of channels in the data set in use
+(displayed in the top few lines of each routine).  It is UP TO THE
+USER to be sure the number of channels is set properly.  Improper
+number of channels is a very common reason for improper results.
+.R
+.KE
+
+.KS
+.B
+WARNING: the number of channels in the data set written by the math
+routines is controlled by the number of channels in use AT THE TIME
+the user EXITS the CRT PLOT ROUTINES.  If you change the number of
+channels in the header routines, it will have no effect--that value
+is overridden by the math writing routine.
+.R
+.KE
+
+.KS
+.B
+IMPORTANT RULE: the wavelength pointer will be set automatically by
+the math routine at the time the data are written to the data file
+IF the wavelength set in use IS IN TH SAME DATA FILE.
+.R
+.KE
+
+.in 8n
+For example, if you divide two spectra in data file "w", and write
+the results in data file "v", use a wavelength set that is already
+in "v".  Thus if:
+
+.in 14n
+w 10 = wavelengths with 56 channels
+w 11 = a data
+w 12 = b data
+.in 8n
+
+and you want to divide w11 by w12, first put a copy of w10 into the
+"v" file (see Chapter 10 on how to copy/transfer), then assign the
+"v" wavelength set before you do the division.  The wavelength
+pointer will then be set automatically when the results from the math
+operation are written to the v-file.
+.in 0n
+
+
+.KS
+.B
+8.1.1  Multiple commands from the math command menu.
+.R
+.PP
+One entire line (80 characters)
+of commands may be typed in for execution.  Each math command must
+be separated by a comma.
+.KE
+
+.in 8n
+Example:
+.nf
+.B
+           w11/w12,v23*c5.62e,y236/w12
+.R
+.fi
+.in 0n
+
+After each math operation is completed, the next command is executed
+without returning to the math menu.
+
+
+
+.KS
+.B
+8.1.2  Menu Information
+.R
+.PP
+The information in the Math menu can be turned off by typing
+
+.in 20n
+.B
+in
+.R
+.in 0n
+
+or turned back on by typing
+
+.in 20n
+.B
+i
+.R
+.in 0n
+.KE
+
+
+
+.KS
+.B
+8.2  Subtraction, Multiplication, and Division
+.R
+.PP
+Generally these operations contain a file ID (v, w, u, d, or y),
+record number, operation sign (- for subtraction, * for
+multiplication, and / for division), then the second file ID (v,
+w, d, c, s, u, y, or s; s is used in division only), the second record
+number, and the options.  Options include:
+.ul
+e
+for include 1 sigma error bars,
+.KE
+.ul
+n
+for subtraction without airmass calculation,
+.ul
+b
+for turn on band normalization (section 8.9),
+.ul
+bn
+for turn off band normalization,
+.ul
+t
+for change sidereal time in
+subtraction with airmass calculation,
+.ul
+r
+for change RA and declination in subtraction calculation, and
+.ul
+p
+for production processing.  The production processing option
+stops only to request the title and writes the result to device v
+without doing the CRT plot.  This option (p) makes processing
+equivalent to the time spent in performing batch processing.  The
+.ul
+c
+in place of the second file ID is for constant.  The value of the
+constant is then placed where the second record number is located.
+.PP
+Example:
+.PP
+w10-11, w12-13, v10*c1.3, v23/46eb, v12-d10np bn
+
+Here file w record 11 is subtracted from 10 (the default when
+the second file ID is left out is the first file ID).  Next w13
+is subtracted from w12, then v10 is multiplied by the constant
+1.3, next v23 is divided by v46 with 1 sigma standard deviation
+(errors) included and also a band normalization performed.
+Spaces may be included at any point except within a number, or they
+may be completely left out.  The program processes the commands
+sequentially.  When performing each operation, the program enters
+the appropriate routine, writes the titles of the requested files
+on the CRT, and pauses for a continue command (unless the
+Production option has been set).  If you type
+.ul
+x
+here, the program exits directly to math operations.  If you type
+.ul
+e,
+the program exits that operation and begins processing of the next
+operation if one exists.  The production option is set to no
+production at the end of each operation whereas the band
+normalization option stays on until turned off by
+.ul
+bn.
+When the operation is completed, the program goes to section 8.1.
+Division of two zeros is defined as zero by this program.
+.PP
+Math Operations can be used to change the wavelength file set in
+the options section.  Example: "v23/v45 a2, v86*v27 a4" where a
+followed by a number 1 to 99 calls the corresponding wavelength
+set (with its associated number of channels).
+
+.ul
+Annotations on Subtraction Routine
+(by P. Owensby--8/20/80)
+.PP
+Normal subtraction calculates airmass based on the coordinates
+found in the first 13 characters of the title of the first input
+file; if these coordinates are not entered in the correct format
+(HHMMSS+DDMMSS no spaces, declination sign must be explicitly
+specified as plus or minus, and any one of the first six digits
+must be non-zero), the routine issues the command
+.ul
+TYPE IN RIGHT ASCENSION AND DECLINATION
+and awaits a correct response.  The routine repeats this message
+until a correct response is encountered--e and x are NOT correct
+responses.  The correct response is up to six numbers separated
+by spaces, any one of the first three of which must be non-zero,
+the fourth of which should be signed only if negative, and all
+the rest of which should be unsigned.
+
+TO GET OUT OF THIS LOOP, enter any single non-zero number, and
+type e or x at the next possible opportunity.
+
+(This format may be confusing because the interpretation routine
+from the first 13 characters requires an explicitly specified plus
+or minus sign for the declination, and the request for RA and DEC
+cannot interpret plus signs.)
+
+
+.sh 2 "Addition Routine "
+.PP
+The addition routine can add from 2 to 128 spectra with deletion
+of zeros or requested points.  To access the addition routine,
+type + and any options (e for errors) with no other math
+operations after that on the input line (because they will not be
+processed due to a programming restriction).  Upon entering the
+addition routine, you will be asked whether you want to average or
+sum.  Type
+.ul
+a
+to Average or
+.ul
+s
+to Sum and, on the same line,
+.ul
+d
+if you wish to Delete zeros.  Next you will be given instructions
+on inputting the files to be added or summed.  Type in the file ID
+[v, w, d, u, y or c (for constant)] and the record number or
+constant.  If you wish to delete points from this record, type
+.ul
+d
+and then the channel numbers.  You may use more than one line to
+input these numbers, but each channel to be deleted from the sum
+or average must be listed.  When you are through inputting
+numbers to be deleted, type
+.ul
+c
+to continue.  When you are through inputting record numbers, type
+.ul
+b
+to Begin analysis.  Note only 1 constant can be entered per
+addition run.  If you type
+.ul
+e
+or
+.ul
+x,
+the program will exit directly back to math operations;
+otherwise, after the analysis is complete, the program goes to
+section 8.7.
+
+.sh 2 "Error Analysis "
+.PP
+Error analyses are included in addition, multiplication and
+division, and subtraction and many of the special functions (see
+individual functions - section \*($n.6)
+In all cases of error analysis, the
+data numbers should be within the range of @1.0 times 10 sup -15@
+to @1.0 times 10 sup +15@
+to avoid overflow.  If overflow occurs, the error
+is set to zero.  If the data is zero in the multiplication or
+division routines, when using the propagation of errors, the
+error is set to zero for that channel.  The errors represent 1
+sigma standard deviation of the mean and are first computed in
+the addition routine as a standard deviation of the mean
+computation.  The equations used in propagating errors are as
+follows:
+        Given @ a +- sigma sub a ,~ b +- sigma sub b ,~ c +- sigma
+sub c@ and the result @x +- sigma sub x @ the equations used are:
+
+.ul
+division:
+.EQ "(eqn 8.4.1)"
+cpile { X = a over b    above
+sigma sub X = left [ left ( sigma sub a over a right ) sup 2 +
+  left ( sigma sub b over b right ) sup 2 right ] sup {1 over 2} X      }
+.EN
+.ul
+multiplication:
+.EQ "(eqn 8.4.2)"
+cpile { X = a b above
+sigma sub X =  left [  left ( sigma sub a over a right ) sup 2 +
+        left ( sigma sub b over b right ) sup 2 right ] sup {1 over 2} X }
+.EN
+.ul
+subtraction:
+.EQ
+cpile { X = a - b   above
+sigma sub X = left { sigma sub a sup 2 + sigma sub b sup 2 right } sup
+{ 1 over 2}              }
+.EN
+.ul
+addition
+(when errors already exist):
+.EQ "(eqn 8.4.3)"
+cpile { (sum):~~ X = a + b + . . . +c, above
+sigma sub x = left { sigma sub a sup 2 + sigma sub b sup 2 + . .
+. + sigma sub c sup 2 right } sup {1 over 2} above
+
+(average~ of~ n~ spectra):~~ X = (a + b + . . . c) / n   above
+
+sigma sub x = left { sigma sub a sup 2 + sigma sub b sup 2 + . .
+. + sigma sub c sup 2 right } sup {1 over 2} / n         }
+.EN
+
+standard deviation of the mean is derived from (generate errors
+for the first time):
+.EQ
+sigma sub x = left [ { sum from i=1 to n { (x sub i - x bar ) sup 2
+}} over { ( n - 1 ) }  right ] sup {1 over 2} n sup {- 1 over 2}
+.EN
+where n = number of spectra, @x sub i@ = each spectrum, and
+.EQ
+x bar = 1 over n sum from i=1 to n x sub i
+.EN
+
+.sh 2 "Algebraic and Trigonometric Functions "
+.PP
+A complete set of algebraic, trigonometric, and power functions
+exists as can be found on a scientific calculator.  No error
+analysis is included with any of these functions.  The functions
+are accessed by file ID, file number, colon (:), and the name of
+the function.  Functions are:
+
+.TS
+center,tab(!);
+r l.
+Exponential:! exp
+Natural logarithm:! ln
+Common logarithm:! log
+Ten to spectrum power:! 10**x
+Inverse:! 1/x
+Spectrum to the constant power:! x**c
+Constant to the spectrum power:! c**x
+Sine (in radians):! sin
+Cosine (in radians):! cos
+Tangent (in radians):! tan
+Sine (in degrees):! sind
+Cosine (in degrees):! cosd
+Tangent (in degrees):! tand
+Inverse sine (radians):! invsin
+Inverse cosine (radians):! invcos
+Inverse tangent (radians):! invtan
+Inverse sine (degrees):! invsind
+Inverse cosine (degrees):! invcosd
+Inverse tangent (degrees):! invtand
+Hyperbolic sine (radians):! sinh
+Hyperbolic cosine (radians):! cosh
+Hyperbolic tangent (radians):! tanh
+Absolute value:! abs
+Integer value:! int
+Fractional part:! frac
+.TE
+
+.PP
+In both the spectrum to the constant power and constant to the
+spectrum power, the value of the constant is after the command
+(x**c or c**x).
+.ul
+No options are valid with any of these operations
+including errors, band normalization, and production processing.
+This is due to programming limits (there has to be some).  Since
+these routines are not used too often, this should make little
+difference.  What are they used for?  Normal spectral processing
+does not need them, but say you wanted to make a plot of a phase
+function for a Lambert sphere:
+.EQ "(eqn 8.5.1)"
+        PHI ( alpha ) = 1 over pi left [ sin~ alpha + ( pi - alpha
+) cos~ alpha right ]
+.EN
+.PP
+You could generate data for \(*a increasing from 0 to 180\(de
+using the wavelength routines and then this function using the
+math functions.  The result can then be plotted on the Gould
+printer plotter using the plot routines.

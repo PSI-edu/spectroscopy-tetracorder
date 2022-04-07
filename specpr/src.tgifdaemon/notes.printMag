@@ -1,0 +1,74 @@
+      if (fprintf(FP, "%1d,%1d,%1d,%1d,%1d,%1d,%1d,%1d,%1d,%1d,%1d).\n",
+            pageLayoutMode,
+            (pageLayoutMode == PAGE_STACK) ? curPageNum : paperCol,
+            (pageLayoutMode == PAGE_STACK) ? lastPageNum : paperRow,
+            pageLineShownInTileMode, colorDump,
+            round(((float)onePageWidth)*printMag/100.0),
+            round(((float)onePageHeight)*printMag/100.0),
+            stretchableText, textRotation, rotationIncrement,
+            transPat) == EOF) {
+         writeFileFailed = TRUE;
+      }
+
+-----------------------------
+
+   switch (pageStyle) {
+   case PORTRAIT:
+      llx1 = (double)(1.0*ltx*psDotsPerInch/PIX_PER_INCH*printMag/100 +
+            psXOff[pageStyle]*psDotsPerInch);
+      lly1 = (double)(-1.0*rby*psDotsPerInch/PIX_PER_INCH*printMag/100 +
+            psYOff[pageStyle]*psDotsPerInch);
+      urx1 = (double)(1.0*rbx*psDotsPerInch/PIX_PER_INCH*printMag/100 +
+            psXOff[pageStyle]*psDotsPerInch);
+      ury1 = (double)(-1.0*lty*psDotsPerInch/PIX_PER_INCH*printMag/100 +
+            psYOff[pageStyle]*psDotsPerInch);
+      break;
+   case LANDSCAPE:
+      llx1 = (double)(1.0*lty*psDotsPerInch/PIX_PER_INCH*printMag/100 -
+            psYOff[pageStyle]*psDotsPerInch);
+      lly1 = (double)(1.0*ltx*psDotsPerInch/PIX_PER_INCH*printMag/100 +
+            psXOff[pageStyle]*psDotsPerInch);
+      urx1 = (double)(1.0*rby*psDotsPerInch/PIX_PER_INCH*printMag/100 -
+            psYOff[pageStyle]*psDotsPerInch);
+      ury1 = (double)(1.0*rbx*psDotsPerInch/PIX_PER_INCH*printMag/100 +
+            psXOff[pageStyle]*psDotsPerInch);
+      break;
+
+------------------
+         if (need_page_size) {
+            double scale=((double)printMag)*((double)72.0)/((double)100.0);
+            double w=((double)onePageWidth)/((double)PIX_PER_INCH)*scale;
+            double h=((double)onePageHeight)/((double)PIX_PER_INCH)*scale;
+------------------
+
+#ifndef METRIC_PIX_PER_INCH
+ :        fprintf(dumpFP, "%1d %1d %s %.3f %s 100 %s %s %s %s\n\n",
+               psDotsPerInch, PIX_PER_INCH, gPsCmd[PS_DIV], printMag,
+               gPsCmd[PS_MUL], gPsCmd[PS_DIV], gPsCmd[PS_DUP],
+               gPsCmd[PS_NEG], gPsCmd[PS_SCALE]);
+#else /* METRIC_PIX_PER_INCH */
+         fprintf(dumpFP, "%1d %1d %s %.3f %s 100 %s %s %s %s\n\n",
+               psDotsPerInch, (gridSystem==ENGLISH_GRID ? PIX_PER_INCH :
+               METRIC_PIX_PER_INCH), gPsCmd[PS_DIV], printMag,
+               gPsCmd[PS_MUL], gPsCmd[PS_DIV], gPsCmd[PS_DUP],
+               gPsCmd[PS_NEG], gPsCmd[PS_SCALE]);
+#endif /* ~METRIC_PIX_PER_INCH */
+-------------------
+
+      f_rbx = (float)(((float)PIX_PER_INCH) * 100.0 / printMag *
+            psPageWidthInInch[pageStyle]);
+      f_rby = (float)(((float)PIX_PER_INCH) * 100.0 / printMag *
+            psPageHeightInInch[pageStyle]);
+      x_dist = (float)(((float)PIX_PER_INCH) * psPageWidthInInch[pageStyle] *
+            (1.0-tiledPageScaling) * 50.0 / printMag);
+      y_dist = (float)(((float)PIX_PER_INCH) * psPageHeightInInch[pageStyle] *
+            (1.0-tiledPageScaling) * 50.0 / printMag);
+-------------------
+
+            real_ltx = (float)(((float)col) *
+                  ((float)psPageWidthInInch[pageStyle]) *
+                  ((float)PIX_PER_INCH) * 100.0 / printMag);
+            real_lty = (float)(((float)row) *
+                  ((float)psPageHeightInInch[pageStyle]) *
+                  ((float)PIX_PER_INCH) * 100.0 / printMag);
+

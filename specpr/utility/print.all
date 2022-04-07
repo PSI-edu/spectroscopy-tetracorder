@@ -1,0 +1,57 @@
+set -x
+cd /usr/src/cmd/specpr
+mkdir printit/main
+cp s.* printit/main
+(cd printit/main ; get -s s.* ; rm -f s.* ;
+ echo "             SPECPR Complete listing " `date` >aaaaaaa ;
+ echo " " >>aaaaaaa ; cd /usr/src/cmd/specpr ; 
+ ls -lR >>printit/main/aaaaaaa ; cd printit/main ;
+ pr * |xlpr ; rm -f * ; cd .. ; rmdir printit/main )
+cd /usr/src/cmd/specpr
+for i in \
+common	\
+add	\
+band	\
+crtp	\
+dtol	\
+dummy	\
+dvml	\
+extn	\
+fass	\
+fcn1	\
+fcn2	\
+fcn3	\
+fcn4	\
+fcn5	\
+fcn6	\
+fcn7	\
+fcn8	\
+fcn9	\
+free	\
+gould	\
+hed	\
+hpgraph	\
+hppen	\
+init	\
+io	\
+lib	\
+main	\
+mth1	\
+mth2	\
+newplot	\
+parser	\
+rst	\
+sub	\
+syslib	\
+talg	\
+wav	
+do
+cd $i
+mkdir ../printit/$i
+cp s.* ../printit/$i
+(cd ../printit/$i ; get -s s.* ; rm -f s.* 
+ cd .. ; pr $i/* |xlpr ; rm -f * ; rmdir $i )
+cd ..
+done
+pr Makefile plotdaemon/*.[chs] |xlpr
+

@@ -1,0 +1,862 @@
+#!/usr/local/bin/davinci -f
+verbose=0
+
+################################################################################
+# This davinci script does several things related to
+# ASD field spectrometer data reduction:
+# 1) Adjust for offsets between the spectrometers.  This
+#    also is only a few percent at most and is easily
+#    diagnosed by the diagnosed and occurs at only
+#    two points in the spectrum.
+#
+# 2) average the multiple spectra for one sample together
+#
+# 3) correct vor the white reference to give absolute
+#    reflectance.
+#
+# 4) analyzes for scattered light from the samples cup
+#    and removes it.  The scattered light is never more than
+#    a few percent of the total signal and the plastic
+#    has diagnostic absorption bands so it is readily
+#    removed.
+# format:
+#
+#                   NOTE: first option on davinci with - is passed
+#                         as a davinci option, not a command line
+#                         variable
+#
+#                nbs file rec#      # standard reflectance: file record
+#               -file filename      # file here data are located
+#               -fs version         # field spec version, like 653-6
+#                                   # 
+#               -avg N n1 n2 n3 ... # average N spectra, n1, n2, n3
+#                                   #      n4 ... = record numbers
+#               -stddev             # calculate the standard deviations of the mean
+#                                   #  and write them to the record following the average
+#               -title "title"      # output title
+#               -flag  keyword      # specific corrections to be done
+#               -fsoffsetcor X      # correct offsets in ASD fieldspec
+#                                   # at ch 217-218 and 483-485 for 653-5
+#                                   # at ch 217-218 and 480-482 for 615-6
+#                                   # spectrometer dependent
+#                                   # X refers to the level of the correction
+#                                   # X=0; simple offset correction
+#                                   # X=1; linear extrapolation correction
+#               -flag libbyplastic  # plastic correction in libby samples
+#               -flag wavylight     # wavylight correction from
+#                                   # small portable light model ???
+#               -out outputfilename # name of specpr output file.
+#
+#      future (code is inplace):
+#               -flag  wave  file rec#    # wavelength set
+#               -flag  resol file rec#    # resolution set
+#
+# EXAMPLE:
+#
+#fsspcal  nbs spd0313 12  -fs 653-6  -file spd0313 -out spd0313 -fsoffsetcor 1 \
+#        -fs 653-5  -avg 5   21  24  27  30  33  \
+#        -title "HWSB820-S3.2.1 Altrd Thl Bslt 0.0 ABSREF"
+#
+#
+# note: specpr files must have the sp_stamp applied:
+#
+#     sp_stamp specprfilename
+#
+# sp_stamp write a sfdu header on the specpr file, record 0.
+# (sp_stamp core dumps after it works properly)
+#
+# Roger N. Clark Feb 29, 2000
+#
+# added machine dependent offsets  8/30/2000 - RNC
+#
+# added linear extrapolation to offset correction
+#         - Ray Kokaly 10/2001
+#
+################################################################################
+
+DEBUG = 0
+
+if (DEBUG == 1) {
+  debug_chan = 445
+}
+
+if ( $argc < 10 ) {
+  printf ("ERROR: insufficient arguments\n")
+  exit(1)
+}
+
+# set flag values = 0
+
+libbyplastic = 0   # plastic correction in libby samples
+wavylight    = 0   # wavylight correction from
+fsversion    = 0   # field spectrometer version
+do_stddev    = 0   # calculate and write standard deviation of the mean (0=off)
+
+# PARSE ALL ARGUMENTS
+
+for (j = 1; j <= $argc; j = j +1 ) {
+  #printf("arg: %d %s\n", j, $argv[j])
+
+  if ($argv[j] == "-nbs" || $argv[j] == "nbs") { # GET NBS STANDARD CORRECTION
+    j = j +1
+    stdfile = $argv[j]    # file name
+    j = j +1
+    stdrec = int(atoi($argv[j])) # record number
+    printf ("standard: %s rec %d\n", stdfile, stdrec)
+    spe=read(filename=stdfile,record=stdrec)  # spectralon absolute reflectance
+    if (HasValue(spe) ==0) {  # check that read worked
+      printf ("read ERROR on standard: %s rec %d\n",stdfile, stdrec)
+      printf ("EXIT 1\n")
+      exit(1)
+    }
+    continue   # JUMP TO END OF FOR LOOP
+
+  } else if ($argv[j] == "-fs") {   # GET FIELD SPECTROMETER VERSION
+    j = j +1
+    fsv = $argv[j]    # VERSION
+    fsversion    = 1
+    continue   # JUMP TO END OF FOR LOOP
+
+  } else if ($argv[j] == "-stddev") { # CALCULATE & WRITE STANDARD DEVIATIONS
+    do_stddev = 1
+    continue   # JUMP TO END OF FOR LOOP
+
+  } else if ($argv[j] == "-file") {   # GET SPECPR FILE NAME WERE DATA ARE
+    j = j +1
+    sfile = $argv[j]    # file name
+    printf ("specpr file: %s\n", sfile)
+    if (HasValue(sfile) ==0) {  # check that read worked
+      printf ("read ERROR on input specpr file name: %s\n", sfile)
+      printf ("EXIT 1\n")
+      exit(1)
+    }
+    continue   # JUMP TO END OF FOR LOOP
+
+  } else if ($argv[j] == "-out") {     # GET SPECPR FILE NAME FOR OUTPUT
+    j = j +1
+    outf = $argv[j]    # file name
+    printf ("specpr output file: %s\n", outf)
+    if (HasValue(outf) ==0) {  # check that read worked
+      printf ("read ERROR on output specpr file name: %s\n", outf)
+      printf ("EXIT 1\n")
+      exit(1)
+    }
+    continue   # JUMP TO END OF FOR LOOP
+
+  } else if ($argv[j] == "-wave") {     # GET WAVELENGTHS
+    j = j +1
+    wavfile = $argv[j]    # file name
+    j = j +1
+    rwav = int(atoi($argv[j])) # record number
+    printf ("wavelengths: %s %d\n",wavfile, rwav)
+    wav=read(filename=wavfile,record=rwav)  # wavelengths
+    if (HasValue(wav) ==0) {  # check that read worked
+      printf ("read ERROR on wavelengths: %s rec %d\n",wavfile, rwav)
+      printf ("EXIT 1\n")
+      exit(1)
+    }
+    continue   # JUMP TO END OF FOR LOOP
+
+  } else if ($argv[j] == "-resol") {     # GET RESOLUTION
+    j = j +1
+    resfile = $argv[j]    # file name
+    j = j +1
+    rres = int(atoi($argv[j])) # record number
+    printf ("wavelengths: %s\n", resfile)
+    res=read(filename=resfile,record=rres)  # resolution (not needed)
+    if (HasValue(rres) ==0) {  # check that read worked
+      printf ("read ERROR on resolution: %s rec %d\n",resfile, rres)
+      printf ("EXIT 1\n")
+      exit(1)
+    }
+    continue   # JUMP TO END OF FOR LOOP
+
+  } else if ($argv[j] == "-fsoffsetcor") {   # GET OFFSET CORRECTION METHOD
+    j = j +1
+    fsoffsetcor = atoi($argv[j])    # SET OFFSET CORRECTION METHOD
+    if(fsoffsetcor == 0) {
+      printf ("Field Spec Offset correction enabled: Simple Offset\n")
+    } else if (fsoffsetcor == 1) {
+      printf ("Field Spec Offset correction enabled: Linear Extrapolation\n")
+    } else if (fsoffsetcor == -1) {
+      printf ("NO Offset correction\n")
+    } else {
+      printf ("Error: improper specification for offset correction.\n")
+      printf ("correct usage: -fsoffsetcor X\n")
+      printf ("  where\n")
+      printf ("    X=0 ; for simple offset correction\n")
+      printf ("    X=1 ; for linear extrapolation correction\n")
+      printf ("    X=-1 ; for no correction\n")
+      printf ("\n NOTE: for no correction, do not specify the flag.\n\n")
+      printf ("EXIT 1\n")
+      exit(1)
+    }
+    continue   # JUMP TO END OF FOR LOOP
+
+  } else if ($argv[j] == "-title") {     # GET TITLE
+    j = j +1
+    otitle = $argv[j]        # SPECPR OUTPUT TITLE
+    printf ("output title: %s\n", otitle)
+    if (HasValue(otitle) ==0) {  # check that read worked
+      printf ("ERROR on output specpr title: %s\n", otitle)
+      printf ("EXIT 1\n")
+      exit(1)
+    }
+    continue   # JUMP TO END OF FOR LOOP
+
+  } else if ($argv[j] == "-avg" ) {
+    j = j +1
+    navg = atoi($argv[j])    # NUMBER TO AVERAGE
+    printf ("Number of spectra to average: %d\n",navg)
+    if (navg < 1) {
+      printf ("ERROR: spectra to average must be >0\n")
+      printf ("EXIT 1\n")
+      exit(1)
+    }
+    xavgr = create(navg,1,1)*0.0   # ARRAY FOR REC NUMS
+    for (k = 1; k <= navg; k = k+1) {  # loop through all spectra to be avg
+      j = j +1
+      xavgr[k,1,1] = atoi($argv[j])
+      sr = int(xavgr[k,1,1])
+      if ( k == 1 ) {  # first one, create arrays
+        x = read (filename=sfile, record=sr)
+        if (HasValue(x) ==0) {  # check that read worked
+          printf ("read ERROR on spectrum: %s rec %d\n",sfile, sr)
+          printf ("EXIT 1\n")
+          exit(1)
+        }
+        xd = dim(x)
+        spectra_array = create(navg,1,xd[3,,])*0.0
+        printf ("Spectrum #%d %s %d\n",k,sfile, sr)
+        spectra_array[k,,] = x
+      } else {
+        x = read (filename=sfile, record=sr)
+        if (HasValue(x) ==0) {  # CHECK THAT READ WORKED
+          printf ("read ERROR on spectrum: %s rec %d\n",sfile, sr)
+          printf ("EXIT 1\n")
+          exit(1)
+        }
+        spectra_array[k,,] = x
+        printf ("Spectrum #%d %s %d\n",k,sfile, sr)
+      }
+    }
+    continue   # JUMP TO END OF FOR LOOP
+
+  } else if ($argv[j] == "-flag") {     # get flags
+    j = j +1
+    if ($argv[j] == "wavylight") {
+      wavylight    = 1     # wavylight correction from
+      printf ("wavylight correction enabled\n")
+
+    } else if ($argv[j] == "libbyplastic") {
+      libbyplastic = 1  # plastic correction in libby samples
+      printf ("libbyplastic correction enabled\n")
+    } else {
+      printf ("Flag not recognized: %s\n", $argv[j])
+      printf ("EXIT 1\n")
+      exit(1)
+    }
+
+  } else {
+    printf ("Flag not recognized: %s\n", $argv[j])
+    printf ("EXIT 1\n")
+    exit(1)
+  }
+}
+
+# all flags now parsed.  Check critical one have values
+
+if (HasValue(spe) ==0) {  # check that standard file is there
+  printf ("ERROR on standard: %s rec %d\n",stdfile, stdrec)
+  printf ("EXIT 1\n")
+  exit(1)
+}
+if (HasValue(fsv) ==0) {  # check that fs version # is there
+  printf ("ERROR no field spectrometer version number (like: 653-6)\n")
+  printf ("EXIT 1\n")
+  exit(1)
+}
+
+if (HasValue(sfile) ==0) {  # check that input specpr file is there
+  printf ("ERROR no input specpr file name: %s\n", sfile)
+  printf ("EXIT 1\n")
+  exit(1)
+}
+
+if (HasValue(outf) ==0) {  # check that output specpr file is there
+  printf ("ERROR no output specpr file name: %s\n", outf)
+  printf ("EXIT 1\n")
+  exit(1)
+}
+
+if (HasValue(otitle) ==0) {  # check that title is there
+  printf ("ERROR no output specpr title: %s\n", otitle)
+  printf ("EXIT 1\n")
+  exit(1)
+}
+
+# AVERAGE THE SPECTRA
+
+printf ("Averaging %s Spectra\n",navg)
+sum = spectra_array[1,,]*0.0
+sdim = dim(sum)
+printf ("Number of spectral channels= %d\n", sdim[3,,])
+for (k=1; k<=navg; k=k+1) {
+  sum = sum + spectra_array[k,,]
+}
+avg = sum/navg
+format(avg)
+
+# CALCULATE THE STANDARD DEVIATION OF THE MEAN (SPECPR ERROR)
+
+sum_diff_sqd = spectra_array[1,,]*0.0
+for (k=1; k<=navg; k=k+1) {  # LOOP THROUGH ALL SPECTRA TO BE AVG
+  sum_diff_sqd = sum_diff_sqd+(spectra_array[k,,]-avg)*(spectra_array[k,,]-avg)
+  if (DEBUG == 1) {
+    printf ("DEBUG: value of spectrum %d at channel %d is %f\n",k,debug_chan,spectra_array[k,,debug_chan])
+  }
+}
+stddev = sqrt(sum_diff_sqd/(navg-1.0))
+stddev_of_the_mean = stddev/sqrt(navg)
+format(stddev_of_the_mean)
+
+if (DEBUG == 1) {
+  printf("DEBUG: value of standard deviation at channel %i is %f\n",debug_chan,stddev[,,debug_chan])
+  printf("DEBUG: value of standard deviation of the mean at channel %i is %f\n",debug_chan,stddev_of_the_mean[,,debug_chan])
+}
+
+# PERFORM THE SPECTRALON CORRECTION
+
+r = avg * spe
+stddev_of_the_mean = stddev_of_the_mean * spe
+
+
+if (DEBUG == 1) {
+  printf ("DEBUG: offset correction flag: fsoffsetcor = %d\n", fsoffsetcor)
+  printf ("DEBUG: fsv = %s\n", fsv)
+}
+
+# SET UP FOR THE OFFSET CORRECTION
+
+maxchn=717  # default spectrometer channels (see note below on 717
+
+if (fsoffsetcor >= 0) {   # correct offsets in ASD fieldspec
+  #
+  # in the 717 channel ASD field spectra, the spectrometer
+  #    (note 717 channels is from fstospecpr program where
+  #    every 3 ASD channels are averaged to produce the
+  #    717 channel spectra.
+  #
+  if (fsv == "615-3") {
+    c1a = 221      # channel just before offset, near 1 micron
+    c1b = 222      # channel just after  offset, near 1 micron
+    c2a = 478      # channel just before offset, near 1.8 micron
+    c2b = 480      # channel just after  offset, near 1.8 micron
+    maxchn=717
+    fsversion = 2     # VERSION VALID
+
+  } else if (fsv == "653-1") {  # Swayze added 1-15-04
+    c1a = 217      # channel just before offset, near 1 micron
+    c1b = 218      # channel just after  offset, near 1 micron
+    c2a = 483      # channel just before offset, near 1.8 micron
+    c2b = 485      # channel just after  offset, near 1.8 micron
+    maxchn=717
+    fsversion = 2     # VERSION VALID
+
+  } else if (fsv == "653-4") {
+    c1a = 217      # channel just before offset, near 1 micron
+    c1b = 218      # channel just after  offset, near 1 micron
+    c2a = 483      # channel just before offset, near 1.8 micron
+    c2b = 485      # channel just after  offset, near 1.8 micron
+    maxchn=717
+    fsversion = 2     # VERSION VALID
+
+  } else if (fsv == "653-5") {
+    c1a = 217      # channel just before offset, near 1 micron
+    c1b = 218      # channel just after  offset, near 1 micron
+    c2a = 483      # channel just before offset, near 1.8 micron
+    c2b = 485      # channel just after  offset, near 1.8 micron
+    maxchn=717
+    fsversion = 2     # VERSION VALID
+
+  } else if (fsv == "653-6") {
+    c1a = 217
+    c1b = 218
+    c2a = 483
+    c2b = 485
+    maxchn=717
+    fsversion = 2     # VERSION VALID
+
+  } else if (fsv == "615-6") {
+    c1a = 217
+    c1b = 218
+    c2a = 480
+    c2b = 482
+    maxchn=717
+    fsversion = 2   # VERSION VALID
+
+  } else if (fsv == "615-7") {
+    c1a = 220
+    c1b = 222
+    c2a = 473
+    c2b = 475
+    maxchn=717
+    fsversion = 2   # VERSION VALID
+
+  } else if (fsv == "653-7") {
+    c1a = 217
+    c1b = 218
+    c2a = 483
+    c2b = 485
+    maxchn=717
+    fsversion = 2   # VERSION VALID
+
+  } else if (fsv == "653-8") {
+    c1a = 217
+    c1b = 218
+    c2a = 483
+    c2b = 485
+    maxchn=717
+    fsversion = 2   # VERSION VALID
+
+  } else if (fsv == "653-8f") {  # added 11/4/2002 RNC
+    c1a = 651  
+    c1b = 652  
+    c2a = 1451 
+    c2b = 1452 
+    maxchn=2151
+    fsversion = 2   # VERSION VALID
+
+  } else if (fsv == "653-9f") {  # added 11/4/2002 RNC
+    c1a = 633  
+    c1b = 634  
+    c2a = 1451 
+    c2b = 1452 
+    maxchn=2151
+    fsversion = 2   # VERSION VALID
+
+  } else if (fsv == "653-10f") {  # added 04Aug2003 RFK
+    c1a = 633
+    c1b = 634
+    c2a = 1451
+    c2b = 1452
+    maxchn=2151
+    fsversion = 2   # VERSION VALID
+
+  } else if (fsv == "653-11f") {  # added 04Aug2003 RFK
+    c1a = 633
+    c1b = 634
+    c2a = 1451
+    c2b = 1452
+    maxchn=2151
+    fsversion = 2   # VERSION VALID
+
+  } else if (fsv == "653-12f") {  # added 21Apr2005 Gregg A. Swayze
+    c1a = 651
+    c1b = 652
+    c2a = 1451
+    c2b = 1452
+    maxchn=2151
+    fsversion = 2   # VERSION VALID
+
+  } else if (fsv == "653-13f") {  # added 07Feb2006 Gregg A. Swayze
+    c1a = 633
+    c1b = 634
+    c2a = 1451
+    c2b = 1452
+    maxchn=2151
+    fsversion = 2   # VERSION VALID
+
+  } else if (fsv == "653-14f") {  # added 26Feb2007 Gregg A. Swayze
+    c1a = 633
+    c1b = 634
+    c2a = 1451
+    c2b = 1452
+    maxchn=2151
+    fsversion = 2   # VERSION VALID
+
+  } else if (fsv == "653-15f") {  # added 31Mar2008 Gregg A. Swayze
+    c1a = 633
+    c1b = 634
+    c2a = 1451
+    c2b = 1452
+    maxchn=2151
+    fsversion = 2   # VERSION VALID
+
+  } else if (fsv == "6015-1") {
+    c1a = 217
+    c1b = 218
+    c2a = 470
+    c2b = 472
+    maxchn=717
+    fsversion = 2     # VERSION VALID
+
+  } else if (fsv == "6015-2") {
+    c1a = 213
+    c1b = 215
+    c2a = 470
+    c2b = 472
+    maxchn=717
+    fsversion = 2     # VERSION VALID
+
+  } else if (fsv == "6015-4") {
+    c1a = 218
+    c1b = 220
+    c2a = 470
+    c2b = 472
+    maxchn=717
+    fsversion = 2     # VERSION VALID
+
+  } else if (fsv == "6015-4f") {
+    c1a = 656
+    c1b = 657
+    c2a = 1412
+    c2b = 1413
+    maxchn=2151
+    fsversion = 2     # VERSION VALID
+
+  } else if (fsv == "6015-6f") { # added 04Aug2003 RFK
+    c1a = 649
+    c1b = 650
+    c2a = 1411
+    c2b = 1412
+    maxchn=2151
+    fsversion = 2     # VERSION VALID
+
+  } else if (fsv == "6015-7f") { # added 09Dec2003 Gregg A. Swayze
+    c1a = 649
+    c1b = 650
+    c2a = 1446
+    c2b = 1447
+    maxchn=2151
+    fsversion = 2     # VERSION VALID
+
+  } else if (fsv == "6015-8f") { # added 05Oct2004 RFK
+    c1a = 649
+    c1b = 650
+    c2a = 1446
+    c2b = 1447
+    maxchn=2151
+    fsversion = 2     # VERSION VALID
+
+  } else if (fsv == "6015-9f") { # added 5-16-05 add Gregg A. Swayze
+    c1a = 661
+    c1b = 662
+    c2a = 1481
+    c2b = 1482
+    maxchn=2151
+    fsversion = 2     # VERSION VALID
+
+  } else if (fsv == "6015-10f") { # added 5-16-06 add Gregg A. Swayze
+    c1a = 649
+    c1b = 650
+    c2a = 1446
+    c2b = 1447
+    maxchn=2151
+    fsversion = 2     # VERSION VALID
+
+  } else if (fsv == "6015-11f") { # added 5-07-2007 add Roger N. Clark
+    c1a = 649
+    c1b = 650
+    c2a = 1446
+    c2b = 1447
+    maxchn=2151
+    fsversion = 2     # VERSION VALID
+
+  } else if (fsv == "6015-13f") { # added 11-06-09 add Gregg Swayze
+    c1a = 649
+    c1b = 650
+    c2a = 1446
+    c2b = 1447
+    maxchn=2151
+    fsversion = 2     # VERSION VALID
+
+  } else if (fsv == "6015-14f") {# added 11-06-09 add Gregg Swayze
+    c1a = 649
+    c1b = 650
+    c2a = 1446
+    c2b = 1447
+    maxchn=2151
+    fsversion = 2     # VERSION VALID
+
+  } else if (fsv == "6015-15f") {# added 04-29-11 add Gregg Swayze
+    c1a = 649
+    c1b = 650
+    c2a = 1446
+    c2b = 1447
+    maxchn=2151
+    fsversion = 2     # VERSION VALID
+
+  } else if (fsv == "6015-16f") {# added 09-04-2012 R. Clark
+    c1a = 649
+    c1b = 650
+    c2a = 1446
+    c2b = 1447
+    maxchn=2151
+    fsversion = 2     # VERSION VALID
+  }
+
+
+  if (fsv == "6225-1") {
+    c1a = 215
+    c1b = 218
+    c2a = 483
+    c2b = 485
+    maxchn=717
+    fsversion = 2     # VERSION VALID - NOTE: BRAD RUNDQUIST'S SPECTROMETER (SEE RAY K)
+
+  } else if (fsv == "6251-1") {
+    c1a = 215
+    c1b = 218
+    c2a = 483
+    c2b = 485
+    maxchn=717
+    fsversion = 2     # VERSION VALID - NOTE: RALPH ROOT'S SPECTROMETER (SEE RAY K)
+
+  } else if (fsv == "6251-2f") {
+    c1a = 646
+    c1b = 647
+    c2a = 1421
+    c2b = 1422
+    maxchn=2151
+    fsversion = 2     # VERSION VALID - NOTE: RALPH ROOT'S SPECTROMETER (SEE RAY K)
+
+  } else if (fsv == "2009-1f") {
+    c1a = 651
+    c1b = 652
+    c2a = 1451
+    c2b = 1452
+    maxchn=2151
+    fsversion = 2     # VERSION VALID - NOTE: RALPH ROOT'S SPECTROMETER (SEE RAY K)
+
+  } else if (fsv == "6129-3") {
+    c1a = 217
+    c1b = 218
+    c2a = 470
+    c2b = 472
+    maxchn=717
+    fsversion = 2     # VERSION VALID - NOTE: ED HOLROYD'S SPECTROMETER(SEERAYK)
+
+  } else if (fsv == "16139-1f") { # added 11-7-07 add Gregg A. Swayze
+    c1a = 651
+    c1b = 652
+    c2a = 1481
+    c2b = 1482
+    maxchn=2151
+    fsversion = 2     # VERSION VALID
+
+  } else if (fsv == "16139-2f") { # added 11-7-07 add Gregg A. Swayze
+    c1a = 651
+    c1b = 652
+    c2a = 1481
+    c2b = 1482
+    maxchn=2151
+    fsversion = 2     # VERSION VALID
+
+  } else if (fsv == "16139-3f") { # added 11-5-09 add Gregg A. Swayze
+    c1a = 651
+    c1b = 652
+    c2a = 1481
+    c2b = 1482
+    maxchn=2151
+    fsversion = 2     # VERSION VALID
+
+  } else if (fsv == "16208-1f") { # added 11-24-08 add Gregg A. Swayze
+    c1a = 651
+    c1b = 652
+    c2a = 1481
+    c2b = 1482
+    maxchn=2151
+    fsversion = 2     # VERSION VALID
+
+  } else if (fsv == "16208-2f") { # added 04-13-10 add Gregg A. Swayze
+    c1a = 651
+    c1b = 652
+    c2a = 1481
+    c2b = 1482
+    maxchn=2151
+    fsversion = 2     # VERSION VALID
+
+  } else if (fsv == "16208-3f") { # added 03-08-11 add Gregg A. Swayze
+    c1a = 651
+    c1b = 652
+    c2a = 1481
+    c2b = 1482
+    maxchn=2151
+    fsversion = 2     # VERSION VALID
+
+  } else if (fsv == "16208-4f") { # added 06-15-11 add Gregg A. Swayze
+    c1a = 651
+    c1b = 652
+    c2a = 1481
+    c2b = 1482
+    maxchn=2151
+    fsversion = 2     # VERSION VALID
+
+  } else if (fsv == "16208-5f") { # added 10-17-12 add Gregg A. Swayze
+    c1a = 651
+    c1b = 652
+    c2a = 1446
+    c2b = 1447
+    maxchn=2151
+    fsversion = 2     # VERSION VALID
+
+  } else if (fsv == "18011-1f") { # added 04-11-12 add Gregg A. Swayze
+    c1a = 651
+    c1b = 652
+    c2a = 1451
+    c2b = 1452
+    maxchn=2151
+    fsversion = 2     # VERSION VALID
+  }
+
+  # PUT NEW VERSIONS ABOVE THIS LINE
+
+  if (fsversion != 2) {
+    printf ("\n\n\nERROR field spectrometer version number is invalid: %s\n", fsv)
+    printf ("EXIT 1\n")
+    exit(1)
+  }
+}
+
+#
+# PERFORM THE OFFSET CORRECTION
+#
+
+if (fsoffsetcor == 0) {
+#
+# SIMPLE OFFSET SCALING CORRECTION FOR THE ASD FIELDSPEC
+# USING AVERAGE OF 2 CHANNELS ON EACH SIDE OF BREAK POINT
+#
+  printf ("Computing offset corrections using simple averages...\n")
+  a1=(r[1,1,c1a-1] + r[1,1,c1a  ])/2.0
+  a2=(r[1,1,c1b  ] + r[1,1,c1b+2])/2.0
+  c1=(r[1,1,c2a-1] + r[1,1,c2a  ])/2.0
+  c2=(r[1,1,c2b  ] + r[1,1,c2b+1])/2.0
+  # DETERMINE OFFSETS: ADJUST A,C SPECTROMETERS TO B
+  scale_splice1 = a2/a1      # SCALE FACTOR FOR SPECTROMETER A
+  scale_splice2 = c1/c2      # SCALE FACTOR FOR SPECTROMETER C
+  printf ("Offset corrections (scaling factors): Detector A=%5.3f Detector C=%5.3f\n", scale_splice1, scale_splice2)
+  scale=r-r+1.0
+  scale[1,1,1:c1a]      = scale[1,1,1:c1a]*scale_splice1    # SPECTROMETER A SCALING
+  scale[1,1,c2b:maxchn] = scale[1,1,c2b:maxchn]*scale_splice2  # SPECTROMETER C SCALING
+  r = r * scale         # REFLECTANCE CORRECTED FOR OFFSETS
+
+} else if (fsoffsetcor == 1) {
+#
+# SCALING CORRECTION AT THE OFFSET USING LINEAR EXTRAPOLATION
+# NOTE: THIS ASSUMES REGULAR SPACING OF THE CHANNELS TO AVOID HAVING
+#       TO READ THE WAVELENGTHS
+#
+  printf ("Computing offset corrections using linear extrapolation...\n")
+# FIX THE OFFSET AT THE OVERLAP BETWEEN DETECTORS A & B
+  slope = (r[1,1,c1b+1] - r[1,1,c1b])/((c1b+1) - c1b)
+  offset = r[1,1,c1b] - slope*c1b 
+  refl_c1a_calc = slope*c1a + offset
+  refl_c1a_meas = r[1,1,c1a]
+  diff_splice1  = refl_c1a_calc - refl_c1a_meas
+  scale_splice1 = refl_c1a_calc / refl_c1a_meas
+# FIX THE OFFSET AT THE OVERLAP BETWEEN DETECTORS B & C
+  slope = (r[1,1,c2a] - r[1,1,c2a-1])/(c2a - (c2a-1))
+  offset = r[1,1,c2a] - slope*c2a 
+  refl_c2b_calc = slope*c2b + offset
+  refl_c2b_meas = r[1,1,c2b]
+  diff_splice2  = refl_c2b_calc - refl_c2b_meas
+  scale_splice2 = refl_c2b_calc / refl_c2b_meas
+  if (DEBUG == 1) {
+    printf ("DEBUG: End_Channel_Detector_A = %d Start_Channel_Detector_B = %d\n", c1a,c1b)
+    printf ("DEBUG: End_Channel_Detector_B = %d Start_Channel_Detector_C = %d\n", c2a,c2b)
+    printf ("DEBUG: Detector A/B Overlap: Slope= %f, Offset= %f\n",slope,offset)
+    printf ("DEBUG: Detector A at Overlap: Measured= %f, Calculated= %f\n",refl_c1a_meas,refl_c1a_calc)
+    printf ("DEBUG: Detector B/C Overlap: Slope= %f, Offset= %f\n",slope,offset)
+    printf ("DEBUG: Detector C at Overlap: Measured= %f, Calculated= %f\n",refl_c2b_meas,refl_c2b_calc)
+  }
+  printf ("Offset corrections (scaling factors): Detector A=%6.4f Detector C=%6.4f\n", scale_splice1, scale_splice2)
+# FORM THE SCALING ARRAY AND APPLY TO THE SPECTRUM
+  scale=r-r+1.0
+  scale[1,1,1:c1a]      = scale[1,1,1:c1a]*scale_splice1    # SPECTROMETER A SCALING
+  scale[1,1,c2b:maxchn] = scale[1,1,c2b:maxchn]*scale_splice2  # SPECTROMETER C SCALING
+  r = r * scale         # REFLECTANCE CORRECTED FOR OFFSETS
+}
+
+# SPECIAL FIX FOR THE OVERLAP CHANNELS THAT ARE AVERAGES OF TWO DETECTORS
+if (fsoffsetcor >= 0) {
+  if (c1b-c1a ==2) { # FIX CHANNEL IN BETWEEN AT 1UM
+    k1=r[1,1,c1a]
+    k2=r[1,1,c1b]
+    r[1,1,c1a+1] = (k1 + k2)/2.0
+  }
+  if (c2b-c2a ==2) { # FIX CHANNEL IN BETWEEN AT 2UM
+    k1=r[1,1,c2a]
+    k2=r[1,1,c2b]
+    ii=int(c2a+1)
+    r[1,1,ii] = (k1 + k2)/2.0
+  }
+}
+
+# LIBBY PLASTIC CORRECTION FOR SCATTERED LIGHT FROM PLASTIC
+# STRATEGY IS TO DERIVE BAND STRENGTHS OF THE
+# PLASTIC 1.73 AND 1.2 ch FEATURES AND USE THE
+# LESSER OF THE TWO VALUES TO DETERMINE THE 
+# AMOUNT OF SCATTERED LIGHT
+
+# code works only for 717 channel data, and calibration
+# used in the spd0310 record=2469
+
+f7=0.0
+f2=0.0
+if (libbyplastic == 1) {
+# printf ("Checking for plastic stray light\n")
+  df="/d1/rclark/data/libby/spd0310"
+  p = read(filename=df,record=2469)  # PLASTIC SPECTRUM
+  # 1.73 BAND:
+  rfc7 = (p[1,1,449]+p[1,1,466])/2.0   # PLASTIC REFERENCE CONTINUUM
+  rfb7 = p[1,1,461]                    # PLASTIC BAND BOTTOM
+  rf7  = rfc7 - rfb7
+  rc7  = (r[1,1,449]+r[1,1,466])/2.0   # SAMPLS REFERENCE CONTINUUM
+  rb7  = r[1,1,461]                    # SAMPLE BAND BOTTOM
+  f7  = (rc7-rb7)/rf7                  # PLASTIC FRACTION
+  if (f7 < 0.0) f7 = 0.0
+  # 1.2 BAND:
+  rfc2 = (p[1,1,273]+p[1,1,311])/2.0   # PLASTIC REFERENCE CONTINUUM
+  rfb2 = p[1,1,288]                    # PLASTIC BAND BOTTOM
+  rf2  = rfc2 - rfb2
+  rc2  = (r[1,1,273]+r[1,1,311])/2.0   # SAMPLS REFERENCE CONTINUUM
+  rb2  = r[1,1,288]                    # SAMPLE BAND BOTTOM
+  f2   = (rc2-rb2)/rf2                 # PLASTIC FRACTION
+  if (f2 < 0.0) f2 = 0.0
+  if (f7 == 0.0) f7 = 0.0
+  if (f2 == 0.0) f2 = 0.0
+  fx = f7
+  if (f2 < f) {
+    fx = f2          # CHOOSE SMALLER VALUE
+  }
+  r = r - p*fx       # CORRECTED SPECTRUM
+  printf ("plastic correction= %5.3f\n", f)
+}
+
+
+# CORRECT FOR PORTABLE LIGHT INTERFERENCE PATTERN
+if (wavylight == 1) {
+  printf ("Computing wavylight correction\n")
+  # TO BE DONE
+}
+
+# WRITE THE AVERAGE TO THE SPECPR FILE
+
+if (DEBUG == 1) {
+  otitle_uncorr = "Uncorrected Avg to Following (fsspcal)"
+  printf ("Writing uncorrected mean reflectance to: %s, title= %s \n", outf, otitle_uncorr)
+  write (avg, filename=outf, type=specpr, title=otitle_uncorr)
+}
+
+printf ("Writing corrected mean reflectance to: %s, title= %s \n", outf, otitle)
+write (r, filename=outf, type=specpr, title=otitle)
+
+# WRITE THE STANDARD DEVIATION OF THE MEAN TO THE SPECPR FILE (IF OPTION SELECTED)
+
+if  (do_stddev == 1) {
+  stddev_title = "errors to previous file"
+  printf ("Writing standard deviations to: %s,title= %s\n",outf,stddev_title)
+  write (stddev_of_the_mean, filename=outf, type=specpr, title=stddev_title)
+}

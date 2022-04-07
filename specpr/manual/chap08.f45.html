@@ -1,0 +1,51 @@
+<!-- Creator     : groff version 1.18.1.1 -->
+<!-- CreationDate: Tue Nov  9 14:21:32 2010 -->
+<html>
+<head>
+<meta name="generator" content="groff -Thtml, see www.gnu.org">
+<meta name="Content-Style" content="text/css">
+<title></title>
+</head>
+<body>
+
+<hr>
+<pre>SPECPR Users&rsquo; Manual                                            Page 8-f45.1
+
+F45:  Automatic Band Analysis                           Alias = aba
+This routine uses the segmented upper hull (see f44) to isolate
+absorption features in a spectrum and then for each feature the
+following are derived:
+
+          Band Center
+          Full Width at Half Maximum (FWHM)
+          Band Depth
+          Error in band depth (assuming that error bars were included with the
+                   input spectrum)
+          Full Width at Quarter Maximum (FWQM)
+          Band Asymmetry
+          Continuum reflectance level
+          Segmented Upper Hull iteration number
+</pre>
+
+<p>The output is a data set using 9 channels to describe
+each feature (the 8 items above and one additional that is
+currently unused). Thus if the input spectrum contained 26
+features, then the output data set would have 234 channels.
+This routine was used to generate the features in the USGS
+Digital Spectral Library. For a description of the continuum
+algorithm, see Clark, R.N., T.V.V. King, and N.S. Gorelick,
+Automatic Continuum Analysis of Reflectance Spectra:
+Proceedings of the Third Airborne Imaging Spectrometer Data
+Analysis Workshop, JPL Publication 87-30, 138-142, 1987.
+Once the continuum is removed, the band center is found by
+finding the lowest channel in a feature and fitting a
+parabola to the lowest channel and the channel in each side
+of the lowest one. The FWHM, and FWQM are found by linear
+interpolation. The error bar is found based on the error
+bars on the data. The asymmetry is found by ratioing the
+distance from the band center to each FWHM point. See also
+section 9.8, Interactive Band Analysis (it uses the same
+algorithms).</p>
+<hr>
+</body>
+</html>

@@ -1,0 +1,212 @@
+              Tetracorder Spectral feature analysis speed test
+                  Roger N. Clark, PSI    (11/23/2020)
+                                                              Spectral features/second
+            Machine                                     1 cpu       2 cpu     4 cpu    6 cpu      8 cpu      12 cpu       18 cpu    24 cpu
+--------------------------------------------------------------------------------------------------------------------------------------------
+28)  Saturn9 pc I9-9900K CPU @ 3.60GHz               9,524,000 18,868,000 36,364,000 53,571,000 70,175,000 71,428,000  75,314,000  79,208,000
+     8 core, 128 GBytes RAM
+     Linux mint 20.0 gfortran 9/09/2020
+     Note: 16 processes = 82,051,000
+
+29)  JPL EMIT Beowulf cluster (1 node)               5,670,000 11,300,000 22,590,000 33,310,000 45,120,000 67,490,000 101,000,000 133,600,000
+     Intel Xeon Gold 6230 CPU @ 2.10GHz
+     40 cores, 190 GBytes RAM
+
+27)  escalante 6-core i7-4930 32 GB RAM              5,460,000 10,500,000 13,300,000 20,000,000            40,000,000  36,000,000  36,000,000
+     gfortran, linux mint 17  9/29/2014
+
+25a) Saturn I7-950 quad core 3.07GHz 24GB ram        3,330,000  6,450,000 12,900,000 13,450,000 14,300,000 15,600,000  15,000,000   9,200,000
+     09/10/2020 home linux gfortran Mint 19.0
+     Note: 23 processes = 15,540,000
+     Note: 16 processes = 14,467,000
+
+25b) Saturn I7-950 quad core 3.07GHz 12GB ram        3,300,000  6,450,000 12,900,000 11,800,000            15,600,000  15,000,000   9,200,000
+     01/16/2012 home linux gfortran
+     Note: 23 processes = 15,540,000
+
+24)  Cassini    four 6-core cpus 296 GB RAM          2,618,000  5,130,000 10,256,000 15,385,000            30,770,000  45,000,000  60,000,000
+     Intel(R) Xeon(R) CPU  X7542  @ 2.67GHz
+     gfortran, Red Hat Linux 01/16/2012
+
+21a  Speclab3, gfortran -O  01/2012                  2,380,000  4,650,000  9,300,000  7,200,000             9,200,000   8,490,000   8,920,000
+     Xeon 5160 quad core 3.0 GHz 32GB RAM
+
+26)  Roger's ASUS U24e linux mint laptop 7/2012      3,570,000  6,670,000  8,000,000
+     gfortran -O
+
+22)  clarkvision Intel Core2 Duo E8400 gfortran      2,980,000  2,980,000
+      3 GHz Ubuntu 9.04
+     f77                                             1,700,000
+
+21b  Cassini  3GHz linux redhat 64-bit               2,700,000  2,710,000  2,700,000
+     7/6/2010 Xeon E5430 cpu @ 2.66GHz
+
+23)  titan.clarkvision.com Ubuntu 10.04              2,720,000  5,430,000 10,870,000
+     intel i7 930 2.8 GHz gfortran
+
+21a  Speclab3, Cassini 3Ghz gfortran -O  04/2009     2,380,000
+     g77  -O 04/2009                                 1,300.000  2,400,000  2,390,000
+     linux 64-bit 4cpu Intel(R) Xeon 5160  @ 3.00GHz
+
+20)  Xeon 5160 3GHz Linux 64-bit mrsists1 -O 2/2008  2,364,000  4,695,000
+
+19a) HP Itanium2 HPUX 11i +O4 +Oall..see below* 2/05 1,613,000  3,226,000
+
+18a) HP Itanium2 HPUX 11i +O4 +Oall..see below* 12/02  970,874  1,886,792
+18b) HP Itanium2 HPUX 11i -O                           800,000
+
+17a) HP Itanium1 HPUX 11i +O4 +Oall..see below* 12/01  578,035  1,156,069
+17b) HP Itanium1 HPUX 11i -O                           462,963
+
+16c) IBM PC 1.8 Ghz PIV 512MB Win XP home 12/01 -o     518,134
+16b) IBM PC 650 Mhz PIII 128MB Win98 2/01 -o           176,991
+16d) IBM PC 450 Mhz PII 384MB linux RH7.2 1/02 -o      146,413
+16a) IBM PC 450 Mhz PII 384MB Win98 12/01 -o           132,978
+
+14a) HP9000/K250 HPUX10.20(160MHz) 9/97  see below*    138,504    273,598
+14a) HP9000/K250 HPUX11i  (160MHz) 6/01  see below*    125,786    247,524
+
+15a) IBM PC 366Mhz PII 256MB Linux 2/01  -O            118,000
+15b) IBM PC 366Mhz PII 256MB Win98 2/01  -O            110,987
+
+12) HP9000/K100 HPUX10.01(100MHz) 11/95  -O +Oall       57,470
+
+13) Sun Ultra II OS5.5.1 (200MHz)  1/97  -O3 -native    33,557     66,667
+    2 cpu's together (1.99x 1 cpu)
+
+0)  HP9000/755 HPUX9.00   (99MHz)  4/93  +O3 +OP4       24,691
+
+1)  HP9000/750 HPUX8.07   (66MHz)  9/92  +O3 +OP4       13,986
+
+9)  SGI R4000             (50NHz)  4/93  -O             12,500
+
+11) Sun SPARC 10/51               12/93  -O -native     11,560     21,732
+    2 cpu's together (1.88x 1 cpu)
+
+2)  HP9000/720 HPUX8.05   (50MHz)  9/92  +O3 +OP4       10,582
+
+3a) HP9000/827 HPUX9.04   (48MHz)  4/93  -O             10,000
+3b) HP9000/827 HPUX9.00   (48MHz)  4/93  +O3 +OP4        9,900
+3c) HP9000/827 HPUX8.02   (48MHz)  9/92  +O2             8,696
+
+4)  Sun SPARC 2           (40 MHz) 9/92  -cg89 -O        3,704
+
+15) Sun 4/670                      1/9_  -O              4,465
+
+5)  DG6220 dual processor         10/92  -O              2,488
+
+6a) HP9000/835 HPUX9.00            3/93  +O3 +OP4        3,190
+6b) HP9000/835 HPUX8.00            9/92  +O2             2,410
+
+7)  Sun 3/470 Sun OS4.1            9/92  -ffpaplus -O    1,418
+
+8)  HP9000/825 HPUX7.0             7/92  +O                725
+
+10) Sun 3/160C Sun OS 4.1          4/93  -ffpa -O          533
+---------------------------------------------------------------------------
+
+0) HP's new top of the line workstation, Nov 10 official introduction,
+   full availablility; shipping now to selected customers.
+1) abante   (JPL)
+2) bach     (USGS, BGP)
+3) speclab  (USGS, BGP) Note this does not take full advantage
+                        of this architecture.  Need HPUX 8.07.
+4) natasha  (USGS, Astro)
+5) bgrdg1   (USGS, BGP) (test used only one processor)
+6) musette  (USGS, BGP)
+7) sunburst (USGS, BGP)
+8) retired machine (USGS, BGP, old speclab)
+9) SGI R4000 USGS, Reston (MIPS R4000 50 MHz cpu)
+10) sundance Sun 3/160C ~20 MBytes, FPA.
+11) corona: branch of geophysics Sun SPARC 10/51 2 cpu.
+12) speclab: HP9000/K100 100MHz, HP-UX 10.01 PA 7200 cpu.
+13) USGS minerals team, isis.cr.usgs.gov Sun Ultra II,
+    Sun OS 5.5.1, 200 MHz 2cpu machine (1 cpu used),
+    Tried several F77 flags, including, -O, -O3,
+    -native, -fast (in different combinations): all
+    gave the same answer
+14a) new speclab: HP9000/K250 160MHz, HP-UX 10.20 PA 8000 cpu.
+    9/25/1997.  bext result by 5% is:
+     +O4 +Oall +Oinfo +Onolimit +Odataprefetch +Oloop_transform +Ovectorize
+     simple -O +Oall gave number 5% lower.
+14b) speclab: HP9000/K250 160MHz, HP-UX 11i   PA 8000 cpu.
+     6/05/2000.  bext result is:
+     +O4 +Oall +Oinfo +Onolimit +Odataprefetch +Oloop_transform +Ovectorize
+     f90 compiler: no -C option!!!  with -C, result is 1.9x slower
+15) IBM 770Z laptop 256 MBytes RAM Pentium II 366 Mhz
+    14-GByte IDE drive, dual boot: a) Linux 7.0, b) Win98
+
+### Note: 16a,b,c were all with the same bandmap.exe file compiled
+    on the IBM laptop in #15.  A new compiler could improve things.
+16c) Dell 8200 1.8 Ghz PIV 512MB Win XP home 12/01 (Roger PC at home)
+16b) HP Pavilion 8590C IBM PC 650 Mhz PIII 128MB Win98 
+16a) HP Pavilion 8390 450 Mhz PII 384MB Win98 12/01 (Roger PC at home)
+16d) HP Pavilion 8390 450 Mhz PII 384MB linux Red Hat 7.2 
+        2/02 (Roger PC at home) (jupiter.clarkvision.com)
+
+17) HP itanium 1 xxx Mhz 2 cpus, 3 GBytes RAM, 2 36GB wide
+    differential SCSI dusks.  12/14/2001
+    a) +O4 +Oall +Oinfo +Onolimit +Odataprefetch +Oloop_transform +Ovectorize
+       on bandmap.f only, and -O on other routines.
+       No -C on any routine (doesn't work) (range checking)
+    b) -O only
+
+18) HP itanium 2 xxx Mhz 2 cpus, 3 GBytes RAM, 2 36GB wide
+    differential SCSI dusks.  12/10/2002
+    a) +O4 +Oall +Oinfo +Onolimit +Odataprefetch +Oloop_transform +Ovectorize
+       on bandmap.f only, and -O on other routines.
+       No -C on any routine (doesn't work) (range checking)
+    b) -O only
+
+19) HP itanium 2 xxx Mhz 2 cpus, 8 GBytes RAM, 2 36GB wide
+    differential SCSI dusks.  2/12/2005
+    run executable from #18
+
+20) Dell Intel Xeon 5160 cpus, 3 GHz  2/21/2008.
+    standard gcc compile with no -O option
+
+21a) speclab 3  same as below, different compile?
+
+21b) Cassini Core 2 Duo CPU  E8400  @ 3.00GHz
+    /proc/cpuinfo   32 GB ram
+
+22) clarkvision.com Core 2 Duo CPU E8400  @ 3.00GHz
+    4 GBytes ram, gfortran -O  7/6/2010
+    f77 -O  (7/6/2010)   Ubuntu 9.04
+
+23) titan.clarkvision.com Intel(R) Core i7 930 cpu  @ 2.80GHz
+    quad core, 6 GBytes ram
+    7/11/2010
+
+24) Cassini I7 two 6-core cpus 
+    g77 -O   Red Hat Linux 11/2010
+ 
+25)  Saturn I7-950 quad core 3.07GHz 12GB ram 
+     01/16/2012 home linux gfortran
+     Home PC linux, ubuntu 10.10
+
+     Note: http://www.techpowerup.com/forums/showthread.php?t=94721
+     I7-950 at 3.07GHz would be 11.05 GFLOPS
+     we get 12,900,000 sp feats/sec, which compare favorably
+     to 1000 flops per spectral feature.
+
+26)  ASUS U24e laptop Dual I7-2640M 2.8 GHz 8GB RAM, 1TB disk drive
+     Linux mint 13 + mate desktop
+     gfortran -O
+
+27)  Linux mint 17 on Gregg S's new office computer
+     i7-4930 3r./4 GHz, 6 cpu 32 GBytes RAM.
+
+28)  Roger's 9/2020 I9 desktop. 
+     I9-9900K CPU @ 3.60GHz
+     8 core, 128 GBytes RAM
+     Linux mint 20.0 gfortran 9/09/2020
+     Note: 16 processes = 82,051,000
+
+29)  JPL EMIT Beowulf cluster (1 node) 
+     Each node: Intel Xeon Gold 6230 CPU @ 2.10GHz
+     40 cores, partially distributed over a NUMA interconnect. 
+     190 GBytes RAM  (Nov, 2020)
+     BeeGFS, local disk=
+
+

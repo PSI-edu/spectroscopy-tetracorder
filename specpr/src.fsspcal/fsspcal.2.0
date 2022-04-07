@@ -1,0 +1,450 @@
+#!/usr/local/bin/davinci -f
+verbose=0
+
+# This davinci script does several things related to
+# ASD field spectrometer data reduction:
+
+# 1) Adjust for offsets between the spectrometers.  This
+#    also is only a few percent at most and is easily
+#    diagnosed by the diagnosed and occurs at only
+#    two points in the spectrum.
+#
+# 2) average the multiple spectra for one sample together
+#
+# 3) correct vor the white reference to give absolute
+#    reflectance.
+#
+# 4) analyzes for scattered light from the samples cup
+#    and removes it.  The scattered light is never more than
+#    a few percent of the total signal and the plastic
+#    has diagnostic absorption bands so it is readily
+#    removed.
+
+# format:
+#
+#                   NOTE: first option on davinci with - is passed
+#                         as a davinci option, not a command line
+#                         variable
+# davinci.spasdcal
+#                nbs file rec#      # standard reflectance: file record
+#               -file filename      # file here data are located
+#               -fs version         # field spec version, like 653-6
+#                                   # 
+#               -avg N n1 n2 n3 ... # average N spectra, n1, n2, n3
+#                                   #      n4 ... = record numbers
+#               -title "title"      # output title
+#               -flag  keyword      # specific corrections to be done
+#               -flag fsoffsetcor   # correct offsets in ASD fieldspec
+#                                   # at ch 217-218 and 483-485 for 653-5
+#                                   # spectrometer dependent
+#               -flag libbyplastic  # plastic correction in libby samples
+#               -flag wavylight     # wavylight correction from
+#                                   # small portable light model ???
+#               -out outputfilename # name of specpr output file.
+#
+#      future (code is inplace):
+#               -flag  wave  file rec#    # wavelength set
+#               -flag  resol file rec#    # resolution set
+#
+# EXAMPLE:
+#
+#fsspcal  nbs spd0313 12  -fs 653-6  -file spd0313 -out spd0313 -flag fsoffsetcor \
+#        -fs 653-5  -avg 5   21  24  27  30  33  \
+#        -title "HWSB820-S3.2.1 Altrd Thl Bslt 0.0 ABSREF"
+#
+#
+# note: specpr files must have the sp_stamp applied:
+#
+#     sp_stamp specprfilename
+#
+# sp_stamp write a sfdu header on the specpr file, record 0.
+# (sp_stamp core dumps after it works properly)
+#
+# Roger N. Clark Feb 29, 2000
+#
+# added machine dependent offsets  8/30/2000 - RNC
+#
+
+if ( $argc < 10 ) {
+	printf ("ERROR: insufficient arguments\n")
+	exit(1)
+}
+
+# set flag values = 0
+
+libbyplastic = 0   # plastic correction in libby samples
+wavylight    = 0   # wavylight correction from
+fsoffsetcor  = 0   # correct offsets in ASD fieldspec
+fsversion    = 0   # field spectrometer version
+
+# parse all arguments
+
+for (j = 1; j <= $argc; j = j +1 ) {
+
+	#printf("arg: %d %s\n", j, $argv[j])
+
+	if ($argv[j] == "-nbs" || $argv[j] == "nbs") {     # get NBS standard correction
+		j = j +1
+		stdfile = $argv[j]    # file name
+		j = j +1
+		stdrec = int(atoi($argv[j])) # record number
+		printf ("standard: %s rec %d\n", stdfile, stdrec)
+
+		spe=read(filename=stdfile,record=stdrec)  # spectralon absolute reflectance
+
+		if (HasValue(spe) ==0) {  # check that read worked
+			printf ("read ERROR on standard: %s rec %d\n",stdfile, stdrec)
+			printf ("EXIT 1\n")
+			exit(1)
+		}
+		
+		continue   # jump to end of for loop
+
+	} else if ($argv[j] == "-fs") {   # get field spectrometer version
+		j = j +1
+		spv = $argv[j]    # version
+		fsversion    = 1
+
+		continue   # jump to end of for loop
+
+	} else if ($argv[j] == "-file") {   # get specpr file name were data are
+		j = j +1
+		sfile = $argv[j]    # file name
+		printf ("specpr file: %s\n", sfile)
+
+		if (HasValue(sfile) ==0) {  # check that read worked
+			printf ("read ERROR on input specpr file name: %s\n", sfile)
+			printf ("EXIT 1\n")
+			exit(1)
+		}
+
+		continue
+
+	} else if ($argv[j] == "-out") {     # get specpr file name for output
+		j = j +1
+		outf = $argv[j]    # file name
+		printf ("specpr output file: %s\n", outf)
+		
+		if (HasValue(outf) ==0) {  # check that read worked
+			printf ("read ERROR on output specpr file name: %s\n", outf)
+			printf ("EXIT 1\n")
+			exit(1)
+		}
+
+		continue
+
+	} else if ($argv[j] == "-wave") {     # get wavelengths
+		j = j +1
+		wavfile = $argv[j]    # file name
+		j = j +1
+		rwav = int(atoi($argv[j])) # record number
+		printf ("wavelengths: %s %d\n",wavfile, rwav)
+
+		wav=read(filename=wavfile,record=rwav)  # wavelengths
+
+		if (HasValue(wav) ==0) {  # check that read worked
+			printf ("read ERROR on wavelengths: %s rec %d\n",wavfile, rwav)
+			printf ("EXIT 1\n")
+			exit(1)
+		}
+
+		continue
+
+	} else if ($argv[j] == "-resol") {     # get resolution
+		j = j +1
+		resfile = $argv[j]    # file name
+		j = j +1
+		rres = int(atoi($argv[j])) # record number
+		printf ("wavelengths: %s\n", resfile)
+
+		res=read(filename=resfile,record=rres)  # resolution (not needed)
+
+		if (HasValue(rres) ==0) {  # check that read worked
+			printf ("read ERROR on resolution: %s rec %d\n",resfile, rres)
+			printf ("EXIT 1\n")
+			exit(1)
+		}
+
+		continue
+
+	} else if ($argv[j] == "-title") {     # get title
+		j = j +1
+		otitle = $argv[j]        # specpr output title
+		printf ("output title: %s\n", otitle)
+
+		if (HasValue(otitle) ==0) {  # check that read worked
+			printf ("ERROR on output specpr title: %s\n", otitle)
+			printf ("EXIT 1\n")
+			exit(1)
+		}
+
+		continue
+
+	} else if ($argv[j] == "-avg" ) {
+		
+		j = j +1
+		navg = atoi($argv[j])    # number to average
+
+		if (navg < 1) {
+			printf ("ERROR: spectra to average must be >0\n")
+			printf ("EXIT 1\n")
+			exit(1)
+		}
+
+		xavgr = create(navg,1,1)*0.0   # array for rec nums
+
+		for (k = 1; k <= navg; k = k+1) {  # loop through all
+						   # spectra to be avg
+
+			j = j +1
+			xavgr[k,1,1] = atoi($argv[j])
+			sr = int(xavgr[k,1,1])
+
+			if ( k == 1 ) {  # first one, create arrays
+
+				x = read (filename=sfile, record=sr)
+				if (HasValue(x) ==0) {  # check that read worked
+					printf ("read ERROR on spectrum: %s rec %d\n",sfile, sr)
+					printf ("EXIT 1\n")
+					exit(1)
+				}
+
+				xd = dim(x)
+				xavg = create(navg,1,xd[3,,])*0.0
+				printf ("avg: %s %d\n",sfile, sr)
+
+				xavg[k,,] = x
+			} else {
+				x = read (filename=sfile, record=sr)
+
+				if (HasValue(x) ==0) {  # check that read worked
+					printf ("read ERROR on spectrum: %s rec %d\n",sfile, sr)
+					printf ("EXIT 1\n")
+					exit(1)
+				}
+		
+				xavg[k,,] = x
+				printf ("avg: %s %d\n",sfile, sr)
+			}
+
+		}
+
+	} else if ($argv[j] == "-flag") {     # get flags
+		j = j +1
+		if ($argv[j] == "wavylight") {
+
+			wavylight    = 1     # wavylight correction from
+			printf ("wavylight correction enabled\n")
+
+		} else if ($argv[j] == "fsoffsetcor") {
+
+			fsoffsetcor = 1  # correct offsets in ASD fieldspec
+			printf ("Field Spec Offset correction enabled\n")
+		} else if ($argv[j] == "libbyplastic") {
+
+			libbyplastic = 1  # plastic correction in libby samples
+			printf ("libbyplastic correction enabled\n")
+		} else {
+
+			printf ("Flag not recognized: %s\n", $argv[j])
+			printf ("EXIT 1\n")
+			exit(1)
+		}
+
+	} else {
+		printf ("Flag not recognized: %s\n", $argv[j])
+		printf ("EXIT 1\n")
+		exit(1)
+	}
+
+
+}
+
+# all flags now parsed.  Check critical one have values
+
+if (HasValue(spe) ==0) {  # check that standard file is there
+	printf ("ERROR on standard: %s rec %d\n",stdfile, stdrec)
+	printf ("EXIT 1\n")
+	exit(1)
+}
+if (HasValue(spv) ==0) {  # check that fs version # is there
+	printf ("ERROR no field spectrometer version number (like: 653-6)\n")
+	printf ("EXIT 1\n")
+	exit(1)
+}
+
+if (HasValue(sfile) ==0) {  # check that input specpr file is there
+	printf ("ERROR no input specpr file name: %s\n", sfile)
+	printf ("EXIT 1\n")
+	exit(1)
+}
+
+if (HasValue(outf) ==0) {  # check that output specpr file is there
+	printf ("ERROR no output specpr file name: %s\n", outf)
+	printf ("EXIT 1\n")
+	exit(1)
+}
+
+if (HasValue(otitle) ==0) {  # check that title is there
+	printf ("ERROR no output specpr title: %s\n", otitle)
+	printf ("EXIT 1\n")
+	exit(1)
+}
+
+
+
+# average spectra
+
+printf ("Averaging Spectra\n")
+
+s = xavg[1,,] *0.0      # make array of zeros for spectrum
+sdim = dim(s)
+printf ("Number of spectral channels= %d\n", sdim[3,,])
+
+for (k = 1; k <= navg; k = k+1) {  # loop through all
+				   # spectra to be avg
+	s = s + xavg[k,,]
+}
+s = s / navg  # average spectrum
+
+format(s)
+
+r = s * spe          # spectraum sprrected for standard reflectance
+
+
+if ( fsoffsetcor == 1) {   # correct offsets in ASD fieldspec
+	#
+	# in the 717 channel ASD field spectra, the spectrometer
+	#    (note 717 channels is from fstospecpr program where
+	#    every 3 ASD channels are averaged to produce the
+	#    717 channel spectra.
+	#
+	# break points are at channels:
+	#     217-218 and 
+	#     483-485 (484 is averaged in between)
+	#             treat 484 separately
+
+	if (fsv == "653-5") {
+		c1a = 217      # channel just before offset, near 1 micron
+		c1b = 218      # channel just after  offset, near 1 micron
+		c2a = 483      # channel just before offset, near 1.8 micron
+		c2b = 485      # channel just after  offset, near 1.8 micron
+		fsversion = 2   # version valid
+	}
+	if (fsv == "653-6") {
+		c1a = 217
+		c1b = 218
+		c2a = 483
+		c2b = 485
+		fsversion = 2   # version valid
+	}
+	# put new versions above this line
+
+	if (fsversion != 2) {
+
+		printf ("ERROR field spectrometer version number is invalid: $s\n", fsv)
+		printf ("EXIT 1\n")
+		exit(1)
+	}
+
+	# average on each side of break point
+
+	printf ("Computing offset corrections\n")
+
+	a1=(r[1,1,c1a-1] + r[1,1,c1a  ])/2.0
+	a2=(r[1,1,c1b  ] + r[1,1,c1b+2])/2.0
+
+	c1=(r[1,1,c2a-1] + r[1,1,c2a  ])/2.0
+	c2=(r[1,1,c2b  ] + r[1,1,c2b+1])/2.0
+
+	# determine offsets: adjust a,c spectrometers to b
+
+	a=a2/a1   # scale factor for spectrometer a
+	c=c1/c2   # scale factor for spectrometer c
+
+	x=r-r+1.0   # array = 1.0
+
+	x[1,1,1:c1a]   = x[1,1,1:c1a]*a    # spectrometer a scaling
+	x[1,1,c2b:717] = x[1,1,c2b:717]*c  # spectrometer c scaling
+
+	r = r * x      # reflectance corrected for offsets
+
+	if (c1b-c1a =2) { # fix channel in between at 1um
+		k1=r[1,1,c1a]
+		k2=r[1,1,c1b]
+		r[1,1,c1a+1] = (k1 + k2)/2.0
+	}
+
+	if (c2b-c2a =2) { # fix channel in between at 2um
+		k1=r[1,1,c2a]
+		k2=r[1,1,c2b]
+		r[1,1,c2a+1] = (k1 + k2)/2.0
+	}
+
+	printf ("offset corrections: :%5.3f %5.3f\n",  a, c)
+}
+
+f7=0.0
+f2=0.0
+
+if (libbyplastic == 1) {    # correct for scattered light from plastic
+				# (neded in some libby samples)
+
+	# Strategy is to derive band strengths of the
+	# plastic 1.73 and 1.2 CH features and use the
+	# lesser of the two values to determine the
+	# amount of scattered light
+
+        # printf ("Checking for plastic stray light\n")
+
+	df="/d1/rclark/data/libby/spd0310"
+
+	p = read(filename=df,record=2469)  # plastic spectrum
+
+	# 1.73 band:
+
+	rfc7 = (p[1,1,449]+p[1,1,466])/2.0   # plastic reference continuum
+        rfb7 = p[1,1,461]                    # plastic band bottom
+	rf7  = rfc7 - rfb7
+
+	rc7 = (r[1,1,449]+r[1,1,466])/2.0    # sampls reference continuum
+        rb7 = r[1,1,461]                     # sample band bottom
+
+	f7  = (rc7-rb7)/rf7                  # plastic fraction
+	if (f7 < 0.0) f7 = 0.0
+
+	# 1.2 band:
+
+	rfc2 = (p[1,1,273]+p[1,1,311])/2.0   # plastic reference continuum
+        rfb2 = p[1,1,288]                    # plastic band bottom
+	rf2  = rfc2 - rfb2
+
+	rc2 = (r[1,1,273]+r[1,1,311])/2.0    # sampls reference continuum
+        rb2 = r[1,1,288]                     # sample band bottom
+
+	f2  = (rc2-rb2)/rf2                  # plastic fraction
+	if (f2 < 0.0) f2 = 0.0
+
+
+	if (f7 == 0.0) f7 = 0.0
+	if (f2 == 0.0) f2 = 0.0
+
+	fx = f7
+	if (f2 < f) {
+		fx = f2     # choose smaller value
+	}
+
+	r = r - p*fx       # corrected spectrum
+	printf ("plastic correction= %5.3f\n", f)
+}
+
+
+if (wavylight == 1) {    # correct for portable light interference pattern
+
+	printf ("Computing wavylight correction\n")
+
+	# to be done
+}
+
+printf ("Writing corrected reflectance to: %s, title= %s \n", outf, otitle)
+write (r, filename=outf, type=specpr, title=otitle)

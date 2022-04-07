@@ -1,0 +1,73 @@
+.\" use ms macros
+.\" this header is for putting the page numbers at the bottom of the page
+.\" set line length, page offset, vertical spacing
+.nr LL 6.3i
+.ll 6.3i
+.nr PO 1.0i
+.po 1.0i
+.nr VS 12
+.vs 12
+.\" set header and footer margins (default is 1.0i)
+.nr FM 1.00i
+.fm 1.00i
+.nr HM 1.00i
+.hm 1.00i
+.\" set no date here, MUST be before CF definition, because ND sets CF
+.\" set date, so don't do .ND
+.\" LH CH RH are left, center, right header strings
+.\" LF CF RF are left, center, right footer strings
+.\" default is CH is defined as: .ds CH "\(hy \\n(PN \(hy
+.ds LH "SPECPR Users' Manual
+.ds CH
+.ds RH "Page 14.\\n(PN
+.\" setup complete
+.nf
+SPECPR Users' Manual                                                   Page 14.1
+
+
+
+
+
+
+
+
+
+
+
+
+
+.ce
+.B
+CHAPTER 14
+.R
+
+
+
+
+
+.ce
+.B
+RADIATIVE TRANSFER ROUTINES
+.R
+
+
+
+
+.fi
+.bp
+.B
+14.1  Introduction
+.R
+.PP
+The radiative transfer routines allow you to compute a reflectance spectrum given
+the optical constants of a material, compute reflectance spectra of mixtures
+of materials given their optical constants, invert a reflectance spectrum to
+absorption coefficient given the index of refraction spectrum, and other
+computations.  All computations can be done at specific grain sizes and
+viewing geometries (including geometric albedo).
+.PP
+Because of the memory requirements, the radiative transfer routines have been
+split from the specpr program, and are now called "radtran."  See the radtran
+user's manual for details.
+
+NOTE: the radtran manual is currently in preparation.

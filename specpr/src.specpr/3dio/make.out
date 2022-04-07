@@ -1,0 +1,81 @@
+	ratfor90 -sep < read3d.r > read3d.f
+	f90 -C +fp_exception -O -c read3d.f
+read3d.f
+Warning 4040 :  -C flag is not yet supported for IA F90 compiler. 
+   external subroutine READ3D
+
+330 Lines Compiled
+	rm -f read3d.f
+	ratfor90 -sep < file3d.r > file3d.f
+	f90 -C +fp_exception -O -c file3d.f
+file3d.f
+Warning 4040 :  -C flag is not yet supported for IA F90 compiler. 
+   external subroutine FILE3D
+
+747 Lines Compiled
+	rm -f file3d.f
+	ratfor90 -sep < hedr3d.r > hedr3d.f
+	f90 -C +fp_exception -O -c hedr3d.f
+hedr3d.f
+Warning 4040 :  -C flag is not yet supported for IA F90 compiler. 
+   external subroutine HEDR3D
+
+317 Lines Compiled
+	rm -f hedr3d.f
+	ratfor90 -sep < blkext.r > blkext.f
+	f90 -C +fp_exception -O -c blkext.f
+blkext.f
+Warning 4040 :  -C flag is not yet supported for IA F90 compiler. 
+   external subroutine BLKEXT
+
+418 Lines Compiled
+	rm -f blkext.f
+	ratfor90 -sep < redbil.r > redbil.f
+	f90 -C +fp_exception -O -c redbil.f
+redbil.f
+Warning 4040 :  -C flag is not yet supported for IA F90 compiler. 
+   external subroutine REDBIL
+
+389 Lines Compiled
+	rm -f redbil.f
+	ratfor90 -sep < redbsq.r > redbsq.f
+	f90 -C +fp_exception -O -c redbsq.f
+redbsq.f
+Warning 4040 :  -C flag is not yet supported for IA F90 compiler. 
+   external subroutine REDBSQ
+
+390 Lines Compiled
+	rm -f redbsq.f
+	ratfor90 -sep < redbip.r > redbip.f
+	f90 -C +fp_exception -O -c redbip.f
+redbip.f
+Warning 4040 :  -C flag is not yet supported for IA F90 compiler. 
+   external subroutine REDBIP
+
+389 Lines Compiled
+	rm -f redbip.f
+	ratfor90 -sep < lstrec.r > lstrec.f
+	f90 -C +fp_exception -O -c lstrec.f
+lstrec.f
+Warning 4040 :  -C flag is not yet supported for IA F90 compiler. 
+   external subroutine LSTREC
+
+393 Lines Compiled
+	rm -f lstrec.f
+	ratfor90 -sep < num2ch.r > num2ch.f
+	f90 -C +fp_exception -O -c num2ch.f
+num2ch.f
+Warning 4040 :  -C flag is not yet supported for IA F90 compiler. 
+   external subroutine NUM2CH
+
+56 Lines Compiled
+	rm -f num2ch.f
+	ratfor90 -sep < seth3d.r > seth3d.f
+	f90 -C +fp_exception -O -c seth3d.f
+seth3d.f
+Warning 4040 :  -C flag is not yet supported for IA F90 compiler. 
+   external subroutine SETH3D
+
+380 Lines Compiled
+	rm -f seth3d.f
+	ld  -r -o /src/local/specpr/obj/3dio.o read3d.o  file3d.o  hedr3d.o  blkext.o  redbil.o  redbsq.o  redbip.o  lstrec.o  num2ch.o  seth3d.o

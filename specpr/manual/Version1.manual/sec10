@@ -1,0 +1,262 @@
+.sh 1 "FILE DISPLAY, TRANSFER, AND OVERLAY " 10
+
+
+.sh 2 "File Display "
+.pp
+A spectrum can be displayed on the CRT using the CRT plot
+routines (section 9) by typing in the file ID (V, W, D, U, or Y),
+the file number, and any options.  Options are E for errors, A for
+auto scale, B for auto scale with lineprinter plot, A followed by
+a number 1 to 20 for wavelength file 1 to 20 (plot in wavelength
+space).  If many files in sequence are to be plotted, then
+directly after the file number type + and the number of files to
+be plotted.  Thus, to plot spectra from device V, files 10 to 22,
+type V10+12.  The +12 means the next 12 files after the requested
+file should also be processed.  Note that the + specification will
+yield strange results with option E (include errors) since the
+file increment is always 1.  Thus, after plotting data with errors
+(e.g. file V10 = data and file V11 = errors), the file increment
+will be one, and the errors will be plotted as data with the next
+file plotted as the errors to the errors!  To plot many spectra
+in sequence which all have error files, they must be typed in
+sequentially such as V10E V12E V14E V16E V18E V20E V22E.  Note no
+spaces are required, but they can be inserted if desired.  No
+commas are necessary (this is different from Math Operations).
+
+
+.sh 3 "File Transfer "
+.pp
+Files can be transferred by specifying the file ID, file number,
+the transfer specification
+.ul
+T,
+and the file ID and file number of where the transfer is to go.
+Many files may be transferred sequentially by using the plus
+specification.  For example, V10TD23 transfers Vfile 10 to Dfile
+23.  Also, V10 + 99TD23 transfers Vfile 10 plus the next 99
+files to Dfile 23 plus the 99 files respectively.  Thus, Vfile
+109 will be the last file transferred and will go to Dfile 99 +
+23 = 122.
+
+
+.sh 3 "File Tranfer with Plot or Information Change "
+.pp
+Files which are going to be transferred can be plotted (and thus
+deglitched or information changed, see section 9) before the
+transfer by the option
+.ul
+C.
+The letter C stands for CRT plot routine.  Thus, to transfer V10
+to D23 plus the next 5 files and display them before
+transferring, type:
+.ul
+V10 + 5 CT D23.
+If information only needs to be changed, the CRT plot can be
+skipped and the information change routine called by a CIT
+specification as in
+.ul
+V10 + 5 CIT D23.
+The C is required since the information change routine is part of
+the CRT plot routines.  The
+.ul
+I
+then signals the CRT plot routines that the informtiaon change
+routine only is requested.  Note, when transferring data to a
+protected (positive or zero protection value) file, the file
+number to transfer to must be 1 plus the protection value.  A file
+number must be given so, if you say to transfer to V1 but 100
+files are protected, the program will say there is a protection
+violation.
+.pp
+Starpack transfers involve 3 regular data files.  Thus, to
+transfer starpack 1 (S1) to V10 (S1TV10) will result in the
+starpack being put into V10, V11, and V12.  When the starpack is
+transferred back, the program automatically collects the 3 files
+for starpack S1.  Thus, to transfer 6 starpacks (1 - 6) to Vfile
+29+, type S1 + 5T V29.  The starpack will be put in savefiles 29
+through 46.  To transfer these starpacks back, type V29 +
+5 T S1.  When the program sees that starpacks are being transferred, it
+knows the +5 means 5 starpacks at 3 regular files per starpack.
+
+
+.sh 2 "Overlaying Spectra "
+.pp
+Overlaying spectra on the CRT is an excellent way to compare
+data for reproducability.  For example, before an extinction
+analysis, you should overlay your spectra to look for
+inconsistencies in the data.  You can then throw out obviously bad
+data.  The overlay is an option used in file display (see section
+10.1).  To overlay spectra, type the file ID, file number, and the
+option letter O.  The O must be included in every spectrum to be
+overlaid.  Errors can be included, and the overlay can be in
+channel, wavelength, or energy space.
+.pp
+The space type (wavelength, energy, or channel) can be set as an
+option on the first file to be overlaid.  Thus, the overlay
+region for different types of spectra may be easily compared.
+However, when in wavelength space, you should not be in the
+auto-scale mode.  An example of this occurs when trying to overlay
+the visible Photometer Data (25 channels from 0.35 to 1.1 \(*mm)
+and "Wedge" Circular Variable Filter data (120 channels from 0.62
+to 2.5 \(*mm).  The minimum and maximum wavelengths are different
+for the two data sets; thus the CRT plot routine will scale the
+data differently if the wavelengths are auto scaled.  To avoid this
+problem, simply set the minimum and maximum wavelengths to accept
+the range of your data sets.
+.pp
+Many spectra in sequence can be plotted and overlaid by using the
+plus specification as in section 10.1.  The program tells you
+when the last file in a sequence is overlaid on the CRT.  The
+plus specification will give strange results when including
+errors as noted in section 10.1.
+.pp
+An example of overlaying spectra is:
+.ul
+V10O V11EO V23 + 5O V51 O.
+Note that the letter O is required on the last file to be
+overlaid.  If it is not included, the screen will be erased, and
+the spectrum will be displayed as in section 10.1 (see section
+10.4).  To use different wavelength files, one might type
+.ul
+V101A3OV102EOV143EOV145EOV208+10A4O.
+Note that the wavelength file stays the same until it is changed
+again.
+
+
+.sh 2 "Multiple Commands in File Display, Transfer and Overlay "
+.pp
+One entire line (80 characters) can be input for execution.
+These commands can be mixed freely between file displays, file
+transfers, or file overlays.  Spaces may be included anywhere on
+the line, but none are necessary.  An example of multiple commands
+is:
+.ul
+V1+3CTD1 W34+10 V23+14O V38EO V102+243TV236 V346+10CITD480.
+First there is a display and transfer of 4 files, then 11 files
+are displayed, then 16 files overlaid (the last with error
+bars), next 244 files are transferred, then 11 are transferred
+with information change first.
+.pp
+In any of these routines, type E will exit to the next command,
+and typing X will exit back to File Display, Transfer and Overlay
+(except in the information change, see section 9) without
+execution of the remaining commands.
+.bp
+
+
+.sh 1 "FILE LIST "
+
+
+.sh 2 "File List "
+.pp
+From the File Operations, type the device file ID (V, W, D, U, or
+Y) to call the file list routines.  You will then be given a list
+of options or the list.  The CRT list contains only the file
+number, title, the number of revolutions, civil/Universal time,
+sidereal time, date, and the airmass.  The options are for the
+lineprinter list (make sure the lineprinter is assigned if you
+want an LP list).  Pressing return will list only on the CRT.
+.pp
+Typing
+.ul
+P
+will list on the lineprinter, and typing
+.ul
+A
+will do an "automatic" list on the lineprinter.  The difference
+between the P and A specification is that, with the P
+specification, the program halts after every 25 lines and asks
+the user to type
+.ul
+C
+to continue,
+.ul
+X
+to exit,
+.ul
+T
+to go to file Transfer or type in new file limits to
+list (see below) or a new P or A specification.  With the A specification, the
+screen is erased when the screen is full, and the list continues
+until the limit is reached or an I/O error occurs.  If this limit
+is reached and the user typed C to continue, the A specification
+changes to a P specification so that the program will not list
+forever.  Typing
+.ul
+E
+or
+.ul
+X
+will exit the routine.  Typing an option character after the P or
+A specification (on the same line) will change what is printed on
+the lineprinter.  No option prints the file number, title,
+revolutions, integration time, civil/Universal time, sidereal
+time, date, airmass, and the normalization factor on one line ad
+the history just below the title.  For the case of average or
+summation in the history, the manual history is also printed since
+this contains an extension of the history.  Option
+.ul
+B
+prints all header information except the manual history and the
+data.  Option
+.ul
+C
+prints all the header information but not the data.  Option
+.ul
+D
+prints all the header information and the data.
+.pp
+After this, you will be asked to type in the beginning and ending
+files to be listed.  Typing
+.ul
+E
+or
+.ul
+X
+will exit the routine.  If the second number is less than or
+equal to zero, the routine will exit as with typing E or X.  If
+the first file number is less than or equal to zero, it is set to
+1.
+.pp
+When the program halts for input, you may type
+.ul
+C
+to continue,
+.ul
+X
+to exit,
+.ul
+T
+to go to File Display, Transfer, and Overlay.  You may also type
+in new limits (beginning and ending file numbers) to list, or you
+may type the
+.ul
+P
+or
+.ul
+A
+specification with options
+.ul
+B,
+.ul
+C,
+or
+.ul
+D
+to change the type of list depending on the file number.  If you
+type
+.ul
+P
+or
+.ul
+A,
+you will be asked to type in new file limits.  The line printer
+may also be turned off (no list on lineprinter) by typing
+.ul
+N.
+You will then be instructed to type in new file limits again.
+.pp
+Thus, when listing an entire data file, you may change the
+information printed to save time and paper and suppress
+information which will never be looked at or is not needed.
+.bp

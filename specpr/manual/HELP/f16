@@ -1,0 +1,122 @@
+
+
+
+
+
+
+SPECPR Users' Manual                                            Page 8-f16.1
+
+
+_F_1_6:  _L_i_n_e _S_e_g_m_e_n_t _D_a_t_a _G_e_n_e_r_a_t_o_r                           _A_l_i_a_s: _l_i_n_e[_g_e_n]
+
+     This routine generates arrays of data by  linearly  interpolating  user
+(x,y)  pairs to a wavelength set.  Given data values at specific wavelengths
+or channels typed in by  the  user,  this  routine  computes  line  segments
+between the points the user has input.
+
+     Upon entering the routine, the user has  the  option  of  changing  the
+current  wavelength set in use by typing the file ID letter (upper case) and
+the record number, or assigning the channel numbers as  "wavelength  values"
+with  the  maximum number of channels given by the wavelength record.  To do
+this, type h and the wavelength record number to assign channel numbers with
+the number of channels given by the wavelength record number.  Examples:
+
+        V23      Assign wavelength data set in v23.
+        h482     Assign the array value = the wavelength data value.
+                 (channel 1 = 1.0, channel 2 = 2.0, ... channel 482 = 482.0).
+        C482     same as h482, but the wavelength routines assign the
+                 wavelength set before it is handed to the f16 routine.
+        <return> Use existing wavelength set in use.
+
+
+     After this initialization, the routine repeatedly asks  for  the  first
+two  data  values--the  (x,y)  coordinates for user point #1, then #2, etc.,
+until you are through.  Enter the data values separated by a space.  At each
+command point, a number of control options can be entered:
+
+e or x   will cause the routine to exit.
+
+rn       return to step n, where n is the  step  number.   This  allows  the
+         return  to  any  previous input step so it may be changed (and then
+         you may return to the last step before you went to step  n).   Note
+         that  you  cannot change an x value (wavelength) to a value greater
+         than that in the next step--to do that, you must delete the follow-
+         ing steps.
+
+dn       delete steps.  Using  this  command,  all  data  values  after  and
+         including  step  n  will be deleted; command control returns to the
+         first step deleted.
+
+ln       is a list command which will  list  up  to  25  entries  previously
+         entered  with  the  step  number.   Here (n) is optional.  If it is
+         used, the routine lists from step number n to step n+24.
+
+b        for begin analysis.  The routine calculates all data values in  the
+         array between each set of ordered pairs.
+
+
+     No input spectrum is  required  because  you  are  creating  data,  not
+operating  on  data.   If  an  input  file  was  called, an error message is
+printed, and the routine will hard exit.
+
+
+
+
+
+     All operations are checked for validity.  If a given operation produces
+an  error,  a  message  will  be  printed  stating what caused the error and
+whether or not the routine can continue.  If it can, the routine asks  again
+for the data.  If not, the routine will exit, hard or soft, depending on the
+severity of the condition.  Note that all x data values  (e.g.  wavelengths)
+must be in increasing order, or error messages will result.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

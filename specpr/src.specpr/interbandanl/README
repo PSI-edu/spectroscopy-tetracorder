@@ -1,0 +1,117 @@
+A Description of the Band Analysis Routine 
+
+	This routine is entered from the crt plot routines (which plot 
+the spectrum) by typing an "A". The routine then prompts the user
+for one of three actions: the changing of the vertical and horizontal scales,
+the opening of a new file, or the analysis of a band. 
+
+	The changing of the plot scales (option c) proceeds exactly as the 
+normal scale changing is done in plotting a spectrum.  
+
+	If the user wishes to open a new file, the option o is typed
+and then the user is prompted for the file name and a title for the
+data which is to be written.
+
+	By typing the option "a", the user begins the analysis of a
+band. The user is first prompted for the first point which lies on
+the continuum which surrounds the band of interest. After this
+prompt is given the user is expected to use the graphics cursor
+position keys to move the cursor to the first continuum point and
+then to enter a return. A box is then drawn around the nearest point
+in terms of wavelength in the data set ( i.e. the continumm points
+can be selected by locating their proper horizontal postion alone
+and ignoring the current vertical postion of the graphics cursor).
+After the first point has been selected the user is then asked
+whether this point is at the right postion, if it is not the user
+may redo it by typing an r or may continue on by entering a return.
+Once the user has selected the first continuum point, the process is 
+then repeated for the second continum point. If both points are now
+correct the user enters a return and the data is scaled by dividing out the
+continuum and then it is reploted. 
+	At this point in the analysis the hopefully still
+interactive user decides whether he would like to move the locations
+of the continum points (option "m"), change the plot scales (option "c") or 
+have the band center selected ( return).
+	If the user decides to do another continuum the new continum is
+done with exactly the same process by which the orginal continuum
+was selected. The only exception being that the data for the y axis which 
+is used to select the new continuum is no longer the original data but 
+the data currently displayed on the screen.
+	If the user wishes to rescale the data, it is done in the
+same manner as in the normal spectrum plotting routine.
+	If the user decides that all is correct and the band center
+should now be selected as the program begins its feverish work. The
+program first searches the data which is displayed to find the
+minimum data point(vertical) between the two selected continuum
+points. Once the minimum point has been found a parabola is fit to
+the minimum point and the two points nearest to this minimum.  The 
+the center wavelength(xcoordinate) of this parabola is then
+calculated as well as the reflectance on the parabola at this point.
+A solid veritcal line is then plotted from this calculated set of
+coordinates to the continuum.  The reflectance level of the full
+width half max (fwhm) is then calculated and the fwhm is then itself
+drawn as a dashed line between the sides of the band with its
+endpoints being solid boxes. A vertical dashed line at the center point of 
+the fwhm is then drawn from the reflectance level where the data is
+interesected to the continuum. If there are enough channels ( 10
+chanels are currently being used as the limit ) between the two 
+endpoints of the fwhm the routine will draw a cross at the full width 
+quarter max (fwqm).  This routine repeats this process determining 
+whether it is possible to find the subsequent full widths (e.g. full width 
+eigth max) by examining the number of channels as determined by the previous 
+full width. The last full width that can be determined is the full
+full width sixtyfourth max.  The last fwqm ( if present) or subsequent 
+width which has been located is drawn as a dotted line width its
+endpoints being two small solid boxes. The center of this width is then
+computed and a vertical dotted line is draw from its intersection
+with the data to the continuum. 
+	The user is now asked whether he would prefer to use the fit 
+selected center (return) or to manually select the band center (option s).
+	If the fit selected center is chosen the fwhm is calculated,
+as well as the assymetry parameter and the band depth with the band
+center and fwhm being written to the terminal.
+	If the user chooses to manually select the band center he
+must manually move the graphics cursor (as before) to the correct
+horizontal postion. A full width half max is then drawn on the
+graphics screen and is calculated and then writen to the terminal.
+After the band center has been selected the user has the option to redo 
+the center ( option r ) or to venture forward (return). The user
+then has the option to select the fwhm manaully ( option f ) or to
+have the width selected automatically. If manual selection is chosen
+a horizontal line is drawn at the proper reflectance level and the
+user then selects two points on that line in a manner similar to
+chosing the original continuum (Note: with noisy data manual
+selection may need to be used).
+	After the fwhm has been determined by either of the methods
+above, the user is then asked whether the error associated with the
+horizontal data should be determined automatically (return) or
+picked by the user (option m). The automatic error selection finds
+the first two points on the either side of the channel nearest the
+closest channel to the band center and takes there absolute
+difference divided by four as the horizontal error value.  If one 
+wishes to determine the horizontal error manually, two points are 
+entered in a fashion similar to the selection of the continuum 
+or the manual determination of the fwhm. 
+	Once the error has been obtained by either method the user
+is asked whether the data should be written to an ascii text file (default). 
+If the user does not wish to write the data to a file the program
+(enter n) the routine then asks the user if he would like to exit 
+( option e ) or begin the entire process again ( return). If, however, 
+the user wishes to write the data, the program prompts the user for
+a file and title for the data if a file is not currently open. The user then 
+receives a prompt for a  15 character comment (longer comments are
+silently truncated) which describes the band ( there should be a
+description of the standard comment field somewhere, ask your local
+spectral wizard). After a comment has been entered the program asks
+the user decide whether to exit (option e) or to begin the entire
+process once more.
+
+
+
+
+
+
+
+Known crashes:
+	1) If one attempts to run the program to analyze a band with
+a large number of deleted 

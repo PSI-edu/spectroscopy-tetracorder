@@ -1,0 +1,134 @@
+#
+# Should only need to edit the next group.
+#
+# note: in SSPPFLAGS, set TERMDELAY if you need extra delays by the
+# cpu for graphics terminal graphics.
+SPKLUDGE=LINUX
+export SPKLUDGE
+
+SSPPFLAGS='LINUX -XWIN '
+export SSPPFLAGS
+
+SPECPR=/src/local/specpr
+export SPECPR
+
+#
+# the following is needed for Linux red Hat 8, 9, ....
+# but not before. So comment out the one not needed
+
+LDLIBS='-lX11'
+export LDLIBS
+
+# pre RedHat 8:
+#
+#LDLIBS='-lX11 -lm'
+#export LDLIBS
+
+LDFLAGS=' '
+export LDFLAGS
+
+LFLAGS=-melf_i386
+export LFLAGS
+
+LSTRING=''
+export LSTRING
+
+LIBPW='/lib/libPW.a'
+export LIBPW
+
+RANDRET=32767
+export RANDRET
+
+SP_LOCAL=/usr/local
+export SP_LOCAL
+
+SP_BIN=securebin
+export SP_BIN
+#
+# The following should be fine as is, except FFLAGS might need
+#               floating point accelerator flags
+#               (e.g. on sun add -ffpa if you have an accelerator)
+#
+SPSDIR=syslinux
+export SPSDIR
+
+SPSYSOBJ='${SP_OBJ}/syslinux.o'
+export SPSYSOBJ
+
+RANLIB='ranlib'
+export RANLIB
+
+SSPP='sspp'
+export SSPP
+
+SP_DBG='${SPECPR}/debug'
+export SP_DBG
+
+SP_TMP='${SPECPR}/tmp'
+export SP_TMP
+
+SP_OBJ='${SPECPR}/obj'
+export SP_OBJ
+
+SP_LIB='${SPECPR}/lib'
+export SP_LIB
+
+F77='f77'
+export F77
+
+CC='cc'
+export CC
+
+AR='ar'
+export AR
+
+RF='ratfor77'
+export RF
+
+FFLAGS='-C -O -m32'
+export FFLAGS
+
+FFLAGS1='-C -m32 '
+export FFLAGS1
+
+FFLAGS2='-C -m32 '
+export FFLAGS2
+
+# Added to following to not interrupt a backslash
+BSLASH='-fno-backslash'
+export BSLASH
+
+FOPT='-O'
+export FOPT
+
+FOPT1='-O'
+export FOPT1
+
+FOPT2='-O'
+export FOPT2
+
+RFLAGS='<'
+export RFLAGS
+
+CFLAGS='-O -m32'
+export CFLAGS
+
+ARFLAGS='rv'
+export ARFLAGS
+
+GFLAGS='-s'
+export GFLAGS
+
+#gfit
+GF1_CFLAGS='-g -m32'
+export GF1_CFLAGS
+GF1_FFLAGS='-C -m32'
+export GF1_FFLAGS
+GF1_LFLAGS=-melf_i386
+export GF1_LFLAGS
+GF2_CFLAGS='-g -m32'
+export GF2_CFLAGS
+GF2_FFLAGS='-C -m32'
+export GF2_FFLAGS
+GF2_LFLAGS=-melf_i386
+export GF2_LFLAGS

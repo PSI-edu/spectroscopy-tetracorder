@@ -1,0 +1,129 @@
+_2._3  _F_i_l_e _P_r_o_t_e_c_t_i_o_n
+
+     All  files  may  be  totally  or  partially  protected,  or  completely
+unprotected.   The fourth line of the CRT header gives the protection status
+for all six devices (devices v, w, d, u, v, and s).
+
+   o+ If the  protection  number  is  positive  or  zero,  the  device  is  a
+     read/write  device  where  you can read up to and including the protec-
+     tion, but you can only write to the protection +1 record.  For example,
+     a  value  of  637 means you can read the first 637 records, and you can
+     only write to record 638.
+
+   o+ A protection number of -1 means totally unprotected so you may read  or
+     write anywhere in the file randomly.
+
+   o+ A protection number of less than -1 means the  device  is  a  read-only
+     device  where  you can read up to the absolute value protection number.
+     For example, a value of -264 means 264 records are read  only  and  you
+     can't write to the file.
+
+You can set the protections on many files on one command line.  Example:
+
+          _v_0 _d-_1 _u_4_3_2 _y-_6_0_0 _w-_6_0_0 _s-_5_0
+
+where v0 means to protect 0 files on device v (write to file 1 only, 0 files
+can  be read); u432 means to protect up to record 432 (write to record 433);
+y-600 means that y is a read-only device with 600 records; similarly for  w;
+and s is a read-only file with 50 records.  If the protection number is zero
+or positive, it is incremented each time the device is written to.
+
+
+_2._3._1  _U_s_e _o_f _S_P_E_C_P_R _F_i_l_e _P_r_o_t_e_c_t_i_o_n
+
+     The SPECPR file  protection  is  designed  to  protect  the  user  from
+destroying  existing  data  and  to  allow  use  of the program with minimal
+thinking of where data is going (so the  user  can  be  thinking  about  the
+science).   Protection  should  be  used  at  all times unless there is some
+necessary reason for not using it.  Remember that a  mistake  is  what  will
+destroy data in an unprotected file--and everyone makes mistakes.
+
+     The following is an example of the use of protection when using  specpr
+tape  I/O.   Some groups have a different philosophy regarding specpr tapes.
+For example, at the U. S. Geological Survey, Denver spectroscopy laboratory,
+specpr tape I/O is not used.  Instead, specpr files are kept on line on disk
+and written to tape only with normal system backups.  In any event, the fol-
+lowing  example  illustrates  the  proper use of protections to prevent data
+loss, as well as to maintain histories.
+
+     Start SPECPR.  Say you have 2 tapes to be transferred to disc and  then
+do some processing.  Load the tapes (we will call them A01 and B01):  A01 on
+MT0, and B01 on MT1.  Plan to assign u to MT0, y to MT1, v  and  w  to  disk
+files.   Set  the protection on v and w to 0 (this is the default).  Type in
+the names of the devices  u and v = A01; y and w = B01.  Assign the  devices
+as  noted  above.  Now here is where the protection comes in.  First, let us
+
+
+
+
+
+transfer the tape on MT0 (A01 = u).  The protection is -9999.   Say  on  the
+label  on  the  tape,  there are 673 records--do not believe this.  We could
+have set the protection to -673, but what if the last time you  added  stuff
+to  the tape you forgot to update the number or someone else added stuff and
+did not update it?  If that happened and you then added stuff  after  record
+673  and wrote it back to the tape, someone might get very mad.  So--let the
+computer find the end of the data.  Go to  file  transfer  and  type  "u1  +
+9999tv1".   All  the records up to the end of file mark will be transferred.
+Say there were really 729 records on the tape.  Then,  after  the  transfer,
+the  protection  on  v would be 729 and -9999 on u.  Now transfer MT1 to the
+disc:  "y1 + 1999tw1".  Say there are 463 records on  MT1.   The  protection
+after  the transfer would be 463 on w and -9999 on y.  Now go back to change
+protection routine and make the protection on u-729 and on y-463.  All  your
+data are fully protected.
+
+     Now say you did some processing and added 47 records to v and 21 to  w.
+You  must  then transfer the stuff back to the tapes.  Take the tape off MT0
+and put in a write ring (if you had a write ring in before, you  are  asking
+for trouble).  Go to the change protection routine and change the protection
+u from -729 to 729.  If the tape was not at the load point when you  put  in
+the  write ring, you must reset the record pointer in the program.  This can
+be done in one of several ways:  (1) change the tape name (change  the  name
+of  u  from  A01  to A01 (yes, the same name); when the name is changed, the
+tape is rewound); (2) display record u1; or (3)  transfer  u1  to  somewhere
+else  (this  is  faster than a display).  If d is assigned to disc and it is
+used as a workfile (protection = -1), transfer "u1td1" or "u1td1000".  If  d
+is  assigned  to  /dev/null,  it  will  read  u1 before you get the "illegal
+transfer, device assigned to /dev/null" message.
+
+     Now that the tape record pointer is reset, you transfer your stuff from
+v to u.  Type "v730 + 999tu730".  Note 730 is one more than the current pro-
+tection.  The transfer will continue up to the protection limit on v  (776),
+and  after  transferring v776 to u776 the message "FILE REQUEST GREATER THAN
+FILE PROTECTION" will come on--press return.
+
+
+     It is now a good idea to list the tape from just before  the  point  at
+which  data was added to the end of file to make sure the tape does not have
+any obvious errors.
+
+     Now you must transfer the stuff on w to the tape.  Change  the  protec-
+tion on u to 463; then change the name of u to B01 (this puts in the correct
+name and resets the record pointer).  Now go to file transfer and type "w464
++  99tu464".   The  program  will  stop at the protection limit on w of 484,
+transferring the added 21 records.  Now list the type as before to check the
+newly added records.
+
+     Following this method will maximize the safety of your  data.   Failure
+to  do so will cause no sympathy from the person whose data you accidentally
+destroy (and you must recreate it for him or her).
+
+     The specpr protection is closely tied  to  the  history  philosophy  of
+specpr.   The  specpr  history  uses  the "tape name" and record number as a
+unique identifier for a spectrum.   Proper  use  of  the  history  mechanism
+
+
+
+
+
+necessitates  proper  protection.   Don't set the protection to -1 and write
+over data.  Later data could be referencing specific records  earlier  in  a
+file.  For example if record 36 was a sample minus dark spectrum, and record
+167 was record 36 divided by a standard, and then you  wrote  over  36  with
+another  data set, then the history would be broken.  Similarly, it is _v_i_t_a_l
+to keep file names indicative of the final archive source.  Don't do work in
+a  file  called  "junk" or "temp" and then rename it XYZ001 because all his-
+tories will be referring to file "junk" or "temp" and you will have no  idea
+what that file really was a year from now.
+
+

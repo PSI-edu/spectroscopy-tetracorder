@@ -1,0 +1,86 @@
+.\" use ms macros
+.\" this header is for putting the page numbers at the bottom of the page
+.\" set line length, page offset, vertical spacing
+.nr LL 6.3i
+.ll 6.3i
+.nr PO 1.0i
+.po 1.0i
+.nr VS 12
+.vs 12
+.\" set header and footer margins (default is 1.0i)
+.nr FM 1.00i
+.fm 1.00i
+.nr HM 1.00i
+.hm 1.00i
+.\" set no date here, MUST be before CF definition, because ND sets CF
+.\" set date, so don't do .ND
+.\" LH CH RH are left, center, right header strings
+.\" LF CF RF are left, center, right footer strings
+.\" default is CH is defined as: .ds CH "\(hy \\n(PN \(hy
+.ds LH "SPECPR Users' Manual
+.ds CH
+.ds RH "Page 8-f10.\\n(PN
+.\" setup complete
+.nf
+SPECPR Users' Manual                                                   Page 8-f10.1
+
+
+.B
+F10:  Sorting Routine                                     Alias: sort
+.R
+.PP
+The function arranges data into increasing wavelength order.
+Entry is by the usual method for special functions: from the math
+routines, enter the file id and record number of the data set or be
+sorted.  Errors may
+be included by an "e" option on the math command line.
+.PP
+After entering the sort routine, the title of the data set to be sorted
+is printed along with the wavelength set in use.  The
+user may change the wavelength set at this point by entering the
+(upper case) file id and record number of the wavelength set.
+.PP
+.B
+WARNING:
+.R
+Only the data
+file is sorted, but by specifying the wavelength file when
+calling f10, the wavelengths may be sorted also.
+.PP
+For example, say the wavelengths are in v3 and the data in v6.  First
+sort the wavelength set.  From math operations, type the
+
+.in 14n
+.B
+v3f10
+.R
+.in 0n
+or
+.in 14n
+.B
+v3sort
+.R
+.in 0n
+
+command.  Once inside the sort routine, set the wavelength set, in
+this example to the:
+
+.in 14n
+.B
+V3
+.R
+.in 0n
+
+wavelength set.
+.PP
+Once the wavelengths are sorted, sort the data set v6:
+
+.in 14n
+.B
+v6sort
+.R
+.in 0n
+
+and once inside you should not have to set the wavelength set again
+because V3 should already be in use.  Simply press return to sort
+the data.

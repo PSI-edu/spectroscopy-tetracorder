@@ -1,0 +1,917 @@
+
+void Save(FP, BotObjPtr, Level, PageNumber)
+   FILE *FP;
+   struct ObjRec *BotObjPtr;
+   int Level, PageNumber;
+{
+   int watch_cursor=watchCursorOnMainWindow;
+   struct ObjRec *obj_ptr=NULL;
+
+   if (BotObjPtr != NULL && !copyInDrawTextMode) {
+      SetCurChoice(NOTHING);
+
+      if (!watch_cursor) {
+         SetWatchCursor(drawWindow);
+         SetWatchCursor(mainWindow);
+      }
+   }
+   if (Level == 0 && PageNumber == 1) {
+      char font_str[MAXSTRING];
+
+      ResetXPmErrorMessage();
+      GetPSFontStr(curFont, curStyle, font_str);
+      SetFullVersionString();
+      /* do not translate -- program constants */
+      if (fprintf(FP, "%%TGIF %s\n", fullVersionString) == EOF) {
+         writeFileFailed = TRUE;
+      }
+      if (fprintf(FP, "state(%1d,%1d,%.3f,", pageStyle, CUR_VERSION,
+            printMag) == EOF) {
+         writeFileFailed = TRUE;
+      }
+      if (fprintf(FP, "%1d,%1d,%1d,", drawOrigX, drawOrigY, zoomScale) == EOF) {
+         writeFileFailed = TRUE;
+      }
+      if (fprintf(FP, "%1d,%1d,%1d,", xyEnglishGrid, snapOn, colorIndex) ==
+            EOF) {
+         writeFileFailed = TRUE;
+      }
+      if (fprintf(FP, "%1d,%1d,%1d,", horiAlign, vertAlign, lineWidth) == EOF) {
+         writeFileFailed = TRUE;
+      }
+      if (fprintf(FP, "%1d,%1d,%1d,%1d,", curSpline, lineStyle, objFill,
+            penPat) == EOF) {
+         writeFileFailed = TRUE;
+      }
+      if (fprintf(FP, "%1d,'%s',%1d,%1d,", textJust,
+            /* font_str starts with the '/' character */
+            &font_str[1], curStyle, GetCurSzUnit()) == EOF) {
+         writeFileFailed = TRUE;
+      }
+      if (fprintf(FP, "%1d,%1d,%1d,", 0, curDash, gridSystem) == EOF) {
+         writeFileFailed = TRUE;
+      }
+      if (fprintf(FP, "%1d,%1d,%1d,", xyMetricGrid, textVSpace, zoomedIn) ==
+            EOF) {
+         writeFileFailed = TRUE;
+      }
+      if (fprintf(FP, "%1d,%1d,%1d,", gridShown, moveMode, ROTATE0) == EOF) {
+         writeFileFailed = TRUE;
+      }
+      if (fprintf(FP, "%1d,%1d,", rcbRadius, useGray) == EOF) {
+         writeFileFailed = TRUE;
+      }
+      if (fprintf(FP, "%1d,%1d,%1d,%1d,%1d,%1d,%1d,%1d,%1d,%1d,%1d).\n",
+            pageLayoutMode,
+            (pageLayoutMode == PAGE_STACK) ? curPageNum : paperCol,
+            (pageLayoutMode == PAGE_STACK) ? lastPageNum : paperRow,
+            pageLineShownInTileMode, colorDump,
+            round(((float)onePageWidth)*printMag/100.0),
+            round(((float)onePageHeight)*printMag/100.0),
+            stretchableText, textRotation, rotationIncrement,
+            transPat) == EOF) {
+         writeFileFailed = TRUE;
+      }
+      if ((BotObjPtr != NULL || tgifObj != NULL) && !copyInDrawTextMode &&
+            !serializingFile) {
+         if (fprintf(FP, "%%\n") == EOF) {
+            writeFileFailed = TRUE;
+         }
+         if (fprintf(FP, "%% @%s%s\n", "(#)$H", "eader$") == EOF) {
+            writeFileFailed = TRUE;
+         }
+         if (fprintf(FP, "%% %s\n", "%W%") == EOF) {
+            writeFileFailed = TRUE;
+         }
+         if (fprintf(FP, "%%\n") == EOF) {
+            writeFileFailed = TRUE;
+         }
+         if (savedComments != NULL) {
+            if (fputs(savedComments, FP) == EOF) {
+               writeFileFailed = TRUE;
+            }
+         }
+         if (tgifObj->lattr != NULL) {
+            if (fprintf(FP, "file_attr(") == EOF) writeFileFailed = TRUE;
+            SaveAttrs(FP, tgifObj->lattr);
+            if (fprintf(FP, ").\n") == EOF) writeFileFailed = TRUE;
+         }
+         GetUnitSpec(gszMsgBox);
+         if (fprintf(FP, "unit(\"") == EOF) writeFileFailed = TRUE;
+         SaveString(FP, gszMsgBox);
+         if (fprintf(FP, "\").\n") == EOF) writeFileFailed = TRUE;
+         if (shapeShadowInResource ||
+               shapeShadowDx != 0 || shapeShadowDy != 0) {
+            if (fprintf(FP, "shapeshadow(%1d,%1d).\n", shapeShadowDx,
+                  shapeShadowDy) == EOF) {
+               writeFileFailed = TRUE;
+            }
+         }
+         SaveColors(FP);
+         if (slideShowInfoValid) {
+            if (fprintf(FP, "slideshow_info('%s',%1d,%1d).\n",
+                  (slideShowBorderColor==NULL ? "" : slideShowBorderColor),
+                  slideShowXOffset, slideShowYOffset) == EOF) {
+               writeFileFailed = TRUE;
+            }
+         }
+         if (fprintf(FP, "script_frac(\"%s\").\n", scriptFractionStr) == EOF) {
+            writeFileFailed = TRUE;
+         }
+         if (fprintf(FP, "fg_bg_colors('%s','%s').\n",
+               colorMenuItems[colorIndex], (*defaultBgColorStr=='\0' ?
+               myBgColorStr : defaultBgColorStr)) == EOF) {
+            /*
+             * The above should use colorMenuItmes[bgColorIndex]
+             *       and not myBgColorStr.
+             */
+            writeFileFailed = TRUE;
+         }
+         if (*gszHhtmlExportTemplate != '\0') {
+            if (fprintf(FP, "html_export_template(\"%s\").\n",
+                  gszHhtmlExportTemplate) == EOF) {
+               writeFileFailed = TRUE;
+            }
+         }
+         SaveDontReencode(FP);
+         SavePSFontAliases(FP);
+      }
+   }
+   if (Level == 0 && BotObjPtr != NULL && !copyInDrawTextMode) {
+      if (fprintf(FP, "page(%1d,\"", PageNumber) == EOF) writeFileFailed = TRUE;
+      SaveString(FP, ((pageLayoutMode==PAGE_TILE || curPage->name==NULL) ? "" :
+            curPage->name));
+      if (fprintf(FP, "\",%1d,'%s').\n", curPage->layer_on,
+            ((pageLayoutMode==PAGE_TILE || curPage->page_file_name==NULL) ? "" :
+            curPage->page_file_name)) == EOF) {
+         writeFileFailed = TRUE;
+      }
+   }
+
+   for (obj_ptr=BotObjPtr; obj_ptr != NULL; obj_ptr=obj_ptr->prev) {
+      SaveObj(FP, obj_ptr, Level);
+      if (obj_ptr->prev == NULL) {
+         if (Level == 0) {
+            if (fprintf(FP, ".\n") == EOF) writeFileFailed = TRUE;
+         } else {
+            if (fprintf(FP, "\n") == EOF) writeFileFailed = TRUE;
+         }
+      } else {
+         if (Level == 0) {
+            if (fprintf(FP, ".\n") == EOF) writeFileFailed = TRUE;
+         } else {
+            if (fprintf(FP, ",\n") == EOF) writeFileFailed = TRUE;
+         }
+      }
+   }
+   if (BotObjPtr != NULL && !copyInDrawTextMode) {
+      if (!watch_cursor) {
+         SetDefaultCursor(mainWindow);
+         ShowCursor();
+      }
+   }
+}
+
+
+static
+int ReadState(Inbuf)
+   char *Inbuf;
+{
+   char *s, font_str[MAXSTRING], sb_font_str[MAXSTRING];
+   int page_style, forced_use_gray=FALSE, compat_dpi, font_sz=0, sz_unit=0;
+   int page_arg1=0, page_arg2=0, rotate=ROTATE0;
+   int one_page_width=0, one_page_height=0;
+
+   *font_str = *sb_font_str = '\0';
+   s = FindChar((int)'(', Inbuf);
+   if (sscanf(s, "%d", &page_style) != 1) return FALSE;
+   s = FindChar((int)',', s);
+   if (*s == '\0') {
+      fileVersion = INVALID;
+   } else if (sscanf(s, "%d", &fileVersion) != 1) {
+      return FALSE;
+   }
+
+   if (fileVersion > CUR_VERSION) return FALSE;
+
+   gnCannotFindColorMsg = FALSE;
+
+   if (!importingFile && !mergingFile) {
+      if (fileVersion <= 13) {
+         switch (page_style) {
+         case PORTRAIT: printMag = (float)100.0; break;
+         case LANDSCAPE: printMag = (float)100.0; break;
+         case HIGHPORT: printMag = (float)50.0; page_style = PORTRAIT; break;
+         case HIGHLAND: printMag = (float)50.0; page_style = LANDSCAPE; break;
+         case SLIDEPORT: printMag = (float)200.0; page_style = PORTRAIT; break;
+         case SLIDELAND: printMag = (float)200.0; page_style = LANDSCAPE; break;
+         default:
+            sprintf(gszMsgBox, TgLoadString(STID_UNRECOG_PAGE_STYLE),
+                  page_style);
+            TwoLineMsg(gszMsgBox, TgLoadString(STID_PORTRAIT_STYLE_ASSUMED));
+            page_style = PORTRAIT;
+            printMag = (float)100.0;
+            break;
+         }
+      } else {
+         if (page_style != PORTRAIT && page_style != LANDSCAPE) {
+            sprintf(gszMsgBox, TgLoadString(STID_UNRECOG_PAGE_STYLE),
+                  page_style);
+            TwoLineMsg(gszMsgBox, TgLoadString(STID_PORTRAIT_STYLE_ASSUMED));
+            page_style = PORTRAIT;
+         }
+         s = FindChar((int)',', s);
+         sscanf(s, "%f", &printMag);
+      }
+      pageStyle = page_style;
+   }
+
+   if (PRTGIF && useGray) forced_use_gray = TRUE;
+   if (importingFile || mergingFile) return TRUE;
+
+   page_arg1 = page_arg2 = 1;
+   one_page_width = onePageWidth;
+   one_page_height = onePageHeight;
+
+   if (fileVersion >= 2) {
+      compat_dpi = FONT_DPI_75;
+      curDash = 0;
+      gridSystem = ENGLISH_GRID;
+      xyMetricGrid = DEFAULT_METRIC_GRID;
+      textVSpace = 0;
+      zoomedIn = FALSE;
+      rcbRadius = DEF_RCB_RADIUS;
+      pageLayoutMode = PAGE_STACK;
+      paperCol = paperRow = 1;
+      curPageNum = lastPageNum = 1;
+      pageLineShownInTileMode = TRUE;
+
+      if (usePaperSizeStoredInFile) ResetOnePageSize();
+
+      s = FindChar((int)',', s);
+
+      InitScan(s, "\t\n, ");
+
+      if (fileVersion <= 3) {
+         GETINT("state", drawOrigX,     "X Draw Origin");
+         GETINT("state", drawOrigY,     "Y Draw Origin");
+         GETINT("state", zoomScale,     "Zoom scale");
+         GETINT("state", xyEnglishGrid, "English Grid");
+         GETINT("state", snapOn,        "Grid");
+         GETINT("state", colorIndex,    "Color");
+         GETINT("state", horiAlign,     "Horizontal Align");
+         GETINT("state", vertAlign,     "Vertical Align");
+         GETINT("state", lineWidth,     "Line Width");
+         GETINT("state", lineStyle,     "Line Style");
+         GETINT("state", objFill,       "Fill Pattern");
+         GETINT("state", penPat,        "Pen Pattern");
+         GETINT("state", textJust,      "Text Justify");
+         GETINT("state", curFont,       "Font Name");
+         GETINT("state", curStyle,      "Font Style");
+         GETINT("state", font_sz,       "Font Size");
+
+         if (lineWidth == LINE_CURVED) {
+            lineWidth = 0;
+            curSpline = LT_SPLINE;
+         } else {
+            curSpline = LT_STRAIGHT;
+         }
+      } else if (fileVersion <= 7) {
+         GETINT("state", drawOrigX,     "X Draw Origin");
+         GETINT("state", drawOrigY,     "Y Draw Origin");
+         GETINT("state", zoomScale,     "Zoom scale");
+         GETINT("state", xyEnglishGrid, "English Grid");
+         GETINT("state", snapOn,        "Grid");
+         GETINT("state", colorIndex,    "Color");
+         GETINT("state", horiAlign,     "Horizontal Align");
+         GETINT("state", vertAlign,     "Vertical Align");
+         GETINT("state", lineWidth,     "Line Width");
+         GETINT("state", curSpline,     "Spline");
+         GETINT("state", lineStyle,     "Line Style");
+         GETINT("state", objFill,       "Fill Pattern");
+         GETINT("state", penPat,        "Pen Pattern");
+         GETINT("state", textJust,      "Text Justify");
+         GETINT("state", curFont,       "Font Name");
+         GETINT("state", curStyle,      "Font Style");
+         GETINT("state", font_sz,       "Font Size");
+      } else if (fileVersion <= 8) {
+         GETINT("state", drawOrigX,     "X Draw Origin");
+         GETINT("state", drawOrigY,     "Y Draw Origin");
+         GETINT("state", zoomScale,     "Zoom scale");
+         GETINT("state", xyEnglishGrid, "English Grid");
+         GETINT("state", snapOn,        "Grid");
+         GETINT("state", colorIndex,    "Color");
+         GETINT("state", horiAlign,     "Horizontal Align");
+         GETINT("state", vertAlign,     "Vertical Align");
+         GETINT("state", lineWidth,     "Line Width");
+         GETINT("state", curSpline,     "Spline");
+         GETINT("state", lineStyle,     "Line Style");
+         GETINT("state", objFill,       "Fill Pattern");
+         GETINT("state", penPat,        "Pen Pattern");
+         GETINT("state", textJust,      "Text Justify");
+         GETINT("state", curFont,       "Font Name");
+         GETINT("state", curStyle,      "Font Style");
+         GETINT("state", font_sz,       "Font Size");
+         GETINT("state", compat_dpi,    "Font DPI");
+      } else if (fileVersion <= 11) {
+         GETINT("state", drawOrigX,     "X Draw Origin");
+         GETINT("state", drawOrigY,     "Y Draw Origin");
+         GETINT("state", zoomScale,     "Zoom scale");
+         GETINT("state", xyEnglishGrid, "English Grid");
+         GETINT("state", snapOn,        "Grid");
+         GETINT("state", colorIndex,    "Color");
+         GETINT("state", horiAlign,     "Horizontal Align");
+         GETINT("state", vertAlign,     "Vertical Align");
+         GETINT("state", lineWidth,     "Line Width");
+         GETINT("state", curSpline,     "Spline");
+         GETINT("state", lineStyle,     "Line Style");
+         GETINT("state", objFill,       "Fill Pattern");
+         GETINT("state", penPat,        "Pen Pattern");
+         GETINT("state", textJust,      "Text Justify");
+         GETINT("state", curFont,       "Font Name");
+         GETINT("state", curStyle,      "Font Style");
+         GETINT("state", font_sz,       "Font Size");
+         GETINT("state", compat_dpi,    "Font DPI");
+         GETINT("state", curDash,       "Dash Style");
+      } else if (fileVersion <= 12) {
+         GETINT("state", drawOrigX,     "X Draw Origin");
+         GETINT("state", drawOrigY,     "Y Draw Origin");
+         GETINT("state", zoomScale,     "Zoom scale");
+         GETINT("state", xyEnglishGrid, "English Grid");
+         GETINT("state", snapOn,        "Grid");
+         GETINT("state", colorIndex,    "Color");
+         GETINT("state", horiAlign,     "Horizontal Align");
+         GETINT("state", vertAlign,     "Vertical Align");
+         GETINT("state", lineWidth,     "Line Width");
+         GETINT("state", curSpline,     "Spline");
+         GETINT("state", lineStyle,     "Line Style");
+         GETINT("state", objFill,       "Fill Pattern");
+         GETINT("state", penPat,        "Pen Pattern");
+         GETINT("state", textJust,      "Text Justify");
+         GETINT("state", curFont,       "Font Name");
+         GETINT("state", curStyle,      "Font Style");
+         GETINT("state", font_sz,       "Font Size");
+         GETINT("state", compat_dpi,    "Font DPI");
+         GETINT("state", curDash,       "Dash Style");
+         GETINT("state", gridSystem,    "Grid System");
+         GETINT("state", xyMetricGrid,  "Metric Grid");
+      } else if (fileVersion <= 18) {
+         GETINT("state", drawOrigX,     "X Draw Origin");
+         GETINT("state", drawOrigY,     "Y Draw Origin");
+         GETINT("state", zoomScale,     "Zoom scale");
+         GETINT("state", xyEnglishGrid, "English Grid");
+         GETINT("state", snapOn,        "Grid");
+         GETINT("state", colorIndex,    "Color");
+         GETINT("state", horiAlign,     "Horizontal Align");
+         GETINT("state", vertAlign,     "Vertical Align");
+         GETINT("state", lineWidth,     "Line Width");
+         GETINT("state", curSpline,     "Spline");
+         GETINT("state", lineStyle,     "Line Style");
+         GETINT("state", objFill,       "Fill Pattern");
+         GETINT("state", penPat,        "Pen Pattern");
+         GETINT("state", textJust,      "Text Justify");
+         GETINT("state", curFont,       "Font Name");
+         GETINT("state", curStyle,      "Font Style");
+         GETINT("state", font_sz,       "Font Size");
+         GETINT("state", compat_dpi,    "Font DPI");
+         GETINT("state", curDash,       "Dash Style");
+         GETINT("state", gridSystem,    "Grid System");
+         GETINT("state", xyMetricGrid,  "Metric Grid");
+         GETINT("state", textVSpace,    "Text Vertical Spacing");
+      } else if (fileVersion <= 19) {
+         GETINT("state", drawOrigX,     "X Draw Origin");
+         GETINT("state", drawOrigY,     "Y Draw Origin");
+         GETINT("state", zoomScale,     "Zoom scale");
+         GETINT("state", xyEnglishGrid, "English Grid");
+         GETINT("state", snapOn,        "Grid");
+         GETINT("state", colorIndex,    "Color");
+         GETINT("state", horiAlign,     "Horizontal Align");
+         GETINT("state", vertAlign,     "Vertical Align");
+         GETINT("state", lineWidth,     "Line Width");
+         GETINT("state", curSpline,     "Spline");
+         GETINT("state", lineStyle,     "Line Style");
+         GETINT("state", objFill,       "Fill Pattern");
+         GETINT("state", penPat,        "Pen Pattern");
+         GETINT("state", textJust,      "Text Justify");
+         GETINT("state", curFont,       "Font Name");
+         GETINT("state", curStyle,      "Font Style");
+         GETINT("state", font_sz,       "Font Size");
+         GETINT("state", compat_dpi,    "Font DPI");
+         GETINT("state", curDash,       "Dash Style");
+         GETINT("state", gridSystem,    "Grid System");
+         GETINT("state", xyMetricGrid,  "Metric Grid");
+         GETINT("state", textVSpace,    "Text Vertical Spacing");
+         GETINT("state", zoomedIn,      "Zoomed In");
+      } else if (fileVersion <= 21) {
+         GETINT("state", drawOrigX,     "X Draw Origin");
+         GETINT("state", drawOrigY,     "Y Draw Origin");
+         GETINT("state", zoomScale,     "Zoom scale");
+         GETINT("state", xyEnglishGrid, "English Grid");
+         GETINT("state", snapOn,        "Grid");
+         GETINT("state", colorIndex,    "Color");
+         GETINT("state", horiAlign,     "Horizontal Align");
+         GETINT("state", vertAlign,     "Vertical Align");
+         GETINT("state", lineWidth,     "Line Width");
+         GETINT("state", curSpline,     "Spline");
+         GETINT("state", lineStyle,     "Line Style");
+         GETINT("state", objFill,       "Fill Pattern");
+         GETINT("state", penPat,        "Pen Pattern");
+         GETINT("state", textJust,      "Text Justify");
+         GETINT("state", curFont,       "Font Name");
+         GETINT("state", curStyle,      "Font Style");
+         GETINT("state", font_sz,       "Font Size");
+         GETINT("state", compat_dpi,    "Font DPI");
+         GETINT("state", curDash,       "Dash Style");
+         GETINT("state", gridSystem,    "Grid System");
+         GETINT("state", xyMetricGrid,  "Metric Grid");
+         GETINT("state", textVSpace,    "Text Vertical Spacing");
+         GETINT("state", zoomedIn,      "Zoomed In");
+         GETINT("state", gridShown,     "Grid Shown");
+         GETINT("state", moveMode,      "Move Mode");
+      } else if (fileVersion <= 26) {
+         GETINT("state", drawOrigX,     "X Draw Origin");
+         GETINT("state", drawOrigY,     "Y Draw Origin");
+         GETINT("state", zoomScale,     "Zoom scale");
+         GETINT("state", xyEnglishGrid, "English Grid");
+         GETINT("state", snapOn,        "Grid");
+         GETINT("state", colorIndex,    "Color");
+         GETINT("state", horiAlign,     "Horizontal Align");
+         GETINT("state", vertAlign,     "Vertical Align");
+         GETINT("state", lineWidth,     "Line Width");
+         GETINT("state", curSpline,     "Spline");
+         GETINT("state", lineStyle,     "Line Style");
+         GETINT("state", objFill,       "Fill Pattern");
+         GETINT("state", penPat,        "Pen Pattern");
+         GETINT("state", textJust,      "Text Justify");
+         GETINT("state", curFont,       "Font Name");
+         GETINT("state", curStyle,      "Font Style");
+         GETINT("state", font_sz,       "Font Size");
+         GETINT("state", compat_dpi,    "Font DPI");
+         GETINT("state", curDash,       "Dash Style");
+         GETINT("state", gridSystem,    "Grid System");
+         GETINT("state", xyMetricGrid,  "Metric Grid");
+         GETINT("state", textVSpace,    "Text Vertical Spacing");
+         GETINT("state", zoomedIn,      "Zoomed In");
+         GETINT("state", gridShown,     "Grid Shown");
+         GETINT("state", moveMode,      "Move Mode");
+         GETINT("state", rotate,        "Text Rotation");
+         GETINT("state", rcbRadius,     "RCBox Radius");
+      } else if (fileVersion <= 27) {
+         GETINT("state", drawOrigX,     "X Draw Origin");
+         GETINT("state", drawOrigY,     "Y Draw Origin");
+         GETINT("state", zoomScale,     "Zoom scale");
+         GETINT("state", xyEnglishGrid, "English Grid");
+         GETINT("state", snapOn,        "Grid");
+         GETINT("state", colorIndex,    "Color");
+         GETINT("state", horiAlign,     "Horizontal Align");
+         GETINT("state", vertAlign,     "Vertical Align");
+         GETINT("state", lineWidth,     "Line Width");
+         GETINT("state", curSpline,     "Spline");
+         GETINT("state", lineStyle,     "Line Style");
+         GETINT("state", objFill,       "Fill Pattern");
+         GETINT("state", penPat,        "Pen Pattern");
+         GETINT("state", textJust,      "Text Justify");
+         GETINT("state", curFont,       "Font Name");
+         GETINT("state", curStyle,      "Font Style");
+         GETINT("state", font_sz,       "Font Size");
+         GETINT("state", compat_dpi,    "Font DPI");
+         GETINT("state", curDash,       "Dash Style");
+         GETINT("state", gridSystem,    "Grid System");
+         GETINT("state", xyMetricGrid,  "Metric Grid");
+         GETINT("state", textVSpace,    "Text Vertical Spacing");
+         GETINT("state", zoomedIn,      "Zoomed In");
+         GETINT("state", gridShown,     "Grid Shown");
+         GETINT("state", moveMode,      "Move Mode");
+         GETINT("state", rotate,        "Text Rotation");
+         GETINT("state", rcbRadius,     "RCBox Radius");
+         GETINT("state", useGray,       "Use Gray Scale");
+      } else if (fileVersion <= 28) {
+         /* Matsuda's Version */
+         GETINT("state", drawOrigX,     "X Draw Origin");
+         GETINT("state", drawOrigY,     "Y Draw Origin");
+         GETINT("state", zoomScale,     "Zoom scale");
+         GETINT("state", xyEnglishGrid, "English Grid");
+         GETINT("state", snapOn,        "Grid");
+         GETINT("state", colorIndex,    "Color");
+         GETINT("state", horiAlign,     "Horizontal Align");
+         GETINT("state", vertAlign,     "Vertical Align");
+         GETINT("state", lineWidth,     "Line Width");
+         GETINT("state", curSpline,     "Spline");
+         GETINT("state", lineStyle,     "Line Style");
+         GETINT("state", objFill,       "Fill Pattern");
+         GETINT("state", penPat,        "Pen Pattern");
+         GETINT("state", textJust,      "Text Justify");
+         GETINT("state", curFont,       "Font Name");
+         GETINT("state", curStyle,      "Font Style");
+         GETINT("state", font_sz,       "Font Size");
+         GETINT("state", compat_dpi,    "Font DPI");
+         GETINT("state", curDash,       "Dash Style");
+         GETINT("state", gridSystem,    "Grid System");
+         GETINT("state", xyMetricGrid,  "Metric Grid");
+         GETINT("state", textVSpace,    "Text Vertical Spacing");
+         GETINT("state", zoomedIn,      "Zoomed In");
+         GETINT("state", gridShown,     "Grid Shown");
+         GETINT("state", moveMode,      "Move Mode");
+         GETINT("state", rotate,        "Text Rotation");
+         GETINT("state", rcbRadius,     "RCBox Radius");
+         GETINT("state", useGray,       "Use Gray Scale");
+         GETINT("state", paperCol,      "Num Columns");
+         GETINT("state", paperRow,      "Num Rows");
+         GETINT("state", curPageNum,    "Current Page Number");
+         GETINT("state", lastPageNum,   "Last Page Number");
+      } else if (fileVersion <= 29) {
+         GETINT("state", drawOrigX,     "X Draw Origin");
+         GETINT("state", drawOrigY,     "Y Draw Origin");
+         GETINT("state", zoomScale,     "Zoom scale");
+         GETINT("state", xyEnglishGrid, "English Grid");
+         GETINT("state", snapOn,        "Grid");
+         GETINT("state", colorIndex,    "Color");
+         GETINT("state", horiAlign,     "Horizontal Align");
+         GETINT("state", vertAlign,     "Vertical Align");
+         GETINT("state", lineWidth,     "Line Width");
+         GETINT("state", curSpline,     "Spline");
+         GETINT("state", lineStyle,     "Line Style");
+         GETINT("state", objFill,       "Fill Pattern");
+         GETINT("state", penPat,        "Pen Pattern");
+         GETINT("state", textJust,      "Text Justify");
+         GETINT("state", curFont,       "Font Name");
+         GETINT("state", curStyle,      "Font Style");
+         GETINT("state", font_sz,       "Font Size");
+         GETINT("state", compat_dpi,    "Font DPI");
+         GETINT("state", curDash,       "Dash Style");
+         GETINT("state", gridSystem,    "Grid System");
+         GETINT("state", xyMetricGrid,  "Metric Grid");
+         GETINT("state", textVSpace,    "Text Vertical Spacing");
+         GETINT("state", zoomedIn,      "Zoomed In");
+         GETINT("state", gridShown,     "Grid Shown");
+         GETINT("state", moveMode,      "Move Mode");
+         GETINT("state", rotate,        "Text Rotation");
+         GETINT("state", rcbRadius,     "RCBox Radius");
+         GETINT("state", useGray,       "Use Gray Scale");
+         GETINT("state", pageLayoutMode,"Page Layout Mode");
+         GETINT("state", page_arg1,     "Page Layout Subarg 1");
+         GETINT("state", page_arg2,     "Page Layout Subarg 2");
+         GETINT("state", pageLineShownInTileMode,"Page Lines Shown");
+      } else if (fileVersion <= 30) {
+         GETINT("state", drawOrigX,     "X Draw Origin");
+         GETINT("state", drawOrigY,     "Y Draw Origin");
+         GETINT("state", zoomScale,     "Zoom scale");
+         GETINT("state", xyEnglishGrid, "English Grid");
+         GETINT("state", snapOn,        "Grid");
+         GETINT("state", colorIndex,    "Color");
+         GETINT("state", horiAlign,     "Horizontal Align");
+         GETINT("state", vertAlign,     "Vertical Align");
+         GETINT("state", lineWidth,     "Line Width");
+         GETINT("state", curSpline,     "Spline");
+         GETINT("state", lineStyle,     "Line Style");
+         GETINT("state", objFill,       "Fill Pattern");
+         GETINT("state", penPat,        "Pen Pattern");
+         GETINT("state", textJust,      "Text Justify");
+         GETSTR("state", font_str,      "Font Name String");
+         GETINT("state", curStyle,      "Font Style");
+         GETINT("state", font_sz,       "Font Size");
+         GETINT("state", compat_dpi,    "Font DPI");
+         GETINT("state", curDash,       "Dash Style");
+         GETINT("state", gridSystem,    "Grid System");
+         GETINT("state", xyMetricGrid,  "Metric Grid");
+         GETINT("state", textVSpace,    "Text Vertical Spacing");
+         GETINT("state", zoomedIn,      "Zoomed In");
+         GETINT("state", gridShown,     "Grid Shown");
+         GETINT("state", moveMode,      "Move Mode");
+         GETINT("state", rotate,        "Text Rotation");
+         GETINT("state", rcbRadius,     "RCBox Radius");
+         GETINT("state", useGray,       "Use Gray Scale");
+         GETINT("state", pageLayoutMode,"Page Layout Mode");
+         GETINT("state", page_arg1,     "Page Layout Subarg 1");
+         GETINT("state", page_arg2,     "Page Layout Subarg 2");
+         GETINT("state", pageLineShownInTileMode,"Page Lines Shown");
+      } else if (fileVersion <= 31) {
+         GETINT("state", drawOrigX,     "X Draw Origin");
+         GETINT("state", drawOrigY,     "Y Draw Origin");
+         GETINT("state", zoomScale,     "Zoom scale");
+         GETINT("state", xyEnglishGrid, "English Grid");
+         GETINT("state", snapOn,        "Grid");
+         GETINT("state", colorIndex,    "Color");
+         GETINT("state", horiAlign,     "Horizontal Align");
+         GETINT("state", vertAlign,     "Vertical Align");
+         GETINT("state", lineWidth,     "Line Width");
+         GETINT("state", curSpline,     "Spline");
+         GETINT("state", lineStyle,     "Line Style");
+         GETINT("state", objFill,       "Fill Pattern");
+         GETINT("state", penPat,        "Pen Pattern");
+         GETINT("state", textJust,      "Text Justify");
+         GETSTR("state", font_str,      "Font Name String");
+         GETINT("state", curStyle,      "Font Style");
+         GETINT("state", font_sz,       "Font Size");
+         GETINT("state", compat_dpi,    "Font DPI");
+         GETINT("state", curDash,       "Dash Style");
+         GETINT("state", gridSystem,    "Grid System");
+         GETINT("state", xyMetricGrid,  "Metric Grid");
+         GETINT("state", textVSpace,    "Text Vertical Spacing");
+         GETINT("state", zoomedIn,      "Zoomed In");
+         GETINT("state", gridShown,     "Grid Shown");
+         GETINT("state", moveMode,      "Move Mode");
+         GETINT("state", rotate,        "Text Rotation");
+         GETINT("state", rcbRadius,     "RCBox Radius");
+         GETINT("state", useGray,       "Use Gray Scale");
+         GETINT("state", pageLayoutMode,"Page Layout Mode");
+         GETINT("state", page_arg1,     "Page Layout Subarg 1");
+         GETINT("state", page_arg2,     "Page Layout Subarg 2");
+         GETINT("state", pageLineShownInTileMode,"Page Lines Shown");
+         GETINT("state", colorDump,     "Print In Color");
+      } else if (fileVersion <= 32) {
+         GETINT("state", drawOrigX,      "X Draw Origin");
+         GETINT("state", drawOrigY,      "Y Draw Origin");
+         GETINT("state", zoomScale,      "Zoom scale");
+         GETINT("state", xyEnglishGrid,  "English Grid");
+         GETINT("state", snapOn,         "Grid");
+         GETINT("state", colorIndex,     "Color");
+         GETINT("state", horiAlign,      "Horizontal Align");
+         GETINT("state", vertAlign,      "Vertical Align");
+         GETINT("state", lineWidth,      "Line Width");
+         GETINT("state", curSpline,      "Spline");
+         GETINT("state", lineStyle,      "Line Style");
+         GETINT("state", objFill,        "Fill Pattern");
+         GETINT("state", penPat,         "Pen Pattern");
+         GETINT("state", textJust,       "Text Justify");
+         GETSTR("state", font_str,       "Font Name String");
+         GETINT("state", curStyle,       "Font Style");
+         GETINT("state", font_sz,        "Font Size");
+         GETINT("state", compat_dpi,     "Font DPI");
+         GETINT("state", curDash,        "Dash Style");
+         GETINT("state", gridSystem,     "Grid System");
+         GETINT("state", xyMetricGrid,   "Metric Grid");
+         GETINT("state", textVSpace,     "Text Vertical Spacing");
+         GETINT("state", zoomedIn,       "Zoomed In");
+         GETINT("state", gridShown,      "Grid Shown");
+         GETINT("state", moveMode,       "Move Mode");
+         GETINT("state", rotate,         "Text Rotation");
+         GETINT("state", rcbRadius,      "RCBox Radius");
+         GETINT("state", useGray,        "Use Gray Scale");
+         GETINT("state", pageLayoutMode, "Page Layout Mode");
+         GETINT("state", page_arg1,      "Page Layout Subarg 1");
+         GETINT("state", page_arg2,      "Page Layout Subarg 2");
+         GETINT("state", pageLineShownInTileMode,"Page Lines Shown");
+         GETINT("state", colorDump,      "Print In Color");
+         GETINT("state", one_page_width, "One Page Width");
+         GETINT("state", one_page_height,"One Page Height");
+      } else if (fileVersion <= 34) {
+         GETINT("state", drawOrigX,      "X Draw Origin");
+         GETINT("state", drawOrigY,      "Y Draw Origin");
+         GETINT("state", zoomScale,      "Zoom scale");
+         GETINT("state", xyEnglishGrid,  "English Grid");
+         GETINT("state", snapOn,         "Grid");
+         GETINT("state", colorIndex,     "Color");
+         GETINT("state", horiAlign,      "Horizontal Align");
+         GETINT("state", vertAlign,      "Vertical Align");
+         GETINT("state", lineWidth,      "Line Width");
+         GETINT("state", curSpline,      "Spline");
+         GETINT("state", lineStyle,      "Line Style");
+         GETINT("state", objFill,        "Fill Pattern");
+         GETINT("state", penPat,         "Pen Pattern");
+         GETINT("state", textJust,       "Text Justify");
+         GETSTR("state", font_str,       "Font Name String");
+         GETINT("state", curStyle,       "Font Style");
+         GETINT("state", font_sz,        "Font Size");
+         GETINT("state", compat_dpi,     "Font DPI");
+         GETINT("state", curDash,        "Dash Style");
+         GETINT("state", gridSystem,     "Grid System");
+         GETINT("state", xyMetricGrid,   "Metric Grid");
+         GETINT("state", textVSpace,     "Text Vertical Spacing");
+         GETINT("state", zoomedIn,       "Zoomed In");
+         GETINT("state", gridShown,      "Grid Shown");
+         GETINT("state", moveMode,       "Move Mode");
+         GETINT("state", rotate,         "Text Rotation");
+         GETINT("state", rcbRadius,      "RCBox Radius");
+         GETINT("state", useGray,        "Use Gray Scale");
+         GETINT("state", pageLayoutMode, "Page Layout Mode");
+         GETINT("state", page_arg1,      "Page Layout Subarg 1");
+         GETINT("state", page_arg2,      "Page Layout Subarg 2");
+         GETINT("state", pageLineShownInTileMode,"Page Lines Shown");
+         GETINT("state", colorDump,      "Print In Color");
+         GETINT("state", one_page_width, "One Page Width");
+         GETINT("state", one_page_height,"One Page Height");
+         GETINT("state", stretchableText,"Stretchable Text");
+         GETINT("state", textRotation,   "Text Rotation");
+         GETINT("state", rotationIncrement,"Rotation Increment");
+      } else if (fileVersion <= 35) {
+         GETINT("state", drawOrigX,      "X Draw Origin");
+         GETINT("state", drawOrigY,      "Y Draw Origin");
+         GETINT("state", zoomScale,      "Zoom scale");
+         GETINT("state", xyEnglishGrid,  "English Grid");
+         GETINT("state", snapOn,         "Grid");
+         GETINT("state", colorIndex,     "Color");
+         GETINT("state", horiAlign,      "Horizontal Align");
+         GETINT("state", vertAlign,      "Vertical Align");
+         GETINT("state", lineWidth,      "Line Width");
+         GETINT("state", curSpline,      "Spline");
+         GETINT("state", lineStyle,      "Line Style");
+         GETINT("state", objFill,        "Fill Pattern");
+         GETINT("state", penPat,         "Pen Pattern");
+         GETINT("state", textJust,       "Text Justify");
+         GETSTR("state", font_str,       "Font Name String");
+         GETINT("state", curStyle,       "Font Style");
+         GETINT("state", font_sz,        "Font Size");
+         GETINT("state", compat_dpi,     "Font DPI");
+         GETINT("state", curDash,        "Dash Style");
+         GETINT("state", gridSystem,     "Grid System");
+         GETINT("state", xyMetricGrid,   "Metric Grid");
+         GETINT("state", textVSpace,     "Text Vertical Spacing");
+         GETINT("state", zoomedIn,       "Zoomed In");
+         GETINT("state", gridShown,      "Grid Shown");
+         GETINT("state", moveMode,       "Move Mode");
+         GETINT("state", rotate,         "Text Rotation");
+         GETINT("state", rcbRadius,      "RCBox Radius");
+         GETINT("state", useGray,        "Use Gray Scale");
+         GETINT("state", pageLayoutMode, "Page Layout Mode");
+         GETINT("state", page_arg1,      "Page Layout Subarg 1");
+         GETINT("state", page_arg2,      "Page Layout Subarg 2");
+         GETINT("state", pageLineShownInTileMode,"Page Lines Shown");
+         GETINT("state", colorDump,      "Print In Color");
+         GETINT("state", one_page_width, "One Page Width");
+         GETINT("state", one_page_height,"One Page Height");
+         GETINT("state", stretchableText,"Stretchable Text");
+         GETINT("state", textRotation,   "Text Rotation");
+         GETINT("state", rotationIncrement,"Rotation Increment");
+         GETINT("state", transPat,       "Pattern Transparency");
+      } else {
+         GETINT("state", drawOrigX,      "X Draw Origin");
+         GETINT("state", drawOrigY,      "Y Draw Origin");
+         GETINT("state", zoomScale,      "Zoom scale");
+         GETINT("state", xyEnglishGrid,  "English Grid");
+         GETINT("state", snapOn,         "Grid");
+         GETINT("state", colorIndex,     "Color");
+         GETINT("state", horiAlign,      "Horizontal Align");
+         GETINT("state", vertAlign,      "Vertical Align");
+         GETINT("state", lineWidth,      "Line Width");
+         GETINT("state", curSpline,      "Spline");
+         GETINT("state", lineStyle,      "Line Style");
+         GETINT("state", objFill,        "Fill Pattern");
+         GETINT("state", penPat,         "Pen Pattern");
+         GETINT("state", textJust,       "Text Justify");
+         GETSTR("state", font_str,       "Font Name String");
+         GETINT("state", curStyle,       "Font Style");
+         GETINT("state", sz_unit,        "Font Size Unit");
+         GETINT("state", compat_dpi,     "Font DPI");
+         GETINT("state", curDash,        "Dash Style");
+         GETINT("state", gridSystem,     "Grid System");
+         GETINT("state", xyMetricGrid,   "Metric Grid");
+         GETINT("state", textVSpace,     "Text Vertical Spacing");
+         GETINT("state", zoomedIn,       "Zoomed In");
+         GETINT("state", gridShown,      "Grid Shown");
+         GETINT("state", moveMode,       "Move Mode");
+         GETINT("state", rotate,         "Text Rotation");
+         GETINT("state", rcbRadius,      "RCBox Radius");
+         GETINT("state", useGray,        "Use Gray Scale");
+         GETINT("state", pageLayoutMode, "Page Layout Mode");
+         GETINT("state", page_arg1,      "Page Layout Subarg 1");
+         GETINT("state", page_arg2,      "Page Layout Subarg 2");
+         GETINT("state", pageLineShownInTileMode,"Page Lines Shown");
+         GETINT("state", colorDump,      "Print In Color");
+         GETINT("state", one_page_width, "One Page Width");
+         GETINT("state", one_page_height,"One Page Height");
+         GETINT("state", stretchableText,"Stretchable Text");
+         GETINT("state", textRotation,   "Text Rotation");
+         GETINT("state", rotationIncrement,"Rotation Increment");
+         GETINT("state", transPat,       "Pattern Transparency");
+      }
+      if (fileVersion <= 28) readingPageNum++;
+      if (fileVersion <= 29) {
+         VerifyCompatibleFontIndex(&curFont);
+         font_sz = GetCompatibleSize(compat_dpi, font_sz);
+         curSzUnit = FontSizeToSzUnit(font_sz);
+         if (PRTGIF) {
+            PrTgifInitBaseFonts();
+         }
+      } else {
+         char *psz=NULL;
+         int len=strlen(font_str);
+
+         if (fileVersion <= 35) {
+            curSzUnit = FontSizeToSzUnit(font_sz);
+         } else {
+            curSzUnit = sz_unit;
+         }
+         if (len > 1 && *font_str == '\'' && font_str[len-1] == '\'') {
+            char *psz1=(&font_str[1]);
+
+            font_str[len-1] = '\0';
+            psz = font_str;
+            while (*psz1 != '\0') *psz++ = *psz1++;
+            *psz = '\0';
+         }
+         if ((psz=strchr(font_str, '%')) != NULL) {
+            *psz++ = '\0';
+            /* Ex., ignore last '%' if font_str eq "Courier%". */
+            if (*psz != '\0') {
+               strcpy(sb_font_str, font_str);
+               strcpy(font_str, psz);
+            }
+         }
+         curFont = GetFontIndex(font_str, curStyle, TRUE);
+         if (curFont == INVALID && (!PRTGIF || cmdLineOpenDisplay)) {
+            sprintf(gszMsgBox, TgLoadString(STID_CANNOT_FIND_FONT_USE_ALT),
+                  font_str, "Times");
+            MsgBox(gszMsgBox, TOOL_NAME, INFO_MB);
+            curFont = FONT_TIM;
+         }
+      }
+      switch (pageLayoutMode) {
+      case PAGE_STACK:
+         curPageNum = page_arg1;
+         lastPageNum = page_arg2;
+         paperCol = paperRow = 1;
+         pageLineShownInTileMode = TRUE;
+         break;
+      case PAGE_TILE:
+         paperCol = page_arg1;
+         paperRow = page_arg2;
+         curPageNum = lastPageNum = 1;
+         break;
+      }
+      loadedCurPageNum = curPageNum;
+      InitPage();
+      curPageNum = loadedCurPageNum;
+
+      if (fileVersion <= 13) {
+         switch (gridSystem) {
+         case ENGLISH_GRID:
+            drawOrigX += HALF_INCH;
+            drawOrigY += HALF_INCH;
+            break;
+         case METRIC_GRID:
+            drawOrigX += 2.5*ONE_CM;
+            drawOrigY += 2.5*ONE_CM;
+            break;
+         }
+      }
+      if ((usePaperSizeStoredInFile || PRTGIF) && fileVersion >= 32) {
+         if (pageStyle == LANDSCAPE) {
+            onePageWidth = one_page_height;
+            onePageHeight = one_page_width;
+         } else {
+            onePageWidth = one_page_width;
+            onePageHeight = one_page_height;
+         }
+         SetPSPageWidthHeight();
+         if (PRTGIF) {
+            UpdPageStyle(pageStyle);
+         }
+      }
+      if (PRTGIF && !cmdLineOpenDisplay) {
+         if (forced_use_gray) useGray = TRUE;
+         return TRUE;
+      }
+      if (rotate != 0) {
+         switch (rotate) {
+         case ROTATE0: textRotation = 0; break;
+         case ROTATE90: textRotation = (90<<6); break;
+         case ROTATE180: textRotation = (180<<6); break;
+         case ROTATE270: textRotation = (270<<6); break;
+         }
+         rotationIncrement = (90<<6);
+         rotate = ROTATE0;
+      }
+      if (colorIndex >= maxColors) {
+         fprintf(stderr, TgLoadString(STID_CANT_FIND_COLOR_NUM_USE_CUR),
+               colorIndex, colorMenuItems[defaultColorIndex]);
+         fprintf(stderr, "\n");
+         colorIndex = defaultColorIndex;
+         gnCannotFindColorMsg = TRUE;
+      }
+      SetCanvasFont();
+/*
+ *    if (!PRTGIF && SzUnitToFontSize(curSzUnit) != canvasFontSize) {
+ *       curFont = actualCurFont;
+ *       curSzUnit = actualCurSzUnit;
+ *       SetFileModified(TRUE);
+ *    }
+ */
+   }
+   UpdPageStyle(pageStyle);
+   if (PRTGIF && !cmdLineOpenDisplay) return TRUE;
+
+   if (lineWidth >= maxLineWidths) {
+      fprintf(stderr, TgLoadString(STID_LINEWIDTH_IDX_RANGE_SET_TO_0),
+            lineWidth);
+      fprintf(stderr, "\n");
+      lineWidth = 0;
+   }
+
+   UpdDrawWinWH();
+   RedrawScrollBars();
+   ShowPage();
+   ShowPageLayout();
+   UpdDrawWinBBox();
+
+   SetDefaultDrawWinClipRecs();
+
+   DrawPaperBoundary(drawWindow);
+   RedrawGridLines(drawWindow);
+   RedrawPageLines(drawWindow);
+   RedrawRulers();
+   RedrawChoiceWindow();
+
+   return TRUE;
+}
+

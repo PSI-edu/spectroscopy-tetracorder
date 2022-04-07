@@ -1,0 +1,68 @@
+.\" use ms macros
+.\" this header is for putting the page numbers at the bottom of the page
+.\" set line length, page offset, vertical spacing
+.nr LL 6.3i
+.ll 6.3i
+.nr PO 1.0i
+.po 1.0i
+.nr VS 12
+.vs 12
+.\" set header and footer margins (default is 1.0i)
+.nr FM 1.00i
+.fm 1.00i
+.nr HM 1.00i
+.hm 1.00i
+.\" set no date here, MUST be before CF definition, because ND sets CF
+.\" set date, so don't do .ND
+.\" LH CH RH are left, center, right header strings
+.\" LF CF RF are left, center, right footer strings
+.\" default is CH is defined as: .ds CH "\(hy \\n(PN \(hy
+.ds LH "SPECPR Users' Manual
+.ds CH
+.ds RH "Page 8-f15.\\n(PN
+.\" setup complete
+.nf
+SPECPR Users' Manual                                            Page 8-f15.1
+
+
+.B
+F15:  Formats Gaussian Parameter File                      Alias: gaus[sfmt]
+.PP
+.B
+NOTE:
+.R
+At this version of specpr, GFIT is not implemented beyond specpr
+version 1.  However, f15 is still included to format Gaussian
+parameter files from GFIT output done for those sites still running
+version 1 specpr and GFIT.  A future implementation of specpr may
+include GFIT.
+.PP
+This routine takes GFIT data from the SPECPR files and formats
+the data in a neat, legible manner.  If no file was input, an error
+message is written, and the routine soft exits.  The routine also
+checks to make sure that the input file is of the the correct type.  If
+not, the routine soft exits.
+.PP
+First, the routine writes out the Gaussian terms (if there are
+any), followed by the continuum terms (if there are any); these
+are followed by the integrated intensities which are equal to the
+height times the width of the Gaussian, the percent error of the
+Gaussians, the mean value and sigma.
+.PP
+The routine then checks the manual history to see if the fit was
+in inverse wavelength space or natural logarithm space.  If the fit was
+in inverse wavelength space, then the data are converted to
+wavelength space for the center positions and widths.  If the fit
+was done in log space, then the items printed are
+
+.nf
+.in 5n
+(1) the relative band depth which is equal to 1 - EXP (Height),
+(2) Band depth - Error = 1 - EXP (Height - Error) and
+(3) Band depth + Error = 1 - EXP (Height + Error).
+.in 0n
+.fi
+
+In all divisions, the denominator is checked
+for zero.  If it is zero, it is reset to 1.0\(mu10\u-36\d,
+and an error message is printed on user's terminal.

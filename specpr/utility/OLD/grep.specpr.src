@@ -1,0 +1,10 @@
+#!/bin/sh
+
+# grep all sccs specpr source
+
+cd ${SPECPR}/src.specpr
+
+for i in *
+do
+	sccsgrep $1 ${i}/SCCS/s.*
+done

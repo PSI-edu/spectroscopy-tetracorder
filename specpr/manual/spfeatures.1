@@ -1,0 +1,108 @@
+NAME
+     spfeatures - search spectral features data base
+
+SYNOPSIS
+     spfeatures [-c range] [-w range] [-d range] [-e range]
+		[-a range] [-F file] [-o file] [-h] [-v] [-b]
+
+
+DESCRIPTION
+     This program searches the spectral features database selecting
+entries based on the band center, width, depth, asymmetry, or error on the
+depth of the feature.  All numbers refer to microns in the database.
+
+     Options:
+
+	    -c c1 c2 : Band Center --  Causes program to select
+			 all features with a band center within
+			 the bounds of c1 and c2.   c2 must be
+			 greater than or equal to c1.
+
+	    -w w1 w2 : Band Width --  Causes program to select
+			 all features with a band width within
+			 the bounds of w1 and w2.  w2 must be
+			 greater than or equal to w1.
+
+	    -d d1 d2 : Band Depth --  Causes program to select
+			 all features with a band depth within
+			 the bounds of d1 and d2.   d2 must be
+			 greater than or equal to d1.
+
+	    -e e1 e2 : Error on band depth --  Causes program 
+			to select all features with an error
+			on the band depth that is within the
+			bounds of e1 and e2.   e2 must be
+			greater than or equal to e1.
+
+	    -a a1 a2 : Band Asymmetry --  Causes program to
+	 		select all features with a band asymmetry
+			within the bounds of a1 and a2.  a2
+			must be greater than or equal to a1.
+
+            -F file  : Database file --  Causes program to use
+			"file" as a database, rather than the
+			default file.
+
+	    -o file  : Output file -- Causes output to be written
+			to "file", rather than standard output.
+			"File" is outputted in binary form, and
+			is not compatible with the "-b" option.
+				(-h and -v are ignored)
+
+	    -h       : Header -- Causes the appropriate header
+			to be included in the output.
+				(default is no header)
+
+	    -v       : Verbose -- Prints the entire title and the
+			comments to each band.  (default is a
+			seventeen character name, and no comments)
+
+	    -b       : Bandanal format -- Causes program to use
+			the output from Specpr Interactive Band
+			Analysis routine, see section 9.8 of the specpr
+			manual.  This option is not compatible with the
+			-o option, and causes a fatal error.  (-v is
+			ignored, and -h header is changed)
+
+
+
+     When more than one option is given, the search is by "and" as
+compared to an "or" search.  If an "or" search is desired, run the
+program separately, and append the output to a file.
+
+EXAMPLES
+
+Find all features with a center between 1.38 and 1.41 microns:
+
+       spfeatures -c 1.38 1.41
+
+Find all features between 1.38 and 1.41 microns with a full width at
+half maximum less than 0.01 micron:
+
+       spfeatures -c 1.38 1.41 -w 0 0.01
+
+Find all features between 1.38 and 1.41 microns with full width at
+half maximum less than 0.01 micron, and belonging to Alunite:
+
+       spfeatures -c 1.38 1.41 -w 0 0.01 | grep Alunite
+
+Find all features between 1.38 and 1.41 microns with full width at
+half maximum greater than 0.01 micron, and all features between 2.1 
+and 2.4 microns that belong to Alunite, and put the output in a file
+called temp1 with a header:
+
+       spfeatures -h -c 1.38 1.41 -w 0.01 9999 | grep Alunite > temp1
+       spfeatures -c 2.1 2.4 | grep Alunite >> temp1
+
+
+FILES
+     /d1/samples/features/FWHM_46      binary features database
+     /d1/samples/features/FWHM         bandanl features database
+     *                                 user's features database
+     NOTE: the above files are be site dependent.
+
+NOTES
+    1) There will be no output if there are no options (null default).
+
+AUTHORS
+     Noel Gorelick, Roger Clark, Matthew Klejwa

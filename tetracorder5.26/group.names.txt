@@ -1,0 +1,67 @@
+
+\#################################################################################
+\######               group strategy                                ##############
+\######  Starting with version 5.3?, moving broad features up front ##############
+\######  and narrow features after, so we might in the future       ##############
+\######  adapt curved continua depending on the broad feature type. ##############
+\######                                                             ##############
+\#################################################################################
+\###### group 0:  catch for other declared groups                   ##############
+\###### group 1:  electronic absorptions 1-micron region            ##############
+\###### group 2:  2 to 2.5-micron region narrow                     ##############
+\###### group 3:  vegetation detection                              ##############
+\###### group 4:  broad absorptions in the 1.5-micron region        ##############  was the search for rare-earth oxides
+\###### group 5:  broad absorptions in the 2-micron region          ##############
+\###### group 6:  2.5-micron region                                 ##############
+\###### group 7:  2.7 to 3-micron OH region                         ##############  was 1.4-micron region 
+\###### group 8:  3.2-micron region       empty at the moment       ##############  was broad absorptions in the 1.5-micron region 
+\###### group 9:                                                    ##############  was 2.7 to 3-micron OH region
+\###### group 10: testing 3.5 um curved continua                    ##############  was 3.2-micron region 
+\###### group 11: 3.5-micron region linear continua                 ##############
+\###### group 12: 4-micron region                                   ##############  was testing 3.5 um curved continuaa
+\###### group 13: 1.3-1.4 micron OH narrow                          ##############  was 1.9-2 micron water and ice 
+\###### group 14: 1.4-1.5 micron OH                                 ##############
+\###### group 15: 1.5 micron OH                                     ##############  was the search for rare-earth oxide Neodymium 
+\###### group 16:                                                   ##############  was the search for rare-earth oxide Samarium
+\###### group 17: 1.7 microns CH and water    Future                ##############
+\###### group 18:                                                   ##############
+\###### group 19: 1.9-2 micron water and ice                        ##############
+\###### group 20: the search for rare-earth oxides                  ##############
+\###### group 21: the search for rare-earth oxide Neodymium         ##############
+\###### group 22: the search for rare-earth oxide Samarium          ##############
+\#################################################################################
+
+\#                     111 111111222222222233333333334
+\#            123456789012 456789012345678901234567890
+
+groupname  0  catchall     \#  catch for other declared groups            
+groupname  1  1um region   \#  electronic absorptions 1-micron region    
+groupname  2  2-2.5um      \#  2 to 2.5-micron region narrow            
+groupname  3  veg detect   \#  vegetation detection                    
+groupname  4  1.5um broad  \#  broad absorptions in the 1.5-micron region 
+groupname  5  2um broad    \#  broad absorptions in the 2-micron region  
+groupname  6  2.5um region \#  2.5-micron region                        
+groupname  7  2.5-3um      \#  2.7 to 3-micron OH region               
+groupname  8  3.2um region \#  3.2-micron region       empty at the moment 
+groupname  9  UV           \#  Future: UV                                 
+groupname 10  3.5um curveC \# testing 3.5 um curved continua            
+groupname 11  3.5um linear \# 3.5-micron region linear continua        
+groupname 12  4um region   \# 4-micron region                         
+groupname 13  1.3-1.4 nrw  \# 1.3-1.4 micron OH narrow               
+groupname 14  1.4-1.5 nrw  \# 1.4-1.5 micron OH                     
+groupname 15  1.5um OH     \# 1.5 micron OH                        
+groupname 16  none         \#                                     
+groupname 17  1.7um region \# 1.7 microns CH and water    Future 
+groupname 18  none         \#                                   
+groupname 19  1.9-2um H2O  \# 1.9-2 micron water and ice       
+groupname 20  rare-earth   \# the search for rare-earth oxides
+groupname 21  Neodymium    \# the search for rare-earth oxide Neodymium
+groupname 22  Samarium     \# the search for rare-earth oxide Samarium
+
+casename   1  veg red-edge
+casename   2  veg type
+casename   3  veg 0.9um bd
+casename   4  veg 1.2um bd
+casename   5  veg 1.4um bd
+casename   6  ep-chlor-cal
+

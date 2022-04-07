@@ -1,0 +1,16 @@
+######################################################################
+	The program sptoascii takes input in the form :
+
+		sptoascii "specpr filename"
+
+	and converts a specpr record into a readable ascii record.
+	
+	The only subroutine not called directly from object files
+	is "redspr.r", which is a modification of redfil.r
+	The makefile is " makefile ".
+
+######################################################################
+	The program asciitosp takes input in the form :
+
+
+	and converts an ascii record to specpr format.

@@ -1,0 +1,48 @@
+This directory contains commands and support files
+for computing abundances.  This directory
+contains the data for the default EMIT abundance
+model is described in AAA.readme.models
+
+The abundances here are a restricted set to a particular
+application: the EMIT instrument on the Space Station
+to map minerals in arid regions of the Earth for climate
+change models to more accurately model the radiative forcing
+of dust.  With this limited set of minerals, results may
+not be as accurate in other geologic environments, including
+other planets.
+
+##########################################################
+For installation for a givenm system check the verion of env on your system:
+env  --version
+
+if the version is 8.30 or later, do from this directory:
+
+      cp -a  davinci-scripts-env-s/davinci* .
+
+else do nothing, the default install is for pre env 8.30.
+A backup copy of these programs are in::
+
+       davinci-scripts-pre-env8.30
+
+##########################################################
+
+
+Run the abundances command from the mapping directory (the one above this one):
+
+./cmds.abundances/cmd.image.moments.all  |& tee abundances-image.moments.out.txt  # or similar output name
+
+If the images are very large in width and you want to make small
+images to put into presentationsm run from the cmds.abundances directory:
+
+./cmd.make.model1.small.images
+
+These commands make images limited to 1280 pixels width
+
+Similarly, from the mapping directory, run
+
+./cmds.color.support/cmd.make.color.results.small.images
+
+to make 1280 pixel images of the color results.  A set of
+separate key files are also made.
+
+

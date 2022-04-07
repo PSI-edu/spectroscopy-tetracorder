@@ -1,0 +1,102 @@
+.\" use ms macros
+.\" this header is for putting the page numbers at the bottom of the page
+.\" set line length, page offset, vertical spacing
+.nr LL 6.3i
+.ll 6.3i
+.nr PO 1.0i
+.po 1.0i
+.nr VS 12
+.vs 12
+.\" set header and footer margins (default is 1.0i)
+.nr FM 1.00i
+.fm 1.00i
+.nr HM 1.00i
+.hm 1.00i
+.\" set no date here, MUST be before CF definition, because ND sets CF
+.\" set date, so don't do .ND
+.\" LH CH RH are left, center, right header strings
+.\" LF CF RF are left, center, right footer strings
+.\" default is CH is defined as: .ds CH "\(hy \\n(PN \(hy
+.ds LH "SPECPR Users' Manual
+.ds CH
+.ds RH "Page 8-f5.\\n(PN
+.\" setup complete
+.nf
+SPECPR Users' Manual                                                   Page 8-f5.1
+
+
+.B
+F5: Continuum Removal                                   Alias: cont[rem]
+.R
+.PP
+The f5 continuum removal is an old algorithm that has been
+superseded in most cases by newer routines such as f12 (cubic
+spline) and f44 (segmented upper hull).  However, it does have an
+advantage in that it removes a continuum of a specific shape given by
+the user in the form of a spectrum.
+.PP
+To enter the routine, type f5.
+.PP
+The directions are fairly simple.  The routine fits a given
+continuum to a spectrum.  The routine will prompt for the continuum
+and spectrum, as well as the continuum points used for the fit.
+Basically, you select two channels and a straight line is generated
+through these two channels in both the given continuum and the
+spectrum.  The continuum is modified by linearly changing its slope so that
+the same two channels on the continuum match the values in the
+spectrum.  Once the fit is complete, the spectrum is divided by the
+modified continuum.
+.PP
+First, you will be instructed to enter the two channels for which
+you want to match the continuum.  Usually that will be on
+each side of an absorption band.
+.PP
+Enter two values to which continuum is to be matched followed by
+h, a, or n representing units of channel, wavelength, and energy
+(inverse wavelength, and the wavelength file id and record number.
+For example:
+
+.B
+.in 14n
+12 33 h V36
+.in 0n
+or
+.in 14n
+1.2 1.65 a V36
+.in 0n
+.R
+
+would be equivalent if channel 12 = wavelength 1.2 and channel 33 =
+wavelength 1.65.  The wavelength set is then V36.
+.PP
+The two points can be entered in whatever units are convenient
+for you, in free format (spaces between numbers, no commas).  The
+wavelength file is read, and the two values entered are correlated
+with the appropriate channel in the wavelength set.
+You can exit the routine here if you wish with an e or x command.
+.PP
+Next, enter the spectrum file id and record number, e to include errors
+followed by the continuum file id and record number.  Type e or x to
+exit the routine.
+.PP
+The message on the CRT will say "WORKING" when you hit the return
+key after entering the information.  The title of the files
+used will be printed on the CRT as they are accessed by the
+program.  The error file with the spectrum is accessed if it was
+requested.
+.PP
+The continuum spectrum is scaled to the spectral data at the
+two given points by calculating a scaled slope and an intercept
+(or vertical offset) and converting each data point of the
+continuum to the scaled continuum through the relationship Y = mx
++ b where Y is the scaled continuum, m is the slope, x is the
+original continuum value at a given channel, and b is the
+intercept.  The spectrum is then divided by the scaled
+continuum.  The errors are scaled by a factor of (scaled spectrum \(di
+original spectrum).
+.PP
+Finally, the title and history are made and control is transferred
+back to the main program to write the file.
+
+.PP
+Original author: Lucy Mcfadden

@@ -1,0 +1,16 @@
+_4._4  _B_u_g _R_e_p_o_r_t_s
+
+     Whenever you encounter a bug, you should report all details  so  others
+can  see them (and at least avoid them) and the specpr manager can fix them.
+Send bug reports directly from specpr with the command:
+
+                    !_s_p_e_c_p_r._b_u_g_s
+                      _e_n_t_e_r _y_o_u_r _r_e_p_o_r_t
+                    <_c_o_n_t_r_o_l _d>  _m_e_a_n_i_n_g _t_y_p_e _a "_c_o_n_t_r_o_l _d"
+
+If you are not in specpr, enter the same command without the "!".
+
+
+
+
+

@@ -1,0 +1,11 @@
+#!/bin/sh
+
+set -x
+
+mkdir PLOTS
+mkdir PLOTS/A
+mkdir PLOTS/C
+mkdir PLOTS/L
+mkdir PLOTS/M
+mkdir PLOTS/S
+mkdir PLOTS/V

@@ -1,0 +1,88 @@
+.nr % 27
+.nr CN 8
+.bp 28
+.sh 3 "F17:  High To Low Resolution Convolution " 8 6 17
+.pp
+Subroutine f17 inputs up to 256 spectral bandpass files and convolves
+each bandpass file around the high resolution input spectrum that
+is entered from SPECPR before entering f17.  The routine outputs
+two data records:  (1) the resultant wavelength values (center
+values) and (2) the convolved spectrum.  The output of the center
+values is optional.
+.pp
+To run the function, go to the SPECPR math routine and enter the
+file ID and number for the input spectrum and f17 (example
+v23f17).  The routine starts with a query for the use of the
+default wavelength assignment, which is displayed at the top of
+the screen.  To change the default assignment, the user enters
+"a" followed by the wavelength new record number.  Next, the
+spectral bandpass information is entered.  Start with the
+desired file ID, beginning record number, and ending record number.
+The records
+are then read, the output spectrum is calculated, and then the user
+is queried on whether or not to output the center value
+wavelengths.  If you wish to write the center values, type in the
+file id and record number of the file you wish to write the
+center values, or type return to ignore writing the center values.
+Then enter the title for the center values, the file ID
+and number for output when asked by the program.
+Note that f17 cannot include errors in its calculations.
+
+The equation used to calculate the resultant is
+.EQ
+R sub j = int from {x sub 0} to {x sub l} S B sub j dx
+.EN
+Where @R sub j@ is a data point in the resultant spectrum, @x sub
+0@ is
+the first value of the input spectrum, @x sub l@ is the last value of the
+input spectrum, S is the input spectrum, and @B sub j@ is the spectral
+bandpasses.
+.pp
+The center values are calculated by the following:
+.EQ
+C sub j = int from {x sub 0} to {x sub l} x S B sub j dx
+.EN
+.pp
+Where @C sub j@ is the center value for that particular spectral bandpass,
+@x sub l@, S, @B sub j@ and @x sub 0@ are the same as first equation, x is the
+wavelength.
+.pp
+The integrals are approximated by summing the data points as
+follows
+for each convolved channel (j).
+.EQ
+R sub j = sum from i=1 to n S sub i B sub {j,i} delta x sub i
+.EN
+Where n is the number of channels and @delta x sub i@ is the spectral
+bandpass of channel i
+.EQ
+delta x sub i ~=~ left { lpile { x sub 2 - x sub 1 , above x sub
+{i+1} - x sub {i-1} , above x sub {n-1} - x sub n, } ~~ lpile { i
+= 1 above 1 < i < n above i = n }
+.EN
+and similarly, the center values (wavelength) of each convolved
+channel is computed from the equation
+.EQ
+c sub j ~=~ { sum from i=1 to n x sub i S sub i B sub {j,i} delta
+x sub i } over R sub j
+.EN
+.pp
+During the calculations, divide operations are checked for a zero
+denominator.  If this were to happen, an error message is printed
+for the user, and the denominator is reset to @1.0 times 10 sup -36@
+instead of
+crashing the program.
+.pp
+If no file has been input to the program at the start, an error
+message will be printed, and the routine exits.
+.pp
+Note that for the spectral bandpass information, the difference
+between the beginning and ending record number cannot be greater
+than 256.  Also, note that, if the number of bandpass files times
+five is greater than the number of channels, a warning message
+will be printed explaining that, with data arranged in such a
+manner, the resulting accuracy of the data is questionable.
+This is due to using the summations (equations 3 and 5) and the
+equation 4 to approximate the integrals.  The message is only a
+warning--you must determine if the bandpasses are complex enough
+that accuracy may actually be in error due to a small sample.

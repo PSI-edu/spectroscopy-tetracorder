@@ -1,0 +1,84 @@
+This directory contains the hppen directory:
+	hpdaemon program BUT
+
+
+You must select whether the plotter is RS232 or HP-IB
+also you must select CUTTER or NOCUTTER
+and PLOTTER or PLOTTER2
+
+PLOTTER is for a HP9872 class plotter with CUTTER
+PLOTTER2 is for a HP7550 class plotter without a ccutter (NOCUTTER).
+
+Before doing the make here, you must install the strings package.
+FIRST: check to see if you have the fillowing files:
+
+    /usr/include/strings.h
+    libstrings.a (should be in /usr/lib but maybe /lib)
+
+If strings.h does not exist, copy the strings/strings.h
+include file to /usr/include/strings.h
+Find this file as follows.
+
+   cd to the strings/strings directory (from specpr/hppen, it is
+usually ../../strings/strings)
+
+If the libstrings.a file does not exist, you must make it as
+follows. (cd to the strings/strings directory).
+
+Read the Makefile and customize it if necessary for you system
+type.
+
+Run make
+
+On HPUX the make makes all the .o files then starts the .s files,
+but the .s stuff is only for VAXes so it failes.  Forget about them
+(.s files) and make the library yourself:
+
+   ar -rvl strings.a *.o 
+   ll strings.a 
+   cp strings.a /usr/lib/libstrings.a 
+
+The strings package is installed.
+
+make and install the hpdaemon programs:
+
+   makeall
+   make install 
+   more makefile 
+   make install2 
+   ll /usr/lib/hpdaemon* 
+
+Do the mknod for your plotter(s) (see your system admin manual.
+You need:
+          /dev/plotter
+          /dev/plotter2    (if you have a second plotter)
+
+
+Install the spooler package:  Here is a complete sequence for SYS V (HP_UX):
+
+as root do:
+   cp SPOOLERS/SYSV.speclab/model/hp7550a.plottr /usr/spool/lp/model 
+   cp SPOOLERS/SYSV.speclab/model/hp9872s.plottr /usr/spool/lp/model 
+   chown lp /usr/spool/lp/model/*.plottr 
+   chgrp bin /usr/spool/lp/model/*.plottr 
+   cd SPOOLERS/SYSV.speclab 
+   /usr/lib/lpshut 
+   ./mkplotters 
+   /usr/lib/lpsched 
+   /usr/lib/accept hpplotter1 
+   /usr/lib/accept hpplotter2 
+   plotq 
+
+The SYS V spooler setup is now complete
+
+Now some additional directories need to be made:
+
+   cd /usr/spool/ 
+   mkdir gplot 
+   chmod 777 gplot 
+   mkdir /usr/log 
+   cat /dev/null > /usr/log/hpdaemon 
+   chmod 666 /usr/log/hpdaemon 
+   ll /usr/log/hpdaemon 
+
+You are done!

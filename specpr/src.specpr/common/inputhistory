@@ -1,0 +1,20 @@
+#       copy input history to an array for later writing to
+#       a specpr file
+
+	common /inhist1/   inhistch, inhsenbl, tinphist
+
+	integer*4 inhistch, inhsenbl
+
+	character*19680 tinphist    # current max size of character array
+
+#       inhistch = character position for next text input
+#
+#       inhsenbl = 0 do not add input to the history array
+#	         = 1 add input to the history array
+#
+#	Any suroutine can begin recording history by setting
+#			inhsenbl = 1
+#			inhistch = 1
+#			tinphist = ' '  # only if you want to start with clean array
+#
+#       Added 11/13/2010 RNC

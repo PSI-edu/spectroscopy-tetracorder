@@ -1,0 +1,17 @@
+#!/bin/sh
+
+msgsdir="$SPECPR/msgs/"
+
+msgs="specnotes"
+
+dmsgs="dspecnotes"
+
+f=$msgsdir/$msgs
+
+if [ "$1" = "-d" ]
+then
+
+	f=$msgsdir/$dmsgs
+fi
+
+more $f

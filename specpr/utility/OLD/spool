@@ -1,0 +1,69 @@
+
+# spooling for specpr plot routines to HP 9872S plotter
+#          installed in the HP-UX spooling system
+# RED 04/08/2002  Changed to use /usr/local/bin instead
+#                 of /usr/local/lib
+#                 Log to /var/spool/plot.log instead of
+#		  /usr/log/plot.log
+
+echo "spooling plot" $4 "to plotter" $3
+echo `whoami`   "specpr plot on $3" `date` >> /var/spool/plot.log
+
+# check if laserjet sequences for HPGL need to be sent
+PCL=no
+PCLOPT=""
+if [ "$3" = "hpgl" ]
+then
+	PCL=yes
+	PCLOPT="-laserjet"
+fi
+
+if test "$3" = "HP9872"
+then
+
+	echo "ERROR, NO PLOTTER OF TYPE $3 AVAILABLE"
+	lp -dhpplotter1 $4
+
+elif test "$3" = "HP7550"
+then
+
+#	echo "NOT WORKING YET"
+	lp -dhpplotter2 $5 $4
+
+
+elif test "$3" = "Postscript"
+then
+	cat $4 | psplotdaemon > .postscript.plot
+	echo "Postscript plot created.  A copy of the postscript file is in .postscript.plot"
+	plotter=${MY_PS_PLOTTER:-laser3ne}
+
+#	cat .postscript.plot | lp -c -dlaser3ne -os -oraw
+	cat .postscript.plot | lp -c -d$plotter -os -oraw
+	sleep 3
+elif test "$3" = "hpgl"
+then
+	file=.hpglplot
+	cat $4 | /usr/local/bin/hpgldaemon > $file
+	if [ "PCL" = "yes" ]
+	then
+		echo "\033%-12345X" >> $file  
+		echo "\033%0A\r\c"  >> $file # reset language to PCL
+	fi
+	echo "HPGL plot created.  A copy of the HPGL file is in $file"
+
+	a=/usr/local/securebin/sphpglplotinit
+	plotter=${MY_HPGL_PLOTTER:-laser3ne}
+
+	$a $PCLOPT $file | lp -d$plotter -os -ohpgl 
+	sleep 3
+elif test "$3" = "tgif"
+then
+	#cat $4 | /usr/local/bin/tgifdaemon > .tgifplot.obj # old version
+	cat $4 | /usr/local/bin/sptgifdaemon > .tgifplot.obj
+else 
+	echo "ERROR, NO PLOTTER OF TYPE $3 AVAILABLE"
+	echo "exit 1"
+	exit 1
+
+fi
+

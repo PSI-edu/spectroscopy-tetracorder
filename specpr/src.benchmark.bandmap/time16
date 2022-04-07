@@ -1,0 +1,22 @@
+#!/bin/sh
+
+./btest &
+./btest &
+./btest &
+./btest &
+./btest &
+./btest &
+
+./btest &
+./btest &
+./btest &
+./btest &
+./btest &
+./btest &
+
+./btest &
+./btest &
+./btest &
+./btest &
+
+wait

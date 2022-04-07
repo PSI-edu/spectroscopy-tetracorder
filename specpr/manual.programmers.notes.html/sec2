@@ -1,0 +1,588 @@
+.nr LT 6.5i
+.lt 6.5i
+.nr PO 0.875i
+.po 0.875i
+.TL
+.bp
+.LP
+.ce
+System Dependent Routines
+.TS
+center,tab(@);
+lw(.8i) lw(4.2i).
+
+DREAD@T{
+An unbuffered direct access read routine
+T}
+
+DRITE@T{
+An unbuffered direct access write routine
+T}
+
+IFORK@T{
+Create a new process
+T}
+
+IEXEC@T{
+Execute new program
+T}
+
+IWAIT@T{
+Wait for a process to complete
+T}
+
+SETFIL@T{
+A routine to assign a UNIX filename to a fortran logical unit
+T}
+
+ARGFIL@T{
+A routine to use an argument to the main routine as a
+UNIX filename
+and assign the UNIX file to a fortran logical unit
+T}
+
+SETMOD@T{
+A routine to set the file status word
+T}
+
+IARGC@T{
+A function to get the number of arguments to the main progran
+T}
+
+T2P@T{
+A routine to convert from TI-980b floating point format
+to LSI-11
+floating point format
+T}
+
+P2T@T{
+A routine to convert from LSI-11 floating point format
+to TI-980b
+floating point format
+T}
+
+REWIND@T{
+A routine to rewind a magnetic tape unit
+T}
+
+FRDREC@T{
+A routine to forward space a magnetic tape unit by physical records
+T}
+
+BKREC@T{
+A routine to backward space a magnetic tape unit by physical records
+T}
+
+ABSBIN@T{
+Converts integers to HP2648A or HP2623A display absolute binary coordinates
+T}
+.TE
+.bp
+.ce
+SUBROUTINE DREAD
+.PP
+This subroutine does a direct access read from a fortran logical
+unit.
+
+Calling sequence:  CALL DREAD(LUN,IREC,LRECL,BUF,IER)
+
+Arguments:
+.TS
+center,tab(@);
+lw(.8i) lw(4.2i).
+LUN:@T{
+The fortran logical unit to be read.
+T}
+
+IREC:@T{
+The number of the record to be read. (The first record is record number 0)
+T}
+
+LRECL:@T{
+The logical record length in bytes of each record.
+T}
+
+BUF:@T{
+The array to which the data will be read.
+T}
+
+IER:@T{
+An error flag. Set to zero if the read completes normally. Set
+to -1 if an
+end of file is encountered.
+Set to UNIX error number if any I/O error occurs.
+T}
+.TE
+.bp
+.ce
+SUBROUTINE DRITE
+.PP
+This subroutine does a direct access write to a fortran logical
+unit.
+
+Calling sequence:  CALL DRITE(LUN,IREC,LRECL,BUF,IER)
+
+Arguments:
+.TS
+center,tab(@);
+lw(.8i) lw(4.2i).
+LUN:@T{
+The fortran logical unit to be written.
+T}
+
+IREC:@T{
+The number of the record to be
+written. (The first record is record
+number 0)
+T}
+
+LRECL:@T{
+The logical record length in bytes of each record.
+T}
+
+BUF:@T{
+The array to which the data will be written.
+T}
+
+IER:@T{
+An error flag. Set to zero if
+the write completes normally. Set to UNIX
+error number if any I/O error occurs.
+T}
+.TE
+.bp
+.ce
+FUNCTION IFORK()
+.PP
+This function executes the UNIX fork system call which
+creates a child process.
+
+Calling sequence: I = IFORK()
+
+
+Function value: The value returned is 0 in the child process and
+is the process id number of the child process in the parent process.
+
+See IWAIT for an example of the use of this function.
+.bp
+.ce
+FUNCTION IEXEC(PROGNAME,ARG0,ARG1,...)
+.PP
+This function executes another program.
+
+Arguments:
+.TS
+center,tab(@);
+lw(.8i) lw(4.2i).
+PROGNAME:@T{
+The file name of the file to be executed.
+T}
+
+ARGi:@T{
+A variable number of character string arguments to be passed
+to the executed program. By convention ARG0 should be the
+name of the program.
+T}
+.TE
+
+Function value: This function normally never returns. If it
+returns the program could not be executed.
+
+See IWAIT for an example of the use of IEXEC.
+.bp
+.ce
+FUNCTION IWAIT(ISTAT)
+.PP
+This function causes the program to wait for the termination of
+a child process.
+
+Arguments:
+.TS
+center,tab(@);
+lw(.8i) lw(4.2i).
+ISTAT:@T{
+ISTAT is set to the termination status of the child process.
+T}
+.TE
+
+Function value: The returned value is the process id of the
+terminating child or -1 if no child exists.
+
+Example:  To execute another program and wait for its completion
+a combination of IFORK, IEXEC and IWAIT must be used. For example,
+to get a long listing of the contents of the current working
+directory one could use the following sequence.
+
+.nf
+.na
+        .
+        .
+        .
+
+        ipid = ifork()
+        if ( ipid.ne.0) goto 100
+            ii = iexec('/bin/ls','ls','-l')
+            write(6,10)
+10          format(' exec failed on /bin/ls')
+            stop
+100     ii = iwait(istat)
+        if (ii.ne.ipid .and. ipid.ne.-1) goto 100
+        if (istat.ne.0) write(6,20) istat
+20      format(' /bin/ls returned status=',i7)
+
+        .
+        .
+        .
+.fi
+.ad
+.bp
+.ce
+SUBROUTINE SETFIL
+.PP
+SETFIL allows any unix filename to be associated with a
+fortran unit number.  The channel must not be open.
+
+Calling sequence: CALL SETFIL(N,H[,M] )
+
+         e.g., call setfil(2,'../turner/somefile')
+
+Arguments:
+.TS
+center,tab(@);
+lw(.8i) lw(4.2i).
+N:@T{
+N is the fortran logical unit.
+T}
+
+H:@T{
+H
+must be a null-terminated string of characters comprising
+the file-name.
+It should be noted that the compiler automatically null-terminates
+any text
+enclosed in single quotes as a subroutine argument.
+T}
+
+M:@T{
+if present, is used as the status word for the channel.
+T}
+.TE
+.PP
+The status word determines various file I/O parameters as
+follows:
+.na
+.nf
+        Bit    Name        Meaning
+
+        15(MSB) input   sequential files -
+                                set: file is input
+                                reset: file is output
+                        random files -
+                                set: file is read-only
+                                reset: file is read-write
+.sp 1
+        14      random  all -
+                                set: file is random access
+                                reset: file sequential access
+.sp 1
+        13      create  random -
+                                set: force creation of file
+                                reset: open existing file,
+                                        if possible
+.sp 1
+        12      append  sequential -
+                                set: if files exists on output,
+                                        append to it.
+                                reset: create output file
+.sp 1
+        11      carctl  sequential, ascii -
+                                set: first byte of record is
+                                        carriage control
+                                reset: terminate record with
+                                        new-line
+.sp 1
+        10      ascspc  sequential -
+                                set: ascii special mode
+                                reset: ascii normal mode
+.sp 1
+        9       binspc  sequential -
+                                set: binary special mode
+                                reset: binary normal mode
+.sp 1
+        8       lstbin  sequential -
+                                set: last i/o access binary
+                                reset: last i/o access ascii
+.sp 1
+        7       flush   sequential -
+                                set: purge buffer on output
+                                        after each i/o op.
+                                reset: buffer output to 512 bytes
+.sp 1
+        6       delete  all -
+                                set: delete file on endfile
+.sp 1
+        5       open    all -
+                                set: file is open
+.sp 1
+        4       rgood   sequential -
+                                backspace is possible on file
+.fi
+.ad
+.bp
+.ce
+FUNCTION IARGC
+.PP
+IARGC returns the number of arguments the main program was
+invoked with.
+
+Calling sequence: N = IARGC(X)
+
+Arguments:
+.TS
+center,tab(@);
+lw(.8i) lw(4.2i).
+X:@T{
+A dummy argument. Not used.
+T}
+.TE
+Function value: The number of arguments.
+
+        See Subroutine ARGFIL for example
+
+.bp
+.ce
+SUBROUTINE ARGFIL
+.PP
+ARGFIL is like SETFIL except that the K'th argument to
+the main program is used as the file name.  Remember
+that the 1st argument,  by convention,  is the name of
+the program being run.  Therefore,  K should almost
+always be \(>=2.
+
+Calling sequence: CALL ARGFIL(N, K [,M] )
+
+Arguments:
+.TS
+center,tab(@);
+lw(.8i) lw(4.2i).
+N:@T{
+The fortran logical unit number.
+T}
+
+K:@T{
+The argument number.
+T}
+
+M:@T{
+if present, is used as the status word for the channel. (see
+SETFIL)
+T}
+.TE
+
+EXAMPLE:
+        Fortran program:
+
+.nf
+.na
+c    variables lun = logical unit number of a file device
+c              append = append mode (see subroutine setfil)
+c
+        integer n,lun,append
+        lun = 4
+        append = 20480
+c   see function iargc
+        n = iargc(x)
+        if ( n .eq. 2 ) call argfil (lun,2,append)
+        if ( n .ne. 2 ) call setfil (lun,'../turner/somefile')
+                        .
+                        .
+                        .
+
+.fi
+.ad
+.bp
+.ce
+SUBROUTINE SETMOD
+.PP
+SETMOD sets the status word of channel n to m.
+
+Calling sequence: CALL SETMOD(N,M)
+
+Arguments:
+.TS
+center,tab(@);
+lw(.8i) lw(4.2i).
+N:@T{
+The fortran logical unit number.
+T}
+
+M:@T{
+The new status word. (see SETFIL)
+T}
+.TE
+.bp
+.ce
+FUNCTION T2P
+.PP
+This function translates one TI-980b format floating point number
+to a LSI-11 format floating point number.
+
+Calling sequence: F = T2P(FTI)
+
+Arguments:
+.TS
+center,tab(@);
+lw(.8i) lw(4.2i).
+FTI:@T{
+A 4-byte (real*4 or integer*4) input value which actually
+contains a TI-980b format floating point value.
+T}
+.TE
+Function value: The value returned is the LSI-11 format floating
+point value.
+.bp
+.ce
+FUNCTION P2T
+.PP
+This function translates one LSI-11 format floating point number
+to a TI-980b format floating point number.
+
+Calling sequence: F = P2T(FLSI)
+
+Arguments:
+.TS
+center,tab(@);
+lw(.8i) lw(4.2i).
+FLSI:@T{
+A real*4 input value
+T}
+.TE
+Function value: The value returned is the TI-980b format floating
+point value.
+.bp
+.ce
+SUBROUTINE REWIND
+.PP
+REWIND rewinds a magnetic tape unit.
+
+Calling sequence: CALL REWIND(LUN,IER)
+
+Arguments
+.TS
+center,tab(@);
+lw(.8i) lw(4.2i).
+LUN:@T{
+Fortran logical unit to be rewound.
+T}
+
+IER:@T{
+Error flag. IER is set equal to zero
+if no error occurs. If an error
+occurs then IER is set to the UNIX error number.
+T}
+.TE
+.bp
+.ce
+SUBROUTINE FRDREC
+.PP
+This routine forward spaces a magnetic tape unit.
+
+Calling sequence: CALL FRDREC(LUN,NUM,IER)
+
+Arguments:
+.TS
+center,tab(@);
+lw(.8i) lw(4.2i).
+LUN:@T{
+The fortran logical unit.
+T}
+
+NUM:@T{
+The number of records to space forward.
+T}
+
+IER:@T{
+Error flag. IER is set equal to zero
+if no error occurs. If an error
+occurs then IER is set to the UNIX error number.
+T}
+.TE
+.bp
+.ce
+SUBROUTINE BKREC
+.PP
+This routine backward spaces a magnetic tape unit.
+
+Calling sequence: CALL BKREC(LUN,NUM,IER)
+
+Arguments:
+.TS
+center,tab(@);
+lw(.8i) lw(4.2i).
+LUN:@T{
+The fortran logical unit.
+T}
+
+NUM:@T{
+The number of records to space backwards.
+T}
+
+IER:@T{
+Error flag. IER is set equal
+to zero if no error occurs. If an error
+occurs then IER is set to the UNIX error number.
+T}
+.TE
+.bp
+.ce
+SUBROUTINE ABSBIN
+.PP
+This subroutine converts the integers INX and INY to binary
+absolute HP2648A format in the variables IOUTX, IOUTY.
+
+Calling sequence:  CALL ABSBIN (INX, INY, INOUTX, IOUTY)
+
+Arguments:
+.TS
+center,tab(@);
+lw(.8i) lw(4.2i).
+INX,INY:@T{
+x and y coordinates of a point to be displayed on the HP2648A
+graphics terminal
+T}
+
+INOUTX,INOUTY:@T{
+x and y coordinates in A2 format to be sent to HP2648A
+T}
+.TE
+
+.PP
+BINARY ABSOLUTE FORMAT is plotted with respect to an origin at
+0,0. Four bytes are required to specify a single end point. A
+ten(10) bit coordinate in the range 0-1023, is sent for both x
+and y.
+
+The bytes are ordered as follows:
+.TS
+center,tab(!);
+r r r r r r r r r.
+Bit!7!6!5!4!3!2!1!
+BYTE 1!0!1!X9!X8!X7!X6!X5!HI X
+BYTE 2!0!1!X4!X3!X2!X1!X0!LOW X
+BYTE 3!0!1!Y9!Y8!Y7!Y6!Y5!HI Y
+BYTE 4!0!1!Y4!Y3!Y2!Y1!Y0!LOW Y
+.TE
+
+EXAMPLE:
+.nf
+.na
+x = 360 = 01011 01000           y = 180 = 00101 10100
+          HI X  LOW X                     HI Y  LOW Y
+
+        BYTE 1 = 01 01011 = +  HI X
+        BYTE 2 = 01 01000 = (  LOW X
+        BYTE 3 = 01 00101 = %  HI Y
+        BYTE 4 = 01 10100 = 4  LOW Y
+.fi
+.ad
+.bp

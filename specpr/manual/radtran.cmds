@@ -1,0 +1,16 @@
+\# Radtran commands to compute scapolite reflectance spectra
+r
+1
+Y393
+ 
+1          \# one mineral
+y399       \# index of ref for scapolite
+y401        \# absorption coefficient for scapolite
+0.01 1 2.7   \# grain size, weight, density
+0 30
+y
+ 
+ 
+Scapolite HS351 .2-5um CMPREF d=0.01cm
+e
+x     \# don't write results

@@ -1,0 +1,44 @@
+.\" use ms macros
+.\" this header is for putting the page numbers at the bottom of the page
+.\" set line length, page offset, vertical spacing
+.nr LL 6.3i
+.ll 6.3i
+.nr PO 1.0i
+.po 1.0i
+.nr VS 12
+.vs 12
+.\" set header and footer margins (default is 1.0i)
+.nr FM 1.00i
+.fm 1.00i
+.nr HM 1.00i
+.hm 1.00i
+.\" set no date here, MUST be before CF definition, because ND sets CF
+.\" set date, so don't do .ND
+.\" LH CH RH are left, center, right header strings
+.\" LF CF RF are left, center, right footer strings
+.\" default is CH is defined as: .ds CH "\(hy \\n(PN \(hy
+.ds LH "SPECPR Users' Manual
+.ds CH
+.ds RH "Page 8-f47.\\n(PN
+.\" setup complete
+.nf
+SPECPR Users' Manual                                            Page 8-f47.1
+
+
+.B
+F47:  Spectrum Recreation from F46 output               Alias = abaspecrec
+.R
+.PP
+This routine reads specpr f46 spectral features output and attempts
+to use the feature parameters to compute the original spectrum.  The
+features are triangular in shape at the bottom because straight line
+segments are used from the band center to the Full width at Quarter
+Maximum and the Full width at Half Maximum and to the continuum
+level.  The routine is useful to see how well the f45 automated band
+analysis routine works.
+.PP
+In the initial evaluation of f45, this routine proved useful.  The
+key in evaluating the output is the question "is the spectrum
+identifiable?"  For example, do the features for the spectrum of
+kaolinite get reassembled into a spectrum that is recognizable as
+kaolinite?  The authors tested many spectra and concluded "yes."

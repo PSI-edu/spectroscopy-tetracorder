@@ -1,0 +1,391 @@
+This file describes how to create an new instrument convolved spectral library.
+
+	run:
+	     ./AAA.make.new.instrument.convolved.spectral.library.sh
+
+
+#################  old method details below here  #######################
+#                                                                       #
+#   You can use the info below to debug any changes to the workflow.    #
+#                                                                       #
+#########################################################################
+
+Convolved spectral library names can be at most 8-characters long,
+because of a name size limit in specpr, which manages libraries,
+so the following abbreviations are used.
+
+Step 1)  Make any needed symbolic links (see STEP 1 below).
+         NOT NEEDED 2018+ with the libraries in /sl1
+
+Step 2)  Make sure splib06b exists and contains the spectral library.
+         Run:  spprint splib06b  and you should see hundreds of spectra
+         listed.  If not, follow instructions in:
+
+                  AAA.README.splib06b.txt
+
+Step 3)  Choose a new convolved library 8-character name (see STEP 3 below)
+   
+Step 4)  make the waves.txt and resol.txt files with your
+         wavelengths and resolution ascii listings.
+         (see STEP 4 below)
+
+Step 5)  run make.new.convol.library.start.file
+             this step also makes a new restart file
+         (see STEP 5 below)
+
+Step 6)  Start specpr and verify that the wavelengths and resolution were
+         read into specpr correctly.  If not, fix the ascii files in
+         step 4 above or do it manually as described in
+                 AAA.README.the.manual.specpr.way.txt
+         See STEP 6 below.
+
+Step 7)  Run the  mak.convol.library  command to make the new convolved library
+         (see STEP 7 below)
+
+===============================================================================
+STEP 1 details:
+
+  NOT NEEDED 2018+ with the libraries in /sl1
+
+     Pre 2018:
+          Note: on speclab1, speclab3, cassini, etc, make a link:
+
+     ln -s /s0/d1/speclib/ /speclib
+
+     Customize for you own location by adding a symbolic link sp /speclib
+     points to your libraries.
+
+===============================================================================
+STEP 2 details:
+
+NOTE: splib06b must be made before any convolutions are made.
+
+See:  AAA.README.splib06b.txt
+
+===============================================================================
+STEP 3 details:   Choose a new convolved library 8-character name
+
+annccyyd
+            a = s for spectral library
+            nn= library version number
+            cc= output convolved spectrometer model/type
+            yy= year or other code
+            d = output spectrometer version within year yy
+
+
+         as = aster,
+         av = aviris,  e.g. aviris 1995: av95a
+         an = aviris-ng next gen
+         cr = crism
+         hd = Hydice,
+         hy = HyMap
+         mi = MIVIS
+         mm = Moon Mineralogy Mapper (2008)
+         nm = nims,
+         pb = probe
+         pf = Mars pathfinder
+         tm = LandsatTM (followed by 04, 05, 07 for with TM)
+         vm = vims
+         ag = Agilent hand held FTIR 2.5-15 micron spectrometer
+
+         gn = generic for 20, 30, 40, etc nm bandpass
+
+         pr = PRISMA 2021 ESA Earth orbiter, e.g. s06pr01a 238 channels
+
+
+         nc = nicolet, followed by wavenumber resolution, e.g 4 cm^-1
+              would be nc04, 0.5 cm^1 would be nc.5
+
+         fs00 = ASD field spectrometer 2151
+         fs71 = ASD field spectrometer 717ch
+         fs35 = field spectrometer 358ch
+         bk1x = usgs beckman, 1x = standard resolution
+         gr   = gregg's resolution study,
+         ag21 = Agilent hand held FTIR 2.5-15 micron spectrometer
+
+    Examples:
+         s06av95a  # aviris 1995
+         s06vm07a  # Cassini VIMS 2007 wavelengths
+         s06mm09c  # Moon Mineralogy Mapper 2009 global wavelengths
+         s06crj3a  # CRISM 2012 J_MTR3 merged V+IR version
+
+         lab3800a  # lab 3800 channels 1 - 6 microns
+
+         s06ag21a  # Agilent hand held FTIR 2.5-15 micron spectrometer 
+
+
+===============================================================================
+STEP 4 details:   make the waves.txt and resol.txt files with your
+                  wavelengths and resolution ascii listings.
+
+
+         waves.txt is a 1-column ascii list of the wavelengths in microns
+         resol.txt is a 1-column ascii list of the resolution (FWHM) in microns
+
+         No tabs are allowed
+         No carriage returns immediately after the numbers (a space then a
+                             carriage return is OK).
+
+        if in nm, convert with ./nanometers.to.microns
+           or
+                ./convert.column1.from.nm.to.microns  1-column-file-in-nm > newfilename
+
+===============================================================================
+STEP 5 details: run make.new.convol.library.start.file
+
+        ./make.new.convol.library.start.file   library_name   \
+                number_of_channels  title2  wave_title  resol_title
+
+        library_name = the name you chose above (e.g. s06av95a)
+
+        number_of_channels = number of channels in the spectrum
+
+        title2 = the title for specpr record 2 (see examples below) 
+
+        wave_title = title of the wavelengths specpr record
+
+        resol = title of the resolution specpr record
+
+        NOTE: titles MUST be in quotes
+
+        make.new.convol.library.start.file also makes a new restart file
+
+    Examples:
+
+
+       ./make.new.convol.library.start.file  s06av18a 224 \
+              'Convolved AVIRIS 2018  224 ch library   '  \
+              'Wavelengths in microns 224 ch AVIRIS18a ' \
+              'Resolution  in microns 224 ch AVIRIS18a '
+
+      #                 1111111111222222222233333333334
+      #        1234567890123456789012345678901234567890
+
+       ./make.new.convol.library.start.file s06pr01a  238 \
+		'Convolved PRISMA 2021  238 ch library   '  \
+		'Wavelengths in microns 238 ch PRISMA21a ' \
+		'Resolution  in microns 238 ch PRISMA21a '
+
+       ./make.new.convol.library.start.file s06testb 438 \
+              'Convolved crism testb 438 ch library' \
+              'Wavelengths in microns 438 ch CRISMb' \
+              'Resolution  in microns CRISMb'
+
+       ./make.new.convol.library.start.file s06av13a 224  \
+		'Convolved AVIRIS 2013 library'  \
+		'Wavelengths in microns 224 ch AVIRIS13a ' \
+		'Resolution  in microns 224 ch AVIRIS13a '
+
+       ./make.new.convol.library.start.file s06an14a 426 \
+                'Convolved AVIRIS-NG 2014 library' \
+                'Wavelengths in microns 426ch AVIRISNG14a' \
+                'Resolution in microns 426ch AVIRISNG14a'
+
+       ./make.new.convol.library.start.file s06an14b 425 \
+                'Convolved AVIRIS-NG 2014b library' \
+                'Wavelengths in microns 425ch AVIRISNG14b' \
+                'Resolution in microns 425ch AVIRISNG14b'
+
+       ./make.new.convol.library.start.file s06av17a 224  \
+		'Convolved AVIRIS 2017 library'  \
+		'Wavelengths in microns 224 ch AVIRIS17a ' \
+		'Resolution  in microns 224 ch AVIRIS17a '
+
+	./make.new.convol.library.start.file  lab3800a 3800  \
+		'Convolved lab3800a    library'  \
+		'Wavelengths in microns 3800 ch lab3800a ' \
+		'Resolution  in microns 3800 ch lab3800a '
+
+         ./make.new.convol.library.start.file   s06ag21a  900 \
+		'Convolved s06ag21a    library'  \
+		'Wavelengths in microns 900 ch s06ag21a  ' \
+		'Resolution  in microns 900 ch s06ag21a  '
+
+   Note: 2017+ spprint shows the wavelength and resolution
+   Check that the pointer are set correctly and if not set them with spsetwave
+   Example:
+           spsetwave (specpr)filname recordnumbertochange wavepointervalue [resolutionpointervalue]
+
+           spsetwave startfiles/s06av18a.start   6  6  12
+           spsetwave startfiles/s06av18a.start  12  6  12
+           spsetwave startfiles/s06av18a.start  18  6  12
+           spprint startfiles/s06av18a.start
+
+
+
+===============================================================================
+STEP 6 details:
+
+         Start specpr and verify that the wavelengths and resolution were
+         read into specpr correctly.  If not, fix the ascii files in
+         step 4 above or do it manually as described in
+                 AAA.README.the.manual.specpr.way.txt
+
+
+Notes: Specpr record numbering:
+Padding is added to records so that spectra with 2171 channels or
+less all have the same record number in the convolved libraries.
+
+
+A specpr start file has the entries like this example for ABVIRIS 1995,
+which you must create by hand in specpr using the steps above:
+
+spprint startfiles/s06av95a.start
+     1  USGS Digital Spectral Library: s06av95a    410 Characters of TEXT
+     2  Convolved AVIRIS 1995.1 224 ch library     147 Characters of TEXT
+     3  ****************************************    41 Characters of TEXT
+     4  ****************************************    41 Characters of TEXT
+     5  ..                                          41 Characters of TEXT
+     6  Wavelengths in microns 224ch AVIRIS95.1    224  00:00:00.00  06/23/1995
+     7  ..                                          41 Characters of TEXT
+     8  ..                                          41 Characters of TEXT
+     9  ..                                          41 Characters of TEXT
+    10  ..                                          41 Characters of TEXT
+    11  ..                                          41 Characters of TEXT
+    12  Resolution  in microns 224ch AVIRIS95.1    224  00:00:00.00  06/23/1995
+    13  ..                                          41 Characters of TEXT
+    14  ..                                          41 Characters of TEXT
+    15  ..                                          41 Characters of TEXT
+    16  ..                                          41 Characters of TEXT
+    17  ..                                          41 Characters of TEXT
+    18  Data value = channel number (224 ch)       208  00:00:00.00  06/03/1992
+    19  ..                                          41 Characters of TEXT
+    20  ..                                          41 Characters of TEXT
+    21  ..                                          41 Characters of TEXT
+    22  ..                                          41 Characters of TEXT
+    23  ..                                          41 Characters of TEXT
+    24  ..                                          41 Characters of TEXT
+    25  ..                                          41 Characters of TEXT
+    26  ..                                          41 Characters of TEXT
+    27  ..                                          41 Characters of TEXT
+    28  ..                                          41 Characters of TEXT
+    29  ..                                          41 Characters of TEXT
+
+
+It is very important that the:
+
+           ".." file is in record 5,
+            wavelengths in record 6,
+            resolution  in record 12,
+
+and the file be padded to record 29 so that the first convolved spectrum goes into
+record 30.  This strategy ensures that spectra with channels 1 to 2171 will
+have the same record numbers.  Spectra greater than 2171 channels is not yet
+supported.
+
+The spepcr restart file:
+
+     v = the convolved instrument library (this is the output of the convolutions.
+     y = splib06b
+
+Disply the resolution on a specpr plot:
+     from the main specpr menu:
+       t
+       v12V6
+                 examine plot
+       e
+       EX
+
+===============================================================================
+STEP 7 details:
+
+
+To convolve a library after the specpr restart and startup files are created,
+run the command:
+
+
+     ./mak.convol.library  library version channels name     resol_number
+
+
+example:
+
+     ./mak.convol.library  s06av95  a        224   AVIRIS95 12
+
+creates spectral library s06av95a
+This takes several minutes.
+
+***************************************************************
+***************************************************************
+***********                           *************************
+***********    convolution commands   *************************
+***********                           *************************
+***************************************************************
+***************************************************************
+
+Commands:
+
+#                prog              lib     n  chan  title    fwhm
+#                                                   keyword  rec number
+
+AVIRIS:
+            ./mak.convol.library  s06av95  a  224   AVIRIS95 12  # aviris 1995
+            ./mak.convol.library  s06av97  a  224   AVIRIS97 12  # aviris 1997
+            ./mak.convol.library  s06av98  a  224   AVIRIS98 12  # aviris 1998
+            ./mak.convol.library  s06av99  a  224   AVIRIS99 12  # aviris 1999
+            ./mak.convol.library  s06av00  a  224   AVIRIS00 12  # aviris 2000
+            ./mak.convol.library  s06av01  a  224   AVIRIS01 12  # aviris 2001
+            ./mak.convol.library  s06av05  a  224   AVIRIS05 12  # aviris 2005
+            ./mak.convol.library  s06av06  a  224   AVIRIS06 12  # aviris 2006
+            ./mak.convol.library  s06av10  a  224   AVIRIS10 12  # aviris 2010
+            ./mak.convol.library  s06av11  a  224   AVIRIS11 12  # aviris 2011
+            ./mak.convol.library  s06av12  a  224   AVIRIS12 12  # aviris 2012
+            ./mak.convol.library  s06av13  a  224   AVIRIS13 12  # aviris 2013
+            ./mak.convol.library  s06av17  a  224   AVIRIS17 12  # aviris 2017
+            ./mak.convol.library  s06av18  a  224   AVIRIS17 12  # aviris 2018
+
+AVIRIS-NG:
+            ./mak.convol.library  s06an14  a  426   AVIRNG14 12  # aviris-ng 2014
+            ./mak.convol.library  s06an14  b  425   AVIRNG14 12  # aviris-ng 2014
+
+VIMS:
+            ./mak.convol.library  s06vm07  a  352   VIMS07   12
+
+HYMAP:
+            ./mak.convol.library  s06hy09  a  125   HYM09ja  12  Hymap Jan 30 2009
+            ./mak.convol.library  s06hy09  b  125   HYM09f1b 12  Hymap feb 1 2009
+
+CRISM:
+            ./mak.convol.library  s06cr08  a  438   CRISM08a 12   # 2008 IR only
+            ./mak.convol.library  s06cr08  b   72   CRISM08b 12   # 2008 waves global tile mode
+            ./mak.convol.library  s06cr11  v  107   CRISM11v 12   # 2011 VIS only
+            ./mak.convol.library  s06crj3  a  489   CRISMj3a 12   # 2012 J_MTR3 merged V+IR version a
+                                                                  # note: this took 9 minutes running
+                                                                  # remote X over DSL (on cassini)
+
+Moon Mineralogy Mapper:
+
+            ./mak.convol.library  s06mm07  a  260   MMM      12  # 2007 targeted waves
+            ./mak.convol.library  s06mm07  c   86   MMM      12  # 2007 global waves
+            ./mak.convol.library  s06mm07  s  260   MMM      12  # 2007 synthetic test 1 waves
+
+            ./mak.convol.library  s06mm09  a  260   MMM      12  # 2009 targeted waves
+            ./mak.convol.library  s06mm09  c   85   MMM      12  # 2009 global waves
+
+
+PRISMA ESA Earthorbiter:
+            ./mak.convol.library  s06pr01  a  238   PRISMA1a 12  # 2021 PRISMA
+
+
+ASD Field spectrometer, standard waves and resolution, 2151 channels:
+
+           ./mak.convol.library  s06fs00   a 2151  ASDfs00a  12  
+
+
+Generic set:   0.366 to 2.495
+            ./mak.convol.library s06gn20   a 106   GN20nma   12  # 20nm bandpasses
+            ./mak.convol.library s06gn30   a  71   GN30nma   12  # 30nm bandpasses
+            ./mak.convol.library s06gn40   a  53   GN40nma   12  # 40nm bandpasses
+            ./mak.convol.library s06gn50   a  42   GN50nma   12  # 50nm bandpasses
+
+Generic set b:   0.2961 to 3.0012
+            ./mak.convol.library s06gn07   b 387   GN07nmb   12  # 07nm bandpasses
+            ./mak.convol.library s06gn10   b 271   GN10nmb   12  # 10nm bandpasses
+            ./mak.convol.library s06gn20   b 136   GN20nmb   12  # 20nm bandpasses
+            ./mak.convol.library s06gn30   b  91   GN30nmb   12  # 30nm bandpasses
+            ./mak.convol.library s06gn40   b  68   GN40nmb   12  # 40nm bandpasses
+            ./mak.convol.library s06gn50   b  55   GN50nmb   12  # 50nm bandpasses
+
+
+Agilent FTIR:
+            ./mak.convol.library s06ag21   a 900   AGFTIRa   12  # 8 cm^1 bandpasses
+

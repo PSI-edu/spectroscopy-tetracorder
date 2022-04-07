@@ -1,0 +1,70 @@
+<html>
+<P>
+TITLE: Black Mn Coat Tailings LV95-3 DESCRIPT
+<p>
+DOCUMENTATION_FORMAT: MIXTURE
+<p>
+SAMPLE_ID: LV95-3
+<p>
+MIXTURE_TYPE: Coating     # Areal, Intimate, Coating, or Molecular
+<p>
+MIXTURE:
+<p>
+FORMULA:
+<p>
+FORMULA_HTML:
+<p>
+COLLECTION_LOCALITY:
+<p>
+ORIGINAL_DONOR:
+<p>
+CURRENT_SAMPLE_LOCATION:
+<p>
+ULTIMATE_SAMPLE_LOCATION:
+<p>
+SAMPLE_DESCRIPTION:
+<p>
+
+<p>
+<p>
+<p>
+<p>
+END_SAMPLE_DESCRIPTION.
+<p>
+<p>
+XRD_ANALYSIS:
+<p>
+<p>
+<p>
+END_XRD_ANALYSIS.
+<p>
+COMPOSITIONAL_ANALYSIS_TYPE: None      # XRF, EM(WDS), ICP(Trace), WChem
+<p>
+COMPOSITION_TRACE: None
+<p>
+COMPOSITION_DISCUSSION:
+<p>
+<p>
+<p>
+END_COMPOSITION_DISCUSSION.
+<p>
+MICROSCOPIC_EXAMINATION:
+<p>
+<p>
+<p>
+END_MICROSCOPIC_EXAMINATION.
+<p>
+SPECTROSCOPIC_DISCUSSION:
+<p>
+END_SPECTROSCOPIC_DISCUSSION.
+<p>
+SPECTRAL_PURITY: 1_2_3_4_     # 1= 0.2-3, 2= 1.5-6, 3= 6-25, 4= 20-150 microns
+<p>
+<TABLE BORDER=1 SUMMARY="Table of spectra for this sample">
+<TR><TD>
+LIB_SPECTRA_HED:</TD><TD>    where     </TD><TD>   Wave Range </TD><TD> Av_Rs_Pwr </TD><TD> Comment</TD></TR>
+
+<TR><TD>
+LIB_SPECTRA:</TD><TD>  splib05a r ____ </TD><TD>   0.2-3.0&#181;m</TD><TD> 200    </TD><TD> g.s.= </TD></TR>
+</TABLE>
+</html>

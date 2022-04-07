@@ -1,0 +1,53 @@
+.\" use ms macros
+.\" this header is for putting the page numbers at the bottom of the page
+.\" set line length, page offset, vertical spacing
+.nr LL 6.3i
+.ll 6.3i
+.nr PO 1.0i
+.po 1.0i
+.nr VS 12
+.vs 12
+.\" set header and footer margins (default is 1.0i)
+.nr FM 1.00i
+.fm 1.00i
+.nr HM 1.00i
+.hm 1.00i
+.\" set no date here, MUST be before CF definition, because ND sets CF
+.\" set date, so don't do .ND
+.\" LH CH RH are left, center, right header strings
+.\" LF CF RF are left, center, right footer strings
+.\" default is CH is defined as: .ds CH "\(hy \\n(PN \(hy
+.ds LH "SPECPR Users' Manual
+.ds CH
+.ds RH "Page 8-f4.\\n(PN
+.\" setup complete
+.nf
+SPECPR Users' Manual                                                   Page 8-f4.1
+
+
+.B
+F4:  Sequential Processor (No User Access)                 Alias: none
+.R
+.PP
+This function sets up the commands from function f3 for execution
+and thus has no user access.
+.PP
+The f4 function makes a command to do an operation followed by a
+comma and f4.  Thus f4 calls itself.  Internally, it stores the
+sequential command and counters in an internal array and increments them
+each time the program returns to the f4 function.  For example, f4 may
+build a command sequence like
+
+.in 14n
+.B
+v23/w26e,f4
+.R
+.in 0n
+
+so that the first operation (v23/w26e) is done and then f4 is called
+again.  The f4 routine then increments whatever the user had
+requested and generates a new command and returns to the command
+interpreter.
+.PP
+When all incrementing is complete, f4 returns to the user command
+input routine.

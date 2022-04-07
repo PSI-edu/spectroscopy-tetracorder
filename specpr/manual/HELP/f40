@@ -1,0 +1,63 @@
+
+
+
+
+
+
+SPECPR Users' Manual                                            Page 8-f40.1
+
+
+_F_4_0:  _L_e_a_s_t _S_q_u_a_r_e_s _B_e_t_w_e_e_n _T_w_o _S_p_e_c_t_r_a                 _A_l_i_a_s = _l_e_a_s_t_s_q
+
+     This function computes the least  squares  between  two  spectra.   You
+enter  two data sets and the routine computes the sum of the squared differ-
+ences between the two spectra.
+
+It is currently under development and should not be  used.   See  your  site
+specpr manager if you need this routine.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

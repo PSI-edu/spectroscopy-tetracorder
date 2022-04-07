@@ -1,0 +1,16 @@
+#     /lblprt/ common:
+#        device protection:  .ge. 0 = protected ( read .le. protection write
+#                                     to protection + 1 ).
+#                            .eq. 0 = no protection.
+#                            .le. 0 = read only ( up to absolute value of
+#                                     protection ).
+#     added 03/2019, RNC:
+#
+#        follow growing file flag:
+#                 =0 normal, no following
+#                 =1 follow growing file and update prodetcion
+#
+      common /lblprt/ iprtu,iprty,iprtd,iprtv,iprtw,iprts
+      common /lblprt/ ufollow,yfollow,dfollow,vfollow,wfollow
+      integer*4 iprtu,iprty,iprtd,iprtv,iprtw,iprts
+      integer*4 ufollow,yfollow,dfollow,vfollow,wfollow

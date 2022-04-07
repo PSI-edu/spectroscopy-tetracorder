@@ -1,0 +1,6 @@
+	subroutine f46(ic)
+	implicit integer*4 (i-q)
+
+	integer*4
+	real*4
+	character

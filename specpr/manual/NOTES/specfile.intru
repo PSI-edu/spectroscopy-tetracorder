@@ -1,0 +1,64 @@
+1) Read about specpr file assigning on page 5.1 in the specpr user's
+manual.  You assign new specpr files by typing "b" for SETUP
+PARAMETERS in the main menu, and then typing "r" once you are in the
+setup menu.  Just type the id letter and then the path and filename
+of new specpr files. The new specpr file will be created
+automatically.  After you assign a new specpr file to an id letter, 
+you should set the protection to zero.  Protection values for old 
+specpr files should not be set to zero.  Updating protection for 
+newly created specpr files and newly assigned specpr files which 
+already have entries can be done by typing "f" when you are in the 
+setup menu. 
+
+
+2) You can manually set protections by typing "cp" from the setup
+menu.  To change a protection type the file id letter and protection
+number.  For example:
+
+                            v400                
+
+This means that I want the protection set to 400 records on v.
+                          
+
+3) Occasionally you will want to reset protection back down to
+overwrite mistakes, you can do this with "cp", but be careful not to
+overwrite in the middle of data sets.  For instance, files longer 
+than 256 channels will require two or more records, don't set
+the protection so that newly added data will overwrite in the middle
+of one of these data sets.  For example, a listing of a specpr file 
+looks like:
+
+         
+file       title                   chans     time      date
+478     Tremolite 1x .2-3um        480      2:57:26   10/15/1985
+480     errors to previous data    480      2:57:26   10/15/1985
+482     Buddingtonite 2x           612      10:24:30  2/3/1985
+
+If you made a mistake correcting the Buddingtonite sample to
+absolute reflectance and you wanted to start over, you would set the
+protection back to 481, because record 481 is the last record
+occupied by the errors to the tremolite file.
+
+4) If you want to change the name of a spectrum file that resides
+someplace other than the end of a specpr file, you could use "t" for
+TRANSFER (in the main menu) to copy the file over itself.  First you
+would have to change the protection of the specpr file to -1 using
+"cp" in the setup menu.  Next go to the transfer "t" routine in the
+main menu.  Say you wanted to change the title of v23.  You would
+type v23citv23 and change the title on the 1st page of the header
+information (you will be in the header change routine). Then you
+would save this new version with "e". 
+
+
+5) At the Denver Spectroscopy Lab we have set up conventions that
+help maintain specpr file organization, and these are as follows:
+
+   a) When assigning specpr files that exist in a directory other 
+      than the one you are in, give it read-only protection
+      (protection values less than -1).  This will write protect it 
+      from entries made from directories other than its home directory.  
+      This is done to prevent two users from overwriting each other's 
+      files at the same time.  Believe me it has happened. 
+
+   b) Only make additions to specpr files while using specpr from
+      that file's home directory.

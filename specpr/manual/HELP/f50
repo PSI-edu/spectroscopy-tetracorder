@@ -1,0 +1,122 @@
+
+
+
+
+
+
+SPECPR Users' Manual                                            Page 8-f50.1
+
+
+_F_5_0:  _W_a_v_e_l_e_n_g_t_h _R_e_g_i_s_t_r_a_t_i_o_n                           _A_l_i_a_s = _w_a_v_r_e_g
+
+     This function allows for calibration of the wavelengths of  a  spectrum
+against  a  reference  spectrum.   It was originally designed to correct the
+wavelengths of the Mariner 6 and 7 infrared spectrometer data sets, using  a
+spectrum of a carbon dioxide atmosphere.  Four files are required to run the
+registration.
+
+,in 8n 1) The original data which requires calibration in wavelength.
+
+2) An approximate wavelength file for (1)
+
+3) Data for a reference spectrum, which contains absorptions
+   at known wavelengths.
+
+4) The wavelength file for the reference data (3).
+
+The output of the function is a new wavelength set for  the  original  data.
+(1)  and  (2)  should have the same number of channels as should (3) and (4)
+however the original data and the reference do not need  to  have  the  same
+number of channels.
+
+     To begin F50,from math operations, input the file ID  and  file  number
+for  the  original  data  and  f50.  Then enter the wavelength file for this
+data.  If this wavelength file is the default wavelength file  no  input  is
+required.   You  will be prompted to enter the wavelength file and data file
+for the reference spectrum.  The function will then overlay a  plot  of  the
+original  and reference spectra The reference spectrum will be in the dotted
+line.  If the reference spectrum needs to be scaled vertically, that can  be
+done at this point.
+
+     It is useful to determine the  number  of  "plot  windows"  or  regions
+required  to adequately cover all the absorption features which will be used
+for calibration.  Both the reference and original  absorption  feature  must
+appear  in the plot window.  To determine the number of plot windows use the
+standard crt plot scale changing commands  (see  section  9.3).   Enter  the
+number  of  plot windows and change scale to the plot window at the smallest
+wavelength.
+
+     Within a plot window determine the number of absorption  features  that
+will  be  used for wavelength calibration.  The program currently allows for
+20 features total to be used.  Then, using the graphics cursor, position the
+cursor  on  the absorption in the reference spectrum.  The program uses only
+the  horizontal  position  so  the  vertical  position  of  the  cursor   is
+irrelevant.   Then  position  the  cursor  on  the  corresponding absorption
+feature in the original spectrum.  Repeat this process for each  feature  in
+the plot window and in subsequent plot windows.  Be sure to always move from
+shorter to longer wavelengths.
+
+     The accuracy of the wavelengths is limited by the graphics  resolution,
+so be sure your plot windows magnify each set of features adequately for the
+
+
+
+
+
+wavelength precision you desire.
+
+     The program uses the wavelength value obtained from the reference spec-
+trum  and  the  channel  number from the original spectrum. In this way, the
+channel of a particular absorption feature in the original data  is  associ-
+ated  with a new (correct) wavelength.  A linear interpolation in wavelength
+between each absorption feature is then constructed and  used  to  determine
+the  wavelengths  for  all  channels of the original data.  If the first and
+last absorption feature are not the first and last channel then the interpo-
+lation derived for the first and second (or last and second-to-last) absorp-
+tion features is extrapolated to the end channels.
+
+     It should be noted that an "absorption feature" can  be  a  peak  or  a
+spike  or any feature of the original spectrum that can be associated with a
+definitive wavelength.  Also these features need not necessarily be  present
+in  the reference spectrum, if the wavelength value is accurately known from
+other means. (In this case, just pick the wavelength value off  the  x-axis,
+rather than from the reference spectrum).
+
+     Finally, the program will re-display the  reference  spectrum  and  the
+original spectrum, now using the newly derived wavelengths for the original.
+If the calibration was reasonably successful this new wavelength file can be
+saved.   If  not,  you  can  begin again with more, or different calibration
+points.  In practice, this seems to work best if you exit the  function  and
+then start completely over again.
+
+     This routine and manual page was written by Wendy Calvin.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

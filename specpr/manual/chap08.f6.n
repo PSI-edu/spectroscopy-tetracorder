@@ -1,0 +1,62 @@
+.\" use ms macros
+.\" this header is for putting the page numbers at the bottom of the page
+.\" set line length, page offset, vertical spacing
+.nr LL 6.3i
+.ll 6.3i
+.nr PO 1.0i
+.po 1.0i
+.nr VS 12
+.vs 12
+.\" set header and footer margins (default is 1.0i)
+.nr FM 1.00i
+.fm 1.00i
+.nr HM 1.00i
+.hm 1.00i
+.\" set no date here, MUST be before CF definition, because ND sets CF
+.\" set date, so don't do .ND
+.\" LH CH RH are left, center, right header strings
+.\" LF CF RF are left, center, right footer strings
+.\" default is CH is defined as: .ds CH "\(hy \\n(PN \(hy
+.ds LH "SPECPR Users' Manual
+.ds CH
+.ds RH "Page 8-f6.\\n(PN
+.\" setup complete
+.nf
+SPECPR Users' Manual                                                   Page 8-f6.1
+
+
+.B
+F6:  Black Body Computation                               Alias: plan[ck]
+.R
+.PP
+This function computes the Planck black body function
+at a given temperature (in degrees Kelvin) and any
+wavelength set.  Currently, the output is in watts per square meter
+per micron per steradian and the input wavelength set is assumed to
+be in microns.
+.PP
+Upon entering the routine, you are asked to type
+in the temperature and the wavelength id and record number.  When using extreme
+temperatures or extreme wavelengths, you should check the results
+for underflow or overflow in the CRT plot routines (Chapter 9).
+No file or errors are needed since this routine generates a new
+file instead of an operation on an old one.  The equation used is
+
+.EQ "(eqn 8.f6.1)"
+cpile { E sub i (T) ={ 8 pi h c sup 2 } over { lambda sup 5 }
+left [ e sup {{ h
+c}  over { lambda k T }} - 1 right ] sup -1
+        above
+        ={ 1.4966 times 10 sup -5 } over lambda sup -5 left [ e sup
+{13586 over { lambda T } } -1 right ] sup -1 }
+.EN
+
+.nf
+where E is the energy for each channel at wavelength,
+      \(*l (in microns),
+      T is the temperature (degrees Kelvin),
+      c is the speed of light,
+      h is the Planck constant (= 6.6252\(mu10\u-34\d Joule-seconds),
+
+  and k is the Boltzmann constant (= 1.3806\(mu10\u-23\d Joule/\(deK).
+.fi

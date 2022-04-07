@@ -1,0 +1,584 @@
+.\" use ms macros
+.\" this header is for putting the page numbers at the bottom of the page
+.\" set line length, page offset, vertical spacing
+.nr LL 6.3i
+.ll 6.3i
+.nr PO 1.0i
+.po 1.0i
+.nr VS 12
+.vs 12
+.\" set header and footer margins (default is 1.0i)
+.nr FM 1.00i
+.fm 1.00i
+.nr HM 1.00i
+.hm 1.00i
+.\" set no date here, MUST be before CF definition, because ND sets CF
+.\" set date, so don't do .ND
+.\" LH CH RH are left, center, right header strings
+.\" LF CF RF are left, center, right footer strings
+.\" default is CH is defined as: .ds CH "\(hy \\n(PN \(hy
+.ds LH "SPECPR Users' Manual
+.ds CH
+.ds RH "Page 9.\\n(PN
+.\" setup complete
+.nf
+SPECPR Users' Manual                                                   Page 9.1
+
+
+
+
+
+
+
+
+
+
+
+
+
+.ce
+.B
+CHAPTER 9
+.R
+
+
+
+
+
+.ce
+.B
+CRT PLOT ROUTINES
+.R
+
+
+
+
+.fi
+.bp
+.B
+9.1  Introduction
+.R
+.PP
+The CRT plot routines are a set of routines for data display, overlay,
+header information display and change, data print-out, and specific
+graphics oriented routines to read data values off of the plot and to
+analyze specific absorption features.
+The CRT plot routines are called from the completion of a Math
+Operation (section 8) or from the File Display, Transfer and
+Overlay routines (section 10).
+.PP
+Any x-y paired data may be plotted.  The horizontal axis may be labeled
+to properly describe the data; the default horizontal-axis label is
+"Wavelength in microns", but the default can be ocerridden.  Data may
+also be plotted as a function of channel number, or the x-axis values
+inverted in which case the default units of microns is assumes and the
+program converts the units to wavenumber in inverse centimeters.
+.PP
+The CRT plot routines also has a facility for removive spikes or
+glitches in data by marking them as deleted points.  The user may also
+elect to mark any channel a deleted point.
+
+
+
+.KS
+.B
+9.2  Plotting Mode
+.R
+.PP
+The plot mode is selected by the letters
+
+.in 14n
+.nf
+.B
+h    for channel,
+a    for wavelength, or
+n    for energy (inverse wavelength).
+.R
+.fi
+.in 0n
+
+Note the characters chosen are the second letter of
+channel, wavelength, and energy since the first letters are used
+for other commands.
+.KE
+
+
+
+.KS
+.B
+9.3  Changing Scale
+.R
+.PP
+The scale of the CRT plot is controlled by four values:  the minimum and
+maximum for the horizontal ("wavelength") axis and similarly for the
+vertical axis.  The plot scale may be changed by a command where the
+user types the desired limits, or by graphically selecting a window
+within the current window.
+.KE
+
+
+.KS
+.B
+9.3.1  Changing Scale by Typing in the Range
+.R
+.PP
+The scale is changed by typing the 
+
+.in 14n
+.B
+c
+.R
+.in 0n
+
+command.  You are then given a menu that appears like the following.
+.KE
+
+.KS
+.in 2n
+.nf
+scale menu goes here.
+.in 0n
+.fi
+.KE
+
+
+In order to change the horizontal axis range, you MUST change its
+range before the verticle axis.  As soon as the vertical axis range
+has been changed, the routine automatically exits and the plot is
+redone.  For example, to change the scale from 0.0 to 1.1 from the
+CRT plot, type
+
+.in 14n
+.B
+c
+0 1.2
+.R
+.in 0n
+
+command sequence.  If you wish to change the horizontal scale to
+0.2 to 3.0 and the vertical scale to 0.5 to 1.3, type the
+
+.in 14n
+.B
+c
+w.2 3
+0.5 3
+.R
+.in 0n
+
+command sequence.  The format is completely free: there is no
+need to add a decimal point on integers.  If you type a mistake,
+the routine will flag it and ask you to retype the values.
+.PP
+Specpr allows command to be separated by semicolons, so it is often
+desireable to see the plot while changing the scale.  This can be done
+all from the CRT plot screen: enter the "c" command and the ranges
+separated by semicolons.  Thus
+
+.in 14n
+.B
+c;w.2 3;0.5 3
+.R
+.in 0n
+
+is equivalent to the
+
+.in 14n
+.B
+c
+w.2 3
+0.5 3
+.R
+.in 0n
+
+command sequence.
+.PP
+In order to autoscale horizontal range, type a "w" command with no
+minimum or maximum.  To autoscale the vertical range within the
+current horizontal range window, type an "A" command.  Thus to
+autoscale both the horizontal and vertical ranges from the CRT plot
+screen, type the
+
+.in 14n
+.B
+c
+w
+A
+.R
+.in 0n
+
+or
+
+.in 14n
+.B
+c;w;A
+.R
+.in 0n
+
+command sequence.
+
+
+
+.KS
+.B
+9.3.2  Changing Scale by Graphics Sub-Window
+.R
+.PP
+A window within the current window may be selected to change the plot
+scale using the graphics cursor.  NOTE: this option currently only
+works on Hewlette Packard compatible graphics terminals.
+.PP
+To change the sub-window, type the
+
+.in 14n
+.B
+S
+.R
+.in 0n
+.KE
+
+command from the CRT plot command screen.  The CRT menu will be erased
+and a new menu written asking you to position the graphics cursor at the
+position on the plot where you want the upper left corner of the new
+sub-window.  Place the cursor at the correct position and press the
+return key.  Next you will be instructed to select the lower right
+corner.  Place the graphics cursor at the desired lower left corner and
+then press the return key.  The CRT plot will the be rescaled to the new
+window.
+.PP
+Note that you can not use this command to scale to windows larger
+than the current window.  It is, however, a very useful command
+for enlarging small features on the plot.
+
+
+
+.KS
+.B
+9.4  Printer Listings and Printer Plots
+.R
+.PP
+The entire header information and data (in scientific notation)
+can be listed on the lineprinter by typing the
+
+.in 14n
+.B
+pd
+.R
+.in 0n
+
+command.  The data can be plotted as a lineprinter plot with the
+current vertical scale by typing
+
+.in 14n
+.B
+p
+.R
+.in 0n
+.KE
+
+and the number of copies (10 or less).  The data can be plotted in a
+lineprinter plot only as a function of channel number.  The
+vertical-axis resolution is 1 part in 100 (100 print positions for the
+plot).  For each data point printed, the wavelength, channel number, and
+data number are given.  Four pages are required for 256 data points
+while only 2 pages for 120 points.  When the number of channels is less
+than 120, the plot is scaled to fit from 1 to 2 pages.
+
+
+
+.KS
+.B
+9.5  Information Change and Information Display
+.PP
+Every standard specpr data set contains extensive header information,
+including the title, history, dates and times of data acquisition and
+data processing, as well as many others.  Apendix A lists the
+specpr format, and all the header information values may be
+displayed and changed in the Information Change routines.
+.KE
+.PP
+To change header information, type the
+
+.in 14n
+.B
+i
+.R
+.in 0n
+
+command from the CRT plot screen.  The header information is
+contained on many pages, the first of which displays the title.
+Pressing return goes to the next page, and typing
+
+.in 14n
+.B
+r
+.R
+.in 0n
+
+from any page returns to the first page.  To change information on
+any page, type the indicated letter.  You will then be instructed to
+input the appropriate data.
+.PP
+In the case of the manual history, which is displayed in 4 lines and
+can be changed one line at a time (type
+
+.in 14n
+.B
+m
+.R
+.in 0n
+
+and the line number or simply the line number 1, 2, 3, or 4)
+or all four lines type "m"and no line number).
+.PP
+In the case of the Band Normalization factor, scan time, or total
+integrating time, the number can be integer, floating point, or
+scientific notation.  In the case of scientific notation, the
+number is typed in as an integer or real number, then the letter
+e, then the exponent (to the power of 10, an integer).  Thus
+
+.in 14n
+.B
+1.4e12
+.R
+.in 0n
+
+is equivalent to
+
+.in 14n
+.B
+1400000000000.
+.R
+.in 0n
+
+.PP
+There are 3 ways to exit the information change routine.  When at
+the last page, pressing return with no input will exit to the CRT plot.  Typing
+
+.in 14n
+.B
+g
+.R
+.in 0n
+
+will also exit to the CRT (graph) plot.  Typing
+
+.in 14n
+.B
+x
+.R
+.in 0n
+
+will return to the calling routine (Math Operations or File
+Display and Transfer).  The option e exit will not terminate other
+processing; it only skips the CRT plot.
+Thus, if a file
+write is pending (as in the Math Operation, Chapter 8, or file
+transfer with display, Chapter 10), it will be completed in the
+type e exit.  If you wish to exit and terminate pending file
+writes, type
+
+.in 14n
+.B
+x
+.R
+.in 0n
+
+for a hard exit.
+.PP
+Note that, from the data display routine (Chapter 10), no
+information is changed on the stored data unless there is a
+transfer involved (see Chapter 10).
+
+
+
+.KS
+.B
+9.6  Glitch Removal
+.R
+.PP
+Typing
+
+.in 14n
+.B
+g
+.R
+.in 0n
+
+from the CRT plot will call the glitch removal routine.  The
+routine tries to identify glitches by looking for data points
+which are greater than 6 percent of the total data range and, by
+the use of a simple pattern recognition routine, checks 4
+conditions.  The data points which are thought to be glitches
+are identified by a small diamond shaped symbol.  The user can
+then select which data points are "actual" glitches and can then
+correct them.
+.KE
+.PP
+The glitches are assumed to be wrong by a some
+power of 2 from the true data.  This follows from a binary counter
+where one of the bits has been set wrong.  This routine was
+written specifically for the University of Hawaii "Wedge" CVF
+spectrometer which has
+these type of counters, but most modern digital instruments are
+similar and this routine may work for them.
+.PP
+.B
+WARNING: once the data have been multiplied or
+divided, the glitch removal is not strictly valid and strictly speaking, is "fudging" the data.
+.R
+ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ
+.PP
+The user indicates which channels are to be deglitched.  By
+typing
+.ul
+a,
+the user tells the program that All the points identified plus
+the channels typed in after the a are glitches to be corrected.
+By typing
+.ul
+o,
+the user tells the program Only those channels typed in after the
+letter o are to be corrected as glitches.  By typing
+.ul
+b,
+all the channels identified by the program are glitches except
+those channels which are typed in after the b.  At least one space
+must occur between channel numbers.  The glitch routine searches
+for 15 glitches at one time so it may take more than one pass to
+remove a lot of glitches.  Sometimes more than one bit is wrong,
+and it will take more than one pass.  Glitches which occur next
+to each other are not recoverable by this routine since the
+routine tries to correct the point to the surrounding data using
+the nearest power of 2.  If after 2 passes on the same point
+the data is not restored, it is probably lost.
+.pp
+A note on removing glitches:  you are fudging the data.  If you
+are not very careful and use the utmost restraint, you may create
+some absorption or emission features you had not counted on!
+
+.sh 2 "Line Type"
+.pp
+Typing
+.ul
+l
+followed by either 0, 1, 2, or 3 will change the line type used
+in the CRT plot. The following gives the characteristics of the
+four types.
+.(l
+
+        0               error bars included, points not connected
+        1               error bars included, points connected
+        2               error bars excluded, points connected
+        3               error bars excluded, points not connected
+
+.)l
+
+.sh 2 "Point Deletions"
+By typing
+.ul
+r
+followed by a list of channel numbers followed by
+.ul
+c
+you can Remove the points in the list. The deletion is done by
+setting the value of the data in the specified channels to
+@-1.23 times 10 sup 34@ which indicates deleted points. The list of channel
+numbers consists of numbers separated by spaces and by pairs of
+numbers separated by
+.ul
+t
+to indicate the deletion of a range of channels.
+
+.sh 2 "Exiting CRT Plot "
+.pp
+There are 3 commands for CRT plot exiting.  The first applies to
+the Math Operations routine only.  If the Band Normalization
+option was not turned on, the user may type
+.ul
+b.
+This will turn on the Band Normalization option, exit the CRT
+plot, and go to the Band Normalization routine (section 8.9).
+When the Band Normalization routine is left, the program will
+return to the CRT plot.  If
+.ul
+b
+is typed while in the file display, transfer, and overlay, the
+CRT plot will soft exit (as a type e exit below).  By typing
+.ul
+e
+the user soft exits from the CRT plot in the normal fashion and
+the program executes the next command.  By typing
+.ul
+x,
+the user hard exits from the CRT plot, all pending commands are
+ignored, and the program returns to the calling routine (which
+is either Math Operations or File Display, Transfer, and
+Overlay).
+.pp
+After a soft exit (e) from the CRT plot under Math Operations,
+the data is written to the requested location (see section 8.7).
+If errors are included, the program writes on the CRT where they
+will be written and gives the user the option of not to write the
+errors (by typing
+.ul
+x).
+Otherwise, press return or type
+.ul
+c
+to continue.
+.pp
+After a soft exit from the CRT plot under File Display and
+Transfer, the data is written only if there is a transfer (see
+section 10); otherwise, the next command is executed.
+
+
+.sh 2 "Multiple Commands in CRT Plot "
+.pp
+One entire line (80 characters) can be input to the CRT plot
+routine at one time for execution.   For example, to change to
+wavelength space, record 2, change scale, change information, print
+header information and data twice, and make 2 lineprinter plots,
+you would type:
+
+        a2cipdpdp2  or  a2 ci pd pd pp.
+
+Spaces can be inserted wherever desired but are not necessary.
+This greatly speeds up processing since it takes about 12
+seconds to plot 120 channels on the CRT and would take a long
+time to replot the CRT after each command.
+       ------------------------------------------
+Changing wavelength file or number of channels 
+
+             to change the wavelength file while in graphics mode
+             type the wave file with a upper case file id letter: 
+
+                    V234  
+         
+             to change the number of channels type an upper case C
+             and the number of channels:
+
+                    C480
+
+             *Note: if you use "a", "n", or "e" to toggle between
+              wavelength, channel, and energy space, you may have to
+              type in the number of channels or enter a new
+              wavelength file. 
+        --------------------------------------------
+Handy Tools
+
+              Graph Cursor Pick: type "G" and move the graphics
+              cursor to the desired position on the graph and press
+              return.  Cursor wave and vert. axis positions will be
+              displayed along with closest channel coordinates. Very
+              Handy for locating band centers and figuring out end
+              channels for merging spectra.
+
+
+              Interactive Band Analysis: type "A" and follow
+              instructions.  With this routine you can remove
+              continua from spectra and have band center and fwhm 
+              automatically or manually computed.  Very handy for 
+              picking band centers and widths.
+
+        -------------------------------------------------

@@ -1,0 +1,13 @@
+#
+#	show user specpr information
+#
+onintr -
+if ( $#argv < 2 ) then
+	more -d /usr/msgs/specnotes
+	echo hit return to continue
+	echo $<
+endif
+#
+#	ignore interrupts while in specpr
+#
+/usr/lib/specpr $1

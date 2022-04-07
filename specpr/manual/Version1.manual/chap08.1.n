@@ -1,0 +1,288 @@
+.nr % 0
+.nr CN 8
+.bp
+.sh 1 "MATH OPERATIONS " 8
+.sh 2 "Introduction "
+.pp
+All mathematical operations are carried out in Math Operations
+except for extinction analysis.  One entire line (80 characters)
+of commands may be typed in (separated by commas) for execution.
+After each math operation is completed, you will be asked where
+the result is to be written (v, w, d, u, or y).  In the case of a
+positive protection value, the record number is set to the
+protection plus 1.  Next you will be asked to type in a
+title.  See section 8.8 for the title routines.  Finally the program
+will (if requested) go to band normalization routine (section
+8.9) and the CRT plot routines (section 9).  The Math Operations
+information on the CRT can be turned off by typing
+.ul
+in
+or turned back on by typing
+.ul
+i.
+.sh 2 "Subtraction, Multiplication, and Division "
+.pp
+Generally these operations contain a file ID (v, w, u, d, or y),
+record number, operation sign (- for subtraction, * for
+multiplication, and / for division), then the second file ID (v,
+w, d, c, s, u, y, or s; s is used in division only), the second record
+number, and the options.  Options include:
+.ul
+e
+for include 1 sigma error bars,
+.ul
+n
+for subtraction without airmass calculation,
+.ul
+b
+for turn on band normalization (section 8.9),
+.ul
+bn
+for turn off band normalization,
+.ul
+t
+for change sidereal time in
+subtraction with airmass calculation,
+.ul
+r
+for change RA and declination in subtraction calculation, and
+.ul
+p
+for production processing.  The production processing option
+stops only to request the title and writes the result to device v
+without doing the CRT plot.  This option (p) makes processing
+equivalent to the time spent in performing batch processing.  The
+.ul
+c
+in place of the second file ID is for constant.  The value of the
+constant is then placed where the second record number is located.
+.pp
+Example:
+.pp
+w10-11, w12-13, v10*c1.3, v23/46eb, v12-d10np bn
+
+Here file w record 11 is subtracted from 10 (the default when
+the second file ID is left out is the first file ID).  Next w13
+is subtracted from w12, then v10 is multiplied by the constant
+1.3, next v23 is divided by v46 with 1 sigma standard deviation
+(errors) included and also a band normalization performed.
+Spaces may be included at any point except within a number, or they
+may be completely left out.  The program processes the commands
+sequentially.  When performing each operation, the program enters
+the appropriate routine, writes the titles of the requested files
+on the CRT, and pauses for a continue command (unless the
+Production option has been set).  If you type
+.ul
+x
+here, the program exits directly to math operations.  If you type
+.ul
+e,
+the program exits that operation and begins processing of the next
+operation if one exists.  The production option is set to no
+production at the end of each operation whereas the band
+normalization option stays on until turned off by
+.ul
+bn.
+When the operation is completed, the program goes to section 8.1.
+Division of two zeros is defined as zero by this program.
+.pp
+Math Operations can be used to change the wavelength file set in
+the options section.  Example: "v23/v45 a2, v86*v27 a4" where a
+followed by a number 1 to 99 calls the corresponding wavelength
+set (with its associated number of channels).
+
+.ul
+Annotations on Subtraction Routine
+(by P. Owensby--8/20/80)
+.pp
+Normal subtraction calculates airmass based on the coordinates
+found in the first 13 characters of the title of the first input
+file; if these coordinates are not entered in the correct format
+(HHMMSS+DDMMSS no spaces, declination sign must be explicitly
+specified as plus or minus, and any one of the first six digits
+must be non-zero), the routine issues the command
+.ul
+TYPE IN RIGHT ASCENSION AND DECLINATION
+and awaits a correct response.  The routine repeats this message
+until a correct response is encountered--e and x are NOT correct
+responses.  The correct response is up to six numbers separated
+by spaces, any one of the first three of which must be non-zero,
+the fourth of which should be signed only if negative, and all
+the rest of which should be unsigned.
+
+TO GET OUT OF THIS LOOP, enter any single non-zero number, and
+type e or x at the next possible opportunity.
+
+(This format may be confusing because the interpretation routine
+from the first 13 characters requires an explicitly specified plus
+or minus sign for the declination, and the request for RA and DEC
+cannot interpret plus signs.)
+
+
+.sh 2 "Addition Routine "
+.pp
+The addition routine can add from 2 to 128 spectra with deletion
+of zeros or requested points.  To access the addition routine,
+type + and any options (e for errors) with no other math
+operations after that on the input line (because they will not be
+processed due to a programming restriction).  Upon entering the
+addition routine, you will be asked whether you want to average or
+sum.  Type
+.ul
+a
+to Average or
+.ul
+s
+to Sum and, on the same line,
+.ul
+d
+if you wish to Delete zeros.  Next you will be given instructions
+on inputting the files to be added or summed.  Type in the file ID
+[v, w, d, u, y or c (for constant)] and the record number or
+constant.  If you wish to delete points from this record, type
+.ul
+d
+and then the channel numbers.  You may use more than one line to
+input these numbers, but each channel to be deleted from the sum
+or average must be listed.  When you are through inputting
+numbers to be deleted, type
+.ul
+c
+to continue.  When you are through inputting record numbers, type
+.ul
+b
+to Begin analysis.  Note only 1 constant can be entered per
+addition run.  If you type
+.ul
+e
+or
+.ul
+x,
+the program will exit directly back to math operations;
+otherwise, after the analysis is complete, the program goes to
+section 8.7.
+
+.sh 2 "Error Analysis "
+.pp
+Error analyses are included in addition, multiplication and
+division, and subtraction and many of the special functions (see
+individual functions - section \*($n.6)
+In all cases of error analysis, the
+data numbers should be within the range of @1.0 times 10 sup -15@
+to @1.0 times 10 sup +15@
+to avoid overflow.  If overflow occurs, the error
+is set to zero.  If the data is zero in the multiplication or
+division routines, when using the propagation of errors, the
+error is set to zero for that channel.  The errors represent 1
+sigma standard deviation of the mean and are first computed in
+the addition routine as a standard deviation of the mean
+computation.  The equations used in propagating errors are as
+follows:
+        Given @ a +- sigma sub a ,~ b +- sigma sub b ,~ c +- sigma
+sub c@ and the result @x +- sigma sub x @ the equations used are:
+
+.ul
+division:
+.EQ "(eqn 8.4.1)"
+cpile { X = a over b    above
+sigma sub X = left [ left ( sigma sub a over a right ) sup 2 +
+  left ( sigma sub b over b right ) sup 2 right ] sup {1 over 2} X      }
+.EN
+.ul
+multiplication:
+.EQ "(eqn 8.4.2)"
+cpile { X = a b above
+sigma sub X =  left [  left ( sigma sub a over a right ) sup 2 +
+        left ( sigma sub b over b right ) sup 2 right ] sup {1 over 2} X }
+.EN
+.ul
+subtraction:
+.EQ
+cpile { X = a - b   above
+sigma sub X = left { sigma sub a sup 2 + sigma sub b sup 2 right } sup
+{ 1 over 2}              }
+.EN
+.ul
+addition
+(when errors already exist):
+.EQ "(eqn 8.4.3)"
+cpile { (sum):~~ X = a + b + . . . +c, above
+sigma sub x = left { sigma sub a sup 2 + sigma sub b sup 2 + . .
+. + sigma sub c sup 2 right } sup {1 over 2} above
+
+(average~ of~ n~ spectra):~~ X = (a + b + . . . c) / n   above
+
+sigma sub x = left { sigma sub a sup 2 + sigma sub b sup 2 + . .
+. + sigma sub c sup 2 right } sup {1 over 2} / n         }
+.EN
+
+standard deviation of the mean is derived from (generate errors
+for the first time):
+.EQ
+sigma sub x = left [ { sum from i=1 to n { (x sub i - x bar ) sup 2
+}} over { ( n - 1 ) }  right ] sup {1 over 2} n sup {- 1 over 2}
+.EN
+where n = number of spectra, @x sub i@ = each spectrum, and
+.EQ
+x bar = 1 over n sum from i=1 to n x sub i
+.EN
+
+.sh 2 "Algebraic and Trigonometric Functions "
+.pp
+A complete set of algebraic, trigonometric, and power functions
+exists as can be found on a scientific calculator.  No error
+analysis is included with any of these functions.  The functions
+are accessed by file ID, file number, colon (:), and the name of
+the function.  Functions are:
+
+.TS
+center,tab(!);
+r l.
+Exponential:! exp
+Natural logarithm:! ln
+Common logarithm:! log
+Ten to spectrum power:! 10**x
+Inverse:! 1/x
+Spectrum to the constant power:! x**c
+Constant to the spectrum power:! c**x
+Sine (in radians):! sin
+Cosine (in radians):! cos
+Tangent (in radians):! tan
+Sine (in degrees):! sind
+Cosine (in degrees):! cosd
+Tangent (in degrees):! tand
+Inverse sine (radians):! invsin
+Inverse cosine (radians):! invcos
+Inverse tangent (radians):! invtan
+Inverse sine (degrees):! invsind
+Inverse cosine (degrees):! invcosd
+Inverse tangent (degrees):! invtand
+Hyperbolic sine (radians):! sinh
+Hyperbolic cosine (radians):! cosh
+Hyperbolic tangent (radians):! tanh
+Absolute value:! abs
+Integer value:! int
+Fractional part:! frac
+.TE
+
+.pp
+In both the spectrum to the constant power and constant to the
+spectrum power, the value of the constant is after the command
+(x**c or c**x).
+.ul
+No options are valid with any of these operations
+including errors, band normalization, and production processing.
+This is due to programming limits (there has to be some).  Since
+these routines are not used too often, this should make little
+difference.  What are they used for?  Normal spectral processing
+does not need them, but say you wanted to make a plot of a phase
+function for a Lambert sphere:
+.EQ "(eqn 8.5.1)"
+        PHI ( alpha ) = 1 over pi left [ sin~ alpha + ( pi - alpha
+) cos~ alpha right ]
+.EN
+.pp
+You could generate data for \(*a increasing from 0 to 180\(de
+using the wavelength routines and then this function using the
+math functions.  The result can then be plotted on the Gould
+printer plotter using the plot routines.

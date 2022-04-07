@@ -1,0 +1,98 @@
+.nr % 25
+.nr CN 8
+.bp 26
+.sh 3 "F16:  Line Segment Generator " 8 6 16
+.pp
+Given data values at specific wavelengths or channels typed in by
+the user, this routine computes line segments between the points
+the user has input.  Upon entering the program, the user has the
+option of changing the current wavelength set in use by typing
+the letter "a" and the record number, or assigning the channel
+numbers as "wavelengths values" with the maximum number of
+channels given by the wavelength record.  To do this, type h and
+the wavelength record number to assign channel numbers with the
+number of channels given by the wavelength record number.
+.pp
+After this initialization, the program asks for the first two
+data values--the coordinates for point #1.  Enter the data
+values separated by a space.  Now, the program will be in a loop
+asking for the point coordinates Xn, Yn where n is in a loop
+going from 1 to 256.  At this stage, a number of control options
+can be entered:
+
+.ip 1)
+.ul
+e
+or
+.ul
+x
+will cause the program to exit.
+
+.ip 2)
+.ul
+rn
+- return to step n, where n is the step number (1 to 256).
+This allows the return to any previous input step so it may be
+changed (and then you may return to the last step you were at).
+Note that you cannot change an X value (wavelength) to a value
+greater than that in the next step--to do that, you must delete
+the following steps.
+
+.ip 3)
+.ul
+dn
+- delete steps.  Using this command, all data values after and
+including step n will be deleted; program control returns to the
+first step deleted.
+
+.ip 4)
+.ul
+ln
+is a list command which will list up to 25 entries previously
+entered with the step number.  Here (n) is optional.  If it is
+used, the program lists from that step number to the 24th step
+following.
+
+.ip 5)
+.ul
+b
+for begin analysis.  Program calculates all data values in the
+array between each set of ordered pairs.
+.pp
+No input spectrum is required since you are creating data, not
+operating on data.  If an input file was called, an error message
+is printed, and program will hard exit.
+.pp
+All operations are checked for validity.  If a given operation
+produces an error, a message will be printed stating what caused
+the error and whether or not the program can continue.  If it
+can, the program reasks the data.  If not, the program will exit,
+hard or soft, depending on the severity of the condition.  Note
+that all X data values must be in increasing order, or error
+messages will result.
+
+Sample outputs are included (see next pages).
+
+Graph #1 was done in wavelength space with Planetary Geosciences
+cooled IR CVF default wavelength values using the following input
+values:
+.TS
+tab(:);
+r r.
+.5:.2
+.8:.9
+1.6:.4
+2.7:.6
+.TE
+.pp
+Graph #2 was done in channel space but plotted in
+wavelength space using the Planetary Geosciences cooled IR CVF
+default wavelength values.
+.TS
+tab(:);
+r r.
+1:.2
+17:.9
+74:.4
+120:.6
+.TE

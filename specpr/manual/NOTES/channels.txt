@@ -1,0 +1,74 @@
+                   Notes on the NUMBER OF CHANNELS
+                        in Version 2 Specpr
+
+     Version 2 specpr supports a number of channels value that ranges
+between 1 and 4852.  You should be sure that the correct number of
+channels are set BEFORE completing ANY MATH OPERATION.
+
+RULES of Operation:
+
+     The math routines use the number of channels set by the wavelength
+set to determine what to operate on.  For example if you have two 512
+point spectra, and the wavelengths are set to 81 channels, then any
+math (e.g. divide) will only work on 81 channels.  There are some
+execptions (f14: edit, it will work on all 4852 channels).  If you have
+any doubt, set the number of channels BEFORE entering the routine, or
+if it gives you the option, when you first enter it.  All routines
+that operate on certain number of channels inform you of how many
+channels it will use.
+
+     When a math operation is complete, the program goes to the CRT plot
+routines.  The NUMBER OF CHANNELS RECORDED IN THE HEADER to the data
+is set after you exit the plot routines and uses the number of channels
+given by the wavelength set in use.  For example, consider you had just
+divided two spectra of 512 channels.  When you exit the CRT plot routines
+and the data are written, the number of channels are set by the wavelength
+set currently in use.  If you changed the wavelength set in the CRT plot
+routines to 22 channels, when you exit the plot the program sets the
+channels to 22, copies 22 channels to the output I/O buffer and
+writes the results to disk and you didn't get all your data.  So, be
+careful.  Most routines that have different output channels from
+input channels will automatically set the output to the correct
+values (e.g., f17: convolution).
+
+IF YOU MUST CHANGE THE NUMBER OF CHANNELS:
+
+   MATH: CHANGE the WAVELENGTH SET number of channels.  DO NOT go
+to the header information change routines and change the value there:
+it gets overwritten by the value from the wavelength set when the data
+are written to disk (after you exit the CRT plot routines).
+
+   DISPLAY: Change protection on the data file to -1.  Then transfer the
+data to itself.  For example, if the data you wanted to change was in
+v23 and had a length of 512 channels and you really wanted 510, then
+you would set the protection on v to -1, and from transfer routines,
+use the command "v23citv23" (see section 10), then change the number
+of channels value and exit the information change routines using "e"
+(exit and do pending write of the data back to disk).  BE CAREFUL: if
+you change the channels to a bigger number, there is really no data in
+those new channels.  ALSO, if you increase the number of channels too much,
+you will go over a record boundary and the next record could be written
+over other data!  If you use a much smaller number, the output data
+could take up less records and then there would be a record that had
+its continuation bit turned on, but has no beginning data to it.  A
+list of the data file will cause a read error at that record.  In that
+case, you need to write a dummy data set in that record.  To do that,
+copy (transfer) a data set whose number of channels is less than or 
+equal to 256 to that record.  BE SURE  and RESET protection to the end
+of the file so you do not overwrite other data!
+
+SETTING CHANNELS:
+
+    Sometimes you must set the number of channels to a value that you
+do not have a wavelength set for.  Use the capital c "C" and a number.
+For example, you have just started specpr in a new directory and have
+no data in any file.  You can not display something because you have
+nothing to display.  Go to MATH and operate on something that doesn't
+need input data.  For example, do f16 (line segment generator).  When
+you enter f16, set the number of channels to whatever you want and type 
+in some values (e.g. set channel 1 to 0 and channel 2 to 0 and exit to
+the CRT plot).  You can then write that data as a dummy data set.
+Many specpr users usually start every data file with a dummy data set
+where the title has the name of the data file (archive tape name) and
+maybe a description of the project.
+

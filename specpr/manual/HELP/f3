@@ -1,0 +1,63 @@
+
+
+
+
+
+
+SPECPR Users' Manual                                                   Page 8-f3.1
+
+
+_F_3:  _S_e_q_u_e_n_t_i_a_l _P_r_o_c_e_s_s_o_r                                    _A_l_i_a_s: _s_e_q_u
+
+     This routine is very useful for repetitive calculations on many records
+for  multiplication, division, subtraction and special functions only.  This
+routine effectively sets up the command sequences as a loop, thus you do not
+have to type in the command over and over when you are incrementing a record
+number.
+
+     For example, if you wanted to multiply file v records 10 to 23  by  the
+constant  1.3452,  you would type f3 from Math Operations.  The program will
+ask for the operation.  In this example, you would type  *  for  multiplica-
+tion.   (Other operations would be /, -, f2, f6 or any other function number
+except 3 and 4).  Next the program will ask for the first file ID, beginning
+record  number,  ending  record number and the record number increment.  For
+this example, you would type
+
+              _v_1_0 _2_3 _1
+
+All positive record increments are valid.  If the record increment was nega-
+tive,  it is set to zero.  Next you will be asked to type in the second file
+ID,  beginning and ending record numbers and increment.  For this case,  you
+would type
+
+              _c_1._3_4_5_2.
+
+You will then be asked to type in options.  If you wanted  errors  included,
+the  record  increment  should have been 2 (or more if the data sets take up
+more than 256 channels) since the  data  and  errors  take  up  at  least  2
+records.   Note that you can get in an infinite loop if the record increment
+is set to zero.  However, you can exit back to Math Operations by typing
+
+              _x
+
+at any point.  If you type
+
+              _e
+
+at any point in the processing, that operation will be skipped and the  pro-
+gram will go on to the next operation.  The operations are performed just as
+if you had typed in the commands one at a time or all on one line  separated
+by  commas  in Math Operations.  This function should save a lot of time and
+typing.
+
+     This function calls function f4.
+
+
+
+
+
+
+
+
+
+

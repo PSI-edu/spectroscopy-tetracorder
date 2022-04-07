@@ -1,0 +1,45 @@
+/opt/src/local/specpr
+
+	common
+		filenames.hs
+	src.datatran/SRC.asciitosp/asciitosp.r
+	src.datatran/SRC.cgastosp/cgastosp.r
+	src.datatran/SRC.sptoascii/sptoascii.r
+	src.radtran/SRC/radtran.r
+	src.specpr/dtol/
+		search.r
+		fregex.cc
+		startran.r
+		tapevol.r
+		tapelun.r
+		redcod.r
+		srchdefs.hs
+	src.specpr/fcn17-19/delx.r
+	src.specpr/io/
+		ertyp.r
+		redfil.r	LINUX only
+		wrifil.r	LINUX only
+	src.specpr/main/
+		specpr.r
+		getcmdargs.r
+	src.specpr/parser/
+		parser.cc
+	src.specpr/wav/redwav.r LINUX only
+	src.specpr/free/
+		crtin.r
+		ihchar.r
+	src.specpr/crtp/
+		cursrd.r	XWIN only
+	src.specpr/hpgraph/
+		drwabs.r	XWIN only
+		hpabs.r		TERMDELAY only
+		initt.r		XWIN only
+		respag.r	XWIN only
+		serase.r	XWIN only
+		sb.r		XWIN only
+	src.specpr/xwindow/
+		gtest.r		XWIN only
+	src.spfeatures/SRC/
+		spfeatures.r
+		getcmdargs.r
+	src.spprint/SRC/spprint.r

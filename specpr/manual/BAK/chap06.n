@@ -1,0 +1,828 @@
+.\" use ms macros
+.\" this header is for putting the page numbers at the bottom of the page
+.\" set line length, page offset, vertical spacing
+.nr LL 6.3i
+.ll 6.3i
+.nr PO 1.0i
+.po 1.0i
+.nr VS 12
+.vs 12
+.\" set header and footer margins (default is 1.0i)
+.nr FM 1.00i
+.fm 1.00i
+.nr HM 1.00i
+.hm 1.00i
+.\" set no date here, MUST be before CF definition, because ND sets CF
+.\" set date, so don't do .ND
+.\" LH CH RH are left, center, right header strings
+.\" LF CF RF are left, center, right footer strings
+.\" default is CH is defined as: .ds CH "\(hy \\n(PN \(hy
+.ds LH "SPECPR Users' Manual
+.ds CH
+.ds RH "Page 6.\\n(PN
+.\" setup complete
+.nf
+SPECPR Users' Manual                                                   Page 6.1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.ce
+.B
+CHAPTER 6
+.R
+
+
+
+
+
+.ce
+.B
+DEVICE AND FILE ASSIGNMENTS
+.R
+
+
+
+
+.fi
+.bp
+.B
+6.1  Device and File Assignments
+.R
+.PP
+The device and file assignment is accessed from Program Operations
+Control by typing "r", or by typing "b" to get to Basic Setup and
+then "r".  The "r" stands for divice and file reassignment.  If you
+are starting specpr from scratch, you specpr will automatically come
+to the device and file assignment menue.
+.PP
+The status of all files, online or not, is displayed on the terminal
+at the top 3 lines.  File protections are displayed in line 4.  The
+status menu, which appears at the top of most menues throughout
+specpr looks like the following when starting specpr from scratch:
+
+
+.in 2n
+.nf
+ v = *unasnd*: f    1    w = *unasnd*: f    1    d = *unasnd*: f    1
+ u = *unasnd*: f    1    y = *unasnd*: f    1    s = starpack: f    1
+ lp: spoolfile       obs lat=    .000 deg   channels= 120 wav fl=C  256 h   
+ file protection: v     0,w     0,d     0,u     0,y     0,s     0 ltype= 0
+--------------------------------------------------------------------------
+.fi
+.in 0n
+
+
+Throughout the program, the
+device and file status in short form menue (above) is displayed in the top 4
+lines on the CRT.  This tells whether or not the devices are
+assigned, where assigned, the current file pointer position,
+the protections on all files, wavelength file in use, number of channels,
+and the file names that are used in the history.
+
+WARNING: after assigning a new file name, you MUST set the
+PROTECTION and the FILE NAME VARIABLE to be used in the history.
+See section 5.3 for a discussion of file protection, and 5.6 for a
+discussion on file names.  Also in the basic setup menu (type b from
+the main menu), the "f" command evaluates specpr file sizes and
+based on those sizes, computes the protection, and if the protection
+does not agree with the computed value, a warning message is printed
+and you are given the option to change the protection to the
+computes value.  Further you are given the option to make the file
+read only.  You should use this command any time you are not sure of
+the proper file protection.  See section 5.8 for more details.
+.PP
+Devices assigned to /dev/null means these devices are not accessed.
+If access is requested when assigned to /dev/null,  the program cannot
+respond and will tell you so.
+.PP
+Typing
+
+.in 20n
+.B
+e
+.R
+.in 0n
+or
+.in 20n
+.B
+x
+.R
+
+.in 0n
+will cause the program to exit to the next routine.
+Multiple commands are allowed in the and file assignment
+section.
+.KS
+.PP
+Example: Assign v to file lab501, d to file lab502,
+and l to the spooler.
+
+.in 20n
+.B
+v lab501 d lab502 l spooler
+.R
+.in 0n
+.KE
+
+(NOTE: spaces are allowable between the file ID letters and the file
+names.  Spaces are necessary before the file ID letters except the
+first one on the line.)
+.PP
+assigning the list device to spoolfile (on Unix BSD machines, the
+keyword "spooler" will also work) will automatically dump
+the listings to the line printer as they are created.  If you assign
+the list device to a file the listings will be appended to that
+file so that you can print them later.
+.PP
+When assigning a file, specpr tells you that it is either assigning
+a new file (creating it) or assigning an existing (old) one.  If you are
+intending to assign an existing file, and specpr says it is creating
+a new file, then you probably misspelled it.
+.PP
+When assigning a file, a qualifer may be specified to assign
+non-standard specpr files.  The file type may be specified with the
+sequence:
+
+.in 15n
+.B
+<file ID letter>  file name   t=<keyword>
+.R
+.in 0n
+
+Currently, the only keyword defined is "3D" for a three dimensional
+file type, such as data from an imaging spectrometer, see section
+6.2.  
+
+
+.B
+6.2  3D File Types
+.R
+.PP
+Three dimensional files enable
+the user to read and extract spectra
+from a three-dimensional data file by designating the pixel
+coordinates and the extraction direction from several types of file
+formats.  The file setup is somewhat
+lengthy but required for proper reading of the 3D file.  The
+following topics cover each aspect of the method in more detail
+and outline the procedure for actual use of the program.
+
+
+.B
+6.2.1  3D File Parameters
+.R
+.PP
+File parameters are qualities of the data file which affect the way
+the program chooses which records are read.  Currently, it takes 11
+parameters to set up the file.  They are listed here with
+descriptions and information on allowable values.
+
+.in 7n
+File name - Necessary to correctly open data file for i/o.
+
+Organization - This variable is either band interleaved by
+line (BIL), band interleaved by pixel (BIP) or band sequential
+(BSQ).
+
+File header length - Length (in bytes) of the header preceding the
+actual data cube.
+
+Record length - Record length to read.  Since Unix sees data
+as a byte stream, designating a different record length than 
+the one in which the data was written will cause the program
+to choose the wrong records to read.  Maximum allowable
+value is 1536.
+
+Record header length - Some records have headers so this was
+included to allow for that possibility.  Must be less than
+record length, of course.
+
+Data type - This is menu-selected and indicates what type of
+numbers the data file consists of.  Allowable values are
+integer halfwords (2 byte), integer fullword (4 byte) or real
+fullwords (4 bytes).
+
+x,y,z dimensions - Dimensions of the data cube.  Maximum
+allowable values are 768 for integer halfword data and 384
+for fullword values.
+
+Data number (DN) offset and scale -  These values allow
+data compression and are used to allow actual values to be
+large without having to store overly large numbers.  The
+formula used to reconstitute the original value is:
+	
+.in 8n
+.nf
+Original value = (value stored + offset)(scale).
+.fi
+.in 0n
+
+
+.B
+6.2.2  3D Algorithm Description
+.R
+.PP
+This algorithm is divided into two major components; one that sets all
+of the parameters necessary to read file correctly and another section
+which does all of the work required to read the data and extract spectra
+into arrays that specpr can handle.
+.PP
+The first component, essentially an information prompter, is initiated
+in the specpr REASSIGN file area.  Follow the normal file assignment
+procedure but add the string "t=3d" after the device designator
+(u,v,w,y) and the file name.  An example is, "u file3d.dat t=3d" which
+assigns the 3D data file file3d.dat to device u.  What follows is a
+series of prompts for file parameters.
+.PP
+You need to know that the file is not actually opened until after the
+record length prompt because it is possible (and sometimes desirable) to
+use the last file setup that was input.  This is accomplished by
+answering the first prompt for the record length and then skipping to
+the parameter list.  Just remember that unless you have allowed the
+program to go through the record length prompt the file has not been
+opened.  The parameter list will remind you of this by printing next to
+"Status =" the words "File not opened".
+.PP
+The secondary part of the program does the actual record reading
+according to the pixel coordinates input by the user in the TRANSFER,
+DISPLAY and OVERLAY area of specpr.  The extraction direction is set by
+the position of the "*" in the pixel designation.  An asterisk in the z
+coordinate place indicates that the extracted spectra will have all z
+elements.  The complete command to read and extract a spectra from a 3D
+file assigned to device w is "wpx(n,m,*)".  This translates as, for the
+file assigned to device w extract a spectrum aligned parallel to the
+z-axis.  The coordinates of this pixel are x=n and y=m.  Visualizing
+this type of extraction is not very hard, however, the mechanics are
+more difficult.  This is why so many file parameters are required in
+order to read the records correctly.  Listed below is a table of
+equations which determine the first record to read (a), the record
+increment (b), and the last record to read (c).
+
+.nf
+Dictionary of Variables:
+			rl        - records per line 
+	 		pr        - pixels per record 
+			fh        - file header length
+			rh	  - record header length
+			rln       - record length
+			dx	  - x dimension
+			dy        - y dimension
+			dz        - z dimension
+			x         - x coordinate for pixel
+			y  	  - y coordinate for pixel
+			z         - z coordinate for pixel
+
+
+General Equation for All Routines
+
+	pixels/record = rln/2   (i*2 data)
+		      = rln/4   (i,r*4 data)
+
+
+Band Interleaved by Pixel (BIP)
+
+	records/line = dy/pr
+
+	extraction direction || x axis
+		a = (z-1)*rl + (y/pr) + fh
+		b = dx * dz *rl
+		c = rl * dz
+
+	extraction direction || y axis
+		a = (x-1)*dz*reclin + (z-1)*rl + fh
+		b = a + rl - 1
+		c = 1
+
+	extraction direction || z axis
+		a = y/pr + (x-1)*dz*rl + fh
+		b = a + (dz-1)*rl + 1
+		c = rl
+
+
+Band Interleaved by Line (BIL)
+
+	records/line = dz/pr
+
+	extraction direction || x axis
+		a = (y-1)*rl + z/pr + fh
+		b = a + (dx-1)*rl*dy
+		c = rl*dy
+
+	extraction direction || y axis
+		a = (x-1)*dy*rl + z/pr + fh
+		b = a + (dy-1)*rl
+		c = rl
+
+	extraction direction || z axis
+		a = (x-1)*rl*dy + (y-1)*rl + fh
+		b = a + rl - 1
+		c = 1
+
+
+Band Sequential (BSQ)
+
+	records/line = dx/pr
+	
+	extraction direction || x axis
+		a = (z-1)*dy*rl + (y-1)*rl + fh
+		b = a + rl - 1
+		c = 1
+
+	extraction direction || y axis
+		a = (z-1)*rl*dy + x/pr + fh
+		b = a + rl*dy*z
+		c = rl
+
+	extraction direction || z axis
+		a = ((y-1)*dx + x)/pr + fh
+		b = a + dx*dy*dz/pr
+		c = dx*dy/pr
+.fi
+
+.PP
+The algorithm is completed by reading the whole record into a
+character buffer as a byte stream, extracting the correct 4 or 2
+byte section of it into full word or half word (respectively) number
+arrays, applying the DN offset and scale correction to reconstitute
+the original number, converting the result to a fullword real number
+and then loading the number into a specpr array.  
+
+
+.B
+6.2.3  3D I/O Setup Examples
+.R
+.fi
+So far two different types of data have had more than preliminary
+testing.  The AVIRIS image data file and dark current data file have
+both been used as sources for spectra extraction.  The image data is
+in band interleaved by line (BIL) format and the dark current data is
+in band interleaved by pixel (BIP) format.  The dimensions for both
+are as follows:
+
+.nf
+                        x   y   z
+	       image   512 614 224
+	       dark    512   1 224
+.fi
+
+Given this information (the rest is extraneous in our example) a set
+up and extraction procedure is listed below starting at the specpr
+main menu.
+
+.in 8n
+.nf
+specpr>r                          # go to REASSIGN area of specpr
+specpr>w image.dat t=3d           # assign image.dat to w
+        .
+	.                         # setup parameters for image.dat
+	.
+specpr>v dark.dat t=3d            # assign dark.dat to v
+        .
+	.                         # setup parameters for dark.dat
+	.
+specpr>e                          #  go back to main menu
+specpr>t                          # TRANSFER,OVERLAY,DISPLAY
+specpr>wpx(4,5,*)                 # extract pixel (4,5) 
+specpr>vpx(3,1,*)                 # extract pixel (3,1)
+           ^
+          /
+     NOTE: NO space here.
+.fi
+.in 0n
+
+
+In addition, an AVIRIS data set can be visualized as a cube of data
+like this.
+
+.nf
+.KS
+.nf
+.in 8n
+                  _____________________ 
+                 /                    /|
+ _______________/                    / |
+/______________/____________________/  |
+| File header  |                    |  |
+|______________|                    |  |
+               |                    |  |
+             5 |       data         |  |
+         y = 1 |                    |  | 
+             2 |                    |  / 
+               |                    | / z = 224
+               |____________________|/
+                       x = 614
+.KE
+.in 0n
+.fi
+
+If we use the files set up like the above, an extraction indicated
+by  wpx(*,j,k) would extract all values parallel to the x-axis at
+the yz pixel j,k.  It would appear in the above data cube as:
+
+.nf
+.KS
+.nf
+.in 8n
+                        ......................      
+                       .                    ..      
+                    k .- - - - - - *       . .      
+                     .            /*      .  .      
+                    .            / *     .   .      
+                   ............./..*.....    .      
+                   .           j   *    .    .      
+                   .               *    .    .      
+                   .               *    .    .      
+                x  .               *    .   .     
+                   .   - - - - - - *    .  . z 
+                   .              /     . .   
+                   .             /      ..   
+                   ............ /........ 
+                              y 
+.KE
+.in 0n
+.fi
+
+where the asterisks show which numbers are extracted.  Similarly,
+an extraction along the y-axis such as wpx (i,*,k) looks like
+this,
+
+.nf
+.KS
+	                        ...................... 
+ 	                       .                    .. 
+	                      .                    . . 
+	                     .                    .  . 
+	                    .                    .   . 
+	                   ......................    . 
+	                   .                    .    . 
+	                   .  ********************** . 
+	                   . /|                 . /| . 
+	                x  ./ |                 ./ |. 
+	                  i.  |                 .  | z 
+	                   .  j                 . .    
+	                   .                    ..   
+	                   ......................  
+	                              y 
+.KE
+.fi
+
+and an extraction along the z-axis initiated by the command
+wpx (i,j,*) would resemble the following:
+
+.nf
+.KS
+	                             ...................... 
+ 	                           .                    . . 
+	                         .                    .   . 
+	                       .                    .     . 
+	                     .         - - - *    .       . 
+	                   ................*.|...         . 
+	                   .             *   |  .         . 
+	                   .           *     |  .         . 
+	                   .         *       |  .         . 
+	                  i. - - - *            .       . 
+	               x   .       |            .     . z 
+	                   .       |            .   . 
+	                   .       |            . . 
+	                   ........|............. 
+	                           j   y 
+.KE
+.fi
+
+
+.B
+6.2.4  3D I/O Suggestions
+.R
+.PP
+Since 3d files have many parameters it might be easier to use a command
+file to do the file setup for you.  Once you are in the REASSIGN area of
+specpr type a greater than symbol (>) and a file name.  The information
+entered for file parameters will be saved in that file for use later.
+When you need to set that particular 3d file up again type (in REASSIGN
+area of specpr) a less than symbol (<) and the file name you used to
+store the information.  If you can't remember what the name is type
+"!ls" (don't include the ") for a listing.  If you need to change one or
+two parameters in the command file type "!vi filename".  Edit the
+parameters that need changing just as you would at any other time and
+then exit as usual.  The program will return you to the REASSIGN area
+and you can type in <filename to have the command file enter the
+parameters for the file.
+.PP
+It is very important and will save you time in the long run to make sure
+the parameters are correct when the program provides the checklist for
+your inspection.
+.PP
+If the dimensions were entered in the wrong order a message will
+appear telling you that one dimension must be a multiple of some
+integer number.  Usually an i/o error message saying that an attempt
+was made to access an illegal record number (either < 1 or > max number
+of records) also appears.  In this case, note which dimension has to
+be a multiple of the integer number and correct that dimension first.
+If you still aren't sure what order the other dimensions go in try one
+combination.  Since there are only 2 possibilities there is only one
+combination left to try if you're wrong.
+.PP
+If the file parameters are the same as the file previously set up the
+array holding the values can be used again.  When the first prompt comes
+up enter the record length and then an s on the next prompt.  You will
+skip to the parameter check list where you should check status to make
+sure the file opened successfully before continuing.
+
+
+.B
+6.2.5  3D I/O DEMONSTRATION
+.R
+.PP
+What follows is an actual 3-d file set up and spectra extraction procedure
+being executed.  The screens you will see as you progress through this
+example are included.  Explanations not part of the screen stuff is
+indicated by an asterisk in the first column.  Entries by the user are
+to the right of the > prompt.
+
+.nf
+>specpr r1 -
+
+* Translation:  Execute specpr, use a restart file named r1, do a 
+* non-verbose entry into specpr (-).  NOTE:  Type this in at system level
+* prompt.
+
+
+ Restarting 
+restart file= r1                                                                              
+.KS
+------------------------------------------------------------------------
+ v = spd0071 : f    4    w = splib001: f   19    d = spd0029 : f  169
+ u = calger1 : f    1    y = spd0084 : f   25    s = starpack: f    1
+ lp: spoolfile       obs lat=    .000 deg   channels=  61 wav fl=V    3 a   
+ file protect: v  -1358,w   -635,d   -168,u -55144,y    115,s   0 ltype= 3
+--------------------------------------------------------------------------
+ MAIN MENU: ********** Program Operations Control *********************
+
+   INFO:     "in" to turn OFF information
+
+   LIST:      l followed by v,w,d,u,or y  to list the contents 
+                         of the corresponding file
+   DISPLAY:   t  to DISPLAY on screen, OVERLAP on screen
+   MATH:      m  to do MATH operations
+   TRANSFER:  t  to TRANSFER (COPY) files
+
+   PLOT:      p  to PLOT SPECTRA on PLOTTER/printer
+   SETUP:     b  to change SETUP PARAMETERS
+   FILES:     r  to REASSIGN files and devices
+   STARPACK:  s  to create a STARPACK for extinction corrections
+   PRINT RST: f  to print summary of the current restart file
+   
+   EXIT:      EX  to exit program
+
+>r
+
+* Translation:  Go to REASSIGN area of specpr
+.KE
+
+.KS
+__________________________________________________________________________
+ v = spd0071 : f    4    w = splib001: f   19    d = spd0029 : f  169
+ u = calger1 : f    1    y = spd0084 : f   25    s = starpack: f    1
+ lp: spoolfile       obs lat=    .000 deg   channels=  61 wav fl=V    3 a   
+ file protect: v  -1358,w   -635,d   -168,u -55144,y    115,s   0 ltype= 3
+--------------------------------------------------------------------------
+               *** FILE ASSIGNMENTS ***
+               -----------------------------------
+ to reassign files type letter and name:
+    (74 characters max per file name)
+ v = /d1/gswayze/data/ger/spd0071                                              
+ w = /d1/speclib/splib001                                                      
+ d = /d1/fkruse/data/spd0029                                                   
+ s = /dev/null                                                                 
+ u = /i1/tmp/GER/canon.city/calger2.dat                                        
+ y = spd0084                                                                   
+ l = spoolfile                                                                 
+     e  or  x = EXIT this routine
+
+> u /i1/tmp/GER/canon.city/calger2.dat t=3d
+
+* Translation:  Assign /i1/tmp/GER/canon.city/calger2.dat to device
+* u.  Indicated 3-d file by the "t=3d".
+.KE
+__________________________________________________________________________
+
+.KS
+ ---------------------------------------------------
+ This program is designed to read multidimensional
+ data files although at present it is limited to 3-
+ dimensional data sets.  It is recommended that you
+ put the input file parameters in a command file to
+ save time if you find it necessary to change the
+ specpr u,v,w,y or d setups often.  Currently,
+ it takes 12 parameters to set up a file.
+                  *************
+ NOTE:  AT ANY TIME entering an e or x terminates
+ the setup routines without opening the 3d file.
+ ---------------------------------------------------
+.KE
+
+.KS
+ What is the length of each record (in bytes)?
+ (e or x to exit)
+>1024
+
+ Opening file...
+
+ File opened successfully...
+.KE
+
+
+.KS
+ Select file organization:
+                    1   BIL (band interleaved by line)
+                    2   BIP (band interleaved by pixel)
+                    3   BSQ (band sequential)
+                    s   skip to parameter check list
+                    e,x exit program
+>1
+.KE
+.KS
+ How many records long is the file header?
+ (e or x to exit, b to back up, s to skip to list)
+>0
+.KE
+.KS
+ What is the length of the record header in bytes?
+ (e or x to exit, b to back up, s to skip to list)
+>0
+.KE
+.KS
+ What is the DN offset?
+ (e or x to exit, b to back up, s to skip to list)
+>0
+.KE
+.KS
+ What is the DN scale?
+ (e or x to exit, b to back up, s to skip to list)
+>.00005
+.KE
+.KS
+                      ......................
+                    .                    . .
+   ................                    .   .
+ .....................................     .
+ . File header  .                    .     .
+ ................                    .     .
+                .                    .     .
+             x  .       data         .     .
+                .                    .     . 
+                .                    .   .
+                .                    . . z
+                ......................
+                           y
+
+ Please enter the dimension lengths of the input array
+ which can be either 2 or 3 -dimensional (x,y,z):
+ (e or x to exit, b to back up, s to skip to list)
+>904  512 61
+.KE
+.KS
+ Choose the file data type:
+ --------------------------
+
+ 1   Integer*2 (half-word) 
+ 2   Integer*4 (full-word) - specpr normal
+ 3   Real*4 (full-word)
+
+ b   backup
+ s   skip to parameter check list
+ e,x to exit
+>1
+.KE
+.KS
+ What is the deleted point value?
+>0
+.KE
+.KS
+ Your input is as follows:
+ ---------------------------------------
+            /i1/tmp/GER/canon.city/calger2.dat                        
+                       
+ Parm.#
+                   Status =  File opened  
+  1  Record Header length =  0
+  2                Format =  BIL
+  3    File Header length =  0
+  4         Record length =  1024
+  5             DN offset =  0
+  6              DN scale =  4.99999E-05
+  7           x-dimension =  904
+              y-dimension =  512
+              z-dimension =  61
+  8             Data type =  Integer*2
+  9       Point drop flag =  0
+ ---------------------------------------
+
+.KE
+.KS
+
+ Enter the parameter # to be changed
+ c     to CONTINUE
+ e,x   to EXIT file setup
+>c
+ Continuing...
+.KE
+.KS
+ Please type in the title (16 characters or less).
+ -----------------|
+>Canon City S CALIBRATED
+.KE
+.KS
+ Please enter the time (hh mm ss) data was acquired
+ in Universal or Civil time (r to return to main).
+>19 00 00
+.KE
+.KS
+ Enter the date (mm dd yyyy) of data acquisition.
+>09 16 1988
+.KE
+.KS
+ File opened.   Press return to continue.
+> <CR>
+
+* Translation:  Carriage return.
+.KE
+.KS
+__________________________________________________________________________
+ v = spd0071 : f    4    w = splib001: f   19    d = spd0029 : f  169
+ u = calger1 : f    1    y = spd0084 : f   25    s = starpack: f    1
+ lp: spoolfile       obs lat=    .000 deg   channels=  61 wav fl=V    3 a   
+ file protect: v  -1358,w   -635,d   -168,u -55144,y    115,s   0 ltype= 3
+--------------------------------------------------------------------------
+               *** FILE ASSIGNMENTS ***
+               -----------------------------------
+ to reassign files type letter and name:
+    (74 characters max per file name)
+ v = /d1/gswayze/data/ger/spd0071                                              
+ w = /d1/speclib/splib001                                                      
+ d = /d1/fkruse/data/spd0029                                                   
+ s = /dev/null                                                                 
+ u = /i1/tmp/GER/canon.city/calger2.dat                                        
+ y = spd0084                                                                   
+ l = spoolfile                                                                 
+     e  or  x = EXIT this routine
+
+>e
+
+* Translation:  Exit to main menu.
+
+.KE
+.KS
+__________________________________________________________________________
+ v = spd0071 : f    4    w = splib001: f   19    d = spd0029 : f  169
+ u = calger1 : f    1    y = spd0084 : f   25    s = starpack: f    1
+ lp: spoolfile       obs lat=    .000 deg   channels=  61 wav fl=V    3 a   
+ file protect: v  -1358,w   -635,d   -168,u -55144,y    115,s   0 ltype= 3
+--------------------------------------------------------------------------
+ MAIN MENU: ********** Program Operations Control *********************
+
+   INFO:     "in" to turn OFF information
+
+   LIST:      l followed by v,w,d,u,or y  to list the contents 
+                         of the corresponding file
+   DISPLAY:   t  to DISPLAY on screen, OVERLAP on screen
+   MATH:      m  to do MATH operations
+   TRANSFER:  t  to TRANSFER (COPY) files
+
+   PLOT:      p  to PLOT SPECTRA on PLOTTER/printer
+   SETUP:     b  to change SETUP PARAMETERS
+   FILES:     r  to REASSIGN files and devices
+   STARPACK:  s  to create a STARPACK for extinction corrections
+   PRINT RST: f  to print summary of the current restart file
+   
+   EXIT:      EX  to exit program
+
+>t
+ Transfering to display & math routine
+.KE
+.KS
+__________________________________________________________________________
+ v = spd0071 : f    4    w = splib001: f   19    d = spd0029 : f  169
+ u = calger1 : f    1    y = spd0084 : f   25    s = starpack: f    1
+ lp: spoolfile       obs lat=    .000 deg   channels=  61 wav fl=V    3 a   
+ file protect: v  -1358,w   -635,d   -168,u -55144,y    115,s   0 ltype= 3
+--------------------------------------------------------------------------
+ ********** data DISPLAY, TRANSFER, and OVERLAY **********
+
+ Type  i  to turn ON information
+
+>upx(1,1,*)
+
+Demonstration complete.
+.KE

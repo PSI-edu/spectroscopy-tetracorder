@@ -1,0 +1,25 @@
+
+Be sure specpr (/src/local/specp/src.specpr has been compiled first.
+Tetracorder uses many subroutines from the specpr package.
+
+Tetracorder must be compiled twice, once for single spectrum mode, once for cubes
+(assuming you want to do both).
+NOTE: for only single spectrum mode operations, e.g. the Carnegie Mellon U./TREX rover tests
+      only the installsingle step needs to be done.
+
+vi multmap.h
+   search for  imaxch  where you will find 4 blocks.
+
+   uncomment block B, the line with "parameter" (make sure blocks A, B, and C are commented out)
+   save
+
+make installsingle |& tee make.1.single.out.txt
+
+vi multmap.h
+   search for  imaxch  where you will find 4 blocks.
+
+   comment out the B block
+   uncomment the A block
+
+make install |& tee make.1.cube.out.txt
+
