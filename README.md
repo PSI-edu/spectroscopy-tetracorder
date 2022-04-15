@@ -34,6 +34,13 @@ spectral range and resolution of the instrument supplying the data, including
 files with pointers to the convolved libraries so that tetracorder knows
 which libraries to use for a given instrument.
 
+The cuprite95 directory contains the results from a tetracorder run on NASA AVIRIS
+cuprite 1995 data that was calibrated to apparent surface reflectance.  You can get the
+image cube from the USGS spectroscopy lab ftp site (see the README-image-cube.txt
+file in the cuprite95 directory for the location).  Then you can run tetracorder
+and confirm that you get the same results.  See the training videos for how to evaluate
+results.
+
 The tetracorder system also requires
 [Davinci, available from Arizona State U here](http://davinci.asu.edu/index.php?title=Main_Page)
 
