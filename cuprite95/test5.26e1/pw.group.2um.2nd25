@@ -1,0 +1,25 @@
+pw -c 13 -s 3 group.2um/kaol.75+alun.25.fd.gz \
+group.2um/pyroph.5+alunit.5.fd.gz \
+group.2um/alunite+pyroph.added.fd.gz \
+group.2um/micagrp_muscovite-med-Al.fd.gz \
+group.2um/smectite_montmorillonite_ca_swelling.fd.gz \
+group.2um/alunite.33+kaol.33+musc.33.fd.gz \
+group.2um/micagrp_muscovite-low-Al.fd.gz \
+group.2um/vegetation.dry+green.fd.gz \
+group.2um/sioh_hydrated_basaltic_glass.fd.gz \
+group.2um/pyroph+musc.added.fd.gz \
+group.2um/musc+pyroph.fd.gz \
+group.2um/kaolgrp_halloysite.fd.gz \
+group.2um/smectite_nontronite_swelling.fd.gz \
+group.2um/carbonate_dolomite.fd.gz \
+group.2um/talc.all.fd.gz \
+group.2um/micagrp_paragonite.fd.gz \
+group.2um/carbonate_aragonite.fd.gz \
+group.2um/kaolin.5+muscov.medAl.fd.gz \
+group.2um/sulfate_na40alun400c.fd.gz \
+group.2um/carbonate_calcite+0.2Ca-mont.fd.gz \
+group.2um/carbonate_magnesite.fd.gz \
+group.2um/sulfate_kalun250c.fd.gz \
+group.2um/alunite.5+musc.5.fd.gz \
+group.2um/sulfate_kalun150c.fd.gz \
+group.2um/micagrp_illite.gds4.fd.gz &

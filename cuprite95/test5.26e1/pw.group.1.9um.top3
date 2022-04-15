@@ -1,0 +1,3 @@
+pw -c 13 -s 3 group.1.9um/vegetation.dry+green.fd.gz \
+group.1.9um/snow.melting1a+0.5veg.fd.gz \
+group.1.9um/water_2.060_sulfate_szomoln.fd.gz &

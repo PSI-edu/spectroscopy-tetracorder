@@ -1,0 +1,12 @@
+#!/bin/sh
+
+set -x
+
+# Note: the image cube is 16-bit signed integer.
+#       reflectance of 1.0 = 20000 in the 16-bit file.
+#       the multiplier 0.00005 scales the integer to reflectance.
+
+/t1/tetracorder.cmds/tetracorder5.26e.cmds/cmd-setup-tetrun  test5.26e1  aviris_1995 \
+                cube ../cube/cuprite.95.cal.rtgc.v  0.00005  \
+                -T 10 50 C  -P  0.8 1.1 bar image png  shortcubeid cuprite95
+

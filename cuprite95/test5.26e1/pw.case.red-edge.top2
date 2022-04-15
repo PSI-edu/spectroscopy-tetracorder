@@ -1,0 +1,2 @@
+pw -c 13 -s 3 case.red-edge/red.edge.shift.2.fd.gz \
+case.red-edge/red.edge.shift.1.fd.gz &

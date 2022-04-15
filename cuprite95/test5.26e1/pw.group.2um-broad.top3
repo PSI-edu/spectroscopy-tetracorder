@@ -1,0 +1,3 @@
+pw -c 13 -s 3 group.2um-broad/vegetation.dry+green.fd.gz \
+group.2um-broad/snow.melting1a+0.5veg.fd.gz \
+group.2um-broad/pyroxene.augite.fd.gz &

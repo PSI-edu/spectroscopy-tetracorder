@@ -1,0 +1,10 @@
+pw -c 13 -s 3 group.2um/calcite+0.5Ca-mont.fd.gz \
+group.2um/kaolin.5+smect.5.fd.gz \
+group.2um/chlorite-skarn.fd.gz \
+group.2um/calcite.25+dolom.25+Na-mont.5.fd.gz \
+group.2um/organic_plastic-vinyl.fd.gz \
+group.2um/kaolin.3+smect.7.fd.gz \
+group.2um/organic_vegetation-dry-grass-golden.fd.gz \
+group.2um/carbonate_calcite+0.2kaolwxl.fd.gz \
+group.2um/carbonate_rhodochrosite.fd.gz \
+group.2um/smectite_beidellite_gds124.fd.gz &

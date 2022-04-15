@@ -1,0 +1,15 @@
+ENVI
+description = {
+  melting snow (slush) 16 FITSUT')   t  rrA      
+  }
+ samples =          614
+ lines   =          972
+ bands   =            1
+ header offset =          614
+file compression = 1
+file type = ENVI Standard
+data type = 1
+interleave = bsq
+sensor type = spectral data
+byte order = 0
+wavelength units = Micrometers

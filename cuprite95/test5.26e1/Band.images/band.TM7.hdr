@@ -1,0 +1,13 @@
+ENVI
+description = {
+  Davinci generated envi header
+}
+samples = 614
+lines   = 972
+bands   = 1
+header offset = 1228
+file type = ENVI Standard
+data type = 2
+interleave = bil
+sensor type = Unknown
+byte order = 0

@@ -1,0 +1,19 @@
+pw -c 13 -s 3 group.1um/fe2+fe3+mix_with_hematite_br5b.fd.gz \
+group.1um/epidote.fd.gz \
+group.1um/fe3+mn_desert.varnish1.fd.gz \
+group.1um/fe3+_hematite.lg.gr.br34c.fd.gz \
+group.1um/fe2+_feldspar_albite.fd.gz \
+group.1um/fe3+_goethite.medgr.ws222.fd.gz \
+group.1um/fe3+mix_AMD.assemb2.fd.gz \
+group.1um/fe3+_hematite.med.gr.br25b.fd.gz \
+group.1um/fe3+mix_AMD.assemb1+2.fd.gz \
+group.1um/organic_green_plastic_tarp_1um.fd.gz \
+group.1um/fe3+_smectite_nontronite.fd.gz \
+group.1um/fe3+_sulfate_schwertmannite.fd.gz \
+group.1um/fe3+_hematite.med.gr.all.fd.gz \
+group.1um/fe3+_hematite.thincoat.fd.gz \
+group.1um/fe2+generic_broad_br60b.fd.gz \
+group.1um/fe3+_goethite.fingr.fd.gz \
+group.1um/fe3+mix_AMD.assemb1.fd.gz \
+group.1um/fe2+generic_nrw.hs-actinolite.fd.gz \
+group.1um/fe3+_goethite.lepidocrosite.fd.gz &

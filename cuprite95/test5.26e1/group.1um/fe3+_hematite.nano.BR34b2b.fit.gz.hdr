@@ -1,0 +1,15 @@
+ENVI
+description = {
+  Fe3+ nanohematite  BR34B2b FITS) b2bSfd A      
+  }
+ samples =          614
+ lines   =          972
+ bands   =            1
+ header offset =          614
+file compression = 1
+file type = ENVI Standard
+data type = 1
+interleave = bsq
+sensor type = spectral data
+byte order = 0
+wavelength units = Micrometers

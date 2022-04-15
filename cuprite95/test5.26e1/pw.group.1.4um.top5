@@ -1,0 +1,5 @@
+pw -c 13 -s 3 group.1.4um/ohb_1.449_sulfate-schwertm.fd.gz \
+group.1.4um/ohb_1.425_sulfate-alunite.fd.gz \
+group.1.4um/ohb_1.400_phyllo-cookeite.fd.gz \
+group.1.4um/ohb_1.431_zeolite-laumontite.fd.gz \
+group.1.4um/ohb_1.435_tourmaline.fd.gz &

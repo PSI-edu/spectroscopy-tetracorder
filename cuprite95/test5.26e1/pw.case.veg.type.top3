@@ -1,0 +1,3 @@
+pw -c 13 -s 3 case.veg.type/vegetation.type13.fd.gz \
+case.veg.type/vegetation.type6.fd.gz \
+case.veg.type/vegetation.type4.fd.gz &

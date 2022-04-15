@@ -1,0 +1,6 @@
+pw -c 13 -s 3 group.veg/vegetation.weak.map.fd.gz \
+group.veg/veg1.4um.band.fd.gz \
+group.veg/veg1.2um.band.fd.gz \
+group.veg/veg0.9um.band.fd.gz \
+group.veg/vegetation.dry_nonphotosyn.fd.gz \
+group.veg/vegetation.map.fd.gz &

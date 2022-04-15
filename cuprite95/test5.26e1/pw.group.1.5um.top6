@@ -1,0 +1,6 @@
+pw -c 13 -s 3 group.1.5um/ohc_1.455_zeolite-natrolite.fd.gz \
+group.1.5um/ohc_1.451_hydroxide-gibbsite.fd.gz \
+group.1.5um/ohc_1.479_sulfate-jarosite-na200c.fd.gz \
+group.1.5um/ohc_1.480_phyllo-prehnite.fd.gz \
+group.1.5um/vegetation.dry+green.fd.gz \
+group.1.5um/ohc_1.471_sulfate-jarosite-k.fd.gz &

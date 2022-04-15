@@ -1,0 +1,6 @@
+pw -c 13 -s 3 group.1.5um-broad/sphalerite_s26-341_1.5um.fd.gz \
+group.1.5um-broad/fe2+_wollastonite_hs348.3b.fd.gz \
+group.1.5um-broad/olivine_fo18_ki3377.fd.gz \
+group.1.5um-broad/olivine_fo89_gds70.d.fd.gz \
+group.1.5um-broad/vegetation.dry+green.fd.gz \
+group.1.5um-broad/olivine_fo91_gds71.b.fd.gz &

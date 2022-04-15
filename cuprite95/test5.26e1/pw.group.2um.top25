@@ -1,0 +1,25 @@
+pw -c 13 -s 3 group.2um/feldspar_buddington.namont2.fd.gz \
+group.2um/sulfate_alunNa03.fd.gz \
+group.2um/sulfate_alunite_k.all.fd.gz \
+group.2um/Kalun+kaol.intmx.fd.gz \
+group.2um/sulfate+kaolingrp_natroalun+dickite.fd.gz \
+group.2um/carbonate_calcite+0.3muscovite.fd.gz \
+group.2um/micagrp_muscovite-medhigh-Al.fd.gz \
+group.2um/sulfate_jarosite-K.fd.gz \
+group.2um/kaolinite+muscovite.added.fd.gz \
+group.2um/sulfate_alunite_int-comp.all.fd.gz \
+group.2um/alunite.5+kaol.5.fd.gz \
+group.2um/kaolgrp_dickite.fd.gz \
+group.2um/smectite_beidellite_gds123.fd.gz \
+group.2um/kaolin+musc.intimat.fd.gz \
+group.2um/kaolgrp_kaolinite_wxl.fd.gz \
+group.2um/smectite_montmorillonite_na_highswelling.fd.gz \
+group.2um/carbonate_calcite.fd.gz \
+group.2um/kaolgrp_kaolinite_pxl.fd.gz \
+group.2um/muscovite+chlorite.fd.gz \
+group.2um/kaolin.5+muscov.medhighAl.fd.gz \
+group.2um/sulfate_alun73K27Na.low.fd.gz \
+group.2um/sulfate_alun66K34Na.low.fd.gz \
+group.2um/sioh_chalcedony.fd.gz \
+group.2um/Na-alun+kaol.intmx.fd.gz \
+group.2um/calcite+0.2Na-mont.fd.gz &

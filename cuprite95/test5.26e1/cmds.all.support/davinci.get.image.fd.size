@@ -1,0 +1,17 @@
+#!/usr/local/bin/davinci -f
+#####!/usr/bin/env -S davinci -f  
+
+###########################  was:  #!/usr/local/bin/davinci -f
+
+
+verbose =0
+
+a=syscall("ls group.1um/*.fd* | grep -v 'hdr$' | grep -v '.gif$' | head -1")
+
+#printf("%s\n", a[,1,1])
+
+b=read(filename=a[,1,1])
+
+adim=dim(b)
+
+printf("%d %d   %s\n", adim[1,,], adim[2,,], a[,1,1])

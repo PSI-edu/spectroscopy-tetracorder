@@ -1,0 +1,14 @@
+WARNING: LBLSIZE= not found.  Computed LBLSIZE may be in error for small files
+ENVI
+description = {
+  Davinci generated envi header
+}
+samples = 614
+lines   = 972
+bands   = 1
+header offset = 614
+file type = ENVI Standard
+data type = 1
+interleave = bsq
+sensor type = Unknown
+byte order = 0

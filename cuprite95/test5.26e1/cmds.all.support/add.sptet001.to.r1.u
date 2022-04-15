@@ -1,0 +1,7 @@
+#!/bin/sh
+
+ex - r1 <<EOI
+/^iufl=/  s/\/dev\/null/sptet001 /
+/^inmu=/  s/\*unasnd\*/sptet001/
+w!
+q

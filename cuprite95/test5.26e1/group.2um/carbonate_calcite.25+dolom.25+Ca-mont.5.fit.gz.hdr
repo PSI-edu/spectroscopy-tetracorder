@@ -1,0 +1,15 @@
+ENVI
+description = {
+  carbonate calcite.25+dolom.25+Ca FITS.5 Q      
+  }
+ samples =          614
+ lines   =          972
+ bands   =            1
+ header offset =          614
+file compression = 1
+file type = ENVI Standard
+data type = 1
+interleave = bsq
+sensor type = spectral data
+byte order = 0
+wavelength units = Micrometers

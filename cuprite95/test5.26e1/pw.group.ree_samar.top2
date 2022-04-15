@@ -1,0 +1,2 @@
+pw -c 13 -s 3 group.ree_samar/vegetation.dry+green.fd.gz \
+group.ree_samar/snow.melting1a+0.5veg.fd.gz &
