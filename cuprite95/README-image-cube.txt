@@ -13,5 +13,3 @@ get cuprite.95.cal.rtgc.intel.v
 get cuprite.95.cal.rtgc.intel.v.hdr
 
 
-Browser
-https://www.mmnt.net/db/0/0/ftpext.usgs.gov/pub/cr/co/denver/speclab/pub/cuprite
