@@ -160,14 +160,5 @@ shift     peak height    DN    Possible image stretch
 
 ##############   KNOWN ISSUES   ################################################
 
-cmd.lib.setup.t5.15a2
+Read: AAAAA.KNOWN-ISSUES.txt
 
-prehnite+.50chlorite can map with a kaolinite + calcite + dry vegetation mixture
-           - observed in Arches 1995 Aviris data
-
-this is mitigates to some degree in t5.2+ series, but not completely.
-
-One of the expert system known deficiencies is desert types of vegetation
-which have broad  water bands shifted long, and the closest match is ice and melting
-snow.  We'll add more veg when we move to splib07.  If we knew the temperatures
-were above freezing, those would be rejected.  

@@ -702,7 +702,9 @@ else
 fi
 
 cp -a ${source}/AAAAA.readme.txt                                         ${dir}/
+cp -a ${source}/AAAAA.KNOWN-ISSUES.txt                                   ${dir}/
 cp -a ${source}/AAAA.license.txt                                         ${dir}/
+cp -a ${source}/license.txt                                              ${dir}/
 cp -a ${source}/AAA.cmds.to.get.average.spectra.of.mapped.materials      ${dir}/
 
 echo $band > ${dir}/band.number.grayscale     # band number for gray scale images
