@@ -1,0 +1,42 @@
+#!/bin/sh
+
+# tetracorder/tricordersound
+#
+# send a sound to the sound device.
+# customize to whatever environment you have
+#
+# Roger N. Clark  June 10, 1997 - January 18, 2019
+
+#echo "DEBUG tetracordersound test point 1" `date`
+
+sound_dir=/src/local/tetracorder5.27/tetracorder-sounds
+
+soundplayer='/usr/bin/aplay'    # linux sound player
+
+soundops='-q'   # soundplayer options
+
+if [ ! -f "$soundplayer" ]
+then
+	echo "ERROR: sound player not found."
+	echo "expecting $soundplayer"
+	echo "exit sound"
+	exit
+fi
+
+#echo "DEBUG tetracordersound test point 2"
+file=${sound_dir}/$1
+
+if [ -f "$file" ]
+then
+
+	#echo "DEBUG tetracordersound test point 3"
+	$soundplayer  $soundops  $file
+	#echo "DEBUG tetracordersound test point 4"
+
+else
+	#echo "DEBUG tetracordersound test point not found A"
+	$soundplayer  $soundops  ${sound_dir}/sound-file-not-found.wav
+	#echo "DEBUG tetracordersound test point not found B"
+
+fi
+#echo "DEBUG tetracordersound test end" `date`
