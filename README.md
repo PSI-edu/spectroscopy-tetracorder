@@ -47,6 +47,13 @@ The tetracorder system also requires
 
 Tetracorder, Specpr, and support programs run on linux and unix.
 
+# Source Code
+
+Github does not have the languages right.  The specpr and tetracorder programs are
+fortran, ratfor, and C.  Support programs are mostly davinci and shell scripts, with
+some fortran/ratfor and C programs.  HTML is documentation in the spectral libraries.
+Spectral libraries are binary data.
+
 # Background
 
 Detection and mapping of minerals, vegetation species, chemicals,
@@ -101,3 +108,27 @@ instrument that will go on the International Space Station in June
 that produce dust aerosols around the world. By measuring in detail which
 minerals make up the dust, EMIT will help to answer the essential question
 of whether this type of aerosol warms or cools the atmosphere.
+
+# Tetracorder 5.27
+
+June 2022: Tetracorder 5.27 released.  The 5.27 code introduces a new spectral feature class,
+class M.  Class D, diagnostic, could still find a material based on other features if
+a diagnostic feature was disabled.  The result may not be correct.  The condition was
+discovered in AVIRIS data when the reflectance calibration had a large deleted zone around
+the 1.4 and 1.9-micron telluric water bands.  For example, in group 1, the right continuum
+point for azurite (copper carbonate) was inside the deleted channel zone and the main
+diagnostic feature was disabled.  Identification fell to a less diagnostic and less unique
+feature resulting in widespread mapping of azurite, but that mapping was a false positive.
+Tetracorder 5.27 with the M spectral class is Must Have Diagnostic feature and if the
+feature is disabled, the material will not be found.  The 5.27 expert system has been updated
+where multiple materials now use the class M diagnostic.  Testing in multiple geologic 
+environments shows the false positive rate is vastly reduced.
+
+A study was conducted on the ID of snow+vegetation and the expert system was adjusted.  Some
+plants have shifted water bands that are similar to those in snow+vegetation spectra.
+The false positive rate for snow+vegetation is now reduced.  If you know the temperature
+range of your scene, setting the temperature will help reduce the false positive snow
+detection if temperatures are above freezing.
+
+Tetracorder 5.27 includes additional spectra for mapping materials in the 3 to 4-micron
+range.  Specifically weak carbonate signatures are now included.
