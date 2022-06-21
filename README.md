@@ -132,3 +132,6 @@ detection if temperatures are above freezing.
 
 Tetracorder 5.27 includes additional spectra for mapping materials in the 3 to 4-micron
 range.  Specifically weak carbonate signatures are now included.
+
+The color map products for the 2-micron spectral features have also been improved
+with better color to distinguish minerals better.  A map of muscovite composition has been added.
