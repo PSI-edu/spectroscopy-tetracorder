@@ -245,7 +245,7 @@
 30  format(1x,72('*'),/,
 	1x,21('*'),' SPECtrum Processing Routines ',21('*'),/,
 	1x,72('*'),/,
-	1x,18('*'), ' Current program version: 12/20/2021 ',19('*'))
+	1x,18('*'), ' Current program version: 06/20/2022 ',19('*'))
 
 31 format (1x,29('*'),'            ',31('*'))
 

@@ -13,6 +13,7 @@
 # example entries:
 #
 # tf1= mineral1 f1a DLw 2.150   2.210   2.390   2.430  ct 0.04 r*bd> 0.002 0.004
+# tf1= mineral1 f1a MLw 2.150   2.210   2.390   2.430  ct 0.04 r*bd> 0.002 0.004
 # tf2= mineral1 f2a DLw 2.199   2.230   2.275   2.290  ct 0.04 r*bd> 0.002 0.004
 # tf3= thuring  f3a WLw 0.512   0.542   1.696   1.726
 
@@ -91,7 +92,7 @@
 
 		call wjfren (i, x, il)  # now expect DLw, OLw. WLw
 
-		if (il == ihcd || il == ihco || il == ihcw) {
+		if (il == ihcd || il == ihcm ||  il == ihco || il == ihcw) {
 			tetfnc(ibd) = '    '
 			iname='            '
 			iname(1:3)  = iopcon(i-1:i+1)
