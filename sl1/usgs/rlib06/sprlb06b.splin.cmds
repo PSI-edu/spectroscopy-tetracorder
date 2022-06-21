@@ -1193,4 +1193,116 @@ t
 ;;;;;;b;96 
 c;108 
 e;e
+\################## copy a spectrum
+==[outwave]V120
+t
+==[Recnum] 1737
+[FILEID][Recnum]citv
+;;;;;;b;120 
+c;133 
+e;e
+\################## copy a spectrum
+==[outwave]V120
+t
+==[Recnum] 1750
+[FILEID][Recnum]citv
+;;;;;;b;120 
+c;133 
+e;e
+\################## copy a spectrum
+==[outwave]V120
+t
+==[Recnum] 1763
+[FILEID][Recnum]citv
+;;;;;;b;120 
+c;133 
+e;e
+\################## copy a spectrum
+==[outwave]V120
+t
+==[Recnum] 1776
+[FILEID][Recnum]citv
+;;;;;;b;120 
+c;133 
+e;e
+\################## copy a spectrum
+==[outwave]V120
+t
+==[Recnum] 1789
+[FILEID][Recnum]citv
+;;;;;;b;120 
+c;133 
+e;e
+\################## copy a spectrum
+==[outwave]V120
+t
+==[Recnum] 1802
+[FILEID][Recnum]citv
+;;;;;;b;120 
+c;133 
+e;e
+\################## copy a spectrum
+==[outwave]V120
+t
+==[Recnum] 1815
+[FILEID][Recnum]citv
+;;;;;;b;120 
+c;133 
+e;e
+\################## copy a spectrum
+==[outwave]V120
+t
+==[Recnum] 1828
+[FILEID][Recnum]citv
+;;;;;;b;120 
+c;133 
+e;e
+\################## copy a spectrum
+==[outwave]V120
+t
+==[Recnum] 1841
+[FILEID][Recnum]citv
+;;;;;;b;120 
+c;133 
+e;e
+\################## copy a spectrum
+==[outwave]V120
+t
+==[Recnum] 1854
+[FILEID][Recnum]citv
+;;;;;;b;120 
+c;133 
+e;e
+\################## copy a spectrum
+==[outwave]V120
+t
+==[Recnum] 1867
+[FILEID][Recnum]citv
+;;;;;;b;120 
+c;133 
+e;e
+\################## copy a spectrum
+==[outwave]V120
+t
+==[Recnum] 1880
+[FILEID][Recnum]citv
+;;;;;;b;120 
+c;133 
+e;e
+\################## copy a spectrum
+==[outwave]V120
+t
+==[Recnum] 1893
+[FILEID][Recnum]citv
+;;;;;;b;120 
+c;133 
+e;e
+\################## copy a spectrum
+==[outwave]V120
+t
+==[Recnum] 1906
+[FILEID][Recnum]citv
+;;;;;;b;120 
+c;133 
+e;e
 e;EX

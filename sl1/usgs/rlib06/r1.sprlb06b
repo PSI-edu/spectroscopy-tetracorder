@@ -2,38 +2,38 @@ SPECPR_Restart=2.00      # Restart Version
 #
 # file names
 #
-ivfl=r06av12a                                                                        
-iwfl=/dev/null                                                                       
-idfl=/dev/null                                                                       
-iufl=/dev/null                                                                       
-iyfl=sprlb06b                                                                        
+ivfl=sprlb06b                                                                        
+iwfl=/d1/mklejwa/data/hires/spd0075                                                  
+idfl=junk1                                                                           
+iufl=/d1/fieldspec/ASD16139/spd0454                                                  
+iyfl=sprlb06a                                                                        
 isfl=/dev/null                                                                       
-ilfl=/dev/null                                                                       
-irfl=r.r06av13a                                                                      
+ilfl=spoolfile                                                                       
+irfl=r1.sprlb06b                                                                     
 #
 # protection number for open files (v,w,d,u,y,s)
 #
-iprtv=          1007  # device protection v
-iprtw=           -29  # device protection w
-iprtd=           -29  # device protection d
-iprtu=           -29  # device protection u
-iprty=          1955  # device protection y
+iprtv=          1955  # device protection v
+iprtw=        -99626  # device protection w
+iprtd=             0  # device protection d
+iprtu=         -4719  # device protection u
+iprty=          1918  # device protection y
 iprts=             0  # device protection s
 #
 # short 8 character names associated with file device letters
 #
-isavt=      r06av12a  # file device letter v
-iwdgt=      *unasnd*  # file device letter w
-iwrkt=      *unasnd*  # file device letter d
-inmu=       *unasnd*  # file device letter u
-inmy=       sprlb06b  # file device letter y
+isavt=      sprlb06b  # file device letter v
+iwdgt=      spd0075   # file device letter w
+iwrkt=      junk1     # file device letter d
+inmu=       spd0454   # file device letter u
+inmy=       spd0454   # file device letter y
 #
 # plot control values (real number format: ex. 0.23E+01)
 #
-wmina=  0.000000E+00  # plot min wavelength
-wmaxa=  0.000000E+00  # plot max wavelength
-bbnd=   0.000000E+00  # plot min reflectance
-ubnd=   0.150000E+01  # plot max reflectance
+wmina=  0.350000E+00  # plot min wavelength
+wmaxa=  0.250000E+01  # plot max wavelength
+bbnd=   0.977506E-02  # plot min reflectance
+ubnd=   0.630357E+00  # plot max reflectance
 #
 istarp(1)=         0  # star pack letter
 istarp(2)= 538976304  # star pack rec. no.
@@ -42,28 +42,28 @@ alat=      0.0000000  # observatory lat in rads
 ra=        0.0000000  # right ascension in radians
 dec=       0.0000000  # declination in radians
 ha=        0.0000000  # hour angle in radians
-airmas=    20.000000  # air mass of object
+airmas=     0.000000  # air mass of object
 iwch=              0  # wavelength calib shift
 #
 # record pointers
 #
 mag0=             -1  # mag tape drive 0
 mag1=             -1  # mag tape drive 1
-isavf=          1008  # file v
-iwjf=             10  # file w
-iwrkf=             1  # file d
-isvcu=            30  # file u
-iwjcy=           146  # file y
+isavf=          1956  # file v
+iwjf=          90003  # file w
+iwrkf=           971  # file d
+isvcu=           915  # file u
+iwjcy=          1919  # file y
 istrf=             1  # file s
 ilpt=              1  # line printer
 icdr=              0  # card reader
 ipp=               1  # printer/plotter
 #
-nchans=          224  # num wave chans
+nchans=         4301  # num wave chans
 ibnrm1=           30  # band anal
 ibnrm2=           38  # band anal
 nchsav=            0  # num chan save
-iline=             0  # graphics line type
+iline=             3  # graphics line type
 #
 infmth=            0  #
 infopr=            1  #
@@ -83,8 +83,8 @@ cfile=#                                         #
 igrmod=           52  # graphics mode
 #
 itrol(1)=          V  # wavelength file id
-itrol(2)=          6  # record in use
-itrol(3)=          h  # chan/wave/energy plot flag
+itrol(2)=         96  # record in use
+itrol(3)=          a  # chan/wave/energy plot flag
 #
 # parameters for 3D file I/O
 #

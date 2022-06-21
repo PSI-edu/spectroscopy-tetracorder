@@ -13,11 +13,11 @@ irfl=restartfiles/r.s06cr08b
 #
 # protection number for open files (v,w,d,u,y,s)
 #
-iprtv=           923  # device protection v
+iprtv=          1007  # device protection v
 iprtw=            29  # device protection w
 iprtd=          -232  # device protection d
 iprtu=           -13  # device protection u
-iprty=         -1773  # device protection y
+iprty=         -1955  # device protection y
 iprts=             0  # device protection s
 #
 # short 8 character names associated with file device letters
@@ -49,11 +49,11 @@ iwch=              0  # wavelength calib shift
 #
 mag0=             -1  # mag tape drive 0
 mag1=             -1  # mag tape drive 1
-isavf=           924  # file v
+isavf=          1008  # file v
 iwjf=             30  # file w
 iwrkf=           233  # file d
 isvcu=             8  # file u
-iwjcy=           120  # file y
+iwjcy=           146  # file y
 istrf=             1  # file s
 ilpt=              1  # line printer
 icdr=              0  # card reader

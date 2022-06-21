@@ -1949,4 +1949,186 @@ e;t  \# go to display
 [sppad] t v  \# add padding record 4
 [sppad] t v  \# add padding record 5
 e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y120
+==[inres]y133
+==[Recnum] 1774
+==[Title]Moon62231 25u+0.005co2ice10u r06av95a=
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+[sppad] t v  \# add padding record 5
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y120
+==[inres]y133
+==[Recnum] 1787
+==[Title]Moon62231 25um+0.01co2ice10u r06av95a=
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+[sppad] t v  \# add padding record 5
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y120
+==[inres]y133
+==[Recnum] 1800
+==[Title]Moon62231 25um+0.05co2ice10u r06av95a=
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+[sppad] t v  \# add padding record 5
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y120
+==[inres]y133
+==[Recnum] 1813
+==[Title]Moon62231 25um+0.10co2ice10u r06av95a=
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+[sppad] t v  \# add padding record 5
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y120
+==[inres]y133
+==[Recnum] 1826
+==[Title]Moon62231 25um+0.30co2ice10u r06av95a=
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+[sppad] t v  \# add padding record 5
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y120
+==[inres]y133
+==[Recnum] 1839
+==[Title]Moon62231_10-20 g25um CMPREF r06av95a=
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+[sppad] t v  \# add padding record 5
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y120
+==[inres]y133
+==[Recnum] 1852
+==[Title]CO2_ice g0.0003cm Warren opc r06av95a=
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+[sppad] t v  \# add padding record 5
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y120
+==[inres]y133
+==[Recnum] 1865
+==[Title]CO2_ice g0.0010cm Warren opc r06av95a=
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+[sppad] t v  \# add padding record 5
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y120
+==[inres]y133
+==[Recnum] 1878
+==[Title]CO2_ice g0.0030cm Warren opc r06av95a=
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+[sppad] t v  \# add padding record 5
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y120
+==[inres]y133
+==[Recnum] 1891
+==[Title]CO2_ice g0.0100cm Warren opc r06av95a=
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+[sppad] t v  \# add padding record 5
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y120
+==[inres]y133
+==[Recnum] 1904
+==[Title]CO2_ice g0.0300cm Warren opc r06av95a=
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+[sppad] t v  \# add padding record 5
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y120
+==[inres]y133
+==[Recnum] 1917
+==[Title]CO2_ice g0.1000cm Warren opc r06av95a=
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+[sppad] t v  \# add padding record 5
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y120
+==[inres]y133
+==[Recnum] 1930
+==[Title]CO2_ice g0.3000cm Warren opc r06av95a=
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+[sppad] t v  \# add padding record 5
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y120
+==[inres]y133
+==[Recnum] 1943
+==[Title]CO2_frost_on_H2O_ice 100K #2 r06av95a=
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+[sppad] t v  \# add padding record 5
+e;m  \# go to math
 e;EX
