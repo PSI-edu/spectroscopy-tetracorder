@@ -1,0 +1,247 @@
+#!/usr/local/bin/davinci -f
+#/usr/local/bin/davinci-0.50 -f
+verbose=0
+###############################################################################
+#
+# Davinci Program to Compute 3 point band depth
+#
+# Roger N. Clark, USGS  4/14/98
+
+# modified to use newer davinci which subsets only the image cube
+#  needed for the band depth calculation.  RNC 10/1/1999
+#  modified for davinci 0.94 and previous  RNC 10/31/2002
+#  modified to add thresholding  if contin level < thresh, band depth=0
+#  modified to output gamma-curve gif image  12/08/2008 RNC
+
+# input:              1        2  3           4  5   6   7       8            9      10    11  12     13
+#         program input_file  left-channel   center  right  output_file_base thresh factor -g gdir   full_scale
+#         program input_file  20 20          33 36   97 99  output_file_base 0.04   -1.0   -g gifdir 0.1
+
+if ($argc < 10) {
+	printf("Insufficient input\n\n")
+        printf("band-depth-3pt+thresh input_file  left-channel   center  right  output_file_base thresh factor [-g gdir   full_scale]\n")
+	printf("                      full scale = number, or A or A0\n")
+	printf("                               A = auto scale, linear/gamma stretch for best result)\n")
+	printf("                               A0= autoscale max only, gamma stretch only\n")
+        printf("                          number = positive= gamma stretch, negative = linear\n")
+	printf("exit 1\n")
+        exit(1)
+}
+
+lc1=short(atoi($2))  # left continuum  channel
+lc2=short(atoi($3))  # left continuum  channel
+
+bc1=short(atoi($4))  # band center  channel
+bc2=short(atoi($5))  # band center  channel
+
+rc1=short(atoi($6))  # right continuum  channel
+rc2=short(atoi($7))  # right continuum  channel
+
+
+thresh=0.0
+thresh=atof($9)      # threshold
+printf ("Threshold = %f\n",thresh)
+
+peak=1.0
+#if ($10 == "-1") {    # -1 = emission peak
+#	peak = -1.0
+#	printf("emission band indicated; result * -1.0\n")
+#}
+#peak
+
+gflag=0
+if ($argc > 10) {
+	if ($argc >= 13) {
+		if ($11 == "-g") {     # make gif image, put into gifdir
+			if ($12) {
+				gdir=$12
+			} else {
+				printf ("directory missing after -g flag\n")
+				exit(1)
+			}
+			gflag=1
+		}
+	} else {
+		printf("Insufficient input\n\n")
+	        printf("band-depth-3pt+thresh input_file  left-channel   center  right  output_file_base thresh factor [-g gdir   full_scale]\n")
+		printf("exit 1\n")
+       		exit(1)
+	}
+}
+printf ("gflag= %d\n", gflag)
+
+# note: offsetting broken in davinci 0.94, so don't do it for now.
+#a=read(filename=$1,zlow=lc1,zhigh=rc2)
+#
+## offest indices:
+#
+#ioff = lc1 - 1
+#
+# the following two lines are the temp fix:
+
+a=read(filename=$1)
+ioff =0
+
+lc1x = lc1 - ioff   # left continuum 1
+lc2x = lc2 - ioff   # left continuum 2
+bc1x = bc1 - ioff   # band center 1
+bc2x = bc2 - ioff   # band center 2
+rc1x = rc1 - ioff   # right continuum 1
+rc2x = rc2 - ioff   # right continuum 2
+
+lc = float(a[,,lc1x])*0.0
+for (i=lc1x; i<=lc2x; i=i+1) { 
+	printf("left continuum: adding ch %d\n",i+ioff)
+	lc = lc + float(a[,,i]) 
+}
+lc = lc / float(lc2x-lc1x+1)
+
+
+rc = float(a[,,rc1x])*0.0
+for (i=rc1x; i<=rc2x; i=i+1) { 
+	printf("Right continuum: adding ch %d\n",i+ioff)
+	rc = rc + float(a[,,i]) 
+}
+rc = rc / float(rc2x-rc1x+1)
+# DEBUG: frc=$8 + ".rc"
+# DEBUG: write(bsq(short(rc)),filename=frc,type=vicar)
+
+cc = (lc + rc)/2.0  # continuum center
+# DEBUG: fcc=$8 + ".cc"
+# DEBUG: write(bsq(short(cc)),filename=fcc,type=vicar)
+
+x=9999999.0  # a large constant
+
+#mask = float(byte((cc*x+0.4))/255)   # if continuum =0 then mask = 0, else 1
+mask = float((cc-thresh)/abs(cc))   # if continuum =0 then mask = 0, else 1
+mask=byte(mask+0.49)
+mask=float(mask)
+moment(mask)
+# DEBUG: fm=$8 + ".mask"
+# DEBUG: write(bsq(short(mask)),filename=fm,type=vicar)
+
+bc = float(a[,,bc1x])*0.0
+for (i=bc1x; i<=bc2x; i=i+1) { 
+	printf("band center: adding ch %d\n",i+ioff)
+	bc = bc + float(a[,,i]) 
+}
+bc = bc / float(bc2x-bc1x+1)
+# DEBUG: fbc=$8 + ".bc"
+# DEBUG: write(bsq(short(bc)),filename=fbc,type=vicar)
+
+
+depth = 1.0 - (bc /cc)
+
+depth = depth * mask * peak
+
+idepth=depth*10000.0                         # next scale and convert to integer
+
+idepth[ where (idepth < -32767) ] = -32767
+idepth[ where (idepth >  32767) ] =  32767
+idepth=short(idepth)
+idepth=bsq(idepth)
+
+write(idepth,filename=$8,type=vicar)
+
+# now do gamma-stretched gif image of data scaled 0 to 255:
+# a simple gamma stretch of image "a" is: a*10*0.1^((a/255)^0.5)
+# but this saturates too soon, so a better alternative:
+# b=a*7.5 *0.08^((a/400)^0.5)    # RNC 12/08/2008
+
+printf ("gflag= %d\n", gflag)
+
+if (gflag == 1) {  # output gif image
+
+	printf ("Computing pgm (gif) image, fsc=%s\n", $13)
+
+	depth[ where (depth > ascale) ]  = 0.0  # for data > ascale, reset to 0
+	depth[ where (depth < 0.000001) ] = 0.0  # for data < 0       reset to 0
+
+	xmom=moment(depth)
+	printf("########## moment of clipped output image: %f %f %f\n", xmom[1,,], xmom[2,,], xmom[3,,])
+	
+	if ( $13 == "A" ) {   # auto scale results
+                              # good for when a lot mapes everywhere
+
+		printf ("    autoscaling (full)  pgm (gif) image\n")
+		mdepth = xmom
+		depthmax= mdepth[2,,]
+		depthmin= mdepth[1,,]
+		if ( depthmax > 1.0 ) depthmax = 1.0
+		if ( depthmin > 0.0 ) depthmin = 0.0
+
+		dmean=mdepth[3,,]
+
+                bdepth=depth
+                bdepth[ where (bdepth < 0.000001) ] = dmean
+                bdepthm = moment(bdepth)   # new min, max, mean
+
+		depthmin = bdepthm[1,,]   # new mean, excluding zero 
+
+		depthmin = depthmin*0.80   # used to increase contrast
+
+		depth = (depth-depthmin)/(depthmax-depthmin)  # contrast stretched
+		depth[ where (depth < 0.000001) ] = 0.0  # for data < 0       reset to 0
+
+		printf (" autoscaling (full): min= %f   max=%f   mean=%f\n", depthmin, depthmax, dmean)
+
+		x2=moment(depth)
+		printf ("   after stretching: min= %f   max=%f   mean=%f\n", x2[1,,], x2[2,,], x2[3,,])
+
+		fsc= x2[2,,]*1.0   # use the factor after x2 to tune brightness
+
+		a=depth*255/abs(fsc)
+
+		if ( x2[2,,] > 0.01 ) {  # if max is >0, check for gama stretch condition
+
+			xx=x2[3,,]/x2[2,,]  # mean/max
+
+			if (fsc > 0.0 && xx < 0.2 ) {   # do gamma stretch
+
+				printf ("   doing gamma stretch\n")
+				a= a*7.5 *0.08^((a/400)^0.5)
+
+			}
+		}
+
+	} else if ( $13 == "A0" ) {   # auto scale results but leave zero level at zero
+
+		printf ("    autoscaling (max)  pgm (gif) image\n")
+		mdepth = xmom
+		depthmax= mdepth[2,,]
+		if ( depthmax > 1.0 ) depthmax = 1.0
+
+		fsc= depthmax
+
+		a=depth*255/abs(fsc)
+
+	} else {
+		fsc=atof($13)  # want full scale = this value, set by user
+		printf ("    use scale = %f\n", fsc)
+
+		a=depth*255/abs(fsc)
+	}
+
+	# for fsc > 0 means scale and gamma stretch.
+	# for fsc < 0 means scale and keep linear.
+
+	if (fsc > 0.0 && $13 != "A") {                # only gamma stretch for use set
+		a= a*7.5 *0.08^((a/400)^0.5)
+	}
+	a[ where (a < 0) ] = 0
+	a[ where (a > 255) ] = 255
+	a=byte(a)
+
+	#gout=gdir + "/" + $8 + ".gstr.gif" # linux davinci does not write gif,so do pgm
+	gout=gdir + "/" + $8 + ".gstr.pgm"
+
+	if (fsc > 0.0) {
+		#printf("creating gamma-stretched gif image %s\n", gout)
+		printf("creating gamma-stretched pgm image %s\n", gout)
+	} else {
+		#printf("creating linear gif image %s\n", gout)
+		printf("creating linear pgm image %s\n", gout)
+	}
+	#write(bsq(a),filename=gout,type=gif)  # linux davinci does not write gif,so do pgm
+	write(bsq(a),filename=gout,type=pgm)   # later convert all pgm to gif
+}

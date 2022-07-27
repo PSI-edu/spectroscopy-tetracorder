@@ -1,0 +1,245 @@
+#!/usr/bin/env -S davinci -f
+#
+# was #!/usr/local/bin/davinci -f
+
+verbose=0
+
+# list looks like:
+#                                                         output                Del K                  Density    Reflectance        Grain Diameter
+##   pointer to material lsists                             name         absorption coefficient       grams / cc  Wavelength (microns)   (microns)
+#lists.of.files.by.mineral/calcite.group2.txt              calcite                    50                2.71         2.18                    10
+#lists.of.files.by.mineral/montmorillonite.group2.txt      montmorillonite           100                2.35         2.12                     2
+##                                                                                                  11111111111111111111111111111111111111111111111111
+##        11111111112222222222333333333344444444445555555555666666666677777777778888888888999999999900000000001111111111222222222233333333334444444444
+##2345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789
+
+#                                         1    2     3       4      5       6          7       8     9        10
+# davinci.compute.model.abundances.v1  model1 cube cubename scale waves specprfile record#  model4 quartz grain_size_in_microns
+
+if ( $argc < 1 ) {
+	printf ("This script resides in the cmds.abundances directory in the tetracorder working directory\n")
+	printf ("     It should be run from the tetracorder working directory, not from the cmds.abundances directory\n")
+	printf ("Usage\n")
+	printf ("      davinci.compute.model.abundances.v1  model3 cube cubename scale waves specprfile record#\n")
+	exit(1)
+}
+
+model1enable = 1   # default do model 1
+
+rscale = 1.0   # scale image cube data to reflectance
+
+###################################################################################
+
+pi = 3.14159265358979
+
+# Master list of materials to compute
+mlist = read_lines(filename="cmds.abundances/materials.to.compute.abundances.txt")
+
+#printf ("debug: reading cmds.abundances/materials.to.compute.abundances.txt\n")
+
+mlines = length(mlist)
+
+mlistmats = 0 # number of materials lists  
+              # for EMIT: calcite, chlorite, dolomite, goethite, gypsum, hematite,
+              #           illite+muscovite, kaolinite, montmorillonite, vermiculite
+
+# first count hte number of materials in mlist
+for (i=1; i<= mlines; i++) {
+
+	if (mlist [1,i,1] != '#' && mlist [1,i,1]!= '\0' ) {   # skip comments
+	    if (mlist [1:4,i,1] == 'list' ) {                  # should be lists.of.files.by.mineral
+
+		#printf("debug: %s\n", mlist [,i,1])
+		mlistmats = mlistmats +1
+	    }
+	}
+}
+#printf ("debug: found %d materials\n", mlistmats)
+
+# create an array of mlistmats lines, all blank
+# these are the file names, and names of the materials for the output
+amatline = '                                                         '
+amatfiles = amatline
+amatlineb = '                    '
+amatnames = amatlineb
+for (i=2; i<=mlistmats; i++) {
+        amatfiles = cat (amatfiles, amatline, axis=y)
+	amatnames = cat (amatnames, amatlineb, axis=y)
+}
+
+refwave   = create(1,mlistmats,1,org=bsq,format=float,start=0.0, step=0.0)   # array of wavelengths for the reference materials
+refchan   = create(1,mlistmats,1,org=bsq,format=int,  start=0,   step=0)     # array of channels at refwave for the reference materials
+matdiam   = create(1,mlistmats,1,org=bsq,format=float,start=0.0, step=0.0)   # array of material diameters in microns
+
+# now parse the 4 columns in materials.to.compute.abundances.txt
+
+##                                                         output                Del K                  Density    Reflectance        Grain Diameter
+##   pointer to material lsists                             name         absorption coefficient       grams / cc  Wavelength (microns)   (microns)
+#lists.of.files.by.mineral/calcite.group2.txt              calcite                    50                2.71         2.18                    10     
+##                                                                                                  11111111111111111111111111111111111111111111111111
+##        11111111112222222222333333333344444444445555555555666666666677777777778888888888999999999900000000001111111111222222222233333333334444444444
+##2345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789
+
+nmatfile = 0  # number of material file
+
+printf ("                       File Name                             Output Name                 Ref Wave\n")
+for (i=1; i<= mlines; i++) {
+	if (mlist [1,i,1] != '#' && mlist [1,i,1]!= '\0' ) {   # skip comments
+	    if (mlist [1:4,i,1] == 'list' ) {                  # should be lists.of.files.by.mineral
+
+			nmatfile = nmatfile + 1
+			amatfiles[1:57,nmatfile,]  = mlist[1:57,i,]    # file name containing list of tetracorder
+									# IDs to be included
+			amatnames[1:19,nmatfile,] = mlist[59:77,i,]   # names for output
+
+			refwave[1,nmatfile,] = atof(mlist[115:124,i,])   # reference wavelength (micron).
+
+			printf ("%3d  %s %s %14.4f \n", nmatfile, amatfiles[,nmatfile,], \
+					amatnames[,nmatfile,], \
+					refwave[1,nmatfile,])
+	    }
+	}
+}
+
+for (ilistmats=1;  ilistmats<= mlistmats;  ilistmats++) {
+
+# list looks like ( from lists.of.files.by.mineral/calcite.group2.txt ):
+#
+##                                                                 DN     BD    Band                                   convolved
+##              file                                             scale  factor  depth      title                       reference spectrum
+#group.2um/carbonate_calcite+0.2kaolwxl.depth.gz                   0.5   0.8   0.1504  Calcite.80wt+Kaol_CM9 GDS213    splib06 5580
+#group.2um/carbonate_calcite0.7+kaol0.3.depth.gz                   0.5   0.7   0.2145  Calcite.7+Kaolwxl.3 AMX9        splib06 5562
+#         11111111112222222222333333333344444444445555555555666666666677777777778
+#12345678901234567890123456789012345678901234567890123456789012345678901234567890
+
+	endofname = strstr(amatfiles[,ilistmats,], pattern=' ') - 1
+	#printf("debug: endofname= %d\n", endofname)
+	materiallistfile = "cmds.abundances/" + amatfiles[1:endofname, ilistmats, 1]
+
+	printf ("Processing %s\n", materiallistfile)
+
+	alist = read_lines(filename=materiallistfile)
+
+	nlines = length(alist)
+
+	nmats = 0  # number of materials listed in alist
+
+	# first count the number of materials
+	for (i=1; i<= nlines; i++) {
+
+		if (alist [1,i,1] != '#' && alist [1,i,1]!= '\0' ) {                # skip comments
+		    if (alist [1:4,i,1] == 'grou' || alist [1:4,i,1] == 'case') {   # should be group or case
+
+			#printf("debug: %s\n", alist [,9,1])
+			nmats = nmats +1
+		    }
+		}
+
+	}
+	#printf ("debug: found %d materials\n", nmats)
+
+	# create an array of nmats lines, all blank
+	# these are the file names
+	aline = '                                                                            '
+	afiles = aline
+	for (i=2; i<=nmats; i++) {
+		afiles = cat (afiles, aline, axis=y)
+
+	}
+	# length(bline)
+
+	dnscale   = create(1,nmats,org=bsq,format=float,start=0.0, step=0.0)
+	bdfactor  = create(1,nmats,org=bsq,format=float,start=0.0, step=0.0)
+	refdbepth = create(1,nmats,org=bsq,format=float,start=0.0, step=0.0)
+
+	# now extract the file names, DNscales, BF factors, and Reference band depths
+	imat = 0
+	for (i=1; i<= nlines; i++) {
+		if (alist[1,i,1] != '#') {   # skip comments
+		    if (alist [1:4,i,1] == 'grou' || alist [1:4,i,1] == 'case') {   # should be group or case
+
+			imat = imat +1
+			afilelen = strstr(afiles[,imat,1], pattern=' ') - 1
+			afiles[1:65,imat,1] = alist[1:65,i,1]
+
+			dnscale[1,imat,1]   = atof(alist[66:71,i,1])
+			bdfactor[1,imat,1]  = atof(alist[72:77,i,1])
+			refdbepth[1,imat,1] = atof(alist[78:84,i,1])
+
+			printf ("%2d %s  %7.4f  %7.4f  %7.4f\n", imat, afiles[1:65,imat,1], dnscale[1,imat,1], bdfactor[1,imat,1], refdbepth[1,imat,1])
+		    }
+		}
+	}
+
+	# now read the files and apply the models
+
+	# read first file to get image dimensions
+	afilelen = strstr(afiles[,1,1], pattern=' ') - 1
+	matfile  = read (afiles[1:afilelen,1,1])
+	if ( hasvalue(matfile) != 1 ) {
+		printf ("ERROR reading image: %d\n", afiles[1:afilelen,1,1])
+		printf ("exiting\n")
+	}
+
+	matfiledim = dim(matfile)
+	printf ("image dimensions (x y)= %d  %d\n", matfiledim[1,1,1], matfiledim[2,1,1])
+
+	matfile  = float(matfile*0)
+
+	model1 = matfile
+
+	if ( ilistmats == 1 && model4enable > 0 ) {   # set up arrays for model4 calculations
+
+		# model4mats = model4 abundances in gm/cm^2 in 3 optical depths.
+
+		model4mats = create(matfiledim[1,1,1], matfiledim[2,1,1], mlistmats, org=bsq,format=float,start=0.0, step=0.0)
+		model4m    = model4mats    # value of m in model 3 for each material, pixel
+	}
+
+
+	for (imat=1; imat<= nmats; imat++) {    # this loops over the results for 1 material, 
+						#    e.g. all the tetraocrder outputs with calcite
+						#    e.g. all the tetraocrder outputs with kaolinite
+						#  etc.
+
+		afilelen = strstr(afiles[,imat,1], pattern=' ') - 1
+		bfile = read (afiles[1:afilelen,imat,1])             # 8-bit scaled inetgers
+		if ( hasvalue(bfile) != 1 ) {
+			printf ("ERROR reading image: %d\n", afiles[1:afilelen,1,1])
+			printf ("exiting\n")
+		}
+
+		bfile = float(bfile)
+
+		# model 1: band depth as proxy for abundance, relative to reference band depth
+		#printf ("debug: computing model 1\n")
+		model1 = model1 + bdfactor[1,imat,1] * (bfile / (255. / dnscale[1,imat,1])) / refdbepth[1,imat,1]
+		
+		#moment(model1)
+
+		# model 2: Absolute Abundance in a non-scattering 2-way slab model.
+
+	}
+
+	################  Model 1 output
+
+	endofname = strstr(amatnames[,ilistmats,1], pattern=' ') - 1
+	#printf ("debug: amatnames[,ilistmats,1]= |%s|, endofname= %d\n", amatnames[,ilistmats,1], endofname)
+	outfile = "results.abundances/model1/" + amatnames[1:endofname, ilistmats, 1] + ".v"
+	write (model1, file=outfile, type=vicar)
+	
+	# compress
+	outfilegz = outfile + ".gz"
+	system ("gzip -f " + outfile)
+
+	# make envi header
+	envihdr = sprintf ("davinci.make.envi.header.from.vicar %s > %s.hdr", outfilegz, outfilegz)
+	printf ("%s\n", envihdr)
+	system (envihdr)
+
+	model1g = byte (model1*255.0 + 0.5)
+	outfile = "results.abundances/model1/" + amatnames[1:endofname, ilistmats, 1] + ".gif"
+	write (model1g, file=outfile, type=gif)
+
+}
+

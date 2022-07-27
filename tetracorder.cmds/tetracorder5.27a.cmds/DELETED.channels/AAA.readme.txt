@@ -1,0 +1,20 @@
+This directory contains deleted points for operational instruments.
+
+the approproate deleted channels set is specified by the dataset 
+parameter from cmd-setup-tetrun.  It might look something like:
+a line with aviris_2018 in the DELETED.channels.txt
+or a separate file called delete_${data} where $data = the dataset.
+Example with the data set aviris_2018:
+
+1     61t66 81t84 102t117 150t170 175 176 179 181       c  # aviris_2018
+#        11111111112222222222333333333344444444445555555555666666666677777777778
+#2345678901234567890123456789012345678901234567890123456789012345678901234567890
+
+The deleted channels list must end with a c followed by # and the dataset keyword.
+All other lines in the file are ignored.
+
+The deleted channels list, including the ending c must be less than 80 chraracters.
+
+nnntmmm means delete from nnn to mmm
+
+For example  4t6 deletes channels 4, 5, and 6.

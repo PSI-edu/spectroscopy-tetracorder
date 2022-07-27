@@ -1,0 +1,608 @@
+#!/bin/sh
+#
+# run all tetracorder modes for standard mapping run, and compress the results,
+#                            or single spectrum mode
+# Roger N. Clark,   December 21, 1994 - 2020
+
+# usage:
+#        cmd.runtet   cube|single  [cubefilename]  [band #] [gif|png]
+#
+# band number for gray-scale images is put in the file:
+#     band.number.grayscale
+# if band is not on the command line, and the 
+#    file band.number.grayscale is not found, default = channel 20
+#    command line band number overrides band.number.grayscale
+#
+####################################################################
+#
+#####   TO BE CHANGED WHEN CHANGING TETRACORDER VERSION:
+
+	# production version for cubes:
+	ptc="/usr/local/bin/tetracorder5.27"
+
+	# production version for large single spectra:
+	pts="/usr/local/bin/tetracorder5.27single"
+
+####################################################################
+
+##########################################
+
+# Tetracorder reads from the command file using the < directive.
+# when installed, the install script modifies the 
+# CMDSSTART string to the cmds.start.tX.Xn file name
+# where the tetracorder setup commands are located.
+# for example, the commands might be in cmds.start.t4.4a
+# so CMDSSTART should be changed to cmds.start.t4.4a
+
+tetcmdsstart=CMDSSTART
+
+if [ "$1" = "single" ]
+then
+	tetmode="singlespectrum"
+
+	tetcmdsstart=${tetcmdsstart}.single
+
+elif [ "$1" = "follow" ]   # single sp3ectrum mode, follow growing v file
+then
+	tetmode="singlespectrumfollow"
+
+	tetcmdsstart=${tetcmdsstart}.single.follow
+
+elif [ "$1" = "cube" ]
+then
+	tetmode="cube"
+else
+	echo "Error: no cube|single"
+	echo "usage:"
+	echo "      cmd.runtet   cube"
+	echo " or"
+	echo "      cmd.runtet   single"
+
+	echo "exit 1"
+	exit 1
+fi
+
+imageout="gif"
+if [ "$5" = "png" ]
+then
+	imageout="png"
+fi
+if [ "$5" = "none" ]
+then
+	imageout="none"
+fi
+
+
+# Note: either include the full path to the image cube, or edit the following
+# line to be the full path
+
+# the FFFFFFFFFF will get changed to the cube file by the cmd-install
+#                script (lunix/unix).  If not, then it can be passed on
+#                the command line, or simply hard coded by hand here.
+
+# The cube can be a relative or absolute path
+# for example, a full lunix/unix path is:
+# cube=/data/mountains/2006.aviris/cubes/f060506t01p00r09.rtgc
+# If a relative path, like:
+#   ../cubes/f060506t01p00r09.rtgc
+# the scripts which change directories will attempt to add a
+# relative path, but for non standard implimentations, the path
+# might not be found.  If that problem occurs, it should be detected
+# and the script will stop.
+
+####################################################################
+
+if [ "$tetmode" = "cube" ]
+then
+
+	cube=FFFFFFFFFF
+	if [ -n "$2" ]
+	then
+		cube=$2
+	fi
+	if [ ! -f "$cube" ]
+	then
+		echo "ERROR: cube not found"
+		echo "       cube= $cube"
+		echo "exit 1"
+		exit 1
+	fi
+
+	# set band number.  This is used as the base image for the jpeg results generation.
+	aband=20
+	if [ "$3" = "band" ]
+	then
+
+		aband=$4   # band number to extract
+		if [ "$aband" -lt 1 ]
+		then
+			aband=3
+		fi
+	fi
+
+fi
+
+echo "cmd.runtet   start: " `date`
+
+##### now run tetracorder ################
+# Normally, tetracorder is the production version in 
+# /usr/local/bin or the developmental version /src/local.
+# select one of the following
+
+# cube vs single: 
+#      sizes defined in multmap.h in the source code.
+#      cube width typically around 32000+ pixels, <1000 spectral channels
+#      singlespectrum compile: 1 pixel wide, many thousands of spectral channels
+
+
+if [ "$tetmode" = "cube" ]
+then
+	# production version for cubes:
+	pt=$ptc
+
+elif [ "$tetmode" = "singlespectrum" ]
+then
+	# production version for large single spectra:
+	pt=$pts
+
+elif [ "$tetmode" = "singlespectrumfollow" ]
+then
+	# production version for large single spectra:
+	pt=$pts
+
+else
+	echo "ERROR unknown mode: $tetmode"
+	echo "exit 1"
+	exit 1
+fi
+
+# developmental version (set by editing this script):
+# pt=/src/local/tetracorder5.2/tetracorder
+
+if [ "$tetmode" = "cube" ]
+then
+	makdual=1  # default is to make dual result+grayscale image output
+
+	echo "$pt r1"
+	time $pt r1 <<EOI > tetracorder.out 2>&1
+<$tetcmdsstart
+e
+EOI
+
+	echo "tetracorder complete" `date`
+
+	echo "Begin post tetracorder work on cube mapping results"
+
+	grep  -a DISABLED tetracorder.out > AAA.info/disabled-materials.txt
+
+	if [ ! -d "AAA.info" ]
+	then
+		mkdir AAA.info    # info directory 
+	fi
+
+	echo "getting output image size"
+	imsize3=`cmds.all.support/davinci.get.image.fd.size 2>&1 | tail -1`
+	xpixels=`echo $imsize3 | awk '{ print $1 }'`
+	ypixels=`echo $imsize3 | awk '{ print $2 }'`
+
+	echo "output image size:  xpixels= $xpixels    ypixels= $ypixels"
+
+	echo "$xpixels" > AAA.info/image-xpixels.txt
+	echo "$ypixels" > AAA.info/image-ypixels.txt
+
+	grep '^cube:' history | sed -e 's/^cube://' | awk '{ print $1 }' > AAA.info/cubefilename.txt
+	grep '3D data set: Lines:' history | sed -e 's/^.*Bands://' | awk '{ print $1 }' > AAA.info/cube-bands.txt
+
+	if [ "$xpixels" -gt 6000 ]
+	then
+		makdual=0
+		echo "Image width is > 6000 pixels: $xpixels"
+		echo "      so not making dual images"
+	fi
+
+
+	for i in `ls -d group.* case*`
+	do
+		echo "compressing files in $i"
+
+		cd $i
+		a=`ls *.fit`
+		if [ ! -z "$a" ]
+		then
+			gzip $a
+		fi
+		a=`ls *.depth`
+		if [ ! -z "$a" ]
+		then
+			gzip $a
+		fi
+		a=`ls *.fd`
+		if [ ! -z "$a" ]
+		then
+			gzip $a
+		fi
+
+		cd ..
+	done
+
+	echo " "
+	echo "##############################################"
+	echo "############ compression complete" `date`
+	echo " "
+	cd Band.images
+
+	# note: aviris.true.color and aviris.to.TM valid only with AVIRIS Data
+
+	# check that we can find the cube
+	bcube=$cube
+	if [ ! -f "$cube" ]
+	then
+		a=$cube
+		bcube=../$a
+		if [ ! -f "$bcube" ]
+		then
+			echo "ERROR: $a not found from sub-directory Band.images"
+			echo "   we tried adding .. but that didn't work either: $bcube"
+			echo "try using full path to cube"
+			echo "skipping aviris.true.color  and aviris.to.TM"
+		fi
+	fi
+
+	if [ -f "$bcube" ]
+	then
+		echo "NOTE: aviris.true.color and aviris.to.TM valid only with AVIRIS Data" `date`
+		aviris.true.color $bcube band > makem.out 2>&1
+		aviris.to.TM      $bcube band > makem.out 2>&1
+
+		# now add envi headers
+		for bb in band*
+		do
+			if [ -f "$bb" ]
+			then
+				davinci.make.envi.header.from.vicar $bb > ${bb}.hdr
+
+				# now make jpg images for easy viewing
+
+				echo "davinci.image.to.jpeg $bb  0  ${bb}.jpg -gamma 500"
+				davinci.image.to.jpeg $bb  0  ${bb}.jpg  -gamma 500
+			fi
+		done
+	fi
+
+	cd ..
+
+	# add some images together into more general groups
+
+	echo " "
+	echo "##############################################"
+	echo " "
+	echo "./cmds.all.support/davinci.add.iron.oxides   started"  `date`
+	./cmds.all.support/davinci.add.iron.oxides
+
+	echo "./cmds.all.support/davinci.add.kaol+smect   started"  `date`
+	./cmds.all.support/davinci.add.kaol+smect
+
+	echo "./cmds.all.support/davinci.alunite+kaolinite.muscovite   started"  `date`
+	./cmds.all.support/davinci.alunite+kaolinite.muscovite
+
+	echo "./cmds.all.support/davinci.add.ALUNITE_COMP   started"  `date`
+	./cmds.all.support/davinci.add.ALUNITE_COMP
+
+	echo "./cmds.all.support/davinci.add.ALUN+PYROPH   started"  `date`
+	./cmds.all.support/davinci.add.ALUN+PYROPH
+
+	echo "./cmds.all.support/davinci.add.KAOL+MUSC   started"  `date`
+	./cmds.all.support/davinci.add.KAOL+MUSC
+
+	echo "./cmds.all.support/davinci.add.PYROPH+MUSC   started"  `date`
+	./cmds.all.support/davinci.add.PYROPH+MUSC
+
+	echo "./cmds.all.support/davinci.add.TALCS   started"  `date`
+	./cmds.all.support/davinci.add.TALCS
+
+	echo "./cmds.all.support/davinci.add.generic_Fe2+   started"  `date`
+	./cmds.all.support/davinci.add.generic_Fe2+
+
+	############### make sure all newly generated images are compressed
+	for i in `ls -d group.* case*`
+	do
+		echo "compressing files in $i"
+
+		cd $i
+		a=`ls *.fit`
+		if [ ! -z "$a" ]
+		then
+			gzip $a
+			agz=${a}.gz
+			davinci.make.envi.header.from.vicar $agz > ${agz}.hdr
+		fi
+		a=`ls *.depth`
+		if [ ! -z "$a" ]
+		then
+			gzip $a
+			agz=${a}.gz
+			davinci.make.envi.header.from.vicar $agz > ${agz}.hdr
+		fi
+		a=`ls *.fd`
+		if [ ! -z "$a" ]
+		then
+			gzip $a
+			agz=${a}.gz
+			davinci.make.envi.header.from.vicar $agz > ${agz}.hdr
+		fi
+
+		cd ..
+	done
+
+	for i in `ls -d group.* case*`
+	do
+		echo "checking that all compressed image files in $i have envi headers"
+
+		cd $i
+		a=`ls *.fit.gz`
+		if [ ! -z "$a" ]
+		then
+			for jj in $a
+			do
+				if [ -f "${jj}" -a ! -f "${jj}.hdr" ]
+				then
+					echo "making envi header:"
+					echo "                   davinci.make.envi.header.from.vicar $jj > ${jj}.hdr"
+					davinci.make.envi.header.from.vicar $jj > ${jj}.hdr
+				fi
+			done
+		fi
+		a=`ls *.depth.gz`
+		if [ ! -z "$a" ]
+		then
+			for jj in $a
+			do
+				if [ -f "${jj}" -a ! -f "${jj}.hdr" ]
+				then
+					echo "making envi header:"
+					echo "                   davinci.make.envi.header.from.vicar $jj > ${jj}.hdr"
+					davinci.make.envi.header.from.vicar $jj > ${jj}.hdr
+				fi
+			done
+		fi
+		a=`ls *.fd.gz`
+		if [ ! -z "$a" ]
+		then
+			for jj in $a
+			do
+				if [ -f "${jj}" -a ! -f "${jj}.hdr" ]
+				then
+					echo "making envi header:"
+					echo "                   davinci.make.envi.header.from.vicar $jj > ${jj}.hdr"
+					davinci.make.envi.header.from.vicar $jj > ${jj}.hdr
+				fi
+			done
+		fi
+
+		cd ..
+	done
+
+
+	###############
+
+	echo " "
+	echo "##############################################"
+	echo " "
+	echo "add geometry info to all created image files with envi headers " `date`
+	echo "./cmds.all.support/cmd.add.geometry.info.to.envi.headers $cube"
+	echo " "
+
+	./cmds.all.support/cmd.add.geometry.info.to.envi.headers $cube
+
+	###############
+
+	date
+
+	echo " "
+	echo "##############################################"
+	echo " "
+	echo "Begin cluster analysis" `date`
+	echo "./cmds.all.support/cluster.analysis"
+	echo " "
+	./cmds.all.support/cluster.analysis
+
+	echo " "
+	echo "##############################################"
+	echo " "
+	echo "Generating pw commands of top materials" `date`
+	echo "./cmds.all.support/gen.pw.clustered25.cmds"
+	echo " "
+	./cmds.all.support/gen.pw.clustered25.cmds
+
+	echo " "
+	echo "##############################################"
+	echo " "
+	echo "Generating gamma stretched gif images" `date`
+	echo "./cmds.all.support/gen.fd.gif.images"
+	echo " "
+	./cmds.all.support/gen.fd.gif.images
+
+	if [ -f "$cube" ]
+	then
+
+		#Possible header ascii data in first line:
+		# LBLSIZE=        # vicar header
+		# description     # envi header generated by davinci script
+		# ENVI            # envi
+		# envi            # envi
+
+		# Note: tetracorder (12/2019) wants an envi cube file name without the .hdr envi
+		#       extension, but davinci scripts want the .hdr extension to read
+		#       envi files and cubes.  So for the scripts here, check that the file
+		#       has the .hdr extension when needed.  - RNC 12/03/2019
+
+		#       However, davinci does not read an envi cube correctly (10/2020) when
+		#       the cube also has a header (like a vicar header).  If a header, then
+		#       read that file format.
+
+
+		cubedatafile=$cube
+
+		cubedir=`dirname $cube`
+
+		cubeheaderfile=0  # this file is a separate cube header file
+		cubedatafile=0    # this file is the cube binary data
+		vicarheader=0     # no vicar header on binary data file
+
+
+		ahdrflag=`echo "$cube" | grep '.hdr$'`
+
+		if [ -z "$ahdrflag" ]     # not a header file
+		then
+			cubedatafile=$cube
+
+			testhdr=${cube}.hdr
+			if [ -f "$testhdr" ]
+			then
+				cubeheaderfile=$testhdr
+				ahdrflag=$testhdr
+			fi
+
+		fi
+
+
+		if [ -n "$ahdrflag" ]
+		then
+			if [ "$cubeheaderfile" = 0 ]    # if not set above, then set it.
+			then
+				cubeheaderfile=$cube
+			fi
+
+			echo "this is a header file = $cubeheaderfile"
+
+			cubedatafile=`basename $cube .hdr`
+			cubedatafile=${cubedir}/$cubedatafile
+
+			if [ -f "$cubedatafile" ]
+			then
+				echo "cube data file =        $cubedatafile"
+			else
+				echo "ERROR: cannot find cube data file: $cubedatafile"
+				echo "exit 1"
+				exit 1
+			fi
+		fi
+
+		datahdr=`dd if=$cubedatafile ibs=8 count=1`
+
+		if [ "$datahdr" = "LBLSIZE=" ]
+		then
+			vicarheader='vicar'
+			cube=$cubedatafile
+
+			echo "cube data file has a vicar header"
+			echo "using this cube data file for post tetracorder analysis"
+		else
+			echo "there is no vicar header on the data file"
+			if [ "$cubeheaderfile" != 0 ]
+			then
+				cube=$cubeheaderfile
+			fi
+		fi
+
+		echo "using cube = $cube"
+
+		############################
+
+
+		echo " "
+		echo "##############################################"
+		echo " "
+		echo "Generating gamma stretched jpeg results on gray background images" `date`
+		echo "./cmds.all.support/gen.fd.jpg.overlay+base.images $cube $aband $imageout"
+		echo " "
+		./cmds.all.support/gen.fd.jpg.overlay+base.images $cube $aband $imageout
+
+		if [ "$makdual" = 1 ]
+		then 
+			echo " "
+			echo "##############################################"
+			echo " "
+			echo "Generating gamma stretched dual jpeg results on gray background + results on black images" `date`
+			echo "./cmds.all.support/gen.fd.jpg.overlay+base-dual.images $cube $aband $imageout"
+			./cmds.all.support/gen.fd.jpg.overlay+base-dual.images $cube $aband $imageout
+		fi
+	else
+		echo "ERROR: cannot find image cube: $cube"
+		echo "       skipping jpeg results generation"
+		echo " exit 1"
+		exit 1
+	fi
+
+	echo " "
+	echo "##############################################"
+	echo " "
+
+	if [ "$makdual" = 1  ]
+	then
+		echo "making notzero directories and copy notzero jpeg results there" `date`
+		echo "./cmds.all.support/gen.fd.jpg.overlay+base-dual.images-notzero $imageout"
+		echo " "
+		./cmds.all.support/gen.fd.jpg.overlay+base-dual.images-notzero $imageout
+	fi
+
+	echo " "
+	echo "#############################################"
+	echo " "
+
+	shortcubeid='tet'
+	if [ -f "AAA.info/shortcubeid.txt" ]
+	then
+		shortcubeid=`head -1 AAA.info/shortcubeid.txt | awk '{ print $1 }'`
+	fi
+
+	echo "making color results" `date`
+	echo " "
+	echo "./cmds.color.support/make.color.results.all $shortcubeid"
+	./cmds.color.support/make.color.results.all $shortcubeid
+
+	echo " "
+	echo "#############################################"
+	echo " "
+	echo "computing masses " `date`
+	./cmds.abundances/cmd.compute.abundances
+	echo " "
+	echo "#############################################"
+
+	echo " "
+	echo "cmd.runtet complete: " `date`
+
+elif [ "$tetmode" = "singlespectrum" ]
+then
+	echo "starting tetracorder in singlespectrum mode"
+	echo "$pt r1"
+	$pt r1 <<EOI 
+<$tetcmdsstart
+EOI
+
+	echo " "
+	echo "to analyze another single spectrum, run:"
+	echo "$pt r1"
+	echo "     and as the first command in tetracorder, type:"
+	echo "<$tetcmdsstart"
+	echo "     then continue your analyses."
+
+elif [ "$tetmode" = "singlespectrumfollow" ]
+then
+	echo "starting tetracorder in singlespectrum following growing v file mode"
+	if [ ! -f "${tetcmdsstart}" ]
+	then
+		echo "Tetracorder command instructions file ${tetcmdsstart} NOT FOUND"
+		echo "exit 3"
+		exit 3
+	fi
+	echo "$pt r1"
+	$pt r1 <<EOI 
+<${tetcmdsstart}
+EOI
+
+else
+	echo "ERROR unknown mode: $tetmode"
+	echo "exit 1"
+	exit 1
+fi

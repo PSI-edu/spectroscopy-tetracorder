@@ -1,0 +1,35 @@
+Linux mint (ubuntu probably the same):
+
+#### Mint 19:
+
+copy *.vim file to /usr/share/vim/vim80/syntax/    (vim80 is the version with mint 19)
+
+cp davinci.vim        /usr/share/vim/vim80/syntax/
+cp tetracorder.vim    /usr/share/vim/vim80/syntax/
+
+##### mint 20:
+
+copy *.vim file to /usr/share/vim/vim81/syntax/    (vim81 is the version with mint 20)
+
+cp davinci.vim        /usr/share/vim/vim81/syntax/
+cp tetracorder.vim    /usr/share/vim/vim81/syntax/
+
+
+Now edit the file: /usr/share/vim/vim80/filetype.vim and add the two lines:
+or
+Now edit the file: /usr/share/vim/vim81/filetype.vim and add the two lines:
+
+" tetracorder
+au BufRead,BufNewFile cmd.lib.setup*            setf tetracorder
+
+(adding the above 2 lines after the line with: setf z8a
+and before the line: augroup END)
+
+
+In your home vimrc file, ~/.vimrc you may need to following lines to
+see full color for editing shell scripts and davinci scripts.
+If so, add them near the end of your ~/.vimrc file
+
+autocmd BufNewFile,BufRead * if match(getline(1),"^#!.*sh") >= 0 | set filetype=sh | endif
+autocmd BufNewFile,BufRead * if match(getline(1),"^#!.*davinci") >= 0 | set filetype=davinci | endif
+

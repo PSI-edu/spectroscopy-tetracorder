@@ -1,0 +1,131 @@
+#!/usr/local/bin/davinci -f
+#verbose=0
+
+# Roger N. Clark  3/30/2015
+
+# Colors:
+#              Red                  Green                Blue    color variable name
+
+argb[1,1,1] =  255. ; argb[1,1,2]=    50. ;  argb[1,1,3]=   0. ; c_red          = argb  # red
+argb[1,1,1] =   50. ; argb[1,1,2]=   255. ;  argb[1,1,3]=   0. ; c_green        = argb  # green
+argb[1,1,1] =    0. ; argb[1,1,2]=   105. ;  argb[1,1,3]= 255. ; c_blue         = argb  # blue
+
+argb[1,1,1] =  255. ; argb[1,1,2]=   255. ;  argb[1,1,3]=   0. ; c_yellow       = argb  # yellow
+argb[1,1,1] =  255. ; argb[1,1,2]=    40. ;  argb[1,1,3]= 255. ; c_magenta      = argb  # magenta
+argb[1,1,1] =    0. ; argb[1,1,2]=   255. ;  argb[1,1,3]= 255. ; c_cyan         = argb  # cyan
+
+argb[1,1,1] =  150. ; argb[1,1,2]=   165. ;  argb[1,1,3]=   0. ; c_armygreen    = argb  # army green
+argb[1,1,1] =  255. ; argb[1,1,2]=   170. ;  argb[1,1,3]= 170. ; c_salmon       = argb  # salmon
+argb[1,1,1] =  255. ; argb[1,1,2]=   200. ;  argb[1,1,3]= 155. ; c_flesh        = argb  # flesh
+
+argb[1,1,1] =  255. ; argb[1,1,2]=   120. ;  argb[1,1,3]=   0. ; c_orange       = argb  # orange
+argb[1,1,1] =  235. ; argb[1,1,2]=     0. ;  argb[1,1,3]= 180. ; c_deeppink     = argb  # deep pink
+argb[1,1,1] =  190. ; argb[1,1,2]=   255. ;  argb[1,1,3]=   0. ; c_yellowgreen  = argb  # yellow green
+
+argb[1,1,1] =  185. ; argb[1,1,2]=   120. ;  argb[1,1,3]= 255. ; c_lavender     = argb  # lavender
+argb[1,1,1] =  140. ; argb[1,1,2]=   210. ;  argb[1,1,3]= 255. ; c_skyblue      = argb  # sky blue
+argb[1,1,1] =  110. ; argb[1,1,2]=   255. ;  argb[1,1,3]= 190. ; c_paleseagreen = argb  # pale sea green
+
+argb[1,1,1] =  255. ; argb[1,1,2]=   255. ;  argb[1,1,3]= 255. ; c_white        = argb  # white
+argb[1,1,1] =  255. ; argb[1,1,2]=   125. ;  argb[1,1,3]= 125. ; c_redpink      = argb  # red-pink
+argb[1,1,1] =  255. ; argb[1,1,2]=   213. ;  argb[1,1,3]=   0. ; c_gold         = argb  # gold
+
+argb[1,1,1] =  186. ; argb[1,1,2]=   165. ;  argb[1,1,3]=   0. ; c_mudyellow    = argb  # mud yellow
+argb[1,1,1] =  255. ; argb[1,1,2]=   211. ;  argb[1,1,3]= 255. ; c_lightpink    = argb  # light pink
+
+
+a=read (filename="color_block_blue_____________0__105__255.ramp.png")
+
+blk= byte(a[1:10,,]*0)
+
+b=cat(blk,a,axis=x)  # add black before block
+b=cat(b,blk,axis=x)  # add black sfter
+
+a=read (filename="color_block_sky_blue_______140__210__255.ramp.png")
+b=cat(b,a,axis=x)
+b=cat(b,blk,axis=x)  # add black sfter
+
+a=read (filename="color_block_cyan_____________0__255__255.ramp.png")
+b=cat(b,a,axis=x)
+b=cat(b,blk,axis=x)  # add black sfter
+
+a=read (filename="color_block_lavender_______185__120__255.ramp.png")
+b=cat(b,a,axis=x)
+b=cat(b,blk,axis=x)  # add black sfter
+
+
+a=read (filename="color_block_pale_sea_green_110__255__190.ramp.png")
+b=cat(b,a,axis=x)
+b=cat(b,blk,axis=x)  # add black sfter
+
+a=read (filename="color_block_green___________60__255____0.ramp.png")
+b=cat(b,a,axis=x)
+b=cat(b,blk,axis=x)  # add black sfter
+
+a=read (filename="color_block_army_green_____150__165____0.ramp.png")
+b=cat(b,a,axis=x)
+b=cat(b,blk,axis=x)  # add black sfter
+
+
+a=read (filename="color_block_yellow_green___190__255____0.ramp.png")
+b=cat(b,a,axis=x)
+b=cat(b,blk,axis=x)  # add black sfter
+
+a=read (filename="color_block_mud_yellow_____186__165____0.ramp.png")
+b=cat(b,a,axis=x)
+b=cat(b,blk,axis=x)  # add black sfter
+
+a=read (filename="color_block_gold___________255__213____0.ramp.png")
+b=cat(b,a,axis=x)
+b=cat(b,blk,axis=x)  # add black sfter
+
+a=read (filename="color_block_yellow_________255__255____0.ramp.png")
+b=cat(b,a,axis=x)
+b=cat(b,blk,axis=x)  # add black sfter
+
+
+
+a=read (filename="color_block_orange_________255__110____0.ramp.png")
+b=cat(b,a,axis=x)
+b=cat(b,blk,axis=x)  # add black sfter
+
+a=read (filename="color_block_red____________255___60____0.ramp.png")
+b=cat(b,a,axis=x)
+b=cat(b,blk,axis=x)  # add black sfter
+
+a=read (filename="color_block_red-pink_______255__125__125.ramp.png")
+b=cat(b,a,axis=x)
+b=cat(b,blk,axis=x)  # add black sfter
+
+
+a=read (filename="color_block_salmon_________255__170__170.ramp.png")
+b=cat(b,a,axis=x)
+b=cat(b,blk,axis=x)  # add black sfter
+
+a=read (filename="color_block_flesh__________255__200__155.ramp.png")
+b=cat(b,a,axis=x)
+b=cat(b,blk,axis=x)  # add black sfter
+
+a=read (filename="color_block_deep_pink______235____0__180.ramp.png")
+b=cat(b,a,axis=x)
+b=cat(b,blk,axis=x)  # add black sfter
+
+a=read (filename="color_block_magenta________205___60__255.ramp.png")
+b=cat(b,a,axis=x)
+b=cat(b,blk,axis=x)  # add black sfter
+
+a=read (filename="color_block_light_pink_____255__211__255.ramp.png")
+b=cat(b,a,axis=x)
+b=cat(b,blk,axis=x)  # add black sfter
+
+
+a=read (filename="color_block_white__________255__255__255.ramp.png")
+b=cat(b,a,axis=x)
+b=cat(b,blk,axis=x)  # add black sfter
+
+b2=byte(b[,1:10,]*0)   # black for top and bottom
+
+b=cat(b2,b,axis=y)
+b=cat(b,b2,axis=y)
+
+write (b, filename="color_block_set20_ramp.png", type=png)

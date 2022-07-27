@@ -1,0 +1,360 @@
+#!/usr/bin/env -S davinci -f  
+####!/usr/local/bin/davinci -f
+
+###########################  was:  #!/usr/local/bin/davinci -f
+
+
+
+# command line:
+# prog    gray_base_image  prefix-file-name   [dual|nodual]
+
+prog="davinci.make.water-1.9um.color.a"           # CHANGE THIS if program name changes
+
+####################  Begin static: no need to change inything in this section ################
+
+if ($argc < 2) {
+
+        printf("Insufficient input\n")
+        printf("%s input_gray_image  outputcolorimage\n", prog)
+        printf("exit 1\n")
+        exit(1)
+}
+
+
+dual    = 1     # default color + gray image 
+dualmax = 2000  # no dual if width is greater than this
+
+if ($argc >= 3) {
+
+	if ( "$3" == "nodual" ) {
+		dual = 0
+	}
+	if ( "$3" == "dual" ) {
+		dual = 1
+		dualmax = 999999 
+	}
+}
+
+# read base gray image
+
+gbase=read(filename=$1)
+if (HasValue(gbase) ==0) {                   # check that read worked
+      printf ("read ERROR on file: %s\n",$1)
+      printf ("^GEXIT 1\n")
+      exit(1)
+}
+
+# A master color set.  Just read in the files, assign the colors
+# and write the results.    R. Clark 4/16/2015 - 11/16/2015
+# execute this program in the same directory asthe source code below
+source ("cmds.color.support/davinci.master.colors")
+
+# available colors:
+# c_red     c_green          c_blue       c_yellow        c_magenta       c_cyan          c_armygreen  
+# c_salmon  c_flesh          c_orange     c_deeppink      c_yellowgreen   c_lavender      c_bluegreen
+# c_skyblue c_paleseagreen   c_white      c_redpink       c_gold          c_mudyellow     c_lightpink
+# c_purple
+
+# a blue to red 12 spectral color sequence:
+#
+# c_purple c_blue c_skyblue c_cyan c_bluegreen c_green c_paleseagreen c_yellowgreen c_yellow c_gold  c_orange c_red
+
+# a = first input image, 3-band color, xcolor = the color output image, RGB float
+# colorout = the color output image, 3-byte RGB
+
+
+define read_an_image(1,1) {
+
+	# read a gray-scale image and convert to 3-bands
+
+	afile = $1   # file to read
+	printf ("reading file %s\n", afile)
+	aaa=read(filename=afile)
+	if (HasValue(aaa) ==0) {  # check that read worked
+		printf ("read ERROR on file: %s\n",afile)
+		printf ("setting to zero\n")
+		aaa=0
+	}
+	qqq = cat(aaa,aaa,axis=z)  # make into 2-band image
+	aaa = cat(aaa,qqq,axis=z)  # make into 3-band image
+
+	return (aaa)
+
+}  # end define
+
+
+
+###################   begin custom section ##########################################
+
+# tet 5.1 assignments:
+#group.1.9um/water_1.91_perchlorate_mg.fd.gif   purple
+#group.1.9um/water_1.91um_halloysite.fd.gif     blue
+#group.1.9um/water_1.91um_montna.fd.gif         cyan
+#group.1.9um/water_1.91um_stonwplaya.fd.gif     sea green
+#group.1.9um/water_broad_1.93um.fd.gif          green
+#group.1.9um/water_narrow_1.93um.fd.gif         yellow
+#group.1.9um/water_1.94um_brick.fd.gif          gold
+#group.1.9um/water_1.94um_natrolite.fd.gif      orange
+#group.1.9um/h20_ice_2.02um-a.fd.gif            magenta
+#group.1.9um/water_2.08_kiesserite.fd.gif       red
+
+
+
+# 22 available colors:
+# c_red     c_green          c_blue       c_yellow        c_magenta       c_cyan          c_armygreen  
+# c_salmon  c_flesh          c_orange     c_deeppink      c_yellowgreen   c_lavender      c_bluegreen
+# c_skyblue c_paleseagreen   c_white      c_redpink       c_gold          c_mudyellow     c_lightpink
+# c_purple
+
+# first image:
+
+a = read_an_image("group.1.9um/water_1.896_beryl.fd.gif")
+
+        # set up output image xcolor:
+        xcolor=float(a*0)
+        xdim=dim(a)
+
+        # now add the colors
+
+c= c_purple
+xcolor= xcolor + a*( c /255.)   # anorthite
+
+# c_purple c_cyan c_skyblue c_blue c_flesh c_lavender c_magenta c_green c_yellowgreen c_yellow c_orange c_red
+
+#                                                  center (um)     width (um)
+# purple
+# A y 756  Beryl GDS9 <150um gs s06crj3a=bbb          1.8956           0.0204         center one of triplet
+# A y3822  Opal TM8896 (Hyalite) s06crj3a=aa_         1.9020           0.0601         silica      SiO.nH2O
+# A y4458  Saponite SapCa-1.AcB s06crj3a=bbb          1.9030           0.0526         smectite
+
+a = read_an_image("group.1.9um/water_1.896_beryl.fd.gif")
+xcolor= xcolor + a*( c /255.)
+
+a = read_an_image("group.1.9um/water_1.902_silica-opal.fd.gif")
+xcolor= xcolor + a*( c /255.)
+
+a = read_an_image("group.1.9um/water_1.903_smectite-saponite.fd.gif")
+xcolor= xcolor + a*( c /255.)
+
+
+c= c_blue
+# A y3270  Montmorillonite SWy-1 s06crj3a=b           1.906            0.0636         smectite
+# A y3564  Nontronite NG-1.a s06crj3a=cd              1.9075           0.0574         smectite
+# A u 228  Beidellite GDS123 r06crj3a=___             1.9078           0.0691         smectite
+# A y2448  Illite GDS4 (Marblehead) s06crj3a=bb_      1.9078           0.0487         phyllosilicate
+
+a = read_an_image("group.1.9um/water_1.906_montmor-na.fd.gif")
+xcolor= xcolor + a*( c /255.)
+
+a = read_an_image("group.1.9um/water_1.907_smectite-nontronite.fd.gif")
+xcolor= xcolor + a*( c /255.)
+
+a = read_an_image("group.1.9um/water_1.908_phyllo-illite.fd.gif")
+xcolor= xcolor + a*( c /255.)
+
+a = read_an_image("group.1.9um/water_1.908_smectite-beidell.fd.gif")
+xcolor= xcolor + a*( c /255.)
+
+
+
+c= c_cyan
+# A y3234  Montmorillonite SAz-1 s06crj3a=bb_         1.9091           0.0586         smectite
+# A y5772  Halloysite CU91-242D s06crj3a=b            1.9098           0.0681         phyllosilicate
+
+a = read_an_image("group.1.9um/water_1.909_mont-saz.fd.gif")
+xcolor= xcolor + a*( c /255.)
+
+a = read_an_image("group.1.9um/water_1.910_halloysite.fd.gif")
+xcolor= xcolor + a*( c /255.)
+
+c= c_paleseagreen
+# A y1284  Clinoptilolite GDS152 Zeol s06crj3a=bbb    1.9100           0.0701         zeolite
+# A y6072  Stonewall_Playa_Dry_Mud 2001 s06crj3a=a    1.910            0.0522
+# A y3288  Mordenite GDS18 s06crj3a=bb_               1.9102           0.0575         zeolite         (Ca,Na2,K2)Al2Si10O24² 7H2O
+# A y 420  Analcime GDS1 Zeolite s06crj3a=aaa         1.912            0.045          zeolite
+# A y4590  Sillimanite HS186.3B s06crj3a=cc_          1.9159           0.0931         nesosilicate
+# A y2226  Heulandite NMNH84534 s06crj3a=a            1.9166           0.0966         zeolite (Ca,Na)2-3Al3(Al,Si)2Si13O36•12(H2O)
+# A y 744  Bassanite GDS145 (syn) s06crj3a=aa_        1.9197           0.0600         sulfate
+# A u  96  Perchlorate_Mg GDS851.2 220K r06crj3a=_    1.9179           0.0677         Perchlorate
+# A y1020  Chert ANP90-6D (White) s06crj3a=?          1.9230           0.1129         silica
+# A u 144  Perchlorate_Na GDS857 230C r06crj3a=_      1.9239           0.0437         Perchlorate    (file is called Perchlorite, need to change
+
+a = read_an_image("group.1.9um/water_1.910_stonwplaya.fd.gif")
+xcolor= xcolor + a*( c /255.)
+
+a = read_an_image("group.1.9um/water_1.910_zeolite-clinopt.fd.gif")
+xcolor= xcolor + a*( c /255.)
+
+a = read_an_image("group.1.9um/water_1.910_zeolite-mordonite.fd.gif")
+xcolor= xcolor + a*( c /255.)
+
+a = read_an_image("group.1.9um/water_1.912_zeolite-analcime.fd.gif")
+xcolor= xcolor + a*( c /255.)
+
+a = read_an_image("group.1.9um/water_1.916_nesosil-sillim.fd.gif")
+xcolor= xcolor + a*( c /255.)
+
+a = read_an_image("group.1.9um/water_1.917_zeolite-heuland.fd.gif")
+xcolor= xcolor + a*( c /255.)
+
+a = read_an_image("group.1.9um/water_1.918_perchlorate-mg.fd.gif")
+xcolor= xcolor + a*( c /255.)
+
+a = read_an_image("group.1.9um/water_1.924_perchlorate-na.fd.gif")
+xcolor= xcolor + a*( c /255.)
+
+a = read_an_image("group.1.9um/water_1.920_sulfate-bassanite.fd.gif")
+xcolor= xcolor + a*( c /255.)
+
+a = read_an_image("group.1.9um/water_1.923_chert.fd.gif")
+xcolor= xcolor + a*( c /255.)
+
+
+c= c_green
+# A y7020  Aspen Aspen-1 Green-Top s06crj3a=a         1.9268           0.207          vegetation
+# A y1704  Epsomite GDS149 s06crj3a=cc_               1.9294           0.1446         sulfate    MgSO4 · 7H2O
+
+a = read_an_image("group.1.9um/water_broad_1.927_veg.fd.gif")      # Aspen
+xcolor= xcolor + a*( c /255.)
+
+a = read_an_image("group.1.9um/water_1.929_sulfate-epsomite.fd.gif")
+xcolor= xcolor + a*( c /255.)
+
+
+
+c= c_yellow
+# A y7092  Cheatgrass ANP92-11A s06crj3a=a            1.9307           0.102          vegetation doublet
+# A y1716  Eugsterite GDS140 Syn s06crj3a=bb_         1.9322           0.1016         sulfate    Na4Ca(SO4)3•2(H2O)
+
+a = read_an_image("group.1.9um/water_1.931_narrow-cheatgrass.fd.gif")
+xcolor= xcolor + a*( c /255.)
+
+a = read_an_image("group.1.9um/water_1.932_sulfate-eusgterite.fd.gif")
+xcolor= xcolor + a*( c /255.)
+
+c= c_gold
+# A y3480  Natrolite HS169.3B Zeolite s06crj3a=bbb    1.9404           0.0641         zeolite    doublet, treat as one
+# A y3474  Natrolite HS169.3B Zeolite s06crj3a=b      1.9405           0.1288         zeolite    doublet, treat as one
+# A y4488  Scolecite GDS7 Zeolite s06crj3a=bb_        1.9412           0.0751         zeolite
+# A y4476  Schwertmannite BZ93-1 s06crj3a=b           1.9415           0.1257         sulfate    Fe8O8(OH)6(SO4)·nH2O
+# A y1992  Gypsum HS333.3B (Selenite) s06crj3a=aaa    1.9427           0.1042         sulfate    CaSO4·2H2O
+# A y6396  Brick GDS347 Paving Tan s06crj3a=a         1.9432           0.1216
+# A y4002  Polyhalite NMNH92669-4 s06crj3a=aa_        1.9443 1.9822    0.1374 0.0238  sulfate       K2Ca2Mg(SO4)4•2H2O     triplet, treat as one
+# A y1380  Copiapite GDS21 s06crj3a=bc_               1.9464           0.1706         sulfate    Fe2+Fe3+ 4(SO4)6(OH)2•20H2O
+# A y 804  Bloedite GDS147 s06crj3a=aa_               1.9508           0.2048         sulfate     Na2Mg(SO4)2*4H2O
+# A y 858  Butlerite GDS25 s06crj3a=a                 1.9601           0.0979         sulfate    Fe3+(SO4)(OH)• 2H2O
+# A u 186  FeSO4*7H20 GDS873 SynChemReg r06crj3a=Fe   1.9640           0.1964         sulfate
+# A y2634  Kainite NMNH83904 s06crj3a=aa_             1.9714           0.1244         sulfate    KMg(SO4)Cl·3H2O
+# A y 948  Carnallite NMNH98011 s06crj3a=bb_          1.9798           0.1144         salt       KMgCl3·6(H2O)  chloride
+# A y1386  Coquimbite GDS22 s06crj3a=c                1.9809           0.1801         sulfate            Fe3+ 2(SO4)3•9H2O
+# A y4794  Syngenite GDS139 s06crj3a=aa_              1.9906 2.0834    0.0509 0.0415  sulfate    K2Ca(SO4)2 • H2O doublet
+
+a = read_an_image("group.1.9um/water_1.940_zeolite-natrolite.fd.gif")
+xcolor= xcolor + a*( c /255.)
+
+a = read_an_image("group.1.9um/water_1.941_zeolite-natrolite.fd.gif")
+xcolor= xcolor + a*( c /255.)
+
+a = read_an_image("group.1.9um/water_1.941_zeolite-scolecite.fd.gif")
+xcolor= xcolor + a*( c /255.)
+
+a = read_an_image("group.1.9um/water_1.942_sulfate-schwert.fd.gif")
+xcolor= xcolor + a*( c /255.)
+
+a = read_an_image("group.1.9um/water_1.943_brick.fd.gif")
+xcolor= xcolor + a*( c /255.)
+
+a = read_an_image("group.1.9um/water_1.943_sulfate-gypsum.fd.gif")
+xcolor= xcolor + a*( c /255.)
+
+a = read_an_image("group.1.9um/water_1.944_sulfate-polyhalite.fd.gif")
+xcolor= xcolor + a*( c /255.)
+
+a = read_an_image("group.1.9um/water_1.946_sulfate-copiapite.fd.gif")
+xcolor= xcolor + a*( c /255.)
+
+a = read_an_image("group.1.9um/water_1.951_sulfate-bloedite.fd.gif")
+xcolor= xcolor + a*( c /255.)
+
+a = read_an_image("group.1.9um/water_1.960_sulfate-butler.fd.gif")
+xcolor= xcolor + a*( c /255.)
+
+a = read_an_image("group.1.9um/water_1.964_sulfate-feso4.fd.gif")
+xcolor= xcolor + a*( c /255.)
+
+a = read_an_image("group.1.9um/water_1.971_sulfate-kainite.fd.gif")
+xcolor= xcolor + a*( c /255.)
+
+a = read_an_image("group.1.9um/water_1.980_salt-carnallite.fd.gif")
+xcolor= xcolor + a*( c /255.)
+
+a = read_an_image("group.1.9um/water_1.981_sulfate-coquimb.fd.gif")
+xcolor= xcolor + a*( c /255.)
+
+a = read_an_image("group.1.9um/water_1.991_sulfate-syngite.fd.gif")
+xcolor= xcolor + a*( c /255.)
+
+
+c= c_magenta
+# A y6216  H2O-Ice GDS136 77K s06crj3a=a              2.02             0.267          water
+a = read_an_image("group.1.9um/h20_ice_2.02um-77k-a.fd.gif")
+xcolor= xcolor + a*( c /255.)
+
+
+c= c_red
+# A u  66  Kieserite Batch4 GDS671                    2.0735           0.219          sulfate
+# A u 192  Szomolnokite GDS874 Heat275C r06crj3a=     2.0596           0.0674         sulfate
+# A u 150  Szomolnokite NMNH104303 UT r06crj3a=       2.0932           0.1854         sulfate
+# A y 852  Buddingtonite NHB2301 s06crj3a=b           2.1216           0.205          ammonium
+# A y2754  Kieserite KIEDE1.a crse gr s06crj3a=cc_    2.1302           0.1530         sulfate     MgSO4·H2O
+# A y3018  Mascagnite GDS65.b (fr) s06crj3a=aa_       2.1358           0.288          ammonium    (NH4)2SO4
+
+a = read_an_image("group.1.9um/water_2.060_sulfate_szomoln.fd.gif")
+xcolor= xcolor + a*( c /255.)
+
+a = read_an_image("group.1.9um/water_2.073_sulfate-kieserite.fd.gif")
+xcolor= xcolor + a*( c /255.)
+
+a = read_an_image("group.1.9um/water_2.093_sulfate_szomoln.fd.gif")
+xcolor= xcolor + a*( c /255.)
+
+a = read_an_image("group.1.9um/water_2.122_nh4-buddingt.fd.gif")
+xcolor= xcolor + a*( c /255.)
+
+a = read_an_image("group.1.9um/water_2.130_sulfate_kieserite.fd.gif")
+xcolor= xcolor + a*( c /255.)
+
+a = read_an_image("group.1.9um/water_2.136_nh4-mascagnite.fd.gif")
+xcolor= xcolor + a*( c /255.)
+
+########### end custom, no need to change anything below this line ###############################
+
+xout=byte(xcolor+0.5)   # output color image, byte
+xout = bip(xout)
+xdim=dim(xout)
+xdimx=xdim[1,,]      # color image width
+
+gbasedim=dim(gbase)
+x=gbasedim[1,,]      # base image width
+
+if (x > dualmax) {
+	dual = 0
+}
+
+if ( dual == 1 ) {
+	
+	gbase = bip(gbase)
+	xout = cat (xout, gbase, axis=x)
+}
+
+fout=$2
+
+
+adim=dim(xout)
+if ( adim[1,,] > 5 || adim[2,,] > 5 ) {
+	printf ("writing %s\n", fout)
+	write (xout, filename=fout, type=png)
+} else {
+	printf ("not writing %s\n", fout)
+	printf ("    image size < 6 pixels\n")
+}

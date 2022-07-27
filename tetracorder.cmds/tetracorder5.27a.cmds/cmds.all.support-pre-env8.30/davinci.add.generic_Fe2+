@@ -1,0 +1,27 @@
+#!/usr/local/bin/davinci -f
+####!/usr/bin/env -S davinci -f  
+
+###########################  was:  #!/usr/local/bin/davinci -f
+
+
+
+# image ratio
+
+fout="group.1um/fe2+generic.all.fd"
+
+#############################################################
+
+a=    load(filename="group.1um/fe2+generic_nrw.cummingtonite.fd.gz")
+b=    load(filename="group.1um/fe2+generic_nrw.actinolite.fd.gz")
+c=    load(filename="group.1um/fe2+generic_nrw.hs-actinolite.fd.gz")
+d=    load(filename="group.1um/fe2+generic_med.jadeite.fd.gz")
+e=    load(filename="group.1um/fe2+generic_brd.br5a_actinolite.fd.gz")
+f=    load(filename="group.1um/fe2+generic_brd.br22c_actinolite.fd.gz")
+g=    load(filename="group.1um/fe2+generic_brd.br36a_chlorite.fd.gz")
+h=    load(filename="group.1um/fe2+generic_basalt_br46b.fd.gz")
+i=    load(filename="group.1um/fe2+generic_broad_br60b.fd.gz")
+j=    load(filename="group.1um/fe2+generic_vbroad_br20.fd.gz")
+
+x = byte (a + b + c + d + e + f + g + h + i + j)
+
+write(x,filename=fout,type=vicar)

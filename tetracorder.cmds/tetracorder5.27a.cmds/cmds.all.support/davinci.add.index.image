@@ -1,0 +1,42 @@
+#!/usr/local/bin/davinci -f
+######!/usr/bin/env -S davinci -f  
+
+###########################  was:  #!/usr/local/bin/davinci -f
+
+
+
+# image indexing program for DN > 3
+
+verbose=0      # turn off all davinci echoing except that specified by user
+
+fout=$1
+
+#############################################################
+
+a = short(read(filename=$1))
+
+b = byte(read(filename=$2))
+x = moment(b)
+
+if ( x[2,,] < 3.0 ) {
+	exit(0)  # nothing to add, so exit
+}
+
+
+b = b * byte(85)
+b = b / byte(254)  # image now 1's and 0's
+
+m = b + byte(1)   # 1's and 2's
+m = byte(1) / m   # 0's and 1's
+
+b = short(b) * short(atoi($3))
+#moment (b)
+#moment (m)
+
+
+c = a*m + b  # b overprints any previously turned on pixels
+
+moment(c)
+
+
+write(c,filename=fout,type=vicar,force=1)

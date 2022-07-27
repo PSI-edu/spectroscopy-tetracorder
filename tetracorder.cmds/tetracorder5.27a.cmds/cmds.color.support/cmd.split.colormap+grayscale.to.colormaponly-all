@@ -1,0 +1,47 @@
+#!/bin/sh
+
+# copy this script to the tetracorder mapping directory: color.results
+
+
+p="./davinci.split.colormap+grayscale.to.colormaponly"
+
+if [ ! -d "../color.results-maponly" ]
+then
+	mkdir "../color.results-maponly"
+fi
+
+cube=`cat ../AAA.info/cubefilename.txt`
+
+cdir1=`dirname $cube`
+cname=`basename $cube .hdr`    # remove .hdr if it exists, because next we add it
+
+cubfilhdr="../${cdir1}/${cname}.hdr"
+
+if [ -f  "$cubfilhdr" ]
+then
+	amap=`grep 'map info =' $cubfilhdr`
+	if [ -z "$amap" ]
+	then
+		echo "no map info line found"
+	fi
+else
+	echo "no envi header file found"
+fi
+
+for i in *.png
+do
+	$p $i
+
+done
+
+cd ../color.results-maponly
+
+for i in *.v
+do
+	davinci.make.envi.header.from.vicar $i > ${i}.hdr
+	
+	if [ -n "$amap" ]
+	then
+		echo "$amap" >> ${i}.hdr
+	fi
+done

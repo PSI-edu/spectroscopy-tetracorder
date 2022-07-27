@@ -1,0 +1,28 @@
+# Montmorillonite    based on cmd.lib.setup.t5.2d3
+#
+#  DN scale = what band depth = 255 in the tetracorder output image (from 5.2a2 expert system)
+#  BD factor = band depth =1 for pure, fraction in mixture
+#  splib06conv1, sprlb06conv1 = convolved spectrum ID, valid for spectra for 1 - 2171 channels.
+#
+#                                                                 DN     BD    Band                                   convolved
+#              file                                             scale  factor  depth      title                       reference spectrum
+group.2um/smectite_montmorillonite_na_highswelling.depth.gz       0.5   0.84  0.2017  Montmorillonite SWy-1           sprlb06conv1  588 
+group.2um/smectite_montmorillonite_fe_swelling.depth.gz           0.5   0.83  0.0695  Montmorillonite_Fe GDS759A      sprlb06conv1   54  # CHECKED: depth is low in reference
+group.2um/smectite_montmorillonite_ca_swelling.depth.gz           0.5   0.99  0.2169  Montmorillonite SAz-1           sprlb06conv1  600
+group.2um/pyroph.5+mont0.5.depth.gz                               0.5   0.42  0.1429  Pyrophyl.50+Ca-Mont.50 AMX16    splib06conv1 6060
+group.2um/feldspar_buddington.namont.depth.gz                     0.5   0.1   0.0502  Buddingtnt+Na-Mont CU93-260B    splib06conv1 5502
+group.2um/feldspar_buddington.namont2.depth.gz                    0.5   0.1   0.0502  Buddingtnt+Na-Mont CU93-260B    splib06conv1 5502  # NOTE: duplicate of above in exp sys its OK
+group.2um/carbonate_calcite+0.2Ca-mont.depth.gz                   0.5   0.17  0.1068  Calcite.8+Ca-Montmor.2 AMX15    splib06conv1 5568
+group.2um/carbonate_dolo+.5ca-mont.depth.gz                       0.5   0.42  0.1314  Dolomite.50+Ca-Montmor AMX10    splib06conv1 5694
+group.2um/calcite.25+dolom.25+Na-mont.5.depth.gz                  0.5   0.42  0.1105  Calc.25+dolo.25+mont.5 AMX18    splib06conv1 5514
+group.2um/carbonate_calcite.25+dolom.25+Ca-mont.5.depth.gz        0.5   0.42  0.1274  Calc.25+Dolo.25+Ca-Mon AMX7     splib06conv1 5508
+group.2um/calcite+0.2Na-mont.depth.gz                             0.5   0.17  0.0939  Calcite.80+Mont_Swy-1 GDS212    splib06conv1 5574
+group.2um/calcite+0.5Ca-mont.depth.gz                             0.5   0.42  0.1711  Calcite+.50Ca-Mont AMX6         splib06conv1 5526
+group.2um/organic_drygrass+.17Na-mont.depth.gz                    0.5   0.14  0.0321  Grass_dry+0.17%Na-Mont AMX35    sprlb06conv1   30
+group.2um/carbonate_dolomite.5+Na-mont.5.depth.gz                 0.5   0.42  0.1027  Dolomite.5+Na-mont.5 AMX21      splib06conv1 5688
+group.2um/carbonate_smectite_calcite.33+Ca-mont.67.depth.gz       0.5   0.66  0.1186  Calcite.33+Ca-mont.67 AMX19     splib06conv1 5544
+group.2um/organic_benzene+montswy.depth.gz                        0.5   0.756 0.1302  Montmorill+Benzene SWy 1ml      splib06conv1 6606
+group.2um/organic_trichlor+montswy.depth.gz                       0.5   0.756 0.6991  Montmorill+Trichlor SWy 1ml     splib06conv1 6624
+group.2um/organic_toluene+montswy.depth.gz                        0.5   0.798 0.1571  Montmorill+Toluene SWy .5ml     splib06conv1 6618
+group.2um/organic_unleaded.gas+montswy.depth.gz                   0.5   0.756 0.1002  Montmorill+Unleaded_Gas SWy     splib06conv1 6630
+group.2um/organic_tce+montswy.depth.gz                            0.5   0.756 0.2067  Montmorill+TCE SWy saturated    splib06conv1 6612

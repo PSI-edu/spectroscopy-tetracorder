@@ -1,0 +1,19 @@
+#!/bin/sh
+
+echo "Check and monitor a running tetracorder output"
+echo "sleep 10"
+
+sleep 10
+
+echo "last 33 lines of tetracorder.out:"
+
+tail -33 tetracorder.out
+
+sleep 2
+
+echo " "
+echo "Now monitor and follow cmd.runtet.out"
+echo "kill (control-c) to quit"
+echo " "
+
+tail -5f cmd.runtet.out

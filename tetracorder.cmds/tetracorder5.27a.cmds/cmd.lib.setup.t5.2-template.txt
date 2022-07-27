@@ -1,0 +1,148 @@
+\#
+\# TETRACORDERte for entering a single expert system reference material
+\#
+\#
+\#  the GLBLFITALL variable sets the default fit thresholding
+\#      if the fit is below this value, then that material is not
+\#      identified.  All fits, depthd, and f*d values are zeroed.
+\#      Similarly for GLBLFDFIT and GLBLDPFIT.
+\#      GLBLDPFITg2 is for group 2.   - RNC
+\#
+\#   ==[GLBLFITALL]0.2 0.3
+\#   ==[GLBLFDFIT]0.3 0.4
+\#   ==[GLBLDPFIT]0.5 0.6
+\#   ==[GLBLDPFITg2]0.65 0.7
+\#
+\############################################################################
+\#
+\#  r*bd fuzzy logic defined variables  (started 03/25/2020, RNC)
+\#
+\# for 1% feature and 20% reflectance, r*bd = 0.2*0.01 = 0.002
+\#    so thresholds below this would be rejected.
+\#    pre 3/2020, r*bd was typically r*bd> 0.002 0.004
+\#    (Future: maybe move this to cmds.start file so it may be tuned with S/N)
+\#
+\#   Note: some RREs were 0.0002 0.0004, others 0.002 0.004  pre 3/2020.
+\#
+\#   ==[RBD1b] 0.002  0.004     \# r*bd for 1-2 micron region broad bands
+\#   ==[RBDree] 0.001  0.002    \# r*bd for Vis-NIR region REE bands
+\#   ==[RBDvrs] 0.002  0.004    \# r*bd for Veg red-edge shift
+\#   ==[RBD10] 0.001  0.002     \# r*bd for 1-      micron region
+\#   ==[RBD14] 0.0008 0.002     \# r*bd for 1.3-1.5 micron region
+\#   ==[RBD22] 0.0007 0.0011    \# r*bd for 2.2-    micron region
+\#   ==[RBD23] 0.0007 0.0011    \# r*bd for 2.3-    micron region
+\#   ==[RBD25] 0.001  0.002     \# r*bd for 2.5     micron region
+\#   ==[RBD25] 0.0007 0.0011    \# r*bd for 2.5-    micron region
+\#   ==[RBD30] 0.0005 0.001     \# r*bd for 3-      micron region
+\#   ==[RBD35] 0.0005 0.001     \# r*bd for 3.5-    micron region
+\#
+\#                NOTE: ct, rct, lct do not use fuzzy logic
+\#   ==[CTHRESH1] 0.01          \# ct threshold value (continuum threshold)
+\#   ==[CTHRESH2] 0.02          \# ct threshold value (continuum threshold)
+\#   ==[CTHRESH4] 0.04          \# ct threshold value (continuum threshold)
+\#   ==[CTHRESH5] 0.05          \# ct threshold value (continuum threshold)
+\#
+\#
+\#################################################################################
+\#
+\#################################################################################
+\#################################################################################
+\######               group and case strategy                       ##############
+\######  Starting with version 5.15, moving broad features up front ##############
+\######  and narrow features after, so we might in the future       ##############
+\######  adapt curved continua depending on the broad feature type. ##############
+\######                                                             ##############
+\#################################################################################
+\###### group 0:  catch for other declared groups                   ##############
+\###### group 1:  electronic absorptions 1-micron region            ##############
+\###### group 2:  2 to 2.5-micron region narrow                     ##############
+\###### group 3:  vegetation detection                              ##############
+\###### group 4:  broad absorptions in the 1.5-micron region        ##############  was the search for rare-earth oxides
+\###### group 5:  broad absorptions in the 2-micron region          ##############
+\###### group 6:  2.5-micron region                                 ##############
+\###### group 7:  2.7 to 3-micron OH region                         ##############  was 1.4-micron region 
+\###### group 8:  2.7 - 2.8-micron OH region narrow bands           ##############  was broad absorptions in the 1.5-micron region 
+\###### group 9:                                                    ##############  was 2.7 to 3-micron OH region
+\###### group 10: testing 3.5 um curved continua                    ##############  was 3.2-micron region 
+\###### group 11: 3.5-micron region linear continua                 ##############
+\###### group 12: 4-micron region                                   ##############  was testing 3.5 um curved continuaa
+\###### group 13: 1.3-1.4 micron OH narrow                          ##############  was 1.9-2 micron water and ice 
+\###### group 14: 1.4-1.5 micron OH                                 ##############
+\###### group 15: 1.5 micron OH                                     ##############  was the search for rare-earth oxide Neodymium 
+\###### group 16:                                                   ##############  was the search for rare-earth oxide Samarium
+\###### group 17: 1.7 microns CH and water    Future                ##############
+\###### group 18:                                                   ##############
+\###### group 19: 1.9-2 micron water and ice                        ##############
+\###### group 20: the search for rare-earth oxides                  ##############
+\###### group 21: the search for rare-earth oxide Neodymium         ##############
+\###### group 22: the search for rare-earth oxide Samarium          ##############
+\######                                                             ##############
+\###### case 1:   Vegetation red edge shift                         ##############
+\###### case 2:   Vegetation spectral type                          ##############
+\###### case 3:   Vegetation 0.9um-band depth                       ##############
+\###### case 4:   Vegetation 1.2um-band depth                       ##############
+\###### case 5:   Vegetation 1.4um-band depth                       ##############
+\###### case 6:   Epidote-Chlorite-Calcite mixture series           ##############
+\###### case 7:   Carbonate 2.3 + 2.5 micron feature detection      ##############
+\#################################################################################
+\#
+\#################################################################################
+\#
+\###############################################################################
+\###  All command lines must eb less than 80 characters (comments can be longer)
+\#       11111111112222222222333333333344444444445555555555666666666677777777778
+\# 45678901234567890123456789012345678901234567890123456789012345678901234567890
+\#
+\# All entries below with ZZZ, ZZZnnn, ZZZaaa, etc need to be filled in with values/
+\#
+\# read the master cmd.lib.setup.t5.2* file for further details.
+\#
+\###############################################################################
+\#
+\#          ****   BEGIN COMMANDING   ****
+\#  ZZZ strip from 1st line to here before importing into the master command file
+\#################################################################################
+group ZZZnnn
+use= yes           \# yes or no,     if no,    skip this entry.
+udata: reflectance
+convolve: no
+preratio: none
+preprocess: none
+algorithm: tricorder-primary
+ID=ZZZ
+
+define library records     \# NOTE: [splib06] or [sprlb06]
+   a SMALL:  [splib06]  ZZZn d         \# file ID, rec no.    1 to 2171 channels
+   a MEDIUM: [splib06]  xxxx d         \# file ID, rec no. 2172 to 4852 channels
+   a LARGE:  [splib06]  xxxx d         \# file ID, rec no. larger_chans_future
+endlibraryrecords
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=ZZZZ  even though a comment, but the specpr title here
+[DELETPTS]
+ZZZ_output_title                         \# output title
+
+define features    \# below is an example, ALL need to be changed
+   f1a DLw 1.650 1.680  1.755 1.785 ct [CTHRESH4]   rcbblc< 0.8 1.0
+   f1a                              r*bd> [RBD14]
+   f2a DLw 2.200 2.240  2.35  2.39  ct [CTHRESH4]  lct/rct> 0.9 1.1
+   f2a                              rcbblc< 0.2 0.3
+\# Notes:
+\# added 9/18/2001 3.4a2 RNC  ZZZ change to your name and date.
+endfeatures
+
+define constraints    \# below is an example, ALL may to be changed
+   constraint: FD-FIT>[GLBLFDFIT] DEPTH-FIT>[GLBLDPFITg2]
+   constraint: FITALL>[GLBLFITALL]
+endconstraint
+
+define output
+   output=fit depth fd
+   ZZZZ_output_base_file_name                 \# Output base file name  plastic.tarp1
+   8 DN 255 = 0.5000          \# ZZZ probably fine unless the absorptions are ver deep.
+   compress= zip
+endoutput
+
+define actions      \# ZZZ probably no changes needed here
+   action: sound1
+   action: none
+endaction
+\#################################################################################

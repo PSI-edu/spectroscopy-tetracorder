@@ -1,0 +1,20 @@
+#!/bin/sh
+
+#     1 ID=witherite
+#     1 ID=wollastonite_hs348.3b
+#     1 ID=zoisite
+#     1 ID=zunyite
+#     2 ID=azurite
+#     2 ID=calcite
+#     2 ID=calcite_3.5um
+
+if [ -z "$1" ]
+then
+	echo "Usage:"
+	echo "      $0  cmd.lib.setup.filename"
+	echo "Example:"
+	echo "      $0  cmd.lib.setup.t5.2e1"
+	exit 1
+fi
+
+grep '^ID=' $1 | sort | uniq -c | sort -n | grep -v '^      1 '

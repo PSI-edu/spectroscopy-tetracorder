@@ -1,0 +1,42 @@
+
+
+
+#################  Auto-Extracting Spectra of Pixel Averages  #################
+
+Post tetracorder process, which created many files of results,
+to get average spectra
+
+Create a specpr file for collecting the average spectra in the
+    directory where a mappign runs has completed
+    (in the above example, that would be: /data1/project3/mapping/arches-np ).
+
+The command creates specpr file spreslt1:
+
+cmds.all.support/make.spreslt1.file.for.spectral.extractions
+
+then run:
+cmds.all.support/cmd.get.mapped.material.spectral.averages-v4
+
+cmds.all.support/cmd.get.mapped.material.spectral.averages-v4  shortcubeID  cube scale_factor specproutputfile box upperleftx upperlefty lowerrightx lowerrighty
+
+Note: the cube size and the short cube ID after a tetracorder run are stored in
+the AAA.info directory:
+
+cube-bands.txt	cubefilename.txt  image-xpixels.txt  image-ypixels.txt	shortcubeid.txt
+
+example (cube size = 1000 x 1000):
+cmds.all.support/cmd.get.mapped.material.spectral.averages-v4  FRT03BFB  ../cubes2/FRT00003BFB_07_IF166J_MTR3.v  0.00005  spreslt1  box 1 1 1000 1000
+
+Note: the box size can be a small area, not just the full cube size.
+
+NOTE on cube: if the cube is an envi file with no vicar header give the envi  hdr file, e.g.
+       ../cube/f180625t01p00r07_rfl.hdr
+
+     If the cube has a vicar header, use the cube file.  Example:
+       ../cube/f180625t01p00r07_rfl.v.hdr   # envi header
+       ../cube/f180625t01p00r07_rfl.v       # image cube with vicar header
+  then use:
+        ../cube/f180625t01p00r07_rfl.v
+
+When complete, run specpr and assign the spreslt1 file to view the results.
+

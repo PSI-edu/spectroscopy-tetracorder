@@ -1,0 +1,308 @@
+#!/usr/local/bin/davinci -f
+
+# command line:
+# prog    gray_base_image  prefix-file-name   [dual|nodual]
+
+dual=0  # no dual
+
+
+# Fe2+, generic  (blues)
+
+a=read(filename="group.1um/fe2+generic.all.fd.gif")
+        if (HasValue(a) ==0) {  # check that read worked
+              printf ("read ERROR on results file\n")
+              printf ("setting to zero\n")
+              a=0
+        }
+	q=cat(a,a,axis=z)  # make into 3-band image
+	a=cat(a,q,axis=z)  # make into 3-band image
+
+b=read(filename="group.1um/fe2+_pyroxene.hypersthene.fd.gif")
+        if (HasValue(b) ==0) {  # check that read worked
+              printf ("read ERROR on results file\n")
+              printf ("setting to zero\n")
+              b=0
+        }
+	q=cat(b,b,axis=z)  # make into 3-band image
+	b=cat(b,q,axis=z)  # make into 3-band image
+
+c=read(filename="group.1um/fe2+generic_carbonate_siderite1.fd.gif")
+        if (HasValue(c) ==0) {  # check that read worked
+              printf ("read ERROR on results file\n")
+              printf ("setting to zero\n")
+              c=0
+        }
+	q=cat(c,c,axis=z)  # make into 3-band image
+	c=cat(c,q,axis=z)  # make into 3-band image
+
+
+# Fe2+ Fe3+ mix (magenta)
+
+fi="group.1um/fe2+fe3+_hematite_weathering.fd.gif"
+a1=read(filename=f1)
+        if (HasValue(a1) ==0) {  # check that read worked
+              printf ("read ERROR on results file %s\n" f1)
+              printf ("setting to zero\n")
+              a1=0
+        }
+	q1=cat(a1,a1,axis=z)  # make into 3-band image
+	a1=cat(a1,q1,axis=z)  # make into 3-band image
+
+f1="group.1um/fe2+_goeth+musc.fd.gif"
+a2=read(filename=f1)
+        if (HasValue(a2 ==0) {  # check that read worked
+              printf ("read ERROR on results file %s\n" f1)
+              printf ("setting to zero\n")
+              a2=0
+        }
+	q2=cat(a2,a2,axis=z)  # make into 3-band image
+	a2=cat(a2,q2,axis=z)  # make into 3-band image
+
+d=a1+a2
+
+# Fe3+ mix (salmon)
+
+e=read(filename="group.1um/fe3+mix_AMD.assemb1+2.fd.gif")
+        if (HasValue(e) ==0) {  # check that read worked
+              printf ("read ERROR on results file\n")
+              printf ("setting to zero\n")
+              e=0
+        }
+	q=cat(e,e,axis=z)  # make into 3-band image
+	e=cat(e,q,axis=z)  # make into 3-band image
+
+
+# Fe3+ sulphate  (greens)
+
+f=read(filename="group.1um/fe3+fe2+_sulfate_copiapite.fd.gif")
+        if (HasValue(f) ==0) {  # check that read worked
+              printf ("read ERROR on results file\n")
+              printf ("setting to zero\n")
+              f=0
+        }
+	q=cat(f,f,axis=z)  # make into 3-band image
+	f=cat(f,q,axis=z)  # make into 3-band image
+
+g=read(filename="group.1um/fe3+_sulfate_jarosite_br34a2.fd.gif")
+        if (HasValue(g) ==0) {  # check that read worked
+              printf ("read ERROR on results file\n")
+              printf ("setting to zero\n")
+              g=0
+        }
+	q=cat(g,g,axis=z)  # make into 3-band image
+	g=cat(g,q,axis=z)  # make into 3-band image
+
+
+# Fe3+  hydroxide, FeOOH  (yellows)
+
+h=read(filename="group.1um/fe3+_goethite.coarsegr.ALL.fd.gif")
+        if (HasValue(h) ==0) {  # check that read worked
+              printf ("read ERROR on results file\n")
+              printf ("setting to zero\n")
+              h=0
+        }
+	q=cat(h,h,axis=z)  # make into 3-band image
+	h=cat(h,q,axis=z)  # make into 3-band image
+
+i=read(filename="group.1um/fe3+_goethite.medgr.fd.gif")
+        if (HasValue(i) ==0) {  # check that read worked
+              printf ("read ERROR on results file\n")
+              printf ("setting to zero\n")
+              i=0
+        }
+	q=cat(i,i,axis=z)  # make into 3-band image
+	i=cat(i,q,axis=z)  # make into 3-band image
+
+j=read(filename="group.1um/fe3+_goethite.fingr.fd.gif")
+        if (HasValue(j) ==0) {  # check that read worked
+              printf ("read ERROR on results file\n")
+              printf ("setting to zero\n")
+              j=0
+        }
+	q=cat(j,j,axis=z)  # make into 3-band image
+	j=cat(j,q,axis=z)  # make into 3-band image
+
+k=read(filename="group.1um/fe3+_goethite.thincoat.fd.gif")
+        if (HasValue(k) ==0) {  # check that read worked
+              printf ("read ERROR on results file\n")
+              printf ("setting to zero\n")
+              k=0
+        }
+	q=cat(k,k,axis=z)  # make into 3-band image
+	k=cat(k,q,axis=z)  # make into 3-band image
+
+
+# Fe3+ oxide  (red to orange)
+
+l=read(filename="group.1um/fe3+_hematite.lg.gr.all.fd.gif")
+        if (HasValue(a) ==0) {  # check that read worked
+              printf ("read ERROR on results file\n")
+              printf ("setting to zero\n")
+              a=0
+        }
+	q=cat(l,l,axis=z)  # make into 3-band image
+	l=cat(l,q,axis=z)  # make into 3-band image
+
+m=read(filename="group.1um/fe3+_hematite.med.gr.all.fd.gif")
+        if (HasValue(m) ==0) {  # check that read worked
+              printf ("read ERROR on results file\n")
+              printf ("setting to zero\n")
+              m=0
+        }
+	q=cat(m,m,axis=z)  # make into 3-band image
+	m=cat(m,q,axis=z)  # make into 3-band image
+
+n=read(filename="group.1um/fe3+_hematite.fine.gr.all.fd.gif")
+        if (HasValue(n) ==0) {  # check that read worked
+              printf ("read ERROR on results file\n")
+              printf ("setting to zero\n")
+              n=0
+        }
+	q=cat(n,n,axis=z)  # make into 3-band image
+	n=cat(n,q,axis=z)  # make into 3-band image
+
+o=read(filename="group.1um/fe3+_hematite.nano.BR34b2.fd.gif")
+        if (HasValue(o) ==0) {  # check that read worked
+              printf ("read ERROR on results file\n")
+              printf ("setting to zero\n")
+              o=0
+        }
+	q=cat(o,o,axis=z)  # make into 3-band image
+	o=cat(o,q,axis=z)  # make into 3-band image
+
+
+
+gbase=read(filename=$1)
+if (HasValue(gbase) ==0) {                   # check that read worked
+      printf ("read ERROR on file: %s\n",$1)
+      printf ("^GEXIT 1\n")
+      exit(1)
+}
+
+
+# /info/COLORS.screen.to.printers
+#
+#      "color"         r    g    b
+#    1 red            255   60    0   (255   50    0 better)
+#    2 green           60  255    0
+#    3 blue             0  105  255
+#   
+#    4 yellow         255  255    0
+#    5 magenta        205   60  255
+#    6 cyan             0  255  255
+#  
+#    7 army green     150  165    0   (160  175    0 better?)
+#    8 salmon         255  170  170
+#    9 flesh          255  200  155
+#  
+#   10 orange         255  110    0   (255  140    0 better?)
+#   11 deep pink      235    0  180
+#   12 yellow green   190  255    0
+#
+#   13 lavender       185  120  255
+#   14 sky blue       140  210  255
+#   15 pale sea green 110  255  190
+#  
+#   16 white          255  255  255
+#   17 red-pink       255  125  125
+#   18 gold           255  213    0
+#
+#   19 mud yellow     186  165    0
+#   20 light pink     255  211  255
+#
+
+# a    Fe2+ generic all                 blue
+# b    Fe2+ pyroxene                    sky blue
+# c    Fe2+ siderite                    cyan
+# d    Fe2+ + Fe3+                      magenta
+# e    Fe3+ mix AMD                     salmon
+# f    Fe3+ sulphate copiapite          pale sea green
+# g    Fe3+ sulphate jarosite           green
+
+# h    goethite coarse                  mud yellow
+# i    goethite medium                  army green
+# j    goethite fine                    gold
+# k    goethite thin coat               yellow
+
+# l    hematite coarse grained          red
+# m    hematite medium grained          red pink
+# n    hematite fine   grained          deep pink
+# o    hematite nano                    orange
+
+
+
+argb =  create(1,1,3, format=FLOAT, start=0.0, step=0.0)
+brgb =  create(1,1,3, format=FLOAT, start=0.0, step=0.0)
+crgb =  create(1,1,3, format=FLOAT, start=0.0, step=0.0)
+drgb =  create(1,1,3, format=FLOAT, start=0.0, step=0.0)
+ergb =  create(1,1,3, format=FLOAT, start=0.0, step=0.0)
+frgb =  create(1,1,3, format=FLOAT, start=0.0, step=0.0)
+grgb =  create(1,1,3, format=FLOAT, start=0.0, step=0.0)
+hrgb =  create(1,1,3, format=FLOAT, start=0.0, step=0.0)
+irgb =  create(1,1,3, format=FLOAT, start=0.0, step=0.0)
+jrgb =  create(1,1,3, format=FLOAT, start=0.0, step=0.0)
+krgb =  create(1,1,3, format=FLOAT, start=0.0, step=0.0)
+lrgb =  create(1,1,3, format=FLOAT, start=0.0, step=0.0)
+mrgb =  create(1,1,3, format=FLOAT, start=0.0, step=0.0)
+nrgb =  create(1,1,3, format=FLOAT, start=0.0, step=0.0)
+orgb =  create(1,1,3, format=FLOAT, start=0.0, step=0.0)
+
+# Colors:
+#              Red                  Green                Blue
+
+argb[1,1,1] =    0. ; argb[1,1,2]=   105. ;  argb[1,1,3]= 255.   # blue
+brgb[1,1,1] =  140. ; brgb[1,1,2]=   210. ;  brgb[1,1,3]= 255.   # sky blue
+crgb[1,1,1] =    0. ; crgb[1,1,2]=   255. ;  crgb[1,1,3]= 255.   # cyan
+drgb[1,1,1] =  255. ; drgb[1,1,2]=    60. ;  drgb[1,1,3]= 255.   # magenta
+ergb[1,1,1] =  255. ; ergb[1,1,2]=   170. ;  ergb[1,1,3]= 170.   # salmon
+frgb[1,1,1] =  110. ; frgb[1,1,2]=   255. ;  frgb[1,1,3]= 190.   # pale sea green
+grgb[1,1,1] =   60. ; grgb[1,1,2]=   255. ;  grgb[1,1,3]=   0.   # green
+
+hrgb[1,1,1] =  186. ; hrgb[1,1,2]=   165. ;  hrgb[1,1,3]=   0.   # mud yellow
+irgb[1,1,1] =  160. ; irgb[1,1,2]=   175. ;  irgb[1,1,3]=   0.   # army green
+jrgb[1,1,1] =  255. ; jrgb[1,1,2]=   213. ;  jrgb[1,1,3]=   0.   # gold
+krgb[1,1,1] =  255. ; krgb[1,1,2]=   255. ;  krgb[1,1,3]=   0.   # yellow
+
+lrgb[1,1,1] =  255. ; lrgb[1,1,2]=    60. ;  lrgb[1,1,3]=   0.   # red
+mrgb[1,1,1] =  255. ; mrgb[1,1,2]=   125. ;  mrgb[1,1,3]= 125.   # red pink
+nrgb[1,1,1] =  235. ; nrgb[1,1,2]=     0. ;  nrgb[1,1,3]= 180.   # red pink
+orgb[1,1,1] =  255. ; orgb[1,1,2]=   110. ;  orgb[1,1,3]=   0.   # orange
+
+
+xaz=float(a*0)
+
+xaz= xaz + a*(argb/255.)
+xaz= xaz + b*(brgb/255.)
+xaz= xaz + c*(crgb/255.)
+xaz= xaz + d*(drgb/255.)
+xaz= xaz + e*(ergb/255.)
+xaz= xaz + f*(frgb/255.)
+xaz= xaz + g*(grgb/255.)
+xaz= xaz + h*(hrgb/255.)
+xaz= xaz + i*(irgb/255.)
+xaz= xaz + j*(jrgb/255.)
+xaz= xaz + k*(krgb/255.)
+xaz= xaz + l*(lrgb/255.)
+xaz= xaz + m*(mrgb/255.)
+xaz= xaz + n*(nrgb/255.)
+xaz= xaz + o*(orgb/255.)
+
+xout=byte(xaz+0.5)
+
+gbasedim=dim(gbase)
+x=gbasedim[1,,]
+
+if (x > 6000) {
+	dual = 0
+}
+if ( dual == 1 ) {
+	
+	xout = cat (xout, gbase, axis=x)
+}
+
+
+fout=$2
+
+printf ("writing %s\n", fout)
+write (xout, filename=fout, type=png)
+

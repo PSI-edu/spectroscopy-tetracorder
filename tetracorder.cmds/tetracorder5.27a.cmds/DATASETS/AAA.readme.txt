@@ -1,0 +1,13 @@
+each file contains keyword= value
+
+Must have restart=
+
+Keyword must start in column 1 and there must be a space after the =
+
+Valid keywords:
+
+restart=
+lib=
+band=
+start=
+c_nots=

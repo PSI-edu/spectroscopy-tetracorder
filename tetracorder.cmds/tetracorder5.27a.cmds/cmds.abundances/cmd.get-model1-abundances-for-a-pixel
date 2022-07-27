@@ -1,0 +1,4 @@
+#!/bin/sh
+
+( ./davinci.get-model1-abundances-for-a-pixel $1 $2  2>&1  )  | grep -v 'is compressed'
+

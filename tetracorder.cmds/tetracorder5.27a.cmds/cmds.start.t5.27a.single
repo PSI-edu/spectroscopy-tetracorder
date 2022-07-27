@@ -1,0 +1,133 @@
+CMD crt verbose=0
+\# TETRACORDER 5.2  command file
+\# NOTE: this is a general command file for all mapping
+\#
+\# However, it must be customized.
+\#          the splib04 alias needs to be changed to the specpr
+\#                      file letter id you have assigned, but the
+\#                      record numbers do not need changing for
+\#                      any splib04a, b, c, etc,
+\#                      Similarly, you must change the WAVEID alias.
+\#
+\#
+\#          The entries marked [sprlb01] and [sprln01]are additional minerals
+\#              not in splib04_ and so must be custom convolved to
+\#              your flight instrument, and the record numbers in
+\#              this command file changed.
+\#              If the cmd file doesn't have [sprlb01], or [sprln01]
+\#              ignore this.
+\#
+\#          The continuum regions are specified by wavelength.  The
+\#              channel numbers below refer to a specific instrument
+\#              and should be ignored.  They are left here for
+\#              diagnostic purposes.
+\#              (They refer to splib04m, AVIRIS Cuprite 1993 data.)
+\#
+\#          You must customize the deleted point for your instrument
+\#              resolution.  see [DELETPTS]
+\#
+\#          To do groups (multiple spectral intervals with one run
+\#              run of tricorder) you should put each group in a
+\#              subdirectory.  Use the [DIR] alias before each library
+\#              setup to define the subdirectory.
+\#
+\#          ALSO EXAMINE the beginning of cmd.lib.setup...... file for other 
+\#               global variables that you might wish to change.
+\#
+\#          Note: the scale factor below may need to be set for your
+\#                data.  The scale factor is the factor to convert
+\#                DN to reflectance.  It is set below to 0.00005 so
+\#                a DN of 20,000 = reflectance 1.0
+\#
+\#
+\#
+\# Roger N. Clark, November 1, 1995 - June 17, 2022
+\#
+\#
+==[splib06]y
+==[WAVEID]Y6
+==[sprlb06]w
+==[DIR]./
+==[DELETPTS]DDDDDDDDDD
+==[alternatelib]SMALL
+\#
+\#  Group definitions:  (NOTE: keep this in sync with the cmd.lib.setup.* file)
+\#
+\#################################################################################
+\######               group strategy                                ##############
+\######  Starting with version 5.15, moving broad features up front ##############
+\######  and narrow features after, so we might in the future       ##############
+\######  adapt curved continua depending on the broad feature type. ##############
+\######                                                             ##############
+\#################################################################################
+\###### group 0:  catch for other declared groups                   ##############
+\###### group 1:  electronic absorptions 1-micron region            ##############
+\###### group 2:  2 to 2.5-micron region narrow                     ##############
+\###### group 3:  vegetation detection                              ##############
+\###### group 4:  broad absorptions in the 1.5-micron region        ##############  was the search for rare-earth oxides
+\###### group 5:  broad absorptions in the 2-micron region          ##############
+\###### group 6:  2.5-micron region                                 ##############
+\###### group 7:  2.7 to 3-micron OH region                         ##############  was 1.4-micron region 
+\###### group 8:  3.2-micron region       empty at the moment       ##############  was broad absorptions in the 1.5-micron region
+\###### group 9:                                                    ##############  was 2.7 to 3-micron OH region
+\###### group 10: testing 3.5 um curved continuaa                   ##############  was 3.2-micron region
+\###### group 11: 3.5-micron region linear continua                 ##############
+\###### group 12: 4-micron region                                   ##############  was testing 3.5 um curved continuaa
+\###### group 13: 1.3-1.4 micron OH narrow                          ##############  was 1.9-2 micron water and ice 
+\###### group 14: 1.4-1.5 micron OH                                 ##############
+\###### group 15: 1.5 micron OH                                     ##############  was the search for rare-earth oxide Neodymium
+\###### group 16:                                                   ##############  was the search for rare-earth oxide Samarium
+\###### group 17: 1.7 microns CH and water    Future                ##############
+\###### group 18:                                                   ##############
+\###### group 19: 1.9-2 micron water and ice                        ##############
+\###### group 20: the search for rare-earth oxides                  ##############
+\###### group 21: the search for rare-earth oxide Neodymium         ##############
+\###### group 22: the search for rare-earth oxide Samarium          ##############
+\#################################################################################
+\#
+==[DIRg1]group.1um/
+==[DIRg2]group.2um/
+==[DIRg3]group.veg/
+==[DIRg4]group.1.5um-broad/
+==[DIRg5]group.2um-broad/
+==[DIRg6]group.2.5um/
+==[DIRg7]group.3um/
+==[DIRg8]group.2.8um/
+==[DIRg9]group.zz/
+==[DIRg10]group.3.5um_curve/
+==[DIRg11]group.3.5um/
+==[DIRg12]group.4um/
+==[DIRg13]group.1.3-1.4um/
+==[DIRg14]group.1.4um/
+==[DIRg15]group.1.5um/
+==[DIRg16]group.zz/
+==[DIRg17]group.1.7um/
+==[DIRg18]group.zz/
+==[DIRg19]group.1.9um/
+==[DIRg20]group.ree/
+==[DIRg21]group.ree_neod/
+==[DIRg22]group.ree_samar/
+==[DIRc1]case.red-edge/
+==[DIRc2]case.veg.type/
+==[DIRc3]group.veg/
+==[DIRc4]group.veg/
+==[DIRc5]group.veg/
+==[DIRc6]case.ep-cal-chl/
+==[DIRc7]carbonate-2feat/
+\###############################################################
+\# the following "c"s sync the restart file with the file sizes
+\# then the blank line signal tetracorder to start
+c
+c
+c
+c
+c
+
+\###############################################################
+history
+results
+[WAVEID]              \# Wavelength set to use
+temperature  AAMINTEMP       AAMAXTEMP      AATEMPUNIT
+pressure     AAMINPRESSURE   AAMAXPRESSURE  AAPRESSUREUNIT
+mode singlespectrum   nosound
+<AAAAAACMDLIBRARY

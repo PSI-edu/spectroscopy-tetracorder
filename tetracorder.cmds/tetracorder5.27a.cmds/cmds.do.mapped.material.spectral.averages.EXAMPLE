@@ -1,0 +1,17 @@
+#  execute the following from inside the tetracorder mapping directory
+
+cmds.all.support/make.spreslt1.file.for.spectral.extractions  spreslt1
+
+# need to get the maximum dimensions of the image cube
+
+xpix=`cat AAA.info/image-xpixels.txt`
+ypix=`cat AAA.info/image-ypixels.txt`
+
+cube="put_your_cube_file_name_here"
+
+shortname="a-short-name-up-to-9-characters"
+
+cube_scale_factor="1.0"  # whatever factor to scale the image cube data to reflectance 0 to 1.0.
+
+
+cmds.all.support/cmd.get.mapped.material.spectral.averages-v4  $shortname  $cube  $cube_scale_factor  spreslt1 box 1 1 $xpix $ypix

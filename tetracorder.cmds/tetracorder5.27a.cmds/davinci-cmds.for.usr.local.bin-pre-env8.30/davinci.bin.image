@@ -1,0 +1,295 @@
+#!/usr/local/bin/davinci -f
+
+##### withenv 8.30+ use: #!/usr/bin/env -S davinci -f  
+
+
+
+###########################  was:  #!/usr/local/bin/davinci -f
+
+
+#verbose=0
+
+# This software was written by Roger N. Clark falls under the following license:
+# 
+# Copyright (c) 2019, Roger N. Clark, clarkvision.com
+# 
+# All rights reserved.
+# 
+# GNU General Public License https://www.gnu.org/licenses/gpl.html
+# 
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions are met:
+#
+#   Redistributions of the program must retain the above copyright notice,
+#   this list of conditions and the following disclaimer.
+#
+#   Neither Roger N. Clark, clarkvision.com nor the names of its contributors
+#   may be used to endorse or promote products derived from this software
+#   without specific prior written permission.
+#
+#   Translation/recoding into other languages: the translation and source code
+#   must be made available for free.
+#
+#   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDER AND CONTRIBUTORS "AS IS"
+#   AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+#   IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+#   ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS
+#   BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
+#   OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+#   SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+#   INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+#   CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+#   ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
+#   THE POSSIBILITY OF SUCH DAMAGE.
+
+#######################################################################################################
+#
+# This davinci script averages blocks of pixels to make smaller ones
+#
+#      versio 1.0     December 21, 2019
+#
+#  Note: cube is used for a multiple channel image cube, x, y pixels, n channels deep.
+#        RGB images are 3 channels deep, an x,y,3 channel image cube.
+#        This script works for any size images (16-bit index limit; png image mas = 32676 x 32767 pixels)
+#                         and any number of channels.
+#
+
+DEBUG = 0
+
+if (DEBUG == 1) {
+  debug_chan = 2
+}
+
+if ( $argc < 3 ) {
+  printf ("Usage:\n")
+  printf ("      davinci.bin.image    blocksize   inputcubename  outputcube  [float32] [vicar|vicar16|isis|png|png8|jpg8] {ignore value] \n")
+  printf ("      blocksize = 2, 3, 4, ....\n")
+  printf ("      output default is png file unless vicar or isis is specified (used in scientific data)\n")
+  printf ("                Integrated Software for Imagers and Spectrometers (ISIS),\n")
+  printf ("                           https://isis.astrogeology.usgs.gov/\n")
+  printf ("                vicar: https://www-mipl.jpl.nasa.gov/external/vicar.html\n")
+  printf ("      output is 16-bit file unless float32 is specified\n")
+  printf ("      png 16-bit output is scaled to 15-bits, so is half brightness\n")
+  printf ("      jpg8 is 8-bit output for input jpegs\n")
+  printf ("      float32 requires vicar or isis format\n")
+  printf ("      ignore value  ignores this value in the bin average, default= -1.23e34\n")
+  printf ("      \n")
+  exit(1)
+}
+
+iblock=atoi($1)
+
+if (iblock < 2) {
+	printf ("^GERROR: block size less than 2\n")
+	printf ("exit 1\n")
+	exit(1)
+} else {
+	printf ("block size = %d\n", iblock)
+}
+
+a=read(filename=$2)
+
+printf ("input data file %s\n", $2)
+
+afc = format(a)    # format: float, short ...
+printf ("input file is %s\n", afc)
+
+# make float
+a = float(a)
+
+d=dim(a)
+
+ilines= d[2,1,1]  # number of lines
+isamp = d[1,1,1]  # number of samples
+chan  = d[3,1,1]  # number of spectral channels
+
+printf ("input data size:   x=%d  y=%d pixels, %d channels\n", isamp, ilines, chan)
+
+# set flag values = 0
+
+floatflg  = 0  # not floating point output
+
+outformat = 0  # 0= png, 1= vicar, 2= isis
+
+outbits = 16   # default output 16 bit integers
+
+zignore = -1.23e34
+
+ofe = fexists(filename=$3)
+if ( ofe > 0 ) {           # output file exists, do not overwrite, quit
+
+	printf ("output files exists.  Will not overwrite.  Exiting\n")
+	printf ("exit 2\n")
+	exit(2)
+}
+
+
+if ( $argc > 3 ) {
+	#printf ("debug: number of arguments= %d\n", $argc)
+	for (j = 4; j <= $argc; j = j +1 ) {
+		#printf ("debug: j= %d\n", j)
+		#printf ("debug: arcgv[%d] = %s\n", j, $argv[j])
+		if ($argv[j] == "-float32" || $argv[j] == "float32")   {
+			floatflg=1
+			outbits = 32
+		} else if ($argv[j] == "-ignore"   || $argv[j] == "ignore") {
+			j = j +1
+			zignore = atof($argv[j])
+		} else if ($argv[j] == "-png"   || $argv[j] == "png") {
+			outformat = 0
+			outbits = 16
+		} else if ($argv[j] == "-vicar" || $argv[j] == "vicar") {
+			outformat = 1
+			outbits = 32
+		} else if ($argv[j] == "-vicar16" || $argv[j] == "vicar16") {
+			floatflg=0
+			outformat = 16
+			outbits = 16
+		} else if ($argv[j] == "-isis"  || $argv[j] == "isis") {
+			outformat = 2
+			outbits = 32
+		} else if ($argv[j] == "-jpg8"  || $argv[j] == "jpg8") {
+			outformat = 8
+			outbits = 8
+		} else if ($argv[j] == "-png8"  || $argv[j] == "png8") {
+			outformat = 9
+			outbits = 8
+		} else  {
+			printf ("ERROR: option not recognized: %s\n", $argv[j])
+			#printf ("exit 2\n")
+			#exit(2)
+		}
+	}
+}
+
+if ( floatflg == 1 && outformat < 1 ) {
+	outformat = 2   # isis output
+}
+
+if (afc == "short") {
+
+	zignore = short(zignore)
+	printf ("input data are short, so ignore now = %d\n", zignore)
+}
+
+olines = int(ilines/iblock)
+osamp  = int(isamp /iblock)
+
+printf ("output data size:  x=%d  y=%d pixels, %d channels\n", osamp, olines, chan)
+
+cubout=a[1:osamp,1:olines,]*0.0   # output file
+
+oform=format(cubout)
+printf ("working output array is %s\n", oform)
+
+ok=1  # output line value
+oj=1  # output sample value
+nlines = 500   # print every nlines lines
+if (osamp > 10000) {
+	nlines = 100   # print every nlines lines
+}
+
+for (k = 1; k <= ilines; k = k+iblock) {   # iterate over all lines
+
+   oj=1  # output sample value
+   #printf ("debug: starting line %d\n", k)
+
+   ilinex = float(k-1)/nlines - float(int((k-1)/int(nlines)))
+   if ( abs(ilinex) < 0.0019 && k > 1 ) {   # print every nlines lines
+   	printf ("Processing line %d\n", k)
+   }
+
+   for (j = 1; j <= isamp; j = j+iblock) {   # iterate over all samples
+
+	if (ok > olines) break  # round off image size limit
+	if (oj > osamp ) break  # round off image size limit
+
+	k2=k+iblock-1
+	j2=j+iblock-1
+	if (k2 > ilines) k2 = ilines
+	if (j2 > isamp) j2 = isamp
+   	#printf ("debug: Processing sample %d to %d, line %d to %d\n", j, j2, k, k2)
+
+	# there is a condition where the second to last pixel is fine, then the remaining
+	# data is only one pixel, so can't take an average of a 1x1 pixel
+	krange = k2 - k
+	jrange = j2 - j
+	if (krange < 1) {
+   		printf ("ERROR: line range < 1 sample %d to %d, line %d to %d\n", j, j2, k, k2)
+	}
+	if (jrange < 1) {
+   		printf ("ERROR: sample range < 1 sample %d to %d, line %d to %d\n", j, j2, k, k2)
+	}
+	navg = krange + jrange
+
+	if ( navg > 2) {
+		cubout[oj,ok,] = avg(object=a[j:j2,k:k2,], axis=xy, ignore=zignore) # average block
+
+	} else {   #  j2=j, k2=k
+		cubout[oj,ok,] = a[j2:j2,k2:k2,]
+	}
+
+	oj=oj+1  #increment output sample
+   }
+   ok=ok+1  #increment output line
+}
+
+# no longer need the iinput data cube, so free the mempry
+a = 0
+
+# outformat   0= png, 1= vicar, 2= isis
+# if floatflg  = 0  # not floating point output
+
+if ( floatflg == 1 ) { 
+	cubout = float(cubout)
+	cf = "float"
+} else if ( outbits == 8 ) {
+	cubout = byte(cubout)
+	cf = "8-bit integer (byte)"
+} else if ( outbits == 16 && outformat != 16 ) {    # 16-bit output, but not vicar
+	cubout = cubout / 2.0    # davinci outputs 16-bit signed integer, but png is 16-bit unsigneed
+				 #         so divide by 2 to make intensity range fit.
+	cubout = short(cubout)   # 16-bit integers (signed integers)
+	cf = "16-bit integer"
+} else {                         # this should be 16-bit output vicar
+	cubout = short(cubout)   # 16-bit integers (signed integers)
+	cf = "16-bit integer"
+}
+
+if ( outformat == 0 ) {   # png
+	printf ("writing output file= %s, format= %s type= png\n", $3, cf)
+	write (cubout,  filename=$3, type=png)
+
+        printf("        NOTE: image is 0-32765.  You will need to scale it 2x, e.g. with levels tool in photoshop\n")
+	printf("              You will also need to re-assign the color profile because it is untagged\n")
+}
+
+if ( outformat == 1 ) {   # vicar
+	printf ("writing output file= %s, format= %s type= vicar\n", $3, cf)
+	write (cubout,  filename=$3, type=vicar)
+}
+
+if ( outformat == 16 ) {   # vicar 16-bit
+	printf ("writing output file= %s, format= %s type= vicar\n", $3, cf)
+	write (cubout,  filename=$3, type=vicar)
+}
+
+if ( outformat == 2 ) {   # isis
+	printf ("writing output file= %s, format= %s type= isis\n", $3, cf)
+	write (cubout,  filename=$3, type=isis)
+}
+
+if ( outformat == 8 ) {   # 8-bit jpg
+	printf ("writing output file= %s, format= %s type= jpg\n", $3, cf)
+	cubout = byte(cubout)
+	write (cubout,  filename=$3, type=jpg)
+}
+
+if ( outformat == 9 ) {   # 8-bit jpg
+	printf ("writing output file= %s, format= %s type= png\n", $3, cf)
+	cubout = byte(cubout)
+	write (cubout,  filename=$3, type=png)
+}
+
+
+

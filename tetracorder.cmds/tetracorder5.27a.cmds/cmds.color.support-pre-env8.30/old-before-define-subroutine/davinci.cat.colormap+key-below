@@ -1,0 +1,72 @@
+#!/usr/local/bin/davinci -f
+#verbose=2
+
+################################################################################
+#
+# davinci.cat.colormap+key-below
+#
+# PURPOSE:  Concatenates output images of tetracorder runs
+#
+# davinci.cat.colormap+key-below   colormap1   key   outputfilename
+#
+args=$ARGC
+if (args < 3) {
+	printf("ERROR: insufficient parameters\n\n")
+
+	printf ("Example: davinci.cat.colormap+key-below   colormap1   key   outputfilename\n")
+	printf("exit 1")
+	exit (1)
+} else {
+	f=fexists(filename=$1)
+	if (f < 1) {   # File does not exist
+
+		printf("davinci.cat.colormap+key-below:  File not found: %s\n", $1)
+		printf ("exit 1\n")
+		exit (1)
+	}
+	f=fexists(filename=$2)
+	if (f < 1) {   # File does not exist
+
+		printf("davinci.cat.colormap+key-below:  File not found: %s\n", $2)
+		printf ("exit 1\n")
+		exit (1)
+	}
+
+        # files found, proceed
+
+	colormap=read(filename=$1)
+	
+	colorkey =read(filename=$2)
+
+	fout= $3
+	
+	dimcmap  = dim(colormap)
+	xdimcmap = dimcmap[1,,]   # x
+	ydimcmap = dimcmap[2,,]   # y
+
+	dimkey  = dim(colorkey)
+	xdimkey = dimkey[1,,]    # x
+	ydimkey = dimkey[2,,]    # y
+
+	if ( xdimcmap < xdimkey ) {   # width of color image is smaller than key, so pad image
+
+		awidth = xdimkey - xdimcmap
+		k2 = create (awidth, ydimcmap, 3, org=bip, format=byte, start=0, step=0) 
+
+		colormap = cat (colormap, k2, axis=x)
+	}
+	
+	# now should be:  key x <= map x
+
+	a=xdimkey
+	if (xdimkey < xdimcmap) {
+		a=  xdimcmap
+	}
+	k2 = create (a, ydimkey, 3, org=bip, format=byte, start=0, step=0) # image the withd of colormap, height of key
+
+	k2[1:xdimkey,1:ydimkey,] = colorkey
+
+	k2 = cat (colormap, k2, axis=y)
+
+	write (k2, filename=fout, type=png)
+}
