@@ -395,7 +395,7 @@
 		casename(i) = '            '
 	}
 
-	iversion = 5.27      # program version
+	iversion = 5.271     # program version
 
 	outfile = 50        # output lun for images
         ihbcksl = char(92)  # this is the backslash character
@@ -492,10 +492,25 @@
 
         call applygtpconstraints
 
+	#write (ttyout,*) "DEBUG1: nzgroup = ", nzgroup
+
 	call gcsetup  # build cross reference lists for groups, cases
 	write (lunresult,*) 'Number of materials being mapped=',nmats
 	write (lunresult,*) 'Total spectral features =',itotlf
 	call wrtgcsetup (1)
+
+	#write (ttyout,*) "DEBUG2 nzgroup = ", nzgroup
+
+##########################################################################
+
+	# next add to the history file info about all the enabled materials
+	# including group and case enabled/disabled
+	# and each featyre for each material
+
+	#write (lunresult,*) 'DEBUG: write enabled/disabled info the history file'
+	call enabldisablhist   # write enabled/disabled info the history file
+
+	#write (ttyout,*) "DEBUG3 nzgroup = ", nzgroup
 
 # now let user choose analysis options.
 
@@ -584,6 +599,7 @@
 				fitmean(i) = 0.0
 			}
 		}
+		write (ttyout,*) "DEBUG4 nzgroup = ", nzgroup
 		call cubecorder
 		go to 50
 	}

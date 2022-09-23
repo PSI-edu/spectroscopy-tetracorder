@@ -65,9 +65,10 @@
 
 			}
 		}
-		if (ig > 0) write (ttyout,*) 'DEBUG: group:',ig,'  groupenable=', groupenable(ig)
+		if (ig > 0) write (ttyout,*) 'INFO: group:',ig,'  groupenable=', groupenable(ig)," = number of entries in  the group"
 		nmatgrp(ig) = jmat
 		if(jmat != 0) nzgroup = ig  # highest non xero group
+		#write (ttyout,*) 'DEBUG: highest non xero group, nzgroup = ', nzgroup
 
 	}
 
@@ -92,6 +93,7 @@
 		}
 		nmatcse(ic) = jmat
 		if(jmat != 0) nzcase = ic  # highest non xero case
+		 #write (ttyout,*) 'DEBUG: highest non xero case, nzcase = ', nzcase
 
 	}
 

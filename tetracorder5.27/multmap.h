@@ -85,6 +85,16 @@
 #######   checkcubecompile
 #######   checksinglespectrumcompile
 
+#######
+#######   WARNING: maximum channels = 4852.  To change this, arrays in  *.h files
+#######            need to be modified.
+#######            ultimate maximum channels is defined in 
+#######                      /src/local/specpr/src.specpr/common/spmaxes
+#######                     As of 9/2022 in spmaxes, SPMAXCHAN=69398
+#######                     If tetracorder ever needs to go above SPMAXCHAN,
+#######                     change SPMAXCHAN and recompile specpr first.
+#######
+
 ####### use the following set of lines for image cubes with 710 channels or less, huge cubes
 # A
         parameter       (imaxch=710)   # maximum channels in spectrum

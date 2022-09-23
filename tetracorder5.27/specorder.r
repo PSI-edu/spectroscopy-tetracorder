@@ -466,10 +466,10 @@ yel = 1    # one line only in single spectrum mode
 
 			write (sleepstr, 111) waittime
 111			format('sleep ',f7.3, ' ')
-			if (waitcount == 1 || waitcount == 10 || waitcount == 40 || waitcount == 100 || waitcount == 200 ) {
+			if (waitcount == 1 || waitcount == 60 || waitcount == 200 || waitcount == 800 || waitcount == 1800 ) {
 				write (ttyout, 112) waittime, ifilnext, aiprtv, iprtneed
 			}
-			if (waitcount == 3 || waitcount == 13 || waitcount == 43 || waitcount == 103 || waitcount == 203) {
+			if (waitcount == 3 || waitcount == 83 || waitcount == 303 || waitcount == 1003 || waitcount == 2003) {
 				write (ttyout, *) '           still waiting....'
 			}
 112			format ("waiting ", f7.3 " sec. for record=",i6,"  v-protection=",i6," need:",i6)
@@ -479,7 +479,7 @@ yel = 1    # one line only in single spectrum mode
 			call devsta (lun, ista, ire, iprt)
 			aiprtv = abs(iprtv)
 			waitcount = waitcount +1
-			if (waitcount > 203) waitcount = 101
+			if (waitcount > 2003) waitcount = 302
 		}
 
 		# OK, next spectrum is in the file

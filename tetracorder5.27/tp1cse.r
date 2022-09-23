@@ -165,8 +165,7 @@
 	if (icubflg == 1) {   # image cube mode
 		if (xel == dx2 & mod(yel,nth) == 0) {
 
-		#	call wrtcrdrout (diaflg, xel, yel,
-		#			lunresult, ttyout)
+		#	call wrtcrdrout (lunresult, ttyout)
 
 		# if fit or depth and f*d ar too low, say none
 			tmptitle = otitle(ibest)(1:24)

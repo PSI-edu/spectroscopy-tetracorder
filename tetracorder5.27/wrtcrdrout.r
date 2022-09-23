@@ -1,5 +1,4 @@
-	subroutine wrtcrdrout (diaflg, xel, yel,
-				lunresult, ttyout)
+	subroutine wrtcrdrout (lunresult, ttyout)
 
 ######	implicit integer*4 (i-n)
 	implicit none
@@ -31,8 +30,11 @@
 #ccc    ttyout: lun for std out
 #ccc---------------------------------------------------------------
 
+	include "../specpr/src.specpr/common/spmaxes"   # max parameters, must be first
+	include "../specpr/src.specpr/common/blank"
+	include "../specpr/src.specpr/common/dscrch"
 
-	integer*4 diaflg, xel, yel, ibest
+	integer*4 ibest
 	integer*4 lunresult, ttyout
 	integer*4 jj, ii, igroup
 	integer*4 tmplength
@@ -42,6 +44,7 @@
 # arrays for multiple materials
 
 	include "multmap.h"
+	include "tricube.h"
 
 	character*1 imch(5)
 	character*40 tmptitle
@@ -56,12 +59,13 @@
 
 
 	if (diaflg == 0) {
+		mondat = specdat(monchan, xel)
 		write (ttyout,*) ' '
 		write (ttyout,*) ' '
-		write (ttyout,108) yel,xel
-108					format ('====',
-			'Pxl(',I6,',',I6,') ',
-			'====')
+		write (ttyout,108) yel,xel, dy, monchan, mondat
+108		format ('====', 'Pxl(',I6,',',I6,') ',
+			' of', i6, ' total lines ',
+			'====  channel:', i5," = ",f8.5)
 		write (ttyout,107) yel,xel
 107			format ('CHOSEN OUTPUT:',/,
 				'Pxl(',I6,',',I6,') ',
@@ -91,7 +95,7 @@
 				f7.3,1x,f7.3,1x,a)
 		}
 	} else {
-		write (ttyout,108) yel,xel
+		write (ttyout,108) yel,xel, dy, monchan, mondat
 		write (ttyout,109)
 109					format (/,' FITS, DEPTHS, F*D',
 			' before best fit selection:',/)

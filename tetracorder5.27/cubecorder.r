@@ -143,6 +143,13 @@
                                         'samples=',dx,
 					'bands=',dz
 
+			if ( dz > 30 ) {      # which channel to monitor during the run
+				monchan = 20
+			} else {
+
+				monchan = dz / 2
+			}
+
 			# filorg =1  = BIL
 			# filorg =2  = BIP
 			# filorg =3  = BSQ
@@ -358,9 +365,18 @@
 ###########################################################
 #### primary setup do loop for file names #################
 
+	if (nzgroup == 0) {
+
+		write (ttyout,*) "WARNING: no groups!  nzgroup = ", nzgroup
+	}
+
 	do igroup = 1, nzgroup {  # Create each output file by group
 
-		if (nmatgrp(igroup) == 0) next
+		if (nmatgrp(igroup) == 0) {
+
+			write (ttyout,*) "NO materials on group ",igroup," not creating outout files for this group"
+			next
+		}
 
 		ig0flg = 0    # first do not do group 0 output
 		do imat = 1, nmatgrp(igroup) {

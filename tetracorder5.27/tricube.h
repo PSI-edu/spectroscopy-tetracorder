@@ -99,6 +99,7 @@
 	common /ctry1/  specdat          #extracted spectral sheet, BIP format
 	common /ctry1/ 	chdata,fname,bdfile,errfil,rcfile
 	common /ctry1/ 	cbdfcb,cerfcb,crcfcb
+	common /ctry1/ 	monchan, mondat
 
 #########################################################################
 #######
@@ -128,6 +129,10 @@
 ###            chibuff #chars should = maxpix*2    in read2sheet.r
 ###            i2sht   array   should = maxpix     in read2sheet.r
 ###            specdat array  should = maxpix      in read2sheet.r
+###
+###         Value to be printed along center line of cube output to track progress
+###            monchan = channel to monitor data value, default = 20
+###            mondat  = valuue at channel monchan
 
 	integer*4	i4buff(maxpix),i4buf2(maxpix),i4buf3(maxpix),i4buf0(maxpix)
 
@@ -151,6 +156,9 @@
 #########################################################################
 	real*4          specdat(imaxch,maxpix) #extracted spectral sheet, BIP format
 #	real*4          specdat(4852,1)   #extracted spectral sheet, BIP format
+
+	integer*2	monchan
+	real*4		mondat
 
 
 ##### changes above here for any change in pixels or channels in spectrum
