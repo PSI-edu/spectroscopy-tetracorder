@@ -36,6 +36,7 @@ i4pack4.o		\
 getnotfeat.o		\
 getifeat.o		\
 applygtpconstraints.o	\
+enabldisablhist.o	\
 ../specpr/src.specpr/common/spblockdata.o
 
 INCL= \
@@ -273,6 +274,11 @@ getnotfeat.o:	getnotfeat.r  $(INCL)
 		$(RF) $(SP_RFLAGS)  getnotfeat.r > getnotfeat.f
 		$(F77) $(SP_FFLAGS2) $(FOPT2) -c getnotfeat.f
 		rm getnotfeat.f
+
+enabldisablhist.o:	enabldisablhist.r  $(INCL)
+		$(RF) $(SP_RFLAGS)  enabldisablhist.r > enabldisablhist.f
+		$(F77) $(SP_FFLAGS2) $(FOPT2) -c enabldisablhist.f
+		rm enabldisablhist.f
 
 applygtpconstraints.o:	applygtpconstraints.r  $(INCL)
 		$(RF) $(SP_RFLAGS)  applygtpconstraints.r > applygtpconstraints.f
