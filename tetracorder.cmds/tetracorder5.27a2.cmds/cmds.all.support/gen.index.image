@@ -1,0 +1,45 @@
+#!/bin/sh
+#set -x
+
+# Roger N. Clark, February 2, 1999
+
+out=results.cluster
+tmp=${out}$$
+
+# make index images for each group and case
+# The index image is all images combined into one,
+# with the DN value in a pixel a pointer to the
+# reference material number
+
+for i in `ls -d group.* case.*`
+do
+	echo "making $i index image"
+
+	grep "^$i" $out | awk '{ print $1 }' > $tmp
+
+#       the following is to do no veg (make veg separate) (and snow, water
+#       for group.1um, groiup.2um
+
+	indx=0
+	make.davinci.zero.image `head -1 $tmp` ${i}.index.v
+	cp /dev/null ${i}.index.list
+
+	for j in `cat $tmp`
+	do
+		indx=`expr $indx + 1`
+
+		echo "$indx      $j"
+		echo "$indx      $j" >> ${i}.index.list
+
+		# compute davinci image and add to index image
+
+		davinci.add.index.image ${i}.index.v $j $indx
+
+	done
+
+
+done
+
+rm $tmp
+
+echo "gen.index.image done"

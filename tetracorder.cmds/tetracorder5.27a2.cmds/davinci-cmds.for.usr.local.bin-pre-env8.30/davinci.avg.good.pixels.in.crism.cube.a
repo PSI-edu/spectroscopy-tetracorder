@@ -1,0 +1,88 @@
+#!/usr/local/bin/davinci -f
+
+#######!/usr/bin/env -S davinci -f  
+
+
+
+verbose=0
+
+# read in cube and average only pixels with decent signal
+# assume cube is scaled refl 1.0  = 20000 DN
+#                            0.1  =  2000
+#                            0.05 =  1000
+#                            0.03 =   600
+#                            0.01 =   200
+#
+# defined as:
+#              ch    DN
+#           50 - 71  >600   VNIR
+#          140 -170  >600   1.5  microns
+#          265 -300  >600   2.4  microns
+#          436 -460  >600   3.6  microns
+
+# Roger N. Clark 04/19/2010
+
+#   davinci.avg.good.pixels.in.crism.cube.a  cube_file   specpr_output_file   title
+
+if ( $argc < 3 ) {
+      printf ("Error: insufficient arguments\n\n")
+
+      printf ("davinci.avg.good.pixels.in.crism.cube.a  cube_file   specpr_output_file   title\n")
+      exit(1)
+}
+
+f=$1
+sp=$2
+t=$3
+
+a=read(filename=f)   # image cube
+
+d=dim(a)   # cube dimensions
+
+x=d[1,1,1]
+y=d[2,1,1]
+z=d[3,1,1]
+
+s=a[1,1,]*0.0   # summed spectrum
+n=0             # counter
+
+c1=avg(a[,, 50: 71],axis=z)
+c2=avg(a[,,140:170],axis=z)
+c3=avg(a[,,265:300],axis=z)
+c4=avg(a[,,436:460],axis=z)
+
+#####
+#verbose=1
+#mc1=moment(c1)
+#mc2=moment(c2)
+#mc3=moment(c3)
+#mc4=moment(c4)
+#verboce=0
+
+for (ix = 1; ix <= x; ix=ix+1) {
+
+	for (iy = 1; iy <= y; iy=iy+1) {
+
+		if (c1[ix,iy,] > 600.0 && c2[ix,iy,] > 600.0 && c3[ix,iy,] > 600.0 && c4[ix,iy,] > 600.0 ) {
+
+			s=s+a[ix,iy,]
+			n=n+1
+		}
+		
+
+	}
+}
+
+if (n > 10) {
+
+		s=s/float(n)
+		s = s /20000.0
+
+		write(s,filename=sp,title=t, type=specpr)
+
+		printf ("                     %s averaged %d pixels\n", t, n)
+} else {
+
+		printf ("%s <10 to average\n", t)
+
+}

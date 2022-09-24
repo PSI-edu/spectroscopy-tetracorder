@@ -1,0 +1,62 @@
+
+ How to run tetracorder
+
+Tetracorder has 3 basic modes of operation:
+1) Image cube mapping.
+2) Single spectrum analysis.
+3) Single spectrum, real-time analysis (analyze incoming data from a spectrometer).
+
+Run the command:
+/t1/tetracorder.cmds/tetracorder5.2a.cmds/cmd-setup-tetrun
+with no options on the command line and it will tell you command line parameters and options needed.
+
+Examples:
+
+1) Image cube mapping. Say we want to map in directory /data1/aviris/cuprite95 and the image cube to be mapped is in a
+directory /data1/aviris/cuprite95/cube.
+
+cd /data1/aviris/cuprite95
+ls -l cube
+
+-rw-rw-r-x 1 rclark users 267371212 Dec 28  2011 cuprite.95.cal.rtgc.v
+-rw-rw-r-- 1 rclark users       212 Dec 28  2011 cuprite.95.cal.rtgc.v.hdr
+
+Run the command:
+/t1/tetracorder.cmds//tetracorder5.2a.cmds/cmd-setup-tetrun testrun1 aviris_1995 cube ../cube/cuprite.95.cal.rtgc.v -10 50 c
+0.8 1.1 bar
+
+Mapping results will be in the directory testrun1. The above command will create the directory, install the necessary
+components then give you two commands to execute: cd to the directory and the command to run the tetracorder and create all
+output products once you are in the directory:
+
+cd testrun1
+time ./cmd.runtet cube <& cmd.runtet.out &
+
+2) Single spectrum analysis. This mode is similar to the setup like in case 1 above. If no directory has been set up (no
+image cube, instead of cube, specify singlespectrum. Example:
+
+/t1/tetracorder.cmds//tetracorder5.2a.cmds/cmd-setup-tetrun testrun1 aviris_1995 singlespectrum nofollow -10 50 c 0.8 1.1 bar
+
+cd testrun1
+You start teracorder with the command:
+
+tetracorder5.2single r1
+
+then redirect input at the first command line prompt:
+
+<cmds.start.t5.2a.single
+
+Then analyze any spectrum in an assigned specpr file.
+
+This mode can also be invoked from a directory where a cube mapping run has been completed, and is usualy done by a user
+working to verify results of a mapping run by extracting spectra from the cubes and analyzing them individually. That allows
+greater diagnostic output made by the tetracorder expert system.
+
+3) Single spectrum, real-time analysis This mode is similar to #2, except the incoming real-time spectra are to a specific
+specpr file. Example:
+
+/t1/tetracorder.cmds/tetracorder5.2a.cmds/cmd-setup-tetrun testdir ASDFS singlespectrum follow 0 80 c 0.9 1.1 bar autostart
+
+There is a command that does this the above for ASD specrometer data, like being done for rover tests:
+
+/t1/tetracorder.cmds/tetracorder5.2a.cmds/cmd.tetracorder.rover.ASD.setup.and.autostart testdir 

@@ -1,0 +1,18 @@
+#!/usr/bin/env -S davinci -f  
+
+###########################  was:  #!/usr/local/bin/davinci -f
+
+
+
+# image ratio
+
+fout=$2
+in=$1
+
+#############################################################
+
+a=   short(read(filename=$1))
+
+b = a  * short(0)
+
+write(b,filename=fout,type=vicar)

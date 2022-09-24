@@ -1,0 +1,13 @@
+# Goethite    based on cmd.lib.setup.t5.2d3
+#
+#  DN scale = what band depth = 255 in the tetracorder output image (from 5.2a2 expert system)
+#  BD factor = band depth =1 for pure, fraction in mixture
+#  splib06conv1, sprlb06conv1 = convolved spectrum ID, valid for spectra for 1 - 2171 channels.
+#
+#                                                                 DN     BD    Band                                   convolved
+#              file                                             scale  factor  depth      title                       reference spectrum
+group.1um/fe3+_goethite.medgr.ws222.depth.gz                      0.5   1.00  0.4443  Goethite WS222 Medium Gr.       sprlb06conv1  882
+group.1um/fe3+_goethite.medcoarsegr.mpc.trjar.depth.gz            0.5   0.37  0.2699  Goethite MPCMA2-C M-Crsgrad2    sprlb06conv1  852
+group.1um/fe2+fe3+_chlor+goeth.propylzone.depth.gz                0.5   0.02  0.1430  Chlor+Goethite CU93-4B Phyl     splib06conv1 5604
+group.1um/fe3+_goethite+qtz.medgr.gds240.depth.gz                 0.5   0.02  0.1069  Goethite0.02+Quartz GDS240      splib06conv1 5736
+

@@ -1,0 +1,46 @@
+###################################################
+# User:   rclark    Date:  Tue Oct 13 12:28:56 2020
+# Host: saturn      Cwd: /titanhome/t1/tetracorder.cmds/tetracorder5.25d.cmds/cmds.abundances/lists.of.files.by.mineral
+###################################################
+aa = readlines(filename="kaolinite.group2.txt")
+
+help fun
+
+aa = read_lines(filename="kaolinite.group2.txt")
+
+length(aa)
+
+aa[8,,]
+
+aa[,8,]
+
+length(aa[,8,])
+
+!rule
+
+aline[1,8,]
+
+aa[1,8,]
+
+###################################################
+# User:   rclark    Date:  Mon Mar 15 11:52:01 2021
+# Host: saturn9     Cwd: /titanhome/t1/tetracorder.cmds/tetracorder5.26b.cmds/cmds.abundances/lists.of.files.by.mineral
+###################################################
+alist = read_lines(filename="calcite.group2.txt")
+
+length(alist)
+
+nlines = length(alist)
+
+alist(1,9,)
+
+alist[1,9,]
+
+alist [,9,1]
+
+aline = '                                                                            '
+
+length(aline)
+
+dim(aline)
+

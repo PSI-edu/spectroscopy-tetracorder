@@ -1,0 +1,88 @@
+#!/usr/local/bin/davinci -f
+#####!/usr/bin/env -S davinci -f  
+
+###########################  was:  #!/usr/local/bin/davinci -f
+
+
+verbose=0
+###############################################################################
+#
+# Davinci Program to make a gif image from and isis image.
+#
+# Roger N. Clark, USGS  4/14/98
+
+# modified to use newer davinci which subsets only the image cube
+#  needed for the band depth calculation.  RNC 10/1/1999
+#  modified for davinci 0.94 and previous  RNC 10/31/2002
+#  modified to add thresholding  if contin level < thresh, band depth=0
+#  modified to output gamma-curve gif image  12/08/2008 RNC
+
+# input:              1            2          3         4
+#         program input_file    factor   output_file  -gamma
+#         program input_file      1.0    output_file  -gamma
+
+if ($argc < 3) {
+	printf("Insufficient input\n\n")
+        printf("davinci.image.to.pgm  input_file  scale_factor  output_file  [-gamma]\n")
+	printf("exit 1\n")
+        exit(1)
+}
+
+gflag=0             # do gamma
+if ($argc > 3) {
+		if ($4 == "-gamma") {     # do gamma correction
+			gflag=1
+		} else {
+
+			printf("flag not recognized: %s\n",$5)
+		}
+}
+
+a=read(filename=$1)
+
+gout=$3          # output file name
+
+ascale=atof($2)  # scale factor
+
+
+
+if (abs(ascale) < 0.000001) {       # autoscale 
+
+        x=moment(a)              # min, max, mean, ...
+        if (x[2,,] > 0.000001) {  # data large enough to scale, otherwise do nothing
+                a=255.0*float(a)/x[2,,]
+        }
+
+} else if ( ascale <= -0.000001) {   # autoscale with limit
+
+        x=moment(a)              # min, max, mean, ...
+        if (x[2,,] < abs(ascale)) {  # data large enough to scale, otherwise do nothing
+                ascale = 255.0/abs(ascale)
+                a=float(a)*ascale
+        }
+
+} else {                             # straight scale
+        a=float(a)* ascale
+}
+
+# now do gamma-stretched gif image of data scaled 0 to 255:
+# a simple gamma stretch of image "a" is: a*10*0.1^((a/255)^0.5)
+# but this saturates too soon, so a better alternative:
+# b=a*7.5 *0.08^((a/400)^0.5)    # RNC 12/08/2008
+
+
+if (gflag == 1) {  # gamma correction
+
+		a= a*7.5 *0.08^((a/400)^0.5)
+}
+
+a=byte(a)
+
+
+	if (gflag > 0.0) {
+		printf("creating gamma-stretched gif image %s\n", gout)
+	} else {
+		printf("creating linear gif image %s\n", gout)
+	}
+
+write(bsq(a),filename=gout,type=pgm)

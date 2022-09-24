@@ -1,0 +1,310 @@
+#!/bin/sh
+#set -x
+
+##########  ZZZZZZZZZZZZZZ  add command line opts for waves and ibland
+
+# rclark November 2015 - November 2018
+
+# cmd.get.mapped.avg.material.spectral.averages  FRT03BFB  ../cubes2/FRT00003BFB_07_IF166J_MTR3.v /mydata/spreslt1
+
+#   cmd.get.mapped.avg.material.spectral.averages shortcubeID  cube  specproutputfile
+
+if [ "$5" != "box" -o -z "$9" ]
+then
+	echo "cmd.getttlmapped.avg.material.spectral.averages shortcubeID  cube scale  specproutputfile  box upperleftx upperlefty lowerrightx lowerrighty"
+	echo " "
+	echo "Example:                                            1                2                                  3      4  5 6  7    8  "
+	echo "Example:                                            1                2                           3      4      5  6 7  8    9  "
+	echo "cmd.get.mapped.avg.material.spectral.averages  FRT03BFB  ../cubes2/FRT00003BFB_07_IF166J_MTR3.v 1.0 spreslt1  box 1 1 1000 1000"
+	echo " "
+	echo "   where: FRT03BFB is a short name for the cube that gets used in the specpr title"
+	echo "                   IT SHOULD BE NO MORE THAN 8 CHARACTERS"
+	echo "          ./cubes2/FRT00003BFB_07_IF166J_MTR3.v is the path and file name of the cube"
+	echo "          /mydata/spreslt1 is an existing specpr file name with the wavelengths included"
+	echo "             specpr file example:"
+	echo " "
+        echo '         1  ************ spreslt1 ******************    41 Characters of TEXT'
+        echo '         2  ************ spreslt1 ******************    41 Characters of TEXT'
+        echo '         3  ************ spreslt1 ******************    41 Characters of TEXT'
+        echo '         4  ************ spreslt1 ******************    41 Characters of TEXT'
+        echo '         5  ************ spreslt1 ******************    41 Characters of TEXT'
+        echo '         6  wavelengths crism J_MTR3 ch=489 .43-3.9u   489  00:00:00.01  05/03/2012'
+        echo '         8  fwhm crism V+IR interp to J_MTR3 ch=489    489  00:00:00.01  05/03/2012'
+        echo '        10  ****************************************    41 Characters of TEXT'
+        echo '        11  FRT035BD box160,130 524,205bland av20216   489  04:54:19.00  12/10/2015'
+        echo '        13  ****************************************    41 Characters of TEXT'
+        echo '        14  FRT03BFB g1 fe2+gn.all          av241093   489  07:52:38.00  12/10/2015'
+        echo '        16  FRT03BFB g1 fe2+gn_broad_br60b  av154765   489  07:53:15.00  12/10/2015'
+        echo '        18  FRT03BFB g1 fe2+gn_nrw.hs-actino av74692   489  07:53:46.00  12/10/2015'
+	echo " "
+
+	echo "exit 1"
+	exit 1
+fi
+
+id=$1
+
+echo "WARNING: to ratio to a specttrally bland spectrum, you must hard code the spectrum to use"
+echo "         search for bland to see where to make the change"
+
+acube=$2
+if [ ! -f "$acube" ]
+then
+	echo "ERROR: cube not found: $acube"
+	echo "cmd.get.mapped.avg.material.spectral.averages shortcubeID  cube  specproutputfile"
+	echo "exit 1"
+	exit 1
+fi
+
+ascale=$3
+
+spout=$4
+if [ ! -f "$spout" ]
+then
+	echo "ERROR: specpr file not found: $spout"
+	echo "cmd.get.mapped.avg.material.spectral.averages shortcubeID  cube  specproutputfile"
+	echo "exit 1"
+	exit 1
+fi
+
+abox=0
+if [ "$5" != "box" ]
+then
+	abox=1   # apply box
+fi
+
+lx=$6   # upper left corner of box
+ly=$7
+rx=$8   # lower right corner of box
+ry=$9
+
+### no longer used boxname=$9   # name applied to mask image file names, now use $id
+
+
+if [ ! -d "maskimages" ]   # make the mask image directory
+then
+	mkdir maskimages
+fi
+
+# davinci.get.avg.material.spectrum.from.tet+cube FRT000035BD_07_IF164J_MTR3.v organic.3.41um.nonyne_curvc.fd.gz -cluster 7 15  -waves /d1/rclark/data/crism_j/spd0523 6 -specpr sptest1 "FRT035BD organic.3.41um.nonyne" 
+# davinci.get.avg.material.spectrum.from.tet+cube FRT000035BD_07_IF164J_MTR3.v organic.3.41um.nonyne_curvc.fd.gz -cluster 3  9  -waves /d1/rclark/data/crism_j/spd0523 6 -specpr sptest1 "FRT035BD organic.3.41um.nonyne" 
+# davinci.get.avg.material.spectrum.from.tet+cube FRT000035BD_07_IF164J_MTR3.v organic.3.41um.nonyne_curvc.fd.gz -cluster 3  5  -waves /d1/rclark/data/crism_j/spd0523 6 -specpr sptest1 "FRT035BD organic.3.41um.nonyne" 
+# davinci.get.avg.material.spectrum.from.tet+cube FRT000035BD_07_IF164J_MTR3.v organic.3.41um.nonyne_curvc.fd.gz -cluster 2  4  -waves /d1/rclark/data/crism_j/spd0523 6 -specpr sptest1 "FRT035BD organic.3.41um.nonyne" 
+# davinci.get.avg.material.spectrum.from.tet+cube FRT000035BD_07_IF164J_MTR3.v organic.3.41um.nonyne_curvc.fd.gz -cluster 2  3  -waves /d1/rclark/data/crism_j/spd0523 6 -specpr sptest1 "FRT035BD organic.3.41um.nonyne" 
+
+# davinci.get.avg.material.spectrum.from.tet+cube cuve  maskimage 
+#                    -specpr specprfilenam title 
+#      optional:
+#                    -cluser radius threshold -out outputmaskimage 
+#                    -plot minmax -wave specprfile recordnumber
+#                    -bland  specprfilenam  recordnumber
+#                    -weighted
+#                    -bbox upperleftx upperlefty lowerrightx lowerrighty
+#                    
+#    If maskige = the string one, then make a mask all eqial 1.0
+#    weighted means weight average by band depth
+
+results=results.cluster.sorted
+if [ ! -f $results ]
+then
+	echo "ERROR can not find $results"
+	pwd
+	echo "exit 1"
+	exit 1
+fi
+
+gcycle=1   # which cycle for 3.5 region
+
+for i in \
+	group.1um/	\
+	group.2um/	\
+	group.1.5um-broad/	\
+	group.2um-broad/	\
+	group.1.3-1.4um/	\
+	group.1.4um/	\
+	group.1.5um/	\
+	group.1.7um/	\
+	group.1.9um/	\
+	group.veg/	\
+	group.2.5um/	\
+	group.3um/	\
+	group.2.8um/	\
+	group.3.5um_curve/	\
+	group.3.5um_curve/	\
+	group.4um/
+do
+     if [ -f "AAA.info/enable-disable-groups.txt"  ]
+     then
+	enabl=`grep $i AAA.info/enable-disable-groups.txt | grep ENABLED`
+     fi
+
+     if [ -n "$enabl" ]
+     then
+	echo " "
+	echo '###################### ' $i ' ####################'
+	echo '####'
+	echo "#### $enabl"
+
+	if [ $i = "group.1um/" ]
+	then
+		ibland=" "
+		tg="g1"               # for specpr output titile
+	fi
+	if [ $i = "group.2um/" ]
+	then
+		ibland=" "
+		tg="g2"               # for specpr output titile
+	fi
+	if [ $i = "group.1.5um-broad/" ]
+	then
+		ibland=" "
+		tg="g1.5b"               # for specpr output titile
+	fi
+	if [ $i = "group.2um-broad/" ]
+	then
+		ibland=" "
+		tg="g2b"               # for specpr output titile
+	fi
+	if [ $i = "group.1.3-1.4um/" ]
+	then
+		ibland=" "
+		tg="g1.3"               # for specpr output titile
+	fi
+	if [ $i = "group.1.4um/" ]
+	then
+		ibland=" "
+		tg="g1.4"               # for specpr output titile
+	fi
+	if [ $i = "group.1.5um/" ]
+	then
+		ibland=" "
+		tg="g1.5"               # for specpr output titile
+	fi
+	if [ $i = "group.1.7um/" ]
+	then
+		ibland=" "
+		tg="g1.7"               # for specpr output titile
+	fi
+	if [ $i = "group.1.9um/" ]
+	then
+		ibland=" "
+		tg="g1.9"               # for specpr output titile
+	fi
+	if [ $i = "group.2.5um/" ]
+	then
+		ibland=" "
+		tg="g2.5"               # for specpr output titile
+	fi
+	if [ $i = "group.2.8um/" ]
+	then
+		ibland=" "
+		tg="g2.8"               # for specpr output titile
+	fi
+	if [ $i = "group.veg/" ]
+	then
+		ibland=" "
+		tg="gveg"               # for specpr output titile
+	fi
+	if [ $i = "group.3um/" ]
+	then
+		ibland=" "
+		tg="g3"               # for specpr output titile
+	fi
+	if [ $i = "group.3.5um_curve/" -a $gcycle = 2 ]   # second time with bland
+	then
+		ibland=" "   # add specpr file bland spectrum here
+		tg="g3.5"               # for specpr output titile
+	fi
+
+	if [ $i = "group.3.5um_curve/" -a $gcycle = 1 ]
+	then
+		########## WARNING: hard code for your cube data:
+		#ibland=" -bland /d1/rclark/data/crism_j2/spd0588 11 "
+		ibland=" "
+		tg="g3.5"               # for specpr output titile
+		gcycle=2  # next cycle will be 2
+	fi
+
+	# now get spectra
+
+	cp /dev/null results-1
+	grep ^$i $results  | grep WOW   >> results-1
+	grep ^$i $results  | grep Great >> results-1
+	grep ^$i $results  | grep good  >> results-1
+
+	cp /dev/null  results.materials_avg-spectra-list
+
+	alist=`cat results-1 | awk '{ print $1 }'`
+	for j in $alist
+	do
+		echo  '============ ' "$j     " `date`
+
+		bdepthfile=`echo $j | awk '{ print $1 }'`   # the tetracorder group*/*.fd.gz image output
+
+		echo $bdepthfile >> results.materials_avg-spectra-list
+
+		if [ ! -f "$bdepthfile" ]
+		then
+			echo "ERROR: mask image not found:  $bdepthfile"
+			echo "exit 1"
+			exit 1
+		fi
+
+		basen=`basename $bdepthfile .fd.gz`
+		b2=`echo $basen | sed -e 's/^organic./org/' | \
+				sed -e 's/generic/gn/' | \
+				sed -e 's/fe2+_/fe2+/' | \
+				sed -e 's/fe3+_/fe3+/' | \
+				sed -e 's/_smectite/sm/' | \
+				sed -e 's/smectite/sm/' | \
+				sed -e 's/water/h2o/' | \
+				sed -e 's/olivine_f/olivinef/' | \
+				sed -e 's/_sulfate/slf/' | \
+				sed -e 's/sulfate/slf/' | \
+				sed -e 's/trace/tr/' | \
+				sed -e 's/tr_/tr/' | \
+				sed -e 's/mica/mic/' | \
+				sed -e 's/phyllo/phy/' | \
+				sed -e 's/oh_/oh/' | \
+				sed -e 's/ohb_/ohb/' | \
+				sed -e 's/ohc_/ohc/' | \
+				sed -e 's/_zeolite/zeolt/' | \
+				sed -e 's/montmorillonite/montmorill/' | \
+				sed -e 's/carbonate/carbnt/'  `
+
+		d=`dirname $bdepthfile`
+
+		sptitl=`echo "$id $tg $b2                          "`
+		maskoutimage=maskimages/${id}.${d}.${basen}.fd.gif
+
+		echo " "
+		echo "davinci.get.avg.material.spectrum.from.tet+cube $acube $bdepthfile "
+		echo "		-out $maskoutimage"
+		echo "          -cluster 2  3 -weighted $ibland"
+		echo "          -waves spreslt1 6 "
+		echo "          -scale $ascale"
+		echo "          -bbox $lx $ly $rx $ry "
+		echo "		-specpr  $spout  $sptitl  ENDTITLE  "
+		echo " "
+		#set -x
+		davinci.get.avg.material.spectrum.from.tet+cube $acube $bdepthfile \
+			-out $maskoutimage  \
+			-cluster 2  3 -weighted $ibland \
+			-waves spreslt1 6 \
+			-scale $ascale \
+			-bbox $lx $ly $rx $ry \
+			-specpr  $spout  $sptitl ENDTITLE
+
+			# -plot 0 1
+
+		chmod g+r,o+r $maskoutimage
+
+		#echo "press return to continue"
+		#read abc
+	done
+
+     else
+	echo "NOT extracting spectra for $i because it is DISABLED"
+     fi
+done
+echo "done " `date`

@@ -1,0 +1,65 @@
+\#################################################################################
+\#
+\# Global variables for not features must be customized.  - RNC 1996
+\#
+\# rec1 = spectra <= 256 channels         PRE 4.1a3
+\# rec2 = spectra <= 257 to 608 channels  PRE 4.1a3
+\# Bckm = Beckman original library        PRE 4.1a3
+\#
+\# Global variables for not features must be customized, 4.1a4+ RNC, 02/27/2008
+\#
+\# SMALL  = rec no.    1 to 2171 channels
+\# MEDIUM = rec no. 2172 to 4852 channels (future)
+\# LARGE  = rec no. larger_chans_future (future)
+\#
+\#                             SMALL MEDIUM
+\#    NOTDRYVEG       splib06   7128       \# Dry_Long_Grass AV87-2       W1R1Ba
+\#    NOTGREENVEG     splib06   7170       \# Fir_Tree IH91-2             W1R1Ba
+\#    NOTMONTSWY      sprlb06    588       \# Montmorillonite SWy-1       W1R1Hb
+\#    NOTMONTAZ       sprlb06    600       \# Montmorillonite SAz-1       W1R1Hb
+\#    NOTMUSCOVITE1   sprlb06    654       \# Muscovite GDS113 Ruby       W1R1Bb
+\#    NOTMUSCOVITE2   splib06   5976       \# Muscovite CU91-250A med Al  W2R4Nb
+\#    NOTNAALUNITE1   splib06    288       \# Alunite GDS95 Na Syn (150C) W2R4Na
+\#    NOTKALUNITE1    splib06    300       \# Alunite GDS97 K  Syn (150C) W2R4Na
+\#    NOTKALUNITE2    splib06    294       \# Alunite GDS96 K  Syn (250C) W2R4Na
+\#    NOTbroadFe2     splib06   5634       \# Chlorite+Muscovite CU93-65A W1R1Ba
+\#    NOTepidote      splib06   1668       \# Epidote GDS26.a 75-200um    W1R1Bb
+\#    NOTgypsum       sprlb06    618       \# Gypsum HS333.3B (Selenite)  W1R1Ha
+\#    NOTjarosite     splib06   2568       \# Jarosite GDS99 K 200C Syn   W1R1Ba
+\#    NOTCH1          splib06   6840       \# Plastic_PVC GDS338 White    W1R1Fa
+\#    NOTDOLOMITE     sprlb06    612       \# Dolomite HS102.3B           W1R1Hb
+\#
+\# MEDIUM:  (future)
+\#
+==[NOTDRYVEG]     [splib06]  xxxx \# Dry_Long_Grass AV87-2       W1R1Ba
+==[NOTGREENVEG]   [splib06]  xxxx \# Fir_Tree IH91-2             W1R1Ba
+==[NOTMONTSWY]    [sprlb06]  xxxx \# Montmorillonite SWy-1       W1R1Hb
+==[NOTMONTAZ]     [sprlb06]  xxxx \# Montmorillonite SAz-1       W1R1Hb
+==[NOTMUSCOVITE1] [sprlb06]  xxxx \# Muscovite GDS113 Ruby       W1R1Hb
+==[NOTMUSCOVITE2] [splib06]  xxxx \# Muscovite CU91-250A med Al  W2R4Nb
+==[NOTNAALUNITE1] [splib06]  xxxx \# Alunite GDS95 Na Syn (150C) W2R4Na
+==[NOTKALUNITE1]  [splib06]  xxxx \# Alunite GDS97 K  Syn (150C) W2R4Na
+==[NOTKALUNITE2]  [splib06]  xxxx \# Alunite GDS96 K  Syn (250C) W2R4Na
+==[NOTbroadFe2]   [splib06]  xxxx \# Chlorite+Muscovite CU93-65A W1R1Ba
+==[NOTepidote]    [splib06]  xxxx \# Epidote GDS26.a 75-200um    W1R1Bb
+==[NOTgypsum]     [sprlb06]  xxxx \# Gypsum HS333.3B (Selenite)  W1R1Ha
+==[NOTjarosite]   [splib06]  xxxx \# Jarosite GDS99 K 200C Syn   W1R1Ba
+==[NOTCH1]        [splib06]  xxxx \# Plastic_PVC GDS338 White    W1R1Fa
+==[NOTDOLOMITE]   [sprlb06]  xxxx \# Dolomite HS102.3B           W1R1Hb
+\#
+\#
+\#################################################################################
+\#
+\# Preratios  select and uncomment one of the following groups.  - RNC 1996
+\#
+\# SMALL  = rec no.    1 to 2171 channels
+\# MEDIUM = rec no. 2172 to 4852 channels (future)
+\# LARGE  = rec no. larger_chans_future (future)
+\#
+\# --------------------------------------
+\#
+\# MEDIUM = rec no. 2172 to 4852 channels (future)
+\#
+==[RATIOGREENVEG] [splib06] xxxx \# Lawn_Grass GDS91 (Green)     W1R1Ba
+==[RATIOGVEG1]    [splib06] xxxx \# Lawn_Grass GDS91 +const 1.0  W1R1Ba
+

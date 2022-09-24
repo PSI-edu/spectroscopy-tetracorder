@@ -1,0 +1,19 @@
+#!/usr/local/bin/davinci -f
+#####!/usr/bin/env -S davinci -f  
+
+###########################  was:  #!/usr/local/bin/davinci -f
+
+
+
+# image ratio
+
+fout="group.2um/kaolinite.3+.5+smectite.5+.7.added.fd"
+
+#############################################################
+
+a=    load(filename="group.2um/kaolin.3+smect.7.fd.gz")
+b=    load(filename="group.2um/kaolin.5+smect.5.fd.gz")
+
+c = byte (a + b)
+
+write(c,filename=fout,type=vicar)

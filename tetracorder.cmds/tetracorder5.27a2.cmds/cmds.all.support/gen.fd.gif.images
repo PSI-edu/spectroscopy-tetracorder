@@ -1,0 +1,109 @@
+#!/bin/sh
+#set -x
+
+# Roger N. Clark, December 27, 2011
+
+# make pw commands from the sorted list so the images with
+# most clustering can be displayed first.
+# Because pw currently can view 25 images at a time,
+# make pw commands to display groups of 25 images.
+
+# add parallelization 4/16/2015  - R. Clark
+
+#        group.1um 
+#        group.2um 
+# 	group.2um-broad 
+#	group.2.5um 
+#        group.veg 
+#        case.veg.type 
+#        case.red-edge
+
+if [ -z "$TETNCPU" ]   # make sure tetracorder number of cpus variable exists
+then
+        TETNCPU=1
+fi
+
+NCPU=1   # number of cpus in use, min=1
+
+if [ -f "TETNCPU.txt" ]   # over ride the environment variable if exists
+then
+	nn=`head -1 TETNCPU.txt`
+	if [ "$nn" -gt "0" -a "$nn" -le "99" ]
+	then
+		TETNCPU=$nn    # value in TETNCPU.txt is the new number of cpus in use
+	fi
+fi
+
+for i in `ls -d group.* case*`
+do
+    if [ -d $i ]
+    then
+	cd $i
+
+	echo "------------ $i"
+
+	a=`ls *.fd *.fd.gz`    # analyze all fd files in the directory
+	for j in $a
+	do
+
+		if [ "$TETNCPU" -gt "1" ]   # if multiple cpus declared, run in parallel
+		then
+			if [ "$NCPU" -lt "$TETNCPU" ]  # can do more in parallel
+			then
+				echo "../cmds.all.support/gen.fd.gif.images-1image $j   parallel NCPU=$NCPU  max=$TETNCPU"
+				../cmds.all.support/gen.fd.gif.images-1image $j &
+				NCPU=`expr "$NCPU" + 1`
+			else                           # at cpu limit, so do not do in background
+				echo "../cmds.all.support/gen.fd.gif.images-1image $j   parallel NCPU=$NCPU  max=$TETNCPU"
+				echo "waiting for process group to finish.  max = $TETNCPU jobs"
+				echo " "
+				../cmds.all.support/gen.fd.gif.images-1image $j
+				wait
+				NCPU=1
+
+				if [ -f "../TETNCPU.txt" ]   # check if TETNCPU.txt has a number of cpus set
+				then
+					nn=`head -1 ../TETNCPU.txt`
+					if [ "$nn" -gt "0" -a "$nn" -le "99" ]
+					then
+						TETNCPU=$nn    # value in TETNCPU.txt is the new number of cpus in use
+					fi
+				fi
+			fi
+		else                         # use only 1 cpu
+			../cmds.all.support/gen.fd.gif.images-1image $j
+
+			# this is what gen.fd.gif.images-1image does:
+			# echo " "
+			# f=`basename $j .gz`
+			# echo "converting $j to ${f}.gif"
+			# davinci.image.to.pgm  $j -25 ${f}.pgm -gamma
+			# #ls -ld ${f}.pgm
+			#
+			# ppmtogif ${f}.pgm > ${f}.gif
+			#
+			# rm ${f}.pgm
+
+			if [ "$TETNCPU" -eq "1" ]  # only check for TETNCPU.txt if it is =one
+			then
+				if [ -f "../TETNCPU.txt" ]
+				then
+					nn=`head -1 ../TETNCPU.txt`
+					if [ "$nn" -gt "0" -a "$nn" -le "99" ]
+					then
+						TETNCPU=$nn    # value in TETNCPU.txt is the new number of cpus in use
+					fi
+				fi
+			fi
+		fi
+
+	done
+	wait   # wait for all jobs to finish
+	echo "gen.fd.gif.images  done with $i " `date`
+
+	cd ..
+    fi
+
+done
+
+echo "DONE  gen.fd.gif.images  " `date`

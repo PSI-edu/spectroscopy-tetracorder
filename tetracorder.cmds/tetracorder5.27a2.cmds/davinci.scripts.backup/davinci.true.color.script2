@@ -1,0 +1,77 @@
+#!/bin/sh
+# extract color channels for making 3-band true color
+
+# True color:
+# ===============================
+#               AVIRIS  AVIRIS
+# Center wave    1994   9/1993   avg 4 channels
+# ----------------------------------------------
+# 0.45 um     ch= 9         8     7  8  9 10
+# 0.545um        19        18    17 18 19 20
+# 0.66 um        31        30    27 28 29 30
+
+# e.g. $1=/o1/Summitville/CUBE/summr3s3-4.reflt
+# e.g. $2=r3s3-4.ch7-10
+# e.g. $3=r3s3-4.ch17-20
+# e.g. $4=r3s3-4.ch27-30
+#############################################################
+cube=$1
+blue=${2}.ch7-10
+green=${2}.ch17-20
+red=${2}.ch27-30
+#############################################################
+
+davinci $cube $blue <<EOI
+
+cube=$1
+fout=$2
+
+a=load(filename=cube,record=7)
+b=load(filename=cube,record=8)
+c=load(filename=cube,record=9)
+d=load(filename=cube,record=10)
+
+e = short((float(a) + float(b) + float(c) + float(d))/4)
+
+write(e,filename=fout,type=vicar)
+exit
+EOI
+
+#############################################################
+
+davinci $cube $green <<EOI
+
+cube=$1
+fout=$2
+
+a=load(filename=cube,record=17)
+b=load(filename=cube,record=18)
+c=load(filename=cube,record=19)
+d=load(filename=cube,record=20)
+
+e = short((float(a) + float(b) + float(c) + float(d))/4)
+
+write(e,filename=fout,type=vicar)
+exit
+EOI
+
+#############################################################
+
+davinci $cube $red <<EOI
+
+cube=$1
+fout=$2
+
+a=load(filename=cube,record=27)
+b=load(filename=cube,record=28)
+c=load(filename=cube,record=29)
+d=load(filename=cube,record=30)
+
+e = short((float(a) + float(b) + float(c) + float(d))/4)
+
+write(e,filename=fout,type=vicar)
+exit
+EOI
+
+#############################################################
+exit

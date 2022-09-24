@@ -1,0 +1,273 @@
+#!/usr/local/bin/davinci -f
+###### for env version 8.30 and higher:  #!/usr/bin/env -S davinci -f
+
+###########################  was:  #!/usr/local/bin/davinci -f
+
+
+
+# verbose = 0.0
+
+# compute the mass of the compound per square meter
+
+#                                                 1               2          3      4       5   6      7     8      9    10
+# cmds.abundances/davinci.image.material.mass  listfile     outputbaseimage delk delkvalue gd value  [cosi value] [cose value]
+# cmds.abundances/davinci.image.material.mass  kaolgrp2.txt kaolinitemass   delk  177      gd 0.0002  cosi 0.9     cose 0.95
+
+p="cmds.abundances/davinci.image.material.mass"
+
+if ( $argc < 6 ) {
+
+	printf ("^GERROR: insufficient arguments\n")
+	printf ("%s listfile     outputbaseimage delk delkvalue gd gdvalue [cosi value] [cose value]\n", p)
+	printf ("example\n")
+	printf ("%s     cmds.abundances/lists.of.files.by.mineral/kaolinite.group2.txt \\\n", p)
+	printf ("                               results.mass/kaolinitemass   delk  177 \\\n")
+	printf ("                               gd 0.0002   cosi 0.9     cose 0.95\n")
+	printf ("    delk in inverse cm\n")
+	printf ("    gd = grain diameter in cm\n")
+	exit (1)
+}
+
+
+
+# example:
+#
+# Kaolinite    based on cmd.lib.setup.t5.2a2
+#
+# read a file with a list like this:
+#
+#  DN scale = what band depth = 255 in the tetracorder output image (from 5.2a2 expert system)
+#  BD factor = band depth =1 for pure, fraction in mixture
+#
+#                                                        DN     BD
+#                file                                  scale  factor     title
+# group.2um/kaolgrp_kaolinite_wxl.depth.gz               0.5   1.0  Kaolinite CM9
+# group.2um/kaolgrp_kaolinite_pxl.depth.gz               0.5   1.0  Kaolinite KGa-2 (pxl)
+# group.2um/kaolgrp_halloysite.depth.gz                  0.5   1.0  Halloysite NMNH106237
+# group.2um/kaolgrp_dickite.depth.gz                     0.5   1.0  Dickite NMNH106242
+# group.2um/kaolin.5+smect.5.depth.gz                    0.5   0.5  Kaolin_Smect H89-FR-2 .5Kaol
+# group.2um/kaolin.3+smect.7.depth.gz                    0.5   0.3  Kaolin_Smect H89-FR-5 .3Kaol
+# group.2um/kaol.75+pyroph.25.depth.gz                   0.5   0.75 Kaolwxl.75+Alun_HS295 AMX14
+# group.2um/alunite.5+kaol.5.depth.gz                    0.5   0.5  Alunite0.5+Kaol_KGa-1 AMX3
+# group.2um/kaol.75+alun.25.depth.gz                     0.5   0.75 Kaolwxl.75+Alun_HS295 AMX14
+# group.2um/Kalun+kaol.intmx.depth.gz                    0.5   0.5  Kalun+kaol+gth mv2-ar3
+# group.2um/Na-alun+kaol.intmx.depth.gz                  0.5   0.5  Alun_Na+Kaol+Hemat  MV00-11a
+# group.2um/kaolin.5+muscov.medAl.depth.gz               0.5   0.5  Kaol.5+MuscCU91-250A AMX13
+# group.2um/kaolin.5+muscov.medhighAl.depth.gz           0.5   0.5  Kaol_Wxl+0.5Musc_Ruby AMX12
+# group.2um/kaolin+musc.intimat.depth.gz                 0.5   0.5  Kaol+Musc_intimate CU93-5C
+# group.2um/alunite.33+kaol.33+musc.33.depth.gz          0.5   0.33 Alun.33+Kaol.33+Musc.33 AMX2
+# group.2um/carbonate_calcite+0.2kaolwxl.depth.gz        0.5   0.8  Calcite.80wt+Kaol_CM9 GDS213
+# group.2um/carbonate_calcite0.7+kaol0.3.depth.gz        0.5   0.3  Calcite.7+Kaolwxl.3 AMX9
+# group.2um/sulfate+kaolingrp_natroalun+dickite.depth.gz 0.5   0.5  Alunite+Dickite MV99-6-26b
+
+define read_a_depth_image(3,3) {
+
+	# read a band-depth image from tetracorder output
+
+	afile    = $1   # file to read
+	dnscale  = $2   # what band depth = 255 in the tetracorder output image
+	bdfactor = $3   # band depth =1 for pure, fraction in mixture
+
+	printf ("reading file %s\n", afile)
+	aaa=read(filename=afile)
+	if (HasValue(aaa) ==0) {  # check that read worked
+		printf ("read ERROR on file: %s\n",afile)
+		printf ("setting to zero\n")
+		aaa = 0
+		banddepth1 = 0
+	}
+	banddepth1 = (float (aaa) / (255.0 / dnscale)) * bdfactor
+	return (banddepth1)
+
+}  # end define
+
+alistfile = $1   # list of depth image files
+printf ("redding list of band deth files: %s\n", alistfile)
+
+alist = read_lines(filename=alistfile)
+	if (HasValue(alist) ==0) {
+		printf ("read ERROR on file: %s\n",alistfile)
+
+		printf ("exit 1\n")
+		exit (1)
+	}
+
+outbase = $2   # output base file name
+
+if ( $3 != "delk" ) {
+
+	printf ("Error: expected cmmand line position 3 = delk but found %s\n", $3)
+	printf ("exit 1\n")
+	exit(1)
+}
+
+delk=-1.0
+delk = atof($4)
+
+if ( delk < 0.0000000001 || delk > 1000000000.0) {
+
+	printf ("Error: delk out of range: %f\n", delk)
+	printf ("exit 1\n")
+	exit(1)
+}
+printf ("delk= %f inverse cm\n", delk)
+
+gd = 0.0002  # grain diameter in cm
+
+if ( $argc > 5 && $5 == "gd" ) {
+
+	gd = atof($6)
+	if ( gd < 0.0000001 || gd > 1000000.0) {
+		printf ("Error: grain diameter, gd out of range: %f\n", cosi)
+		printf ("exit 1\n")
+		exit(1)
+	}
+}
+printf ("grain diameter, gd = %f cm\n", gd)
+
+cosi = 1.0     # cosine incidence
+cose = 1.0     # cosine emission
+
+if ( $argc > 7 && $7 == "cosi" ) {
+
+	cosi = atof($8)
+	if ( cosi < 0.001 || cosi > 1.0) {
+		printf ("Error: cosi out of range: %f\n", cosi)
+		printf ("exit 1\n")
+		exit(1)
+	}
+}
+
+if ( $argc > 9 && $9 == "cose" ) {
+
+	cose = atof($10)
+	if ( cose < 0.001 || cose > 1.0) {
+		printf ("Error: cose out of range: %f\n", cosi)
+		printf ("exit 1\n")
+		exit(1)
+	}
+}
+printf ("cosi = %f\n", cosi)
+printf ("cose = %f\n", cose)
+
+b = 0   # the summed image band depths
+
+alength = length(alist)
+
+fnb1 = 0  # first not blank for file name
+lnb1 = 0  # last not blank for file name
+fnb2 = 0  # first not blank for DN scale
+lnb2 = 0  # last not blank for DN scale
+fnb3 = 0  # first not blank for BD factor
+lnb3 = 0  # last not blank for BD factor
+
+b1st = 0  # first depth image read
+
+bdepth = 0  # band depth with all images read in
+
+for (i=1; i<=alength; i=i+1) {
+
+	#printf ("debug: list line %d\n", i)
+	aline = length(alist[,i,])   # length of line in characters.
+
+	#### get file name
+    if (alist[1,i,] == "#" ) {
+		printf ("line %d is a comment line\n", i)
+    } else {
+
+	for (j=1; j<=aline; j=j+1) {        # find first non blank
+		if (alist[j,i,] != " ") {  # not a blank
+			fnb1 = j
+			break
+		}
+	}
+	if ( fnb1 >= aline-1 ) {
+
+		printf ("line %d is a blank line\n", i)
+		next
+	}
+	m = j+1
+	for (j=m; j<=aline; j=j+1) {        # find last non blank of file name
+		if (alist[j,i,] == " ") {  # a blank
+			lnb1 = j-1
+			break
+		}
+	}
+	if ( lnb1 >= aline-1 ) {
+
+		printf ("line %d is a mostly blank line\n", i)
+		next
+	}
+	afilename = alist[fnb1:lnb1,i,]
+	#printf ("debug: line %d  filename= %s\n", i, afilename)
+
+	#### now get  DN scale
+	m = j+1
+	for (j=m; j<=aline; j=j+1) {        # find next non blank
+		if (alist[j,i,] != " ") {  # not a blank
+			fnb2 = j
+			break
+		}
+	}
+	m = j+1
+	for (j=m; j<=aline; j=j+1) {        # find last non blank of DN scale
+		if (alist[j,i,] == " ") {  # a blank
+			lnb2 = j-1
+			break
+		}
+	}
+	dnscale = atof(alist[fnb2:lnb2,i,])
+	#printf ("debug: line %d  DN Scale= %f\n", i, dnscale)
+
+	#### now get  BD factor 
+	m = j+1
+	for (j=m; j<=aline; j=j+1) {        # find next non blank
+		if (alist[j,i,] != " ") {  # not a blank
+			fnb3 = j
+			break
+		}
+	}
+	m = j+1
+	for (j=m; j<=aline; j=j+1) {        # find last non blank of BD factor
+		if (alist[j,i,] == " ") {  # a blank
+			lnb3 = j-1
+			break
+		}
+	}
+	bdfactor = atof(alist[fnb3:lnb3,i,])
+	#printf ("debug: line %d  BD factor= %f\n", i, bdfactor)
+
+	printf ("line %d  filename= %s   %f   %f\n", i, afilename, dnscale, bdfactor)
+
+	b = read_a_depth_image (afilename, dnscale, bdfactor)
+	bdepth = bdepth + b
+    }
+}
+ 
+momdepth = moment(bdepth)
+ 
+printf ("band depth min, max, mean= %f   %f   %f\n", momdepth[1,,], momdepth[2,,], momdepth[3,,])
+ 
+
+# cap band depth range
+bdepth[ where (bdepth > 0.99999) ] = 0.99999
+bdepth[ where (bdepth < 0.000000000001) ] = 0.000000000001
+
+fname = outbase + "-bdepth-float.v"
+write (bdepth, filename=fname, type=vicar)
+
+abdepth = moment(bdepth)
+printf ("\n   bdepth min, max mean: %f %f %f\n\n", abdepth[1,,], abdepth[2,,], abdepth[3,,])
+
+# reference kaolinite, Kaolinite KGa-1 (wxl), splib06a r 12132
+# has a band depth of 0.355.
+
+relbdepth = bdepth / 0.355   # relative band depth
+
+fname = outbase + "-relbdepth-float.v"
+write (relbdepth, filename=fname, type=vicar)
+
+relbdepth8 = byte(relbdepth * 255.)
+fname = outbase + "-relbdepth-8bit.png"
+write (relbdepth8, filename=fname, type=png)
+

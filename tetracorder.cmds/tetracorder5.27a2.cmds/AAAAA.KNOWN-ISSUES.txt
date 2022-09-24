@@ -1,0 +1,146 @@
+##############   KNOWN ISSUES   ################################################
+
+ALL RESULTS SHOULD BE CHECKED FOR ACCURACY as calibration can throw off
+identifications, and check that the Tetracorder expert system adequately
+covered the environment.   Either condition (error in calibration to
+reflectance, or minerals or other materials in the environment that
+are not covered by the expert system used) can cause misidentification.
+Thus, spectral features should be extracted from the image cube(s) for
+each identified component that is important to your study and checked
+that the spectral features in that unit are consistent with known spectral
+properties for that material.  Ideally, important identified components
+are verified by field work collecting samples when possible.
+
+Please understand the diagnostic nature of absorption features in minerals.
+Broad electronic absorptions have a lot of similarities between minerals,
+especially Fe2+ bearing minerals.  Therefore many tetracorder output files 
+include generic in the file names.  The specific mineral in the name is 
+so you know the reference spectrum used, not that that specific mineral
+was identified.
+
+A good example of diagnostic nature of absorption features is illustrated
+in the organics confusion below.
+
+
+ISSUES for: cmd.lib.setup.t5.2e1 +
+
+#########################################################################################
+###### Spectra of shallow water can mimic broad electronic absorptions, commonly Olivine
+
+Water has multiple absorptions in the near infrared and in shallow
+water, the absorptions overlap such that there is a broad decrease in
+reflectance from the visible to IR and when the continuum is removed,
+mimics the broad absorption like that seen in olivine.  If tetracorder
+maps olivine near lake shores or shallow streams, it is likely that this
+condition is giving a false positive.
+
+
+#####################################################################################
+###### Organics Confusion
+
+The spectral signatures of organics are similar and telling organics apart
+at the typical spectral resolutions of imaging spectrometers is difficult.
+While separating aliphatic from aromatic hydrocarbons or organics with
+single, double or triple bonded carbons atoms is possible at spectral
+resolution typical of imaging spectrometer (e.g. AVIRIS, CRISM, VIMS),
+identifying specific organics is not possible.  For example, one AVIRIS
+scene mapped clay minerals + gasolene along a portion of a highway.
+Was raw gasoline spilled in that area?  No.  Trash, which contains
+plastics, are mainly aliphatics hydrocarbon and have absorptions close
+to the aliphatic hydrocarbons in gasolene at AVIRIS spectral range
+and resolution.  A higher spectral resolution spectrometer and/or
+ground checking would be necessary to distinguish the possibilities.
+Understanding such limitations of spectroscopy and the Tetracorder
+identified results is important.
+
+
+#####################################################################################
+######  High-iron olivine and magnetite absorptions are similar in the near-IR
+
+High-iron olivine and magnetite have broad electronic absorptions that
+can appear similar and make it difficult to distinguish between the
+two in the near-infrared.  To better aid in separation, more high iron
+olivines as a function of grain size and magnetites as a function
+of grain size are needed to distinguish between these two minerals.
+
+
+#####################################################################################
+###### Prehnite - Chlorite confused with kaolinite + calcite + dry vegetation mixture
+
+prehnite+.50chlorite can map with a kaolinite + calcite + dry vegetation mixture
+           - observed in Arches 1995 Aviris data
+
+this is mitigated to some degree in cmd.lib.setup.t5.2+ series, but not completely.
+
+#####################################################################################
+###### Snow detected in some vegetation:
+
+One of the expert system known deficiencies is desert types of vegetation
+which have broad water bands that are shifted to longer wavelengths
+than typical vegetation, and the closest match is ice and melting snow.
+More vegetation spectra need to be added to the expert system.  
+Mitigation: if you knew the temperatures were above freezing everywhere in
+your data, snow/ice could be rejected.  Thus, if your imaging spectroscopy
+data are in warm environments, set the temperature above 0 C.  This can
+be difficult if in mountainous terrain.
+
+Vegetation in shallow water can also mimic the broader water features
+of liquid water plus snow and vegeation.  The only way to reliably separate
+these is to include temperature and if above 0 C, snow can be rejected.
+
+#####################################################################################
+######  Sphalerite
+
+Sphalerite is not a diagnostic detection, only a general shape match so could
+be other things.
+
+#####################################################################################
+######  Azurite.
+
+If there are Fe2+ absorptions along with a carbonate band, it can be
+misidentified as azurite.  Fe2+ bands are very similar over a wide
+variety of Fe-bearing minerals, and can be similar to the Cu absorption
+in azurite.  Detections of azurite should be field checked if important.
+
+#####################################################################################
+######   Epidote
+
+Epidote is usually identified well.  If you see it mapping over broad areas,
+it may indicate a calibration error, or another compound is causing confusion.
+
+#####################################################################################
+###### Areas where no minerals map
+
+Check the vegetation maps to see if vegetation was thick in the areas
+where no minerals mapped.  Tetracorder will try and detect minerals
+when the vegetation is sparse enough, but as the vegetation thickens,
+it gets more difficult.  If there is little vegetation in the areas where no
+minerals mapped, it is likely due to 1) the minerals covered byt the spectrometer
+used do not have absorptions in that wavelength region, or 2) the surface is wet.
+Water is very absorbing in the near infrared and will suppress photon path
+length into the ground, making mineral detection difficult.
+
+#####################################################################################
+######  Sericite
+
+Sericite is a fine grains muscovite/illite/paragonite, so check those three minerals. 
+
+#####################################################################################
+######  Magnetite
+
+Magnetite is very dark with a broad iron absorption that is not terribly diagnostic
+and can be confused with the borad iron absorption in a high iron olivine.
+Look in the group.1.5um-broad and results.group.1.5um-broad directories.
+
+
+#####################################################################################
+###### Rhodochrosite, Strontianite, Siderite
+
+It is unclear how easily these carbonates can be distinguished from other carbonates
+at spectral resolution like that in ANIRIS.  Confirm that these identifications are
+correct and that it is not another carbonate.  In particular, a carnbonate
+mixed with an Fe2+-bearing mineral may be misidentified as rhodochrosite or siderite.
+
+#####################################################################################
+###### 
+

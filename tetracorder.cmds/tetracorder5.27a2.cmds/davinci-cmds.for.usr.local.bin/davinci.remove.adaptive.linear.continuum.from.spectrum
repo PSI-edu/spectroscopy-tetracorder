@@ -1,0 +1,261 @@
+#!/usr/bin/env -S davinci -f  
+
+###########################  was:  #!/usr/local/bin/davinci -f
+
+
+ verbose=0
+
+# remove a linear continuum from a spectrum
+#
+# Roger N. Clark  October 7, 2020
+
+p = "davinci.remove.adaptice.linear.continuum.from.spectrum"
+
+if ( $argc < 12 ) {
+  printf ("ERROR: insufficient arguments\n")
+  printf ("%s specprfile spectrum_record# record#ofwavelengths -ch left_continuum_start left_continuum_stop right_continuum_start right_continuum_stop   -out output_specprfile -title title [-adapt ch1 ch2 nchans]\n\n", p)
+  exit(1)
+}
+
+# example M3 global mode:
+# davinci.remove.adaptice.linear.continuum.from.spectrum spd0473 55  117  -ch 33 38 74 77 \
+#                       -out spremp1 -title "this is a test" -adapt 5 77 1
+#
+
+conadapt = 0     # do not adapt the continuum line to the high points
+spoutf   = ' '   # output specpr file name
+otitle   = ' '   # output specpr title
+
+icont    = 0   # flag for continuum has been identified
+iadapt   = 0   # flag to adapt continuum line to high points
+adaptch1 = 0
+adaptch2 = 0
+adaptchn = 1   # 1-channel
+
+printf ("%s  %s  %d  %d  %d  %d  %d  %s  %s\n", p, $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12)
+
+system("date")
+
+spfile= $1       # specpr file with
+wavef = $1       # specpr file with wavelengths in microns
+sprec = atoi($2) # specpr record number for spectrum
+waver = atoi($3) # specpr record number for wavelength set
+
+spec = read(filename=spfile, record=sprec)   # input spectrum
+if (HasValue(spec) ==0) {                   # check that read worked
+      printf ("read ERROR on file: %s\n",spfile)
+      printf ("^GEXIT 1\n")
+      exit(1)
+}
+
+wav = read(filename=wavef,record=waver)    # wavelengths in microns
+if (HasValue(wav) ==0) {                   # check that read worked
+      printf ("read ERROR on file: %s\n",wavef)
+      printf ("^GEXIT 1\n")
+      exit(1)
+}
+
+for (j = 4; j <= $argc; j = j +1 ) {
+
+	if ($argv[j] == "-ch" || $argv[j] == "ch")   {
+
+		lc1=atoi($argv[j+1])    # left  continuum channel 1
+		lc2=atoi($argv[j+2])    # left  continuum channel 2
+		rc1=atoi($argv[j+3])    # right continuum channel 1
+		rc2=atoi($argv[j+4])    # right continuum channel 2
+		j = j+4
+		icont = 1
+	}
+	if ($argv[j] == "-out" || $argv[j] == "out")   {
+		j=j+1
+		spoutf = $argv[j]
+		if (fexists(spoutf) == 0) {
+			printf ("output specpr file %s does not exist\n", spoutf)
+      			printf ("^GEXIT 1\n")
+			exit(1)
+		}
+	}
+	if ($argv[j] == "-title" || $argv[j] == "title")   {
+	
+		otitle = $argv[j+1]
+		j = j+1
+	}
+	if ($argv[j] == "-adapt" || $argv[j] == "adapt")   {
+
+		adaptch1 =atoi($argv[j+1])    # left  continuum channel 1
+		adaptch2 =atoi($argv[j+2])    # left  continuum channel 2
+		adaptchn =atoi($argv[j+3])    # +/- number of channels to average
+		j=j+2
+		iadapt = 1
+	}
+
+}
+
+xm=dim(spec)  # dimensions of cube: x, y, z
+
+mchans=xm[3,,]  # number of channels in spectrum
+
+printf("spectrum has:  %d channels\n", mchans)
+
+if (lc1 < 0 || lc1 > mchans || \
+    lc2 < 0 || lc2 > mchans || \
+    rc1 < 0 || rc1 > mchans || \
+    rc2 < 0 || rc2 > mchans ) {
+
+	printf ("continuum channels out of range\n")
+	printf ("^GEXIT 1\n")
+	exit(1)
+}
+
+if (iadapt == 1) {
+	if (adaptch1 < 0 || adaptch1 > mchans || adaptch2 < 0 || adaptch2 > mchans) {
+
+		printf ("adapt channels out of range\n")
+		printf ("^GEXIT 1\n")
+		exit(1)
+	}
+}
+
+# now compute the average wavelengths for the above channel intervals.
+
+w1  = (wav[,,lc2]+wav[,,lc1])/2.0   # average wavelength in microns
+w2  = (wav[,,rc2]+wav[,,rc1])/2.0   # average wavelength in microns
+
+printf ("First continuum wavelength: ch %d to %d, center wavelength= %f\n", lc1, lc2, w1)
+printf ("2nd   continuum wavelength: ch %d to %d, center wavelength= %f\n", rc1, rc2, w2)
+
+# now compute images of the average I/F for the above channel intervals
+
+r1 = spec[,,lc1]*0.0
+for (i=lc1; i<=lc2; i=i+1) {
+        printf("first continuum: adding ch %d\n",i)
+        r1 = r1 + spec[,,i]
+}
+r1 = r1 / float(lc2-lc1+1)    # spectrum  at w1
+
+
+r2 = spec[,,rc1]*0.0
+for (i=rc1; i<=rc2; i=i+1) {
+        printf("2nd   continuum: adding ch %d\n",i)
+        r2 = r2 + spec[,,i]
+}
+r2 = r2 / float(rc2-rc1+1)   # spectrum  at w2
+
+### now we have two points:, r1 and r2 at w1 and w2
+
+aslope = (r2-r1)/(w2-w1)  # image of slope values.
+
+# equation for continuum c = ax+b = aslope * x + b
+
+# b = r2 - aslope*w2
+
+b = r2 - aslope*w2
+
+printf ("r1, r2= %f  %f   w1, w2= %f  %f\n", r1, r2, w1, w2)
+printf ("slope = %f   intercept= %f\n", aslope, b)
+
+# now we have slope and offset (as images).  Next compute the continuum removed cube
+
+for (i=1; i<=mchans; i=i+1) {   # Iterate over all channels
+
+	spec[,,i] = spec[,,i] / (aslope * wav[,,i] + b)
+}
+
+if (iadapt == 1) {    # adapt the line to the peaks
+
+	printf ("adapting first line fit to maxima\n")
+
+	# first find the mid-point between the two continuaa
+	# split the spectrum into 2 halves
+
+	midch = (rc1 + lc2) /2
+	midch = int(midch)
+
+	midch1 = midch
+	midch2 = midch
+	if (rc1 - lc2 > 10) {
+		midch1 = midch -3
+		midch2 = midch +3
+	}
+	if (rc1 - lc2 > 20) {
+		midch1 = midch -8
+		midch2 = midch +8
+	}
+	if (rc1 - lc2 > 50) {
+		midch1 = midch -15
+		midch2 = midch +15
+	}
+	if (rc1 - lc2 > 100) {
+		midch1 = midch -30
+		midch2 = midch +30
+	}
+
+        # adaptch1 # left  continuum channel 1
+        # adaptch2 # left  continuum channel 2
+        # adaptchn # +/- number of channels to average
+
+	ispec1max = 0
+	spec1max  = -9999999.0
+	for (i= adaptch1; i <= midch1; i=i+1) {
+
+		if (spec[,,i] > spec1max) {
+
+			spec1max = spec[,,i]
+			ispec1max = i
+		}
+	}
+
+	ispec2max = 0
+	spec2max  = -9999999.0
+	for (i= midch2; i <= adaptch2; i=i+1) {
+
+		if (spec[,,i] > spec2max) {
+
+			spec2max = spec[,,i]
+			ispec2max = i
+		}
+	}
+	printf ("adapt line: max channels found a %d and %d\n", ispec1max, ispec2max)
+	if (adaptchn > 0) {
+
+		printf ("averaging +/- %d channels\n", adaptchn)
+		ch1a = ispec1max-adaptchn
+		ch1b = ispec1max+adaptchn
+		r1 = avg(spec[,,ch1a:ch1b], ignore= -1.23e34)
+		w1 = (wav[,,ch1a] + wav[,,ch1b])/2.0
+
+		ch2a = ispec2max-adaptchn
+		ch2b = ispec2max+adaptchn
+		r2 = avg(spec[,,ch2a:ch2b], ignore= -1.23e34)
+		w2 = (wav[,,ch2a] + wav[,,ch2b])/2.0
+
+		printf ("r1, r2= %f  %f   w1, w2= %f  %f\n", r1, r2, w1, w2)
+
+	} else {
+
+		r1 = spec1max
+		r2 = spec2max
+		w1 = wav[,,ispec1max]
+		w2 = wav[,,ispec2max]
+		printf ("r1, r2= %f  %f   w1, w2= %f  %f\n", r1, r2, w1, w2)
+	}
+
+	aslope = (r2-r1)/(w2-w1)
+	b = r2 - aslope*w2
+	printf ("adapted slope = %f   intercept= %f\n", aslope, b)
+	
+	for (i=1; i<=mchans; i=i+1) {   # Iterate over all channels
+
+		spec[,,i] = spec[,,i] / (aslope * wav[,,i] + b)
+	}
+
+}
+
+
+printf ("Writing continuum-removed spectrum \n")
+
+write (spec, filename=spoutf, type=specpr, title=otitle)    # output cube
+
+
+system("date")
+printf ("Done\n")

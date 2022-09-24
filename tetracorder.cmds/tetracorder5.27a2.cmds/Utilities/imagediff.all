@@ -1,0 +1,16 @@
+#!/bin/sh
+
+old=../../Mapping.try3/RUN.r3.s3-4
+
+for j in group.1um group.2um group.veg case.veg.type case.red-edge  
+do
+
+	a=`ls ${j}/*.gz`
+	for i in $a
+	do
+		f1=${i}
+		f2=${old}/${i}
+		#echo "checking $i"
+		davinci.imagediff $f1 $f2
+	done
+done
