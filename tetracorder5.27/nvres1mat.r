@@ -121,7 +121,7 @@
 			   if (cchans(4,ifeat,imat) > nchans) {
 				write (ttyout,*) 'DEBUG: nvres1mat ERROR last contin chan > nchans: cchans(1,',ifeat,',',imat,') =',cchans(1,ifeat,imat)
 			   }
-			   write (ttyout,*) 'DEBUG: nvres1mat output set to zero for ifeat=',ifeat,' material',imat
+			   #write (ttyout,*) 'DEBUG: nvres1mat output set to zero for ifeat=',ifeat,' material',imat
 			}
 		
 			bdepth = 0.0

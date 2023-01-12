@@ -157,7 +157,7 @@
 	real*4          specdat(imaxch,maxpix) #extracted spectral sheet, BIP format
 #	real*4          specdat(4852,1)   #extracted spectral sheet, BIP format
 
-	integer*2	monchan
+	integer*4	monchan   # was integer*2 before 11/17/2022
 	real*4		mondat
 
 
