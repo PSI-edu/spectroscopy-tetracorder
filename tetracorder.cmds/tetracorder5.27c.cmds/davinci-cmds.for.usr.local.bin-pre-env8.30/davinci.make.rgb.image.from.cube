@@ -1,0 +1,191 @@
+#!/usr/local/bin/davinci -f
+
+#######!/usr/bin/env -S davinci -f  
+
+
+verbose=0
+###############################################################################
+#
+# Davinci Program to extract 3 channels from a cube, histogram stretch and make an RGB image
+#
+# Roger N. Clark  9/14/2022
+#
+#                                      1      2          3     4    5       6
+# davinci.make.rgb.image.from.cube   cube  scaletorefl chan1 chan2 chan3 outputimagejpg
+#
+# if chan1 = chan2 = chan3 thaen output a single band gray image
+#
+
+if ( $argc < 6 ) {
+
+        printf ("davinci.make.rgb.image.from.cube   cube  scaletorefl chan1 chan2 chan3 outputimagejpg\n")
+        exit(1)
+}
+
+cubef = $1
+
+ascale = atof($2)
+
+chan1 = atoi($3)
+chan2 = atoi($4)
+chan3 = atoi($5)
+
+outfile = $6
+
+# defaults (need to add command line args to change)
+
+dogamma = 1  # apply gamma tone curve  (0 = do not apply it)
+fmax    = 1  # =1 set ymax to 1.0, =0 find max from histogram with 1% clip
+
+mode    = 1  # =1 set fmax =1, dogamma = 1  histogram for RGB image
+             # =0 set fmax =0, dogamma = 1  histogram scaling independently for each channel
+
+if (chan1 < 1 || chan2 < 1 || chan3 < 1) {
+
+	printf ("channel is less than 1: RGB chans: %d %d %d\n", chan1, chan2, chan3)
+}
+
+printf ("RGB channelss: %d %d %d\n", chan1, chan2, chan3)
+
+r = bsq(read(filename=cubef, record=chan1))
+g = bsq(read(filename=cubef, record=chan2))
+b = bsq(read(filename=cubef, record=chan3))
+
+r = float(r) * ascale
+g = float(g) * ascale
+b = float(b) * ascale
+
+r = bsq(r)
+g = bsq(g)
+b = bsq(b)
+
+
+define histstretch (0,3) {
+
+	agray2 = $1
+
+	agray2=agray2[ where (agray2 < 0) ] = 0     # reset negatives to zero
+
+	gamma = $2  # 1 = do gamma stretch, 0 = no gamma stretch
+
+	hmode = $3  # 0 = stretch both high and low
+		    # 1 = stretch low, high =1  (bets with gamma)
+
+        printf("histogram clip autoscaling the gray image\n")
+
+	amom = moment(agray2)
+	printf ("input image min= %f   max= %f   mean= %f\n", amom[1,1,1], amom[2,1,1], amom[3,1,1])
+
+        agray2=agray2[ where (agray2 < 0) ] = 0     # reset negatives to zero
+
+        chist=histogram(agray2, start=0.0, size=0.0025, steps=400)
+        #for (i=1; i<=400; i++) {
+        #       printf ("%10.4f   %f\n", chist[1,i,1], chist[2,i,1])
+        #}
+
+        # ignore vrey low values < 0.0050 and  high > 0.97
+        chsum = sum(chist[2,3:389,1])
+
+        lowcliplevel  = 0.01  # clip level (e.g. 1%)
+        highcliplevel = 0.02  # clip level (e.g. 1%)
+
+        imin = 3
+        lowsum=0.0
+        lowtarget = chsum * lowcliplevel
+
+        for (i=3; i<=389; i++) {
+                lowsum = lowsum + chist[2,i,1]  # add histogram bin
+                if (lowsum >= lowtarget) {
+
+                        imin = i   # low clip level
+                        break
+                }
+        }
+        if (imin < 3) {
+                imin = 3
+        }
+
+        ymin = chist[1,imin,1]   # minimum for outpuit image
+
+        printf("low clip level= %f   (histogram bin %d)\n", ymin, imin)
+
+	if (hmode == 0 ) {
+		imax=0
+		highsum=0.0
+
+		hightarget = chsum * (1.0-highcliplevel)
+
+	       for (i=3; i<=389; i++) {
+			highsum = highsum + chist[2,i,1]  # add histogram bin
+			if ( highsum >= hightarget) {
+
+				imax=i    # high clip level
+				break
+			}
+		}
+		if (imax < 1) {
+			imax = 389
+		}
+
+		ymax = chist[1,imax,1]   # maximum for output image
+
+		printf("high clip level= %f   (histogram bin %d)\n", ymax, imax)
+
+	} else {
+
+		ymax = 1.0
+		printf("high clip level= %4.2f\n", ymax)
+	}
+
+        agray = 255. * ( agray2 - ymin) / ((1.0 - ymin) / ymax)
+        #agray = 255. * ( agray2 - ymin) / (ymin / ymax)
+
+	if (gamma == 1) {
+
+		# now do gamma-stretched gif image of data scaled 0 to 255:
+		# a simple gamma stretch of image "a" is: a*10*0.1^((a/255)^0.5)
+		# but this saturates too soon, so a better alternative:
+		# b=a*7.5 *0.08^((a/400)^0.5)    # RNC 12/08/2008
+
+		agray= agray*7.5 *0.08^((agray/400.0)^0.5)
+	}
+
+	amom = moment(agray)
+	printf ("output image min= %f   max= %f   mean= %f\n", amom[1,1,1], amom[2,1,1], amom[3,1,1])
+
+	return(agray)
+
+}
+
+if ( mode == 1 ) {      # histogram scaling for all channels at once (best for RGB reflectance color)
+
+	rgb = cat(r, g,axis=z)
+	rgb = cat(rgb,b,axis=z)
+
+	rgb1 = histstretch(rgb,dogamma, fmax)
+	rgb  = rgb1
+
+} else {                 # histogram scaling independently for each channel
+	fmax = 0
+	printf("red\n")
+	r1 = histstretch(r, dogamma, fmax)
+	printf("\ngreen\n")
+	g1 = histstretch(g, dogamma, fmax)
+	printf("\nblue\n")
+	b1 = histstretch(b, dogamma, fmax)
+
+	rgb = cat(r1, g1,axis=z)
+	rgb = cat(rgb,b1,axis=z)
+}
+
+rgb = byte(rgb)
+
+amom = moment(rgb)
+printf ("final image min= %f   max= %f   mean= %f\n", amom[1,1,1], amom[2,1,1], amom[3,1,1])
+
+if ( chan1 == chan2 && chan2 == chan3 ) {   # make single band gray image
+
+	rgb = rgb[,,1]
+}
+
+write (rgb, filename=outfile, type=jpg)

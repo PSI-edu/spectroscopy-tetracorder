@@ -1,0 +1,21 @@
+#!/usr/local/bin/davinci -f
+#####!/usr/bin/env -S davinci -f  
+
+###########################  was:  #!/usr/local/bin/davinci -f
+
+
+
+# image ratio
+
+fout="group.2um/alunite+kaolinite.muscovite.added.fd"
+
+#############################################################
+
+a=    load(filename="group.2um/alunite.33+kaol.33+musc.33.fd.gz")
+b=    load(filename="group.2um/alunite.5+musc.5.fd.gz")
+c=    load(filename="group.2um/alunite.5+kaol.5.fd.gz")
+
+d = byte (a + b + c)
+
+write(d,filename=fout,type=vicar)
+

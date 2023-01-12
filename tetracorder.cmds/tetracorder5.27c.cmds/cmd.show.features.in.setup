@@ -1,0 +1,4 @@
+#!/bin/sh
+
+egrep 'f[1234]a|output|^group|^case' cmd.lib.setup.t5.2d5 | \
+		grep -v define | grep -v endoutput | grep -v depth

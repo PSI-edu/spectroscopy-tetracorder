@@ -1,0 +1,172 @@
+CMD crt verbose=0
+\# TETRACORDER 5.2  command file
+\# NOTE: this is a general command file for all mapping
+\#
+\# However, it must be customized.
+\#          the splib04 alias needs to be changed to the specpr
+\#                      file letter id you have assigned, but the
+\#                      record numbers do not need changing for
+\#                      any splib04a, b, c, etc,
+\#                      Similarly, you must change the WAVEID alias.
+\#
+\#
+\#          The entries marked [sprlb01] and [sprln01]are additional minerals
+\#              not in splib04_ and so must be custom convolved to
+\#              your flight instrument, and the record numbers in
+\#              this command file changed.
+\#              If the cmd file doesn't have [sprlb01], or [sprln01]
+\#              ignore this.
+\#
+\#          The continuum regions are specified by wavelength.  The
+\#              channel numbers below refer to a specific instrument
+\#              and should be ignored.  They are left here for
+\#              diagnostic purposes.
+\#              (They refer to splib04m, AVIRIS Cuprite 1993 data.)
+\#
+\#          You must customize the deleted point for your instrument
+\#              resolution.  see [DELETPTS]
+\#
+\#          To do groups (multiple spectral intervals with one run
+\#              run of tricorder) you should put each group in a
+\#              subdirectory.  Use the [DIR] alias before each library
+\#              setup to define the subdirectory.
+\#
+\#          ALSO EXAMINE the beginning of cmd.lib.setup...... file for other 
+\#               global variables that you might wish to change.
+\#
+\#          Note: the scale factor below may need to be set for your
+\#                data.  The scale factor is the factor to convert
+\#                DN to reflectance.  It is set below to 0.00005 so
+\#                a DN of 20,000 = reflectance 1.0
+\#
+\#
+\#
+\# Roger N. Clark, November 1, 1995 - June 17, 2022
+\#
+\#
+==[splib06]y
+==[WAVEID]Y6
+==[sprlb06]w
+==[DIR]./
+==[DELETPTS]DDDDDDDDDD
+==[alternatelib]SMALL
+\#
+\#  Group definitions:  (NOTE: keep this in sync with the cmd.lib.setup.* file)
+\#
+\#################################################################################
+\######               group strategy                                ##############
+\######  Starting with version 5.15, moving broad features up front ##############
+\######  and narrow features after, so we might in the future       ##############
+\######  adapt curved continua depending on the broad feature type. ##############
+\######                                                             ##############
+\#################################################################################
+\###### group 0:  catch for other declared groups                   ##############
+\###### group 1:  electronic absorptions UV to 1-micron region      ##############
+\###### group 2:  2 to 2.5-micron region narrow                     ##############
+\###### group 3:  vegetation detection                              ##############
+\###### group 4:  broad absorptions in the 1.5-micron region        ##############
+\###### group 5:  broad absorptions in the 2-micron region          ##############
+\###### group 6:  2.5-micron region                                 ##############
+\###### group 7:  2.7 to 3-micron OH region                         ##############
+\###### group 8:  2.7 - 2.8-micron OH region narrow bands           ##############
+\###### group 9:  UV (0.1 - 0.3 microns)                            ##############
+\###### group 10: testing 3.5 um curved continua                    ##############
+\###### group 11: 3.5-micron region linear continua                 ##############
+\###### group 12:                                                   ##############
+\###### group 13: 1.3-1.4 micron OH narrow                          ##############
+\###### group 14: 1.4-1.5 micron OH                                 ##############
+\###### group 15: 1.5 micron OH                                     ##############
+\###### group 16: 1.5-1.6 micron OH                                 ##############
+\###### group 17: 1.7 microns CH and water    Future                ##############
+\###### group 18: 1.8 micron region                                 ##############
+\###### group 19: 1.9-2 micron water and ice                        ##############
+\###### group 20: the search for rare-earth oxides                  ##############
+\###### group 21: the search for rare-earth oxide Neodymium         ##############
+\###### group 22: the search for rare-earth oxide Samarium          ##############
+\###### group 23: 3.8 micron region includes OD stretches           ##############
+\###### group 24: 4-micron region                                   ##############
+\###### group 25: 4.1-micron region                                 ##############
+\###### group 26: 4.25 micron CO2 trapped, ice                      ##############
+\###### group 27: 4.5-micron region includes sulfates               ##############
+\###### group 28: 5-micron region includes silicate overtones       ##############
+\###### group 29: 6-micron region, includes H-O-H bends             ##############
+\###### group 30: 7-8-micron region                                 ##############
+\###### group 31: 8-10-micron region                                ##############
+\###### group 32: 10-12-micron region                               ##############
+\###### group 33: 12-14-micron region                               ##############
+\###### group 34: 14-16-micron region                               ##############
+\###### group 35: 16-19-micron region                               ##############
+\###### group 36: 19-22-micron region                               ##############
+\###### group 37: residual CH4 gas absorption, 2.3-micron region    ##############
+\###### group 38: residual CO2 gas absorption, 2-micron region      ##############
+\#################################################################################
+\#
+==[DIRg1]group.1um/
+==[DIRg2]group.2um/
+==[DIRg3]group.veg/
+==[DIRg4]group.1.5um-broad/
+==[DIRg5]group.2um-broad/
+==[DIRg6]group.2.5um/
+==[DIRg7]group.3um/
+==[DIRg8]group.2.8um/
+==[DIRg9]group.zz/
+==[DIRg10]group.3.5um_curve/
+==[DIRg11]group.3.5um/
+==[DIRg12]group.4um/
+==[DIRg13]group.1.3-1.4um/
+==[DIRg14]group.1.4um/
+==[DIRg15]group.1.5um/
+==[DIRg16]group.zz/
+==[DIRg17]group.1.7um/
+==[DIRg18]group.zz/
+==[DIRg19]group.1.9um/
+==[DIRg20]group.ree/
+==[DIRg21]group.ree_neod/
+==[DIRg22]group.ree_samar/
+==[DIRg23]group.3.8um/
+==[DIRg24]group.4um/
+==[DIRg25]group.4.1um/
+==[DIRg26]group.4.25um-co2/
+==[DIRg27]group.4.5um/
+==[DIRg28]group.5um/
+==[DIRg29]group.6um/
+==[DIRg30]group.7-8um/
+==[DIRg31]group.8-10um/
+==[DIRg32]group.10-12um/
+==[DIRg33]group.12-14um/
+==[DIRg34]group.14-16um/
+==[DIRg35]group.16-19um/
+==[DIRg36]group.19-22um/
+==[DIRg37]group.ch4gas-2.3um/
+==[DIRg38]group.co2gas-2um/
+\#
+==[DIRc1]case.red-edge/
+==[DIRc2]case.veg.type/
+==[DIRc3]group.veg/
+==[DIRc4]group.veg/
+==[DIRc5]group.veg/
+==[DIRc6]case.ep-cal-chl/
+==[DIRc7]case.carbonate-2feat/
+\###############################################################
+\# the following "c"s sync the restart file with the file sizes
+\# then the blank line signal tetracorder to start
+c
+c
+c
+c
+c
+
+\###############################################################
+history
+results
+[WAVEID]              \# Wavelength set to use
+temperature  AAMINTEMP       AAMAXTEMP      AATEMPUNIT
+pressure     AAMINPRESSURE   AAMAXPRESSURE  AAPRESSUREUNIT
+mode cube
+<AAAAAACMDLIBRARY
+c           \# cube processing
+cube: FFFFFFFFFF
+0 -32767 SFSFSFSF      \# offset, deleted point value, scale factor
+0                      \# Error message toggle flag
+  10   0               \# print every   10 with diagnostic flag= 0
+e

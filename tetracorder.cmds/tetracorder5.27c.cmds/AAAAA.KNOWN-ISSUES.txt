@@ -1,0 +1,265 @@
+##############   KNOWN ISSUES   ################################################
+
+ALL RESULTS SHOULD BE CHECKED FOR ACCURACY as calibration can throw off
+identifications, and check that the Tetracorder expert system adequately
+covered the environment.   Either condition (error in calibration to
+reflectance, or minerals or other materials in the environment that
+are not covered by the expert system used) can cause misidentification.
+Thus, spectral features should be extracted from the image cube(s) for
+each identified component that is important to your study and checked
+that the spectral features in that unit are consistent with known spectral
+properties for that material.  Ideally, important identified components
+are verified by field work collecting samples when possible.
+
+Please understand the diagnostic nature of absorption features in minerals.
+Broad electronic absorptions have a lot of similarities between minerals,
+especially Fe2+ bearing minerals.  Therefore many tetracorder output files 
+include generic in the file names.  The specific mineral in the name is 
+so you know the reference spectrum used, not that that specific mineral
+was identified.
+
+A good example of diagnostic nature of absorption features is illustrated
+in the organics confusion below.
+
+
+ISSUES for: cmd.lib.setup.t5.2e1 +
+
+#########################################################################################
+######  Color map products
+
+Color output products in directories color.results+labels and color.results+labels-jpegs
+include experimental results.  For example, minerals assigned mineral IDs are EXPERIMENTAL
+and should be checked for accuracy.  While minerals have varying positions of the 1.9-micron
+water band, it is not known how unique these positions are for specific mineralogy,
+and many absorptions broadly overlap.  Some positions may indicate classes, for
+example, sulfate 1.9 absorption positions tend to be longer than phyllosilicates.
+More research in this area is needed to understand how diagnostic these positions are.
+
+For terrestrial data made with the Sun (e.g. aircraft or orbital imaging spectrometers
+or field spectrometers) with have strong atmospheric absorptions that are opaque or
+mostly so, then any absorptions in the terrestrial water bands, especially 1.3 to 1.5
+microns and 1.9 micron regions are compromised and likely lead to false IDs.  Best
+to avoid any IDs in this situation.
+
+#########################################################################################
+###### Spectra of shallow water can mimic broad electronic absorptions, commonly Olivine
+
+Water has multiple absorptions in the near infrared and in shallow
+water, the absorptions overlap such that there is a broad decrease in
+reflectance from the visible to IR and when the continuum is removed,
+mimics the broad absorption like that seen in olivine.  If tetracorder
+maps olivine near lake shores or shallow streams, it is likely that this
+condition is giving a false positive.
+
+
+#########################################################################################
+###### Clouds and cloud shadows
+
+Clouds and cloud shadows can result in false IDs.  Sometimes the signatures result
+in various minerals that are probably not real.  Land can reflect into clouds
+and induce absorptions in the cloud spectra, so the materials are not actually in the
+clouds.  Cloud shadows often map as water when light is transmitted through the cloud
+and onto the land.  Technically, the water signature is correct, just not on the surface.
+
+
+#####################################################################################
+###### Organics Confusion
+
+The spectral signatures of organics are similar and telling organics apart
+at the typical spectral resolutions of imaging spectrometers is difficult.
+While separating aliphatic from aromatic hydrocarbons or organics with
+single, double or triple bonded carbons atoms is possible at spectral
+resolution typical of imaging spectrometer (e.g. AVIRIS, CRISM, VIMS),
+identifying specific organics is not possible.  For example, one AVIRIS
+scene mapped clay minerals + gasolene along a portion of a highway.
+Was raw gasoline spilled in that area?  No.  Trash, which contains
+plastics, are mainly aliphatics hydrocarbon and have absorptions close
+to the aliphatic hydrocarbons in gasolene at AVIRIS spectral range
+and resolution.  A higher spectral resolution spectrometer and/or
+ground checking would be necessary to distinguish the possibilities.
+Understanding such limitations of spectroscopy and the Tetracorder
+identified results is important.
+
+Perhaps entries like clay minerals + gasolene should be renamed
+clay minerals + aliphatic hydrocarbon.  
+
+
+#####################################################################################
+######  High-iron olivine and magnetite absorptions are similar in the near-IR
+
+High-iron olivine and magnetite have broad electronic absorptions that
+can appear similar and make it difficult to distinguish between the
+two in the near-infrared.  To better aid in separation, more high iron
+olivines as a function of grain size and magnetites as a function
+of grain size are needed to distinguish between these two minerals.
+
+
+#####################################################################################
+###### Prehnite - Chlorite confused with kaolinite + calcite + dry vegetation mixture
+
+prehnite+chlorite can map with a kaolinite + calcite + dry vegetation mixture
+           - observed in Arches 1995 Aviris data
+
+this is mitigated to some degree in cmd.lib.setup.t5.2+ series, but not completely.
+
+#####################################################################################
+###### Snow detected in some vegetation:
+
+One of the expert system known deficiencies is desert types of vegetation
+which have broad water bands that are shifted to longer wavelengths
+than typical vegetation, and the closest match is ice and melting snow.
+More vegetation spectra need to be added to the expert system.  
+Mitigation: if you knew the temperatures were above freezing everywhere in
+your data, snow/ice could be rejected.  Thus, if your imaging spectroscopy
+data are in warm environments, set the temperature above 0 C.  This can
+be difficult if in mountainous terrain.
+
+Vegetation in shallow water can also mimic the broader water features
+of liquid water plus snow and vegetation.  The only way to reliably separate
+these is to include temperature and if above 0 C, snow can be rejected.
+
+#####################################################################################
+######  Sphalerite
+
+Sphalerite is not a diagnostic detection, only a general shape match so could
+be other things.
+
+#####################################################################################
+######  Azurite.
+
+If there are Fe2+ absorptions along with a carbonate band, it can be
+misidentified as azurite.  Fe2+ bands are very similar over a wide
+variety of Fe-bearing minerals, and can be similar to the Cu absorption
+in azurite.  Detections of azurite should be field checked if important.
+
+#####################################################################################
+######   Epidote
+
+Epidote is usually identified well.  If you see it mapping over broad areas,
+it may indicate a calibration error, or another compound is causing confusion.
+
+#####################################################################################
+###### Areas where no minerals map
+
+Check the vegetation maps to see if vegetation was thick in the areas
+where no minerals mapped.  Tetracorder will try and detect minerals
+when the vegetation is sparse enough, but as the vegetation thickens,
+it gets more difficult.  If there is little vegetation in the areas where no
+minerals mapped, it is likely due to 1) the minerals covered by the spectrometer
+used do not have absorptions in that wavelength region, or 2) the surface is wet.
+Water is very absorbing in the near infrared and will suppress photon path
+length into the ground, making mineral detection difficult.
+
+#####################################################################################
+######  Sericite
+
+Sericite is a fine grains muscovite/illite/paragonite, so check those three minerals. 
+
+#####################################################################################
+######  Magnetite
+
+Magnetite is very dark with a broad iron absorption that is not terribly diagnostic
+and can be confused with the broad iron absorption in a high iron olivine.
+Look in the group.1.5um-broad and results.group.1.5um-broad directories.
+
+
+#####################################################################################
+###### Rhodochrosite, Strontianite, Siderite
+
+It is unclear how easily these carbonates can be distinguished from other carbonates
+at spectral resolution like that in AVIRIS.  Confirm that these identifications are
+correct and that it is not another carbonate.  In particular, a carbonate
+mixed with an Fe2+-bearing mineral may be misidentified as rhodochrosite or siderite.
+
+#####################################################################################
+###### Chert, Opal and hydrated_basaltic_glass
+
+Chert, Opal and hydrated_basaltic_glass are all cryptocrystalline silica with OH.
+Report as: Si-OH glass/chert/opal.   It is not clear how well we can tell these
+apart with spectroscopy without more research.
+
+#####################################################################################
+######  group 2: nacrite, kaolinite group 
+
+Starting with 5.27c1, nacrite was added to complete the kaolinite dioctahedral group.
+Nacrite is hydrothermal origin, and it shows mapping in sedimentary environments.
+Thus actual identification of nacrite needs investigation, as it my be getting
+confused by kaolinite, possibly when other minerals are present.  However, with
+the nacrite addition, more kaolinite group seems to map, with less noise in the color
+map images.   More research is needed to understand this problem.
+
+#####################################################################################
+######  group 13: 1.3-1.4 micron OH narrow 
+######  group 14: 1.4-1.5 micron OH
+######  group 15: 1.5 micron OH
+
+Many minerals have OH absorptions close to the same wavelength and with similar
+widths.  How diagnostic any one feature identification is needs more research.
+So these entries, if found by tetracorder, should be treated as indication
+of an OH-feature at that wavelength, but the specific mineralogy can not
+be relied on.  The spectrum would have to be examined for other features
+to verify specific mineralogy.
+
+#####################################################################################
+######  group 19: 1.9-2 micron water and ice
+
+Ice is usually diagnostic, and there are observed general trends of mineral groups
+with wavelength of this water combination band.  But beyond ice, specific
+mineralogy can not be certain.  However, for example, if the feature matches
+a sulfate, there is a good probability that a sulfate may be present, but
+not necessarily that specific mineral identification.
+
+#####################################################################################
+###### group 7:  2.7 to 3-micron OH region
+###### group 8:  2.7 - 2.8-micron OH region narrow bands
+
+There are only a few entries in these groups, generally just to detect a feature
+here.  Many OH and all the broader water absorptions overlap, so specific
+mineralogy is not possible now.  So only report detection of a feature
+(and its wavelength), but not specific mineralogy.
+
+#####################################################################################
+######  group 10: testing 3.5 um curved continua
+######  3.5-micron region linear continua
+
+Hydrogen peroxide detection on Earth is probably a carbonate that we do not
+have in the spectral library for these wavelengths. 
+Check also group 24: 4-micron region
+
+
+#####################################################################################
+###### group 24: 4-micron region
+
+This is one of the most sensitive regions for detecting carbonates.
+But we do need to add more carbonates at low abundances.
+So report carbonates, but not the specific mineralogy.
+
+#####################################################################################
+###### group 26: 4.25 micron CO2 trapped, ice 
+
+Trapped CO2 absorptions are not known at this time to be indicative of the host
+mineralogy.  So do not report specific mineral detection using this feature.
+Currently it only indicates the presence of trapped CO2.
+
+#####################################################################################
+###### group 27 ###### 4.5-micron region  includes sulfates
+
+There are 47 entries in 5.27b1, but more are needed, so only broad classes 
+of minerals should be recorded, not individual IDs.
+
+
+#####################################################################################
+###### methane and CO2
+
+group  2: group.2um/methane-gas-2.37um-experimental
+group 38: group.ch4gas-2.3um/methane-gas-2.37um_g37-experimental
+group 38: group.co2gas-2um/co2-gas-2um_g38-experimental
+
+These are very experimental to see if residual gas signatures might be detected.
+Note that this depends on the atmospheric removal algorithm not adjusting for
+pixel to pixel changes.
+
+Multiple path lengths can increase gas signatures, e.g., cloud-land reflections,
+land-land reflections (mountains), so there are a lot of false positives.
+Any signature needs to be checked.
+

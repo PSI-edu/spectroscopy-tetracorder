@@ -1,0 +1,106 @@
+#!/usr/local/bin/davinci -f
+#####!/usr/bin/env -S davinci -f  
+
+###########################  was:  #!/usr/local/bin/davinci -f
+
+
+
+# add images together
+
+hemfg="group.1um/hematite.fine.gr.all.fd"
+hemmg="group.1um/hematite.med.gr.all.fd"
+hemlg="group.1um/hematite.lg.gr.all.fd"
+hemall="group.1um/hematite.all.fd"
+
+#############################################################
+# fine grained hematite
+
+a=    load(filename="group.1um/hematite.fine.gr.fe2602.fd.gz")
+b=    load(filename="group.1um/hematite.fine.gr.gds76.fd.gz")
+c=    load(filename="group.1um/hematite.fine.gr.ws161.fd.gz")
+
+h1 = byte (a + b + c)
+
+write(h1,filename=hemfg,type=vicar)
+
+#############################################################
+# med grained hematite
+
+a=    load(filename="group.1um/hematite.med.gr.gds27.fd.gz")
+b=    load(filename="group.1um/hematite.med.gr.br25b.fd.gz")
+
+h2 = byte (a + b)
+
+write(h2,filename=hemmg,type=vicar)
+
+#############################################################
+# large grained hematite
+
+a=    load(filename="group.1um/hematite.lg.gr.br25a.fd.gz")
+b=    load(filename="group.1um/hematite.lg.gr.br25c.fd.gz")
+c=    load(filename="group.1um/hematite.lg.gr.br34c.fd.gz")
+
+h3 = byte (a + b + c)
+
+write(h3,filename=hemlg,type=vicar)
+
+#############################################################
+# all hematites
+
+h3 = byte (h1 + h2 + h3)
+write(h3,filename=hemall,type=vicar)
+
+
+#############################################################
+# med grained goethite
+
+a=    load(filename="group.1um/goethite.medgr.ws222.fd.gz")
+b=    load(filename="group.1um/goethite+qtz.medgr.gds240.fd.gz")
+#c=    load(filename="group.1um/goethite.medcoarsegr.mpc.fd.gz")
+
+h3 = byte (a + b)
+
+write(h3,filename="group.1um/goethite.medgr.fd",type=vicar)
+
+#############################################################
+# AMD oxides
+
+a=    load(filename="group.1um/AMD.assemb1.fd.gz")
+b=    load(filename="group.1um/AMD.assemb2.fd.gz")
+
+h3 = byte (a + b)
+
+write(h3,filename="group.1um/AMD.assemb1+2.fd",type=vicar)
+
+
+####### old file names
+#group.1um/Fe2+_and_hematite_br5b.fd.gz
+#group.1um/Fe2+_hematite_weathering.fd.gz
+#
+#group.1um/hematite.thincoat.fd.gz
+#
+#group.1um/nanohematite.BR34b2.fd.gz
+#
+#group.1um/hematite.fine.gr.fe2602.fd.gz
+#group.1um/hematite.fine.gr.gds76.fd.gz
+#group.1um/hematitews161.fd.gz  -> hematite.fine.gr.ws161
+#
+#group.1um/hematite.fine.gr.gds27.fd.gz    -> med
+#group.1um/hematite_lg_gr_br25b.fd.gz    -> med
+#
+#group.1um/hematite_lg_gr_br25a.fd.gz
+#group.1um/hematite_lg_gr_br25c.fd.gz
+#group.1um/hematite_md_gr_br34c.fd.gz    -> large
+#
+#group.1um/AMD.assemb1.fd.gz
+#group.1um/AMD.assemb2.hem.fd.gz
+#
+#group.1um/goethite.fingr.fd.gz
+#group.1um/goethite.thincoat.fd.gz
+#group.1um/goethite.medgr.fd.gz
+#group.1um/goethite+qtz.medgr.fd.gz
+#group.1um/goethite.medcoarsegr.fd.gz
+#group.1um/goethite.coarsegr.fd.gz
+#
+#group.1um/biot+goeth+muscphy.fd.gz   -> Fe2++goeth+musc
+#group.1um/goeth+jarosite.fd.gz

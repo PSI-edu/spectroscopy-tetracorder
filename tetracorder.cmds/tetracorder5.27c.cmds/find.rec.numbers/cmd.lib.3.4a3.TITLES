@@ -1,0 +1,252 @@
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Fir_Tree IH91-2 Complete   =a AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Grass 0.7 dry + 0.3 green AVIRIS93
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=H2O-Ice GDS136 77K         =a AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=melting snow 1a
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=melting snow 3
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=melting snow 8
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=melting snow (slush) 9
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=melting snow (slush) 16
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=melting snow 1a + 0.5 veg
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=melting snow 9 + 0.5 veg
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=melting snow 16 + 0.5 veg
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Seawater Coast Chl rc  AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Seawater Open Ocean low chl
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Red Coated Algea Water AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Hematite=2%+98%Qtz GDS76   =a AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Goethite Med Grained WS222  =a AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Goethite + qtz Med gr GDS240 AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Geothite Fine Gr MPCMA2-B AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Goethite M-Crs gr MPCMA2-C AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Goethite Coarse Gr. WS222 AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Goethite Thin Coating WS222 AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Goeth+qtz +50% Jarosite Areal AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Weathered Pyrite LV95-6A AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Schwertmannite? BZ93-1 AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Bl Mn? Coat Tailings AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Acid Mine Dr Assemb 1 AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Acid Mine Dr Assemb 2 AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Jarosite GDS99 K,Sy 200C   =a AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Lepidocrosite GDS80 (Sy)    =? AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Chlorite + Muscovite CU93-65A   AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Biot + Goeth + Musc CU91-252D   AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Chlor + Goethite Phyl CU93-4B   AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Cummingtonite HS294.3B     =? AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Actinolite NMNHR16485      =a AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Actinolite HS22.3B         =b AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Hypersthene NMNHC2368      =b AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Diopside NMNHR18685 ~160   =b AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Jadeite HS343.3B           =? AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Pigeonite HS199.3B         =b AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Epidote GDS26.a 75-200um   =b AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Am Fe-Hydroxide Summitville   AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Ferrihydrite GDS75 Sy, F6  =b AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Hematite GDS27             =a AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Hematite Thin Coating GDS27 AVIRIS
+\#\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Red Rhyolite Tuff CU93-46E AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Hematite FE2602            =b AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Hematite WS161             =b AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Nontronite NG-1.a      =b AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=BR5A Actinolite? rich scarn AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=BR5B Magnetite scarn  AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=BR22C Actinolite?scarn Besse AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=BR33a bio qtz monz. hv epi vn AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=BR36A fresh grn qtz monz chl?AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=BR43 purple ash tuff wht zeo AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=BR46b fresh basalt AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=BR25a Varnished Quartzite AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=BR25b Hematite Coat Qtzite  AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=BR25c Varnished Quartzite AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=BR34B2 nanohematite on qtzite AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=BR34C Hematite on quartzite   AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=BR34A2 Jarosite on Quartzite  AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=BR60B Actinolite on Dolomite  AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Alt Biotite BR93-20 Fan Dep. AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Renyolds Tunnel Sludge SM93-15 AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Clinochlore GDS158 Flagst  =a AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Clinochlore NMNH83369  =a AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Thuringite SMR-15.c  32um  =a AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Azurite WS316  =  AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Pitch_Limonite GDS104 Cu = ?AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Malachite HS254.3B  =b AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Blue Efflorescent Min SU93-300 AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Green Slime SM93-14A Summitv AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Olivine HS285.4B           =b AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Olivine GDS71.a TSD 65um   =b AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Rhodochrosite HS338.3B     =b AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Riebeckite NMNH122689      =a AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Coquimbite GDS22           =? AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Copiapite GDS21            =a AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Chrysocolla HS297.3B       =b AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Neodymium_Oxide GDS34      =a AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Samarium_Oxide GDS36       =a AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Axinite HS342.3B           =b AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Staurolite HS188.3B        =b AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Almandine WS479            =b
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Augite NMNH120049          =b
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Bronzite HS9.3B            =c
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Butlerite GDS25            =a
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Bytownite HS106.3B         =c
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Chalcopyrite HS431.3B      =b
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Chromite HS281.3B          =a
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Cinnabar HS133.3B          =c
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Cuprite HS127.3B           =b
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Desert_Varnish GDS141      =a
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Desert_Varnish GDS78A Rhy  =a
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Enstatite NMNH128288       =c
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Hedenbergite NMNH119197    =b
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Lazurite HS418.3B          =?
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Maghemite GDS81 Sy (M-3)   =a
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Magnetite HS195.3B         =b
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Manganite HS138.3B         =b
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Microcline HS103.3B        =c
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Oligoclase HS143.3B        =c
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Orthoclase NMNH142137 Fe   =b
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Pectolite NMNH94865.a      =a
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Rhodonite NMNHC6148 >250u  =a
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Sulfur GDS94 Reagent       =a
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Dry_Long_Grass AV87-2      =a
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Syn. K-Alunite GDS97 150C cv AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Syn. K-Alunite GDS96 250C cv AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=SYN K-ALUNITE (450C) RES-2 AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Syn Na-Alunite GDS95 150C cv AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Syn Na-Alunite Res-4 300C cv AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=SYN NA-ALUNITE Res-3 450C cv AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Alunite GDS82 Na82         =a AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Alunite GDS83 Na63         =a AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=ALUNITE RES-9 SUMMITVILLE cv AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Kaolinite CM9              =b AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Kaolinite KGa-2 (pxyl)     =b AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Halloysite NMNH106237      =a AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Dickite NMNH106242         =a AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Muscovite GDS113 Ruby      =a AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Paragonite GDS109          =a
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Altered Phyllite CU91-250A cv AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Illite IMt-1.b <2um        =a AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Illite GDS4 (Marblehead)   =b
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Unaltered Phyllite CU93-1 cv AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Muscovite GDS116 Tanzania  =a AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Kaolin/Smect H89-FR-2 50K  =b AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Kaolin/Smect H89-FR-3 30K  =b AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Montmorillonite SWy-1      =b AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Montmorillonite SAz-1      =b AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Chalcedony CU91-6A         =b
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Diaspore HS416.3B          =a AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Pyrophyllite PYS1A fine g  =a AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Koal 60wt% + pyrophyl GDS224 AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=PyroPYS1A 50% & MontSAz-1 50%
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Alun 366 50% & Pyro PYS1A 1x AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Alunite+Pyrophyl SD1093A av=3 AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Alunite .5+Kaol KGa-1 .5Areal AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Kaolin .5+MuscCU91-250A Areal AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Kaol Wxl + 50% Musc Ruby Areal
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Kaol + Musc intimate CU93-5C AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Muscov + Jaros Coat CU93-314 AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Alunite.5+MuscCU91-250A Areal AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Alunite .33+Kaol .33+Musc .33
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=CHL PHYLLITE CU91-253D AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Ammonio-Illite/Smec GDS87  =? AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Buddingtonite GDS85 D-206  =b AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Buddingtonite + Na-Mont CU93-260B AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Buddingtonite + Na-Mont CU93-260B AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Ammonioalunite NMNH145596  =d AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Ammonio-jarosite SCR-NHJ   =? AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Actinolite NMNHR16485      =a AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Amphibole NMNH78662        =? AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Biotite HS28.3B            =b AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Chlorite-scarn BR22B Barstow AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Chlorite SMR-13.b 60-104u  =a AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Clinochlore GDS158 Flagst  =a
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Thuringite SMR-15.c  32um  =a
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Epidote GDS26.a 75-200um   =b AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Hornblende_Fe HS115.3B     =c AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Jarosite GDS24 Na          =a AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Jarosite GDS99 K,Sy 200C   =a AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Jarosite SJ-1 H3O,10-20%   =a AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Phlogopite HS23.3B         =a AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Tremolite HS18.3           =c AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Mont SAz-1 20%+Calc WS272 80% AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Magnesite+Hydroma HS47.3B  =a AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Dolomite HS102.3B          =b AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Calcite WS272              =a AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Calcite + Dolomite .5 areal AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Dolo + 50% Ca-Mont Areal AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=calcite.25+dolom.25+mont.5 AVIRIS(areal mix)
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Calc.25 + Dolo.25 + Ca-Mont Areal
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Siderite HS271.3B          =a AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Nontronite NG-1.a          =b
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Hectorite SHCa-1.Ac-B      =a
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Saponite SapCa-1.AcB       =b
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Sepiolite SepNev-1.AcB     =a
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Calcite 80% +MontSwy-1 GDS212
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Calc + 50% Ca-Mont Areal
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Calc + 33% Musc Ruby Areal
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Dry Grass + 17% Na-Mont Areal AV
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=dolomite.5+Na-mont.5 AVIRIS (areal mix)
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=calcite.33+Ca-mont.67 AVIRIS(areal mix)
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Calcite 80wt%+ KaolCM9 GDS213 AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Clintonite NMNH126553     W1R1Bb
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Palygorskite PFL-1        W1R1Bb
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Zoisite HS347.3B          W1R1Bb
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Elbaite NMNH94217-1.c <74 W1R1Ba
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Gibbsite WS214             =b AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Gypsum HS333.3B            =a AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Niter GDS43 (K-Saltpeter)  =a AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Topaz Mt._Antero_#5        =b AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Rhodochrosite HS338.3B     =b AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Witherite HS273.3B         =a AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Mizzonite HS351.3BS        =a AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Mizzonite BM1931,12        =b
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Pinnoite NMNH123943        =a AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Polyhalite NMNH92669-4     =a AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Rivadavite NMNH170164      =a AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Howlite GDS155             =a AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Ulexite HS441.3B           =a AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Wh Crust (Epsomite?) AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Analcime GDS1              =a
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Brucite HS247.3B
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Carnallite NMNH98011       =a
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Colemanite GDS143          =a
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Datolite HS442.3B          =b
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Hydrogrossular NMNH120555  =?
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Lepidolite NMNH88526-1     =a
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Margarite GDS106           =?
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Mascagnite GDS65.b (fn)    =a
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Mirabilite GDS150 Na2SO4  =a
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Natrolite HS169.3B         =b
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Richterite NMNH150800 HCl  =b
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Roscoelite EN124           =b
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Strontianite HS272.3B      =b
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Syngenite GDS139           =a
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Cadmium Potas. Cyanide
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Nickel Potass. Cyanide
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Trihydrate cyanide
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Potassium Ferro Cyanide
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Zinc Potassium Cyanide
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Plastic Grnhouse Roof GGA-54
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Montmor SWy + Benzene (1ml)
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Montmor SWy + trichlor (1ml)
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Montmor SWy + toluene .5ml
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Montmor SWy + unleaded gas
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Montmor SWy + TCE saturated
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Lawn_Grass GDS91 (Green)   =a AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Stonwll Ply+ 20%Gr Grass Areal
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Neodymium_Oxide GDS34      =a AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Samarium_Oxide GDS36       =a AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Lawn_Grass GDS91 /shifted 3nm AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Lawn_Grass GDS91 /shifted 3nm AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Lawn_Grass GDS91 (Green)   =a AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Aspen_Leaf-A DW92-2        =a AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Fir_Tree IH91-2 Complete   =a AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Juniper_Bush IH91-4B whol  =a AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Pinon_Pine ANP92-14A ndl   =a AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Sage_Brush IH91-1B Whole   =a AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Walnut_Leaf SUN (Green)    =a AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Blackbrush ANP92-9A leavs  =a AVIRIS93
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Blue_Spruce DW92-5 needle  =a AVIRIS93
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Maple_Leaves DW92-1        =a AVIRIS93
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Rabbitbrush ANP92-27 whol  =a AVIRIS93
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Russian_Olive DW92-4       =a AVIRIS93
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Saltbrush ANP92-31A Garrt  =a AVIRIS93
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Fir_Tree IH91-2 Complete   =a AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Fir_Tree IH91-2 Complete   =a AVIRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Fir_Tree IH91-2 Complete   =a AVIRIS

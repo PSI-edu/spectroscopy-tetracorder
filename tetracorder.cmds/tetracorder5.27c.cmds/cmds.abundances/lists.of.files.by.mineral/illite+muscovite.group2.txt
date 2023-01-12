@@ -1,0 +1,34 @@
+# Illite    based on cmd.lib.setup.t5.2d3
+#
+#  DN scale = what band depth = 255 in the tetracorder output image (from 5.2a2 expert system)
+#  BD factor = band depth =1 for pure, fraction in mixture
+#  splib06conv1, sprlb06conv1 = convolved spectrum ID, valid for spectra for 1 - 2171 channels.
+#
+#                                                                 DN     BD    Band                                   convolved
+#              file                                             scale  factor  depth      title                       reference spectrum
+group.2um/micagrp_illite.depth.gz                                 0.5   0.99  0.1127  Illite IMt-1.b <2um             sprlb06conv1  714
+group.2um/micagrp_illite.gds4.depth.gz                            0.5   0.76  0.2103  Illite GDS4 (Marblehead)        sprlb06conv1  726
+group.2um/sulfate-mix_gypsum+jar+illite.intmix.depth.gz           0.5   0.33  0.1323  Gyp+jar+ill BRCM1 Marysvale     splib06conv1 5748
+group.2um/smectite_ammonillsmec.depth.gz                          0.5   0.5   0.1899  Ammonio-Illite/Smectit GDS87    sprlb06conv1  786
+group.2um/micagrp_illite.roscoelite.depth.gz                      0.5   0.15  0.1342  Roscoelite EN124                splib06conv1 4380
+#
+group.2um/micagrp_muscovite-med-Al.depth.gz                       0.5   0.59  0.1989  muscovite med-Al  CU91-250A     splib06conv1 5976
+group.2um/micagrp_muscovite-medhigh-Al.depth.gz                   0.5   1.00  0.2769  muscovite medhigh Al GDS113     sprlb06conv1  654
+group.2um/micagrp_muscovite-low-Al.depth.gz                       0.5   0.22  0.1694  muscovite low-Al  CU93-1        splib06conv1 3306
+group.2um/micagrp_muscoviteFerich.depth.gz                        0.5   1.00  0.2646  muscovite Fe rich GDS116        splib06conv1 3372
+group.2um/pyroph+tr.musc.depth.gz                                 0.5   0.04  0.3864  Pyrophyl+Muscovite JH_PYRM1     splib06conv1 6048  # has quant XRD in cmdfile
+group.2um/musc+pyroph.depth.gz                                    0.5   0.15  0.3067  Muscovite+Pyrophyl JH_PYRP1     splib06conv1 5988  # has quant XRD in cmdfile
+group.2um/alunite+musc+pyroph.depth.gz                            0.5   0.40  0.1982  Alun0.3+Musc0.4+Pyro0.3 AMX1    splib06conv1 5352
+group.2um/kaolin.5+muscov.medAl.depth.gz                          0.5   0.295 0.3232  Kaol.5+MuscCU91-250A AMX13      splib06conv1 5832
+group.2um/kaolin.5+muscov.medhighAl.depth.gz                      0.5   0.50  0.3501  Kaol_Wxl+0.5Musc_Ruby AMX12     splib06conv1 5838
+group.2um/kaolin+musc.intimat.depth.gz                            0.5   0.10  0.2215  Kaol+Musc_intimate CU93-5C      sprlb06conv1  870
+group.2um/musc+jarosite.intimat.depth.gz                          0.5   0.27  0.2172  Muscov+Jaros CU93-314 coatng    sprlb06conv1  876
+group.2um/sulfate-mix_gyp+jar+musc.amix.depth.gz                  0.5   0.20  0.1942  Gyp.5+Kjar.3+hAlmsc.2 AMX24     splib06conv1 5766
+group.2um/sulfate-mix_gyp+jar+musc+dick.amix.depth.gz             0.5   0.20  0.2619  Gyp.4+jr20+msc.2+dic.2 AMX23    splib06conv1 5760
+group.2um/musc+gyp+jar+dick.amix.depth.gz                         0.5   0.40  0.2561  Gyp.3+jr.1+msc.4+dic.2 AMX22    splib06conv1 5754
+group.2um/dick+musc+gyp+jar.amix.depth.gz                         0.5   0.30  0.2901  Dic.4+msc.3+gyp.2+jr.1 AMX20    splib06conv1 5670
+group.2um/alunite.5+musc.5.depth.gz                               0.5   0.295 0.3901  Alunite.5+MuscCU91-250A AMX4    splib06conv1 5388
+group.2um/alunite.33+kaol.33+musc.33.depth.gz                     0.5   0.195 0.3265  Alun.33+Kaol.33+Musc.33 AMX2    splib06conv1 5346
+group.2um/muscovite+chlorite.depth.gz                             0.5   0.53  0.1594  Muscovite+Chlorite CU91-253D    splib06conv1 5982
+group.2um/carbonate_calcite+0.3muscovite.depth.gz                 0.5   0.33  0.2254  Calcite+.33Muscov AMX5 Ruby     splib06conv1 5520
+group.2um/prehnite+muscovite.depth.gz                             0.5   0.1   0.1756  Prehnite+Muscovite BM1931,12    splib06conv1 3126  # title changed 03/2022

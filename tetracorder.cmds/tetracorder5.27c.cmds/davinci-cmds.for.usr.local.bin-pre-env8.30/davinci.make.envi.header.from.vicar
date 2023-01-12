@@ -1,0 +1,136 @@
+#!/usr/local/bin/davinci -f
+
+#######!/usr/bin/env -S davinci -f  
+
+verbose=0
+
+# fixes for header offset in small files
+#     - R Clark 2020-10-20
+
+if ($argc < 1) {
+	#                                                1             2      3          4          5
+	printf("Insufficient input\n\n")
+	printf("davinci.make.envi.header.from.vicar  imagecubefile   [-wave specpr_file record# [scalefactor] ]\n")
+	printf("exit 1\n")
+	exit(1)
+}
+
+iwave=0
+if ($argc > 3 ) {
+   if ( $2 == "-wave" || $2 == "-waves" ) {
+	sfile=$3
+	srec=atoi($4)
+	iwave=1
+	swaves=read(filename=sfile, record=srec)
+
+	if ( HasValue(swaves) == 0) {
+		printf("can not read wavelengths from %s record %d\n", sfile, srec)
+	}
+	ascale=1.0
+
+	if ( $argc > 4 ) {
+		ascale=atof($5)
+	}
+	swaves=swaves * ascale
+   } else {
+	printf("option not recognized\n")
+	printf("exit 1\n")
+ 	exit(1)
+   }
+}
+
+a=read(filename=$1)
+if ( HasValue(a) == 0 ) {
+	printf("can not read image cube %s\n", $1)
+	printf("exit 1\n")
+ 	exit(1)
+}
+
+x=dim(a)  # cube dimensions
+nchans=x[3,1,1]
+nwaves=0
+
+if ( iwave == 1 ) {
+   sx=dim(swaves)  # wavelengths dimensions
+   nwaves=sx[3,1,1]
+
+   if ( nchans != nwaves ) {  # cube number of channels not equal to number of wavelengths
+	printf("cube number of channels (%d) not equal to number of wavelengths (%d)\n", x[3,1,1], sx[3,1,1])
+	printf("exit 1\n")
+ 	exit(1)
+   }
+}
+
+o=org(a)
+
+# o=   "bil" - Band interleaved by line (XZY)
+#       "bip" - Band interleaved by pixel (ZXY)
+#       "bsq" - Band sequential (XYZ)
+
+f=format(a)
+
+# f =   "byte"   - 8 bit unsigned integer
+#       "short"  - 16 bit signed integer
+#       "int"    - 32 bit signed integer
+#       "float"  - 32 bit real
+#       "double" - 64 bit real
+
+dt=0
+h=0    # header size in bytes
+if (f == "byte" ) {
+	dt=1
+	h = x[1,,]
+}
+if (f == "short") {
+	dt=2
+	h = x[1,,]*2
+}
+if (f == "int"  ) {
+	dt=3
+	h = x[1,,]*4
+}
+if (f == "float") {
+	dt=4
+	h = x[1,,]*4
+}
+
+# extract header size from vicar header
+
+dd = sprintf ("dd if=%s ibs=28 count=1 2>&1 | grep LBLSIZE  | sed -e 's/^LBLSIZE=//' | sed -e 's/ .*$//'", $1)
+# printf("debug: header from vicar= %s\n", dd)
+ll = syscall(dd)
+# printf("debug: header size from syscall= %s\n", ll[,1,])
+h1 = atoi(ll[,1,])
+# printf("debug: h1 header size from syscall= %d\n", h1)
+if (h1 > 250) {
+	h = h1
+} else {
+	printf ("WARNING: LBLSIZE= not found.  Computed LBLSIZE may be in error for small files\n")
+}
+
+printf("ENVI\n")
+printf("description = {\n")
+printf("  Davinci generated envi header\n")
+  printf("}\n")
+printf("samples = %d\n", x[1,,])
+printf("lines   = %d\n", x[2,,])
+printf("bands   = %d\n", x[3,,])
+printf("header offset = %d\n", h)
+printf("file type = ENVI Standard\n")
+
+printf("data type = %d\n", dt)
+
+printf("interleave = %s\n", o)
+printf("sensor type = Unknown\n")
+
+ printf("byte order = 0\n")   # PC
+#printf("byte order = 1\n")   # IEEE
+
+
+if ( iwave == 1 ) {                      # add wavelengths
+	printf("wavelength = {\n")
+	for (i=1; i<nwaves; i++) {
+		printf("   %f,\n", swaves[1,1,i])
+	}
+	printf("   %f}\n", swaves[1,1,nwaves])
+}

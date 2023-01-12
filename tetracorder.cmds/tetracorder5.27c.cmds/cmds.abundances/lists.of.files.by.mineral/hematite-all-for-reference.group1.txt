@@ -1,0 +1,25 @@
+# Hematite    based on cmd.lib.setup.t5.2d3
+#
+#  DN scale = what band depth = 255 in the tetracorder output image (from 5.2a2 expert system)
+#  BD factor = band depth =1 for pure, fraction in mixture
+#  splib06conv1, sprlb06conv1 = convolved spectrum ID, valid for spectra for 1 - 2171 channels.
+#
+#                                                                 DN     BD    Band                                   convolved
+#              file                                             scale  factor  depth      title                       reference spectrum
+group.1um/fe3+_hematite.nano.BR34b2.depth.gz                      0.5   0.01  0.2727  Nanohematite BR93-34B2          splib06conv1 3468
+group.1um/fe3+_hematite.nano.BR34b2b.depth.gz                     0.5   0.01  0.3043  Nanohematite BR93-34B2b         sprlb06conv1  918
+#
+group.1um/fe3+_hematite.fine.gr.fe2602.depth.gz                   0.5   1.0   0.3957  Hematite FE2602                 splib06conv1 2100
+group.1um/fe3+_hematite.fine.gr.ws161.depth.gz                    0.5   0.79  0.4521  Hematite WS161                  sprlb06conv1  906
+group.1um/fe3+_hematite.fine.gr.gds76.depth.gz                    0.5   0.020 0.3144  Hematite.02+Quartz.98 GDS76 W   sprlb06conv1  744
+group.1um/fe2+fe3+mix_with_hematite_br5b.depth.gz                 0.5   0.17  0.1475  Magnetite_skarn BR93-5B         sprlb06conv1  846
+group.1um/fe2+fe3+_hematite_weathering.depth.gz                   0.5   0.01  0.1239  Basalt_weathered BR93-43        splib06conv1 5460
+group.1um/fe3+_hematite.thincoat.depth.gz                         0.5   0.05  0.5045  Hematite_Thin_Film GDS27        splib06conv1 6198
+#
+group.1um/fe3+_hematite.med.gr.gds27.depth.gz                     0.5   1.00  0.5523  Hematite GDS27                  sprlb06conv1  738
+group.1um/fe3+_hematite.med.gr.br25b.depth.gz                     0.5   0.050 0.4408  Hematite_Coatd_Qtz BR93-25B     splib06conv1 6174
+#
+group.1um/fe3+_hematite.lg.gr.br25a.depth.gz                      0.5   0.01  0.4218  Hematite_Coatd_Qtzt BR93-25A    sprlb06conv1  840
+group.1um/fe3+_hematite.lg.gr.br25c.depth.gz                      0.5   0.69  0.5286  Hematite_Coatd_Qtzt BR93-25C    sprlb06conv1  816
+group.1um/fe3+_hematite.lg.gr.br34c.depth.gz                      0.5   0.63  0.4616  Hematite_Coatd_Qtz BR93-34C     sprlb06conv1  822
+group.1um/fe3+_maghemite.depth.gz                                 0.5   0.85  0.7649  Maghemite GDS81 Syn (M-3)       splib06conv1 2928

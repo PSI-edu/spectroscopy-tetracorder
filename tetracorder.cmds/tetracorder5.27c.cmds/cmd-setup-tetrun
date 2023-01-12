@@ -1,0 +1,805 @@
+#!/bin/sh
+#
+# script to make sub-directories and install all needed tetracorder command files
+# to perform a standard mapping run.
+#
+# Roger N. Clark   Dec. 12, 1994, 3.7 installation May 11, 2001
+#                  t4.1 fall 2001.
+#                  Major updates 2008 for t4.1 and multiple instruments
+#                  t5.2c 05/2020: handles channels > 2171
+#                  5.26e 12/21/2021:  instrument specific parameters are
+#                                   now located in sub-directories:
+#	                            DATASETS
+#                                   DELETED.channels
+
+# make a sub directory and install all commands needed to run tetracorder.
+
+####################################################################
+#### NOTE: THINGS TO CHANGE IF THIS SCRIPT IS MOVED:          ######
+                                                              ######
+source=/t1/tetracorder.cmds/tetracorder5.27c.cmds             ######
+                                                              ######
+####################################################################
+#### NOTE: THINGS TO CHANGE FOR NEW VERSIONS                  ######
+                                                              ######
+     lib=cmd.lib.setup.t5.27c1                                ######
+   start=cmds.start.t5.27c                                    ######
+  starts=cmds.start.t5.27c.single                             ######
+                                                              ######
+#  one of the three following gets copied to the destination  ######
+#  directory depending on the numberof channels               ######
+#  and gets set by the dataset type.  e.g. see LAB3800a       ######
+                                                              ######
+  c_nots=cmd.lib.setup.nots-ratios-small   # default          ######
+# c_nots=cmd.lib.setup.nots-ratios-medium  # 2172 to 4852 channels #
+# c_nots=cmd.lib.setup.nots-ratios-large   # > 4852 channels  ######
+                                                              ######
+  tetexe=tetracorder5.27                                      ######
+                                                              ######
+  tetexesingle=tetracorder5.27single                          ######
+                                                              ######
+                                                              ######
+###  vfollow is a custom pointer to a start file              ######
+###          for analyzing a growing specpr file              ######
+###          (assigned to v) for spectra coming in            ######
+###          real time from a spectrometer                    ######
+###                                                           ######
+###     Currently defined for the following setups:           ######
+###               ASDFS  ASD FS spectrometer                  ######
+###               AgilentFTIR_21  FTIT spectrometer           ######
+###                                                           ######
+###               To follow a new spectrometer, simply add    ######
+###               a vfollowfile=  NNNN to the DATASET file.   ######
+###               See above DATASET files for examples        ######
+###               e.g.:                                       ######
+###                    more DATASETS/AgilentFTIR_21           ######
+###                                                           ######
+                                                              ######
+vfollowdir=${source}/startfiles_vfollow                       ######
+vfollowfile=null                        # default: nofollow   ######
+                                                              ######
+# changes to the above defaults are located in the            ######
+# DATASETS directory for each instrument                      ######
+# The is effective 5.26e 12/21/2021                           ######
+                                                              ######
+                                                              ######
+                                                              ######
+####################################################################
+#                                                             ######
+# You must also add to the mkdir command below to add new     ######
+# group and case directories as needed.  Search for mkdir     ######
+#                                                             ######
+#                                                             ######
+####################################################################
+
+d=`dirname $0`
+
+autostart=0  # =0  do not start tetracorder with this install script
+             # =1  start tetracorder after install (only for vfollow)
+             #     autostart will be in background
+
+vfollow=0    # do not follow
+
+band=20      # default band (channel) for making gray scale iamges
+
+shortcubeid='tet'  # short cube ID to add to output file names.
+
+if [ "$d" != "$source" ]
+then
+	echo "cmd-setup-tetrun may be pointing to the wrong directory"
+	echo "you typed this path to cmd-setup-tetrun:"
+	echo "     $d"
+	echo " BUT $source is where the expert system will come from"
+	echo "NOTE: cmd-setup-tetrun may need editing"
+fi
+
+echo " "
+echo "##########  code will be copied from: $source"
+echo " "
+
+usage()
+{
+	echo "Usage: cmd-setup-tetrun   sub_directory   data_set  cube image_cube sscalefactor [-t|-T|t|T mintemperature maxtemperature tempuniT] [-p|-P|p|P minpressure maxpressure pressure-unit]  [image gif|png|none] [shortcubeid idtext]"
+	echo ""
+	echo "or"
+	echo ""
+	echo "Usage: cmd-setup-tetrun   sub_directory   data_set  singlespectrum follow|nofollow  [-t|-T|t|T mintemperature maxtemperature tempuniT] [-p|-P|p|P minpressure maxpressure pressure-unit]  [autostart]"
+	echo ""
+	echo "sub_directory is the directory where the commands go,"
+	echo "			and it must not already exist."
+	echo ""
+	echo "Recognized units: Temperature: K or C, Presure: Bar or bar"
+	echo ""
+	echo "Valid data sets are:"
+	echo " "
+	ls  --ignore=AAA.readme.txt  ${source}/DATASETS
+	echo " "
+	echo "image_cube is the path to the Imaging spectroscopy data set."
+}
+
+if [ -z "$1" ]
+then
+
+	usage
+	exit 1
+fi
+
+if [ -f "$1" -o -d "$1" ]
+then
+	echo "ERROR: $1 already exists "
+	echo ""
+	usage
+	exit 1
+fi
+
+
+if [ -z "$2" ]
+then
+	echo "ERROR: you must specify a data set "
+	echo ""
+	usage
+	exit 1
+fi
+
+if [ -z "$3" ]
+then
+	echo "ERROR: looking for cube or singlespectrum, but not found"
+	echo " "
+	usage
+	exit 1
+
+elif [ "$3" != "cube" -a "$3" != "singlespectrum" ]
+then
+	echo "ERROR: looking for cube or singlespectrum keyword, but not found"
+	echo "        instead found: $3"
+	echo " "
+	usage
+	exit 1
+fi
+
+
+#      0               1         2        3            4          5             6   7    8    9   10    11      12       13           14          15
+# cmd-setup-tetrun   sub_dir  data_set  cube       image_cube scalefactor      -T minT maxT Tunit -P minpress maxpres pressure-unit image     gif|png|none
+#
+#
+#      0               1         2        3                4            5   6    7    8    9    10      11       12           13     
+# cmd-setup-tetrun   sub_dir  data_set  singlespectrum follow|nofollow -T minT maxT Tunit -P minpress maxpres pressure-unit autostart
+
+
+dir=$1                # sub directory to use
+dataset=$2            # which set of convolved libraries
+tetmode=$3            # cube or singlespectrum
+cube=$4               # image cube if tetmode= cube
+tfollow=$4            # follow|nofollow if tetmode= singlespectrum
+scalefactor=$5        # factor to scale cube data to I/F
+
+# set defaults in case the following are not specified.
+
+mintemperature=0
+maxtemperature=9999
+tempunit="K"
+minpressure=0
+maxpressure=999
+pressureunit='bar'
+imageout='gif'
+
+
+############## restart file name length max = 77 characters
+
+if [ -f "$source/DATASETS/$dataset" ]
+then
+
+	data=$dataset
+
+	restart=`grep '^restart= ' $source/DATASETS/$dataset | awk '{ print $2 }'`
+
+	if [ -z "$restart" ]
+	then
+		echo "ERROR: restart keywork not found in $source/DATASETS/$dataset"
+		echo ""
+		usage
+		exit 1
+	fi
+	echo "restart= $restart"
+
+	tmp1=`grep '^lib= ' $source/DATASETS/$dataset | awk '{ print $2 }'`
+	if [ -n "$tmp1" ]
+	then
+		lib=$tmp1
+		echo "lib= $tmp1"
+	fi
+
+	tmp1=`grep '^band= ' $source/DATASETS/$dataset | awk '{ print $2 }'`
+	if [ -n "$tmp1" ]
+	then
+		band=$tmp1
+		echo "band= $tmp1"
+	fi
+
+	tmp1=`grep '^start= ' $source/DATASETS/$dataset | awk '{ print $2 }'`
+	if [ -n "$tmp1" ]
+	then
+		start=$tmp1
+		echo "start= $tmp1"
+	fi
+
+	tmp1=`grep '^c_nots= ' $source/DATASETS/$dataset | awk '{ print $2 }'`
+	if [ -n "$tmp1" ]
+	then
+		c_nots=$tmp1
+		echo "c_nots= $tmp1"
+	fi
+
+	afollow=`grep '^vfollowfile= ' $source/DATASETS/$dataset | awk '{ print $2 }'`
+
+	if [ -n "$afollow" -a  "$tfollow" = "follow" ]
+	then
+		vfollowfile=$afollow
+
+		if [ -f $source/startfiles_vfollow/${vfollowfile}.start ]
+		then
+			echo "vfollow file found: ${vfollowfile}.start"
+		else
+			echo "ERROR: vfollow file NOT FOUND ${vfollowfile}.start"
+			echo ""
+			usage
+			exit 1
+		fi
+	fi
+
+else
+	echo "ERROR: unrecognized data set"
+	echo ""
+	usage
+	exit 1
+		
+fi
+#echo "DEBUG: got this far1"
+
+
+# make slashes into backslash slash for use in sed commands
+cube2=`echo "$cube" | sed -e 's/\//\\\\\//g'`
+
+# check that critical files exist:
+
+if [ -f "$source/$lib" ]
+then
+	echo "VERIFIED: $lib found"
+else
+	echo "ERROR: $lib not found"
+	echo "exit 2"
+	exit 2
+fi
+
+if [ -f "$source/restart_files/$restart" ]
+then
+	echo "VERIFIED: restart_files/$restart  found"
+else
+	echo "ERROR: restart_files/$restart NOT found"
+	echo "exit 2"
+	exit 2
+fi
+
+if [ "$vfollowfile" != "null" -a "$tfollow" = "follow" ]
+then
+	echo "Setting up to follow $vfollowfile assigned to v"
+	# ls -l "$source/startfiles_vfollow/${vfollowfile}.start"
+
+	if [ -f "$source/startfiles_vfollow/${vfollowfile}.start" ]
+	then
+		echo "VERIFIED: startfiles_vfollow/${vfollowfile}.start  found"
+		echo "          will follow growing file $vfollowfile assigned to v"
+		vfollow=1
+	else
+		echo "ERROR: $source/startfiles_vfollow/${vfollowfile}.start  NOT found"
+		echo "exit 2"
+		exit 2
+	fi
+fi
+
+
+# check that cmds.start file is OK:
+
+a1=`grep '^==.DELETPTS.DDDDDDDDDD' ${source}/${start}`
+a2=`grep '^cube: FFFFFFFFFF'       ${source}/${start}`
+a3=`grep '^<AAAAAACMDLIBRARY'      ${source}/${start}`
+
+if [ -z "$a1" ]
+then
+	echo "ERROR: ${source}/${start} file has no '==[DELETPTS]DDDDDDDDDD' line"
+	echo "exit 2"
+	exit 2
+else
+	echo "CHECK VERIFIED: cmds.start file ok with $a1 line"
+fi
+
+if [ -z "$a2" ]
+then
+	echo "ERROR: ${source}/${start} file has no 'cube: FFFFFFFFFF' line"
+	echo "exit 2"
+	exit 2
+else
+	echo "CHECK VERIFIED: cmds.start file ok with $a2 line"
+fi
+
+if [ -z "$a3" ]
+then
+	echo "ERROR: ${source}/${start} file has no '<AAAAAACMDLIBRARY' line"
+	echo "exit 2"
+	exit 2
+else
+	echo "CHECK VERIFIED: cmds.start file ok with $a3 line"
+fi
+
+p1=`pwd`
+
+cd $source
+p2=`pwd`
+cd $p1
+
+if [ "$p1" = "$p2" ]
+then
+	echo "INVALID directory: do not execute this command from"
+	echo "		$p1"
+	echo ""
+	exit 1
+fi
+
+#
+# now have everything to actually assemble command files.
+#
+
+mypwd=`pwd`
+echo "present path: $mypwd" 
+echo "Making directory: $dir"
+mkdir $dir
+
+if [ "$?" -gt 0 ]
+then
+	echo "ERROR creating directory, exiting."
+	exit 1
+fi
+
+if [ "$tetmode" = "cube" ]    # for mode = cube, create group and case directories for mapping results.
+then
+	#####################################################################
+	# check that cube is found
+
+	cd ${dir}
+	if [ "$cube" != "NA" ]
+	then
+		if [ ! -f "$cube" ]
+		then
+			echo "WARNING: $cube"
+			echo "        NOT FOUND.  EXIT 1."
+			exit 1
+		fi
+	fi
+	cd $mypwd
+
+	wccube=`echo "$cube" | wc -c`
+	if [ "$wccube" -gt 73 ]
+	then
+		echo "ERROR: cube path + filename is too long: greater than 73 characters"
+		echo "       cube path + filename = $wccube characters:"
+		echo "       $cube"
+		echo "EXIT 1."
+		exit 1
+	fi
+
+	# check that scale factor is valid
+	toolow=`expr "$scalefactor" \< "0.000001"`
+	tohigh=`expr "$scalefactor" \> "100000000.0"`
+	if [ "$toolow" = "1" ]
+	then
+		echo "ERROR: scale factor < 0.000001: $scalefactor"
+		exit 1
+	fi
+
+	if [ "$toohigh" = "1" ]
+	then
+		echo "ERROR: scale factor > 100000000.0: $scalefactor"
+		exit 1
+	fi
+fi
+
+# now that we know the cube is found, parse for other things on the command line
+#     starting at position 5
+
+shift
+shift
+shift
+shift
+
+#      0               1         2        3                4            5   6    7    8    9    10      12       13           14          15
+# cmd-setup-tetrun   sub_dir  data_set  cube           image_cube      -T minT maxT Tunit -P minpress maxpres pressure-unit image     gif|png|none
+# cmd-setup-tetrun   sub_dir  data_set  singlespectrum follow|nofollow -T minT maxT Tunit -P minpress maxpres pressure-unit autostart
+
+while [ -n "$1" ]
+do
+	echo "debug: var1= $1"
+	if [ "$1" = "autostart" ]
+	then
+		if [ "$tetmode" = "singlespectrum" ]
+		then
+			#echo "autostart mode = $tetmode"
+			autostart=1
+			echo "autostart enabled"
+		else
+			echo "you can only do autorun in singlespectrum mode "
+			exit 2
+		fi
+	fi
+
+
+	if [ "$1" = "-T" -o "$1" = "-t" -o "$1" = "T" -o "$1" = "t" ]
+	then
+		shift
+		mintemperature=$1
+		shift
+		maxtemperature=$1
+		shift
+		tempunit=$1
+
+		if [ "$tempunit" != "K" -a "$tempunit" != "C" ]
+		then
+			echo "Temperture unit error: got $tempunit, should be C or K"
+			echo " "
+			exit 1
+		fi
+		echo "Data Temperature Range = $mintemperature $maxtemperature $tempunit"
+	fi
+
+	if [ "$1" = "-P" -o "$1" = "-p" -o "$1" = "P" -o "$1" = "p" ]
+	then
+		shift
+		minpressure=$1
+		shift
+		maxpressure=$1
+		shift
+		pressureunit=$1
+
+		if [ "$pressureunit" != "bar" -a "$pressureunit" != "Bar" ]
+		then
+			echo "ERROR: Pressure unit not bar or Bar.  Found: ${pressureunit}"
+			echo ""
+			exit 1
+		fi
+		echo "Data Pressure Range =: $minpressure $maxpressure $pressureunit"
+	fi
+
+	if [ "$1" = "image" ]
+	then
+		shift
+		if [ "$1" = "gif" -o "$1" = "png" -o "$1" = "none" ]
+		then
+			imageout=$i
+			echo "Will output quick look images as $imageout"
+		else
+			echo "ERROR: image output type not recognized: $imageout"
+			echo ""
+			exit 1
+		fi
+	fi
+
+	if [ "$1" = "shortcubeid" ]
+	then
+		shift
+		shortcubeid=$1
+	fi
+
+	shift
+done
+
+
+if [ "$tetmode" = "cube" ]    # for mode = cube, create group and case directories for mapping results.
+then
+	#####################################################################
+	echo "making sub-directories in ${dir} for groups and cases"
+
+	#  Group definitions:  (NOTE: keep this in sync with the cmd.lib.setup.* file)
+	#
+	###### group 0:  catch for other declared groups                   ##############
+	###### group 1:  electronic absorptions 1-micron region            ##############
+	###### group 2:  2 to 2.5-micron region narrow                     ##############
+	###### group 3:  vegetation detection                              ##############
+	###### group 4:  broad absorptions in the 1.5-micron region        ##############
+	###### group 5:  broad absorptions in the 2-micron region          ##############
+	###### group 6:  2.5-micron region                                 ##############
+	###### group 7:  2.7 to 3-micron OH region                         ##############
+	###### group 8:  3.2-micron region       empty at the moment       ##############
+	###### group 9:                                                    ##############
+	###### group 10: testing 3.5 um curved continua                    ##############
+	###### group 11: 3.5-micron region linear continua                 ##############
+	###### group 12: 4-micron region                                   ##############
+	###### group 13: 1.3-1.4 micron OH narrow                          ##############
+	###### group 14: 1.4-1.5 micron OH                                 ##############
+	###### group 15: 1.5 micron OH                                     ##############
+	###### group 16:                                                   ##############
+	###### group 17: 1.7 microns CH and water    Future                ##############
+	###### group 18:                                                   ##############
+	###### group 19: 1.9-2 micron water and ice                        ##############
+	###### group 20: the search for rare-earth oxides                  ##############
+	###### group 21: the search for rare-earth oxide Neodymium         ##############
+	###### group 22: the search for rare-earth oxide Samarium          ##############
+	#
+
+dirlist="cmds.all.support  Band.images \
+                group.1um       \
+                group.2um       \
+                group.veg       \
+                group.1.5um-broad       \
+                group.2um-broad \
+                group.2.5um     \
+                group.3um       \
+                group.2.8um     \
+                group.zz        \
+                group.3.5um_curve       \
+                group.3.5um     \
+                group.4um       \
+                group.1.3-1.4um \
+                group.1.4um     \
+                group.1.5um     \
+                group.1.7um     \
+                group.1.9um     \
+                group.ree       \
+                group.ree_neod  \
+                group.ree_samar \
+		group.3.8um	\
+		group.4um	\
+		group.4.1um	\
+		group.4.25um-co2	\
+		group.4.5um	\
+		group.5um	\
+		group.6um	\
+		group.7-8um	\
+		group.8-10um	\
+		group.10-12um	\
+		group.12-14um	\
+		group.14-16um	\
+		group.16-19um	\
+		group.19-22um	\
+		group.ch4gas-2.3um	\
+		group.co2gas-2um	\
+                case.red-edge   \
+                case.veg.type   \
+                case.ep-cal-chl \
+		case.carbonate-2feat"
+
+
+	if [ "$2" != "VIMS2007" ] 
+	then
+	   for i in $dirlist
+	   do
+		echo "mkdir ${dir}/${i}"
+		mkdir ${dir}/${i}
+	   done
+	fi
+
+	if [ "$2" = "VIMS2007" ] 
+	then
+	   for i in cmds.all.support  Band.images \
+		group.ice \
+		group.3.5um     \
+		group.3.5um_curve
+	   do
+		echo "mkdir ${dir}/${i}"
+		mkdir ${dir}/${i}
+	   done
+	fi
+fi
+
+# look for deleted channels
+
+delfile="${source}/DELETED.channels/delete_${data}"
+if [ -f "$delfile" ]
+then
+	a=`grep ${data} $delfile`
+else
+	# look in the original DELETED.channels file
+	a=`grep ${data} ${source}/DELETED.channels/DELETED.channels.txt`
+fi
+
+if [ -z "$a" ]   # if did not fine an deleted channel info, quit
+then
+	echo "ERROR: can not find ${data} DELETED.channels file $delfile"
+	echo "exit 1"
+	exit 1
+fi
+#### OLDway: a=`grep AVIRIS\ ${data} ${source}/DELETED.channels`
+####echo "DEBUG: a=$a"
+####echo "DEBUG: data=$data"
+####echo "DEBUG: restart=$restart"
+
+#--------------------------------------------------------------------
+echo "copying command files to ${dir}"
+
+cp -a ${source}/$lib      ${dir}
+cp -a ${source}/$c_nots   ${dir}/cmd.lib.setup.nots-ratios
+
+
+dpt=`echo $a | sed -e 's/#.*$//' | sed -e 's/ *$//'`
+
+echo "Installing cmds.start file:"
+echo "           Installing deleted points:"
+echo "           $dpt"
+echo "           Using command library $lib"
+echo "           Setting cube path/file name to:"
+echo "           $cube"
+sed -e "s/DDDDDDDDDD/${dpt}/" ${source}/$start | \
+			sed -e "s/FFFFFFFFFF/${cube2}/"           | \
+			sed -e "s/SFSFSFSF/${scalefactor}/"	  | \
+			sed -e "s/AAAAAACMDLIBRARY/${lib}/"	  | \
+			sed -e "s/AAMINTEMP/${mintemperature}/"   | \
+			sed -e "s/AAMAXTEMP/${maxtemperature}/"   | \
+			sed -e "s/AATEMPUNIT/${tempunit}/"	  | \
+			sed -e "s/AAMINPRESSURE/${minpressure}/"  | \
+			sed -e "s/AAMAXPRESSURE/${maxpressure}/"  | \
+			sed -e "s/AAPRESSUREUNIT/${pressureunit}/" | \
+			sed -e '/following line must change/d' > \
+				${dir}/$start
+
+echo "   cube scale factor: ${scalefactor}"
+
+
+echo "Installing cmds.start single file:"
+echo "           Installing deleted points:"
+echo "           $dpt"
+echo "           Using command library $lib"
+sed -e "s/DDDDDDDDDD/${dpt}/" ${source}/$starts | \
+			sed -e "s/FFFFFFFFFF/${cube2}/"           | \
+			sed -e "s/SFSFSFSF/${scalefactor}/"	  | \
+			sed -e "s/AAAAAACMDLIBRARY/${lib}/"       | \
+			sed -e "s/AAMINTEMP/${mintemperature}/"   | \
+			sed -e "s/AAMAXTEMP/${maxtemperature}/"   | \
+			sed -e "s/AATEMPUNIT/${tempunit}/"        | \
+			sed -e "s/AAMINPRESSURE/${minpressure}/"  | \
+			sed -e "s/AAMAXPRESSURE/${maxpressure}/"  | \
+			sed -e "s/AAPRESSUREUNIT/${pressureunit}/"  \
+				> ${dir}/$starts
+
+echo "   temperature min, max, units: ${mintemperature} ${maxtemperature} ${tempunit}"
+echo "   pressure    min, max, units: ${minpressure}    ${maxpressure}    ${pressureunit}"
+
+sed -e "s/FFFFFFFFFF/${cube2}/" ${source}/cmd.runtet | \
+		sed -e "s/CMDSSTART/${start}/" > ${dir}/cmd.runtet
+
+chmod 755 ${dir}/cmd.runtet
+
+if [ "$?" -gt 0 ]
+then
+	echo "ERROR creating $start  Exiting."
+	exit 1
+fi
+
+echo "copying restart file"
+cp ${source}/restart_files/${restart} ${dir}/r1
+
+#########  set up following a growing file ####################
+
+if [ "$vfollow" = "1" ]
+then
+	echo "Making set up for following a growing specpr file"
+	# copy the specpr v fiile and add it to the restart file
+
+	echo "copy ${vfollowfile}"
+	cp $source/startfiles_vfollow/${vfollowfile}.start ${dir}/$vfollowfile
+	ex - ${dir}/r1 <<EOI
+		/ivfl=.*$/ s//ivfl=$vfollowfile      /
+		/iprtv=             0/ s//iprtv=           -23/
+		/isavt=      .unasnd./  s//isavt=      $vfollowfile   /
+		w
+		q
+EOI
+	
+	# make single follow startup
+
+	echo "Making the tetracorder startup command script"
+	cp ${dir}/$starts ${dir}/${starts}.follow
+	echo "s        \# single spectrum mode"                                                  >> ${dir}/${starts}.follow
+	echo "v18 f    \# follow a growing file (v-file only, and v must be read only)"          >> ${dir}/${starts}.follow
+	echo "         \# no minumum and maximum data thresholds"                                >> ${dir}/${starts}.follow
+	echo "4        \# one-line answers to screen, and full diagnostic output to results file" >> ${dir}/${starts}.follow
+	echo "         \# no comment"                                                            >> ${dir}/${starts}.follow
+	echo "         \# blank line (should not get here when following"                        >> ${dir}/${starts}.follow
+	echo "         \# blank line (should not get here when following"                        >> ${dir}/${starts}.follow
+	echo "         \# blank line (should not get here when following"                        >> ${dir}/${starts}.follow
+	echo "x        \# exit the program"                                                      >> ${dir}/${starts}.follow
+fi
+
+if [ "$tetmode" = "cube" ]    # for mode = cube, scripts for mapping results.
+then
+	echo "copying davinci scripts and color keys"
+	for mm in `ls ${source}/cmds.all.support/ | grep -v old`
+	do
+		#echo "cp -a ${source}/cmds.all.support/$mm   ${dir}/cmds.all.support"
+		cp -a ${source}/cmds.all.support/$mm   ${dir}/cmds.all.support
+	done
+
+	mkdir ${dir}/cmds.color.support
+	cp -a ${source}/cmds.color.support/*  ${dir}/cmds.color.support
+
+	mkdir ${dir}/color.keys
+	cp -a ${source}/color.keys/*          ${dir}/color.keys
+
+	chmod 555 ${dir}/cmds.all.support/*
+
+	mkdir ${dir}/results.masses
+	cp -a ${source}/cmds.abundances       ${dir}
+
+	mkdir ${dir}/AAA.info
+	echo "$shortcubeid" > ${dir}/AAA.info/shortcubeid.txt
+	echo "$0 \\"        > ${dir}/AAA.info/CMD.setup
+	echo "   $*"       >> ${dir}/AAA.info/CMD.setup
+	echo "$scalefactor" > ${dir}/AAA.info/cube-scale-factor
+	echo "$dataset"     > ${dir}/AAA.info/dataset
+
+	if [ -f "${source}/COLOR.channels/color-$dataset" ]
+	then
+		echo "copying color channel file COLOR.channels/color-$dataset"
+		cp ${source}/COLOR.channels/color-$dataset  ${dir}/AAA.info/color-$dataset
+		mkdir ${dir}/COLOR.channels/
+		cp ${source}/COLOR.channels/color-$dataset  ${dir}/COLOR.channels/color-$dataset
+	else
+		echo " "
+		echo "ERROR: ${source}/COLOR.channels/color-$dataset file not found"
+		echo "       ths needs to be added"
+		echo "exit 1"
+		exit 1
+		echo " "
+	fi
+fi
+
+TETNCPU=1   # default 1 cpu
+if [ -f "${source}/TETNCPU.txt" ]
+then
+	cp -a ${source}/TETNCPU.txt ${dir}
+	TETNCPU=`head -1 ${dir}/TETNCPU.txt`
+else
+	echo "1" > ${dir}/TETNCPU.txt
+fi
+
+cp -a ${source}/AAAAA.readme.txt                                         ${dir}/
+cp -a ${source}/AAAAA.KNOWN-ISSUES.txt                                   ${dir}/
+cp -a ${source}/AAAA.license.txt                                         ${dir}/
+cp -a ${source}/license.txt                                              ${dir}/
+cp -a ${source}/AAA.cmds.to.get.average.spectra.of.mapped.materials      ${dir}/
+
+echo $band > ${dir}/band.number.grayscale     # band number for gray scale images
+
+echo "setup of ${dir} complete"
+
+
+#====================================================================
+
+echo ""
+echo "Setup complete"
+echo ""
+echo "Manage number of cpus to be used:"
+echo "    setenv TETNCPU  nn   # where nn is the number of cpus"
+echo "    DEFAULT IS CURRENTLY SET TO $TETNCPU"
+echo "    or change the file TETNCPU.txt in ${dir} and enter the number of cpus to use"
+echo "    the number in TETNCPU.txt can be dynamically changed during a run"
+echo ""
+echo ""
+if [ $autostart = 1 ]
+then
+	echo "AUTOSTARTING Tetracorder in background'"
+	echo "cd $dir"
+	cd $dir
+	echo "cmd.runtet follow"
+	./cmd.runtet follow  > tetracorder.single.follow.out 2>&1  &
+
+else
+	echo "To run Tetracorder, cd to $dir and execute the command cmd.runtet:"
+	echo " "
+	echo "cd $dir"
+	echo " "
+	if [ "$tetmode" = "cube" ]    # for mode = cube, create group and case directories for mapping results.
+	then
+		echo 'time ./cmd.runtet cube ' "$cube band $band $imageout" ' >& cmd.runtet.out &'
+	else
+		echo "$tetexesingle r1"
+		echo "<$starts"
+	fi
+fi

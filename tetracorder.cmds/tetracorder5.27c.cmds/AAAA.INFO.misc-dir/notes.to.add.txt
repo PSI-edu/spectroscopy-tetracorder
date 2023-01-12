@@ -1,0 +1,48 @@
+
+trace 3.4um organics reference: use augite WS592
+
+weak  calcite reference: use augite WS588
+
+weak  dolomite:  612  Antigorite NMNH96917.e s06ag21a=bb_
+
+weak calcite:   462  Andradite GDS12 Garnet s06ag21a=cc_
+weak calcite         reference: use andradite_gds12
+
+weak calcite    690  Augite WS588 Pyroxene s06ag21a=cbb 
+
+weak calcite   1542  Diopside HS317.3B (Cr)Pyx s06ag21a=dbb
+
+weak  calcite-dolomite reference: use nickeline_hs264
+
+weak carbonate, bands long of calcite:
+               2766  Knebelite HS419.3B s06ag21a=cbb  
+
+very very weak calcite: 4524  Sepiolite SepSp-1 s06ag21a=cb_
+
+4554  Serpentine HS8.3B s06ag21a=cbc has carbonate short of dolomite bands.
+
+add 4566  Siderite HS271.3B s06ag21a=aa_  
+
+add 4770  Strontianite HS272.3B s06ag21a=bb_ 
+
+add 274  Witherite HS273.3B s06ag21a=aa_ 
+
+add 5928  Magnesite+Hydroma HS47.3B s06ag21a=aa_
+
+add: 3.5 micron band: 5442  Alunite_NH4+Ja NMNH145596A s06ag21a=bb_ 
+add: 3.5 micron band: 5502  Buddingtnt+Na-Mont CU93-260B s06ag21a=b
+
+5136  Tourmaline HS282.2B s06ag21a=ccc has huge 3.8 band
+
+add 3552  Niter GDS43 (K-Saltpeter) s06ag21a=aa_ 
+        3.6and 4.1 features, big
+
+need: Rhodochrosite
+       4284  Rhodochrosite HS338.3B s06ag21a=bb_ 
+       4296  Rhodochrosite HS67 <250um s06ag21a=bb_
+   also need trach Rhodochrosite
+
+Montmorillonite_Fe    have group2 with rlib rec 54 (low channels)
+   need visible, group 1 Fe band.
+   w54 is a nicolet run:
+       smectite montmorillonite Fe GDS759A

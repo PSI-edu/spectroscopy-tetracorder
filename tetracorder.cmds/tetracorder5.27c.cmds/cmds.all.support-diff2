@@ -1,0 +1,3 @@
+#!/bin/sh
+
+diff cmds.all.support-pre-env8.30/$1 cmds.all.support-env-s/$1 

@@ -1,0 +1,22 @@
+#!/bin/sh
+
+if [ -z "$1" ]
+then
+	echo "usage: vicargztogif  input_gzipped_vicar_file   output.gif"
+	exit 1
+fi
+if [ -z "$2" ]
+then
+	echo "usage: vicargztogif  input_gzipped_vicar_file   output.gif"
+	exit 2
+fi
+
+if [ -f "$1" ]
+then
+
+	gunzip --stdout $1 | vicartopgm | ppmtogif > $2
+
+else
+	echo "$1 is not a valid file"
+	exit 3
+fi

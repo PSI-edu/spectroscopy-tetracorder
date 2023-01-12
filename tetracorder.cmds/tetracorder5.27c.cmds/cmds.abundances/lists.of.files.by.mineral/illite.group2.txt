@@ -1,0 +1,13 @@
+# Illite    based on cmd.lib.setup.t5.2d3
+#
+#  DN scale = what band depth = 255 in the tetracorder output image (from 5.2a2 expert system)
+#  BD factor = band depth =1 for pure, fraction in mixture
+#  splib06conv1, sprlb06conv1 = convolved spectrum ID, valid for spectra for 1 - 2171 channels.
+#
+#                                                                 DN     BD    Band                                   convolved
+#              file                                             scale  factor  depth      title                       reference spectrum
+group.2um/micagrp_illite.depth.gz                                 0.5   0.99  0.1127  Illite IMt-1.b <2um             sprlb06conv1  714
+group.2um/micagrp_illite.gds4.depth.gz                            0.5   0.76  0.2103  Illite GDS4 (Marblehead)        sprlb06conv1  726
+group.2um/sulfate-mix_gypsum+jar+illite.intmix.depth.gz           0.5   0.33  0.1323  Gyp+jar+ill BRCM1 Marysvale     splib06conv1 5748
+group.2um/smectite_ammonillsmec.depth.gz                          0.5   0.5   0.1899  Ammonio-Illite/Smectit GDS87    sprlb06conv1  786
+group.2um/micagrp_illite.roscoelite.depth.gz                      0.5   0.15  0.1342  Roscoelite EN124                splib06conv1 4380

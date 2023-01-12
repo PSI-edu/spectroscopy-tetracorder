@@ -1,0 +1,23 @@
+#!/usr/local/bin/davinci -f
+#####!/usr/bin/env -S davinci -f  
+
+###########################  was:  #!/usr/local/bin/davinci -f
+
+
+
+# image ratio
+
+fout="group.2um/talc.all.fd"
+
+#############################################################
+
+a=    load(filename="group.2um/talc.crsgrnd.fd.gz")
+b=    load(filename="group.2um/talc.fngrnd.fd.gz")
+c=    load(filename="group.2um/tremolite.or.talc.fd.gz")
+d=    load(filename="group.2um/saponite.or.talc.fd.gz")
+e=    load(filename="group.2um/talc+carbonate.parkcity.fd.gz")
+f=    load(filename="group.2um/talc+calcite.parkcity.fd.gz")
+
+g = byte (a + b + c + d + e + f)
+
+write(g,filename=fout,type=vicar)

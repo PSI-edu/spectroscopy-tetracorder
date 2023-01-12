@@ -1,0 +1,865 @@
+\###### group 0:  catch for other declared groups                   ##############
+\###### group 1:  electronic absorptions UV to 1-micron region      ##############
+\###### group 2:  2 to 2.5-micron region narrow                     ##############
+\###### group 3:  vegetation detection                              ##############
+\###### group 4:  broad absorptions in the 1.5-micron region        ##############
+\###### group 5:  broad absorptions in the 2-micron region          ##############
+\###### group 6:  2.5-micron region                                 ##############
+\###### group 7:  2.7 to 3-micron OH region                         ##############
+\###### group 8:  2.7 - 2.8-micron OH region narrow bands           ##############
+\###### group 9:  UV (0.1 - 0.3 microns)                            ##############
+\###### group 10: testing 3.5 um curved continua                    ##############
+\###### group 11: 3.5-micron region linear continua                 ##############
+\###### group 12:                                                   ##############
+\###### group 13: 1.3-1.4 micron OH narrow                          ##############
+\###### group 14: 1.4-1.5 micron OH                                 ##############
+\###### group 15: 1.5 micron OH                                     ##############
+\###### group 16: 1.5-1.6 micron OH                                 ##############
+\###### group 17: 1.7 microns CH and water    Future                ##############
+\###### group 18: 1.8 micron region                                 ##############
+\###### group 19: 1.9-2 micron water and ice                        ##############
+\###### group 20: the search for rare-earth oxides                  ##############
+\###### group 21: the search for rare-earth oxide Neodymium         ##############
+\###### group 22: the search for rare-earth oxide Samarium          ##############
+\###### group 23: 3.8 micron region includes OD stretches           ##############
+\###### group 24: 4-micron region                                   ##############
+\###### group 25: 4.1-micron region                                 ##############
+\###### group 26: 4.25 micron CO2 trapped, ice                      ##############
+\###### group 27: 4.5-micron region includes sulfates               ##############
+\###### group 28: 5-micron region includes silicate overtones       ##############
+\###### group 29: 6-micron region, includes H-O-H bends             ##############
+\###### group 30: 7-8-micron region                                 ##############
+\###### group 31: 8-10-micron region                                ##############
+\###### group 32: 10-12-micron region                               ##############
+\###### group 33: 12-14-micron region                               ##############
+\###### group 34: 14-16-micron region                               ##############
+\###### group 35: 16-19-micron region                               ##############
+\###### group 36: 19-22-micron region                               ##############
+\###### group 37: search for methane plume 2.3 micron               ##############
+\###### group 38: search for CO2 gas, 2 microns                     ##############
+\###### group 39:                                                   ##############
+\###### group 40:                                                   ##############
+
+
+\################ begin group 0         veg, snow cover, other      ############
+\###### group 0:  catch for other declared groups, veg, snow cover  ############
+   vegetation1
+   vegetation.dry+green
+   snow.and.ice-77k
+   snow.and.ice-170k
+   snow.melting.1a
+   snow.melting.3
+   snow.melting.8
+   snow.slush.9
+   snow.slush.16
+   snow.melting1a+0.5veg
+   snow.melting9+0.5veg
+   snow.melting16+0.5veg
+   water.high.chlorophyll
+   water.low.chlorophyll
+   water.red.algae
+   water+mont16.5gpl
+   water+mont5.01gpl
+   water+mont1.67gpl
+   water+mont0.5gpl
+   organic_dry_long_grass-thick
+   organic_white_pvc_pipe
+   organic_green_plastic_tarp
+
+
+\################ begin group 1  ###### electronic absorptions UV to 1-micron ####
+\###### group 1: electronic absorptions UV to 1-micron region  ###################
+   organic_green_plastic_tarp_1um
+   fe3+_hematite.fine.gr.gds76
+   fe3+_goethite.medgr.ws222
+   fe3+_goethite+qtz.medgr.gds240
+   fe3+_goethite.fingr
+   fe3+_goethite.medcoarsegr.mpc.trjar
+   fe3+_goethite.coarsegr
+   fe3+_goethite.thincoat
+   fe3+_goeth+jarosite
+   sulfide_pyrite
+   fe3+_sulfate_schwertmannite
+   Mn-Coating
+   fe3+mix_AMD.assemb1
+   fe3+mix_AMD.assemb2
+   fe3+_sulfate_kjarosite200
+   fe3+_goethite.lepidocrosite
+   fe2+_chlor+muscphy
+   fe2+_goeth+musc
+   fe2+fe3+_chlor+goeth.propylzone
+   fe2+generic_nrw.cummingtonite
+   fe2+generic_nrw.actinolite
+   fe2+generic_nrw.hs-actinolite
+   fe2+_pyroxene.hypersthene
+   fe2+_pyroxene.diopside
+   fe2+generic_med.jadeite
+   fe2+_pyroxene_clino_pigeonite
+   epidote
+   fe3+bearing1
+   fe3+_ferrihydrite
+   fe3+_hematite.med.gr.gds27
+   fe3+_hematite.thincoat
+   fe3+_hematite.fine.gr.fe2602
+   fe3+_hematite.fine.gr.ws161
+   fe3+_smectite_nontronite
+   fe2+generic_brd.br5a_actinolite
+   fe2+fe3+mix_with_hematite_br5b
+   fe2+generic_brd.br22c_actinolite
+   fe2+generic_br33a_bioqtzmonz_epidote
+   fe2+generic_brd.br36a_chlorite
+   fe2+fe3+_hematite_weathering
+   fe2+generic_basalt_br46b
+   fe3+_hematite.lg.gr.br25a
+   fe3+_hematite.med.gr.br25b
+   fe3+_hematite.lg.gr.br25c
+   fe3+_hematite.nano.BR34b2
+   fe3+_hematite.nano.BR34b2b
+   fe3+_hematite.lg.gr.br34c
+   fe3+_sulfate_jarosite_br34a2
+   fe2+generic_broad_br60b
+   fe2+generic_vbroad_br20
+   fe2+fe3+_water_RTsludge
+   fe2+_chlorite.clinochlor
+   fe2+_chlorite.Felow.clinochlor
+   fe2+_chlorite.thuringite
+   copper_carbonate_azurite
+   fe3+copper-hydroxide_pitchlimonite
+   copper_carbonate_malachite
+   copper_sulfate_bluefflor
+   copper_precipitate_greenslime
+   fe2+_olivine-lrg-gr
+   fe2+_olivine-fine-gr
+   carbonate_rhodochrosite
+   fe2+generic_carbonate_siderite1
+   fe2+generic_amphibole_riebeckite
+   fe3+fe2+_sulfate_coquimbite
+   fe3+fe2+_sulfate_copiapite
+   copper_chrysocolla
+   ree_neodymium_oxide
+   ree_samarium_oxide
+   fe2+generic_axinite
+   fe2+generic_staurolite
+   fe2+generic_almandine
+   fe2+_pyroxene_augite
+   fe2+_pyroxene.bronzite
+   fe2+generic_sulfate_butlerite
+   fe2+_feldspar.bytownite
+   sulfide_copper_chalcopyrite
+   fe2+_chromite
+   sulfide_cinnabar
+   copper_oxide_cuprite
+   fe3+mn_desert.varnish1
+   fe3+mn_desert.varnish2
+   fe2+_pyroxene_enstatite
+   fe2+_pyroxene_hedenbergite
+   sulfate_lazurite
+   fe3+_maghemite
+   magnetite
+   mn_oxide_pyrolusite
+   fe2+_feldspar_microcline
+   fe2+_feldspar_albite
+   fe2+_feldspar_orthoclase
+   inosilicate_pectolite
+   mn2+_rhodonite
+   sulfur
+
+
+\################ begin group 2  ###### 2 to 2.5-micron region narrow #######
+\###### group 2: 2 to 2.5-micron region narrow              ######################
+   organic_vegetation-dry-grass-long
+   organic_vegetation-dry-grass-golden
+   organic_vegetation-dry-wood
+   organic_plastic-tarp1
+   organic_plastic-vinyl
+   organic_fiberglass-roofing
+   organic_plastic-polystyrene
+   organic_plastic-pete
+   organic_plastic-pete2
+   organic_plastic-hdpe.1
+   organic_paint-1
+   organic_plastic-pete3
+   organic_plastic-pete4
+   sulfate_kalun150c
+   sulfate_kalun250c
+   sulfate_kalun450c
+   sulfate_naalun150c
+   sulfate_naalun300c
+   sulfate_naalun450c
+   sulfate_na82alun100c
+   sulfate+kaolingrp_natroalun+dickite
+   sulfate_na63alun300c
+   sulfate_na40alun400c
+   sulfate_alunNa03
+   sulfate_alunNa56450c
+   sulfate_alunNa78.450c
+   sulfate_alun35K65Na.low
+   sulfate_alun73K27Na.low
+   sulfate_alun66K34Na.low
+   micagrp_muscovite-med-Al
+   micagrp_muscovite-medhigh-Al
+   micagrp_paragonite
+   micagrp_illite
+   micagrp_illite.gds4
+   micagrp_muscovite-low-Al
+   micagrp_muscoviteFerich
+   kaolgrp_kaolinite_wxl
+   kaolgrp_kaolinite_pxl
+   kaolgrp_halloysite
+   kaolgrp_dickite
+   sulfate_gypsum
+   kaolin.5+smect.5
+   kaolin.3+smect.7
+   smectite_montmorillonite_na_highswelling
+   smectite_montmorillonite_fe_swelling
+   smectite_montmorillonite_ca_swelling
+   sioh_hydrated_basaltic_glass
+   sulfate_kieserite
+   sulfate_szomolnokite
+   sulfate_szomolnokite_heated
+   perchlorate_mg
+   perchlorate_na
+   smectite_beidellite_gds123
+   smectite_beidellite_gds124
+   sioh_chalcedony
+   hydroxide_diaspore
+   pyrophyllite
+   kaol.75+pyroph.25
+   pyroph.5+mont0.5
+   pyroph.5+alunit.5
+   alunite+pyrophyl
+   pyroph+tr.musc
+   musc+pyroph
+   alunite+musc+pyroph
+   alunite.5+kaol.5
+   kaol.75+alun.25
+   Kalun+kaol.intmx
+   Na-alun+kaol.intmx
+   kaolin.5+muscov.medAl
+   kaolin.5+muscov.medhighAl
+   kaolin+musc.intimat
+   musc+jarosite.intimat
+   sulfate-mix_gypsum+jar+illite.intmix
+   sulfate-mix_gyp+jar+musc.amix
+   sulfate-mix_gyp+jar+musc+dick.amix
+   musc+gyp+jar+dick.amix
+   dick+musc+gyp+jar.amix
+   alunite.5+musc.5
+   alunite.33+kaol.33+musc.33
+   muscovite+chlorite
+   smectite_ammonillsmec
+   feldspar_buddingtonite_ammonium
+   feldspar_buddington.namont
+   feldspar_buddington.namont2
+   sulfate_ammonalunite
+   sulfate_ammonjarosite
+   carbonate_dolomite
+   actinolite
+   amphibole
+   micagrp_biotite
+   micagrp_biotite-phlogopite
+   chlorite-skarn
+   chlorite
+   prehnite+.50chlorite
+   prehnite+.67chlorite
+   prehnite+.75chlorite
+   carbonate_aragonite
+   chlorite_clinochlore
+   chlorite_clinochlore.nmnh83369
+   chlorite_clinochlore.fe.gds157
+   chlorite_clinochlore.fe.sc-cca-1
+   chlorite_cookeite-car-1.a
+   chlorite_cookeite-car-1.c
+   chlorite_thuringite
+   epidote
+   hornblende
+   sulfate_jarosite-Na
+   sulfate_jarosite-K
+   sulfate_jarosite-lowT
+   phlogopite
+   tremolite.or.talc
+   talc.crsgrnd
+   talc.fngrnd
+   talc+calcite.parkcity
+   talc+carbonate.parkcity
+   carbonate_calcite+0.2Ca-mont
+   carbonate_magnesite
+   carbonate_calcite
+   carbonate_calcite+dolomite.5
+   carbonate_dolo+.5ca-mont
+   calcite.25+dolom.25+Na-mont.5
+   carbonate_calcite.25+dolom.25+Ca-mont.5
+   carbonate_siderite
+   smectite_nontronite_swelling
+   clay_hectorite
+   saponite.or.talc
+   sepiolite
+   calcite+0.2Na-mont
+   calcite+0.5Ca-mont
+   carbonate_calcite+0.3muscovite
+   organic_drygrass+.17Na-mont
+   carbonate_dolomite.5+Na-mont.5
+   carbonate_smectite_calcite.33+Ca-mont.67
+   carbonate_calcite+0.2kaolwxl
+   carbonate_calcite0.7+kaol0.3
+   phyllosilicate.clintonite
+   palygorskite
+   zoisite
+   elbaite
+   hydroxide_gibbsite
+   nitrate_niter
+   topaz
+   carbonate_rhodochrosite
+   carbonate_witherite
+   prehnite
+   prehnite+muscovite
+   borate_pinnoite
+   polyhalite
+   rivadavite
+   howlite
+   ulexite
+   white.crust.starkeyite
+   zeolite_analcime
+   hydroxide_brucite
+   chloride_carnallite
+   borate_colemanite
+   datolite
+   hydrogrossular
+   micagrp_lepidolite
+   micagrp_margarite
+   sulfate_mascagnite
+   sulfate_mirabilite-wet_soil
+   zeolite_natrolite
+   richterite
+   serpentine_chrysotile.coarse-fibrous
+   serpentine_chrysotile.med-fine-fibrous
+   serpentine_chrysotile.fine-fibrous
+   serpentine_cronstedtite
+   micagrp_illite.roscoelite
+   carbonate_strontianite
+   sulfate_syngenite
+   chrysocolla
+   carbonate_azurite
+   carbonate_malachite
+   cyanide-CdK
+   cyanide-NiK
+   cyanide-trihydrate
+   cyanide-KFe
+   cyanide-ZnK
+   organic_plastic.grnhs.roof
+   organic_benzene+montswy
+   organic_trichlor+montswy
+   organic_toluene+montswy
+   organic_unleaded.gas+montswy
+   organic_tce+montswy
+   zunyite
+   sulfate-mix_gypsum.trace.dust+debris-WTC01-2
+   sulfate-mix_gypsum.trace.dust+debris-WTC01-28
+   chrysotile.gypsum.wtc01-8
+   portlandite
+   nitrate_potassium
+   nitrate_sodium
+   micagrp_vermiculite_GDS458
+   micagrp_vermiculite_ALB4SA00
+   micagrp_vermiculite_WS682
+   micagrp_vermiculite_WS681
+   methane-gas-2.37um-experimental
+
+
+\################ begin group 3  ###### vegetation detection  ###############
+\###### group 3: vegetation detection                       ######################
+   vegetation.map
+   vegetation.weak.map
+   vegetation.dry+green
+   vegetation.dry_nonphotosyn
+
+
+\################ begin group 4 ###### broad absorptions 1.5-micron region ##
+\###### group 4: broad absorptions in the 1.5-micron region ######################
+   anorthite_hs201.3b
+   bytownite_hs106.3b
+   microcline_hs103.3b
+   magnetite_hs195.3b.or.olivine
+   sphalerite_s26-341_1.5um
+   rutile_hs126.3b
+   fe2+_wollastonite_hs348.3b
+   olivine_fo91_gds71.b
+   olivine_fo89_gds70.a
+   olivine_fo89_gds70.c
+   olivine_fo89_gds70.d
+   olivine_fo66_ki3054
+   olivine_fo60_ki3189
+   olivine_fo80_hs285
+   olivine_fo18_ki3377
+   g4-fe2+generic_chlor+muscphy
+   g4-fe2+generic_chlorite.clinochlor
+   g4-fe2+generic_brd.br5a_actinolite
+   g4-fe2+generic_brd.br22c_actinolite
+   g4-fe2+generic_vbroad_br20
+   g4-fe2+generic_nrw.cummingtonite
+
+
+\################ begin group 5 ###### broad absorptions 2-micron region ####
+\###### group 5: broad absorptions in the 2-micron region ########################
+   diaspore
+   pyroxene.augite
+   pyroxene.bronzite
+   pyroxene.enstatite
+   pyroxene.hypersthene
+   pyroxene.pigeonite
+   g5-water.1a-mix
+
+
+\################ begin group 6 ###### 2.5-micron region ####################
+\###### group 6: 2.5-micron region                        ########################
+   eugsterite.2.5um.water
+   adularia_2.5um
+   naalun450c.2.5um
+   analcime.2.5um
+   carbonate_calcite.2.5um
+   carbonate_dolomite.2.5um
+   carbonate_magnesite.2.5um
+   carbonate_siderite.2.5um
+   carbonate_rhodochrosite.2.5um
+   carbonate_witherite.2.5um
+   carbonate_strontianite.2.5um
+
+
+\################ begin group 7 ###### 2.7 to 3-micron OH region ############
+\###### group 7: 2.7 to 3-micron OH region                ########################
+   goethite_3.17um
+   grossular_3.17um
+   jarosite_3.18um
+
+
+\################ begin group 8 ###### 2.7 - 2.8-micron OH narrow ###########
+\###### group 8: 2.7 - 2.8-micron OH region narrow bands            ##############
+   oh2.72um_ref_pyrophyllite
+   oh2.75um_ref_muscovite_gds113
+   oh2.76um_ref_illite_gds4
+   oh2.81um_ref_tourmaline
+   oh2.83um_ref_thenardite
+   oh2.82um_ref_psilomelane
+
+
+\################ begin group 9 ###### UV (0.1 - 0.3 microns)  ##############
+\###### group 9: UV (0.1 - 0.3 microns)                   ########################
+
+
+\################ begin group 10 ###### 3.5-micron region curved contin #####
+\###### group 10:  3.5-micron region curved continua      ########################
+   organic_3.237d_aromatic-benzene_curvc
+   organic_trace_3.42um_aliphatic1_curvc
+   carbonate_calcite_3.5um_curvc
+   carbonate_dolomite_3.5um_curvc
+   carbonate_trace_3.5um_curvc
+   carbonate_trace-b_3.4um.curv
+   carbonate_trace-c_3.4um.curvc
+   carbonate_trace-c2b_3.4um.curvc
+   carbonate_trace-calcdolo_3.4um.curvc
+   carbonate_magnesite+hydromagnesite_curvc
+   nitrate_niter_3.6um_curvc
+   co2_ice-on-moon62231.curvc
+   CO2_ice_g0.0300cm.curvc
+   CO2_ice_g0.1000cm.curvc
+   organic.3.41um.nonyne_curvc
+   organic.3.37um.pentene_curvc
+   organic.3.24um.pyridine_curvc
+   organic.3.25um.nitrobenzene_curvc
+   hydrogen_peroxide.3.52um_curvc
+
+
+\################ begin group 11 ###### 3.5-micron region linear contin #####
+\###### group 11:  3.5-micron region linear continua      ########################
+   organic_3.237d_aromatic-benzene_linc
+   organic_trace_aliphatic1_linc
+   carbonate_calcite_3.5um_linc
+   carbonate_dolomite_3.5um_linc
+   carbonate_trace_3.5um_linc
+   carbonate_trace-b_3.4um_linc
+   carbonate_trace-c_3.4um_linc
+   carbonate_trace-c2b_3.4um.linc
+   carbonate_trace-calcdolo_3.4um_linc
+   carbonate_magnesite+hydromagnesite_linc
+   nitrate_niter_3.6um_linc
+   co2_ice-on-moon62231_linc
+   CO2_ice_g0.0300cm_linc
+   CO2_ice_g0.1000cm_linc
+   organic.3.41um.nonyne_linc
+   organic.3.37um.pentene_linc
+   organic.3.24um.pyridine_linc
+   organic.3.25um.nitrobenzene_linc
+   hydrogen_peroxide.3.52um_linc
+
+
+\################ begin group 12 ############################################
+\###### group 12: unused                                  ########################
+\###### group 12:                                           ####################
+
+
+\################ begin group 13 ###### 1.3-1.4 micron OH narrow  ###########
+\###### group 13: 1.3-1.4 micron OH narrow                ########################
+   oh_1.397_mica-phlogopite
+   oh_1.383_amphibole-richterite
+   oh_1.378_phyllo-ksg-chrysotile
+   oh_1.381_phyllo-ksg-dickite
+   oh_1.388_phyllo-chlorite
+   oh_1.385_phyllo-ksg-nacrite
+   oh_1.390_phyllo-ksg-endellite
+   oh_1.392_amphibole-tremolite
+   oh_1.392_smectite-saponite
+   oh_1.392_phyllo-ksg-lizardite
+   oh_1.393_phyllo-serpentine
+   oh_1.393_phyllo-talc
+   oh_1.394_phyllo-pyrophyllite
+   oh_1.395_phyllo-ksg-antigorite
+   oh_1.396_amphibole-actinolite
+   oh_1.398_phyllo-clinochlore
+   oh_1.396_amphibole-uralite
+   oh_1.398_amphibole-smaragdit
+   oh_1.398-phyllo-kaolinite-wxl
+   oh_1.400_phyllo-chlorgrp-cookeite
+   oh_1.401_mica-lepidolite
+   oh_1.406_silica-opal
+   oh_1.408_mica-paragonite
+   oh_1.409_mica-lepidolite
+   kaolin.5+muscov.medhighAl1.41
+   oh_1.413_phyllo-kaolinite-pxl
+   oh_1.432_phyllo-vermiculite
+
+
+\################ begin group 14 ###### 1.4-micron region OH ################
+\###### group 14: 1.4-micron region OH                    ########################
+   ohb_1.385_phyllo-nacrite
+   ohb_1.398_phyllo-kaolinite-wxl
+   ohb_1.400_phyllo-cookeite
+   ohb_1.406_nesosil-topaz
+   ohb_1.406_tectosil-opal
+   ohb_1.408_mica-paragonite
+   ohb_1.409_phyllo-lepidolite
+   ohb_1.409_smectite-sauconite
+   ohb_1.410_phyllo-chrysocolla
+   ohb_1.410_kaolgrp-halloysite
+   ohb_1.410_mica-margarite
+   kaolin.5+muscov.medhighAl1.41b
+   ohb_1.410_mica-muscovite
+   ohb_1.411_smectite-montmor-swy
+   ohb_1.413_kaolgrp-kaolinite-pxl
+   ohb_1.413_nesosil-hydrogross
+   ohb_1.414_smectite-hectorite
+   ohb_1.416_phyllo-sepiolite
+   ohb_1.416_mica-roscoelite
+   ohb_1.416_mica-illite
+   ohb_1.416_smectite-montmor-saz
+   ohb_1.417_phyllo-palygorsk
+   ohb_1.418_mica_muscovite
+   ohb_1.418_zeolite_mordonite
+   ohb_1.419_zeolite-stilbite
+   ohb_1.419_zeolite-clinpt
+   ohb_1.422_zeolite-heuland
+   ohb_1.423_scapolute-meionite
+   ohb_1.424_smectite-nontronite
+   ohb_1.425_scapolite-mizzonite
+   ohb_1.425_sulfate-alunite
+   ohb_1.429_sodalite-lazurite
+   ohb_1.431_zeolite-laumontite
+   ohb_1.431_cyclosil-elbaite
+   ohb_1.435_tourmaline
+   ohb_1.438_sulfate-alunite-na
+   ohb_1.424_zeolite-analcime
+   ohb_1.436_sulfate-eugsterite
+   ohb_1.440_zeolite-scolecite
+   ohb_1.447_sulfate-gypsum
+   ohb_1.449_sulfate-schwertm
+   ohb_1.450_sulfate-copiapite
+   ohb_1.432_phyllo-vermiculite
+   ohb_1.455_zeolite-natrolite
+   ohb_1.451_hydroxide-gibbsite
+
+
+\################ begin group 15 ###### 1.45-1.5 micron OH ##################
+\###### group 15:  1.45-1.5 micron OH                     ########################
+   ohc_1.451_hydroxide-gibbsite
+   ohc_1.455_zeolite-natrolite
+   ohc_1.464_sulfate-bloedite
+   ohc_1.469_sulfate-jarosite-k
+   ohc_1.471_sulfate-jarosite-k
+   ohc_1.471_nesisil-datolite
+   ohc_1.478_sulfate-jarosite-na90c
+   ohc_1.479_sulfate-jarosite-na200c
+   ohc_1.480_phyllo-prehnite
+
+
+\################ begin group 16 ###### 1.5-1.6 micron OH ###################
+\###### group 16:  1.5-1.6 micron OH                      ########################
+
+
+\################ begin group 17 ###### .7 microns CH and water #############
+\###### group 17:  1.7 microns CH and water    Future     ########################
+
+
+\################ begin group 18 ###### 1.8 micron region  ##################
+\###### group 18:  1.8 micron region                      ########################
+
+
+\################ begin group 19 ###### 1.9-2 micron water and ice + ########
+\###### group 19: 1.9-2 micron water and ice +            ########################
+   water_1.896_beryl
+   water_1.902_silica-opal
+   water_1.903_smectite-saponite
+   water_1.906_montmor-na
+   water_1.907_smectite-nontronite
+   water_1.908_smectite-beidell
+   water_1.908_phyllo-illite
+   water_1.909_mont-saz
+   water_1.910_halloysite
+   water_1.910_zeolite-clinopt
+   water_1.910_stonwplaya
+   water_1.910_zeolite-mordonite
+   water_1.912_zeolite-analcime
+   water_1.916_nesosil-sillim
+   water_1.917_zeolite-heuland
+   water_1.920_sulfate-bassanite
+   water_1.918_perchlorate-mg
+   water_1.923_chert
+   water_1.924_perchlorate-na
+   water_broad_1.927_veg
+   water_1.929_sulfate-epsomite
+   water_1.931_narrow-cheatgrass
+   water_1.932_sulfate-eusgterite
+   water_1.940_zeolite-natrolite
+   water_1.941_zeolite-natrolite
+   water_1.941_zeolite-scolecite
+   water_1.942_sulfate-schwert
+   water_1.943_sulfate-gypsum
+   water_1.943_brick
+   water_1.944_sulfate-polyhalite
+   water_1.946_sulfate-copiapite
+   water_1.951_sulfate-bloedite
+   water_1.960_sulfate-butler
+   water_1.964_sulfate-feso4
+   water_1.971_sulfate-kainite
+   water_1.980_salt-carnallite
+   water_1.981_sulfate-coquimb
+   water_1.991_sulfate-syngite
+   h20_ice_2.02um-77k-a
+   water_2.073_sulfate-kieserite
+   water_2.060_sulfate_szomoln
+   water_2.093_sulfate_szomoln
+   water_2.122_nh4-buddingt
+   water_2.130_sulfate_kieserite
+   water_2.136_nh4-mascagnite
+
+
+\################ begin group 20 ###### the search for rare-earth oxides ####
+\########## group 20: the search for rare-earth oxides ###########################
+   neodymium_oxide_compete
+   samarium_oxide_compete
+
+
+\################ begin group 21 ###### rare-earth oxide Neodymium ##########
+\########## group 21: the search for rare-earth oxide Neodymium ##################
+   neodymium_oxide1
+
+
+\################ begin group 22 ###### rare-earth oxide Samarium ###########
+\########## group 22: the search for rare-earth oxide Samarium  ##################
+   samarium_oxide1
+
+
+\################ begin group 23 ###### 3.8 micron region, OD stretches #####
+\###### group 23: 3.8 micron region includes OD stretches  #######################
+\###### group 23: 3.8 micron region includes OD stretches   ######################
+
+
+\################ begin group 24 ###### 4-micron region #####################
+\###### group 24: 4-micron region                         ########################
+   carbonate_calcite_4um_linc
+   carbonate_dolomite_4um_linc
+   carbonate_trace_4um_linc
+   carbonate_trace-b_4um_linc
+   carbonate_trace-c_4um_linc
+   carbonate_trace-calcdolo_4um_linc
+   carbonate_magnesite+hydromagnesite_4umlinc
+   nitrate_niter_4.1um_linc
+\###### group 24: 4-micron region                             ####################
+
+
+\################ begin group 25 ###### 4.1-micron region ###################
+\###### group 25: 4.1-micron region  (e.g. Ice OD stretch)   #####################
+\###### group 25: 4.1-micron region  (e.g. Ice OD stretch)    ####################
+
+
+\################ begin group 26 ###### 4.25 micron CO2 trapped, ice ########
+\###### group 26: 4.25 micron CO2 trapped, ice            ########################
+   trapped-co2-4.24um_ref-beryl
+   trapped-co2-4.26um_ref-cordierite
+   trapped-co2-4.265um_ref-apatite
+   trapped-co2-4.268um_ref-microcline
+   trapped-co2-4.272um_ref-perthite
+   trapped-co2-4.269um_ref-apatite
+   trapped-co2-4.31um_ref-topaz
+   trapped-co2-4.34um_ref-sillimanite
+\###### group 26: 4.25 micron CO2 trapped, ice                ####################
+
+
+\################ begin group 27 ###### 4.5-micron region ###################
+\###### group 27: 4.5-micron region includes sulfates     ########################
+   feldspar_adularia-4.5um
+   sulfate_alunite-na82-4.5um
+   sulfate_alunite-na83-4.5um
+   sulfate_alunite-na03-4.5um
+   sulfate_alunite--nh4-j-4.5um
+   sulfate_alunite-400c-4.5um
+   sulfate_alunite-na56-4.5um
+   sulfate_anhydrite-4.5um
+   sulfate_barite-4.5um
+   sulfate_bassanite-4.5um
+   phyllosilicate_beidellite+montmor-4.5um
+   sulfate_bloedite-4.5um
+   sulfate_butlerite-4.5um
+   carbonate_calcite-4.67um
+   sulfate_celestite-4.5um
+   zeolite_chabazitemix-4.5um
+   cyanide_cyanide-cap-4.5um
+   cyanide_cyanide-nik-4.5um
+   cyanide_cyanide-znk-4.5um
+   carbonate_dolomite-4.63um
+   silicate_elbaite-4.5um
+   sulfate_epsomite-4.5um
+   zeolite_erionitemix-4.5um
+   sulfate_eugsterite-4.5um
+   sulfate_gypsum-4.5um
+   fe3+_hematite_a-4.5um
+   fe3+_hematite_c-4.5um
+   zeolite_heulandite-4.5um
+   sulfate_kainite-4.5um
+   sulfate_kieserite-4.5um
+   zeolite_laumontite-4.5um
+   phyllosilicate_lepidolite-4.5um
+   carbonate_magnesite-4.59um
+   zeolite_mesolite-4.5um
+   sulfate_mirabilite-4.5um
+   zeolite_natrolite-4.5um
+   zeolite_natrolite-4.5um
+   sulfate_polyhalite-4.5um
+   carbonate_rhodochrosite-4.69um
+   feldspar_sanidine-4.5um
+   zeolite_scolecite-4.5um
+   phyllosilicate_sepiolite-4.5um
+   carbonate_siderite-4.65um
+   carbonate_strontianite-4.70um
+   sulfate_syngenite-4.5um
+   sulfate_thenardite-4.5um
+   carbonate_witherite-4.74um
+\###### group 27: 4.5-micron region includes sulfates         ####################
+
+
+\################ begin group 28 ###### 5-micron region #####################
+\###### group 28: 5-micron region includes silicate overtones  ###################
+\###### group 28: 5-micron region includes silicate overtones  ###################
+
+
+\################ begin group 29 ###### 6-micron region, H-O-H bends ########
+\###### group 29: 6-micron region, includes H-O-H bends   ########################
+\###### group 29: 6-micron region, includes H-O-H bends       ####################
+
+
+\################ begin group 30 ############################################
+\###### group 30: 7-8-micron region                       ########################
+\###### group 30: 7-8-micron region                           ####################
+
+
+\################ begin group 31 ############################################
+\###### group 31: 8-10-micron region                      ########################
+\###### group 31: 8-10-micron region                          ####################
+
+
+\################ begin group 32 ############################################
+\###### group 32: 10-12-micron region                     ########################
+\###### group 32: 10-12-micron region                         ####################
+
+
+\################ begin group 33 ############################################
+\###### group 33: 12-14-micron region                     ########################
+\###### group 33: 12-14-micron region                         ####################
+
+
+\################ begin group 34 ############################################
+\###### group 34: 14-16-micron region                     ########################
+\###### group 34: 14-16-micron region                         ####################
+
+
+\################ begin group 35 ############################################
+\###### group 35: 16-19-micron region                     ########################
+\###### group 35: 16-19-micron region                         ####################
+
+
+\################ begin group 36 ############################################
+\###### group 36: 19-22-micron region                     ########################
+\###### group 36: 19-22-micron region                         ####################
+
+
+\################ begin group 37    methane plume search  ###################
+\###### group 37: search for methane plume 2.3 micron     ########################
+   methane-gas-2.37um_g37-experimental
+\###### group 37: search for methane plume 2.3 micron         ####################
+
+
+\################ begin group 38    CO2 gas plume search   ##################
+\###### group 38: search for CO2 gas, 2 microns           ########################
+   co2-gas-2um_g38-experimental
+\###### group 38: search for CO2 gas, 2 microns               ####################
+
+
+\################ begin group 39 ############################################
+\###### group 39:                                         ########################
+\###### group 39:                                             ####################
+
+
+\################ begin group 40 ############################################
+\###### group 40:                                         ########################
+\###### group 40:                                             ####################
+
+
+\######  Cases:
+   red.edge.shift.1
+   red.edge.shift.2
+   vegetation.type1
+   vegetation.type2
+   vegetation.type3
+   vegetation.type4
+   vegetation.type5
+   vegetation.type6
+   vegetation.type7
+   vegetation.type8
+   vegetation.type9
+   vegetation.type10
+   vegetation.type11
+   vegetation.type12
+   vegetation.type13
+   vegetation.type14
+   vegetation.type15
+   veg0.9um.band
+   veg1.2um.band
+   veg1.4um.band
+   calcite
+   epidote
+   ripidolite
+   CEC-D.33Ep66Ca
+   CEC-E.66Ep33Ca
+   CEC-G.20Ch60Ep20Ca
+   CEC-H.60Ch20Ep20Ca
+   CEC-I.20Ch20Ep60Ca
+   CEC-J.33Ch66Ca
+   CEC-K.60Ch20Ep20Ca
+   CEC-L.66Ch33Ep
+   CEC-M.33Ch66Ep
+   CEC-N.33Ch33Ep33Ca
+   carbonate_calcite.2.3+2.5um
+   carbonate_dolomite.2.3+2.5um
+   carbonate_magnesite.2.3+2.5um
+   carbonate_siderite.2.3+2.5um
+   carbonate_rhodochrosite.2.3+2.5um
+   carbonate_witherite.2.3+2.5um
+   carbonate_strontianite.2.3+2.5um

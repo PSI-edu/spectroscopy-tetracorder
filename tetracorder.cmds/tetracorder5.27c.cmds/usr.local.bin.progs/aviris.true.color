@@ -1,0 +1,72 @@
+#!/bin/sh -x
+# extract color channels for making 3-band true color
+
+# True color:
+# ===============================
+#               AVIRIS  AVIRIS
+# Center wave    1994   9/1993   avg 4 channels
+# ----------------------------------------------
+# 0.45 um     ch= 9         8     7  8  9 10
+# 0.545um        19        18    17 18 19 20
+# 0.66 um        31        30    27 28 29 30
+
+# e.g. $1=/o1/Summitville/CUBE/summr3s3-4.reflt
+# e.g. $2=r3s3-4.ch7-10
+# e.g. $3=r3s3-4.ch17-20
+# e.g. $4=r3s3-4.ch27-30
+#############################################################
+prog=`basename $0`
+
+if [ -z "$1" -o -z "$2" ]
+then
+	echo "Usage: $prog   cube_file_name   output_base_file_name"
+	exit 1
+fi
+
+if [ ! -s "$1" ]
+then
+	echo "ERROR: cube does not exist, or is zero length:"
+	echo "$1"
+	exit 2
+fi
+
+if [ -f "$2" ]
+then
+	echo "ERROR: output file $2 already exists"
+	exit 3
+fi
+if [ -d "$2" ]
+then
+	echo "ERROR: output file $2 already exists as a directory"
+	exit 3
+fi
+
+cube=$1
+blue=${2}.ch7-10
+green=${2}.ch17-20
+red=${2}.ch27-30
+#############################################################
+
+dprog=davinci.add4.bands 
+
+echo "doing blue"
+$dprog $cube 7 8 9 10 $blue
+
+echo "doing green"
+$dprog $cube 17 18 19 20 $green
+
+echo "doing red"
+$dprog $cube 27 28 29 30 $red
+
+#############################################################
+# original method (improved method after newer features added to davinci)
+#dprog=/usr/local/bin/davinci.scripts/Scripts/
+#
+#$dprog/davinci.add.bands7-10 $cube $blue
+#
+#$dprog/davinci.add.bands17-20 $cube $green
+#
+#$dprog/davinci.add.bands27-30 $cube $red
+#
+#############################################################
+exit

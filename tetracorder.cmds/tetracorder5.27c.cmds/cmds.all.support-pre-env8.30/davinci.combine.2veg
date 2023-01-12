@@ -1,0 +1,14 @@
+#!/usr/local/bin/davinci -f
+######!/usr/bin/env -S davinci -f  
+
+###########################  was:  #!/usr/local/bin/davinci -f
+
+
+###################################################
+# User:   rclark    Date:  Thu Sep  4 16:04:21 1997
+###################################################
+a=read(filename="group.veg/vegetation.map.depth.gz")
+b=read(filename="group.veg/vegetation.weak.map.depth.gz")
+c=a+b
+write (c,filename="group.veg/vegetation.map.add2.depth",type=vicar)
+

@@ -1,0 +1,16 @@
+#!/bin/sh
+
+libfile='cmd.lib.setup.t5.27c1'
+
+echo "$libfile"
+
+egrep 'begin\ group|Output\ base\ file|####\ group\ ' $libfile  | \
+     sed -e 's/\\#############*\ begin\ group\ /\\################\ begin\ group\ /' | \
+	tr '' '\n'  |  sed -e 's/\\# [Oo]utput base.*$//' |  sed -e 's/ *$//'  \
+		> output-base-file-names.by.group.txt
+
+entries=`cat output-base-file-names.by.group.txt | grep -v '####' | grep -v '^$' | wc -l`
+
+groups=`cat output-base-file-names.by.group.txt | grep 'begin group' | wc -l`
+
+echo "           has $entries entries in $groups groups (and __ cases)"

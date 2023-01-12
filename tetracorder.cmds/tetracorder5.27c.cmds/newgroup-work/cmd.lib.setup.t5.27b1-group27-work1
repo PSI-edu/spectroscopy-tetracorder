@@ -1,0 +1,2021 @@
+\#################################################################################
+group 27
+use= yes           \# yes or no,     if no,    skip this entry.
+udata: reflectance
+convolve: no
+preratio: none
+preprocess: none
+algorithm: tricorder-primary
+ID=feldspar_adularia-4.5um
+
+define library records
+   a SMALL:  [splib06]  90 d         \# file ID, rec no.    1 to 2171 channels
+   a MEDIUM: [splib06]  xxxx d         \# file ID, rec no. 2172 to 4852 channels
+   a LARGE:  [splib06]  xxxx d         \# file ID, rec no. larger_chans_future
+endlibraryrecords
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Adularia GDS57 Orthoclase s06ag21a=bbb  
+[DELETPTS]
+Adularia GDS57 Orthoclase s06ag21a=bbb      \# output title
+
+define features
+   f1a DLw 4.10   4.22     4.94   5.05   ct .02 r*bd> [RBD35]
+\#
+\# Notes:  f1: center= 4.456 width= 0.489  depth= 0.49
+\#         Feat:  1  has a weight of 
+endfeatures
+
+define constraints
+   constraint: FD-FIT>[GLBLFDFIT] DEPTH-FIT>[GLBLDPFIT]
+   constraint: FITALL>[GLBLFITALL]   \# added Fri 02 Sep 2022 10:23:00 AM MDT rclark
+endconstraint
+
+define output
+   output=fit depth fd
+   feldspar_adularia-4.5um          \# Output base file name
+   8 DN 255 = 0.5000
+   compress= zip
+endoutput
+
+define actions
+   action: sound1
+   action: none
+endaction
+\#
+\#################################################################################
+group 27
+use= yes           \# yes or no,     if no,    skip this entry.
+udata: reflectance
+convolve: no
+preratio: none
+preprocess: none
+algorithm: tricorder-primary
+ID=sulfate_alunite-na82-4.5um
+
+define library records
+   a SMALL:  [splib06]  240 d         \# file ID, rec no.    1 to 2171 channels
+   a MEDIUM: [splib06]  xxxx d         \# file ID, rec no. 2172 to 4852 channels
+   a LARGE:  [splib06]  xxxx d         \# file ID, rec no. larger_chans_future
+endlibraryrecords
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Alunite GDS82 Na82 s06ag21a=bc_         
+[DELETPTS]
+Alunite GDS82 Na82 s06ag21a=bc_             \# output title
+
+define features
+   f1a DLw  3.89  4.01     4.79   4.90   ct .02 r*bd> [RBD35]
+\#
+\# Notes:  f1: center=       width=        depth=     
+\#         Feat:  1  has a weight of 
+endfeatures
+
+define constraints
+   constraint: FD-FIT>[GLBLFDFIT] DEPTH-FIT>[GLBLDPFIT]
+   constraint: FITALL>[GLBLFITALL]   \# added Fri 02 Sep 2022 10:23:00 AM MDT rclark
+endconstraint
+
+define output
+   output=fit depth fd
+   sulfate_alunite-na82-4.5um          \# Output base file name
+   8 DN 255 = 0.5000
+   compress= zip
+endoutput
+
+define actions
+   action: sound1
+   action: none
+endaction
+\#
+\#################################################################################
+group 27
+use= yes           \# yes or no,     if no,    skip this entry.
+udata: reflectance
+convolve: no
+preratio: none
+preprocess: none
+algorithm: tricorder-primary
+ID=sulfate_alunite-na83-4.5um
+
+define library records
+   a SMALL:  [splib06]  264 d         \# file ID, rec no.    1 to 2171 channels
+   a MEDIUM: [splib06]  xxxx d         \# file ID, rec no. 2172 to 4852 channels
+   a LARGE:  [splib06]  xxxx d         \# file ID, rec no. larger_chans_future
+endlibraryrecords
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Alunite GDS83 Na63 s06ag21a=bb_         
+[DELETPTS]
+Alunite GDS83 Na63 s06ag21a=bb_             \# output title
+
+define features
+   f1a DLw 3.86   3.97     4.90   5.03   ct .02 r*bd> [RBD35]
+\#
+\# Notes:  f1: center=       width=        depth=     
+\#         Feat:  1  has a weight of 
+endfeatures
+
+define constraints
+   constraint: FD-FIT>[GLBLFDFIT] DEPTH-FIT>[GLBLDPFIT]
+   constraint: FITALL>[GLBLFITALL]   \# added Fri 02 Sep 2022 10:23:00 AM MDT rclark
+endconstraint
+
+define output
+   output=fit depth fd
+   sulfate_alunite-na83-4.5um          \# Output base file name
+   8 DN 255 = 0.5000
+   compress= zip
+endoutput
+
+define actions
+   action: sound1
+   action: none
+endaction
+\#
+\#################################################################################
+group 27
+use= yes           \# yes or no,     if no,    skip this entry.
+udata: reflectance
+convolve: no
+preratio: none
+preprocess: none
+algorithm: tricorder-primary
+ID=sulfate_alunite-na03-4.5um
+
+define library records
+   a SMALL:  [splib06]  282 d         \# file ID, rec no.    1 to 2171 channels
+   a MEDIUM: [splib06]  xxxx d         \# file ID, rec no. 2172 to 4852 channels
+   a LARGE:  [splib06]  xxxx d         \# file ID, rec no. larger_chans_future
+endlibraryrecords
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Alunite GDS84 Na03 s06ag21a=aa_         
+[DELETPTS]
+Alunite GDS84 Na03 s06ag21a=aa_             \# output title
+
+define features
+   f1a DLw 3.86   3.97     4.90   5.03   ct .02 r*bd> [RBD35]
+\#
+\# Notes:  f1: center=       width=        depth=     
+\#         Feat:  1  has a weight of 
+endfeatures
+
+define constraints
+   constraint: FD-FIT>[GLBLFDFIT] DEPTH-FIT>[GLBLDPFIT]
+   constraint: FITALL>[GLBLFITALL]   \# added Fri 02 Sep 2022 10:23:00 AM MDT rclark
+endconstraint
+
+define output
+   output=fit depth fd
+   sulfate_alunite-na03-4.5um          \# Output base file name
+   8 DN 255 = 0.5000
+   compress= zip
+endoutput
+
+define actions
+   action: sound1
+   action: none
+endaction
+\#
+\#################################################################################
+group 27
+use= yes           \# yes or no,     if no,    skip this entry.
+udata: reflectance
+convolve: no
+preratio: none
+preprocess: none
+algorithm: tricorder-primary
+ID=sulfate_alunite--nh4-j-4.5um
+
+define library records
+   a SMALL:  [splib06]  5442 d         \# file ID, rec no.    1 to 2171 channels
+   a MEDIUM: [splib06]  xxxx d         \# file ID, rec no. 2172 to 4852 channels
+   a LARGE:  [splib06]  xxxx d         \# file ID, rec no. larger_chans_future
+endlibraryrecords
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Alunite_NH4+Ja NMNH145596A s06ag21a=bb_ 
+[DELETPTS]
+Alunite_NH4+Ja NMNH145596A s06ag21a=bb_     \# output title
+
+define features
+   f1a DLw 3.86   3.97     4.90   5.03   ct .02 r*bd> [RBD35]
+\#
+\# Notes:  f1: center=       width=        depth=     
+\#         Feat:  1  has a weight of 
+endfeatures
+
+define constraints
+   constraint: FD-FIT>[GLBLFDFIT] DEPTH-FIT>[GLBLDPFIT]
+   constraint: FITALL>[GLBLFITALL]   \# added Fri 02 Sep 2022 10:23:00 AM MDT rclark
+endconstraint
+
+define output
+   output=fit depth fd
+   sulfate_alunite--nh4-j-4.5um          \# Output base file name
+   8 DN 255 = 0.5000
+   compress= zip
+endoutput
+
+define actions
+   action: sound1
+   action: none
+endaction
+\#
+\#################################################################################
+group 27
+use= yes           \# yes or no,     if no,    skip this entry.
+udata: reflectance
+convolve: no
+preratio: none
+preprocess: none
+algorithm: tricorder-primary
+ID=sulfate_alunite-400c-4.5um
+
+define library records
+   a SMALL:  [splib06]  342 d         \# file ID, rec no.    1 to 2171 channels
+   a MEDIUM: [splib06]  xxxx d         \# file ID, rec no. 2172 to 4852 channels
+   a LARGE:  [splib06]  xxxx d         \# file ID, rec no. larger_chans_future
+endlibraryrecords
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Alunite RES-9 Summitv (400C) s06ag21a=b 
+[DELETPTS]
+Alunite RES-9 Summitv (400C) s06ag21a=b     \# output title
+
+define features
+   f1a DLw 3.86   3.97     4.79   4.90   ct .02 r*bd> [RBD35]
+\#
+\# Notes:  f1: center=       width=        depth=     
+\#         Feat:  1  has a weight of 
+endfeatures
+
+define constraints
+   constraint: FD-FIT>[GLBLFDFIT] DEPTH-FIT>[GLBLDPFIT]
+   constraint: FITALL>[GLBLFITALL]   \# added Fri 02 Sep 2022 10:23:00 AM MDT rclark
+endconstraint
+
+define output
+   output=fit depth fd
+   sulfate_alunite-400c-4.5um          \# Output base file name
+   8 DN 255 = 0.5000
+   compress= zip
+endoutput
+
+define actions
+   action: sound1
+   action: none
+endaction
+\#
+\#################################################################################
+group 27
+use= yes           \# yes or no,     if no,    skip this entry.
+udata: reflectance
+convolve: no
+preratio: none
+preprocess: none
+algorithm: tricorder-primary
+ID=sulfate_alunite-na56-4.5um
+
+define library records
+   a SMALL:  [splib06]  348 d         \# file ID, rec no.    1 to 2171 channels
+   a MEDIUM: [splib06]  xxxx d         \# file ID, rec no. 2172 to 4852 channels
+   a LARGE:  [splib06]  xxxx d         \# file ID, rec no. larger_chans_future
+endlibraryrecords
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Alunite RES10 NA56% Syn 450C            
+[DELETPTS]
+Alunite RES10 NA56% Syn 450C                \# output title
+
+define features
+   f1a DLw 3.90   4.0      4.88   5.01   ct .02 r*bd> [RBD35]
+\#
+\# Notes:  f1: center=       width=        depth=     
+\#         Feat:  1  has a weight of 
+endfeatures
+
+define constraints
+   constraint: FD-FIT>[GLBLFDFIT] DEPTH-FIT>[GLBLDPFIT]
+   constraint: FITALL>[GLBLFITALL]   \# added Fri 02 Sep 2022 10:23:00 AM MDT rclark
+endconstraint
+
+define output
+   output=fit depth fd
+   sulfate_alunite-na56-4.5um          \# Output base file name
+   8 DN 255 = 0.5000
+   compress= zip
+endoutput
+
+define actions
+   action: sound1
+   action: none
+endaction
+\#
+\#################################################################################
+group 27
+use= yes           \# yes or no,     if no,    skip this entry.
+udata: reflectance
+convolve: no
+preratio: none
+preprocess: none
+algorithm: tricorder-primary
+ID=sulfate_anhydrite-4.5um
+
+define library records
+   a SMALL:  [splib06]  528 d         \# file ID, rec no.    1 to 2171 channels
+   a MEDIUM: [splib06]  xxxx d         \# file ID, rec no. 2172 to 4852 channels
+   a LARGE:  [splib06]  xxxx d         \# file ID, rec no. larger_chans_future
+endlibraryrecords
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Anhydrite GDS42 Garnet s06ag21a=aa_     
+[DELETPTS]
+Anhydrite GDS42 Garnet s06ag21a=aa_         \# output title
+
+define features
+   f1a DLw 3.97   4.08     4.95   5.06   ct .02 r*bd> [RBD35]
+\#
+\# Notes:  f1: center=       width=        depth=     
+\#         Feat:  1  has a weight of 
+endfeatures
+
+define constraints
+   constraint: FD-FIT>[GLBLFDFIT] DEPTH-FIT>[GLBLDPFIT]
+   constraint: FITALL>[GLBLFITALL]   \# added Fri 02 Sep 2022 10:23:00 AM MDT rclark
+endconstraint
+
+define output
+   output=fit depth fd
+   sulfate_anhydrite-4.5um          \# Output base file name
+   8 DN 255 = 0.5000
+   compress= zip
+endoutput
+
+define actions
+   action: sound1
+   action: none
+endaction
+\#
+\#################################################################################
+group 27
+use= yes           \# yes or no,     if no,    skip this entry.
+udata: reflectance
+convolve: no
+preratio: none
+preprocess: none
+algorithm: tricorder-primary
+ID=sulfate_barite-4.5um
+
+define library records
+   a SMALL:  [splib06]  732 d         \# file ID, rec no.    1 to 2171 channels
+   a MEDIUM: [splib06]  xxxx d         \# file ID, rec no. 2172 to 4852 channels
+   a LARGE:  [splib06]  xxxx d         \# file ID, rec no. larger_chans_future
+endlibraryrecords
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Barite HS79.3B s06ag21a=bb_             
+[DELETPTS]
+Barite HS79.3B s06ag21a=bb_                 \# output title
+
+define features
+   f1a DLw 3.97   4.08     4.95   5.06   ct .02 r*bd> [RBD35]
+\#
+\# Notes:  f1: center=       width=        depth=     
+\#         Feat:  1  has a weight of 
+endfeatures
+
+define constraints
+   constraint: FD-FIT>[GLBLFDFIT] DEPTH-FIT>[GLBLDPFIT]
+   constraint: FITALL>[GLBLFITALL]   \# added Fri 02 Sep 2022 10:23:00 AM MDT rclark
+endconstraint
+
+define output
+   output=fit depth fd
+   sulfate_barite-4.5um          \# Output base file name
+   8 DN 255 = 0.5000
+   compress= zip
+endoutput
+
+define actions
+   action: sound1
+   action: none
+endaction
+\#
+\#################################################################################
+group 27
+use= yes           \# yes or no,     if no,    skip this entry.
+udata: reflectance
+convolve: no
+preratio: none
+preprocess: none
+algorithm: tricorder-primary
+ID=sulfate_bassanite-4.5um
+
+define library records
+   a SMALL:  [splib06]  744 d         \# file ID, rec no.    1 to 2171 channels
+   a MEDIUM: [splib06]  xxxx d         \# file ID, rec no. 2172 to 4852 channels
+   a LARGE:  [splib06]  xxxx d         \# file ID, rec no. larger_chans_future
+endlibraryrecords
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Bassanite GDS145 (syn) s06ag21a=aa_     
+[DELETPTS]
+Bassanite GDS145 (syn) s06ag21a=aa_         \# output title
+
+define features
+   f1a DLw 3.97   4.08     4.98   5.09   ct .02 r*bd> [RBD35]
+\#
+\# Notes:  f1: center=       width=        depth=     
+\#         Feat:  1  has a weight of 
+endfeatures
+
+define constraints
+   constraint: FD-FIT>[GLBLFDFIT] DEPTH-FIT>[GLBLDPFIT]
+   constraint: FITALL>[GLBLFITALL]   \# added Fri 02 Sep 2022 10:23:00 AM MDT rclark
+endconstraint
+
+define output
+   output=fit depth fd
+   sulfate_bassanite-4.5um          \# Output base file name
+   8 DN 255 = 0.5000
+   compress= zip
+endoutput
+
+define actions
+   action: sound1
+   action: none
+endaction
+\#
+\#################################################################################
+group 27
+use= yes           \# yes or no,     if no,    skip this entry.
+udata: reflectance
+convolve: no
+preratio: none
+preprocess: none
+algorithm: tricorder-primary
+ID=phyllosilicate_beidellite+montmor-4.5um
+
+define library records
+   a SMALL:  [splib06]  5484 d         \# file ID, rec no.    1 to 2171 channels
+   a MEDIUM: [splib06]  xxxx d         \# file ID, rec no. 2172 to 4852 channels
+   a LARGE:  [splib06]  xxxx d         \# file ID, rec no. larger_chans_future
+endlibraryrecords
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Beidellite+Montmor GDS124 s06ag21a=bbb  
+[DELETPTS]
+Beidellite+Montmor GDS124 s06ag21a=bbb      \# output title
+
+define features
+   f1a DLw 3.97   4.08     4.81   4.92   ct .02 r*bd> [RBD35]
+\#
+\# Notes:  f1: center=       width=        depth=     
+\#         Feat:  1  has a weight of 
+endfeatures
+
+define constraints
+   constraint: FD-FIT>[GLBLFDFIT] DEPTH-FIT>[GLBLDPFIT]
+   constraint: FITALL>[GLBLFITALL]   \# added Fri 02 Sep 2022 10:23:00 AM MDT rclark
+endconstraint
+
+define output
+   output=fit depth fd
+   phyllosilicate_beidellite+montmor-4.5um          \# Output base file name
+   8 DN 255 = 0.5000
+   compress= zip
+endoutput
+
+define actions
+   action: sound1
+   action: none
+endaction
+\#
+\#################################################################################
+group 27
+use= yes           \# yes or no,     if no,    skip this entry.
+udata: reflectance
+convolve: no
+preratio: none
+preprocess: none
+algorithm: tricorder-primary
+ID=sulfate_bloedite-4.5um
+
+define library records
+   a SMALL:  [splib06]  804 d         \# file ID, rec no.    1 to 2171 channels
+   a MEDIUM: [splib06]  xxxx d         \# file ID, rec no. 2172 to 4852 channels
+   a LARGE:  [splib06]  xxxx d         \# file ID, rec no. larger_chans_future
+endlibraryrecords
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Bloedite GDS147 s06ag21a=aa_            
+[DELETPTS]
+Bloedite GDS147 s06ag21a=aa_                \# output title
+
+define features
+   f1a DLw 3.97   4.08     4.91   5.01   ct .02 r*bd> [RBD35]
+\#
+\# Notes:  f1: center=       width=        depth=     
+\#         Feat:  1  has a weight of 
+endfeatures
+
+define constraints
+   constraint: FD-FIT>[GLBLFDFIT] DEPTH-FIT>[GLBLDPFIT]
+   constraint: FITALL>[GLBLFITALL]   \# added Fri 02 Sep 2022 10:23:00 AM MDT rclark
+endconstraint
+
+define output
+   output=fit depth fd
+   sulfate_bloedite-4.5um          \# Output base file name
+   8 DN 255 = 0.5000
+   compress= zip
+endoutput
+
+define actions
+   action: sound1
+   action: none
+endaction
+\#
+\#################################################################################
+group 27
+use= yes           \# yes or no,     if no,    skip this entry.
+udata: reflectance
+convolve: no
+preratio: none
+preprocess: none
+algorithm: tricorder-primary
+ID=sulfate_butlerite-4.5um
+
+define library records
+   a SMALL:  [splib06]  864 d         \# file ID, rec no.    1 to 2171 channels
+   a MEDIUM: [splib06]  xxxx d         \# file ID, rec no. 2172 to 4852 channels
+   a LARGE:  [splib06]  xxxx d         \# file ID, rec no. larger_chans_future
+endlibraryrecords
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Butlerite GDS25 s06ag21a=aaa            
+[DELETPTS]
+Butlerite GDS25 s06ag21a=aaa                \# output title
+
+define features
+   f1a DLw 3.94   4.05     5.02   5.13   ct .02 r*bd> [RBD35]
+\#
+\# Notes:  f1: center=       width=        depth=     
+\#         Feat:  1  has a weight of 
+endfeatures
+
+define constraints
+   constraint: FD-FIT>[GLBLFDFIT] DEPTH-FIT>[GLBLDPFIT]
+   constraint: FITALL>[GLBLFITALL]   \# added Fri 02 Sep 2022 10:23:00 AM MDT rclark
+endconstraint
+
+define output
+   output=fit depth fd
+   sulfate_butlerite-4.5um          \# Output base file name
+   8 DN 255 = 0.5000
+   compress= zip
+endoutput
+
+define actions
+   action: sound1
+   action: none
+endaction
+\#
+\#################################################################################
+group 27
+use= yes           \# yes or no,     if no,    skip this entry.
+udata: reflectance
+convolve: no
+preratio: none
+preprocess: none
+algorithm: tricorder-primary
+ID=carbonate_calcite-4.67um
+
+define library records
+   a SMALL:  [splib06]  918 d         \# file ID, rec no.    1 to 2171 channels
+   a MEDIUM: [splib06]  xxxx d         \# file ID, rec no. 2172 to 4852 channels
+   a LARGE:  [splib06]  xxxx d         \# file ID, rec no. larger_chans_future
+endlibraryrecords
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Calcite WS272 s06ag21a=aaa              
+[DELETPTS]
+Calcite WS272 s06ag21a=aaa                  \# output title
+
+define features
+   f1a DLw 4.34   4.43     4.76   4.87   ct .02 r*bd> [RBD35]
+\#
+\# Notes:  f1: center=       width=        depth=     
+\#         Feat:  1  has a weight of 
+endfeatures
+
+define constraints
+   constraint: FD-FIT>[GLBLFDFIT] DEPTH-FIT>[GLBLDPFIT]
+   constraint: FITALL>[GLBLFITALL]   \# added Fri 02 Sep 2022 10:23:00 AM MDT rclark
+endconstraint
+
+define output
+   output=fit depth fd
+   carbonate_calcite-4.67um          \# Output base file name
+   8 DN 255 = 0.5000
+   compress= zip
+endoutput
+
+define actions
+   action: sound1
+   action: none
+endaction
+\#
+\#################################################################################
+group 27
+use= yes           \# yes or no,     if no,    skip this entry.
+udata: reflectance
+convolve: no
+preratio: none
+preprocess: none
+algorithm: tricorder-primary
+ID=sulfate_celestite-4.5um
+
+define library records
+   a SMALL:  [splib06]  972 d         \# file ID, rec no.    1 to 2171 channels
+   a MEDIUM: [splib06]  xxxx d         \# file ID, rec no. 2172 to 4852 channels
+   a LARGE:  [splib06]  xxxx d         \# file ID, rec no. larger_chans_future
+endlibraryrecords
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Celestite HS251.3B Barite s06ag21a=bbb  
+[DELETPTS]
+Celestite HS251.3B Barite s06ag21a=bbb      \# output title
+
+define features
+   f1a DLw 3.89   4.00     5.09   5.21   ct .02 r*bd> [RBD35]
+\#
+\# Notes:  f1: center=       width=        depth=     
+\#         Feat:  1  has a weight of 
+endfeatures
+
+define constraints
+   constraint: FD-FIT>[GLBLFDFIT] DEPTH-FIT>[GLBLDPFIT]
+   constraint: FITALL>[GLBLFITALL]   \# added Fri 02 Sep 2022 10:23:00 AM MDT rclark
+endconstraint
+
+define output
+   output=fit depth fd
+   sulfate_celestite-4.5um          \# Output base file name
+   8 DN 255 = 0.5000
+   compress= zip
+endoutput
+
+define actions
+   action: sound1
+   action: none
+endaction
+\#
+\#################################################################################
+group 27
+use= yes           \# yes or no,     if no,    skip this entry.
+udata: reflectance
+convolve: no
+preratio: none
+preprocess: none
+algorithm: tricorder-primary
+ID=zeolite_chabazitemix-4.5um
+
+define library records
+   a SMALL:  [splib06]  5592 d         \# file ID, rec no.    1 to 2171 channels
+   a MEDIUM: [splib06]  xxxx d         \# file ID, rec no. 2172 to 4852 channels
+   a LARGE:  [splib06]  xxxx d         \# file ID, rec no. larger_chans_future
+endlibraryrecords
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Chabazt+Thom+Wair HS193.3B s06ag21a=bb_ 
+[DELETPTS]
+Chabazt+Thom+Wair HS193.3B s06ag21a=bb_     \# output title
+
+define features
+   f1a DLw 3.92   4.03     5.09   5.21   ct .02 r*bd> [RBD35]
+\#
+\# Notes:  f1: center=       width=        depth=     
+\#         Feat:  1  has a weight of 
+endfeatures
+
+define constraints
+   constraint: FD-FIT>[GLBLFDFIT] DEPTH-FIT>[GLBLDPFIT]
+   constraint: FITALL>[GLBLFITALL]   \# added Fri 02 Sep 2022 10:23:00 AM MDT rclark
+endconstraint
+
+define output
+   output=fit depth fd
+   zeolite_chabazitemix-4.5um          \# Output base file name
+   8 DN 255 = 0.5000
+   compress= zip
+endoutput
+
+define actions
+   action: sound1
+   action: none
+endaction
+\#
+\#################################################################################
+group 27
+use= yes           \# yes or no,     if no,    skip this entry.
+udata: reflectance
+convolve: no
+preratio: none
+preprocess: none
+algorithm: tricorder-primary
+ID=cyanide_cyanide-cap-4.5um
+
+define library records
+   a SMALL:  [splib06]  6522 d         \# file ID, rec no.    1 to 2171 channels
+   a MEDIUM: [splib06]  xxxx d         \# file ID, rec no. 2172 to 4852 channels
+   a LARGE:  [splib06]  xxxx d         \# file ID, rec no. larger_chans_future
+endlibraryrecords
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Cyanide_Cadmium_Potassium s06ag21a=a    
+[DELETPTS]
+Cyanide_Cadmium_Potassium s06ag21a=a        \# output title
+
+define features
+   f1a DLw 4.47   4.57     4.82   4.93   ct .02 r*bd> [RBD35]
+\#
+\# Notes:  f1: center=       width=        depth=     
+\#         Feat:  1  has a weight of 
+endfeatures
+
+define constraints
+   constraint: FD-FIT>[GLBLFDFIT] DEPTH-FIT>[GLBLDPFIT]
+   constraint: FITALL>[GLBLFITALL]   \# added Fri 02 Sep 2022 10:23:00 AM MDT rclark
+endconstraint
+
+define output
+   output=fit depth fd
+   cyanide_cyanide-cap-4.5um          \# Output base file name
+   8 DN 255 = 0.5000
+   compress= zip
+endoutput
+
+define actions
+   action: sound1
+   action: none
+endaction
+\#
+\#################################################################################
+group 27
+use= yes           \# yes or no,     if no,    skip this entry.
+udata: reflectance
+convolve: no
+preratio: none
+preprocess: none
+algorithm: tricorder-primary
+ID=cyanide_cyanide-nik-4.5um
+
+define library records
+   a SMALL:  [splib06]  6528 d         \# file ID, rec no.    1 to 2171 channels
+   a MEDIUM: [splib06]  xxxx d         \# file ID, rec no. 2172 to 4852 channels
+   a LARGE:  [splib06]  xxxx d         \# file ID, rec no. larger_chans_future
+endlibraryrecords
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Cyanide_Nickel_Potassium s06ag21a=a     
+[DELETPTS]
+Cyanide_Nickel_Potassium s06ag21a=a         \# output title
+
+define features
+   f1a DLw 4.43   4.53     4.87   4.97   ct .02 r*bd> [RBD35]
+\#
+\# Notes:  f1: center=       width=        depth=     
+\#         Feat:  1  has a weight of 
+endfeatures
+
+define constraints
+   constraint: FD-FIT>[GLBLFDFIT] DEPTH-FIT>[GLBLDPFIT]
+   constraint: FITALL>[GLBLFITALL]   \# added Fri 02 Sep 2022 10:23:00 AM MDT rclark
+endconstraint
+
+define output
+   output=fit depth fd
+   cyanide_cyanide-nik-4.5um          \# Output base file name
+   8 DN 255 = 0.5000
+   compress= zip
+endoutput
+
+define actions
+   action: sound1
+   action: none
+endaction
+\#
+\#################################################################################
+group 27
+use= yes           \# yes or no,     if no,    skip this entry.
+udata: reflectance
+convolve: no
+preratio: none
+preprocess: none
+algorithm: tricorder-primary
+ID=cyanide_cyanide-znk-4.5um
+
+define library records
+   a SMALL:  [splib06]  6546 d         \# file ID, rec no.    1 to 2171 channels
+   a MEDIUM: [splib06]  xxxx d         \# file ID, rec no. 2172 to 4852 channels
+   a LARGE:  [splib06]  xxxx d         \# file ID, rec no. larger_chans_future
+endlibraryrecords
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Cyanide_Zinc_Potassium s06ag21a=a       
+[DELETPTS]
+Cyanide_Zinc_Potassium s06ag21a=a           \# output title
+
+define features
+   f1a DLw 4.45   4.55     4.87   4.97   ct .02 r*bd> [RBD35]
+\#
+\# Notes:  f1: center=       width=        depth=     
+\#         Feat:  1  has a weight of 
+endfeatures
+
+define constraints
+   constraint: FD-FIT>[GLBLFDFIT] DEPTH-FIT>[GLBLDPFIT]
+   constraint: FITALL>[GLBLFITALL]   \# added Fri 02 Sep 2022 10:23:00 AM MDT rclark
+endconstraint
+
+define output
+   output=fit depth fd
+   cyanide_cyanide-znk-4.5um          \# Output base file name
+   8 DN 255 = 0.5000
+   compress= zip
+endoutput
+
+define actions
+   action: sound1
+   action: none
+endaction
+\#
+\#################################################################################
+group 27
+use= yes           \# yes or no,     if no,    skip this entry.
+udata: reflectance
+convolve: no
+preratio: none
+preprocess: none
+algorithm: tricorder-primary
+ID=carbonate_dolomite-4.63um
+
+define library records
+   a SMALL:  [splib06]  1578 d         \# file ID, rec no.    1 to 2171 channels
+   a MEDIUM: [splib06]  xxxx d         \# file ID, rec no. 2172 to 4852 channels
+   a LARGE:  [splib06]  xxxx d         \# file ID, rec no. larger_chans_future
+endlibraryrecords
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Dolomite HS102.3B s06ag21a=bbb          
+[DELETPTS]
+Dolomite HS102.3B s06ag21a=bbb              \# output title
+
+define features
+   f1a DLw 4.33   4.40     4.75   4.86   ct .02 r*bd> [RBD35]
+\#
+\# Notes:  f1: center=       width=        depth=     
+\#         Feat:  1  has a weight of 
+endfeatures
+
+define constraints
+   constraint: FD-FIT>[GLBLFDFIT] DEPTH-FIT>[GLBLDPFIT]
+   constraint: FITALL>[GLBLFITALL]   \# added Fri 02 Sep 2022 10:23:00 AM MDT rclark
+endconstraint
+
+define output
+   output=fit depth fd
+   carbonate_dolomite-4.63um          \# Output base file name
+   8 DN 255 = 0.5000
+   compress= zip
+endoutput
+
+define actions
+   action: sound1
+   action: none
+endaction
+\#
+\#################################################################################
+group 27
+use= yes           \# yes or no,     if no,    skip this entry.
+udata: reflectance
+convolve: no
+preratio: none
+preprocess: none
+algorithm: tricorder-primary
+ID=silicate_elbaite-4.5um
+
+define library records
+   a SMALL:  [splib06]  1608 d         \# file ID, rec no.    1 to 2171 channels
+   a MEDIUM: [splib06]  xxxx d         \# file ID, rec no. 2172 to 4852 channels
+   a LARGE:  [splib06]  xxxx d         \# file ID, rec no. larger_chans_future
+endlibraryrecords
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Elbaite NMNH94217-1.a 659 s06ag21a=bbb  
+[DELETPTS]
+Elbaite NMNH94217-1.a 659 s06ag21a=bbb      \# output title
+
+define features
+   f1a DLw 3.97   4.07     4.59   4.70   ct .02 r*bd> [RBD35]
+\#
+\# Notes:  f1: center=       width=        depth=     
+\#         Feat:  1  has a weight of 
+endfeatures
+
+define constraints
+   constraint: FD-FIT>[GLBLFDFIT] DEPTH-FIT>[GLBLDPFIT]
+   constraint: FITALL>[GLBLFITALL]   \# added Fri 02 Sep 2022 10:23:00 AM MDT rclark
+endconstraint
+
+define output
+   output=fit depth fd
+   silicate_elbaite-4.5um          \# Output base file name
+   8 DN 255 = 0.5000
+   compress= zip
+endoutput
+
+define actions
+   action: sound1
+   action: none
+endaction
+\#
+\#################################################################################
+group 27
+use= yes           \# yes or no,     if no,    skip this entry.
+udata: reflectance
+convolve: no
+preratio: none
+preprocess: none
+algorithm: tricorder-primary
+ID=sulfate_epsomite-4.5um
+
+define library records
+   a SMALL:  [splib06]  1704 d         \# file ID, rec no.    1 to 2171 channels
+   a MEDIUM: [splib06]  xxxx d         \# file ID, rec no. 2172 to 4852 channels
+   a LARGE:  [splib06]  xxxx d         \# file ID, rec no. larger_chans_future
+endlibraryrecords
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Epsomite GDS149 s06ag21a=cc_            
+[DELETPTS]
+Epsomite GDS149 s06ag21a=cc_                \# output title
+
+define features
+   f1a DLw 3.82   3.93     4.93   5.04   ct .02 r*bd> [RBD35]
+\#
+\# Notes:  f1: center=       width=        depth=     
+\#         Feat:  1  has a weight of 
+endfeatures
+
+define constraints
+   constraint: FD-FIT>[GLBLFDFIT] DEPTH-FIT>[GLBLDPFIT]
+   constraint: FITALL>[GLBLFITALL]   \# added Fri 02 Sep 2022 10:23:00 AM MDT rclark
+endconstraint
+
+define output
+   output=fit depth fd
+   sulfate_epsomite-4.5um          \# Output base file name
+   8 DN 255 = 0.5000
+   compress= zip
+endoutput
+
+define actions
+   action: sound1
+   action: none
+endaction
+\#
+\#################################################################################
+group 27
+use= yes           \# yes or no,     if no,    skip this entry.
+udata: reflectance
+convolve: no
+preratio: none
+preprocess: none
+algorithm: tricorder-primary
+ID=zeolite_erionitemix-4.5um
+
+define library records
+   a SMALL:  [splib06]  5718 d         \# file ID, rec no.    1 to 2171 channels
+   a MEDIUM: [splib06]  xxxx d         \# file ID, rec no. 2172 to 4852 channels
+   a LARGE:  [splib06]  xxxx d         \# file ID, rec no. larger_chans_future
+endlibraryrecords
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Erionite+Offretite GDS72 s06ag21a=bb_   
+[DELETPTS]
+Erionite+Offretite GDS72 s06ag21a=bb_       \# output title
+
+define features
+   f1a DLw 3.94   4.05     4.85   4.96   ct .02 r*bd> [RBD35]
+\#
+\# Notes:  f1: center=       width=        depth=     
+\#         Feat:  1  has a weight of 
+endfeatures
+
+define constraints
+   constraint: FD-FIT>[GLBLFDFIT] DEPTH-FIT>[GLBLDPFIT]
+   constraint: FITALL>[GLBLFITALL]   \# added Fri 02 Sep 2022 10:23:00 AM MDT rclark
+endconstraint
+
+define output
+   output=fit depth fd
+   zeolite_erionitemix-4.5um          \# Output base file name
+   8 DN 255 = 0.5000
+   compress= zip
+endoutput
+
+define actions
+   action: sound1
+   action: none
+endaction
+\#
+\#################################################################################
+group 27
+use= yes           \# yes or no,     if no,    skip this entry.
+udata: reflectance
+convolve: no
+preratio: none
+preprocess: none
+algorithm: tricorder-primary
+ID=sulfate_eugsterite-4.5um
+
+define library records
+   a SMALL:  [splib06]  1716 d         \# file ID, rec no.    1 to 2171 channels
+   a MEDIUM: [splib06]  xxxx d         \# file ID, rec no. 2172 to 4852 channels
+   a LARGE:  [splib06]  xxxx d         \# file ID, rec no. larger_chans_future
+endlibraryrecords
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Eugsterite GDS140 Syn s06ag21a=bb_      
+[DELETPTS]
+Eugsterite GDS140 Syn s06ag21a=bb_          \# output title
+
+define features
+   f1a DLw 3.94   4.05     4.96   5.07   ct .02 r*bd> [RBD35]
+\#
+\# Notes:  f1: center=       width=        depth=     
+\#         Feat:  1  has a weight of 
+endfeatures
+
+define constraints
+   constraint: FD-FIT>[GLBLFDFIT] DEPTH-FIT>[GLBLDPFIT]
+   constraint: FITALL>[GLBLFITALL]   \# added Fri 02 Sep 2022 10:23:01 AM MDT rclark
+endconstraint
+
+define output
+   output=fit depth fd
+   sulfate_eugsterite-4.5um          \# Output base file name
+   8 DN 255 = 0.5000
+   compress= zip
+endoutput
+
+define actions
+   action: sound1
+   action: none
+endaction
+\#
+\#################################################################################
+group 27
+use= yes           \# yes or no,     if no,    skip this entry.
+udata: reflectance
+convolve: no
+preratio: none
+preprocess: none
+algorithm: tricorder-primary
+ID=sulfate_gypsum-4.5um
+
+define library records
+   a SMALL:  [splib06]  1992 d         \# file ID, rec no.    1 to 2171 channels
+   a MEDIUM: [splib06]  xxxx d         \# file ID, rec no. 2172 to 4852 channels
+   a LARGE:  [splib06]  xxxx d         \# file ID, rec no. larger_chans_future
+endlibraryrecords
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Gypsum HS333.3B (Selenite) s06ag21a=aaa 
+[DELETPTS]
+Gypsum HS333.3B (Selenite) s06ag21a=aaa     \# output title
+
+define features
+   f1a DLw 3.94   4.05     4.96   5.07   ct .02 r*bd> [RBD35]
+\#
+\# Notes:  f1: center=       width=        depth=     
+\#         Feat:  1  has a weight of 
+endfeatures
+
+define constraints
+   constraint: FD-FIT>[GLBLFDFIT] DEPTH-FIT>[GLBLDPFIT]
+   constraint: FITALL>[GLBLFITALL]   \# added Fri 02 Sep 2022 10:23:01 AM MDT rclark
+endconstraint
+
+define output
+   output=fit depth fd
+   sulfate_gypsum-4.5um          \# Output base file name
+   8 DN 255 = 0.5000
+   compress= zip
+endoutput
+
+define actions
+   action: sound1
+   action: none
+endaction
+\#
+\#################################################################################
+group 27
+use= yes           \# yes or no,     if no,    skip this entry.
+udata: reflectance
+convolve: no
+preratio: none
+preprocess: none
+algorithm: tricorder-primary
+ID=fe3+_hematite_a-4.5um
+
+define library records
+   a SMALL:  [splib06]  2118 d         \# file ID, rec no.    1 to 2171 channels
+   a MEDIUM: [splib06]  xxxx d         \# file ID, rec no. 2172 to 4852 channels
+   a LARGE:  [splib06]  xxxx d         \# file ID, rec no. larger_chans_future
+endlibraryrecords
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Hematite GDS69.a 150-250u s06ag21a=bbb  
+[DELETPTS]
+Hematite GDS69.a 150-250u s06ag21a=bbb      \# output title
+
+define features
+   f1a DLw 4.22   4.34     5.31   5.43   ct .02 r*bd> [RBD35]
+\#
+\# Notes:  f1: center=       width=        depth=     
+\#         Feat:  1  has a weight of 
+endfeatures
+
+define constraints
+   constraint: FD-FIT>[GLBLFDFIT] DEPTH-FIT>[GLBLDPFIT]
+   constraint: FITALL>[GLBLFITALL]   \# added Fri 02 Sep 2022 10:23:01 AM MDT rclark
+endconstraint
+
+define output
+   output=fit depth fd
+   fe3+_hematite_a-4.5um          \# Output base file name
+   8 DN 255 = 0.5000
+   compress= zip
+endoutput
+
+define actions
+   action: sound1
+   action: none
+endaction
+\#
+\#################################################################################
+group 27
+use= yes           \# yes or no,     if no,    skip this entry.
+udata: reflectance
+convolve: no
+preratio: none
+preprocess: none
+algorithm: tricorder-primary
+ID=fe3+_hematite_c-4.5um
+
+define library records
+   a SMALL:  [splib06]  2142 d         \# file ID, rec no.    1 to 2171 channels
+   a MEDIUM: [splib06]  xxxx d         \# file ID, rec no. 2172 to 4852 channels
+   a LARGE:  [splib06]  xxxx d         \# file ID, rec no. larger_chans_future
+endlibraryrecords
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Hematite GDS69.c 60-104um s06ag21a=bb_  
+[DELETPTS]
+Hematite GDS69.c 60-104um s06ag21a=bb_      \# output title
+
+define features
+   f1a DLw 4.22   4.34     5.31   5.43   ct .02 r*bd> [RBD35]
+\#
+\# Notes:  f1: center=       width=        depth=     
+\#         Feat:  1  has a weight of 
+endfeatures
+
+define constraints
+   constraint: FD-FIT>[GLBLFDFIT] DEPTH-FIT>[GLBLDPFIT]
+   constraint: FITALL>[GLBLFITALL]   \# added Fri 02 Sep 2022 10:23:01 AM MDT rclark
+endconstraint
+
+define output
+   output=fit depth fd
+   fe3+_hematite_c-4.5um          \# Output base file name
+   8 DN 255 = 0.5000
+   compress= zip
+endoutput
+
+define actions
+   action: sound1
+   action: none
+endaction
+\#
+\#################################################################################
+group 27
+use= yes           \# yes or no,     if no,    skip this entry.
+udata: reflectance
+convolve: no
+preratio: none
+preprocess: none
+algorithm: tricorder-primary
+ID=zeolite_heulandite-4.5um
+
+define library records
+   a SMALL:  [splib06]  2220 d         \# file ID, rec no.    1 to 2171 channels
+   a MEDIUM: [splib06]  xxxx d         \# file ID, rec no. 2172 to 4852 channels
+   a LARGE:  [splib06]  xxxx d         \# file ID, rec no. larger_chans_future
+endlibraryrecords
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Heulandite GDS3 s06ag21a=aa_            
+[DELETPTS]
+Heulandite GDS3 s06ag21a=aa_                \# output title
+
+define features
+   f1a DLw 4.00   4.12    4.93   5.04   ct .02 r*bd> [RBD35]
+\#
+\# Notes:  f1: center=       width=        depth=     
+\#         Feat:  1  has a weight of 
+endfeatures
+
+define constraints
+   constraint: FD-FIT>[GLBLFDFIT] DEPTH-FIT>[GLBLDPFIT]
+   constraint: FITALL>[GLBLFITALL]   \# added Fri 02 Sep 2022 10:23:01 AM MDT rclark
+endconstraint
+
+define output
+   output=fit depth fd
+   zeolite_heulandite-4.5um          \# Output base file name
+   8 DN 255 = 0.5000
+   compress= zip
+endoutput
+
+define actions
+   action: sound1
+   action: none
+endaction
+\#
+\#################################################################################
+group 27
+use= yes           \# yes or no,     if no,    skip this entry.
+udata: reflectance
+convolve: no
+preratio: none
+preprocess: none
+algorithm: tricorder-primary
+ID=sulfate_kainite-4.5um
+
+define library records
+   a SMALL:  [splib06]  2634 d         \# file ID, rec no.    1 to 2171 channels
+   a MEDIUM: [splib06]  xxxx d         \# file ID, rec no. 2172 to 4852 channels
+   a LARGE:  [splib06]  xxxx d         \# file ID, rec no. larger_chans_future
+endlibraryrecords
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Kainite NMNH83904 s06ag21a=aa_          
+[DELETPTS]
+Kainite NMNH83904 s06ag21a=aa_              \# output title
+
+define features
+   f1a DLw 3.89   4.00    5.04   5.15   ct .02 r*bd> [RBD35]
+\#
+\# Notes:  f1: center=       width=        depth=     
+\#         Feat:  1  has a weight of 
+endfeatures
+
+define constraints
+   constraint: FD-FIT>[GLBLFDFIT] DEPTH-FIT>[GLBLDPFIT]
+   constraint: FITALL>[GLBLFITALL]   \# added Fri 02 Sep 2022 10:23:01 AM MDT rclark
+endconstraint
+
+define output
+   output=fit depth fd
+   sulfate_kainite-4.5um          \# Output base file name
+   8 DN 255 = 0.5000
+   compress= zip
+endoutput
+
+define actions
+   action: sound1
+   action: none
+endaction
+\#
+\#################################################################################
+group 27
+use= yes           \# yes or no,     if no,    skip this entry.
+udata: reflectance
+convolve: no
+preratio: none
+preprocess: none
+algorithm: tricorder-primary
+ID=sulfate_kieserite-4.5um
+
+define library records
+   a SMALL:  [splib06]  2754 d         \# file ID, rec no.    1 to 2171 channels
+   a MEDIUM: [splib06]  xxxx d         \# file ID, rec no. 2172 to 4852 channels
+   a LARGE:  [splib06]  xxxx d         \# file ID, rec no. larger_chans_future
+endlibraryrecords
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Kieserite KIEDE1.a crse gr s06ag21a=cc_ 
+[DELETPTS]
+Kieserite KIEDE1.a crse gr s06ag21a=cc_     \# output title
+
+define features
+   f1a DLw 3.96   4.08     4.89   5.01   ct .02 r*bd> [RBD35]
+\#
+\# Notes:  f1: center=       width=        depth=     
+\#         Feat:  1  has a weight of 
+endfeatures
+
+define constraints
+   constraint: FD-FIT>[GLBLFDFIT] DEPTH-FIT>[GLBLDPFIT]
+   constraint: FITALL>[GLBLFITALL]   \# added Fri 02 Sep 2022 10:23:01 AM MDT rclark
+endconstraint
+
+define output
+   output=fit depth fd
+   sulfate_kieserite-4.5um          \# Output base file name
+   8 DN 255 = 0.5000
+   compress= zip
+endoutput
+
+define actions
+   action: sound1
+   action: none
+endaction
+\#
+\#################################################################################
+group 27
+use= yes           \# yes or no,     if no,    skip this entry.
+udata: reflectance
+convolve: no
+preratio: none
+preprocess: none
+algorithm: tricorder-primary
+ID=zeolite_laumontite-4.5um
+
+define library records
+   a SMALL:  [splib06]  2790 d         \# file ID, rec no.    1 to 2171 channels
+   a MEDIUM: [splib06]  xxxx d         \# file ID, rec no. 2172 to 4852 channels
+   a LARGE:  [splib06]  xxxx d         \# file ID, rec no. larger_chans_future
+endlibraryrecords
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Laumontite GDS5 Zeolite s06ag21a=bb_    
+[DELETPTS]
+Laumontite GDS5 Zeolite s06ag21a=bb_        \# output title
+
+define features
+   f1a DLw 3.96   4.08     4.89   5.01   ct .02 r*bd> [RBD35]
+\#
+\# Notes:  f1: center=       width=        depth=     
+\#         Feat:  1  has a weight of 
+endfeatures
+
+define constraints
+   constraint: FD-FIT>[GLBLFDFIT] DEPTH-FIT>[GLBLDPFIT]
+   constraint: FITALL>[GLBLFITALL]   \# added Fri 02 Sep 2022 10:23:01 AM MDT rclark
+endconstraint
+
+define output
+   output=fit depth fd
+   zeolite_laumontite-4.5um          \# Output base file name
+   8 DN 255 = 0.5000
+   compress= zip
+endoutput
+
+define actions
+   action: sound1
+   action: none
+endaction
+\#
+\#################################################################################
+group 27
+use= yes           \# yes or no,     if no,    skip this entry.
+udata: reflectance
+convolve: no
+preratio: none
+preprocess: none
+algorithm: tricorder-primary
+ID=phyllosilicate_lepidolite-4.5um
+
+define library records
+   a SMALL:  [splib06]  2868 d         \# file ID, rec no.    1 to 2171 channels
+   a MEDIUM: [splib06]  xxxx d         \# file ID, rec no. 2172 to 4852 channels
+   a LARGE:  [splib06]  xxxx d         \# file ID, rec no. larger_chans_future
+endlibraryrecords
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Lepidolite NMNH88526-1 s06ag21a=aa_     
+[DELETPTS]
+Lepidolite NMNH88526-1 s06ag21a=aa_         \# output title
+
+define features
+   f1a DLw 4.27   4.39     5.02   5.14   ct .02 r*bd> [RBD35]
+\#
+\# Notes:  f1: center=       width=        depth=     
+\#         Feat:  1  has a weight of 
+endfeatures
+
+define constraints
+   constraint: FD-FIT>[GLBLFDFIT] DEPTH-FIT>[GLBLDPFIT]
+   constraint: FITALL>[GLBLFITALL]   \# added Fri 02 Sep 2022 10:23:01 AM MDT rclark
+endconstraint
+
+define output
+   output=fit depth fd
+   phyllosilicate_lepidolite-4.5um          \# Output base file name
+   8 DN 255 = 0.5000
+   compress= zip
+endoutput
+
+define actions
+   action: sound1
+   action: none
+endaction
+\#
+\#################################################################################
+group 27
+use= yes           \# yes or no,     if no,    skip this entry.
+udata: reflectance
+convolve: no
+preratio: none
+preprocess: none
+algorithm: tricorder-primary
+ID=carbonate_magnesite-4.59um
+
+define library records
+   a SMALL:  [splib06]  5928 d         \# file ID, rec no.    1 to 2171 channels
+   a MEDIUM: [splib06]  xxxx d         \# file ID, rec no. 2172 to 4852 channels
+   a LARGE:  [splib06]  xxxx d         \# file ID, rec no. larger_chans_future
+endlibraryrecords
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Magnesite+Hydroma HS47.3B s06ag21a=aa_  
+[DELETPTS]
+Magnesite+Hydroma HS47.3B s06ag21a=aa_      \# output title
+
+define features
+   f1a DLw 4.10   4.22     4.72   4.84   ct .02 r*bd> [RBD35]
+\#
+\# Notes:  f1: center=       width=        depth=     
+\#         Feat:  1  has a weight of 
+endfeatures
+
+define constraints
+   constraint: FD-FIT>[GLBLFDFIT] DEPTH-FIT>[GLBLDPFIT]
+   constraint: FITALL>[GLBLFITALL]   \# added Fri 02 Sep 2022 10:23:01 AM MDT rclark
+endconstraint
+
+define output
+   output=fit depth fd
+   carbonate_magnesite-4.59um          \# Output base file name
+   8 DN 255 = 0.5000
+   compress= zip
+endoutput
+
+define actions
+   action: sound1
+   action: none
+endaction
+\#
+\#################################################################################
+group 27
+use= yes           \# yes or no,     if no,    skip this entry.
+udata: reflectance
+convolve: no
+preratio: none
+preprocess: none
+algorithm: tricorder-primary
+ID=zeolite_mesolite-4.5um
+
+define library records
+   a SMALL:  [splib06]  5946 d         \# file ID, rec no.    1 to 2171 channels
+   a MEDIUM: [splib06]  xxxx d         \# file ID, rec no. 2172 to 4852 channels
+   a LARGE:  [splib06]  xxxx d         \# file ID, rec no. larger_chans_future
+endlibraryrecords
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Mesolite+Hydroxyapop GDS6 s06ag21a=bc_  
+[DELETPTS]
+Mesolite+Hydroxyapop GDS6 s06ag21a=bc_      \# output title
+
+define features
+   f1a DLw 3.99   4.10     4.83   4.95   ct .02 r*bd> [RBD35]
+\#
+\# Notes:  f1: center=       width=        depth=     
+\#         Feat:  1  has a weight of 
+endfeatures
+
+define constraints
+   constraint: FD-FIT>[GLBLFDFIT] DEPTH-FIT>[GLBLDPFIT]
+   constraint: FITALL>[GLBLFITALL]   \# added Fri 02 Sep 2022 10:23:01 AM MDT rclark
+endconstraint
+
+define output
+   output=fit depth fd
+   zeolite_mesolite-4.5um          \# Output base file name
+   8 DN 255 = 0.5000
+   compress= zip
+endoutput
+
+define actions
+   action: sound1
+   action: none
+endaction
+\#
+\#################################################################################
+group 27
+use= yes           \# yes or no,     if no,    skip this entry.
+udata: reflectance
+convolve: no
+preratio: none
+preprocess: none
+algorithm: tricorder-primary
+ID=sulfate_mirabilite-4.5um
+
+define library records
+   a SMALL:  [splib06]  3120 d         \# file ID, rec no.    1 to 2171 channels
+   a MEDIUM: [splib06]  xxxx d         \# file ID, rec no. 2172 to 4852 channels
+   a LARGE:  [splib06]  xxxx d         \# file ID, rec no. larger_chans_future
+endlibraryrecords
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Mirabilite GDS150 Na2SO4 s06ag21a=aa_   
+[DELETPTS]
+Mirabilite GDS150 Na2SO4 s06ag21a=aa_       \# output title
+
+define features
+   f1a DLw 4.12   4.24     4.92   5.03   ct .02 r*bd> [RBD35]
+\#
+\# Notes:  f1: center=       width=        depth=     
+\#         Feat:  1  has a weight of 
+endfeatures
+
+define constraints
+   constraint: FD-FIT>[GLBLFDFIT] DEPTH-FIT>[GLBLDPFIT]
+   constraint: FITALL>[GLBLFITALL]   \# added Fri 02 Sep 2022 10:23:01 AM MDT rclark
+endconstraint
+
+define output
+   output=fit depth fd
+   sulfate_mirabilite-4.5um          \# Output base file name
+   8 DN 255 = 0.5000
+   compress= zip
+endoutput
+
+define actions
+   action: sound1
+   action: none
+endaction
+\#
+\#################################################################################
+group 27
+use= yes           \# yes or no,     if no,    skip this entry.
+udata: reflectance
+convolve: no
+preratio: none
+preprocess: none
+algorithm: tricorder-primary
+ID=zeolite_natrolite-4.5um
+
+define library records
+   a SMALL:  [splib06]  3492 d         \# file ID, rec no.    1 to 2171 channels
+   a MEDIUM: [splib06]  xxxx d         \# file ID, rec no. 2172 to 4852 channels
+   a LARGE:  [splib06]  xxxx d         \# file ID, rec no. larger_chans_future
+endlibraryrecords
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Natrolite NMNH83380 Zeolit s06ag21a=bb_ 
+[DELETPTS]
+Natrolite NMNH83380 Zeolit s06ag21a=bb_     \# output title
+
+define features
+   f1a DLw 4.02   4.14     4.92   5.03   ct .02 r*bd> [RBD35]
+\#
+\# Notes:  f1: center=       width=        depth=     
+\#         Feat:  1  has a weight of 
+endfeatures
+
+define constraints
+   constraint: FD-FIT>[GLBLFDFIT] DEPTH-FIT>[GLBLDPFIT]
+   constraint: FITALL>[GLBLFITALL]   \# added Fri 02 Sep 2022 10:23:01 AM MDT rclark
+endconstraint
+
+define output
+   output=fit depth fd
+   zeolite_natrolite-4.5um          \# Output base file name
+   8 DN 255 = 0.5000
+   compress= zip
+endoutput
+
+define actions
+   action: sound1
+   action: none
+endaction
+\#
+\#################################################################################
+group 27
+use= yes           \# yes or no,     if no,    skip this entry.
+udata: reflectance
+convolve: no
+preratio: none
+preprocess: none
+algorithm: tricorder-primary
+ID=zeolite_natrolite-4.5um
+
+define library records
+   a SMALL:  [splib06]  6024 d         \# file ID, rec no.    1 to 2171 channels
+   a MEDIUM: [splib06]  xxxx d         \# file ID, rec no. 2172 to 4852 channels
+   a LARGE:  [splib06]  xxxx d         \# file ID, rec no. larger_chans_future
+endlibraryrecords
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Natrolite+Zeolite HS168.3B s06ag21a=bbb 
+[DELETPTS]
+Natrolite+Zeolite HS168.3B s06ag21a=bbb     \# output title
+
+define features
+   f1a DLw 4.07   4.19     4.92   5.03   ct .02 r*bd> [RBD35]
+\#
+\# Notes:  f1: center=       width=        depth=     
+\#         Feat:  1  has a weight of 
+endfeatures
+
+define constraints
+   constraint: FD-FIT>[GLBLFDFIT] DEPTH-FIT>[GLBLDPFIT]
+   constraint: FITALL>[GLBLFITALL]   \# added Fri 02 Sep 2022 10:23:01 AM MDT rclark
+endconstraint
+
+define output
+   output=fit depth fd
+   zeolite_natrolite-4.5um          \# Output base file name
+   8 DN 255 = 0.5000
+   compress= zip
+endoutput
+
+define actions
+   action: sound1
+   action: none
+endaction
+\#
+\#################################################################################
+group 27
+use= yes           \# yes or no,     if no,    skip this entry.
+udata: reflectance
+convolve: no
+preratio: none
+preprocess: none
+algorithm: tricorder-primary
+ID=sulfate_polyhalite-4.5um
+
+define library records
+   a SMALL:  [splib06]  4002 d         \# file ID, rec no.    1 to 2171 channels
+   a MEDIUM: [splib06]  xxxx d         \# file ID, rec no. 2172 to 4852 channels
+   a LARGE:  [splib06]  xxxx d         \# file ID, rec no. larger_chans_future
+endlibraryrecords
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Polyhalite NMNH92669-4 s06ag21a=aa_     
+[DELETPTS]
+Polyhalite NMNH92669-4 s06ag21a=aa_         \# output title
+
+define features
+   f1a DLw 3.85   3.97     4.92   5.03   ct .02 r*bd> [RBD35]
+\#
+\# Notes:  f1: center=       width=        depth=     
+\#         Feat:  1  has a weight of 
+endfeatures
+
+define constraints
+   constraint: FD-FIT>[GLBLFDFIT] DEPTH-FIT>[GLBLDPFIT]
+   constraint: FITALL>[GLBLFITALL]   \# added Fri 02 Sep 2022 10:23:01 AM MDT rclark
+endconstraint
+
+define output
+   output=fit depth fd
+   sulfate_polyhalite-4.5um          \# Output base file name
+   8 DN 255 = 0.5000
+   compress= zip
+endoutput
+
+define actions
+   action: sound1
+   action: none
+endaction
+\#
+\#################################################################################
+group 27
+use= yes           \# yes or no,     if no,    skip this entry.
+udata: reflectance
+convolve: no
+preratio: none
+preprocess: none
+algorithm: tricorder-primary
+ID=carbonate_rhodochrosite-4.69um
+
+define library records
+   a SMALL:  [splib06]  4296 d         \# file ID, rec no.    1 to 2171 channels
+   a MEDIUM: [splib06]  xxxx d         \# file ID, rec no. 2172 to 4852 channels
+   a LARGE:  [splib06]  xxxx d         \# file ID, rec no. larger_chans_future
+endlibraryrecords
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Rhodochrosite HS67 <250um s06ag21a=bb_  
+[DELETPTS]
+Rhodochrosite HS67 <250um s06ag21a=bb_      \# output title
+
+define features
+   f1a DLw 4.30   4.42     4.79   4.91   ct .02 r*bd> [RBD35]
+\#
+\# Notes:  f1: center=       width=        depth=     
+\#         Feat:  1  has a weight of 
+endfeatures
+
+define constraints
+   constraint: FD-FIT>[GLBLFDFIT] DEPTH-FIT>[GLBLDPFIT]
+   constraint: FITALL>[GLBLFITALL]   \# added Fri 02 Sep 2022 10:23:01 AM MDT rclark
+endconstraint
+
+define output
+   output=fit depth fd
+   carbonate_rhodochrosite-4.69um          \# Output base file name
+   8 DN 255 = 0.5000
+   compress= zip
+endoutput
+
+define actions
+   action: sound1
+   action: none
+endaction
+\#
+\#################################################################################
+group 27
+use= yes           \# yes or no,     if no,    skip this entry.
+udata: reflectance
+convolve: no
+preratio: none
+preprocess: none
+algorithm: tricorder-primary
+ID=feldspar_sanidine-4.5um
+
+define library records
+   a SMALL:  [splib06]  4428 d         \# file ID, rec no.    1 to 2171 channels
+   a MEDIUM: [splib06]  xxxx d         \# file ID, rec no. 2172 to 4852 channels
+   a LARGE:  [splib06]  xxxx d         \# file ID, rec no. larger_chans_future
+endlibraryrecords
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Sanidine GDS19 Feldspar s06ag21a=aaa    
+[DELETPTS]
+Sanidine GDS19 Feldspar s06ag21a=aaa        \# output title
+
+define features
+   f1a DLw 4.20   4.32     4.95   5.07   ct .02 r*bd> [RBD35]
+\#
+\# Notes:  f1: center=       width=        depth=     
+\#         Feat:  1  has a weight of 
+endfeatures
+
+define constraints
+   constraint: FD-FIT>[GLBLFDFIT] DEPTH-FIT>[GLBLDPFIT]
+   constraint: FITALL>[GLBLFITALL]   \# added Fri 02 Sep 2022 10:23:01 AM MDT rclark
+endconstraint
+
+define output
+   output=fit depth fd
+   feldspar_sanidine-4.5um          \# Output base file name
+   8 DN 255 = 0.5000
+   compress= zip
+endoutput
+
+define actions
+   action: sound1
+   action: none
+endaction
+\#
+\#################################################################################
+group 27
+use= yes           \# yes or no,     if no,    skip this entry.
+udata: reflectance
+convolve: no
+preratio: none
+preprocess: none
+algorithm: tricorder-primary
+ID=zeolite_scolecite-4.5um
+
+define library records
+   a SMALL:  [splib06]  4488 d         \# file ID, rec no.    1 to 2171 channels
+   a MEDIUM: [splib06]  xxxx d         \# file ID, rec no. 2172 to 4852 channels
+   a LARGE:  [splib06]  xxxx d         \# file ID, rec no. larger_chans_future
+endlibraryrecords
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Scolecite GDS7 Zeolite s06ag21a=bb_     
+[DELETPTS]
+Scolecite GDS7 Zeolite s06ag21a=bb_         \# output title
+
+define features
+   f1a DLw 3.95   4.07     5.02   5.14   ct .02 r*bd> [RBD35]
+\#
+\# Notes:  f1: center=       width=        depth=     
+\#         Feat:  1  has a weight of 
+endfeatures
+
+define constraints
+   constraint: FD-FIT>[GLBLFDFIT] DEPTH-FIT>[GLBLDPFIT]
+   constraint: FITALL>[GLBLFITALL]   \# added Fri 02 Sep 2022 10:23:01 AM MDT rclark
+endconstraint
+
+define output
+   output=fit depth fd
+   zeolite_scolecite-4.5um          \# Output base file name
+   8 DN 255 = 0.5000
+   compress= zip
+endoutput
+
+define actions
+   action: sound1
+   action: none
+endaction
+\#
+\#################################################################################
+group 27
+use= yes           \# yes or no,     if no,    skip this entry.
+udata: reflectance
+convolve: no
+preratio: none
+preprocess: none
+algorithm: tricorder-primary
+ID=phyllosilicate_sepiolite-4.5um
+
+define library records
+   a SMALL:  [splib06]  4500 d         \# file ID, rec no.    1 to 2171 channels
+   a MEDIUM: [splib06]  xxxx d         \# file ID, rec no. 2172 to 4852 channels
+   a LARGE:  [splib06]  xxxx d         \# file ID, rec no. larger_chans_future
+endlibraryrecords
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Sepiolite SepNev-1 s06ag21a=bb_         
+[DELETPTS]
+Sepiolite SepNev-1 s06ag21a=bb_             \# output title
+
+define features
+   f1a DLw 3.95   4.07     4.89   5.01   ct .02 r*bd> [RBD35]
+\#
+\# Notes:  f1: center=       width=        depth=     
+\#         Feat:  1  has a weight of 
+endfeatures
+
+define constraints
+   constraint: FD-FIT>[GLBLFDFIT] DEPTH-FIT>[GLBLDPFIT]
+   constraint: FITALL>[GLBLFITALL]   \# added Fri 02 Sep 2022 10:23:01 AM MDT rclark
+endconstraint
+
+define output
+   output=fit depth fd
+   phyllosilicate_sepiolite-4.5um          \# Output base file name
+   8 DN 255 = 0.5000
+   compress= zip
+endoutput
+
+define actions
+   action: sound1
+   action: none
+endaction
+\#
+\#################################################################################
+group 27
+use= yes           \# yes or no,     if no,    skip this entry.
+udata: reflectance
+convolve: no
+preratio: none
+preprocess: none
+algorithm: tricorder-primary
+ID=carbonate_siderite-4.65um
+
+define library records
+   a SMALL:  [splib06]  4566 d         \# file ID, rec no.    1 to 2171 channels
+   a MEDIUM: [splib06]  xxxx d         \# file ID, rec no. 2172 to 4852 channels
+   a LARGE:  [splib06]  xxxx d         \# file ID, rec no. larger_chans_future
+endlibraryrecords
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Siderite HS271.3B s06ag21a=aa_          
+[DELETPTS]
+Siderite HS271.3B s06ag21a=aa_              \# output title
+
+define features
+   f1a DLw 4.32   4.42     4.78   4.90   ct .02 r*bd> [RBD35]
+\#
+\# Notes:  f1: center=       width=        depth=     
+\#         Feat:  1  has a weight of 
+endfeatures
+
+define constraints
+   constraint: FD-FIT>[GLBLFDFIT] DEPTH-FIT>[GLBLDPFIT]
+   constraint: FITALL>[GLBLFITALL]   \# added Fri 02 Sep 2022 10:23:01 AM MDT rclark
+endconstraint
+
+define output
+   output=fit depth fd
+   carbonate_siderite-4.65um          \# Output base file name
+   8 DN 255 = 0.5000
+   compress= zip
+endoutput
+
+define actions
+   action: sound1
+   action: none
+endaction
+\#
+\#################################################################################
+group 27
+use= yes           \# yes or no,     if no,    skip this entry.
+udata: reflectance
+convolve: no
+preratio: none
+preprocess: none
+algorithm: tricorder-primary
+ID=carbonate_strontianite-4.70um
+
+define library records
+   a SMALL:  [splib06]  4770 d         \# file ID, rec no.    1 to 2171 channels
+   a MEDIUM: [splib06]  xxxx d         \# file ID, rec no. 2172 to 4852 channels
+   a LARGE:  [splib06]  xxxx d         \# file ID, rec no. larger_chans_future
+endlibraryrecords
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Strontianite HS272.3B s06ag21a=bb_      
+[DELETPTS]
+Strontianite HS272.3B s06ag21a=bb_          \# output title
+
+define features
+   f1a DLw 4.37   4.47     4.81   4.93   ct .02 r*bd> [RBD35]
+\#
+\# Notes:  f1: center=       width=        depth=     
+\#         Feat:  1  has a weight of 
+endfeatures
+
+define constraints
+   constraint: FD-FIT>[GLBLFDFIT] DEPTH-FIT>[GLBLDPFIT]
+   constraint: FITALL>[GLBLFITALL]   \# added Fri 02 Sep 2022 10:23:01 AM MDT rclark
+endconstraint
+
+define output
+   output=fit depth fd
+   carbonate_strontianite-4.70um          \# Output base file name
+   8 DN 255 = 0.5000
+   compress= zip
+endoutput
+
+define actions
+   action: sound1
+   action: none
+endaction
+\#
+\#################################################################################
+group 27
+use= yes           \# yes or no,     if no,    skip this entry.
+udata: reflectance
+convolve: no
+preratio: none
+preprocess: none
+algorithm: tricorder-primary
+ID=sulfate_syngenite-4.5um
+
+define library records
+   a SMALL:  [splib06]  4794 d         \# file ID, rec no.    1 to 2171 channels
+   a MEDIUM: [splib06]  xxxx d         \# file ID, rec no. 2172 to 4852 channels
+   a LARGE:  [splib06]  xxxx d         \# file ID, rec no. larger_chans_future
+endlibraryrecords
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Syngenite GDS139 s06ag21a=aa_           
+[DELETPTS]
+Syngenite GDS139 s06ag21a=aa_               \# output title
+
+define features
+   f1a DLw 4.03   4.15     5.02   5.14   ct .02 r*bd> [RBD35]
+\#
+\# Notes:  f1: center=       width=        depth=     
+\#         Feat:  1  has a weight of 
+endfeatures
+
+define constraints
+   constraint: FD-FIT>[GLBLFDFIT] DEPTH-FIT>[GLBLDPFIT]
+   constraint: FITALL>[GLBLFITALL]   \# added Fri 02 Sep 2022 10:23:01 AM MDT rclark
+endconstraint
+
+define output
+   output=fit depth fd
+   sulfate_syngenite-4.5um          \# Output base file name
+   8 DN 255 = 0.5000
+   compress= zip
+endoutput
+
+define actions
+   action: sound1
+   action: none
+endaction
+\#
+\#################################################################################
+group 27
+use= yes           \# yes or no,     if no,    skip this entry.
+udata: reflectance
+convolve: no
+preratio: none
+preprocess: none
+algorithm: tricorder-primary
+ID=sulfate_thenardite-4.5um
+
+define library records
+   a SMALL:  [splib06]  4848 d         \# file ID, rec no.    1 to 2171 channels
+   a MEDIUM: [splib06]  xxxx d         \# file ID, rec no. 2172 to 4852 channels
+   a LARGE:  [splib06]  xxxx d         \# file ID, rec no. larger_chans_future
+endlibraryrecords
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Thenardite GDS146 s06ag21a=cc?          
+[DELETPTS]
+Thenardite GDS146 s06ag21a=cc?              \# output title
+
+define features
+   f1a DLw 4.03   4.15     5.02   5.14   ct .02 r*bd> [RBD35]
+\#
+\# Notes:  f1: center=       width=        depth=     
+\#         Feat:  1  has a weight of 
+endfeatures
+
+define constraints
+   constraint: FD-FIT>[GLBLFDFIT] DEPTH-FIT>[GLBLDPFIT]
+   constraint: FITALL>[GLBLFITALL]   \# added Fri 02 Sep 2022 10:23:01 AM MDT rclark
+endconstraint
+
+define output
+   output=fit depth fd
+   sulfate_thenardite-4.5um          \# Output base file name
+   8 DN 255 = 0.5000
+   compress= zip
+endoutput
+
+define actions
+   action: sound1
+   action: none
+endaction
+\#
+\#################################################################################
+group 27
+use= yes           \# yes or no,     if no,    skip this entry.
+udata: reflectance
+convolve: no
+preratio: none
+preprocess: none
+algorithm: tricorder-primary
+ID=carbonate_witherite-4.74um
+
+define library records
+   a SMALL:  [splib06]  5274 d         \# file ID, rec no.    1 to 2171 channels
+   a MEDIUM: [splib06]  xxxx d         \# file ID, rec no. 2172 to 4852 channels
+   a LARGE:  [splib06]  xxxx d         \# file ID, rec no. larger_chans_future
+endlibraryrecords
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Witherite HS273.3B s06ag21a=aa_         
+[DELETPTS]
+Witherite HS273.3B s06ag21a=aa_             \# output title
+
+define features
+   f1a DLw 4.39   4.50     4.83   4.95   ct .02 r*bd> [RBD35]
+\#
+\# Notes:  f1: center=       width=        depth=     
+\#         Feat:  1  has a weight of 
+endfeatures
+
+define constraints
+   constraint: FD-FIT>[GLBLFDFIT] DEPTH-FIT>[GLBLDPFIT]
+   constraint: FITALL>[GLBLFITALL]   \# added Fri 02 Sep 2022 10:23:01 AM MDT rclark
+endconstraint
+
+define output
+   output=fit depth fd
+   carbonate_witherite-4.74um          \# Output base file name
+   8 DN 255 = 0.5000
+   compress= zip
+endoutput
+
+define actions
+   action: sound1
+   action: none
+endaction
+\#

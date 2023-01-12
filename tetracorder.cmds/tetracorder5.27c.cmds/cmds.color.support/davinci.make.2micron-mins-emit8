@@ -1,0 +1,323 @@
+#!/usr/local/bin/davinci -f
+#####!/usr/bin/env -S davinci -f  
+
+###########################  was:  #!/usr/local/bin/davinci -f
+
+
+
+# A master color set.  Just read in the files, assign the colors
+# and write the results.    R. Clark 4/16/2015 - 11/16/2015
+
+# command line:
+# prog    gray_base_image  prefix-file-name   [dual|nodual]
+
+prog="davinci.make.2micron-mins-emit8"     # CHANGE THIS if program name changes
+
+####################  Begin static: no need to change inything in this section ################
+
+if ($argc < 2) {
+
+	printf("Insufficient input\n")
+	printf("%s input_gray_image  outputcolorimage\n", prog)
+	printf("exit 1\n")
+	exit(1)
+}
+
+
+dual    = 1     # default color + gray image 
+dualmax = 2000  # no dual if width is greater than this
+
+if ($argc >= 3) {
+
+	if ( "$3" == "nodual" ) {
+		dual = 0
+	}
+	if ( "$3" == "dual" ) {
+		dual = 1
+		dualmax = 999999 
+	}
+}
+
+# read base gray image
+
+gbase=read(filename=$1)
+if (HasValue(gbase) ==0) {                   # check that read worked
+      printf ("read ERROR on file: %s\n",$1)
+      printf ("^GEXIT 1\n")
+      exit(1)
+}
+
+# execute this program in the same directory asthe source code below
+source ("cmds.color.support/davinci.master.colors")
+
+# 22 available colors:
+# c_red      c_green          c_blue       c_yellow        c_magenta       c_cyan      c_armygreen  
+# c_salmon   c_flesh          c_orange     c_deeppink      c_yellowgreen   c_lavender  c_bluegreen
+# c_skyblue  c_paleseagreen   c_white      c_redpink       c_gold          c_mudyellow c_lightpink
+# c_purple
+
+
+# a = first input image, 3-band color, xcolor = the color output image, RGB float
+# colorout = the color output image, 3-byte RGB
+
+
+define read_an_image(1,1) {
+
+	# read a gray-scale image and convert to 3-bands
+
+	afile = $1   # file to read
+	printf ("reading file %s\n", afile)
+	aaa=read(filename=afile)
+	if (HasValue(aaa) ==0) {  # check that read worked
+		printf ("read ERROR on file: %s\n",afile)
+		printf ("setting to zero\n")
+		aaa=0
+	}
+	qqq = cat(aaa,aaa,axis=z)  # make into 2-band image
+	aaa = cat(aaa,qqq,axis=z)  # make into 3-band image
+
+	return (aaa)
+
+}  # end define
+
+
+
+###################   begin custom section ##########################################
+
+# first image:
+
+# c_white
+a = read_an_image("group.2um/carbonate_calcite.fd.gif")    # change this to read an images so we can get dimensions.
+
+	# set up output image xcolor:
+	xcolor=float(a*0)
+	xdim=dim(a)
+
+	# now add the colors
+
+# 22 available colors:
+# c_red      c_green          c_blue       c_yellow        c_magenta       c_cyan      c_armygreen  
+# c_salmon   c_flesh          c_orange     c_deeppink      c_yellowgreen   c_lavender  c_bluegreen
+# c_skyblue  c_paleseagreen   c_white      c_redpink       c_gold          c_mudyellow c_lightpink
+# c_purple
+
+
+# first image:
+
+
+# goal: to show the following 8 emit minerals
+# calcite            c_blue
+# chlorite           c_lavender
+# dolomite           c_cyan
+# gypsum             c_magenta
+# illite+muscovite   c_green
+# kaolinite          c_yellow
+# montmorillonite    c_red
+# vermiculite        c_orange 
+
+
+# calcite            blue
+c=c_blue
+a=   read_an_image("group.2um/carbonate_calcite.fd.gif")
+a=a+ read_an_image("group.2um/talc+calcite.parkcity.fd.gif")
+a=a+ read_an_image("group.2um/talc+carbonate.parkcity.fd.gif")
+a=a+ read_an_image("group.2um/carbonate_calcite+0.2Ca-mont.fd.gif")
+a=a+ read_an_image("group.2um/carbonate_calcite+dolomite.5.fd.gif")
+a=a+ read_an_image("group.2um/calcite.25+dolom.25+Na-mont.5.fd.gif")
+a=a+ read_an_image("group.2um/carbonate_calcite.25+dolom.25+Ca-mont.5.fd.gif")
+a=a+ read_an_image("group.2um/calcite+0.2Na-mont.fd.gif")
+a=a+ read_an_image("group.2um/calcite+0.5Ca-mont.fd.gif")
+a=a+ read_an_image("group.2um/carbonate_calcite+0.3muscovite.fd.gif")
+a=a+ read_an_image("group.2um/carbonate_smectite_calcite.33+Ca-mont.67.fd.gif")
+a=a+ read_an_image("group.2um/carbonate_calcite+0.2kaolwxl.fd.gif")
+a=a+ read_an_image("group.2um/carbonate_calcite0.7+kaol0.3.fd.gif")
+
+     xcolor= xcolor + a*( c /255.)
+     a=0   # be sure array is cleared
+
+
+# chlorite           lavender
+c=c_lavender
+a=   read_an_image("group.2um/chlorite.fd.gif")
+a=a+ read_an_image("group.2um/chlorite-skarn.fd.gif")
+a=a+ read_an_image("group.2um/muscovite+chlorite.fd.gif")
+a=a+ read_an_image("group.2um/chlorite_clinochlore.fd.gif")
+a=a+ read_an_image("group.2um/chlorite_clinochlore.nmnh83369.fd.gif")
+a=a+ read_an_image("group.2um/chlorite_clinochlore.fe.gds157.fd.gif")
+a=a+ read_an_image("group.2um/chlorite_clinochlore.fe.sc-cca-1.fd.gif")
+a=a+ read_an_image("group.2um/chlorite_cookeite-car-1.a.fd.gif")
+a=a+ read_an_image("group.2um/chlorite_cookeite-car-1.c.fd.gif")
+a=a+ read_an_image("group.2um/chlorite_thuringite.fd.gif")
+a=a+ read_an_image("group.2um/prehnite+.50chlorite.fd.gif")
+a=a+ read_an_image("group.2um/prehnite+.67chlorite.fd.gif")
+a=a+ read_an_image("group.2um/prehnite+.75chlorite.fd.gif")
+
+     xcolor= xcolor + a*( c /255.)
+     a=0   # be sure array is cleared
+
+# dolomite           cyan
+c=c_cyan
+a=   read_an_image("group.2um/carbonate_dolomite.fd.gif")
+a=a+ read_an_image("group.2um/talc+carbonate.parkcity.fd.gif")
+a=a+ read_an_image("group.2um/carbonate_calcite+dolomite.5.fd.gif")
+a=a+ read_an_image("group.2um/carbonate_dolo+.5ca-mont.fd.gif")
+a=a+ read_an_image("group.2um/calcite.25+dolom.25+Na-mont.5.fd.gif")
+a=a+ read_an_image("group.2um/carbonate_calcite.25+dolom.25+Ca-mont.5.fd.gif")
+a=a+ read_an_image("group.2um/carbonate_dolomite.5+Na-mont.5.fd.gif")
+
+     xcolor= xcolor + a*( c /255.)
+     a=0   # be sure array is cleared
+
+
+
+# gypsum             magenta
+c=c_magenta
+a=   read_an_image("group.2um/sulfate_gypsum.fd.gif")
+a=a+ read_an_image("group.2um/sulfate-mix_gypsum+jar+illite.intmix.fd.gif")
+a=a+ read_an_image("group.2um/sulfate-mix_gyp+jar+musc.amix.fd.gif")
+a=a+ read_an_image("group.2um/sulfate-mix_gyp+jar+musc+dick.amix.fd.gif")
+a=a+ read_an_image("group.2um/musc+gyp+jar+dick.amix.fd.gif")
+a=a+ read_an_image("group.2um/dick+musc+gyp+jar.amix.fd.gif")
+a=a+ read_an_image("group.2um/sulfate-mix_gypsum.trace.dust+debris-WTC01-2.fd.gif")
+a=a+ read_an_image("group.2um/sulfate-mix_gypsum.trace.dust+debris-WTC01-28.fd.gif")
+a=a+ read_an_image("group.2um/chrysotile.gypsum.wtc01-8.fd.gif")
+
+     xcolor= xcolor + a*( c /255.)
+     a=0   # be sure array is cleared
+
+
+
+# illite+muscovite   green
+a=0   # be sure array is cleared
+c=c_green
+a=   read_an_image("group.2um/micagrp_illite.fd.gif")
+a=a+ read_an_image("group.2um/micagrp_illite.gds4.fd.gif")
+a=a+ read_an_image("group.2um/sulfate-mix_gypsum+jar+illite.intmix.fd.gif")
+a=a+ read_an_image("group.2um/smectite_ammonillsmec.fd.gif")
+a=a+ read_an_image("group.2um/micagrp_illite.roscoelite.fd.gif")
+a=a+ read_an_image("group.2um/micagrp_muscovite-med-Al.fd.gif")
+a=a+ read_an_image("group.2um/micagrp_muscovite-medhigh-Al.fd.gif")
+a=a+ read_an_image("group.2um/micagrp_muscovite-low-Al.fd.gif")
+a=a+ read_an_image("group.2um/micagrp_muscoviteFerich.fd.gif")
+a=a+ read_an_image("group.2um/pyroph+tr.musc.fd.gif")
+a=a+ read_an_image("group.2um/musc+pyroph.fd.gif")
+a=a+ read_an_image("group.2um/alunite+musc+pyroph.fd.gif")
+a=a+ read_an_image("group.2um/kaolin.5+muscov.medAl.fd.gif")
+a=a+ read_an_image("group.2um/kaolin.5+muscov.medhighAl.fd.gif")
+a=a+ read_an_image("group.2um/kaolin+musc.intimat.fd.gif")
+a=a+ read_an_image("group.2um/musc+jarosite.intimat.fd.gif")
+a=a+ read_an_image("group.2um/sulfate-mix_gyp+jar+musc.amix.fd.gif")
+a=a+ read_an_image("group.2um/sulfate-mix_gyp+jar+musc+dick.amix.fd.gif")
+a=a+ read_an_image("group.2um/musc+gyp+jar+dick.amix.fd.gif")
+a=a+ read_an_image("group.2um/dick+musc+gyp+jar.amix.fd.gif")
+a=a+ read_an_image("group.2um/alunite.5+musc.5.fd.gif")
+a=a+ read_an_image("group.2um/alunite.33+kaol.33+musc.33.fd.gif")
+a=a+ read_an_image("group.2um/muscovite+chlorite.fd.gif")
+a=a+ read_an_image("group.2um/carbonate_calcite+0.3muscovite.fd.gif")
+a=a+ read_an_image("group.2um/prehnite+muscovite.fd.gif")
+
+     xcolor= xcolor + a*( c /255.)
+     a=0   # be sure array is cleared
+
+
+# kaolinite          yellow
+c=c_yellow
+a=   read_an_image("group.2um/kaolgrp_kaolinite_wxl.fd.gif")
+a=a+ read_an_image("group.2um/kaolgrp_kaolinite_pxl.fd.gif")
+a=a+ read_an_image("group.2um/kaolgrp_halloysite.fd.gif")
+a=a+ read_an_image("group.2um/kaolgrp_dickite.fd.gif")
+a=a+ read_an_image("group.2um/kaolin.5+smect.5.fd.gif")
+a=a+ read_an_image("group.2um/kaolin.3+smect.7.fd.gif")
+a=a+ read_an_image("group.2um/kaol.75+pyroph.25.fd.gif")
+a=a+ read_an_image("group.2um/alunite.5+kaol.5.fd.gif")
+a=a+ read_an_image("group.2um/kaol.75+alun.25.fd.gif")
+a=a+ read_an_image("group.2um/Kalun+kaol.intmx.fd.gif")
+a=a+ read_an_image("group.2um/Na-alun+kaol.intmx.fd.gif")
+a=a+ read_an_image("group.2um/kaolin.5+muscov.medAl.fd.gif")
+a=a+ read_an_image("group.2um/kaolin.5+muscov.medhighAl.fd.gif")
+a=a+ read_an_image("group.2um/kaolin+musc.intimat.fd.gif")
+a=a+ read_an_image("group.2um/alunite.33+kaol.33+musc.33.fd.gif")
+a=a+ read_an_image("group.2um/carbonate_calcite+0.2kaolwxl.fd.gif")
+a=a+ read_an_image("group.2um/carbonate_calcite0.7+kaol0.3.fd.gif")
+a=a+ read_an_image("group.2um/kaolgrp_nacrite.fd.gif")
+
+     xcolor= xcolor + a*( c /255.)
+     a=0   # be sure array is cleared
+
+
+
+# montmorillonite    red
+c=c_red
+a=   read_an_image("group.2um/smectite_montmorillonite_na_highswelling.fd.gif")
+a=a+ read_an_image("group.2um/smectite_montmorillonite_fe_swelling.fd.gif")
+a=a+ read_an_image("group.2um/smectite_montmorillonite_ca_swelling.fd.gif")
+a=a+ read_an_image("group.2um/pyroph.5+mont0.5.fd.gif")
+a=a+ read_an_image("group.2um/feldspar_buddington.namont.fd.gif")
+a=a+ read_an_image("group.2um/feldspar_buddington.namont2.fd.gif")
+a=a+ read_an_image("group.2um/carbonate_calcite+0.2Ca-mont.fd.gif")
+a=a+ read_an_image("group.2um/carbonate_dolo+.5ca-mont.fd.gif")
+a=a+ read_an_image("group.2um/calcite.25+dolom.25+Na-mont.5.fd.gif")
+a=a+ read_an_image("group.2um/carbonate_calcite.25+dolom.25+Ca-mont.5.fd.gif")
+a=a+ read_an_image("group.2um/calcite+0.2Na-mont.fd.gif")
+a=a+ read_an_image("group.2um/calcite+0.5Ca-mont.fd.gif")
+a=a+ read_an_image("group.2um/organic_drygrass+.17Na-mont.fd.gif")
+a=a+ read_an_image("group.2um/carbonate_dolomite.5+Na-mont.5.fd.gif")
+a=a+ read_an_image("group.2um/carbonate_smectite_calcite.33+Ca-mont.67.fd.gif")
+a=a+ read_an_image("group.2um/organic_benzene+montswy.fd.gif")
+a=a+ read_an_image("group.2um/organic_trichlor+montswy.fd.gif")
+a=a+ read_an_image("group.2um/organic_toluene+montswy.fd.gif")
+a=a+ read_an_image("group.2um/organic_unleaded.gas+montswy.fd.gif")
+a=a+ read_an_image("group.2um/organic_tce+montswy.fd.gif")
+a=a+ read_an_image("group.2um/smectite_beidellite_gds123.fd.gif")
+a=a+ read_an_image("group.2um/smectite_beidellite_gds124.fd.gif")
+a=a+ read_an_image("group.2um/smectite_nontronite_swelling.fd.gif")
+a=a+ read_an_image("group.2um/clay_hectorite.fd.gif")
+a=a+ read_an_image("group.2um/saponite.or.talc.fd.gif")
+
+     xcolor= xcolor + a*( c /255.)
+     a=0   # be sure array is cleared
+
+
+# vermiculite        orange 
+c=c_orange
+a=   read_an_imAge("group.2um/micagrp_vermiculite_GDS458.fd.gif")
+a=a+ read_an_image("group.2um/micagrp_vermiculite_ALB4SA00.fd.gif")
+a=a+ read_an_image("group.2um/micagrp_vermiculite_WS682.fd.gif")
+a=a+ read_an_image("group.2um/micagrp_vermiculite_WS681.fd.gif")
+
+     xcolor= xcolor + a*( c /255.)
+
+
+
+########### end custom, no need to change anything below this line ###############################
+
+xout=byte(xcolor+0.5)   # output color image, byte
+xout = bip(xout)
+xdim=dim(xout)
+xdimx=xdim[1,,]      # color image width
+
+gbasedim=dim(gbase)
+x=gbasedim[1,,]      # base image width
+
+if (x > dualmax) {
+	dual = 0
+}
+
+if ( dual == 1 ) {
+	
+	gbase = bip(gbase)
+	xout = cat (xout, gbase, axis=x)
+}
+
+
+fout=$2
+
+
+adim=dim(xout)
+if ( adim[1,,] > 5 || adim[2,,] > 5 ) {
+	printf ("writing %s\n", fout)
+	write (xout, filename=fout, type=png)
+} else {
+	printf ("not writing %s\n", fout)
+	printf ("    image size < 6 pixels\n")
+}

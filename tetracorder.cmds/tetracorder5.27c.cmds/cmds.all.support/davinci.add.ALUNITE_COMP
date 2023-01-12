@@ -1,0 +1,40 @@
+#!/usr/local/bin/davinci -f
+####!/usr/bin/env -S davinci -f  
+
+###########################  was:  #!/usr/local/bin/davinci -f
+
+
+
+# image ratio
+
+fout1="group.2um/sulfate_alunite_k.all.fd"
+fout2="group.2um/sulfate_alunite_na.all.fd"
+fout3="group.2um/sulfate_alunite_int-comp.all.fd"
+
+#############################################################
+
+a=    load(filename="group.2um/sulfate_kalun150c.fd.gz")
+b=    load(filename="group.2um/sulfate_kalun250c.fd.gz")
+c=    load(filename="group.2um/sulfate_kalun450c.fd.gz")
+j=    load(filename="group.2um/sulfate_alunNa03.fd.gz")
+
+d=    load(filename="group.2um/sulfate_naalun150c.fd.gz")
+e=    load(filename="group.2um/sulfate_naalun300c.fd.gz")
+f=    load(filename="group.2um/sulfate_naalun450c.fd.gz")
+g=    load(filename="group.2um/sulfate_na82alun100c.fd.gz")
+
+h=    load(filename="group.2um/sulfate_na63alun300c.fd.gz")
+i=    load(filename="group.2um/sulfate_na40alun400c.fd.gz")
+k=    load(filename="group.2um/sulfate_alunNa56450c.fd.gz")
+l=    load(filename="group.2um/sulfate_alunNa78.450c.fd.gz")
+m=    load(filename="group.2um/sulfate_alun35K65Na.low.fd.gz")
+n=    load(filename="group.2um/sulfate_alun73K27Na.low.fd.gz")
+o=    load(filename="group.2um/sulfate_alun66K34Na.low.fd.gz")
+
+x = byte (a + b + c + j)
+y = byte (d + e + f + g)
+z = byte (h + i + k + l + m + n + o)
+
+write(x,filename=fout1,type=vicar)
+write(y,filename=fout2,type=vicar)
+write(z,filename=fout3,type=vicar)

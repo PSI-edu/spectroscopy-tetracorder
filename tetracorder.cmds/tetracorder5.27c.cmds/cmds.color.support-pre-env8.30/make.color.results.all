@@ -1,0 +1,604 @@
+#!/bin/sh
+#
+# Roger N. Clark  April, 2015 to 09/2020
+# 
+# Note: this script is in cmds.color.support must be run from
+#       the directory above cmds.color.support
+#       if not, things will not work right
+#
+#       If any color result png files are in this diretory (the one above color.results)
+#       the color dsvinci scripts will not write over that file and no new results will be output
+
+#   make.color.results.all   short_name_for_output
+
+gbase="  "
+if [ -f "base-image/color-visRGB.jpg" ]    # prefer a vis color comparison image
+then
+	gbase=base-image/color-visRGB.jpg
+
+elif [ -f "base-image/base-image.jpg" ]
+then
+	gbase=base-image/base-image.jpg
+
+else
+	gbase=`ls results.group.1um/*base.jpg`
+fi
+
+if [ ! -f "$gbase" ]
+then
+	echo "make.color.results.all:"
+	echo "     gray base image: $gbase NOT FOUND"
+	echo "     exit 1"
+	exit 1
+fi
+
+if [ ! -d "color.results" ]
+then
+	mkdir color.results
+fi
+
+if [ ! -d "color.results+labels" ]  # for assembled color maps and keys
+then
+	mkdir color.results+labels
+fi
+
+
+i="tet"
+if [ ! -z "$1" ]
+then
+	i=$1
+fi
+
+if [ -z "$TETNCPU" ]   # make sure tetracorder number of cpus variable exists
+then
+        TETNCPU=1
+fi
+
+NCPU=1      # number of cpus in use, min=1
+
+if [ -f "TETNCPU.txt" ]   # over ride the environment variable if exists
+then
+        nn=`head -1 TETNCPU.txt`
+        if [ "$nn" -gt "0" -a "$nn" -le "99" ]
+        then
+                TETNCPU=$nn    # value in TETNCPU.txt is the new number of cpus in use
+        fi
+fi
+
+echo " "  ###########################################################################
+echo "########################## color-results_1micron-minerals #####################"
+
+e=${i}_color-results_1micron-minerals-a.png
+if [ ! -f "color.results/$e" ]
+then
+    if [ "$NCPU" -lt "$TETNCPU" ]  # can do more in parallel
+    then
+	echo "cmds.color.support/davinci.make.1micron-mins.color.a  $gbase ${e}  parallel NCPU=$NCPU  max=$TETNCPU"
+	cmds.color.support/davinci.make.1micron-mins.color.a  $gbase ${e} &
+    else	
+	echo "cmds.color.support/davinci.make.1micron-mins.color.a  $gbase ${e}"
+	cmds.color.support/davinci.make.1micron-mins.color.a  $gbase ${e}
+    fi
+else
+	echo "$e ALREADY EXISTS"
+fi
+
+##### do not do the next one in parallel
+g=${i}_color-results_hematite+goethite.grain.size-a.png
+if [ ! -f "color.results/$g" ]
+then
+	echo "cmds.color.support/davinci.make.hematite+goethite.grain.size.a  $gbase ${g}"
+	cmds.color.support/davinci.make.hematite+goethite.grain.size.a  $gbase ${g}
+else
+	echo "$g ALREADY EXISTS"
+fi
+
+	wait
+	mv $e color.results
+	mv $g color.results
+
+# color map + key pairs:   1-micron results, var = e
+cm=color.results/$e
+ck="color.keys/key_1um-map.fe2+,fe3+.a-1200w.png"
+out="color.results+labels/${i}_color-results_1micron-minerals-a+labels.png"
+cmds.color.support/davinci.cat.colormap+key-below    $cm  $ck $out
+
+# color map + key pairs:   hematite+goethite.grain.size, var = g
+cm=color.results/$g
+ck="color.keys/key_hematite+goethite.grain.size.a-wide.png"
+out="color.results+labels/${i}_color-results_hematite+goethite.grain.size-a+labels.png"
+cmds.color.support/davinci.cat.colormap+key-below    $cm  $ck $out
+
+echo " "  ###########################################################################
+echo "########################## color-results_2micron-minerals #####################"
+
+d=${i}_color-results_2micron-minerals.png
+if [ ! -f "color.results/$d" ]
+then
+   if [ "$NCPU" -lt "$TETNCPU" ]  # can do more in parallel
+   then
+	echo "cmds.color.support/davinci.make.2micron-mins.color.a  $gbase ${d}   parallel NCPU=$NCPU max=$TETNCPU"
+	cmds.color.support/davinci.make.2micron-mins.color.a  $gbase ${d} &
+   else
+	echo "cmds.color.support/davinci.make.2micron-mins.color.a  $gbase ${d}"
+	cmds.color.support/davinci.make.2micron-mins.color.a  $gbase ${d}
+   fi
+else
+	echo "$d ALREADY EXISTS"
+fi
+
+	wait
+	mv $d color.results
+
+# color map + key pairs:   2-microns a results, var = d
+cm=color.results/$d
+ck="color.keys/key_2micron-mins_labels_a.png"
+out="color.results+labels/${i}_color-results_2micron-minerals+labels.png"
+cmds.color.support/davinci.cat.colormap+key-below    $cm  $ck $out
+
+#echo "########################## color-results_2micron-minerals-b  ##################"
+
+### Note, this looks like an old version, use b4
+
+##### do not do the next one in parallel
+#h=${i}_color-results_2micron-minerals-b.png
+#if [ ! -f "$h" ]
+#then
+#	########  WRONG KEY below-- old version, not needed?
+#	echo "cmds.color.support/davinci.make.2micron-mins.color.b  $gbase ${i}"
+#	cmds.color.support/davinci.make.2micron-mins.color.b  $gbase ${i}
+#else
+#	echo "$h ALREADY EXISTS"
+#fi
+
+#	wait
+#	#       mv $h color.results
+#	mv $d color.results
+
+## color map + key pairs:   2-microns b results, var = h
+#cm=color.results/$h
+#ck="color.keys/key_2um-mins-b2+.a-layout-1200w.png"
+#out="color.results+labels/${i}_color-results_2micron-minerals-b+labels.png"
+#cmds.color.support/davinci.cat.colormap+key-below    $cm  $ck $out
+
+echo " "  ###########################################################################
+echo "########################## color-results_2micron-minerals-b4   ################"
+
+j=${i}_color-results_2micron-minerals-b4.png
+if [ ! -f "color.results/$j" ]
+then
+   if [ "$NCPU" -lt "$TETNCPU" ]  # can do more in parallel
+   then
+	# note assemblying correctly--need to debug
+	echo "cmds.color.support/davinci.make.2micron-mins.color.b4  $gbase ${j}  parallel NCPU=$NCPU max=$TETNCPU"
+	cmds.color.support/davinci.make.2micron-mins.color.b4  $gbase ${j} &
+   else
+	echo "cmds.color.support/davinci.make.2micron-mins.color.b4  $gbase ${j}"
+	cmds.color.support/davinci.make.2micron-mins.color.b4  $gbase ${j}
+   fi
+else
+	echo "$j ALREADY EXISTS"
+fi
+
+	wait
+	mv $j color.results
+
+# color map + key pairs:   2-microns b results, var = j
+cm=color.results/$j
+ck="color.keys/key_2um-mins-b4-layout-1200w.png"
+out="color.results+labels/${i}_color-results_2micron-minerals-b4+labels.png"
+cmds.color.support/davinci.cat.colormap+key-below    $cm  $ck $out
+
+
+echo " "  ###########################################################################
+echo "########################## davinci.make.2micron-mins-muscovite-comp.color   ################"
+
+j=${i}_color-results_2micron-minerals-muscovite-comp.png
+if [ ! -f "color.results/$j" ]
+then
+   if [ "$NCPU" -lt "$TETNCPU" ]  # can do more in parallel
+   then
+	# note assemblying correctly--need to debug
+	echo "cmds.color.support/davinci.make.2micron-mins-muscovite-comp  $gbase ${j}  parallel NCPU=$NCPU max=$TETNCPU"
+	cmds.color.support/davinci.make.2micron-mins-muscovite-comp  $gbase ${j} &
+   else
+	echo "cmds.color.support/davinci.make.2micron-mins-muscovite-comp  $gbase ${j}"
+	cmds.color.support/davinci.make.2micron-mins-muscovite-comp  $gbase ${j}
+   fi
+else
+	echo "$j ALREADY EXISTS"
+fi
+
+	wait
+	mv $j color.results
+
+# color map + key pairs:   2-microns b results, var = j
+cm=color.results/$j
+ck="color.keys/key_2um-mins-muscovite-comp-layout-1200w.png"    # ZZZZZ need correct key
+out="color.results+labels/${i}_color-results_2micron-mins-muscovite-comp+labels.png"
+cmds.color.support/davinci.cat.colormap+key-below    $cm  $ck $out
+
+
+echo " "  ###########################################################################
+echo "########################## color-results_2micron-mins-emit8   ################"
+
+j=${i}_color-results_2micron-mins-emit8.png
+if [ ! -f "color.results/$j" ]
+then
+   if [ "$NCPU" -lt "$TETNCPU" ]  # can do more in parallel
+   then
+	# note assemblying correctly--need to debug
+	echo "cmds.color.support/davinci.make.2micron-mins-emit8  $gbase ${j}  parallel NCPU=$NCPU max=$TETNCPU"
+	cmds.color.support/davinci.make.2micron-mins-emit8  $gbase ${j} &
+   else
+	echo "cmds.color.support/davinci.make.2micron-mins-emit8  $gbase ${j}"
+	cmds.color.support/davinci.make.2micron-mins-emit8  $gbase ${j}
+   fi
+else
+	echo "$j ALREADY EXISTS"
+fi
+
+	wait
+	mv $j color.results
+
+# color map + key pairs:   2-microns b results, var = j
+cm=color.results/$j
+ck="color.keys/key_2um-mins-emit8-layout-1200w.png"
+out="color.results+labels/${i}_color-results_2micron-mins-emit8+labels.png"
+cmds.color.support/davinci.cat.colormap+key-below    $cm  $ck $out
+
+
+echo " "  ###########################################################################
+echo "########################## color-results_vegetation-cover  ####################"
+
+	#### 2019/04: not completed
+
+##### do not do the next one in parallel
+c=${i}_color-results_vegetation-cover-a.png
+if [ ! -f "color.results/$c" ]
+then
+	echo "cmds.color.support/davinci.make.vegcover.a  $gbase ${c}"
+	cmds.color.support/davinci.make.vegcover.a  $gbase ${c}
+else
+	echo "$c ALREADY EXISTS"
+fi
+
+	wait
+	mv $c color.results
+
+# color map + key pairs:  Vegetation cover, var = c
+cm=color.results/$c
+ck="color.keys/key_vegetation-cover.a.png"
+out="color.results+labels/${i}_color-results_vegetation-cover-a+labels.png"
+cmds.color.support/davinci.cat.colormap+key-below    $cm  $ck $out
+
+echo " "  ###########################################################################
+echo "########################## color-results_red-edge-shift   #####################"
+
+r=${i}_color-results_red-edge-shift-a.png
+if [ ! -f "color.results/$r" ]
+then
+   if [ "$NCPU" -lt "$TETNCPU" ]  # can do more in parallel
+   then
+	echo "cmds.color.support/davinci.make.red-edge-shift.a $gbase  ${r}  parallel NCPU=$NCPU max=$TETNCPU"
+	cmds.color.support/davinci.make.red-edge-shift.a $gbase  ${r} &
+   else
+	echo "cmds.color.support/davinci.make.red-edge-shift.a $gbase  ${r}"
+	cmds.color.support/davinci.make.red-edge-shift.a $gbase  ${r}
+   fi
+else
+	echo "$r ALREADY EXISTS"
+fi
+
+	wait
+	mv $r color.results
+
+# color map + key pairs:
+cm=color.results/$r
+ck="color.keys/key_red-edge-shift.a.png"
+out="color.results+labels/${i}_color-results_red-edge-shift-a+labels.png"
+cmds.color.support/davinci.cat.colormap+key-below    $cm  $ck $out
+
+echo " "  ###########################################################################
+echo "########################## color-results_water-a          #####################"
+
+##### do not do the next one in parallel
+w=${i}_color-results_water-a.png
+if [ ! -f "color.results/$w" ]
+then
+	echo "cmds.color.support/davinci.make.water.color.a  $gbase ${w}"
+	cmds.color.support/davinci.make.water.color.a  $gbase ${w}
+else
+	echo "$w ALREADY EXISTS"
+fi
+
+	wait
+	mv $w color.results
+
+# color map + key pairs:
+cm=color.results/$w
+ck="color.keys/key_water.a.png"
+out="color.results+labels/${i}_color-results_water-a+labels.png"
+cmds.color.support/davinci.cat.colormap+key-below    $cm  $ck $out
+
+
+echo " "  ###########################################################################
+echo "########################## color-results_prehnite-chlorite-mix+perchlorate  ###"
+
+c=${i}_color-results_prehnite-chlorite-mix+perchlorate.png
+if [ ! -f "color.results/$c" ]
+then
+	echo "cmds.color.support/davinci.make.prehnite-chloriteserp-perchlorate.b $gbase ${c}"
+	cmds.color.support/davinci.make.prehnite-chloriteserp-perchlorate.b $gbase ${c}
+	mv $c color.results
+else
+	echo "$c ALREADY EXISTS"
+fi
+
+# color map + key pairs:
+cm=color.results/$c
+ck="color.keys/key_prehnite-chloriteserp-perchlorate_labels_a.png"
+out="color.results+labels/${i}_color-results_prehnite-chlorite-mix+perchlorate+labels.png"
+cmds.color.support/davinci.cat.colormap+key-below    $cm  $ck $out
+
+
+echo " "  ###########################################################################
+echo "########################## color-results_pyroxene.2um.band.position  ##########"
+
+c=${i}_color-results_pyroxene.2um.band.position.png
+if [ ! -f "color.results/$c" ]
+then
+	echo "cmds.color.support/davinci.make.pyroxene.color.a  $gbase ${c}"
+	cmds.color.support/davinci.make.pyroxene.color.a  $gbase ${c}
+	mv $c color.results
+else
+	echo "$c ALREADY EXISTS"
+fi
+# color map + key pairs:
+cm=color.results/$c
+ck="color.keys/key_pyroxene_labels_a.png"
+out="color.results+labels/${i}_color-results_pyroxene.2um.band.position+labels.png"
+cmds.color.support/davinci.cat.colormap+key-below    $cm  $ck $out
+
+
+echo " "  ###########################################################################
+echo "########################## color-results_1.9um.water.wave.position  ###########"
+
+c=${i}_color-results_1.9um.water.wave.position.a.png     # water featrures vs wavelength
+if [ ! -f "color.results/$c" ]
+then
+	echo "cmds.color.support/davinci.make.water-1.9um.color.a $gbase ${c}"
+	cmds.color.support/davinci.make.water-1.9um.color.a $gbase ${c}
+	mv $c color.results
+else
+	echo "$c ALREADY EXISTS"
+fi
+# color map + key pairs:
+cm=color.results/$c
+ck="color.keys/key_water-map-1.9-2um_labels_b.png"
+out="color.results+labels/${i}_color-results_1.9um.water.wave.position.a+labels.png"
+cmds.color.support/davinci.cat.colormap+key-below    $cm  $ck $out
+
+
+echo " "  ###########################################################################
+echo "########################## color-results_1.9um.water.band.position  ###########"
+
+c=${i}_color-results_1.9um.water.band.position.png     # water features vs mineralogy
+if [ ! -f "color.results/$c" ]
+then
+	echo "cmds.color.support/davinci.make.water-1.9um.color.b $gbase ${c}"
+	cmds.color.support/davinci.make.water-1.9um.color.b $gbase ${c}
+	mv $c color.results
+else
+	echo "$c ALREADY EXISTS"
+fi
+# color map + key pairs:
+cm=color.results/$c
+ck="color.keys/key_1.9-water.a.png"
+out="color.results+labels/${i}_color-results_1.9um.water.band.position+labels.png"
+cmds.color.support/davinci.cat.colormap+key-below    $cm  $ck $out
+
+
+echo " "  ###########################################################################
+echo "########################## color-results_1.9um.water.sulfates.band.position  ##"
+
+c=${i}_color-results_1.9um.water.sulfates.band.position.png
+if [ ! -f "color.results/$c" ]
+then
+	echo "cmds.color.support/davinci.make.water-1.9um.sulfates.color.a $gbase ${c}"
+	cmds.color.support/davinci.make.water-1.9um.sulfates.color.a $gbase ${c}
+	mv $c color.results
+else
+	echo "$c ALREADY EXISTS"
+fi
+# color map + key pairs:
+cm=color.results/$c
+ck="color.keys/key_1.9-water-sulfates.a.png"
+out="color.results+labels/${i}_color-results_1.9um.water.sulfates.band.position+labels.png"
+cmds.color.support/davinci.cat.colormap+key-below    $cm  $ck $out
+
+
+echo " "  ###########################################################################
+echo "########################## color-results_1.9um.water.zeolites.band.position  ##"
+
+c=${i}_color-results_1.9um.water.zeolites.band.position.png
+if [ ! -f "color.results/$c" ]
+then
+	echo "cmds.color.support/davinci.make.water-1.9um.zeolites.color.a $gbase ${c}"
+	cmds.color.support/davinci.make.water-1.9um.zeolites.color.a $gbase ${c}
+	mv $c color.results
+else
+	echo "$c ALREADY EXISTS"
+fi
+# color map + key pairs:
+cm=color.results/$c
+ck="color.keys/key_1.9-water-zeolites.a.png"
+out="color.results+labels/${i}_color-results_1.9um.water.zeolites.band.position+labels.png"
+cmds.color.support/davinci.cat.colormap+key-below    $cm  $ck $out
+
+
+
+echo " "  ###########################################################################
+echo "########################## color-results_2.8um.oh.position  ###########"
+
+c=${i}_color-results_2.8um.oh.band.position.png     # narrow OH band posituons
+if [ ! -f "color.results/$c" ]
+then
+	echo "cmds.color.support/davinci.make.oh2.8um-feats.color.a $gbase ${c}"
+	cmds.color.support/davinci.make.oh2.8um-feats.color.a $gbase ${c}
+	mv $c color.results
+else
+	echo "$c ALREADY EXISTS"
+fi
+# color map + key pairs:
+cm=color.results/$c
+ck="color.keys/key_2.8-oh.a.png"
+out="color.results+labels/${i}_color-results_2.8um.oh.band.position+labels.png"
+cmds.color.support/davinci.cat.colormap+key-below    $cm  $ck $out
+
+
+echo " "  ###########################################################################
+echo "########################## color-results_3.5um.feat.position  #################"
+
+c=${i}_color-results_3.5um.feat.position.png
+if [ ! -f "color.results/$c" ]
+then
+	echo "cmds.color.support/davinci.make.3.5um-feats.color.a $gbase ${c}"
+	cmds.color.support/davinci.make.3.5um-feats.color.a $gbase ${c}
+	mv $c color.results
+else
+	echo "$c ALREADY EXISTS"
+fi
+# color map + key pairs:
+cm=color.results/$c
+ck="color.keys/key_3to3.5um.feats.a.png"
+out="color.results+labels/${i}_color-results_3.5um.feat.position+labels.png"
+cmds.color.support/davinci.cat.colormap+key-below    $cm  $ck $out
+
+
+echo " "  ###########################################################################
+echo "########################## color-results_1.5um.broadfeats  ####################"
+
+c=${i}_color-results_1.5um.broadfeats.png
+if [ ! -f "color.results/$c" ]
+then
+	echo "cmds.color.support/davinci.make.1.5um-broadfeats.color.a $gbase ${c}"
+	cmds.color.support/davinci.make.1.5um-broadfeats.color.a $gbase ${c}
+	mv $c color.results
+else
+	echo "$c ALREADY EXISTS"
+fi
+# color map + key pairs:
+cm=color.results/$c
+ck="color.keys/key_1.5um-broadfeats.a.png"
+out="color.results+labels/${i}_color-results_1.5um.broadfeats+labels.png"
+cmds.color.support/davinci.cat.colormap+key-below    $cm  $ck $out
+
+
+echo " "  ###########################################################################
+echo "########################## color-results_3um.waterfeats   #####################"
+
+c=${i}_color-results_3um.waterfeats.png
+if [ ! -f "color.results/$c" ]
+then
+	echo "cmds.color.support/davinci.make.3um-water.color.a $gbase ${c}"
+	cmds.color.support/davinci.make.3um-water.color.a $gbase ${c}
+	mv $c color.results
+else
+	echo "$c ALREADY EXISTS"
+fi
+# color map + key pairs:
+cm=color.results/$c
+ck="color.keys/key_3um-waterfeats.a.png"
+out="color.results+labels/${i}_color-results_3um.waterfeats+labels.png"
+cmds.color.support/davinci.cat.colormap+key-below    $cm  $ck $out
+
+
+echo " "  ###########################################################################
+echo "########################## color-results_veg,water,snow   #####################"
+
+c=${i}_color-results_veg,water,snow.png
+if [ ! -f "color.results/$c" ]
+then
+	echo "cmds.color.support/davinci.make-veg,water,snow.a $gbase ${c}"
+	cmds.color.support/davinci.make-veg,water,snow.a $gbase ${c}
+	mv $c color.results
+else
+	echo "$c ALREADY EXISTS"
+fi
+# color map + key pairs:
+cm=color.results/$c
+ck="color.keys/key_veg,water,snow.a.png"
+out="color.results+labels/${i}_color-results_veg,water,snow.png"
+cmds.color.support/davinci.cat.colormap+key-below    $cm  $ck $out
+
+
+
+echo " "  ###########################################################################
+echo "########################## color-results_veg-spectral-type   ##################"
+
+c=${i}_color-results_veg-spectral-type.png
+if [ ! -f "color.results/$c" ]
+then
+	echo "cmds.color.support/davinci.make-veg-spectral-type.a $gbase ${c}"
+	cmds.color.support/davinci.make-veg-spectral-type.a  $gbase ${c}
+	mv $c color.results
+else
+	echo "$c ALREADY EXISTS"
+fi
+# color map + key pairs:
+cm=color.results/$c
+ck="color.keys/key_veg-spectral-type.a.png"
+out="color.results+labels/${i}_color-results_veg-spectral-type.a.png"
+cmds.color.support/davinci.cat.colormap+key-below    $cm  $ck $out
+
+
+
+
+echo " "  ###########################################################################
+echo "########################## color-results_veg-water-rgb    #####################"
+
+c=${i}_color-results_veg-water-rgb.png
+if [ ! -f "color.results/$c" ]
+then
+	echo "cmds.color.support/davinci.make.veg-water-rgb $gbase ${c}"
+	cmds.color.support/davinci.make.veg-water-rgb $gbase ${c}
+	mv $c color.results
+else
+	echo "$c ALREADY EXISTS"
+fi
+# color map + key pairs:
+cm=color.results/$c
+ck="color.keys/key_veg-water-rgb.png"
+out="color.results+labels/${i}_color-results_veg-water-rgb.png"
+cmds.color.support/davinci.cat.colormap+key-below    $cm  $ck $out
+
+
+echo " "  ###########################################################################
+#######################################################
+# now make the one row image from the above set of 4
+# this was a special case for mars
+
+# e=${i}_color-results_4-panel-row.png
+# if [ ! -f "$e" ]
+# then
+# 	cmds.color.support/davinci.make.1row.4panel-results.a $d $c $a $b $e
+# else
+# 	echo "$e ALREADY EXISTS"
+# fi
+echo " "
+echo "now make jpeg images of the color maps.  They are smaller so easier to email,"
+echo "but have a very small quality loss."
+echo " "
+	
+mkdir color.results+labels-jpegs
+for i in color.results+labels/*.png
+do
+	bname=`basename $i .png`
+	jout=${bname}.jpg
+	echo "pngtopnm $i | ppmtojpeg --quality=98  > color.results+labels-jpegs/$jout"
+	pngtopnm $i | ppmtojpeg --quality=98  > color.results+labels-jpegs/$jout
+
+done
+
+echo "make.color.results.all done" `date`

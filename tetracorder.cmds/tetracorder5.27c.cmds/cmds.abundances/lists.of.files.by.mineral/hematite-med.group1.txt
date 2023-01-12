@@ -1,0 +1,10 @@
+# Hematite    based on cmd.lib.setup.t5.2d3
+#
+#  DN scale = what band depth = 255 in the tetracorder output image (from 5.2a2 expert system)
+#  BD factor = band depth =1 for pure, fraction in mixture
+#  splib06conv1, sprlb06conv1 = convolved spectrum ID, valid for spectra for 1 - 2171 channels.
+#
+#                                                                 DN     BD    Band                                   convolved
+#              file                                             scale  factor  depth      title                       reference spectrum
+group.1um/fe3+_hematite.med.gr.gds27.depth.gz                     0.5   1.00  0.5523  Hematite GDS27                  sprlb06conv1  738
+group.1um/fe3+_hematite.med.gr.br25b.depth.gz                     0.5   0.050 0.4408  Hematite_Coatd_Qtz BR93-25B     splib06conv1 6174

@@ -1,0 +1,12 @@
+#!/bin/sh
+
+a=$1
+
+b=`grep "$a" spectra.record.database`
+
+if [ -z "$b" ]
+then
+	echo "NOT FOUND: $a"
+else
+	echo $b
+fi

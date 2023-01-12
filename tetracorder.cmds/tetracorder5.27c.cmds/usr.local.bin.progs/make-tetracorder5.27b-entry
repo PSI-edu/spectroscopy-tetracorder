@@ -1,0 +1,93 @@
+#!/bin/sh
+
+#                                1      2        3         4          5
+# make-tetracorder5.27b-entry group# library  recnumber  title  [outputbasefilename]
+
+if [ -z "$4" ]
+then
+	echo "form"
+        echo "                                1      2        3         4          5                6  7  8  9 10"
+        echo " make-tetracorder5.27b-entry group# library  recnumber  title  [outputbasefilename]  [L c1 c2 c3 c4]"
+	echo " "
+	echo " make-tetracorder5.27b-entry   26   splib06    4956  "this is a title"  unobtanium66"
+	exit 1
+fi
+
+group=$1
+library=$2
+recnumber=$3
+title=$4
+
+# continuaa:
+contin="L"     # linear continuum (default)
+c1=ZZaa        # continuaa, default = no entry
+c2=ZZbb
+c3=ZZcc
+c4=ZZdd
+
+if [ -n "$5" ]
+then
+	outputbasefilename=$5
+else
+	outputbasefilename="ZZZoutputbasefilename"
+fi
+
+if [ -n "$6" ]
+then
+	if [ -n "$10" -a "$6" = "L" ]    # linear continuum
+	then
+		c1=$7          # continuaa
+		c2=$8  
+		c3=$9  
+		c4=$10 
+	fi
+fi
+
+me=`whoami`
+dd=`date`
+
+
+echo "\\#################################################################################"
+echo "group $group"
+echo "use= yes           \\# yes or no,     if no,    skip this entry."
+echo "udata: reflectance"
+echo "convolve: no"
+echo "preratio: none"
+echo "preprocess: none"
+echo "algorithm: tricorder-primary"
+echo "ID=$outputbasefilename"
+echo ""
+echo "define library records"
+echo "   a SMALL:  [$library]  $recnumber d         \\# file ID, rec no.    1 to 2171 channels"
+echo "   a MEDIUM: [splib06]  xxxx d         \\# file ID, rec no. 2172 to 4852 channels"
+echo "   a LARGE:  [splib06]  xxxx d         \\# file ID, rec no. larger_chans_future"
+echo "endlibraryrecords"
+echo "\\#=-=-=-=-=-=-=-=-=-=-=- TITLE=$title"
+echo "[DELETPTS]"
+echo "$title    \\# output title"
+echo ""
+echo "define features"
+echo "   f1a D${contin}w $c1   $c2     $c3   $c4   ct .02 r*bd> [RBD35]"
+echo '\#'
+echo '\# Notes:'
+echo '\#         Feat:  1  has a weight of '
+echo "endfeatures"
+echo ""
+echo "define constraints"
+echo "   constraint: FD-FIT>[GLBLFDFIT] DEPTH-FIT>[GLBLDPFIT]"
+echo "   constraint: FITALL>[GLBLFITALL]   \\# added $dd $me"
+echo "endconstraint"
+echo ""
+echo "define output"
+echo "   output=fit depth fd"
+echo "   $outputbasefilename          \\# Output base file name"
+echo "   8 DN 255 = 0.5000"
+echo "   compress= zip"
+echo "endoutput"
+echo ""
+echo "define actions"
+echo "   action: sound1"
+echo "   action: none"
+echo "endaction"
+echo  '\#'
+

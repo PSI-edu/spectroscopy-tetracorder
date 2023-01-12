@@ -1,0 +1,164 @@
+This directory contains the Tetracorder expert system and support programs.
+
+Watch the training videos at:
+
+      https://www.youtube.com/user/PSITucson/featured
+
+   Go to: Spectroscopy and Tetracorder Training
+
+      The youtube left-right scroll shows only the first 12 videos.  To see all videos,
+      click on the PLAY ALL button and the full list of videos is on the right.
+
+
+#########################################
+
+First complete the configuration for your system:
+
+There are 3 directories:
+        cmds.color.support
+        cmds.color.support-env-s
+        cmds.color.support-pre-env8.30
+
+The commands in cmds.color.support are what are used and the shipped version
+will work for most linux systems.  The versions in cmds.color.support-env-s
+have the first line:
+
+#!/usr/bin/env -S davinci -f  
+
+and requires env version 8.30 or higher.  You only need these versions if
+you have an unusual situation, like a Beowulf cluster.
+Linux mint verion 20+ has env 8.30
+
+Check you system with: env --version
+
+If you have a newer env version and need the #!/usr/bin/env -S davinci -f
+first line, do:
+
+cp -a cmds.color.support-env-s/* cmds.color.support
+
+
+
+Similarly, for the scrips in directories:
+
+         davinci-cmds.for.usr.local.bin
+    and  davinci-cmds.for.usr.local.bin-pre-env8.30
+
+for env --version = 8.30 or later, do:
+
+cp -a davinci-cmds.for.usr.local.bin/*   /usr/local/bin
+
+and if an older env version, do:
+
+cp -a davinci-cmds.for.usr.local.bin-pre-env8.30/*  /usr/local/bin
+
+
+
+
+##########################################
+
+Tetracorder commands: what to edit for version changes
+For example, from tetracorder5.2 to tetracorder5.26, change 5.2 to 5.26 in:
+
+cmd-setup-tetrun
+cmd.tetracorder.rover.ASD.setup.and.autostart
+cmd.runtet
+
+e.g.:
+
+vi cmd-setup-tetrun  cmd.tetracorder.rover.ASD.setup.and.autostart  cmd.runtet
+
+
+##########################################
+
+To add a new instrument:
+
+1) convolve the spectral libraries.
+
+2) cd DATASETS
+   copy an existing entry to the new name.
+   edit the new file
+   example:  cp aviris_2018 emit-a
+             vi emit_a     # result:
+             data=    EMIT-2022  
+             restart= r1-emita
+   
+3) add an entry for the new instrument in DELETED.channels
+   cd DELETED.channels
+   add new file or edit DELETED.channels.txt.
+   Example new file:
+   delete_emit_a
+    c   # emit_a   (no deleted points at this time)
+
+4) copy a restart file to the new instrument name and edit the spectral library names.
+     example, for  restart_files/r1-emita, change the lines:
+                   (get the number of channels from the target spectrometer)
+        cp restart_files/r1-av18a  restart_files/r1_emita
+        edit  restart_files/r1_emita   and change the follor to:
+        iwfl=/sl1/usgs/rlib06/r06emita                                                       
+        iyfl=/sl1/usgs/library06.conv/s06emita                                             
+        irfl=r1-r06emita
+        #
+        iwdgt=      r06emita  # file device letter w
+        inmy=       s06emita  # file device letter y
+        nchans=          288  # num wave chans
+
+
+
+##########################################
+
+Example runs
+
+to set up a tetracorder run, cd to the directory where you want to create
+a tetracorder directory for a run.  For example, if you want to do a 
+tetracorder run in /data1/project3/mapping/arches-np
+first cd to:
+    /data1/project3/mapping/
+
+The run the command:
+/t1/tetracorder.cmds/tetracorder5.26e.cmds/cmd-setup-tetrun
+
+With no arguments, cmd-setup-tetrun will tell you all the options.
+The first option is the sub-directory where all results would be placed.
+
+Example:
+
+/t1/tetracorder.cmds/tetracorder5.26e.cmds/cmd-setup-tetrun   arches-np    aviris_1995 \
+              cube ../cube/cuprite.95.cal.rtgc.v  0.0005 -T 0 80 C     -P 0.9 1.1 bar  \
+              shortcubeid archs95a
+
+/t1/tetracorder.cmds/tetracorder5.26e.cmds/cmd-setup-tetrun   map-schrod1   MMM_09c \
+              cube ../cubes/Schrodinger_UARFLRC  1.0  -T -100 140 C -P 0.00000001 0.0001 bar \
+              shortcubeid m3schrod1
+
+
+Note the full path + filename to the cube must be less than 73 characters.
+(Set up symbolic links to shorten path+filename.)
+
+
+#################  Auto-Extracting Spectra of Pixel Averages  #################
+
+See:
+     AAA.cmds.to.get.average.spectra.of.mapped.materials
+
+
+###############  Red Edge Shift  ################################################
+
+The veg anomaly run set a max of band depth 0.5 = 255.  Max response
+would be about a 7 nm shift in the red edge (dn=255).  A dn of ~107
+would be ~3nm shift
+
+shift     peak height    DN    Possible image stretch
+-----------------------------------------------------
+  0  nm       0           0
+  0.5         0.035      18     purple 0.5 to 1 nm
+  1           0.07       36     blue     1 to 2 nm
+  2           0.14       71     green    2 to 3 nm
+  3           0.21      107     red      3 to 4 nm
+  4           0.28      143     white    > 4 nm 
+
+
+
+##############   KNOWN ISSUES   ################################################
+
+Read: AAAAA.KNOWN-ISSUES.txt
+

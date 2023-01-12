@@ -1,0 +1,23 @@
+#!/bin/sh
+
+# R. Clark May, 2021
+
+# Note: this command is executed from above the directory where this command is located/
+
+p="./cmds.abundances/davinci.compute.model.abundances.v1"
+
+if [ ! -d "results.abundances" ]
+then
+	echo "mkdir results.abundances"
+	      mkdir results.abundances
+fi
+
+if [ ! -d "results.abundances/model1" ]
+then
+	echo "mkdir results.abundances/model1"
+	      mkdir results.abundances/model1
+fi
+
+echo "$p $*"
+
+$p $*
