@@ -1,0 +1,2007 @@
+c
+c
+c
+c
+c
+ 
+ 
+==[FILEID]y
+==[Fout]v
+==[outwave]V6
+==[outres]v12  s
+==[sppad]v5
+==[stime]0.1
+m
+\######## convolve spectrum
+==[inwave]Y6
+==[inres]y17
+==[Recnum] 148
+==[Title]Grass_dry+0.17%Na-Mont AMX35 r06emitc=a
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y28
+==[inres]y34
+==[Recnum] 159
+==[Title]Chalcedony CU00-15D r06emitc=_
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y28
+==[inres]y34
+==[Recnum] 165
+==[Title]Opal CU00-15E Opal r06emitc=_
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y28
+==[inres]y34
+==[Recnum] 171
+==[Title]Prehnite GDS613A <250um r06emitc=_
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y40
+==[inres]y50
+==[Recnum] 177
+==[Title]Montmorillonite_Fe GDS759A r06emitc=___
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y28
+==[inres]y34
+==[Recnum] 187
+==[Title]HyBasaltGlassMLUT03-9CMarP&T r06emitc=_
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y28
+==[inres]y34
+==[Recnum] 193
+==[Title]Kieserite Batch4 GDS671 Syn r06emitc=_
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y28
+==[inres]y34
+==[Recnum] 199
+==[Title]Perchlorate_Mg GDS851.1 293K r06emitc=_
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y28
+==[inres]y34
+==[Recnum] 205
+==[Title]Perchlorate_Mg GDS851.2 293K r06emitc=_
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y28
+==[inres]y34
+==[Recnum] 211
+==[Title]Perchlorate_Mg GDS851.2 255K r06emitc=_
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y28
+==[inres]y34
+==[Recnum] 217
+==[Title]Perchlorate_Mg GDS851.2 230K r06emitc=_
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y28
+==[inres]y34
+==[Recnum] 223
+==[Title]Perchlorate_Mg GDS851.2 220K r06emitc=_
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y28
+==[inres]y34
+==[Recnum] 229
+==[Title]Perchlorate_Mg GDS851.2 200K r06emitc=_
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y28
+==[inres]y34
+==[Recnum] 235
+==[Title]Perchlorate_Mg GDS851.2 180K r06emitc=_
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y28
+==[inres]y34
+==[Recnum] 241
+==[Title]Perchlorate_Mg GDS851.2 170K r06emitc=_
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y28
+==[inres]y34
+==[Recnum] 247
+==[Title]Perchlorate_Mg GDS851.2 110K r06emitc=_
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y28
+==[inres]y34
+==[Recnum] 253
+==[Title]Perchlorate_Mg GDS851.2 103K r06emitc=_
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y28
+==[inres]y34
+==[Recnum] 259
+==[Title]Perchlorate_Mg GDS851.2 98K r06emitc=_
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y28
+==[inres]y34
+==[Recnum] 265
+==[Title]Perchlorate_Mg GDS851.2 88K r06emitc=_
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y96
+==[inres]y108
+==[Recnum] 271
+==[Title]Perchlorite_Na GDS857 230C r06emitc=_
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y96
+==[inres]y108
+==[Recnum] 283
+==[Title]Szomolnokite NMNH104303 UT r06emitc=_
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y28
+==[inres]y34
+==[Recnum] 295
+==[Title]Dehyd SynH30-jarosite GDS605 r06emitc=_
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y28
+==[inres]y34
+==[Recnum] 301
+==[Title]Jarosite_K GDS636 PenaBlanca r06emitc=_
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y28
+==[inres]y34
+==[Recnum] 307
+==[Title]Jarosite GDS641 Na53 RES24Syn r06emitc=_
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y28
+==[inres]y34
+==[Recnum] 313
+==[Title]FeSO4OH+szomolnokite GDS871 r06emitc=_
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y28
+==[inres]y34
+==[Recnum] 319
+==[Title]Fe(OH)SO4_Possiblywxl GDS872 r06emitc=_
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y28
+==[inres]y34
+==[Recnum] 325
+==[Title]FeSO4*7H20 GDS873 SynChemReg r06emitc=FeSO4*7H20
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y28
+==[inres]y34
+==[Recnum] 331
+==[Title]Szomolnokite GDS874 Heat275C r06emitc=_
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y28
+==[inres]y34
+==[Recnum] 337
+==[Title]FeSO4*7H2O GDS875 Heat275C r06emitc=FeSO4*7H2O
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y28
+==[inres]y34
+==[Recnum] 343
+==[Title]Fe(OH)S04 GDS877 heatbutler r06emitc=_
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y40
+==[inres]y50
+==[Recnum] 349
+==[Title]Magnesite WS282 OkanoganWA r06emitc=___
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y40
+==[inres]y50
+==[Recnum] 359
+==[Title]Biedellite GDS128 r06emitc=___
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y40
+==[inres]y50
+==[Recnum] 369
+==[Title]Beidellite GDS124 r06emitc=___
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y40
+==[inres]y50
+==[Recnum] 379
+==[Title]Beidellite GDS123 r06emitc=___
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y40
+==[inres]y50
+==[Recnum] 389
+==[Title]Potassium Nitrate GDS43 r06emitc=___
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y40
+==[inres]y50
+==[Recnum] 399
+==[Title]Sodium Nitrate GDS883 r06emitc=___
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y40
+==[inres]y50
+==[Recnum] 409
+==[Title]Fe(OH)SO4 GDS877 Syn r06emitc=___
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y60
+==[inres]y72
+==[Recnum] 419
+==[Title]Prehnite+.50Chlorite AMIX r06emitc=aa_
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y60
+==[inres]y72
+==[Recnum] 431
+==[Title]Prehnite+.67Chlorite AMIX r06emitc=aa_
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y60
+==[inres]y72
+==[Recnum] 443
+==[Title]Prehnite+.75Chlorite AMIX r06emitc=aa_
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y28
+==[inres]y34
+==[Recnum] 455
+==[Title]Clam Shell RB10-2B Aragonite r06emitc=_
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y28
+==[inres]y34
+==[Recnum] 461
+==[Title]Aragonite GDS898 Moracco grd r06emitc=_
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y28
+==[inres]y34
+==[Recnum] 467
+==[Title]Oil_on_snow GDS775 SuncoCrud r06emitc=_
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y28
+==[inres]y34
+==[Recnum] 473
+==[Title]Oil_on_ice GDS775 SuncoCrude r06emitc=_
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y28
+==[inres]y34
+==[Recnum] 479
+==[Title]Snow_clean_for_oil_on_snow r06emitc=_
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y28
+==[inres]y34
+==[Recnum] 485
+==[Title]Ice_clean_for_oil_on_ice r06emitc=_
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y120
+==[inres]y133
+==[Recnum] 491
+==[Title]BHVO-2F+4%_Decalin r06emitc=
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y120
+==[inres]y133
+==[Recnum] 504
+==[Title]BHVO-2F+4%_Formaldehyde r06emitc=
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y120
+==[inres]y133
+==[Recnum] 517
+==[Title]BHVO-2F+4%_Formaldehyde r06emitc=
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y120
+==[inres]y133
+==[Recnum] 530
+==[Title]BHVO-2F+4%_Ammonia Solution r06emitc=
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y120
+==[inres]y133
+==[Recnum] 543
+==[Title]BHVO-2F+4%_Acetone 85K r06emitc=
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y120
+==[inres]y133
+==[Recnum] 556
+==[Title]BHVO-2F+4%_Chloroform r06emitc=
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y120
+==[inres]y133
+==[Recnum] 569
+==[Title]BHVO-2F+4%_Dimethylformamide r06emitc=
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y120
+==[inres]y133
+==[Recnum] 582
+==[Title]BHVO-2F+4%_Hydrogen Peroxide r06emitc=
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y120
+==[inres]y133
+==[Recnum] 595
+==[Title]BHVO-2F+4%_1-CNbnzcyclobuten r06emitc=
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y120
+==[inres]y133
+==[Recnum] 608
+==[Title]BHVO-2F+4%_1-Decene r06emitc=
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y120
+==[inres]y133
+==[Recnum] 621
+==[Title]BHVO-2F+4%_1-Decyne r06emitc=
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y120
+==[inres]y133
+==[Recnum] 634
+==[Title]BHVO-2F+4%_1-Heptene r06emitc=
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y120
+==[inres]y133
+==[Recnum] 647
+==[Title]BHVO-2F+4%_1-Heptyne r06emitc=
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y120
+==[inres]y133
+==[Recnum] 660
+==[Title]BHVO-2F+4%_1-Hexyne r06emitc=
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y120
+==[inres]y133
+==[Recnum] 673
+==[Title]BHVO-2F+4%_1-Nonene r06emitc=
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y120
+==[inres]y133
+==[Recnum] 686
+==[Title]BHVO-2F+4%_1-Nonyne r06emitc=
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y120
+==[inres]y133
+==[Recnum] 699
+==[Title]BHVO-2F+4%_1-Octene r06emitc=
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y120
+==[inres]y133
+==[Recnum] 712
+==[Title]BHVO-2F+4%_1-Octyne r06emitc=
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y120
+==[inres]y133
+==[Recnum] 725
+==[Title]BHVO-2F+4%_1-Pentene r06emitc=
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y120
+==[inres]y133
+==[Recnum] 738
+==[Title]BHVO-2F+4%_2-Propanol r06emitc=
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y120
+==[inres]y133
+==[Recnum] 751
+==[Title]BHVO-2F+4%_3-Hexyne r06emitc=
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y120
+==[inres]y133
+==[Recnum] 764
+==[Title]BHVO-2F+4%_4-Octyne r06emitc=
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y120
+==[inres]y133
+==[Recnum] 777
+==[Title]BHVO-2F+4%_5-Decyne r06emitc=
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y120
+==[inres]y133
+==[Recnum] 790
+==[Title]BHVO-2F+4%_Acetonitrile r06emitc=
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y120
+==[inres]y133
+==[Recnum] 803
+==[Title]BHVO-2F+4%_Acrylonitrile r06emitc=
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y120
+==[inres]y133
+==[Recnum] 816
+==[Title]BHVO-2F+4%_Benzene 84K r06emitc=
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y120
+==[inres]y133
+==[Recnum] 829
+==[Title]BHVO-2F+4%_Benzyl Alcohol r06emitc=
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y120
+==[inres]y133
+==[Recnum] 842
+==[Title]BHVO-2F+4%_Benzylamine r06emitc=
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y120
+==[inres]y133
+==[Recnum] 855
+==[Title]BHVO-2F+4%_Cyclohexane r06emitc=
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y120
+==[inres]y133
+==[Recnum] 868
+==[Title]BHVO-2F+4%_Cyclopentane r06emitc=
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y120
+==[inres]y133
+==[Recnum] 881
+==[Title]BHVO-2F+4%_Ethanol r06emitc=
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y120
+==[inres]y133
+==[Recnum] 894
+==[Title]BHVO-2F+4%_Heptane r06emitc=
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y120
+==[inres]y133
+==[Recnum] 907
+==[Title]BHVO-2F+4%_Nonane r06emitc=
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y120
+==[inres]y133
+==[Recnum] 920
+==[Title]BHVO-2F+4%_Pentane r06emitc=
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y120
+==[inres]y133
+==[Recnum] 933
+==[Title]BHVO-2F+4%_Propionitrile r06emitc=
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y120
+==[inres]y133
+==[Recnum] 946
+==[Title]BHVO-2F+4%_Pyridine r06emitc=
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y120
+==[inres]y133
+==[Recnum] 959
+==[Title]BHVO-2F+4%_Pyrrole r06emitc=
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y120
+==[inres]y133
+==[Recnum] 972
+==[Title]BHVO-2F+4%_trans-2-Octene r06emitc=
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y120
+==[inres]y133
+==[Recnum] 985
+==[Title]BHVO-2F+4%_cis-2-Heptene r06emitc=
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y120
+==[inres]y133
+==[Recnum] 998
+==[Title]BHVO-2F+4%_trans-5-Decene r06emitc=
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y120
+==[inres]y133
+==[Recnum] 1011
+==[Title]BHVO-2F+6.8% Decane r06emitc=
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y120
+==[inres]y133
+==[Recnum] 1024
+==[Title]BHVO-2F+8%_Nitrobenzene r06emitc=
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y120
+==[inres]y133
+==[Recnum] 1037
+==[Title]BHVO-2F+4%HydrognPeroxid 85K r06emitc=
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y120
+==[inres]y133
+==[Recnum] 1050
+==[Title]H2O+CO2 frost grndAl 82K #14 r06emitc=
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y120
+==[inres]y133
+==[Recnum] 1063
+==[Title]CO2 frost on H2O ice 100K #2 r06emitc=
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y120
+==[inres]y133
+==[Recnum] 1076
+==[Title]Fe<10um+CO2+H2+H2O 79k #3 r06emitc=
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y120
+==[inres]y133
+==[Recnum] 1089
+==[Title]Fe<10um+CO2+H2+H2O 79k #8 r06emitc=
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y96
+==[inres]y108
+==[Recnum] 1102
+==[Title]Montmorillonite SWy-1 r06emitc=b
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y96
+==[inres]y108
+==[Recnum] 1114
+==[Title]Kaolinite KGa-1 (wxl) r06emitc=b
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y96
+==[inres]y108
+==[Recnum] 1126
+==[Title]Montmorillonite SAz-1 r06emitc=b
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y96
+==[inres]y108
+==[Recnum] 1138
+==[Title]Kaolinite CM9 (wxl) r06emitc=b
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y96
+==[inres]y108
+==[Recnum] 1150
+==[Title]Dolomite HS102.3B r06emitc=b
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y96
+==[inres]y108
+==[Recnum] 1162
+==[Title]Gypsum HS333.3B (Selenite) r06emitc=a
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y96
+==[inres]y108
+==[Recnum] 1174
+==[Title]Vermiculite GDS458 r06emitc=c
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y96
+==[inres]y108
+==[Recnum] 1186
+==[Title]Vermiculite ALB4SA00 r06emitc=c
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y96
+==[inres]y108
+==[Recnum] 1198
+==[Title]Vermiculite WS682 r06emitc=c
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y96
+==[inres]y108
+==[Recnum] 1210
+==[Title]Vermiculite WS681 r06emitc=c
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y96
+==[inres]y108
+==[Recnum] 1222
+==[Title]Clinochlore_Fe GDS157.b r06emitc=a
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y96
+==[inres]y108
+==[Recnum] 1234
+==[Title]Muscovite GDS113 Ruby >37um r06emitc=b
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y96
+==[inres]y108
+==[Recnum] 1246
+==[Title]Clinochlore GDS158 Flagst r06emitc=b
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y96
+==[inres]y108
+==[Recnum] 1258
+==[Title]Calcite WS272 r06emitc=a
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y96
+==[inres]y108
+==[Recnum] 1270
+==[Title]Kaolinite KGa-2 (pxl) r06emitc=b
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y96
+==[inres]y108
+==[Recnum] 1282
+==[Title]Hectorite SYnH-1 r06emitc=_
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y96
+==[inres]y108
+==[Recnum] 1294
+==[Title]Halloysite NMNH106237 r06emitc=a
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y96
+==[inres]y108
+==[Recnum] 1306
+==[Title]Sepiolite SepNev-1.AcB r06emitc=a
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y96
+==[inres]y108
+==[Recnum] 1318
+==[Title]Hectorite SHCa-1.Ac-B r06emitc=b
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y96
+==[inres]y108
+==[Recnum] 1330
+==[Title]Saponite SapCa-1.AcB r06emitc=b
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y96
+==[inres]y108
+==[Recnum] 1342
+==[Title]Dickite NMNH106242 r06emitc=b
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y96
+==[inres]y108
+==[Recnum] 1354
+==[Title]Illite IMt-1.b <2um r06emitc=a
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y96
+==[inres]y108
+==[Recnum] 1366
+==[Title]Goethite WS222 Marquette_MI r06emitc=_
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y96
+==[inres]y108
+==[Recnum] 1378
+==[Title]Illite GDS4.2 Marblehead_WI r06emitc=_
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y96
+==[inres]y108
+==[Recnum] 1390
+==[Title]Lepidocrosite GDS80 (Syn) r06emitc=b
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y96
+==[inres]y108
+==[Recnum] 1402
+==[Title]Hematite GDS27 r06emitc=a
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y96
+==[inres]y108
+==[Recnum] 1414
+==[Title]Hematite.02+Quartz.98 GDS76 r06emitc=a
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y96
+==[inres]y108
+==[Recnum] 1426
+==[Title]Prehnite GDS613.a <60um r06emitc=a
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y96
+==[inres]y108
+==[Recnum] 1438
+==[Title]Muscovite CU91-250A med Al r06emitc=b
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y96
+==[inres]y108
+==[Recnum] 1450
+==[Title]Muscovite-medhi-Al CU91-252D r06emitc=c
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y96
+==[inres]y108
+==[Recnum] 1462
+==[Title]Maghemite GDS81 Syn (M-3) r06emitc=b
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y96
+==[inres]y108
+==[Recnum] 1474
+==[Title]Montmorillonite_Fe GDS759B r06emitc=_
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y96
+==[inres]y108
+==[Recnum] 1486
+==[Title]Cookeite CAr-1.d 90-150um r06emitc=_
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y96
+==[inres]y108
+==[Recnum] 1498
+==[Title]Ammonio-Illite/Smectit GDS87 r06emitc=b
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y96
+==[inres]y108
+==[Recnum] 1510
+==[Title]Cookeite CAr-1.c <30um r06emitc=c
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y96
+==[inres]y108
+==[Recnum] 1522
+==[Title]Buddingtnt+Na-Mont CU93-260B r06emitc=b
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y96
+==[inres]y108
+==[Recnum] 1534
+==[Title]Muscovite+Chlorite CU91-253D r06emitc=a
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y96
+==[inres]y108
+==[Recnum] 1546
+==[Title]Chlorite B93-22B Serpentine r06emitc=_
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y96
+==[inres]y108
+==[Recnum] 1558
+==[Title]Hematite_Coatd_Qtzt BR93-25C r06emitc=b
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y96
+==[inres]y108
+==[Recnum] 1570
+==[Title]Hematite_Coatd_Qtz BR93-34C r06emitc=a
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y96
+==[inres]y108
+==[Recnum] 1582
+==[Title]Nanohematite BR93-34B2b r06emitc=b
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y96
+==[inres]y108
+==[Recnum] 1594
+==[Title]Hematite_Coatd_Qtz BR93-25B r06emitc=b
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y96
+==[inres]y108
+==[Recnum] 1606
+==[Title]Hematite_Coatd_Qtzt BR93-25A r06emitc=b
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y96
+==[inres]y108
+==[Recnum] 1618
+==[Title]Magnetite_skarn BR93-5B r06emitc=b
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y96
+==[inres]y108
+==[Recnum] 1630
+==[Title]Goethite MPCMA2-C M-Crsgrad2 r06emitc=b
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y96
+==[inres]y108
+==[Recnum] 1642
+==[Title]Basalt_weathered BR93-43 r06emitc=b
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y96
+==[inres]y108
+==[Recnum] 1654
+==[Title]Chlor+Goethite CU93-4B Phyl r06emitc=a
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y96
+==[inres]y108
+==[Recnum] 1666
+==[Title]Kaol+Musc_intimate CU93-5C r06emitc=a
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y96
+==[inres]y108
+==[Recnum] 1678
+==[Title]Muscov+Jaros CU93-314 coatng r06emitc=b
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y96
+==[inres]y108
+==[Recnum] 1690
+==[Title]Goethite WS222 <250um old r06emitc=_
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y96
+==[inres]y108
+==[Recnum] 1702
+==[Title]Muscovite CU93-1 low-Al Phyl r06emitc=b
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y96
+==[inres]y108
+==[Recnum] 1714
+==[Title]Goethite WS222 orgsampsurf?? r06emitc=_
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y96
+==[inres]y108
+==[Recnum] 1726
+==[Title]Goethite CU91-252 coatchip?? r06emitc=_
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y96
+==[inres]y108
+==[Recnum] 1738
+==[Title]Hematite WS161 r06emitc=_
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y96
+==[inres]y108
+==[Recnum] 1750
+==[Title]Biotite-phlogopite P23-5 Sam r06emitc=_
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y96
+==[inres]y108
+==[Recnum] 1762
+==[Title]Nanohematite BR93-34B2b ed1 r06emitc=b
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y120
+==[inres]y133
+==[Recnum] 1774
+==[Title]Moon62231 25u+0.005co2ice10u r06emitc=
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y120
+==[inres]y133
+==[Recnum] 1787
+==[Title]Moon62231 25um+0.01co2ice10u r06emitc=
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y120
+==[inres]y133
+==[Recnum] 1800
+==[Title]Moon62231 25um+0.05co2ice10u r06emitc=
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y120
+==[inres]y133
+==[Recnum] 1813
+==[Title]Moon62231 25um+0.10co2ice10u r06emitc=
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y120
+==[inres]y133
+==[Recnum] 1826
+==[Title]Moon62231 25um+0.30co2ice10u r06emitc=
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y120
+==[inres]y133
+==[Recnum] 1839
+==[Title]Moon62231_10-20 g25um CMPREF r06emitc=
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y120
+==[inres]y133
+==[Recnum] 1852
+==[Title]CO2_ice g0.0003cm Warren opc r06emitc=
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y120
+==[inres]y133
+==[Recnum] 1865
+==[Title]CO2_ice g0.0010cm Warren opc r06emitc=
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y120
+==[inres]y133
+==[Recnum] 1878
+==[Title]CO2_ice g0.0030cm Warren opc r06emitc=
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y120
+==[inres]y133
+==[Recnum] 1891
+==[Title]CO2_ice g0.0100cm Warren opc r06emitc=
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y120
+==[inres]y133
+==[Recnum] 1904
+==[Title]CO2_ice g0.0300cm Warren opc r06emitc=
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y120
+==[inres]y133
+==[Recnum] 1917
+==[Title]CO2_ice g0.1000cm Warren opc r06emitc=
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y120
+==[inres]y133
+==[Recnum] 1930
+==[Title]CO2_ice g0.3000cm Warren opc r06emitc=
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y120
+==[inres]y133
+==[Recnum] 1943
+==[Title]CO2_frost_on_H2O_ice 100K #2 r06emitc=
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y120
+==[inres]y133
+==[Recnum] 1956
+==[Title]CO2+O2+CH4 TRANSM ModtranZ20 r06emitc=
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y28
+==[inres]y34
+==[Recnum] 1969
+==[Title]Wollastonite HS348.3B r06emitc=c
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y28
+==[inres]y34
+==[Recnum] 1975
+==[Title]frost on ice 170K Clark1981 r06emitc=a
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+e;m  \# go to math
+e;EX

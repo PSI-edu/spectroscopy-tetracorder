@@ -1,0 +1,151 @@
+#!/bin/sh
+#
+# build commands to make a convolved spectral library from splib06b
+#
+# Roger N. Clark,  Feb 6, 2008 - March 6, 2022
+
+# usage:   mak.convol.library  library version channels name     resol_number
+#
+#                                 1     2         3       4      5              6        7
+#          mak.convol.library  r06av95  a        224   AVIRIS95  12           [noX|sleep T] 
+#
+#   makes spectral library: r06av95a
+
+liba=$1
+lib=${1}${2}
+version=$2
+chans=$3
+name=$4
+resol=$5
+
+xwin=" "   # default is do X-windows plots
+stime=0    # default no sleep (the T=0 above)
+
+restart=restartfiles/r.${liba}${version}
+libstrt=${lib}.start
+
+if [ ! -f "$restart" ]
+then
+	echo "ERROR: restart file: $restart does not exist"
+	echo "Usage:   mak.convol.library  library version channels name resol_number       [noX]"
+	echo "Example: mak.convol.library  r06av95  a        224   AVIRIS95  12"
+	echo "exit 1"
+	exit 1
+fi
+if [ ! -f "startfiles/$libstrt" ]
+then
+	echo "ERROR: library specpr start file: startfiles/$libstrt does not exist"
+	echo "Usage:   mak.convol.library  library version channels name resol_number       [noX]"
+	echo "Example: mak.convol.library  r06av95  a        224   AVIRIS95  12"
+	echo "exit 2"
+	exit 2
+fi
+if [ -z "$name" ]
+then
+	echo "ERROR: name is blank"
+	echo "Usage:   mak.convol.library  library version channels name resol_number"
+	echo "Example: mak.convol.library  r06av95  a        224   AVIRIS95  12"
+        echo "exit 2"
+	exit 3
+fi
+if [ -z "$version" ]
+then
+        echo "ERROR: version is blank"
+	echo "Usage:   mak.convol.library  library version channels name resol_number       [noX]"
+	echo "Example: mak.convol.library  r06av95  a        224   AVIRIS95  12"
+        echo "exit 4"
+        exit 4
+fi
+if [ -z "$chans" ]
+then
+        echo "ERROR: chans is blank"
+	echo "Usage:   mak.convol.library  library version channels name resol_number       [noX]"
+	echo "Example: mak.convol.library  r06av95  a        224   AVIRIS95  12"
+        echo "exit 4"
+        exit 4
+fi
+if [ -z "$resol" ]
+then
+        echo "ERROR: specpr resolution number is blank"
+	echo "Usage:   mak.convol.library  library version channels name resol_number"
+	echo "Example: mak.convol.library  r06av95  a        224   AVIRIS95  12"
+        echo "exit 4"
+        exit 4
+fi
+
+makoptions=" "
+if [ "$6" = "noX" ]
+then
+	xwin="noX"
+	makoptions="$xwin"
+
+elif [ "$6" = "sleep" ]    # sleep time between plots, default = 0
+then
+	stime=$7
+	makoptions="sleep $stime"
+
+else
+	echo "unknown option $6 $7"
+	echo "exit 1"
+	exit 1
+fi
+#########################################################################
+
+echo "copying start file: startfiles/$libstrt  to  $lib"
+
+cp startfiles/$libstrt $lib
+
+# mak.convol.library  library version channels name     resol_number
+
+# file created = conv.${lib}.cmds,     e.g.:    conv.r06av95a.cmds
+
+conv=conv.${lib}.cmds
+
+  echo "making specpr convolution command file $conv"
+  echo "mak.convolve.1.cmds  $liba  $version  $chans   $name    $resol   $makoptions"
+        ./mak.convolve.1.cmds  $liba  $version  $chans   $name    $resol  $makoptions
+
+echo " "
+echo "specpr restart file= $restart"
+echo "specpr command file= $conv"
+echo " "
+
+if [ -f "$conv" ]
+then
+	# Next start specpr (or dspecpr) with the restart file and execute the
+	#specpr command file:
+
+	echo "specpr command file: $conv"
+	echo "specpr $restart -gxterm2 -"
+
+           # make sure restart file is current date so specpr does not invoke messages
+           # because that results in a broken pipe (the commands go to the more command
+           # and not specpr.
+
+           touch $restart
+
+if [ $xwin = "noX" ]
+then
+	plot="g99"
+else
+	plot="gxterm2"
+fi
+
+#echo "press return to start, will do:"
+#echo "                       specpr $restart -$plot -"
+#echo "                       <$conv"
+#read a
+
+echo "     specpr $restart -$plot -"
+           specpr $restart -$plot -  <<EOF
+<$conv
+EOF
+
+	   sp_stamp ${lib}    # adds header so davinci can read the file.
+
+	echo "convolved spectral library   $lib    complete."
+else
+	echo "ERROR: file $conv not created"
+	echo "exit"
+	exit 1
+fi
