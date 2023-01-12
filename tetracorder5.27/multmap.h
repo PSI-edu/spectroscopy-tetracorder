@@ -25,12 +25,32 @@
 	integer*4	luntr
 
 
-	parameter       (maxmat=650)     # maximum materials
-	parameter       (maxmat1=400)    # maximum materials in one group/case
-        parameter       (maxfeat=24)     # maximum features per material
+	parameter       (maxmat=670)     # maximum materials
+	parameter       (maxmat1=300)    # maximum materials in one group/case
+        parameter       (maxfeat=16)     # maximum features per material
         parameter       (maxnotfeat=8)   # maximum NOT features per material
         parameter       (maxfeatratio=8) # maximum feature ratios per material
 	parameter	(maxmodes=30)    # maximum number of material modes
+
+### WARNING: the above maxfeat, maxmat creates a lot of static memory as there
+###          are MANY variables with these two variables declaring array sizes.
+###          The default gfortran memory model has a 2GByte limit for all static
+###          arrays, and with all the 2 and 3 dimensional arras declared, the above
+###          is very near the limit.  If maxmat needs to go above 670,
+###          then need to explore other memory models.  See:
+###          https://stackoverflow.com/questions/12916176/gfortran-for-dummies-what-does-mcmodel-medium-do-exactly
+###          and probably add the fortran flag -mcmodel=medium to the compile, but
+###          this may impact speed, so we are holding off making it the default.
+###          Another way to reduce memory some is to lower maxpix (below)
+###          if you don't need to run on huge cubes.  But that has less impact
+###          on total memory used.
+###
+###          The error message when the limit happens:
+###          tetracorder.f:(.text+0x7a): relocation truncated to fit: 
+###                R_X86_64_PC32 against symbol `lblg_' defined in COMMON
+###                 section in tetracorder.o
+###              and a bunch more
+###                                - R. Clark 11/17/2022
 
 # NOTE: if the parameters below, maxpix, imaxch, others?, you must modify tricube.h 
 #########################################################################
@@ -97,17 +117,17 @@
 
 ####### use the following set of lines for image cubes with 710 channels or less, huge cubes
 # A
-        parameter       (imaxch=710)   # maximum channels in spectrum
-        parameter       (maxpix=32765) # maximum pixels per line
-        parameter       (maxpi2=65530) # = maxpix *2
-        parameter       (maxpi4=131060) # = maxpix *4
+#       parameter       (imaxch=710)   # maximum channels in spectrum
+#       parameter       (maxpix=32765) # maximum pixels per line
+#       parameter       (maxpi2=65530) # = maxpix *2
+#       parameter       (maxpi4=131060) # = maxpix *4
 
 ######## NOTE: use the following 4 lines for single spectra analysis, and reasonable cubes
 # B                                        e.g. FTIR, ASD
-#        parameter       (imaxch=4852)   # maximum channels in spectrum
-#        parameter       (maxpix=4000) # maximum pixels per line
-#        parameter       (maxpi2=8000) # = maxpix *2
-#        parameter       (maxpi4=16000) # = maxpix *4
+         parameter       (imaxch=4852)   # maximum channels in spectrum
+         parameter       (maxpix=4000) # maximum pixels per line
+         parameter       (maxpi2=8000) # = maxpix *2
+         parameter       (maxpi4=16000) # = maxpix *4
 	 # setting maxpix <219 causes memory fault--need to investigate.
 
 ######## NOTE: use the following 4 lines for single spectra analysis, essentially no cubes
@@ -129,9 +149,9 @@
 ################################################################################
 ################################################################################
 
-        parameter       (maxgrp=30)   # maximum number of spectral groups
+        parameter       (maxgrp=50)   # maximum number of spectral groups
         parameter       (maxcse=30)   # maximum number of spectral cases
-        parameter       (maxgrpcse=60)# maximum number of cases + groups
+        parameter       (maxgrpcse=80)# maximum number of cases + groups
 				      # NOTE: maxgrpcse = maxgrp+maxcse
 				      # A MUST==========================
 

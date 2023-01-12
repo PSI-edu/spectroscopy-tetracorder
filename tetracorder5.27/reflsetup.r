@@ -421,7 +421,7 @@
 	}
 	itmp = x + 0.5
 	if (itmp < 1 | itmp > maxgrp) {
-		write (ttyout,*) 'ERROR: group out of range: ', itmp
+		write (ttyout,*) 'ERROR: group out of range: ', itmp, '  maxgrp=', maxgrp, ' maxgrp is a compile time limit'
 		call what(i)
 		go to 2190
 	} else {
@@ -513,7 +513,7 @@
 			ii = x + 0.5
 			if (ii < 0 | ii > ngroups) {
 				call what (i)
-				write (ttyout,*) 'ERROR: group out of range'
+				write (ttyout,*) 'ERROR: group out of range:', ii, '  ngroups=', ngroups, ' (defined in setup)'
 				go to 210
 			}
 			imat = imat + 1
@@ -985,7 +985,7 @@
 		call wjfren (i,x,il)
 		i = i -1
 		if (i < 80 - 39) {
-			matid=iopcon(i:i+39)
+			matid(imat)=iopcon(i:i+39)
 		} else {
 
 			call what(i)
@@ -1141,6 +1141,7 @@
 		'          followed by spectrum library letter (a, b, c, ...)',/,
 		'          NOTE: at presetn, only library letter  a  is valid ',/,
 		10x,'D  =  Diagnostic feature (must be present)',/,
+		10x,'M  =  Must have diagnostic unconditinionally',/,
 		10x,'O  =  Optionally present feature',/,
 		10x,'W  =  Weak feature',/,
 		10x,'      (There is a speed advantage to listing',/,

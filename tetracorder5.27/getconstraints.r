@@ -571,7 +571,7 @@
 		if (il == ihck ) {
 			xtemperature=0.0     # Kelvin
 		} else if (il == ihcc ) {
-			xtemperature=273.0   # subtract values by 272 to convert to Kelvin
+			xtemperature=273.15   # centigrade: add 273.15 to convert to Kelvin
 		} else {
 			write (ttyout,*) 'ERROR: C or K expected after temperature'
 			call what(i)

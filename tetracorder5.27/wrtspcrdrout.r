@@ -46,8 +46,11 @@
 	character*40 ititl
 	character*50 tmptitle   # this should = length of mfile (in multmap.h)
 	character*512 soundstring
+	character*50  tmpsoundinfo
 
 	character*1 imch(5)
+
+	real*4 absdepth    # absolute value of depth
 
 	# define feature importance characters
 
@@ -100,10 +103,13 @@
 			}
 
 			# ofit(ibest,xel)  < 1.1 catches NaN (I hope)
-			if (ofit(ibest,xel) < 0.1e-4 || odepth(ibest,xel) < 0.1e-4 && ofit(ibest,xel)  < 1.1) {
+
+			  	absdepth = abs(odepth(ibest,xel))
+
+			if (ofit(ibest,xel) < 0.1e-4 || absdepth < 0.1e-4 && ofit(ibest,xel)  < 1.1) {
 				#old: write (ttyout,107) inamr, ifils, ititl,igroup
 				if (groupenable(igroup) > 0 ) {
-					write (ttyout, 1071) igroup, groupname(igroup)
+					write (ttyout, 1071) igroup, groupname(igroup)                # NONE
 1071					format ('     grp',i2,3x,a12,'  none        ')
 				
 					#old write (lunresult,107) inamr, ifils, ititl,igroup
@@ -138,10 +144,14 @@
 					ofit(ibest,xel),
 					odepth(ibest,xel),
 					ofd(ibest,xel)
-			  	if (dosound(ibest) == 1 && soundenable == 1) {    # output answer as sound
 
-					soundstring= 'tetracordersound ' // sound1fil(ibest) // ' ' // char(0)
-					#write (ttyout,*) 'DEBUG: ', soundstring
+			  	if (dosound(ibest) == 1 && soundenable == 1 && absdepth > 0.000049) {    # output answer as sound
+
+					write (tmpsoundinfo, 2201)  igroup, ofit(ibest,xel), odepth(ibest,xel), ofd(ibest,xel)
+2201					format ('   ',i6,' fit=',f7.4,' depth=',f7.4,' fd=',f7.4)
+
+					soundstring= 'tetracordersound ' // sound1fil(ibest) // ' ' // tmpsoundinfo  // char(0)
+					#write (ttyout,*) 'DEBUG 1: ', soundstring
 
 					call system (soundstring)
 			  	}
@@ -162,9 +172,13 @@
 		do igroup = 1, nzgroup {
 			if (nmatgrp(igroup) == 0) next
 			ibest = grpbest(igroup)
-			if (ofit(ibest,xel) < 0.1e-4) {
+
+			  absdepth = abs(odepth(ibest,xel))
+
+			if (ofit(ibest,xel) < 0.1e-4 ||  absdepth < 0.1e-4) {
 			  if (diaflg != 4) write (ttyout,107) inamr, ifils, ititl,igroup
-			  write (lunresult,107) inamr, ifils, ititl,igroup
+			  write (lunresult,107) inamr, ifils, ititl,igroup                # NONE
+
 			} else {
 			  if (diaflg != 4) write (ttyout,111) inamr, ifils, ititl,
 				otitle(ibest)(1:32),
@@ -186,10 +200,12 @@
 				odepth(ibest,xel),
 				ofd(ibest,xel), mfile(ibest)
 
-			  if (dosound(ibest) == 1 && soundenable == 1) {     # output answer as sound
+			  if (dosound(ibest) == 1 && soundenable == 1 && absdepth > 0.000049) {     # output answer as sound
 
-				soundstring= 'tetracordersound ' // sound1fil(ibest) // ' ' // char(0)
-				#write (ttyout,*) 'DEBUG: ', soundstring
+					write (tmpsoundinfo, 2201)  igroup, ofit(ibest,xel), odepth(ibest,xel), ofd(ibest,xel)
+
+				soundstring= 'tetracordersound ' // sound1fil(ibest) // ' ' // tmpsoundinfo // char(0)
+				#write (ttyout,*) 'DEBUG: 2', soundstring
 
 				call system (soundstring)
 			  }
@@ -295,9 +311,13 @@
 			if (groupenable(igroup) == 0) next
 			if (nmatgrp(igroup) == 0) next
 			ibest = grpbest(igroup)
-			if (ofit(ibest,xel) < 0.1e-4) {
+
+			  absdepth = abs(odepth(ibest,xel))
+
+			if (ofit(ibest,xel) < 0.1e-4 || absdepth < 0.00005) {
 			  if (diaflg == 3) write (ttyout,107) inamr, ifils, ititl,igroup
-			  write (lunresult,107) inamr, ifils, ititl,igroup
+			  write (lunresult,107) inamr, ifils, ititl,igroup                # NONE
+
 			} else {
 			  if (diaflg == 3) write (ttyout,111) inamr, ifils, ititl,
 				otitle(ibest)(1:32),
@@ -311,10 +331,15 @@
 				ofit(ibest,xel),
 				odepth(ibest,xel),
 				ofd(ibest,xel), mfile(ibest)
-			  if (dosound(ibest) == 1 && soundenable == 1) {     # output answer as sound
 
-				soundstring= 'tetracordersound ' // sound1fil(ibest) // ' ' // char(0)
-				#write (ttyout,*) 'DEBUG: ', soundstring
+			  if (dosound(ibest) == 1 && soundenable == 1 && diaflg == 3 && absdepth > 0.000049) {     # output answer as sound
+											# note the loop also include diaflg=4, but
+											# we have already output sound for 4
+
+					write (tmpsoundinfo, 2201)  igroup, ofit(ibest,xel), odepth(ibest,xel), ofd(ibest,xel)
+
+				soundstring= 'tetracordersound ' // sound1fil(ibest) // ' ' // tmpsoundinfo // char(0)
+				#write (ttyout,*) 'DEBUG 3: ', soundstring
 
 				call system (soundstring)
 			  }
