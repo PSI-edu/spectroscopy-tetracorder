@@ -184,6 +184,15 @@ real*4 lc, rc, bb, lcmin, lcmax, bbmin, bbmax, rcmin, rcmax
 				}
 1235    			format(1x,'wm', i1,'=',a4,' ',a7,' ',6f12.5)
 
+############		    write tetracorder features to text window
+				for (itw=1; itw<=imaxtet; itw=itw+1) {
+
+				    if (tetonoff(itw) > 0 && tfmode(itw) > 0) {
+					write (ttyout,*) tetfline(itw)
+				    }
+				}
+
+
 ############                write wavelength shift info in text window and graphics window if >0.0
 				write (ttyout,1236) wavshift
 				if (abs(wavshift) > 0.1e-9) {
