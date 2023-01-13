@@ -1,4 +1,3 @@
-
 The code here is covered by the GNU General Public License
 [https://www.gnu.org/licenses/gpl.html](https://www.gnu.org/licenses/gpl.html)
 
@@ -153,7 +152,7 @@ is effective, the wav files for each found material needs to be updated
 
 This update also expanded the number of spectral groups and the spectral range
 out to 5 microns with definitions to go to 20+ microns.  To do this,
-the group arrays needed to be increased and that made tetracorfder go
+the group arrays needed to be increased and that made tetracorder go
 beyond the small memory model in linux.  The linux memory model has a
 2-gigabyte limit in default compile mode and I hit that.  Before crossing
 that limit with new compiler flags and new memory model, I want to to do
@@ -163,7 +162,7 @@ fits just fine.
 
 The 5.27c1 expert system in the tetracorder.cmds directory has been
 expanded to 5 microns, though more population of reference features
-is needed.  Also many improvemenmts were made based on mapping with
+is needed.  Also many improvements were made based on mapping with
 the first EMIT data from the International Space Station, and the NASA
 SSERVI TREX field campaigns from October 2022, including results from
 the Carnegie Melon Zoe rover which is running tetracorder (with Ubuntu
@@ -180,5 +179,5 @@ library.  That meant the spectral libraries needed to be be re-convolved.
 Rather than do updates that can take extra space, I have elected to try
 a new method: delete the old libraries from github and install the new.
 The new libraries are completely compatible will all older versions of
-tetracorder and expert systems, becuase we only add new spectra and never
+tetracorder and expert systems, because we only add new spectra and never
 modify existing ones.
