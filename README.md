@@ -111,27 +111,74 @@ of whether this type of aerosol warms or cools the atmosphere.
 
 # Tetracorder 5.27
 
-June 2022: Tetracorder 5.27 released.  The 5.27 code introduces a new spectral feature class,
-class M.  Class D, diagnostic, could still find a material based on other features if
-a diagnostic feature was disabled.  The result may not be correct.  The condition was
-discovered in AVIRIS data when the reflectance calibration had a large deleted zone around
-the 1.4 and 1.9-micron telluric water bands.  For example, in group 1, the right continuum
-point for azurite (copper carbonate) was inside the deleted channel zone and the main
-diagnostic feature was disabled.  Identification fell to a less diagnostic and less unique
-feature resulting in widespread mapping of azurite, but that mapping was a false positive.
-Tetracorder 5.27 with the M spectral class is Must Have Diagnostic feature and if the
-feature is disabled, the material will not be found.  The 5.27 expert system has been updated
-where multiple materials now use the class M diagnostic.  Testing in multiple geologic 
-environments shows the false positive rate is vastly reduced.
+June 2022: Tetracorder 5.27 released.  The 5.27 code introduces a new
+spectral feature class, class M.  Class D, diagnostic, could still find
+a material based on other features if a diagnostic feature was disabled.
+The result may not be correct.  The condition was discovered in AVIRIS
+data when the reflectance calibration had a large deleted zone around
+the 1.4 and 1.9-micron telluric water bands.  For example, in group 1,
+the right continuum point for azurite (copper carbonate) was inside
+the deleted channel zone and the main diagnostic feature was disabled.
+Identification fell to a less diagnostic and less unique feature resulting
+in widespread mapping of azurite, but that mapping was a false positive.
+Tetracorder 5.27 with the M spectral class is Must Have Diagnostic
+feature and if the feature is disabled, the material will not be found.
+The 5.27 expert system has been updated where multiple materials now
+use the class M diagnostic.  Testing in multiple geologic environments
+shows the false positive rate is vastly reduced.
 
-A study was conducted on the ID of snow+vegetation and the expert system was adjusted.  Some
-plants have shifted water bands that are similar to those in snow+vegetation spectra.
-The false positive rate for snow+vegetation is now reduced.  If you know the temperature
-range of your scene, setting the temperature will help reduce the false positive snow
-detection if temperatures are above freezing.
+A study was conducted on the ID of snow+vegetation and the expert system
+was adjusted.  Some plants have shifted water bands that are similar
+to those in snow+vegetation spectra.  The false positive rate for
+snow+vegetation is now reduced.  If you know the temperature range of
+your scene, setting the temperature will help reduce the false positive
+snow detection if temperatures are above freezing.
 
-Tetracorder 5.27 includes additional spectra for mapping materials in the 3 to 4-micron
-range.  Specifically weak carbonate signatures are now included.
+Tetracorder 5.27 includes additional spectra for mapping materials in
+the 3 to 4-micron range.  Specifically weak carbonate signatures are
+now included.
 
-The color map products for the 2-micron spectral features have also been improved
-with better color to distinguish minerals better.  A map of muscovite composition has been added.
+The color map products for the 2-micron spectral features have also
+been improved with better color to distinguish minerals better.  A map
+of muscovite composition has been added.
+
+# Tetracorder 5.27, expert system 5.27c1, and spectral library update
+
+January 2023: 
+Minor updates to Tetracorder 5.27, mostly debugging and printing
+information for single-spectrum mode including improvements for audio
+output for what tetracorder finds in a spectrum.  Before audio output
+is effective, the wav files for each found material needs to be updated
+(planned for this year).
+
+This update also expanded the number of spectral groups and the spectral range
+out to 5 microns with definitions to go to 20+ microns.  To do this,
+the group arrays needed to be increased and that made tetracorfder go
+beyond the small memory model in linux.  The linux memory model has a
+2-gigabyte limit in default compile mode and I hit that.  Before crossing
+that limit with new compiler flags and new memory model, I want to to do
+some performance testing below and above the limit.  In the meantime, I
+reduced some array sizes that were far larger than needed, so everything
+fits just fine.
+
+The 5.27c1 expert system in the tetracorder.cmds directory has been
+expanded to 5 microns, though more population of reference features
+is needed.  Also many improvemenmts were made based on mapping with
+the first EMIT data from the International Space Station, and the NASA
+SSERVI TREX field campaigns from October 2022, including results from
+the Carnegie Melon Zoe rover which is running tetracorder (with Ubuntu
+Linux) providing real-time analysis from a visible-near-IR spectrometer.
+
+BE SURE TO READ THE AAAAA.KNOWN-ISSUES.txt file:
+
+    t1/tetracorder.cmds/tetracorder5.27c.cmds/AAAAA.KNOWN-ISSUES.txt
+
+And if you find errors or ways to improve the expert system, please let me know.
+
+For the 5.27c1 improvements, several spectra were added to the sprlb06a spectral
+library.  That meant the spectral libraries needed to be be re-convolved.
+Rather than do updates that can take extra space, I have elected to try
+a new method: delete the old libraries from github and install the new.
+The new libraries are completely compatible will all older versions of
+tetracorder and expert systems, becuase we only add new spectra and never
+modify existing ones.
