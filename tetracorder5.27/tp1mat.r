@@ -64,6 +64,8 @@
 
 	real*4    rfcon(maxpix)   # computet curved continuum
 
+	integer*4 mustflag   # =1 for passed must haves, =0 must have not present
+
 
 	if (imatenable(imat) == 0) {   # material not enabled, so do not open a file
 
@@ -79,6 +81,7 @@
 
 	    do ifeat = 1, nfeat(imat) {
 
+		mustflag = 1   # must haves present. will set to 0 if later found to not pass
 		
 		#write (ttyout,*) 'DEBUG: starting call band analysis, feat',ifeat
 		#if (imat == 146 | imat == 147 | imat == 148 | imat > 460) {
@@ -236,6 +239,13 @@
 				go to 2000    # done with this feature
 
 		}
+
+			#if (tetmode == 1) {   # single spectrum mode
+			#    if (imat == 306) {    # debuging: sulfate-mix_gypsum.trace.dust+debris-WTC01-2
+			#	write (ttyout,*)  " DEBUG0: imat=", imat, ifeat, "fit=", fit, "depth=", bdepth
+			#    }
+			#}
+
 
 		##############   lct/rct> n1 n2 constraint
       #================================================================
@@ -482,7 +492,16 @@
 
                     # the two zrtimesbd values are the fuzzy logic limits
 
-			xtmp1 = conref*abs(bdepth)
+			xfeat=real(nftype(ifeat,imat)) # feature type, =1 absorption, =-1 emission
+			xx=1.0                         # fit factor
+			if (bdepth/xfeat <= 0.1e-5) {  # fit factor=0
+				xx=0.0                 # feature is
+						       # negative of
+						       # expected.
+				xtmp1 = 0.0
+			} else {
+				xtmp1 = conref*bdepth
+			}
 			
 			zz1 = zcontlgtr(1,ifeat,imat)
 			if (xtmp1 < zz1) {
@@ -509,6 +528,13 @@
 		#}
 
 
+			#if (tetmode == 1) {   # single spectrum mode
+			#    if (imat == 306) {    # debuging: sulfate-mix_gypsum.trace.dust+debris-WTC01-2
+			#	write (ttyout,*)  " DEBUG1: imat=", imat, ifeat, "fit=", fit, "depth=", bdepth
+			#    }
+			#}
+
+
 		# this is the skip point if bdepth and fit are set to 0.0
 
 
@@ -518,6 +544,13 @@
 			#if (imat == 146 | imat == 147 | imat == 148 | imat > 460) {
 			#	write (ttyout,*) 'DEBUG: tp1mat past label 2000: xdn=',
 			#			xdn,' feature type=',nftype(ifeat,imat)
+			#}
+
+			#if (tetmode == 1) {   # single spectrum mode
+			#    if (imat == 306) {    # debuging: sulfate-mix_gypsum.trace.dust+debris-WTC01-2
+			#	write (ttyout,*)  " DEBUG2: imat=", imat, ifeat, "fit=", fit, "depth=", bdepth
+			#	write (ttyout,*)  " D    2: xfeat=", xfeat
+			#    }
 			#}
 
 			xx=1.0                         # fit factor
@@ -535,7 +568,7 @@
 				# same with weak features:featimprt=1
 				#
 				# featimprt = 0  Optional
-				# featimprt = 1  Weak, muts be present
+				# featimprt = 1  Weak, must be present
 				# featimprt = 2  Diagnostic
 				# featimprt = 3  Must have diagnosdtic, unconditional
 				#
@@ -553,6 +586,12 @@
 					odepth(imat,xel) = 0.0
 					ofd(imat,xel)    = 0.0
 
+					#if (tetmode == 1) {   # single spectrum mode
+					#    if (imat == 306) {    # debuging: sulfate-mix_gypsum.trace.dust+debris-WTC01-2
+					#	write (ttyout,*)  " DEBUG3: imat=", imat, ifeat, "fit=", fit, "depth=", bdepth
+					#    }
+					#}
+
 					return
 				}
 
@@ -565,6 +604,42 @@
 			bdepth = 0.0
 		}
 
+		# must have checking, feature type 1 = Weak, and 3 = Must have, even if disabled
+		#   The following block added 5.27  2023-04-24 - R. Clark
+
+		# For must haves, check that they are present, if not set to zero all
+				# featimprt = 1  Weak, must be present
+				# featimprt = 3  Must have diagnosdtic, unconditional
+		if (featimprt(ifeat,imat) == 1 || featimprt(ifeat,imat) == 3) {
+
+			xfeat=real(nftype(ifeat,imat)) # feature type, =1 absorption, =-1 emission
+			xx=1.0                         # fit factor
+			if (bdepth/xfeat <= 0.1e-5) {  # fit factor=0
+				xx=0.0                 # feature is
+						       # negative of
+						       # expected.
+				# set all features to zero
+				do itmpfeat = 1, nfeat(imat) {
+					zfit(itmpfeat,imat)   = 0.0
+					zdepth(itmpfeat,imat) = 0.0
+					zfd(itmpfeat,imat)    = 0.0
+					zcompf(itmpfeat,imat) = 0.0
+				}
+				ofit(imat,xel)   = 0.0
+				odepth(imat,xel) = 0.0
+				ofd(imat,xel)    = 0.0
+	
+					#if (tetmode == 1) {   # single spectrum mode
+					#    if (imat == 306) {    # debuging: sulfate-mix_gypsum.trace.dust+debris-WTC01-2
+					#	write (ttyout,*)  " DEBUG4: imat=", imat, ifeat, "fit=", fit, "depth=", bdepth
+					#    }
+					#}
+
+				return
+			}
+		}
+
+		# Now sum all the fits, detphs and f*d
 		if (featimprt(ifeat,imat) != 1) {      # not a weak feature
                                                        #     so don't include
 						       #     in sums
@@ -574,7 +649,7 @@
 			sumd = sumd + xbdxdn           # weighted sum depths
 			sumfd= sumfd+ xbdxdn * fit     # weighted sum fit*depth
 		}
-		
+
 
 		zfit(ifeat,imat)   = fit
 		zdepth(ifeat,imat) = bdepth

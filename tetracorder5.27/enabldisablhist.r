@@ -157,11 +157,11 @@
 						if (ifeatenable(nfeat(imat),imat) > 0) {   # feature enabled
 
 							write (lunhist,401) ig, imat, ifeat
-401							format ("EDinfo3:      g",i4,"              material",i4," featuee",i3,"  is ENABLED")
+401							format ("EDinfo3:      g",i4,"              material",i4," feature",i3,"  is ENABLED")
 
 						} else {                              # feature disabled
 							write (lunhist,402) ig, imat, ifeat
-402							format ("EDinfo3:      g",i4,"              material",i4," featuee",i3,"  ---------- is DISABLED")
+402							format ("EDinfo3:      g",i4,"              material",i4," feature",i3,"  ---------- is DISABLED")
 
 						}
 					}

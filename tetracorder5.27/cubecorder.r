@@ -195,7 +195,7 @@
 243			format (/,'Enter the DN offset, ',
 				'Deleted point value, and the ',
 				'scale factor (to scale the DN to reflectance',/,
-				5x,'and the minumum and maximum data thresholds.',//,
+				5x,'and the minimum and maximum data thresholds.',//,
 				5x,'The thresholds are in real number (scaled) values, and',/,
 				5x,'if = 0.0  no thresholds are set')
 			call crtin
@@ -213,14 +213,19 @@
 				call what (i)
 				go to 4
 			}
-			idnoff = x + 0.5
+			idnoff = x + 0.5   # NOTE: these are integers, does not work for real numbers in reflectance
+						# in the real number case set to zero
 
 			call wjfren (i,x,il)
 			if (il != 0) {
 				call what (i)
 				go to 4
 			}
-			iptdrop = x + 0.5
+			iptdrop = x + 0.5   # NOTE: these are integers, does not work for real numbers in reflectance
+						# if the deleted point is a small real number.
+						# For example EMIT is -0.01.
+						# In this real number case set to zero
+						# use nhim max thresholding for deleted points.
 
 			call wjfren (i,x,il)
 			if (il != 0) {
@@ -228,6 +233,13 @@
 				go to 4
 			}
 			scale = x
+
+			if (scale < 0.1e-6) {
+
+				write (ttyout, *) "ERROR: cube scale too low, scale= ", scale
+				write (ttyout, *) "EXIT"
+				exit
+			}
 			
 			# now get thresholds, if present (added Jan 3, 1997, Roger Clark)
 
