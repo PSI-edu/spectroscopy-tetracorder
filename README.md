@@ -181,3 +181,8 @@ a new method: delete the old libraries from github and install the new.
 The new libraries are completely compatible will all older versions of
 tetracorder and expert systems, because we only add new spectra and never
 modify existing ones.
+
+April 26, 2023: A condition was found when mapping an EMIT scene in Morocco, 
+and a larger than plausible amount of jarosite and gypsum.
+See the tetracorder.cmds/tetracorder5.27c.cmds/AAAAA.KNOWN-ISSUES.txt
+file for details.  A mitigation study is underway.

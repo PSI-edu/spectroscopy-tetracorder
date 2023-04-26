@@ -71,16 +71,16 @@ While separating aliphatic from aromatic hydrocarbons or organics with
 single, double or triple bonded carbons atoms is possible at spectral
 resolution typical of imaging spectrometer (e.g. AVIRIS, CRISM, VIMS),
 identifying specific organics is not possible.  For example, one AVIRIS
-scene mapped clay minerals + gasolene along a portion of a highway.
+scene mapped clay minerals + gasoline along a portion of a highway.
 Was raw gasoline spilled in that area?  No.  Trash, which contains
 plastics, are mainly aliphatics hydrocarbon and have absorptions close
-to the aliphatic hydrocarbons in gasolene at AVIRIS spectral range
+to the aliphatic hydrocarbons in gasoline at AVIRIS spectral range
 and resolution.  A higher spectral resolution spectrometer and/or
 ground checking would be necessary to distinguish the possibilities.
 Understanding such limitations of spectroscopy and the Tetracorder
 identified results is important.
 
-Perhaps entries like clay minerals + gasolene should be renamed
+Perhaps entries like clay minerals + gasoline should be renamed
 clay minerals + aliphatic hydrocarbon.  
 
 
@@ -262,4 +262,23 @@ pixel to pixel changes.
 Multiple path lengths can increase gas signatures, e.g., cloud-land reflections,
 land-land reflections (mountains), so there are a lot of false positives.
 Any signature needs to be checked.
+
+#####################################################################################
+###### CRISM data and mapping vegetation on Mars
+
+Ideally, spectroscopy would be robust for detecting all kinds of
+compounds, regardless of the environment.  This is likely true in
+general, depending on the diagnostic nature of the absorption bands and
+the capability of the spectrometer and its calibration.  The tetracorder
+expert system is designed to work in multiple environments, including
+the Earth, Moon, Mars, etc, and including detection of vegetation with
+the chlorophyll absorption.  However, the CRISM instrument has a large
+gap in spectral coverage right in the critically diagnostic chlorophyll
+absorption in the visible.  This leads to a lot of false identifications
+of vegetation in CRISM data.  However, it may be possible that
+somewhere on Mars there might, in theory, be some chlorophyll, e.g. in
+cyanobacteria.  For that possibility, all tetracorder detections of
+chlorophyll in CRISM data must be thoroughly checked and confirmed before
+claiming an identification.
+
 
