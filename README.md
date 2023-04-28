@@ -186,3 +186,14 @@ April 26, 2023: A condition was found when mapping an EMIT scene in Morocco,
 and a larger than plausible amount of jarosite and gypsum.
 See the tetracorder.cmds/tetracorder5.27c.cmds/AAAAA.KNOWN-ISSUES.txt
 file for details.  A mitigation study is underway.
+
+NOTE on adding entried to the spectral libraries.
+When new entries are added to the spectral libraries, the convolved libraries
+need to be regenerated.  There is no need to store changes, as only additiyons
+are added and they are always fully backward compatible.  Thus to update
+the libraries, the entire library directory is removed from github
+and the new one added.  This prevents huge data volume growth that is not needed.
+
+April 28, 2023: updated the rlib06 library and convolved libraries by adding
+3 new spectra.
+
