@@ -1,0 +1,857 @@
+     1  Digital Spectral Library: r06emitc         410 Characters of TEXT
+     2  Convolved EMIT-20220813 285 ch library     147 Characters of TEXT
+     3  ****************************************    41 Characters of TEXT
+     4  ****************************************    41 Characters of TEXT
+     5  ..                                          41 Characters of TEXT
+     6  Wavelengths in microns 285 ch EMITc        285  00:00:00.00  08/31/2022      6     12
+     8  ..                                          41 Characters of TEXT
+     9  ..                                          41 Characters of TEXT
+    10  ..                                          41 Characters of TEXT
+    11  ..                                          41 Characters of TEXT
+    12  Resolution  in microns 285 ch EMITc        285  00:00:00.00  08/31/2022      6     12
+    14  ..                                          41 Characters of TEXT
+    15  ..                                          41 Characters of TEXT
+    16  ..                                          41 Characters of TEXT
+    17  ..                                          41 Characters of TEXT
+    18  Data value = channel number (285 ch)       285  00:00:00.00  11/24/****      6     12
+    20  ..                                          41 Characters of TEXT
+    21  ..                                          41 Characters of TEXT
+    22  ..                                          41 Characters of TEXT
+    23  ..                                          41 Characters of TEXT
+    24  ..                                          41 Characters of TEXT
+    25  ..                                          41 Characters of TEXT
+    26  ..                                          41 Characters of TEXT
+    27  ..                                          41 Characters of TEXT
+    28  ..                                          41 Characters of TEXT
+    29  ..                                          41 Characters of TEXT
+    30  Grass_dry+0.17%Na-Mont AMX35 r06emitc=a    285  10:02:41.00  01/30/1986      6     17
+    32  ..                                          41 Characters of TEXT
+    33  ..                                          41 Characters of TEXT
+    34  ..                                          41 Characters of TEXT
+    35  ..                                          41 Characters of TEXT
+    36  Chalcedony CU00-15D r06emitc=_             285  18:06:27.00  12/10/2004      6     34
+    38  ..                                          41 Characters of TEXT
+    39  ..                                          41 Characters of TEXT
+    40  ..                                          41 Characters of TEXT
+    41  ..                                          41 Characters of TEXT
+    42  Opal CU00-15E Opal r06emitc=_              285  22:54:15.00  11/26/2004      6     34
+    44  ..                                          41 Characters of TEXT
+    45  ..                                          41 Characters of TEXT
+    46  ..                                          41 Characters of TEXT
+    47  ..                                          41 Characters of TEXT
+    48  Prehnite GDS613A <250um r06emitc=_         285  23:38:23.00  05/02/2008      6     34
+    50  ..                                          41 Characters of TEXT
+    51  ..                                          41 Characters of TEXT
+    52  ..                                          41 Characters of TEXT
+    53  ..                                          41 Characters of TEXT
+    54  Montmorillonite_Fe GDS759A r06emitc=___    285  23:56:31.00  04/15/2008      6     50
+    56  ..                                          41 Characters of TEXT
+    57  ..                                          41 Characters of TEXT
+    58  ..                                          41 Characters of TEXT
+    59  ..                                          41 Characters of TEXT
+    60  HyBasaltGlassMLUT03-9CMarP&T r06emitc=_    285  23:00:08.00  05/31/2007      6     34
+    62  ..                                          41 Characters of TEXT
+    63  ..                                          41 Characters of TEXT
+    64  ..                                          41 Characters of TEXT
+    65  ..                                          41 Characters of TEXT
+    66  Kieserite Batch4 GDS671 Syn r06emitc=_     285  23:59:00.00  07/07/2006      6     34
+    68  ..                                          41 Characters of TEXT
+    69  ..                                          41 Characters of TEXT
+    70  ..                                          41 Characters of TEXT
+    71  ..                                          41 Characters of TEXT
+    72  Perchlorate_Mg GDS851.1 293K r06emitc=_    285  23:05:09.00  09/22/2008      6     34
+    74  ..                                          41 Characters of TEXT
+    75  ..                                          41 Characters of TEXT
+    76  ..                                          41 Characters of TEXT
+    77  ..                                          41 Characters of TEXT
+    78  Perchlorate_Mg GDS851.2 293K r06emitc=_    285  23:05:09.00  09/22/2008      6     34
+    80  ..                                          41 Characters of TEXT
+    81  ..                                          41 Characters of TEXT
+    82  ..                                          41 Characters of TEXT
+    83  ..                                          41 Characters of TEXT
+    84  Perchlorate_Mg GDS851.2 255K r06emitc=_    285  23:05:09.00  09/22/2008      6     34
+    86  ..                                          41 Characters of TEXT
+    87  ..                                          41 Characters of TEXT
+    88  ..                                          41 Characters of TEXT
+    89  ..                                          41 Characters of TEXT
+    90  Perchlorate_Mg GDS851.2 230K r06emitc=_    285  23:05:10.00  09/22/2008      6     34
+    92  ..                                          41 Characters of TEXT
+    93  ..                                          41 Characters of TEXT
+    94  ..                                          41 Characters of TEXT
+    95  ..                                          41 Characters of TEXT
+    96  Perchlorate_Mg GDS851.2 220K r06emitc=_    285  23:05:10.00  09/22/2008      6     34
+    98  ..                                          41 Characters of TEXT
+    99  ..                                          41 Characters of TEXT
+   100  ..                                          41 Characters of TEXT
+   101  ..                                          41 Characters of TEXT
+   102  Perchlorate_Mg GDS851.2 200K r06emitc=_    285  23:05:10.00  09/22/2008      6     34
+   104  ..                                          41 Characters of TEXT
+   105  ..                                          41 Characters of TEXT
+   106  ..                                          41 Characters of TEXT
+   107  ..                                          41 Characters of TEXT
+   108  Perchlorate_Mg GDS851.2 180K r06emitc=_    285  23:05:10.00  09/22/2008      6     34
+   110  ..                                          41 Characters of TEXT
+   111  ..                                          41 Characters of TEXT
+   112  ..                                          41 Characters of TEXT
+   113  ..                                          41 Characters of TEXT
+   114  Perchlorate_Mg GDS851.2 170K r06emitc=_    285  23:05:10.00  09/22/2008      6     34
+   116  ..                                          41 Characters of TEXT
+   117  ..                                          41 Characters of TEXT
+   118  ..                                          41 Characters of TEXT
+   119  ..                                          41 Characters of TEXT
+   120  Perchlorate_Mg GDS851.2 110K r06emitc=_    285  23:05:10.00  09/22/2008      6     34
+   122  ..                                          41 Characters of TEXT
+   123  ..                                          41 Characters of TEXT
+   124  ..                                          41 Characters of TEXT
+   125  ..                                          41 Characters of TEXT
+   126  Perchlorate_Mg GDS851.2 103K r06emitc=_    285  23:05:10.00  09/22/2008      6     34
+   128  ..                                          41 Characters of TEXT
+   129  ..                                          41 Characters of TEXT
+   130  ..                                          41 Characters of TEXT
+   131  ..                                          41 Characters of TEXT
+   132  Perchlorate_Mg GDS851.2 98K r06emitc=_     285  23:05:10.00  09/22/2008      6     34
+   134  ..                                          41 Characters of TEXT
+   135  ..                                          41 Characters of TEXT
+   136  ..                                          41 Characters of TEXT
+   137  ..                                          41 Characters of TEXT
+   138  Perchlorate_Mg GDS851.2 88K r06emitc=_     285  23:05:10.00  09/22/2008      6     34
+   140  ..                                          41 Characters of TEXT
+   141  ..                                          41 Characters of TEXT
+   142  ..                                          41 Characters of TEXT
+   143  ..                                          41 Characters of TEXT
+   144  Perchlorite_Na GDS857 230C r06emitc=_      285  22:36:21.00  02/07/2009      6    108
+   146  ..                                          41 Characters of TEXT
+   147  ..                                          41 Characters of TEXT
+   148  ..                                          41 Characters of TEXT
+   149  ..                                          41 Characters of TEXT
+   150  Szomolnokite NMNH104303 UT r06emitc=_      285  22:35:41.00  02/07/2009      6    108
+   152  ..                                          41 Characters of TEXT
+   153  ..                                          41 Characters of TEXT
+   154  ..                                          41 Characters of TEXT
+   155  ..                                          41 Characters of TEXT
+   156  Dehyd SynH30-jarosite GDS605 r06emitc=_    285  17:58:15.00  12/16/2002      6     34
+   158  ..                                          41 Characters of TEXT
+   159  ..                                          41 Characters of TEXT
+   160  ..                                          41 Characters of TEXT
+   161  ..                                          41 Characters of TEXT
+   162  Jarosite_K GDS636 PenaBlanca r06emitc=_    285  16:20:38.00  11/18/2005      6     34
+   164  ..                                          41 Characters of TEXT
+   165  ..                                          41 Characters of TEXT
+   166  ..                                          41 Characters of TEXT
+   167  ..                                          41 Characters of TEXT
+   168  Jarosite GDS641 Na53 RES24Syn r06emitc=_   285  21:20:09.00  01/17/2008      6     34
+   170  ..                                          41 Characters of TEXT
+   171  ..                                          41 Characters of TEXT
+   172  ..                                          41 Characters of TEXT
+   173  ..                                          41 Characters of TEXT
+   174  FeSO4OH+szomolnokite GDS871 r06emitc=_     285  02:45:15.00  07/24/2009      6     34
+   176  ..                                          41 Characters of TEXT
+   177  ..                                          41 Characters of TEXT
+   178  ..                                          41 Characters of TEXT
+   179  ..                                          41 Characters of TEXT
+   180  Fe(OH)SO4_Possiblywxl GDS872 r06emitc=_    285  02:45:15.00  07/24/2009      6     34
+   182  ..                                          41 Characters of TEXT
+   183  ..                                          41 Characters of TEXT
+   184  ..                                          41 Characters of TEXT
+   185  ..                                          41 Characters of TEXT
+   186  FeSO4*7H20 GDS873 SynChemReg r06emitc=Fe   285  03:38:55.00  07/28/2009      6     34
+   188  ..                                          41 Characters of TEXT
+   189  ..                                          41 Characters of TEXT
+   190  ..                                          41 Characters of TEXT
+   191  ..                                          41 Characters of TEXT
+   192  Szomolnokite GDS874 Heat275C r06emitc=_    285  03:38:56.00  07/28/2009      6     34
+   194  ..                                          41 Characters of TEXT
+   195  ..                                          41 Characters of TEXT
+   196  ..                                          41 Characters of TEXT
+   197  ..                                          41 Characters of TEXT
+   198  FeSO4*7H2O GDS875 Heat275C r06emitc=FeSO   285  03:38:56.00  07/28/2009      6     34
+   200  ..                                          41 Characters of TEXT
+   201  ..                                          41 Characters of TEXT
+   202  ..                                          41 Characters of TEXT
+   203  ..                                          41 Characters of TEXT
+   204  Fe(OH)S04 GDS877 heatbutler r06emitc=_     285  17:58:32.00  08/24/2009      6     34
+   206  ..                                          41 Characters of TEXT
+   207  ..                                          41 Characters of TEXT
+   208  ..                                          41 Characters of TEXT
+   209  ..                                          41 Characters of TEXT
+   210  Magnesite WS282 OkanoganWA r06emitc=___    285  00:22:50.00  11/21/2009      6     50
+   212  ..                                          41 Characters of TEXT
+   213  ..                                          41 Characters of TEXT
+   214  ..                                          41 Characters of TEXT
+   215  ..                                          41 Characters of TEXT
+   216  Biedellite GDS128 r06emitc=___             285  00:23:26.00  11/21/2009      6     50
+   218  ..                                          41 Characters of TEXT
+   219  ..                                          41 Characters of TEXT
+   220  ..                                          41 Characters of TEXT
+   221  ..                                          41 Characters of TEXT
+   222  Beidellite GDS124 r06emitc=___             285  18:55:08.00  12/01/2009      6     50
+   224  ..                                          41 Characters of TEXT
+   225  ..                                          41 Characters of TEXT
+   226  ..                                          41 Characters of TEXT
+   227  ..                                          41 Characters of TEXT
+   228  Beidellite GDS123 r06emitc=___             285  18:57:26.00  12/01/2009      6     50
+   230  ..                                          41 Characters of TEXT
+   231  ..                                          41 Characters of TEXT
+   232  ..                                          41 Characters of TEXT
+   233  ..                                          41 Characters of TEXT
+   234  Potassium Nitrate GDS43 r06emitc=___       285  18:59:14.00  12/01/2009      6     50
+   236  ..                                          41 Characters of TEXT
+   237  ..                                          41 Characters of TEXT
+   238  ..                                          41 Characters of TEXT
+   239  ..                                          41 Characters of TEXT
+   240  Sodium Nitrate GDS883 r06emitc=___         285  20:30:13.00  12/01/2009      6     50
+   242  ..                                          41 Characters of TEXT
+   243  ..                                          41 Characters of TEXT
+   244  ..                                          41 Characters of TEXT
+   245  ..                                          41 Characters of TEXT
+   246  Fe(OH)SO4 GDS877 Syn r06emitc=___          285  20:30:24.00  12/01/2009      6     50
+   248  ..                                          41 Characters of TEXT
+   249  ..                                          41 Characters of TEXT
+   250  ..                                          41 Characters of TEXT
+   251  ..                                          41 Characters of TEXT
+   252  Prehnite+.50Chlorite AMIX r06emitc=aa_     285  00:00:00.00  03/09/2015      6      0
+   254  ..                                          41 Characters of TEXT
+   255  ..                                          41 Characters of TEXT
+   256  ..                                          41 Characters of TEXT
+   257  ..                                          41 Characters of TEXT
+   258  Prehnite+.67Chlorite AMIX r06emitc=aa_     285  00:00:00.00  03/09/2015      6      0
+   260  ..                                          41 Characters of TEXT
+   261  ..                                          41 Characters of TEXT
+   262  ..                                          41 Characters of TEXT
+   263  ..                                          41 Characters of TEXT
+   264  Prehnite+.75Chlorite AMIX r06emitc=aa_     285  00:00:00.00  03/09/2015      6      0
+   266  ..                                          41 Characters of TEXT
+   267  ..                                          41 Characters of TEXT
+   268  ..                                          41 Characters of TEXT
+   269  ..                                          41 Characters of TEXT
+   270  Clam Shell RB10-2B Aragonite r06emitc=_    285  00:56:18.00  02/15/2011      6     34
+   272  ..                                          41 Characters of TEXT
+   273  ..                                          41 Characters of TEXT
+   274  ..                                          41 Characters of TEXT
+   275  ..                                          41 Characters of TEXT
+   276  Aragonite GDS898 Moracco grd r06emitc=_    285  00:56:18.00  02/15/2011      6     34
+   278  ..                                          41 Characters of TEXT
+   279  ..                                          41 Characters of TEXT
+   280  ..                                          41 Characters of TEXT
+   281  ..                                          41 Characters of TEXT
+   282  Oil_on_snow GDS775 SuncoCrud r06emitc=_    285  00:56:18.00  02/15/2011      6     34
+   284  ..                                          41 Characters of TEXT
+   285  ..                                          41 Characters of TEXT
+   286  ..                                          41 Characters of TEXT
+   287  ..                                          41 Characters of TEXT
+   288  Oil_on_ice GDS775 SuncoCrude r06emitc=_    285  00:56:18.00  02/15/2011      6     34
+   290  ..                                          41 Characters of TEXT
+   291  ..                                          41 Characters of TEXT
+   292  ..                                          41 Characters of TEXT
+   293  ..                                          41 Characters of TEXT
+   294  Snow_clean_for_oil_on_snow r06emitc=_      285  00:56:18.00  02/15/2011      6     34
+   296  ..                                          41 Characters of TEXT
+   297  ..                                          41 Characters of TEXT
+   298  ..                                          41 Characters of TEXT
+   299  ..                                          41 Characters of TEXT
+   300  Ice_clean_for_oil_on_ice r06emitc=_        285  00:56:18.00  02/15/2011      6     34
+   302  ..                                          41 Characters of TEXT
+   303  ..                                          41 Characters of TEXT
+   304  ..                                          41 Characters of TEXT
+   305  ..                                          41 Characters of TEXT
+   306  BHVO-2F+4%_Decalin r06emitc=               285  19:04:02.00  07/02/2009      6      0
+   308  ..                                          41 Characters of TEXT
+   309  ..                                          41 Characters of TEXT
+   310  ..                                          41 Characters of TEXT
+   311  ..                                          41 Characters of TEXT
+   312  BHVO-2F+4%_Formaldehyde r06emitc=          285  20:50:28.00  08/21/2009      6      0
+   314  ..                                          41 Characters of TEXT
+   315  ..                                          41 Characters of TEXT
+   316  ..                                          41 Characters of TEXT
+   317  ..                                          41 Characters of TEXT
+   318  BHVO-2F+4%_Formaldehyde r06emitc=          285  21:05:07.00  08/21/2009      6      0
+   320  ..                                          41 Characters of TEXT
+   321  ..                                          41 Characters of TEXT
+   322  ..                                          41 Characters of TEXT
+   323  ..                                          41 Characters of TEXT
+   324  BHVO-2F+4%_Ammonia Solution r06emitc=      285  21:05:07.00  08/21/2009      6      0
+   326  ..                                          41 Characters of TEXT
+   327  ..                                          41 Characters of TEXT
+   328  ..                                          41 Characters of TEXT
+   329  ..                                          41 Characters of TEXT
+   330  BHVO-2F+4%_Acetone 85K r06emitc=           285  23:37:18.00  12/10/2009      6      0
+   332  ..                                          41 Characters of TEXT
+   333  ..                                          41 Characters of TEXT
+   334  ..                                          41 Characters of TEXT
+   335  ..                                          41 Characters of TEXT
+   336  BHVO-2F+4%_Chloroform r06emitc=            285  21:05:07.00  08/21/2009      6      0
+   338  ..                                          41 Characters of TEXT
+   339  ..                                          41 Characters of TEXT
+   340  ..                                          41 Characters of TEXT
+   341  ..                                          41 Characters of TEXT
+   342  BHVO-2F+4%_Dimethylformamide r06emitc=     285  20:50:25.00  08/21/2009      6      0
+   344  ..                                          41 Characters of TEXT
+   345  ..                                          41 Characters of TEXT
+   346  ..                                          41 Characters of TEXT
+   347  ..                                          41 Characters of TEXT
+   348  BHVO-2F+4%_Hydrogen Peroxide r06emitc=     285  20:50:28.00  08/21/2009      6      0
+   350  ..                                          41 Characters of TEXT
+   351  ..                                          41 Characters of TEXT
+   352  ..                                          41 Characters of TEXT
+   353  ..                                          41 Characters of TEXT
+   354  BHVO-2F+4%_1-CNbnzcyclobuten r06emitc=     285  23:37:21.00  12/10/2009      6      0
+   356  ..                                          41 Characters of TEXT
+   357  ..                                          41 Characters of TEXT
+   358  ..                                          41 Characters of TEXT
+   359  ..                                          41 Characters of TEXT
+   360  BHVO-2F+4%_1-Decene r06emitc=              285  20:50:28.00  08/21/2009      6      0
+   362  ..                                          41 Characters of TEXT
+   363  ..                                          41 Characters of TEXT
+   364  ..                                          41 Characters of TEXT
+   365  ..                                          41 Characters of TEXT
+   366  BHVO-2F+4%_1-Decyne r06emitc=              285  21:05:06.00  08/21/2009      6      0
+   368  ..                                          41 Characters of TEXT
+   369  ..                                          41 Characters of TEXT
+   370  ..                                          41 Characters of TEXT
+   371  ..                                          41 Characters of TEXT
+   372  BHVO-2F+4%_1-Heptene r06emitc=             285  21:05:05.00  08/21/2009      6      0
+   374  ..                                          41 Characters of TEXT
+   375  ..                                          41 Characters of TEXT
+   376  ..                                          41 Characters of TEXT
+   377  ..                                          41 Characters of TEXT
+   378  BHVO-2F+4%_1-Heptyne r06emitc=             285  21:05:05.00  08/21/2009      6      0
+   380  ..                                          41 Characters of TEXT
+   381  ..                                          41 Characters of TEXT
+   382  ..                                          41 Characters of TEXT
+   383  ..                                          41 Characters of TEXT
+   384  BHVO-2F+4%_1-Hexyne r06emitc=              285  21:05:05.00  08/21/2009      6      0
+   386  ..                                          41 Characters of TEXT
+   387  ..                                          41 Characters of TEXT
+   388  ..                                          41 Characters of TEXT
+   389  ..                                          41 Characters of TEXT
+   390  BHVO-2F+4%_1-Nonene r06emitc=              285  21:05:06.00  08/21/2009      6      0
+   392  ..                                          41 Characters of TEXT
+   393  ..                                          41 Characters of TEXT
+   394  ..                                          41 Characters of TEXT
+   395  ..                                          41 Characters of TEXT
+   396  BHVO-2F+4%_1-Nonyne r06emitc=              285  21:05:06.00  08/21/2009      6      0
+   398  ..                                          41 Characters of TEXT
+   399  ..                                          41 Characters of TEXT
+   400  ..                                          41 Characters of TEXT
+   401  ..                                          41 Characters of TEXT
+   402  BHVO-2F+4%_1-Octene r06emitc=              285  21:05:06.00  08/21/2009      6      0
+   404  ..                                          41 Characters of TEXT
+   405  ..                                          41 Characters of TEXT
+   406  ..                                          41 Characters of TEXT
+   407  ..                                          41 Characters of TEXT
+   408  BHVO-2F+4%_1-Octyne r06emitc=              285  21:05:06.00  08/21/2009      6      0
+   410  ..                                          41 Characters of TEXT
+   411  ..                                          41 Characters of TEXT
+   412  ..                                          41 Characters of TEXT
+   413  ..                                          41 Characters of TEXT
+   414  BHVO-2F+4%_1-Pentene r06emitc=             285  21:05:05.00  08/21/2009      6      0
+   416  ..                                          41 Characters of TEXT
+   417  ..                                          41 Characters of TEXT
+   418  ..                                          41 Characters of TEXT
+   419  ..                                          41 Characters of TEXT
+   420  BHVO-2F+4%_2-Propanol r06emitc=            285  19:04:01.00  07/02/2009      6      0
+   422  ..                                          41 Characters of TEXT
+   423  ..                                          41 Characters of TEXT
+   424  ..                                          41 Characters of TEXT
+   425  ..                                          41 Characters of TEXT
+   426  BHVO-2F+4%_3-Hexyne r06emitc=              285  21:05:05.00  08/21/2009      6      0
+   428  ..                                          41 Characters of TEXT
+   429  ..                                          41 Characters of TEXT
+   430  ..                                          41 Characters of TEXT
+   431  ..                                          41 Characters of TEXT
+   432  BHVO-2F+4%_4-Octyne r06emitc=              285  21:05:05.00  08/21/2009      6      0
+   434  ..                                          41 Characters of TEXT
+   435  ..                                          41 Characters of TEXT
+   436  ..                                          41 Characters of TEXT
+   437  ..                                          41 Characters of TEXT
+   438  BHVO-2F+4%_5-Decyne r06emitc=              285  21:05:06.00  08/21/2009      6      0
+   440  ..                                          41 Characters of TEXT
+   441  ..                                          41 Characters of TEXT
+   442  ..                                          41 Characters of TEXT
+   443  ..                                          41 Characters of TEXT
+   444  BHVO-2F+4%_Acetonitrile r06emitc=          285  19:04:00.00  07/02/2009      6      0
+   446  ..                                          41 Characters of TEXT
+   447  ..                                          41 Characters of TEXT
+   448  ..                                          41 Characters of TEXT
+   449  ..                                          41 Characters of TEXT
+   450  BHVO-2F+4%_Acrylonitrile r06emitc=         285  19:04:00.00  07/02/2009      6      0
+   452  ..                                          41 Characters of TEXT
+   453  ..                                          41 Characters of TEXT
+   454  ..                                          41 Characters of TEXT
+   455  ..                                          41 Characters of TEXT
+   456  BHVO-2F+4%_Benzene 84K r06emitc=           285  23:37:16.00  12/10/2009      6      0
+   458  ..                                          41 Characters of TEXT
+   459  ..                                          41 Characters of TEXT
+   460  ..                                          41 Characters of TEXT
+   461  ..                                          41 Characters of TEXT
+   462  BHVO-2F+4%_Benzyl Alcohol r06emitc=        285  19:03:54.00  07/02/2009      6      0
+   464  ..                                          41 Characters of TEXT
+   465  ..                                          41 Characters of TEXT
+   466  ..                                          41 Characters of TEXT
+   467  ..                                          41 Characters of TEXT
+   468  BHVO-2F+4%_Benzylamine r06emitc=           285  21:05:04.00  08/21/2009      6      0
+   470  ..                                          41 Characters of TEXT
+   471  ..                                          41 Characters of TEXT
+   472  ..                                          41 Characters of TEXT
+   473  ..                                          41 Characters of TEXT
+   474  BHVO-2F+4%_Cyclohexane r06emitc=           285  19:04:03.00  07/02/2009      6      0
+   476  ..                                          41 Characters of TEXT
+   477  ..                                          41 Characters of TEXT
+   478  ..                                          41 Characters of TEXT
+   479  ..                                          41 Characters of TEXT
+   480  BHVO-2F+4%_Cyclopentane r06emitc=          285  19:03:58.00  07/02/2009      6      0
+   482  ..                                          41 Characters of TEXT
+   483  ..                                          41 Characters of TEXT
+   484  ..                                          41 Characters of TEXT
+   485  ..                                          41 Characters of TEXT
+   486  BHVO-2F+4%_Ethanol r06emitc=               285  19:03:57.00  07/02/2009      6      0
+   488  ..                                          41 Characters of TEXT
+   489  ..                                          41 Characters of TEXT
+   490  ..                                          41 Characters of TEXT
+   491  ..                                          41 Characters of TEXT
+   492  BHVO-2F+4%_Heptane r06emitc=               285  19:04:05.00  07/02/2009      6      0
+   494  ..                                          41 Characters of TEXT
+   495  ..                                          41 Characters of TEXT
+   496  ..                                          41 Characters of TEXT
+   497  ..                                          41 Characters of TEXT
+   498  BHVO-2F+4%_Nonane r06emitc=                285  19:04:07.00  07/02/2009      6      0
+   500  ..                                          41 Characters of TEXT
+   501  ..                                          41 Characters of TEXT
+   502  ..                                          41 Characters of TEXT
+   503  ..                                          41 Characters of TEXT
+   504  BHVO-2F+4%_Pentane r06emitc=               285  20:50:28.00  08/21/2009      6      0
+   506  ..                                          41 Characters of TEXT
+   507  ..                                          41 Characters of TEXT
+   508  ..                                          41 Characters of TEXT
+   509  ..                                          41 Characters of TEXT
+   510  BHVO-2F+4%_Propionitrile r06emitc=         285  20:50:26.00  08/21/2009      6      0
+   512  ..                                          41 Characters of TEXT
+   513  ..                                          41 Characters of TEXT
+   514  ..                                          41 Characters of TEXT
+   515  ..                                          41 Characters of TEXT
+   516  BHVO-2F+4%_Pyridine r06emitc=              285  21:05:05.00  08/21/2009      6      0
+   518  ..                                          41 Characters of TEXT
+   519  ..                                          41 Characters of TEXT
+   520  ..                                          41 Characters of TEXT
+   521  ..                                          41 Characters of TEXT
+   522  BHVO-2F+4%_Pyrrole r06emitc=               285  19:03:56.00  07/02/2009      6      0
+   524  ..                                          41 Characters of TEXT
+   525  ..                                          41 Characters of TEXT
+   526  ..                                          41 Characters of TEXT
+   527  ..                                          41 Characters of TEXT
+   528  BHVO-2F+4%_trans-2-Octene r06emitc=        285  20:50:27.00  08/21/2009      6      0
+   530  ..                                          41 Characters of TEXT
+   531  ..                                          41 Characters of TEXT
+   532  ..                                          41 Characters of TEXT
+   533  ..                                          41 Characters of TEXT
+   534  BHVO-2F+4%_cis-2-Heptene r06emitc=         285  20:50:26.00  08/21/2009      6      0
+   536  ..                                          41 Characters of TEXT
+   537  ..                                          41 Characters of TEXT
+   538  ..                                          41 Characters of TEXT
+   539  ..                                          41 Characters of TEXT
+   540  BHVO-2F+4%_trans-5-Decene r06emitc=        285  20:50:27.00  08/21/2009      6      0
+   542  ..                                          41 Characters of TEXT
+   543  ..                                          41 Characters of TEXT
+   544  ..                                          41 Characters of TEXT
+   545  ..                                          41 Characters of TEXT
+   546  BHVO-2F+6.8% Decane r06emitc=              285  19:03:52.00  07/02/2009      6      0
+   548  ..                                          41 Characters of TEXT
+   549  ..                                          41 Characters of TEXT
+   550  ..                                          41 Characters of TEXT
+   551  ..                                          41 Characters of TEXT
+   552  BHVO-2F+8%_Nitrobenzene r06emitc=          285  20:50:25.00  08/21/2009      6      0
+   554  ..                                          41 Characters of TEXT
+   555  ..                                          41 Characters of TEXT
+   556  ..                                          41 Characters of TEXT
+   557  ..                                          41 Characters of TEXT
+   558  BHVO-2F+4%HydrognPeroxid 85K r06emitc=     285  23:37:20.00  12/10/2009      6      0
+   560  ..                                          41 Characters of TEXT
+   561  ..                                          41 Characters of TEXT
+   562  ..                                          41 Characters of TEXT
+   563  ..                                          41 Characters of TEXT
+   564  H2O+CO2 frost grndAl 82K #14 r06emitc=     285  21:14:43.00  01/02/2008      6      0
+   566  ..                                          41 Characters of TEXT
+   567  ..                                          41 Characters of TEXT
+   568  ..                                          41 Characters of TEXT
+   569  ..                                          41 Characters of TEXT
+   570  CO2 frost on H2O ice 100K #2 r06emitc=     285  18:58:40.00  10/21/2007      6      0
+   572  ..                                          41 Characters of TEXT
+   573  ..                                          41 Characters of TEXT
+   574  ..                                          41 Characters of TEXT
+   575  ..                                          41 Characters of TEXT
+   576  Fe<10um+CO2+H2+H2O 79k #3 r06emitc=        285  17:58:32.00  10/01/2007      6      0
+   578  ..                                          41 Characters of TEXT
+   579  ..                                          41 Characters of TEXT
+   580  ..                                          41 Characters of TEXT
+   581  ..                                          41 Characters of TEXT
+   582  Fe<10um+CO2+H2+H2O 79k #8 r06emitc=        285  17:58:33.00  10/01/2007      6      0
+   584  ..                                          41 Characters of TEXT
+   585  ..                                          41 Characters of TEXT
+   586  ..                                          41 Characters of TEXT
+   587  ..                                          41 Characters of TEXT
+   588  Montmorillonite SWy-1 r06emitc=b           285  13:58:16.90  03/26/2021      6    108
+   590  ..                                          41 Characters of TEXT
+   591  ..                                          41 Characters of TEXT
+   592  ..                                          41 Characters of TEXT
+   593  ..                                          41 Characters of TEXT
+   594  Kaolinite KGa-1 (wxl) r06emitc=b           285  15:33:59.70  03/26/2021      6    108
+   596  ..                                          41 Characters of TEXT
+   597  ..                                          41 Characters of TEXT
+   598  ..                                          41 Characters of TEXT
+   599  ..                                          41 Characters of TEXT
+   600  Montmorillonite SAz-1 r06emitc=b           285  17:34:23.78  03/26/2021      6    108
+   602  ..                                          41 Characters of TEXT
+   603  ..                                          41 Characters of TEXT
+   604  ..                                          41 Characters of TEXT
+   605  ..                                          41 Characters of TEXT
+   606  Kaolinite CM9 (wxl) r06emitc=b             285  13:54:25.55  03/29/2021      6    108
+   608  ..                                          41 Characters of TEXT
+   609  ..                                          41 Characters of TEXT
+   610  ..                                          41 Characters of TEXT
+   611  ..                                          41 Characters of TEXT
+   612  Dolomite HS102.3B r06emitc=b               285  15:22:57.63  03/29/2021      6    108
+   614  ..                                          41 Characters of TEXT
+   615  ..                                          41 Characters of TEXT
+   616  ..                                          41 Characters of TEXT
+   617  ..                                          41 Characters of TEXT
+   618  Gypsum HS333.3B (Selenite) r06emitc=a      285  17:50:23.27  03/29/2021      6    108
+   620  ..                                          41 Characters of TEXT
+   621  ..                                          41 Characters of TEXT
+   622  ..                                          41 Characters of TEXT
+   623  ..                                          41 Characters of TEXT
+   624  Vermiculite GDS458 r06emitc=c              285  08:17:05.91  04/06/2021      6    108
+   626  ..                                          41 Characters of TEXT
+   627  ..                                          41 Characters of TEXT
+   628  ..                                          41 Characters of TEXT
+   629  ..                                          41 Characters of TEXT
+   630  Vermiculite ALB4SA00 r06emitc=c            285  16:16:37.73  04/07/2021      6    108
+   632  ..                                          41 Characters of TEXT
+   633  ..                                          41 Characters of TEXT
+   634  ..                                          41 Characters of TEXT
+   635  ..                                          41 Characters of TEXT
+   636  Vermiculite WS682 r06emitc=c               285  17:01:41.00  04/09/2021      6    108
+   638  ..                                          41 Characters of TEXT
+   639  ..                                          41 Characters of TEXT
+   640  ..                                          41 Characters of TEXT
+   641  ..                                          41 Characters of TEXT
+   642  Vermiculite WS681 r06emitc=c               285  04:36:05.80  04/13/2021      6    108
+   644  ..                                          41 Characters of TEXT
+   645  ..                                          41 Characters of TEXT
+   646  ..                                          41 Characters of TEXT
+   647  ..                                          41 Characters of TEXT
+   648  Clinochlore_Fe GDS157.b r06emitc=a         285  14:36:11.82  06/02/2021      6    108
+   650  ..                                          41 Characters of TEXT
+   651  ..                                          41 Characters of TEXT
+   652  ..                                          41 Characters of TEXT
+   653  ..                                          41 Characters of TEXT
+   654  Muscovite GDS113 Ruby >37um r06emitc=b     285  01:31:43.12  07/09/2021      6    108
+   656  ..                                          41 Characters of TEXT
+   657  ..                                          41 Characters of TEXT
+   658  ..                                          41 Characters of TEXT
+   659  ..                                          41 Characters of TEXT
+   660  Clinochlore GDS158 Flagst r06emitc=b       285  14:47:59.73  07/09/2021      6    108
+   662  ..                                          41 Characters of TEXT
+   663  ..                                          41 Characters of TEXT
+   664  ..                                          41 Characters of TEXT
+   665  ..                                          41 Characters of TEXT
+   666  Calcite WS272 r06emitc=a                   285  20:28:13.90  07/11/2021      6    108
+   668  ..                                          41 Characters of TEXT
+   669  ..                                          41 Characters of TEXT
+   670  ..                                          41 Characters of TEXT
+   671  ..                                          41 Characters of TEXT
+   672  Kaolinite KGa-2 (pxl) r06emitc=b           285  14:09:39.82  07/16/2021      6    108
+   674  ..                                          41 Characters of TEXT
+   675  ..                                          41 Characters of TEXT
+   676  ..                                          41 Characters of TEXT
+   677  ..                                          41 Characters of TEXT
+   678  Hectorite SYnH-1 r06emitc=_                285  15:53:02.35  07/16/2021      6    108
+   680  ..                                          41 Characters of TEXT
+   681  ..                                          41 Characters of TEXT
+   682  ..                                          41 Characters of TEXT
+   683  ..                                          41 Characters of TEXT
+   684  Halloysite NMNH106237 r06emitc=a           285  13:42:43.57  07/19/2021      6    108
+   686  ..                                          41 Characters of TEXT
+   687  ..                                          41 Characters of TEXT
+   688  ..                                          41 Characters of TEXT
+   689  ..                                          41 Characters of TEXT
+   690  Sepiolite SepNev-1.AcB r06emitc=a          285  16:44:28.20  07/19/2021      6    108
+   692  ..                                          41 Characters of TEXT
+   693  ..                                          41 Characters of TEXT
+   694  ..                                          41 Characters of TEXT
+   695  ..                                          41 Characters of TEXT
+   696  Hectorite SHCa-1.Ac-B r06emitc=b           285  15:34:23.13  07/21/2021      6    108
+   698  ..                                          41 Characters of TEXT
+   699  ..                                          41 Characters of TEXT
+   700  ..                                          41 Characters of TEXT
+   701  ..                                          41 Characters of TEXT
+   702  Saponite SapCa-1.AcB r06emitc=b            285  17:16:42.35  07/21/2021      6    108
+   704  ..                                          41 Characters of TEXT
+   705  ..                                          41 Characters of TEXT
+   706  ..                                          41 Characters of TEXT
+   707  ..                                          41 Characters of TEXT
+   708  Dickite NMNH106242 r06emitc=b              285  15:24:06.05  07/23/2021      6    108
+   710  ..                                          41 Characters of TEXT
+   711  ..                                          41 Characters of TEXT
+   712  ..                                          41 Characters of TEXT
+   713  ..                                          41 Characters of TEXT
+   714  Illite IMt-1.b <2um r06emitc=a             285  17:37:21.32  07/23/2021      6    108
+   716  ..                                          41 Characters of TEXT
+   717  ..                                          41 Characters of TEXT
+   718  ..                                          41 Characters of TEXT
+   719  ..                                          41 Characters of TEXT
+   720  Goethite WS222 Marquette_MI r06emitc=_     285  15:22:35.95  07/26/2021      6    108
+   722  ..                                          41 Characters of TEXT
+   723  ..                                          41 Characters of TEXT
+   724  ..                                          41 Characters of TEXT
+   725  ..                                          41 Characters of TEXT
+   726  Illite GDS4.2 Marblehead_WI r06emitc=_     285  13:28:03.07  07/26/2021      6    108
+   728  ..                                          41 Characters of TEXT
+   729  ..                                          41 Characters of TEXT
+   730  ..                                          41 Characters of TEXT
+   731  ..                                          41 Characters of TEXT
+   732  Lepidocrosite GDS80 (Syn) r06emitc=b       285  17:07:10.68  07/26/2021      6    108
+   734  ..                                          41 Characters of TEXT
+   735  ..                                          41 Characters of TEXT
+   736  ..                                          41 Characters of TEXT
+   737  ..                                          41 Characters of TEXT
+   738  Hematite GDS27 r06emitc=a                  285  15:02:31.27  07/28/2021      6    108
+   740  ..                                          41 Characters of TEXT
+   741  ..                                          41 Characters of TEXT
+   742  ..                                          41 Characters of TEXT
+   743  ..                                          41 Characters of TEXT
+   744  Hematite.02+Quartz.98 GDS76 r06emitc=a     285  17:30:40.80  07/28/2021      6    108
+   746  ..                                          41 Characters of TEXT
+   747  ..                                          41 Characters of TEXT
+   748  ..                                          41 Characters of TEXT
+   749  ..                                          41 Characters of TEXT
+   750  Prehnite GDS613.a <60um r06emitc=a         285  13:28:13.23  08/04/2021      6    108
+   752  ..                                          41 Characters of TEXT
+   753  ..                                          41 Characters of TEXT
+   754  ..                                          41 Characters of TEXT
+   755  ..                                          41 Characters of TEXT
+   756  Muscovite CU91-250A med Al r06emitc=b      285  15:16:38.65  08/04/2021      6    108
+   758  ..                                          41 Characters of TEXT
+   759  ..                                          41 Characters of TEXT
+   760  ..                                          41 Characters of TEXT
+   761  ..                                          41 Characters of TEXT
+   762  Muscovite-medhi-Al CU91-252D r06emitc=c    285  17:06:24.50  08/04/2021      6    108
+   764  ..                                          41 Characters of TEXT
+   765  ..                                          41 Characters of TEXT
+   766  ..                                          41 Characters of TEXT
+   767  ..                                          41 Characters of TEXT
+   768  Maghemite GDS81 Syn (M-3) r06emitc=b       285  14:01:02.15  08/06/2021      6    108
+   770  ..                                          41 Characters of TEXT
+   771  ..                                          41 Characters of TEXT
+   772  ..                                          41 Characters of TEXT
+   773  ..                                          41 Characters of TEXT
+   774  Montmorillonite_Fe GDS759B r06emitc=_      285  15:36:24.73  08/06/2021      6    108
+   776  ..                                          41 Characters of TEXT
+   777  ..                                          41 Characters of TEXT
+   778  ..                                          41 Characters of TEXT
+   779  ..                                          41 Characters of TEXT
+   780  Cookeite CAr-1.d 90-150um r06emitc=_       285  17:20:31.15  08/06/2021      6    108
+   782  ..                                          41 Characters of TEXT
+   783  ..                                          41 Characters of TEXT
+   784  ..                                          41 Characters of TEXT
+   785  ..                                          41 Characters of TEXT
+   786  Ammonio-Illite/Smectit GDS87 r06emitc=b    285  13:24:31.32  08/09/2021      6    108
+   788  ..                                          41 Characters of TEXT
+   789  ..                                          41 Characters of TEXT
+   790  ..                                          41 Characters of TEXT
+   791  ..                                          41 Characters of TEXT
+   792  Cookeite CAr-1.c <30um r06emitc=c          285  15:28:58.05  08/09/2021      6    108
+   794  ..                                          41 Characters of TEXT
+   795  ..                                          41 Characters of TEXT
+   796  ..                                          41 Characters of TEXT
+   797  ..                                          41 Characters of TEXT
+   798  Buddingtnt+Na-Mont CU93-260B r06emitc=b    285  17:42:27.57  08/09/2021      6    108
+   800  ..                                          41 Characters of TEXT
+   801  ..                                          41 Characters of TEXT
+   802  ..                                          41 Characters of TEXT
+   803  ..                                          41 Characters of TEXT
+   804  Muscovite+Chlorite CU91-253D r06emitc=a    285  14:00:08.68  08/11/2021      6    108
+   806  ..                                          41 Characters of TEXT
+   807  ..                                          41 Characters of TEXT
+   808  ..                                          41 Characters of TEXT
+   809  ..                                          41 Characters of TEXT
+   810  Chlorite B93-22B Serpentine r06emitc=_     285  16:25:13.57  08/11/2021      6    108
+   812  ..                                          41 Characters of TEXT
+   813  ..                                          41 Characters of TEXT
+   814  ..                                          41 Characters of TEXT
+   815  ..                                          41 Characters of TEXT
+   816  Hematite_Coatd_Qtzt BR93-25C r06emitc=b    285  15:31:59.70  08/23/2021      6    108
+   818  ..                                          41 Characters of TEXT
+   819  ..                                          41 Characters of TEXT
+   820  ..                                          41 Characters of TEXT
+   821  ..                                          41 Characters of TEXT
+   822  Hematite_Coatd_Qtz BR93-34C r06emitc=a     285  17:09:55.00  08/23/2021      6    108
+   824  ..                                          41 Characters of TEXT
+   825  ..                                          41 Characters of TEXT
+   826  ..                                          41 Characters of TEXT
+   827  ..                                          41 Characters of TEXT
+   828  Nanohematite BR93-34B2b r06emitc=b         285  13:45:33.90  08/25/2021      6    108
+   830  ..                                          41 Characters of TEXT
+   831  ..                                          41 Characters of TEXT
+   832  ..                                          41 Characters of TEXT
+   833  ..                                          41 Characters of TEXT
+   834  Hematite_Coatd_Qtz BR93-25B r06emitc=b     285  15:48:31.50  08/25/2021      6    108
+   836  ..                                          41 Characters of TEXT
+   837  ..                                          41 Characters of TEXT
+   838  ..                                          41 Characters of TEXT
+   839  ..                                          41 Characters of TEXT
+   840  Hematite_Coatd_Qtzt BR93-25A r06emitc=b    285  17:32:10.73  08/27/2021      6    108
+   842  ..                                          41 Characters of TEXT
+   843  ..                                          41 Characters of TEXT
+   844  ..                                          41 Characters of TEXT
+   845  ..                                          41 Characters of TEXT
+   846  Magnetite_skarn BR93-5B r06emitc=b         285  14:54:31.23  08/27/2021      6    108
+   848  ..                                          41 Characters of TEXT
+   849  ..                                          41 Characters of TEXT
+   850  ..                                          41 Characters of TEXT
+   851  ..                                          41 Characters of TEXT
+   852  Goethite MPCMA2-C M-Crsgrad2 r06emitc=b    285  15:30:46.68  09/01/2021      6    108
+   854  ..                                          41 Characters of TEXT
+   855  ..                                          41 Characters of TEXT
+   856  ..                                          41 Characters of TEXT
+   857  ..                                          41 Characters of TEXT
+   858  Basalt_weathered BR93-43 r06emitc=b        285  15:41:51.42  09/03/2021      6    108
+   860  ..                                          41 Characters of TEXT
+   861  ..                                          41 Characters of TEXT
+   862  ..                                          41 Characters of TEXT
+   863  ..                                          41 Characters of TEXT
+   864  Chlor+Goethite CU93-4B Phyl r06emitc=a     285  13:29:49.17  09/08/2021      6    108
+   866  ..                                          41 Characters of TEXT
+   867  ..                                          41 Characters of TEXT
+   868  ..                                          41 Characters of TEXT
+   869  ..                                          41 Characters of TEXT
+   870  Kaol+Musc_intimate CU93-5C r06emitc=a      285  15:12:49.10  09/08/2021      6    108
+   872  ..                                          41 Characters of TEXT
+   873  ..                                          41 Characters of TEXT
+   874  ..                                          41 Characters of TEXT
+   875  ..                                          41 Characters of TEXT
+   876  Muscov+Jaros CU93-314 coatng r06emitc=b    285  16:45:09.65  09/08/2021      6    108
+   878  ..                                          41 Characters of TEXT
+   879  ..                                          41 Characters of TEXT
+   880  ..                                          41 Characters of TEXT
+   881  ..                                          41 Characters of TEXT
+   882  Goethite WS222 <250um old r06emitc=_       285  17:05:22.80  09/09/2021      6    108
+   884  ..                                          41 Characters of TEXT
+   885  ..                                          41 Characters of TEXT
+   886  ..                                          41 Characters of TEXT
+   887  ..                                          41 Characters of TEXT
+   888  Muscovite CU93-1 low-Al Phyl r06emitc=b    285  15:14:32.77  09/10/2021      6    108
+   890  ..                                          41 Characters of TEXT
+   891  ..                                          41 Characters of TEXT
+   892  ..                                          41 Characters of TEXT
+   893  ..                                          41 Characters of TEXT
+   894  Goethite WS222 orgsampsurf?? r06emitc=_    285  13:51:50.07  10/28/2021      6    108
+   896  ..                                          41 Characters of TEXT
+   897  ..                                          41 Characters of TEXT
+   898  ..                                          41 Characters of TEXT
+   899  ..                                          41 Characters of TEXT
+   900  Goethite CU91-252 coatchip?? r06emitc=_    285  14:41:24.07  11/01/2021      6    108
+   902  ..                                          41 Characters of TEXT
+   903  ..                                          41 Characters of TEXT
+   904  ..                                          41 Characters of TEXT
+   905  ..                                          41 Characters of TEXT
+   906  Hematite WS161 r06emitc=_                  285  13:21:21.23  08/02/2021      6    108
+   908  ..                                          41 Characters of TEXT
+   909  ..                                          41 Characters of TEXT
+   910  ..                                          41 Characters of TEXT
+   911  ..                                          41 Characters of TEXT
+   912  Biotite-phlogopite P23-5 Sam r06emitc=_    285  16:04:37.45  01/21/2022      6    108
+   914  ..                                          41 Characters of TEXT
+   915  ..                                          41 Characters of TEXT
+   916  ..                                          41 Characters of TEXT
+   917  ..                                          41 Characters of TEXT
+   918  Nanohematite BR93-34B2b ed1 r06emitc=b     285  13:45:33.90  08/25/2021      6    108
+   920  ..                                          41 Characters of TEXT
+   921  ..                                          41 Characters of TEXT
+   922  ..                                          41 Characters of TEXT
+   923  ..                                          41 Characters of TEXT
+   924  Moon62231 25u+0.005co2ice10u r06emitc=     285  23:15:30.00  06/20/1989      6      0
+   926  ..                                          41 Characters of TEXT
+   927  ..                                          41 Characters of TEXT
+   928  ..                                          41 Characters of TEXT
+   929  ..                                          41 Characters of TEXT
+   930  Moon62231 25um+0.01co2ice10u r06emitc=     285  23:15:30.00  06/20/1989      6      0
+   932  ..                                          41 Characters of TEXT
+   933  ..                                          41 Characters of TEXT
+   934  ..                                          41 Characters of TEXT
+   935  ..                                          41 Characters of TEXT
+   936  Moon62231 25um+0.05co2ice10u r06emitc=     285  23:15:30.00  06/20/1989      6      0
+   938  ..                                          41 Characters of TEXT
+   939  ..                                          41 Characters of TEXT
+   940  ..                                          41 Characters of TEXT
+   941  ..                                          41 Characters of TEXT
+   942  Moon62231 25um+0.10co2ice10u r06emitc=     285  23:15:30.00  06/20/1989      6      0
+   944  ..                                          41 Characters of TEXT
+   945  ..                                          41 Characters of TEXT
+   946  ..                                          41 Characters of TEXT
+   947  ..                                          41 Characters of TEXT
+   948  Moon62231 25um+0.30co2ice10u r06emitc=     285  23:15:30.00  06/20/1989      6      0
+   950  ..                                          41 Characters of TEXT
+   951  ..                                          41 Characters of TEXT
+   952  ..                                          41 Characters of TEXT
+   953  ..                                          41 Characters of TEXT
+   954  Moon62231_10-20 g25um CMPREF r06emitc=     285  00:00:00.00  11/24/****      6      0
+   956  ..                                          41 Characters of TEXT
+   957  ..                                          41 Characters of TEXT
+   958  ..                                          41 Characters of TEXT
+   959  ..                                          41 Characters of TEXT
+   960  CO2_ice g0.0003cm Warren opc r06emitc=     285  23:15:30.00  06/20/1989      6      0
+   962  ..                                          41 Characters of TEXT
+   963  ..                                          41 Characters of TEXT
+   964  ..                                          41 Characters of TEXT
+   965  ..                                          41 Characters of TEXT
+   966  CO2_ice g0.0010cm Warren opc r06emitc=     285  23:15:30.00  06/20/1989      6      0
+   968  ..                                          41 Characters of TEXT
+   969  ..                                          41 Characters of TEXT
+   970  ..                                          41 Characters of TEXT
+   971  ..                                          41 Characters of TEXT
+   972  CO2_ice g0.0030cm Warren opc r06emitc=     285  23:15:30.00  06/20/1989      6      0
+   974  ..                                          41 Characters of TEXT
+   975  ..                                          41 Characters of TEXT
+   976  ..                                          41 Characters of TEXT
+   977  ..                                          41 Characters of TEXT
+   978  CO2_ice g0.0100cm Warren opc r06emitc=     285  23:15:30.00  06/20/1989      6      0
+   980  ..                                          41 Characters of TEXT
+   981  ..                                          41 Characters of TEXT
+   982  ..                                          41 Characters of TEXT
+   983  ..                                          41 Characters of TEXT
+   984  CO2_ice g0.0300cm Warren opc r06emitc=     285  23:15:30.00  06/20/1989      6      0
+   986  ..                                          41 Characters of TEXT
+   987  ..                                          41 Characters of TEXT
+   988  ..                                          41 Characters of TEXT
+   989  ..                                          41 Characters of TEXT
+   990  CO2_ice g0.1000cm Warren opc r06emitc=     285  23:15:30.00  06/20/1989      6      0
+   992  ..                                          41 Characters of TEXT
+   993  ..                                          41 Characters of TEXT
+   994  ..                                          41 Characters of TEXT
+   995  ..                                          41 Characters of TEXT
+   996  CO2_ice g0.3000cm Warren opc r06emitc=     285  23:15:30.00  06/20/1989      6      0
+   998  ..                                          41 Characters of TEXT
+   999  ..                                          41 Characters of TEXT
+  1000  ..                                          41 Characters of TEXT
+  1001  ..                                          41 Characters of TEXT
+  1002  CO2_frost_on_H2O_ice 100K #2 r06emitc=     285  18:58:40.00  10/21/2007      6      0
+  1004  ..                                          41 Characters of TEXT
+  1005  ..                                          41 Characters of TEXT
+  1006  ..                                          41 Characters of TEXT
+  1007  ..                                          41 Characters of TEXT
+  1008  CO2+O2+CH4 TRANSM ModtranZ20 r06emitc=     285  00:00:00.00  11/24/****      6      0
+  1010  ..                                          41 Characters of TEXT
+  1011  ..                                          41 Characters of TEXT
+  1012  ..                                          41 Characters of TEXT
+  1013  ..                                          41 Characters of TEXT
+  1014  Wollastonite HS348.3B r06emitc=c           285  18:52:45.00  12/13/2005      6     34
+  1016  ..                                          41 Characters of TEXT
+  1017  ..                                          41 Characters of TEXT
+  1018  ..                                          41 Characters of TEXT
+  1019  ..                                          41 Characters of TEXT
+  1020  frost on ice 170K Clark1981 r06emitc=a     285  10:42:59.00  12/01/1899      6     34
+  1022  ..                                          41 Characters of TEXT
+  1023  ..                                          41 Characters of TEXT
+  1024  ..                                          41 Characters of TEXT
+  1025  ..                                          41 Characters of TEXT
+ done
