@@ -238,7 +238,7 @@
 
 				write (ttyout, *) "ERROR: cube scale too low, scale= ", scale
 				write (ttyout, *) "EXIT"
-				exit
+				stop
 			}
 			
 			# now get thresholds, if present (added Jan 3, 1997, Roger Clark)
