@@ -201,13 +201,13 @@
 		# NOTES: lblsiz here is  header_offset  in parseenvilabel
 		#  filorg: BIL=1, BIP=2, BSQ=3
 
-		if(interleave == 'bil') {
+		if(interleave == 'bil' || interleave == 'BIL') {
 			write (ttyout,*) '  ENVI header interleave = bil'
 			filorg = 1
-		} else if (interleave == 'bip') {
+		} else if (interleave == 'bip' || interleave == 'BIP') {
 			write (ttyout,*) '  ENVI header interleave = bip'
 			filorg = 2
-		} else if (interleave == 'bsq') {
+		} else if (interleave == 'bsq' || interleave == 'BSQ') {
 			write (ttyout,*) '  ENVI header interleave = bsq'
 			filorg = 3
 		} else {
