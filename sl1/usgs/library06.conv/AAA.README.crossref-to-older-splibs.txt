@@ -1,0 +1,111 @@
+===============================================================================
+
+annccyyd
+            a = s for spectral library
+            nn= library version number
+            cc= output convolved spectrometer model/type
+            yy= year or other code
+            d = output spectrometer version within year yy
+
+
+         as = aster,
+         av = aviris,  e.g. aviris 1995: av95a
+         cr = crism
+         hd = Hydice,
+         hy = HyMap
+         mi = MIVIS
+         mm = Moon Mineralogy Mapper (2008)
+         nm = nims,
+         pb = probe
+         pf = Mars pathfinder
+         tm = LandsatTM (followed by 04, 05, 07 for with TM)
+         vm = vims
+
+
+
+         nc = nicolet, followed by wavenumber resolution, e.g 4 cm^-1
+              would be nc04, 0.5 cm^1 would be nc.5
+
+         fs00 = ASD field spectrometer 2151
+         fs71 = ASD field spectrometer 717ch
+         fs35 = field spectrometer 358ch
+         bk1x = usgs beckman, 1x = standard resolution
+         gr = gregg's resolution study,
+
+===============================================================================
+Specpr record numbering:
+Padding is added to records so that spectra with 1022 channels or
+less all have the same record number in the convolved libraries.
+===============================================================================
+Cross reference to older splib04* libraries:
+
+New      original
+       splib04 name
+
+s06av90a splib04c  AVIRIS 1990 convolution 224 channels. (e.g. Cuprite) 
+s06av90b splib04d  AVIRIS 1990 convolution 208 channels
+
+s06av91a splib04e  AVIRIS 1991 convolution 224 channels.
+s06av91b splib04f  AVIRIS 1991 convolution 208 channels. 
+
+NOTE: 1992 AVIRIS had wavelength shifts that are flight spoecific.
+         Some data sets may have shifts requiring non-standard wavelengths.
+
+s06av92a splib04g  AVIRIS 1992 convolution 224 channels standard JPL waves.
+s06av92b splib04h  AVIRIS 1992 convolution 197 channels standard JPL waves.
+s06av92c splib4g1  AVIRIS 1992 convolution 224 channels Bodie 8/20/92 waves.
+
+s06av93a splib04i  AVIRIS 1993 convolution 224 channels. Cuprite 5/1993
+s06av93b splib04j  AVIRIS 1993 convolution 198 channels. Cuprite 5/1993
+
+s06av93c splib04k  AVIRIS 1993 convolution 224 channels. summitville 9/3/1993
+
+s06av94a splib04m  AVIRIS 1994 convolution 224 channels. 5/1994
+
+s06av95a splib04n  AVIRIS 1995 convolution 224 channels Alpha & Beta ver. 6/1995
+
+s06nm95a splib04o  Galileo NIMS 1
+
+         splib04p  Cassini VIMS94 proposed   (in sprlib/lib02/vims)
+         splib4p1  Cassini VIMSIR preliminary 1 3/95
+s06vm00a           Cassini VIMS thermal vac wavelengths
+s06vm04a           Cassini VIMS Criuse wavelengths 2004 (thermal vac + 0.3 ch in IR)
+
+s06as96a splib04q  ASTER96
+
+s06av96a splib04r  AVIRIS 1996 convolution 224 channels
+
+s06mi94a splib04s  MIVIS94 (in sprlib/lib02/mivis)
+
+s06fs35a splib04t  field spectrometer 358ch
+
+s06hy94a splib04u  HYDICE94 (in sprlib/lib02/hydice)
+
+	 splib04v  1901ch resampled Beckman Resolution
+
+s06tm05a splib04w  TM
+
+s06pf00a splib04x  Pathfinder IMP imager  Mars
+
+s06av97a splib04y  AVIRIS 1997 convolution 224 channels.
+
+s06av98a splib04z  AVIRIS 1998 convolution 224 channels.
+
+s06av99a s04av99a  AVIRIS 1999 convolution 224 channels.
+
+s06av00a s04av00a  AVIRIS 2000 convolution 224 channels.
+
+s06av01a s04av01a  AVIRIS 2001 convolution 224 channels.
+	 
+s06as04a s05as04a  ASTER 2004 convolution of splib05a.
+
+s06av05a s04av05a  AVIRIS 2005 convolution 224 channels.
+
+s06av10a s04av10a  AVIRIS 2010 convolution 224 channels.
+
+s06fs00a           ASD field spectrometer standard waves, 2151 channels, std resol
+
+
+note: the letter l was skipped in the designation splib04_ to avoid confusion
+      with the number 1.
+===============================================================================
