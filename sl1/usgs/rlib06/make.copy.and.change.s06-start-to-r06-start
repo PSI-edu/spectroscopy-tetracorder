@@ -1,0 +1,60 @@
+#!/bin/sh
+
+if [ -z "$1" ]
+then
+
+	echo "$0  lib06name  rllb06name"
+	echo "example:"
+	echo "          $0 s06av00a r06av00a"
+	echo "exit 1"
+	exit 1
+fi
+
+s06start="/sl1/usgs/library06.conv/startfiles/${1}.start"
+r06restr="/sl1/usgs/library06.conv/restartfiles/r.$1"
+
+if [ ! -f "$s06start" ]
+then
+	echo "ERROR: $s06start not found"
+	echo "exit 1"
+	exit 1
+fi
+
+if [ ! -f "$r06restr" ]
+then
+	echo "ERROR: $r06restr not found"
+	echo "exit 1"
+	exit 1
+fi
+
+if [ -f "restartfiles/r.$2" ]
+then
+	echo "ERROR: restartfiles/r.$2  already exists"
+	echo "exit 1"
+	exit 1
+fi
+
+if [ -f "startfiles/${2}.start" ]
+then
+	echo "ERROR: startfiles/${2}.start  already exists"
+	echo "exit 1"
+	exit 1
+fi
+
+set -x
+
+cp $s06start  startfiles/${2}.start
+
+spsettitle startfiles/${2}.start 1 "USGS Digital Spectral Library: $2 "  force
+spsetwave  startfiles/${2}.start  6 6 12  force
+spsetwave  startfiles/${2}.start 12 6 12  force
+spsetwave  startfiles/${2}.start 18 6 12  force
+
+cp $r06restr restartfiles/r.$2
+
+ex - restartfiles/r.$2 <<EOI
+g/$1/ s//$2/
+g/splib06b/ s//sprlb06b/
+w
+q
+EOI

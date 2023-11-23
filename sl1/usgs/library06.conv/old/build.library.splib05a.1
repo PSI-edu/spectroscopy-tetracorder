@@ -1,0 +1,242 @@
+#!/bin/sh
+
+#set -x
+
+# Parse the Master LIST file and generate the specpr commands
+# to build splib05a spectral library, including making plots.
+#
+# Roger N. Clark 3/27/2003
+
+if [ -z "$1" ]
+then
+	echo "ERROR: no LIST file specified"
+	echo "usage:"
+	echo "$0 LIST_FILE"
+	exit 1
+fi
+
+# e.g.: 
+#       build.library.splib05a.1   LIST.splib05a.sort1.edit34
+
+#master list file looks like:
+#splib04a:    16  Acmite NMNH133746            W1R1Ba AREF   480 e 03/23/1988 Mp  acmite_nmnh133746.html plotscl= 0 1
+#splib04a:    16  Acmite NMNH133746            W1R1Ba AREF   480 e 03/23/1988 Mp  acmite_nmnh133746.html
+#         1111111111222222222233333333334444444444555555555566666666667777777777888
+#1234567890123456789012345678901234567890123456789012345678901234567890123456789012
+
+tmp=tmpyy$$
+
+# Master directory for DESCRIPT pages, master LIST file, etc:
+
+mdir=/d1/speclib/build05.LIBRARY
+
+# Master directory where splib05a file is located:
+
+spdir=/d1/speclib/library05
+
+list=$1         # master list file
+
+descd=DESCRIPT   # current master DESCRIPT directory
+
+spcmd=sp.cmd.mak.library   # file with the specpr commands that builds the library
+
+spcmdf=${spdir}/$spcmd     # full path to specpr command file
+
+cp build.cmds.start $spcmdf   # start of specpr commands
+
+oldname=NONE                # descript file previously used, so we don't use it again
+if [ -f oldname ]           # for tracking already used descript file
+then
+	rm oldname
+fi
+
+tmpt=tmp1$$                  # temporary file
+
+# now parse master LIST file, one line at a time
+
+tlines=`wc -l $list | awk '{ print $1 }'`   # total lines in file
+
+aline=0  # line counter
+
+while [ "$aline" -le "$tlines" ]     # start loop
+do
+	aline=`expr $aline + 1`
+
+	oneline=`head -$aline $list | tail -1`
+
+	head -$aline $list | tail -1 > $tmp
+
+	x=`echo $oneline | grep '^sp' `
+
+	if [ ! -z "$x" ]
+	then
+
+		# parse fields
+
+		sfile=`echo $oneline | awk '{ print $1 }' | sed -e 's/://'`   # specpr file name
+		srec=`echo $oneline | awk '{ print $2 }'`                     # specpr record number
+		stitl=`cut -c 18-57 $tmp`                                     # specpr title
+		stitl2=`cut -c 18-57 $tmp | sed -e 's/ /\\ /g'`               # specpr title
+		dfile=`cut -c 82- $tmp | sed -e 's/\#.*$//' | sed -e 's///' | awk '{ print $1 }'` # descript html file name
+		dfild=`cut -c 78-78 $tmp`                                     # descript sub-directory name
+		haserrbar=`cut -c 65-65 $tmp`                                 # spectrum has error bars = e in column 65
+
+		stitlc=`cut -c 18-46 $tmp`
+		Ttitle=${stitlc}'   DESCRIPT'
+		Tfeat=${stitlc}'    FEATANL'
+
+                spscale=`cut -c 81-999 $tmp | grep plotscl=`   # plot scale.  this needs work ZZZZZ
+                                                               # idea: this would be post processed after specpr build
+		spscale='0 1'  # default plot scale
+	
+		sptype=`cut -c 47-51 $tmp`      # spectrometer range and wavelength set indicator
+		if   [ "$sptype" = 'W1R1B' ]     # beckman
+		then
+			waves=6
+			resol=8
+			errinc=2  # increment this many records to get error bars
+			chans=480
+
+		elif [ "$sptype" = 'W1R1F' ]     # Field spectrometer
+		then
+			waves=10
+			resol=16
+			errinc=6  # increment this many records to get error bars
+			chans=2151
+
+		elif [ "$sptype" = 'W1R4N' ]     # Nicolet spectrometer
+		then
+			waves=22
+			resol=32
+			errinc=10 # increment this many records to get error bars
+			chans=3325
+
+		elif [ "$sptype" = 'W2R4N' ]     # Nicolet spectrometer region 2
+		then
+			waves=22
+			resol=32
+			errinc=10 # increment this many records to get error bars
+			chans=3325
+
+		elif [ "$sptype" = 'W1R1A' ]     # AVIRIS spectrometer
+		then
+			waves=42
+			resol=43
+			errinc=1  # increment this many records to get error bars
+			chans=224
+
+		else
+			waves=0
+			chans=0
+			echo "ERROR: spectrometer type: $sptype NOT FOUND"
+			echo "ERROR: spectrometer type: $sptype NOT FOUND" >> $spcmdf
+
+		fi
+
+    
+		#echo "$sfile $srec $stitl $dfile"
+		#echo "$stitl2"
+
+		# now find file name
+
+		ff=${descd}/${dfild}/$dfile
+		if [ -f "$ff" ]
+		then
+			echo "$sfile $srec $stitl $ff        FOUND"
+
+			############ now create the specpr commands to generate a library entry
+
+			if [ -f oldname ]
+			then
+				oldname=`cat oldname`
+			else
+				oldname=NONE
+			fi
+
+			if [ -f $tmpt ]
+			then
+				rm $tmpt
+			fi
+
+			echo "###################################################" >> $spcmdf
+			echo "\#"$*                                                >> $spcmdf
+			echo "==[Dtitle]$stitl"                                    >> $spcmdf
+			echo "==[Dfile] ["$sfile"]"                                >> $spcmdf
+			echo "==[Drec]"$srec                                       >> $spcmdf
+			echo "==[Dhist]copy of" $sfile "r" $srec                   >> $spcmdf
+			err=`expr "$srec" + "$errinc"`
+			echo "==[Derr]"$err                                        >> $spcmdf
+			echo "==[Derhist]copy of" $sfile "r" $err                  >> $spcmdf
+			echo $stitl > $tmpt
+
+			# Tfile = $ff = full path to the descript html file  (must be less than 80 char)
+
+			echo "==[Tfile]$ff"                                        >> $spcmdf
+			echo "==[Ttitle]$Ttitle"                                   >> $spcmdf
+			echo "==[Tfeat]$Tfeat"                                     >> $spcmdf
+
+			echo "==[WAVES][LIBC]$waves"                               >> $spcmdf
+			echo "==[CHANS]$chans"                                >> $spcmdf
+			echo "==[RESOL][LIB]$resol"                                >> $spcmdf
+
+			echo "==[WAVEN]$waves"                                     >> $spcmdf
+			echo "==[RESON]$resol"                                     >> $spcmdf
+
+                        # splib05a=v, splib04a=w, sprlf01a=d, sprlb01a=y  must be pre-assigned.
+			# if the specpr file is not assigned, assign it
+
+			uname=""
+
+			if [ "$sfile" != "splib04a" -a "$sfile" != "sprlf01a" -a "$sfile" != "sprlb01a" ]
+			then
+				uname=$sfile
+				path=`specfind -f $sfile `
+
+			fi
+
+			# If the specpr file u has changed assign the new one.
+			#
+			if [ "$uname" != "" -a "$uname" != "$oldname" ]
+			then
+				echo '==[uname]'$uname                              >> $spcmdf
+				echo '==[path]'$path                                >> $spcmdf
+				echo '<build.cmds.fassign.u'                        >> $spcmdf
+			fi
+
+			# redirect specpr to do the actual work now that the aliases have been created.
+			# if error bars exist include them, else set to zero.
+
+			if [ "$haserrbar" = "e" ]
+			then
+				echo '<build.cmds.work'                             >> $spcmdf
+			else
+				echo '<build.cmds.work.noerrorbars'                 >> $spcmdf
+			fi
+
+			# set oldname
+
+			echo $sfile > oldname
+			
+                        ########### specpr commands complete
+
+
+		else
+			# attempt to find descript file in old directories:
+			# and also in the DESCRIPT directory (it might be in a different sub dir)
+
+			tt='NOT FOUND, possibilities:'
+			echo "$sfile $srec $stitl $ff $tt"
+
+			find $mdir/$descd $des1 $old_desc -name $dfile -exec ls -ld {} \;
+			echo " "
+		fi
+	else
+		# found a comment or blank line
+
+		echo "# $oneline"
+	fi
+
+
+done
+
+rm $tmp $tmpt
