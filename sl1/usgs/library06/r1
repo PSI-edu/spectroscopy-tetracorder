@@ -5,7 +5,7 @@ SPECPR_Restart=2.00      # Restart Version
 ivfl=splib06a                                                                        
 iwfl=wtmp                                                                            
 idfl=/dev/null                                                                       
-iufl=/dev/null
+iufl=/dev/null                                                                       
 iyfl=/dev/null                                                                       
 isfl=/dev/null                                                                       
 ilfl=spoolfile                                                                       
@@ -30,10 +30,10 @@ inmy=       *unasnd*  # file device letter y
 #
 # plot control values (real number format: ex. 0.23E+01)
 #
-wmina=  0.410000E+01  # plot min wavelength
-wmaxa=  0.445000E+01  # plot max wavelength
-bbnd=   0.145961E+00  # plot min reflectance
-ubnd=   0.299701E+00  # plot max reflectance
+wmina=  0.350000E+00  # plot min wavelength
+wmaxa=  0.260000E+01  # plot max wavelength
+bbnd=   0.547814E-01  # plot min reflectance
+ubnd=   0.655460E+00  # plot max reflectance
 #
 istarp(1)=         0  # star pack letter
 istarp(2)= 538976320  # star pack rec. no.
@@ -49,7 +49,7 @@ iwch=              0  # wavelength calib shift
 #
 mag0=             -1  # mag tape drive 0
 mag1=             -1  # mag tape drive 1
-isavf=            54  # file v
+isavf=             8  # file v
 iwjf=              1  # file w
 iwrkf=             1  # file d
 isvcu=          6069  # file u
@@ -59,7 +59,7 @@ ilpt=              1  # line printer
 icdr=              0  # card reader
 ipp=               1  # printer/plotter
 #
-nchans=         4280  # num wave chans
+nchans=          480  # num wave chans
 ibnrm1=           30  # band anal
 ibnrm2=           38  # band anal
 nchsav=            0  # num chan save
@@ -83,7 +83,7 @@ cfile=#                                         #
 igrmod=           52  # graphics mode
 #
 itrol(1)=          V  # wavelength file id
-itrol(2)=         42  # record in use
+itrol(2)=          6  # record in use
 itrol(3)=          a  # chan/wave/energy plot flag
 #
 # parameters for 3D file I/O

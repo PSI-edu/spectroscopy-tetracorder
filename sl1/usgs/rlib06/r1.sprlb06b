@@ -13,11 +13,11 @@ irfl=r1.sprlb06b
 #
 # protection number for open files (v,w,d,u,y,s)
 #
-iprtv=          2013  # device protection v
+iprtv=          2073  # device protection v
 iprtw=        -99626  # device protection w
 iprtd=             0  # device protection d
 iprtu=         -4719  # device protection u
-iprty=          1949  # device protection y
+iprty=          2009  # device protection y
 iprts=             0  # device protection s
 #
 # short 8 character names associated with file device letters
@@ -42,18 +42,18 @@ alat=      0.0000000  # observatory lat in rads
 ra=        0.0000000  # right ascension in radians
 dec=       0.0000000  # declination in radians
 ha=        0.0000000  # hour angle in radians
-airmas=     0.000000  # air mass of object
+airmas=     0.001000  # air mass of object
 iwch=              0  # wavelength calib shift
 #
 # record pointers
 #
 mag0=             -1  # mag tape drive 0
 mag1=             -1  # mag tape drive 1
-isavf=          2014  # file v
+isavf=          2074  # file v
 iwjf=          90003  # file w
 iwrkf=           971  # file d
 isvcu=           915  # file u
-iwjcy=             8  # file y
+iwjcy=          2010  # file y
 istrf=             1  # file s
 ilpt=              1  # line printer
 icdr=              0  # card reader

@@ -2209,4 +2209,134 @@ e;t  \# go to display
 [sppad] t v  \# add padding record 4
 [sppad] t v  \# add padding record 5
 e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y28
+==[inres]y34
+==[Recnum] 2014
+==[Title]Ancylite_REE WS321 Darby MT r06av01a=c
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+[sppad] t v  \# add padding record 5
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y28
+==[inres]y34
+==[Recnum] 2020
+==[Title]Bastnaesite_REE WS320 crystl r06av01a=b
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+[sppad] t v  \# add padding record 5
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y28
+==[inres]y34
+==[Recnum] 2026
+==[Title]Chlorapatite_REE WS422 xtl r06av01a=a
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+[sppad] t v  \# add padding record 5
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y28
+==[inres]y34
+==[Recnum] 2032
+==[Title]Fluorapatite_REE WS418 xtl r06av01a=c
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+[sppad] t v  \# add padding record 5
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y28
+==[inres]y34
+==[Recnum] 2038
+==[Title]Monazite_REE GDS947 Calif r06av01a=b
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+[sppad] t v  \# add padding record 5
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y28
+==[inres]y34
+==[Recnum] 2044
+==[Title]Monazite_REE GDS957 New Mex r06av01a=b
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+[sppad] t v  \# add padding record 5
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y28
+==[inres]y34
+==[Recnum] 2050
+==[Title]Parisite_REE WS319 crystal r06av01a=a
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+[sppad] t v  \# add padding record 5
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y28
+==[inres]y34
+==[Recnum] 2056
+==[Title]Pyromorphite_REE WS427 xtl r06av01a=a
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+[sppad] t v  \# add padding record 5
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y28
+==[inres]y34
+==[Recnum] 2062
+==[Title]Xenotime GDS966 Iveland REE r06av01a=a
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+[sppad] t v  \# add padding record 5
+e;m  \# go to math
+\######## convolve spectrum
+==[inwave]Y28
+==[inres]y34
+==[Recnum] 2068
+==[Title]Xenotime+Monazite_REE WS384 r06av01a=a
+<work/convolve.cmds.work
+e;t  \# go to display
+[sppad] t v  \# add padding record 1
+[sppad] t v  \# add padding record 2
+[sppad] t v  \# add padding record 3
+[sppad] t v  \# add padding record 4
+[sppad] t v  \# add padding record 5
+e;m  \# go to math
 e;EX

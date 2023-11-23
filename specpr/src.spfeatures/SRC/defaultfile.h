@@ -1,7 +1,7 @@
 
 ######################################################################
 # This file contains the name of the default spfeatures libraries.
-# They are site dependent.
+# They can be site dependent.
 ######################################################################
 
 ######################################################################
@@ -10,15 +10,11 @@
 #     database, but could be different at some sites.
 ######################################################################
 
-	deffile='/d1/samples/features/FWHM_46'
+        deffile='/sl1/usgs/library06/spfeatures-database-FWHM_46'
 
 ######################################################################
 # The following is similar to the above, but it is the default file
-#     the interactive band analysis format output.  Most sites
-#     probably won't have this one unless you are experimenting with the
-#     interactive band analysis routines.  If you dont use this, it is
-#     suggested you create a zero length file in the same directory as
-#     above and assign that file below.
+#     the interactive band analysis format output.
 ######################################################################
 
-	bdanalfile='/d1/samples/features/FWHM'
+        bdanalfile='/sl1/usgs/library06/spfeatures-database-FWHM_46'

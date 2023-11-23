@@ -14,10 +14,10 @@ irfl=r.r06av13a
 # protection number for open files (v,w,d,u,y,s)
 #
 iprtv=        -24213  # device protection v
-iprtw=          1949  # device protection w
+iprtw=          2009  # device protection w
 iprtd=         -8219  # device protection d
 iprtu=        -33842  # device protection u
-iprty=          2013  # device protection y
+iprty=          2073  # device protection y
 iprts=             0  # device protection s
 #
 # short 8 character names associated with file device letters
@@ -30,10 +30,10 @@ inmy=       sprlb06b  # file device letter y
 #
 # plot control values (real number format: ex. 0.23E+01)
 #
-wmina=  0.200000E+01  # plot min wavelength
-wmaxa=  0.245000E+01  # plot max wavelength
-bbnd=   0.464018E+00  # plot min reflectance
-ubnd=   0.777566E+00  # plot max reflectance
+wmina=  0.200000E+00  # plot min wavelength
+wmaxa=  0.270000E+01  # plot max wavelength
+bbnd=   0.182484E+00  # plot min reflectance
+ubnd=   0.579295E+00  # plot max reflectance
 #
 istarp(1)=         0  # star pack letter
 istarp(2)= 538976320  # star pack rec. no.
@@ -42,15 +42,15 @@ alat=      0.0000000  # observatory lat in rads
 ra=        0.0000000  # right ascension in radians
 dec=       0.0000000  # declination in radians
 ha=        0.0000000  # hour angle in radians
-airmas=     0.000000  # air mass of object
+airmas=     0.001000  # air mass of object
 iwch=              0  # wavelength calib shift
 #
 # record pointers
 #
 mag0=             -1  # mag tape drive 0
 mag1=             -1  # mag tape drive 1
-isavf=            65  # file v
-iwjf=              8  # file w
+isavf=         13373  # file v
+iwjf=           2010  # file w
 iwrkf=            12  # file d
 isvcu=          4161  # file u
 iwjcy=           108  # file y
@@ -59,7 +59,7 @@ ilpt=              1  # line printer
 icdr=              0  # card reader
 ipp=               1  # printer/plotter
 #
-nchans=          480  # num wave chans
+nchans=         2151  # num wave chans
 ibnrm1=           30  # band anal
 ibnrm2=           38  # band anal
 nchsav=            0  # num chan save
@@ -83,7 +83,7 @@ cfile=#                                         #
 igrmod=           52  # graphics mode
 #
 itrol(1)=          W  # wavelength file id
-itrol(2)=          6  # record in use
+itrol(2)=         10  # record in use
 itrol(3)=          a  # chan/wave/energy plot flag
 #
 # parameters for 3D file I/O

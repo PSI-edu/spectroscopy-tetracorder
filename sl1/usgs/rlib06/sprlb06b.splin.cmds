@@ -1353,4 +1353,84 @@ m
 ==[Title]Calcite.33+Kaol.33+Mus AMXr2 W1R1Ba AREF
 <work/spcmds.splin.work
 e
+\################## copy a spectrum
+==[outwave]V28
+t
+==[Recnum] 1950
+[FILEID][Recnum]citv
+;;;;;;b;28 
+c;34 
+e;e
+\################## copy a spectrum
+==[outwave]V28
+t
+==[Recnum] 1956
+[FILEID][Recnum]citv
+;;;;;;b;28 
+c;34 
+e;e
+\################## copy a spectrum
+==[outwave]V28
+t
+==[Recnum] 1962
+[FILEID][Recnum]citv
+;;;;;;b;28 
+c;34 
+e;e
+\################## copy a spectrum
+==[outwave]V28
+t
+==[Recnum] 1968
+[FILEID][Recnum]citv
+;;;;;;b;28 
+c;34 
+e;e
+\################## copy a spectrum
+==[outwave]V28
+t
+==[Recnum] 1974
+[FILEID][Recnum]citv
+;;;;;;b;28 
+c;34 
+e;e
+\################## copy a spectrum
+==[outwave]V28
+t
+==[Recnum] 1980
+[FILEID][Recnum]citv
+;;;;;;b;28 
+c;34 
+e;e
+\################## copy a spectrum
+==[outwave]V28
+t
+==[Recnum] 1986
+[FILEID][Recnum]citv
+;;;;;;b;28 
+c;34 
+e;e
+\################## copy a spectrum
+==[outwave]V28
+t
+==[Recnum] 1992
+[FILEID][Recnum]citv
+;;;;;;b;28 
+c;34 
+e;e
+\################## copy a spectrum
+==[outwave]V28
+t
+==[Recnum] 1998
+[FILEID][Recnum]citv
+;;;;;;b;28 
+c;34 
+e;e
+\################## copy a spectrum
+==[outwave]V28
+t
+==[Recnum] 2004
+[FILEID][Recnum]citv
+;;;;;;b;28 
+c;34 
+e;e
 e;EX
