@@ -1,8 +1,0 @@
-\# now start work
-[FILEID][Recnum]f12
-                       \# return for cubic spline
-[inwave] [outwave]     \# input and output wavelengths
-                       \# channels to be deleted
-[Fout]                 \# output file
-[Title]                \# output title
-e
