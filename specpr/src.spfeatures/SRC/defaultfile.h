@@ -17,4 +17,5 @@
 #     the interactive band analysis format output.
 ######################################################################
 
-        bdanalfile='/sl1/usgs/library06/spfeatures-database-FWHM_46'
+      bdanalfile='local-spfeatures-database-FWHM_46'
+
