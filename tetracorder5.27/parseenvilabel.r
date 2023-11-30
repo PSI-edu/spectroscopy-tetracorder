@@ -100,8 +100,13 @@
 	istchr = 1
 	st_target = 10
 
-	samples = 0
-	lines = 0
+# initialize variables (added more 8/31/2023)
+	samples        = 0
+	lines          = 0
+	bands          = 0
+	header_offset  = 0
+	data_type      = 0
+	byte_order     = 0
 
 	lowch = char(32)     # lowest character (lower ones are control ch)
 	highch = char(126)   # highest character (we exclude 8-bit, and DEL)
