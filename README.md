@@ -197,6 +197,8 @@ and the new one added.  This prevents huge data volume growth that is not needed
 April 28, 2023: updated the rlib06 library and convolved libraries by adding
 3 new spectra.
 
+# Tetracorder 5.27, expert system 5.27e1, and spectral library update
+
 November 30, 2023: Updated the spectral libraries, including more REE
 reference spectra and other minerals to solve issues identified in EMIT
 mapping in various locations around the Earth.  To use the new spectra,
