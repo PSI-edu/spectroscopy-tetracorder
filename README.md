@@ -197,3 +197,25 @@ and the new one added.  This prevents huge data volume growth that is not needed
 April 28, 2023: updated the rlib06 library and convolved libraries by adding
 3 new spectra.
 
+November 30, 2023: Updated the spectral libraries, including more REE
+reference spectra and other minerals to solve issues identified in EMIT
+mapping in various locations around the Earth.  To use the new spectra,
+and mitigate the known problems, Tetracorder Expert System 5.27e1 is
+released with this update.  For example, some areas were found to map
+as jarosite when the spectra showed a mixture of hematite and goethite
+of specific fine grain sizes.  One reference spectrum of such a mixture
+was added that greatly reduced the misidentifiction, but more reference
+spectra are needed and will be added when appropriate samples are found.
+REE mapping is significantly improved with the new 5.27e1 expert system.
+Also new in the 5.27e release is the 4 abundance models developed by
+the EMIT team and documented in Clark et al, 2023.  Model 4 is being
+adopted by the EMIT team moving forward with the reprocessing of EMIT
+starting in December.
+
+lark, R. N., Swayze, G. A., Livo, K. E., Brodrick, P., Noe Dobrea, E.,
+Vijayarangan, S., Green, R.  O., Wettergreen, D., Garza, A. C., Hendrix,
+A., García-Pando, C. P., Pearson, N., Lane, M., González- Romero, A.,
+Querol, X. and the EMIT and TREX teams. 2023, Imaging spectroscopy: Earth
+and planetary remote sensing with the PSI Tetracorder and expert systems:
+from Rovers to EMIT and Beyond, Planetary Science Journal, in review.
+
