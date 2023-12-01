@@ -1,0 +1,169 @@
+#!/bin/sh
+
+# R. Clark Oct 13, 2020
+
+# Note: this command is executed from above the directory where this command is located/
+
+p="./cmds.abundances/davinci.image.material.mass"
+
+if [ ! -d "results.masses" ]
+then
+	echo "mkdir results.masses"
+	      mkdir results.masses
+fi
+
+d="results.masses"
+
+########### Kaolinite
+echo " "
+echo "######################### kaolinite mass ################"
+echo " "
+
+list="cmds.abundances/lists.of.files.by.mineral/kaolinite.group2.txt"
+
+echo "$p $list ${d}/kaolinite-all   delk  177 gd 0.0002  cosi 0.9     cose 0.98"
+      $p $list ${d}/kaolinite-all   delk  177 gd 0.0002  cosi 0.9     cose 0.98
+
+########### Calcite    # note: placeholder, need to derive delk, gd
+echo " "
+echo "######################### Calcite mass ################"
+echo " "
+
+list="cmds.abundances/lists.of.files.by.mineral/calcite.group2.txt"
+
+echo "$p $list ${d}/calcite-all   delk  10.51 gd 0.0010  cosi 0.9     cose 0.98"
+      $p $list ${d}/calcite-all   delk  10.51 gd 0.0010  cosi 0.9     cose 0.98
+
+########### chlorite    # note: placeholder, need to derive delk, gd
+echo " "
+echo "######################### chlorite mass ################"
+echo " "
+
+list="cmds.abundances/lists.of.files.by.mineral/chlorite.group2.txt"
+
+echo "$p $list ${d}/chlorite-all   delk  76.96 gd 0.0010  cosi 0.9     cose 0.98"
+      $p $list ${d}/chlorite-all   delk  76.96 gd 0.0010  cosi 0.9     cose 0.98
+
+########### dolomite    # note: placeholder, need to derive delk, gd
+echo " "
+echo "######################### dolomite mass ################"
+echo " "
+
+list="cmds.abundances/lists.of.files.by.mineral/dolomite.group2.txt"
+
+echo "$p $list ${d}/dolomite-all   delk  10.51 gd 0.0010  cosi 0.9     cose 0.98"
+      $p $list ${d}/dolomite-all   delk  10.51 gd 0.0010  cosi 0.9     cose 0.98
+
+########### goethite-fine    # note: placeholder, need to derive delk, gd
+echo " "
+echo "######################### goethite-fine mass ################"
+echo " "
+
+list="cmds.abundances/lists.of.files.by.mineral/goethite-fine.group1.txt"
+
+echo "$p $list ${d}/goethite-fine   delk  100 gd 0.0001  cosi 0.9     cose 0.98"
+      $p $list ${d}/goethite-fine   delk  100 gd 0.0001  cosi 0.9     cose 0.98
+
+########### goethite-med    # note: placeholder, need to derive delk, gd
+echo " "
+echo "######################### goethite-med mass ################"
+echo " "
+
+list="cmds.abundances/lists.of.files.by.mineral/goethite-med.group1.txt"
+
+echo "$p $list ${d}/goethite-med   delk  100 gd 0.0002  cosi 0.9     cose 0.98"
+      $p $list ${d}/goethite-med   delk  100 gd 0.0002  cosi 0.9     cose 0.98
+
+########### goethite-large    # note: placeholder, need to derive delk, gd
+echo " "
+echo "######################### goethite-large mass ################"
+echo " "
+
+list="cmds.abundances/lists.of.files.by.mineral/goethite-large.group1.txt"
+
+echo "$p $list ${d}/goethite-large   delk  100 gd 0.0004  cosi 0.9     cose 0.98"
+      $p $list ${d}/goethite-large   delk  100 gd 0.0004  cosi 0.9     cose 0.98
+
+########### gypsum    # note: placeholder, need to derive delk, gd
+echo " "
+echo "######################### gypsum mass ################"
+echo " "
+
+list="cmds.abundances/lists.of.files.by.mineral/gypsum.group2.txt"
+
+echo "$p $list ${d}/gypsum-all   delk  80 gd 0.0010  cosi 0.9     cose 0.98"
+      $p $list ${d}/gypsum-all   delk  80 gd 0.0010  cosi 0.9     cose 0.98
+
+########### hematite-nano    # note: placeholder, need to derive delk, gd
+echo " "
+echo "######################### hematite-nano mass ################"
+echo " "
+
+list="cmds.abundances/lists.of.files.by.mineral/hematite-nano.group1.txt"
+
+echo "$p $list ${d}/hematite-nano   delk  1304 gd 0.00005 cosi 0.9     cose 0.98"
+      $p $list ${d}/hematite-nano   delk  1304 gd 0.00005 cosi 0.9     cose 0.98
+
+########### hematite-fine    # note: placeholder, need to derive delk, gd
+echo " "
+echo "######################### hematite-fine mass ################"
+echo " "
+
+list="cmds.abundances/lists.of.files.by.mineral/hematite-fine.group1.txt"
+
+echo "$p $list ${d}/hematite-fine   delk  6400 gd 0.0001  cosi 0.9     cose 0.98"
+      $p $list ${d}/hematite-fine   delk  6400 gd 0.0001  cosi 0.9     cose 0.98
+
+########### hematite-med    # note: placeholder, need to derive delk, gd
+echo " "
+echo "######################### hematite-med mass ################"
+echo " "
+
+list="cmds.abundances/lists.of.files.by.mineral/hematite-med.group1.txt"
+
+echo "$p $list ${d}/hematite-med   delk  6400 gd 0.0002  cosi 0.9     cose 0.98"
+      $p $list ${d}/hematite-med   delk  6400 gd 0.0002  cosi 0.9     cose 0.98
+
+########### hematite-large    # note: placeholder, need to derive delk, gd
+echo " "
+echo "######################### hematite-large mass ################"
+echo " "
+
+list="cmds.abundances/lists.of.files.by.mineral/hematite-large.group1.txt"
+
+echo "$p $list ${d}/hematite-large   delk  6400 gd 0.0004  cosi 0.9     cose 0.98"
+      $p $list ${d}/hematite-large   delk  6400 gd 0.0004  cosi 0.9     cose 0.98
+
+########### illite    # note: placeholder, need to derive delk, gd
+echo " "
+echo "######################### illite mass ################"
+echo " "
+
+list="cmds.abundances/lists.of.files.by.mineral/illite.group2.txt"
+
+echo "$p $list ${d}/illite-all   delk  91.2 gd 0.0002  cosi 0.9     cose 0.98"
+      $p $list ${d}/illite-all   delk  91.2 gd 0.0002  cosi 0.9     cose 0.98
+
+########### montmorillonite   # note: placeholder, need to derive delk, gd
+echo " "
+echo "######################### montmorillonite mass ################"
+echo " "
+
+list="cmds.abundances/lists.of.files.by.mineral/montmorillonite.group2.txt"
+
+echo "$p $list ${d}/montmorillonite-all   delk  80 gd 0.0002  cosi 0.9     cose 0.98"
+      $p $list ${d}/montmorillonite-all   delk  80 gd 0.0002  cosi 0.9     cose 0.98
+
+#### NO vermiculite and tet 5.25 yet, so comment out
+
+########### vermiculite    # note: placeholder, need to derive delk, gd
+echo " "
+echo "######################### vermiculite mass ################"
+echo " "
+
+echo " no vermiculite yet"
+list="cmds.abundances/lists.of.files.by.mineral/vermiculite.group2.txt"
+
+#echo "$p $list ${d}/vermiculite-all   delk  100 gd 0.0010  cosi 0.9     cose 0.98"
+#      $p $list ${d}/vermiculite-all   delk  100 gd 0.0010  cosi 0.9     cose 0.98
+

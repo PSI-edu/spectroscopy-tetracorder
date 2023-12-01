@@ -1,0 +1,261 @@
+#!/usr/local/bin/davinci -f
+#####!/usr/bin/env -S davinci -f  
+
+###########################  was:  #!/usr/local/bin/davinci -f
+
+
+
+# command line:
+# prog    gray_base_image  prefix-file-name   [dual|nodual]
+
+prog="davinci.make-veg-spectral-type.a"     # CHANGE THIS if program name changes
+
+####################  Begin static: no need to change inything in this section ################
+
+if ($argc < 2) {
+
+        printf("Insufficient input\n")
+        printf("%s input_gray_image  outputcolorimage\n", prog)
+        printf("exit 1\n")
+        exit(1)
+}
+
+
+dual    = 1     # default color + gray image 
+dualmax = 2000  # no dual if width is greater than this
+
+if ($argc >= 3) {
+
+	if ( "$3" == "nodual" ) {
+		dual = 0
+	}
+	if ( "$3" == "dual" ) {
+		dual = 1
+		dualmax = 999999 
+	}
+}
+
+
+# read base gray image
+
+gbase=read(filename=$1)
+if (HasValue(gbase) ==0) {                   # check that read worked
+      printf ("read ERROR on file: %s\n",$1)
+      printf ("^GEXIT 1\n")
+      exit(1)
+}
+
+# execute this program in the same directory asthe source code below
+source ("cmds.color.support/davinci.master.colors")
+
+# available colors:
+# c_red     c_green          c_blue       c_yellow        c_magenta       c_cyan          c_armygreen  
+# c_salmon  c_flesh          c_orange     c_deeppink      c_yellowgreen   c_lavender  
+# c_skyblue c_paleseagreen   c_white      c_redpink       c_gold          c_mudyellow     c_lightpink
+
+# a = first input image, 3-band color, xcolor = the color output image, RGB float
+# colorout = the color output image, 3-byte RGB
+
+
+define read_an_image(1,1) {
+
+        # read a gray-scale image and convert to 3-bands
+
+        afile = $1   # file to read
+        printf ("reading file %s\n", afile)
+        aaa=read(filename=afile)
+        if (HasValue(aaa) ==0) {  # check that read worked
+                printf ("read ERROR on file: %s\n",afile)
+                printf ("setting to zero\n")
+                aaa=0
+        }
+        qqq = cat(aaa,aaa,axis=z)  # make into 2-band image
+        aaa = cat(aaa,qqq,axis=z)  # make into 3-band image
+
+        return (aaa)
+
+}  # end define
+
+
+
+###################   begin custom section ##########################################
+
+# first image:
+
+# c_blue
+a = read_an_image("group.1um/water.low.chlorophyll.fd.gif")    # change this to read an images so we can get dimensions.
+
+        # set up output image xcolor:
+        xcolor=float(a*0)
+        xdim=dim(a)
+
+        # now add the colors
+
+c= c_blue
+xcolor= xcolor + a*( c /255.)   # water
+
+
+# available colors:
+# c_red     c_green          c_blue       c_yellow        c_magenta       c_cyan          c_armygreen  
+# c_salmon  c_flesh          c_orange     c_deeppink      c_yellowgreen   c_lavender  
+# c_skyblue c_paleseagreen   c_white      c_redpink       c_gold          c_mudyellow     c_lightpink
+
+
+#            file                           color                title                      spectral library record, convolved
+# case.veg.type//vegetation.type1.fd.gif    c_green         #  Lawn_Grass GDS91                       y 7260
+# case.veg.type//vegetation.type2.fd.gif    c_yellow        #  Aspen_Leaf-A DW92-2                    y 7050
+# case.veg.type//vegetation.type3.fd.gif    c_redpink       #  Fir_Tree IH91-2                        y 7170
+# case.veg.type//vegetation.type4.fd.gif    c_mudyellow     #  Juniper_Bush IH91-4B                   y 7254
+# case.veg.type//vegetation.type5.fd.gif    c_paleseagreen  #  Pinon_Pine ANP92-14A needle            y 7464
+# case.veg.type//vegetation.type6.fd.gif    c_orange        #  Sage_Brush IH91-1B                     y 7482
+# case.veg.type//vegetation.type7.fd.gif    c_yellowgreen   #  Walnut_Leaf SUN (Green)                y 7536
+# case.veg.type//vegetation.type8.fd.gif    c_lavender      #  Blackbrush ANP92-9A leaves             y 7068
+# case.veg.type//vegetation.type9.fd.gif    c_blue          #  Blue_Spruce DW92-5 needle              y 7074
+# case.veg.type//vegetation.type10.fd.gif   c_armygreen     #  Maple_Leaves DW92-1                    y 7446
+# case.veg.type//vegetation.type11.fd.gif   c_cyan          #  Rabbitbrush ANP92-27                   y 7470
+# case.veg.type//vegetation.type12.fd.gif   c_skyblue       #  Russian_Olive DW92-4                   y 7476
+# case.veg.type//vegetation.type13.fd.gif   c_red           #  Saltbrush ANP92-31A                    y 7518
+# case.veg.type//vegetation.type14.fd.gif   c_armygreen     #  LeafySpurge Spurge-A1-Jun98            y 7272
+# case.veg.type//vegetation.type15.fd.gif   c_magenta       #  LeafySpurge Spurge-A1-Oct97            y 7278
+
+# consider adding to expert system and here:
+#   7326  Lichen Acarospora-1 
+
+
+c= c_green
+
+a = read_an_image("case.veg.type//vegetation.type1.fd.gif")  #  c_green
+xcolor= xcolor + a*( c /255.)   # Lawn_Grass GDS91
+
+
+c= c_yellow
+
+a = read_an_image("case.veg.type//vegetation.type2.fd.gif")        #  c_yellow
+xcolor= xcolor + a*( c /255.)   # Aspen_Leaf-A DW92-2
+
+
+c= c_redpink
+
+a = read_an_image("case.veg.type//vegetation.type3.fd.gif")       #  c_redpink
+xcolor= xcolor + a*( c /255.)   # Fir_Tree IH91-2 
+
+c= c_mudyellow
+
+a = read_an_image("case.veg.type//vegetation.type4.fd.gif")       #  c_mudyellow
+xcolor= xcolor + a*( c /255.)   # Juniper_Bush IH91-4B 
+
+c= c_paleseagreen
+
+a = read_an_image("case.veg.type//vegetation.type5.fd.gif")       #  c_paleseagreen
+xcolor= xcolor + a*( c /255.)   # Pinon_Pine ANP92-14A needle 
+
+c= c_orange
+
+a = read_an_image("case.veg.type//vegetation.type6.fd.gif")         #  c_orange
+xcolor= xcolor + a*( c /255.)   # Sage_Brush IH91-1B
+
+# case.veg.type//vegetation.type7.fd.gif    c_yellowgreen   #  Walnut_Leaf SUN (Green)                y 7536
+# case.veg.type//vegetation.type8.fd.gif    c_magenta       #  Blackbrush ANP92-9A leaves             y 7068
+# case.veg.type//vegetation.type9.fd.gif    c_blue          #  Blue_Spruce DW92-5 needle              y 7074
+# case.veg.type//vegetation.type10.fd.gif   c_armygreen     #  Maple_Leaves DW92-1                    y 7446
+
+
+
+c= c_yellowgreen
+
+a = read_an_image("case.veg.type//vegetation.type7.fd.gif")         #  c_yellowgreen
+xcolor= xcolor + a*( c /255.)   # Walnut_Leaf SUN (Green)
+
+c= c_lavender
+
+a = read_an_image("case.veg.type//vegetation.type8.fd.gif")         #  c_lavender
+xcolor= xcolor + a*( c /255.)   # Blackbrush ANP92-9A leaves 
+
+c= c_blue
+
+a = read_an_image("case.veg.type//vegetation.type9.fd.gif")         #  c_blue
+xcolor= xcolor + a*( c /255.)   # Blue_Spruce DW92-5 needle
+
+c= c_armygreen
+
+a = read_an_image("case.veg.type//vegetation.type10.fd.gif")         #  c_armygreen
+xcolor= xcolor + a*( c /255.)   # Maple_Leaves DW92-1 
+
+# case.veg.type//vegetation.type11.fd.gif   c_cyan          #  Rabbitbrush ANP92-27                   y 7470
+# case.veg.type//vegetation.type12.fd.gif   c_skyblue       #  Russian_Olive DW92-4                   y 7476
+# case.veg.type//vegetation.type13.fd.gif   c_red           #  Saltbrush ANP92-31A                    y 7518
+# case.veg.type//vegetation.type14.fd.gif   c_armygreen     #  LeafySpurge Spurge-A1-Jun98            y 7272
+# case.veg.type//vegetation.type15.fd.gif   c_magenta       #  LeafySpurge Spurge-A1-Oct97            y 7278
+
+c= c_cyan
+
+a = read_an_image("case.veg.type//vegetation.type11.fd.gif")         #  c_cyan
+xcolor= xcolor + a*( c /255.)   # abbitbrush ANP92-27 
+
+c= c_skyblue
+
+a = read_an_image("case.veg.type//vegetation.type12.fd.gif")         #  c_skyblue
+xcolor= xcolor + a*( c /255.)   # Russian_Olive DW92-4
+
+c= c_red
+
+a = read_an_image("case.veg.type//vegetation.type13.fd.gif")         #  c_red
+xcolor= xcolor + a*( c /255.)   # Saltbrush ANP92-31A
+
+c= c_armygreen
+
+a = read_an_image("case.veg.type//vegetation.type14.fd.gif")         #  c_armygreen
+xcolor= xcolor + a*( c /255.)   # LeafySpurge Spurge-A1-Jun98
+
+c= c_magenta
+
+a = read_an_image("case.veg.type//vegetation.type15.fd.gif")         #  c_magenta
+xcolor= xcolor + a*( c /255.)   # LeafySpurge Spurge-A1-Oct97
+
+
+
+
+if (HasValue(xcolor) ==0) {
+
+        printf ("%s: xcolor has no value\n", prog)
+        printf ("EXIT 1\n")
+        exit(1)
+}
+
+
+
+
+
+########### end custom, no need to change anything below this line ###############################
+
+xout=byte(xcolor+0.5)   # output color image, byte
+xout = bip(xout)
+xdim=dim(xout)
+xdimx=xdim[1,,]      # color image width
+
+gbasedim=dim(gbase)
+x=gbasedim[1,,]      # base image width
+
+if (x > dualmax) {
+        dual = 0
+}
+
+if ( dual == 1 ) {
+
+        gbase = bip(gbase)
+        xout = cat (xout, gbase, axis=x)
+}
+
+
+fout=$2
+
+
+adim=dim(xout)
+if ( adim[1,,] > 5 || adim[2,,] > 5 ) {
+        printf ("writing %s\n", fout)
+        write (xout, filename=fout, type=png)
+} else {
+        printf ("not writing %s\n", fout)
+        printf ("    image size < 6 pixels\n")
+}
+

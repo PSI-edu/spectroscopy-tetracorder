@@ -1,0 +1,28 @@
+#!/bin/sh
+
+if [ -n "$1" ]
+then
+	h=`head -1 $1 | grep '^SPECPR_Restart'`
+	if [ -z "$h" ]
+	then
+		echo " "
+		echo "ERROR:  $1  does not appear to ber a specpr restart file"
+		echo "usage:"
+		echo "       add-spreslt1-to-restart-file restart_file"
+		echo "exit 1"
+		exit 1
+	fi
+else
+	echo "usage:"
+	echo "       add-spreslt1-to-restart-file restart_file"
+	echo "exit 1"
+	exit 1
+fi
+
+ex - $1 <<EOI
+/ivfl=\/dev\/null/ s//ivfl=spreslt1 /
+/iprtv=             0/ s//iprtv=           -99/
+/isavt=      \*unasnd\*/ s//isavt=      spreslt1/
+w
+q
+EOI

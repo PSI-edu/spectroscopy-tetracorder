@@ -1,0 +1,3 @@
+BASE     23 23 23  base-image.jpg    # base grayscale image
+COLOR1   38 23 11  color-visRGB.jpg  # visible color channels
+COLOR2  246 85 18  color-vir.jpg     # false color vis-IR

@@ -1,0 +1,114 @@
+
+looks OK!
+
+    specfind -i -a Cronstedtite | grep splib06a
+splib06a:  6524  Cronstedtite M3542              DESCRIPT  2913 Characters of TEXT
+splib06a:  6528  Cronstedtite M3542           W1R1Bb AREF   480   08/08/1986      6      8
+splib06a:  6532  Cronstedtite M3542               FEATANL   747   08/08/1986      0      8
+splib06a:  6536  Cronstedtite M3542         W5   DESCRIPT  2913 Characters of TEXT
+splib06a:  6540  Cronstedtite M3542         W5R4Nbb_ RREF  4280   07/09/1993     42     54
+splib06a:  6564  Cronstedtite M3542         W5    FEATANL  4851   07/09/1993      0     54
+
+    specfind -i -a Cronstedtite | grep splib06b
+splib06b:  2725  Cronstedtite M3542           W1R1Bb AREF  3961   08/08/1986      6      8
+splib06b:  2736  Cronstedtite M3542         W5R4Nbb_ RREF  4280   07/09/1993     60     72
+
+
+    specfind -i -a Cronstedtite | grep splib07a
+splib07a:  3305  Cronstedtite M3542              DESCRIPT  2269 Characters of TEXT
+splib07a:  3307  Cronstedtite M3542            BECKb AREF   480   08/08/1986     18     20
+splib07a:  3311  Cronstedtite M3542           NIC4bb RREF  4595   07/09/1993     48     61
+
+spprint /sl1/usgs/library07.conv/splib07b | grep -i Cronstedtite | grep REF
+  5263  Cronstedtite M3542            BECKb AREF  3961  13:34:11.00  08/08/1986     18     29
+  5285  Cronstedtite M3542           NIC4bb RREF  4595  19:39:53.00  07/09/1993     66     79
+
+
+
+   specfind -i -a Antigorite | grep splib06a
+splib06a:  2777  Antigorite NMNH17958            DESCRIPT  4085 Characters of TEXT
+splib06a:  2782  Antigorite NMNH17958         W1R1Bb AREF   480   04/30/1987      6      8
+splib06a:  2786  Antigorite NMNH17958             FEATANL   225   04/30/1987      0      8
+splib06a:  2788  Antigorite NMNH96917.f <30u     DESCRIPT  9470 Characters of TEXT
+splib06a:  2797  Antigorite NMNH96917.f <30u  W1R1Bb AREF   480   06/27/1985      6      8
+splib06a:  2801  Antigorite NMNH96917.f <30u      FEATANL   423   06/27/1985      0      8
+splib06a:  2804  Antigorite NMNH96917.e 32um     DESCRIPT  9470 Characters of TEXT
+splib06a:  2813  Antigorite NMNH96917.e 32um  W1R1Bb AREF   480   06/26/1985      6      8
+splib06a:  2817  Antigorite NMNH96917.e 32um      FEATANL   360   06/26/1985      0      8
+splib06a:  2820  Antigorite NMNH96917.e     W5   DESCRIPT  9470 Characters of TEXT
+splib06a:  2829  Antigorite NMNH96917.e     W5R4Nbb_ RREF  4280   11/24/****     42     54
+splib06a:  2853  Antigorite NMNH96917.e     W5    FEATANL  4851   11/24/****      0     54
+splib06a:  2867  Antigorite NMNH96917.d 70um     DESCRIPT  9470 Characters of TEXT
+splib06a:  2876  Antigorite NMNH96917.d 70um  W1R1Bb AREF   480   06/15/1985      6      8
+splib06a:  2880  Antigorite NMNH96917.d 70um      FEATANL   333   06/15/1985      0      8
+splib06a:  2883  Antigorite NMNH96917.d     W5   DESCRIPT  9470 Characters of TEXT
+splib06a:  2892  Antigorite NMNH96917.d     W5R4Nbb_ RREF  4280   11/24/****     42     54
+splib06a:  2916  Antigorite NMNH96917.d     W5    FEATANL  4851   11/24/****      0     54
+splib06a:  2930  Antigorite NMNH96917.c 120um    DESCRIPT  9470 Characters of TEXT
+splib06a:  2939  Antigorite NMNH96917.c 120um W1R1Bb AREF   480   06/25/1985      6      8
+splib06a:  2943  Antigorite NMNH96917.c 120um     FEATANL   405   06/25/1985      0      8
+splib06a:  2946  Antigorite NMNH96917.c     W5   DESCRIPT  9470 Characters of TEXT
+splib06a:  2955  Antigorite NMNH96917.c     W5R4Nbb_ RREF  4280   11/24/****     42     54
+splib06a:  2979  Antigorite NMNH96917.c     W5    FEATANL  4851   11/24/****      0     54
+splib06a:  2993  Antigorite NMNH96917.b 165u     DESCRIPT  9470 Characters of TEXT
+splib06a:  3002  Antigorite NMNH96917.b 165u  W1R1Bb AREF   480   06/17/1985      6      8
+splib06a:  3006  Antigorite NMNH96917.b 165u      FEATANL   342   06/17/1985      0      8
+splib06a:  3009  Antigorite NMNH96917.b     W5   DESCRIPT  9470 Characters of TEXT
+splib06a:  3018  Antigorite NMNH96917.b     W5R4Nbb_ RREF  4280   11/24/****     42     54
+splib06a:  3042  Antigorite NMNH96917.b     W5    FEATANL  4851   11/24/****      0     54
+splib06a:  3056  Antigorite NMNH96917.a >250     DESCRIPT  9470 Characters of TEXT
+splib06a:  3065  Antigorite NMNH96917.a >250  W1R1Bb AREF   480   06/17/1985      6      8
+splib06a:  3069  Antigorite NMNH96917.a >250      FEATANL   360   06/17/1985      0      8
+splib06a:  3072  Antigorite NMNH96917.a     W5   DESCRIPT  9470 Characters of TEXT
+splib06a:  3081  Antigorite NMNH96917.a     W5R4Nbb_ RREF  4280   11/24/****     42     54
+splib06a:  3105  Antigorite NMNH96917.a     W5    FEATANL  4851   11/24/****      0     54
+
+    specfind -i -a Antigorite | grep splib06b
+splib06b:  1151  Antigorite NMNH17958         W1R1Bb AREF  3961   04/30/1987      6      8
+splib06b:  1162  Antigorite NMNH96917.f <30u  W1R1Bb AREF  3961   06/27/1985      6      8
+splib06b:  1173  Antigorite NMNH96917.e 32um  W1R1Bb AREF  3961   06/26/1985      6      8
+splib06b:  1184  Antigorite NMNH96917.e     W5R4Nbb_ RREF  4280   11/24/****     60     72
+splib06b:  1196  Antigorite NMNH96917.d 70um  W1R1Bb AREF  3961   06/15/1985      6      8
+splib06b:  1207  Antigorite NMNH96917.d     W5R4Nbb_ RREF  4280   11/24/****     60     72
+splib06b:  1219  Antigorite NMNH96917.c 120um W1R1Bb AREF  3961   06/25/1985      6      8
+splib06b:  1230  Antigorite NMNH96917.c     W5R4Nbb_ RREF  4280   11/24/****     60     72
+splib06b:  1242  Antigorite NMNH96917.b 165u  W1R1Bb AREF  3961   06/17/1985      6      8
+splib06b:  1253  Antigorite NMNH96917.b     W5R4Nbb_ RREF  4280   11/24/****     60     72
+splib06b:  1265  Antigorite NMNH96917.a >250  W1R1Bb AREF  3961   06/17/1985      6      8
+splib06b:  1276  Antigorite NMNH96917.a     W5R4Nbb_ RREF  4280   11/24/****     60     72
+
+
+    specfind -i -a Antigorite | grep splib07a
+splib07a:  1512  Antigorite NMNH17958            DESCRIPT  3462 Characters of TEXT
+splib07a:  1515  Antigorite NMNH17958          BECKb AREF   480   04/30/1987     18     20
+splib07a:  1520  Antigorite NMNH96917            DESCRIPT  6737 Characters of TEXT
+splib07a:  1525  Antigorite NMNH96917.f <30um  BECKb AREF   480   06/27/1985     18     20
+splib07a:  1529  Antigorite NMNH96917.e 32um   BECKb AREF   480   06/26/1985     18     20
+splib07a:  1533  Antigorite NMNH96917.e 32um  NIC4bb RREF  4595   02/28/2017     48     61
+splib07a:  1546  Antigorite NMNH96917.d 70um   BECKb AREF   480   06/15/1985     18     20
+splib07a:  1550  Antigorite NMNH96917.d 70um  NIC4bb RREF  4595   02/28/2017     48     61
+splib07a:  1563  Antigorite NMNH96917.c 120um  BECKb AREF   480   06/25/1985     18     20
+splib07a:  1567  Antigorite NMNH96917.c 120   NIC4bb RREF  4595   02/28/2017     48     61
+splib07a:  1580  Antigorite NMNH96917.b 165um  BECKb AREF   480   06/17/1985     18     20
+splib07a:  1584  Antigorite NMNH96917.b 165um ASDNGb AREF  2151   11/13/2015     23     41
+splib07a:  1596  Antigorite NMNH96917.b 165   NIC4bb RREF  4595   02/28/2017     48     61
+splib07a:  1609  Antigorite NMNH96917.a >250   BECKb AREF   480   06/17/1985     18     20
+splib07a:  1613  Antigorite NMNH96917.a >250  ASDNGb AREF  2151   11/13/2015     23     41
+splib07a:  1625  Antigorite NMNH96917.a >250  NIC4bb RREF  4595   02/28/2017     48     61
+
+    specfind -i -a Antigorite | grep splib07b
+spprint /sl1/usgs/library07.conv/splib07b | grep -i Antigorite | grep REF
+  2310  Antigorite NMNH17958          BECKb AREF  3961  12:40:39.00  04/30/1987     18     29
+  2338  Antigorite NMNH96917.f <30um  BECKb AREF  3961  10:41:53.00  06/27/1985     18     29
+  2360  Antigorite NMNH96917.e 32um   BECKb AREF  3961  10:01:33.00  06/26/1985     18     29
+  2382  Antigorite NMNH96917.e 32um  NIC4bb RREF  4595  00:00:00.00  02/28/2017     66     79
+  2395  Antigorite NMNH96917.d 70um   BECKb AREF  3961  14:26:13.00  06/15/1985     18     29
+  2417  Antigorite NMNH96917.d 70um  NIC4bb RREF  4595  00:00:00.00  02/28/2017     66     79
+  2430  Antigorite NMNH96917.c 120um  BECKb AREF  3961  10:42:22.00  06/25/1985     18     29
+  2452  Antigorite NMNH96917.c 120   NIC4bb RREF  4595  00:00:00.00  02/28/2017     66     79
+  2465  Antigorite NMNH96917.b 165um  BECKb AREF  3961  14:01:39.00  06/17/1985     18     29
+  2487  Antigorite NMNH96917.b 165um ASDNGb AREF  2151  14:51:26.50  11/13/2015     41     59
+  2499  Antigorite NMNH96917.b 165   NIC4bb RREF  4595  00:00:00.00  02/28/2017     66     79
+  2512  Antigorite NMNH96917.a >250   BECKb AREF  3961  09:27:25.00  06/17/1985     18     29
+  2534  Antigorite NMNH96917.a >250  ASDNGb AREF  2151  17:32:03.42  11/13/2015     41     59
+  2546  Antigorite NMNH96917.a >250  NIC4bb RREF  4595  00:00:00.00  02/28/2017     66     79

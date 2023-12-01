@@ -1,0 +1,133 @@
+#!/usr/bin/env -S davinci -f  
+
+###########################  was:  #!/usr/local/bin/davinci -f
+# So with the old method the first line would need to be:
+# On linux and windows the above line should be:
+#
+#  #!/usr/local/bin/davinci -f
+#
+# on macs, change the above to:
+#
+#  #!/Applications/davinci.app/Contents/Resources/bin/davinci -f
+#
+# with the new 1st line method, it should work on linux, macs and windows with no changes.
+#
+# R. N. Clark 2021-2023
+
+verbose=0
+
+# calcite.v.gz
+# chlorite.v.gz
+# dolomite.v.gz
+# goethite-fine.v.gz
+# goethite-large.v.gz
+# goethite-med.v.gz
+# gypsum-coarse.v.gz
+# gypsum-fine.v.gz
+# hematite-fine.v.gz
+# hematite-large.v.gz
+# hematite-med.v.gz
+# hematite-nano.v.gz
+# illite+muscovite.v.gz
+# kaolinite.v.gz
+# montmorillonite.v.gz
+# quartz-feldspar.v.gz
+# vermiculite.v.gz
+
+
+amode = 1   # extract single pixel
+
+if ( $argc < 2 ) {
+	printf ("insufficient parameters\n")
+	printf ("form:\n")
+	printf ("davinci.get-model4-abundances-for-a-pixel xpixel ypixel [xpixel2 ypixel2]\n")
+	printf ("        if 2 sets of pixel coordinates. 1st is upper left, 2nd lower right\n")
+	printf ("                  then extract the block of pixels and report min, max, mean for the block.\n")
+	exit(1)
+}
+
+xpixel = atoi($1)
+ypixel = atoi($2)
+
+asum = 0.0
+
+if ( $argc >= 4 ) {
+
+	xpixel2 = atoi($3)
+	ypixel2 = atoi($4)
+
+	amode = 2   # extract pixel block
+	# printf ("DEBUG: amode = %d\n", amode)
+
+	if (xpixel2 < xpixel) {
+		printf ("ERROR xpixel2 < xpixel: %d  %d\n", xpixel2, xpixel)
+		exit(1)
+	}
+	if (ypixel2 < ypixel) {
+		printf ("ERROR ypixel2 < ypixel: %d  %d\n", ypixel2, ypixel)
+		exit(1)
+	}
+}
+
+# flist =            "calcite.v.gz"
+# flist = cat(flist, "chlorite.v.gz",         axis=y)
+# flist = cat(flist, "dolomite.v.gz",         axis=y)
+# flist = cat(flist, "goethite-fine.v.gz",    axis=y)
+# flist = cat(flist, "goethite-large.v.gz",   axis=y)
+# flist = cat(flist, "goethite-med.v.gz",     axis=y)
+# flist = cat(flist, "gypsum-coarse.v.gz",    axis=y)
+# flist = cat(flist, "gypsum-fine.v.gz",      axis=y)
+# flist = cat(flist, "hematite-fine.v.gz",    axis=y)
+# flist = cat(flist, "hematite-large.v.gz",   axis=y)
+# flist = cat(flist, "hematite-med.v.gz",     axis=y)
+# flist = cat(flist, "hematite-nano.v.gz",    axis=y)
+# flist = cat(flist, "illite+muscovite.v.gz", axis=y)
+# flist = cat(flist, "kaolinite.v.gz",        axis=y)
+# flist = cat(flist, "montmorillonite.v.gz",  axis=y)
+# flist = cat(flist, "quartz-feldspar.v.gz",  axis=y)
+# flist = cat(flist, "vermiculite.v.gz",      axis=y)
+
+#fname = syscall("ls -1 results.abundances/model4/*.v.gz | sed -e 's/.v.gz//' | basename")   # get the list of files to process
+#fname = syscall("basename `ls -1 results.abundances/model4/*.v.gz | sed -e 's/.v.gz//' ` ")   # get the list of files to process
+#fname = syscall("basename `ls -1 results.abundances/model4/*.v.gz | sed -e 's/.v.gz//' ` ")   # get the list of files to process
+
+flist = syscall("ls -1 results.abundances/model4/*.v.gz")   # get the list of files without the extension
+
+nflist = length(flist)
+
+# printf ("DEBUG: found %d files\n", nflist)
+
+if (amode == 1) {
+	printf ("Tetracorder Model 4 Abundances at pixel %d %d:\n\n", xpixel, ypixel)
+} else {
+
+	printf ("Tetracorder Model 4 Abundances for pixel block %d %d to %d %d:\n\n", xpixel2, ypixel2)
+
+	printf ("     Mineral                        min      max      mean      std_dev\n")
+}
+
+for (i=1; i<=nflist; i++) {
+
+	a = read (filename=flist[,i])
+
+	fname = basename (flist[,i], ext= ".v.gz")
+
+	if ( amode == 1 ) {     # single pixel mode
+
+		a =    a[xpixel, ypixel, 1]
+		asum = asum + a
+		printf ("%30s  %7.4f\n", fname, a)
+
+	} else {                 # pixel block mode
+
+		a=a[xpixel:xpixel2, ypixel:ypixel2, 1]
+		amom = moment(a)
+		printf ("%30s  %7.4f   %7.4f   %7.4f   %7.4f \n", fname, amom[1,,], amom[2,,], amom[3,,], amom[5,,])
+	}
+
+}
+
+if ( amode == 1 ) {     # single pixel mode
+	printf ("=========================================\n")
+	printf ("                          total: %6.4f\n", asum)
+}

@@ -1,0 +1,113 @@
+#!/bin/sh
+
+###############################################################################
+#
+# copies envi geometry data from one envi header file to another
+#
+# Roger N. Clark, USGS  12/28/2011
+
+# input:
+#         program  enviheaderwithgeometry   enviheaderwithoutgeometry
+
+if [ -z "$2" ]
+then
+	echo "ERROR: need files:"
+	echo " $0 envi_header_file_with_geometry   envi_header_file_without_geometry"
+	echo "exit 1"
+	exit 1
+fi
+
+if [ ! -f "$1" ]
+then
+	echo "ERROR: $1 is not a file"
+	echo "exit 1"
+	exit 1
+fi
+
+if [ ! -f "$2" ]
+then
+	echo "ERROR: $2 is not a file"
+	echo "exit 1"
+	exit 1
+fi
+
+e=`head -2 $1 | grep ENVI`
+if [ -z "$e" ]
+then
+	echo "ERROR: $1 does not appear to be an envi file"
+	echo "exit 1"
+	exit 1
+fi
+
+o=`head -2 $2 | grep ENVI`
+if [ -z "$o" ]
+then
+        echo "ERROR: $2 does not appear to be an envi file"
+        echo "exit 1"
+        exit 1
+fi
+
+# files are OK, now look for geometry info
+
+a=`grep 'map info =' $1`
+p=`grep 'projection info =' $1`
+b=`grep 'coordinate system string =' $1`
+
+if [ -z "$a" ]
+then
+	echo "ERROR: map info line not found"
+	echo "exit 1"
+	exit 1
+fi
+
+if [ -z "$p" ]
+then
+	echo "no map projection info (ok, continuing)"
+fi
+
+if [ -z "$b" ]
+then
+	echo "ERROR: coordinate system string line not found"
+	echo "exit 1"
+	exit 1
+fi
+
+# Everything found and files are good, so append geometry
+# but check if it is already there first
+
+ao=`grep 'map info =' $2`
+po=`grep 'projection info =' $2`
+bo=`grep 'coordinate system string =' $2`
+
+if [ -z "$ao" ]
+then
+	if [ ! -z "$a" ]
+	then
+		echo "Adding geometry to $2"
+		echo $a >> $2
+	fi
+else
+	echo "map info line already in $2"
+fi
+
+if [ -z "$po" ]
+then
+	if [ ! -z "$p" ]
+	then
+		echo "Adding projection info to $2"
+		echo $p >> $2
+	fi
+fi
+
+if [ -z "$bo" ]
+then
+	if [ ! -z "$b" ]
+	then
+		#echo $b
+		echo $b >> $2
+	fi
+else
+	echo "coordinate system string line already in $2"
+fi
+
+# done

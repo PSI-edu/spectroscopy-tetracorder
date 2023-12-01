@@ -1,0 +1,195 @@
+#!/bin/sh
+#set -x
+
+# Roger N. Clark, December 27, 2011
+
+# make results directories and put in those directories,
+# jpeg images of a base gray scale image with tetracorder
+# materials map results as a red overlay.
+
+#        group.1um 
+#        group.2um 
+# 	group.2um-broad 
+#	group.2.5um 
+#        group.veg 
+#        case.veg.type 
+#        case.red-edge
+
+# gen.fd.jpg.overlay+base.images   image_cube  band
+
+if [ -z "$1" ]
+then
+	echo "ERROR: need cube and band number:"
+	echo " "
+	echo "gen.fd.jpg.overlay+base-dual.images   image_cube  band"
+	echo "exit 1"
+	exit 1
+fi
+
+if [ -z "$2" ]
+then
+	echo "ERROR: need band number:"
+	echo " "
+	echo "gen.fd.jpg.overlay+base-dual.images   image_cube  band"
+	echo "exit 1"
+	exit 1
+fi
+
+if [ ! -f "$1" ]
+then
+	echo "ERROR: $1 does not appear to be a normal file"
+	echo " "
+	echo "gen.fd.jpg.overlay+base-dual.images   image_cube  band"
+	echo "exit 1"
+	exit 1
+fi
+
+cube=$1
+band=$2
+
+if [ -z "$TETNCPU" ]   # make sure tetracorder number of cpus variable exists
+then
+        TETNCPU=1
+fi
+
+NCPU=1   # number of cpus in use, min=1
+
+if [ -f "TETNCPU.txt" ]   # over ride the environment variable if exists
+then
+	nn=`head -1 TETNCPU.txt`
+	if [ "$nn" -gt "0" -a "$nn" -le "99" ]
+	then
+		TETNCPU=$nn    # value in TETNCPU.txt is the new number of cpus in use
+	fi
+fi
+
+
+for i in `ls -d group.* case*`
+do
+    if [ -d $i ]
+    then
+
+	rdir=results.dual.$i
+	if [ ! -d "$rdir" ]     # Make results directory
+	then
+		mkdir $rdir
+	fi
+	cd $i
+
+	echo "------------ $i"
+
+        if [ ! -f "$cube" ]
+        then
+                a=$cube
+                cube=../$a
+                if [ ! -f "$cube" ]
+                then
+                        echo "ERROR: $a not found from sub-directory $i"
+                        echo "   we tried adding .. but that didn't work either: $cube"
+                        echo "try using full path to cube"
+                        echo "exit 1"
+                        exit 1
+                fi
+        fi
+
+	a=`ls *.fd *.fd.gz`    # analyze all fd files in the directory
+
+	echo  $a | head -3
+
+	echo "========== Making base image ================"
+
+	if [ -f "../base-image/base-image.jpg" ]   # should already be created, so do not do it again
+	then
+		echo "      found ../base-image/base-image.jpg  not making a new one"
+	else
+		echo "      ../base-image/base-image.jpg  does not exist, so making a new one"
+
+		a1=`ls *.fd *.fd.gz | head -1`    # first image (use to make a base image)
+
+		fcube=`basename $cube`
+		davinci.red.overlay.gray-image $a1 -25 $cube $band 0 ../${rdir}/${fcube}.ch${band}.base.jpg -baseonly
+
+		# copy the base image to directory base-image at the same level as tge group directories
+		if [ ! -d "../base-image" ]
+		then
+			echo "mkdir ../base-image"
+			      mkdir ../base-image
+		fi
+		cp ./${rdir}/${fcube}.ch${band}.base.jpg  ../base-image/base-image.jpg
+	fi
+
+	baseimage="../base-image/base-image.jpg"
+
+	# now create overlay images for each fd file.
+
+	for j in $a
+	do
+		if [ "$TETNCPU" -gt "1" ]   # if multiple cpus declared, run in parallel
+		then
+			if [ "$NCPU" -lt "$TETNCPU" ]  # can do more in parallel
+			then
+				echo "davinci.red.overlay.gray-image  $j ...  parallel NCPU=$NCPU  max=$TETNCPU"
+				f=`basename $j .gz`
+
+				# was: echo "converting $j to ${f}.ovrly.gstr.jpg"
+				# was: davinci.red.overlay.gray-image  $j -25 $cube $band 0 ../${rdir}/${f}.ovrly -gamma -dual &
+
+				echo "converting $j to ${f}.ovrly.gstr.jpg"
+				davinci.red.overlay.gray-image  $j -25 $baseimage 1 1 ../${rdir}/${f}.ovrly -gamma -dual &
+
+				NCPU=`expr "$NCPU" + 1`
+			else                           # at cpu limit, so do not do in background
+				echo "davinci.red.overlay.gray-image  $j ...  parallel NCPU=$NCPU  max=$TETNCPU"
+				echo "waiting for process group to finish.  max = $TETNCPU jobs"
+				echo " "
+				f=`basename $j .gz`
+
+				# was: echo "converting $j to ${f}.ovrly.gstr.jpg"
+				# was: davinci.red.overlay.gray-image  $j -25 $cube $band 0 ../${rdir}/${f}.ovrly -gamma -dual
+
+				echo "converting $j to ${f}.ovrly.gstr.jpg"
+				davinci.red.overlay.gray-image  $j -25 $baseimage 1 1 ../${rdir}/${f}.ovrly -gamma -dual
+
+				wait
+				NCPU=1
+				if [ -f "../TETNCPU.txt" ]   # check if TETNCPU.txt has a number of cpus set
+				then
+					nn=`head -1 ../TETNCPU.txt`
+					if [ "$nn" -gt "0" -a "$nn" -le "99" ]
+					then
+						TETNCPU=$nn    # value in TETNCPU.txt is the new number of cpus in use
+					fi
+				fi
+			fi
+		else                         # use only 1 cpu
+			echo " "
+			f=`basename $j .gz`
+
+			# was: echo "converting $j to ${f}.ovrly.gstr.jpg"
+			# was: davinci.red.overlay.gray-image  $j -25 $cube $band 0 ../${rdir}/${f}.ovrly -gamma -dual
+
+			echo "converting $j to ${f}.ovrly.gstr.jpg"
+			davinci.red.overlay.gray-image  $j -25 $baseimage 1 1 ../${rdir}/${f}.ovrly -gamma -dual
+
+			if [ "$TETNCPU" -eq "1" ]  # only check for TETNCPU.txt if it is =one
+			then
+				if [ -f "../TETNCPU.txt" ]
+				then
+					nn=`head -1 ../TETNCPU.txt`
+					if [ "$nn" -gt "0" -a "$nn" -le "99" ]
+					then
+						TETNCPU=$nn    # value in TETNCPU.txt is the new number of cpus in use
+					fi
+				fi
+			fi
+		fi
+
+	done
+	wait   # wait for all jobs to finish
+	echo "DONE gen.fd.jpg.overlay+base.images dual images in directory $rdir done " `date`
+
+	cd ..
+    fi
+
+done
+

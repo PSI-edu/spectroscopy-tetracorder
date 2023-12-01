@@ -1,0 +1,116 @@
+#!/bin/sh
+
+# Create a specpr file for collecting the average spectra in the
+#     directory where a mappign runs has completed
+#          - R Clark 04/24/2023
+
+echo " "
+echo "##########   get average spectra for each mapped material  ###########"
+
+echo " "
+echo "start: " `date`
+echo " "
+
+# check that all needed files exist
+
+ierr=0
+for ifile in AAA.info/cubefilename.txt  \
+             AAA.info/image-xpixels.txt \
+             AAA.info/image-ypixels.txt \
+             AAA.info/shortcubeid.txt   \
+             AAA.info/cube-scale-factor \
+             AAA.info/shortcubeid.txt   \
+             AAA.info/cube-scale-factor
+do
+	if [ ! -f "$ifile" ]
+	then
+		echo "ERROR:  "$ifile"  not found"
+		ierr=1
+	fi
+done
+
+if [ "$ierr" -ne "0" ]
+then
+	echo "exit 1"
+	exit 1
+fi
+
+cubepath=`cat AAA.info/cubefilename.txt`
+cube=`basename $cubepath | cut -c 1-40`
+
+if [ ! -f "$cubepath" ]
+then
+	echo "ERROR:  $cubepath  not found"
+	echo "exit 1"
+	exit 1
+fi
+
+echo "cube= $cube"
+
+splib=`grep iyfl= r1 | sed -e 's/iyfl=//'`
+spdir=`dirname $splib`
+spfile=`basename $splib`
+
+spstart=${spdir}/startfiles/${spfile}.start
+
+     # example:    cp /sl1/usgs/library06.conv/startfiles/s06emitc.start spreslt1
+
+if [ -f "$spstart" ]
+then
+	if [ -f "spreslt1" ]
+	then
+		echo "ERROR: file  spreslt1  already existys, it should not"
+		echo "exit 1"
+		exit 1
+	else
+		echo "creating spreslt1 specpr file"
+		cp $spstart spreslt1
+    		sp_stamp spreslt1
+		spsettitle  spreslt1 1 '*************  spreslt1  ****************' -force
+		spsettitle  spreslt1 2 '**** extracted spectra from cube:   *****' -force
+		spsettitle  spreslt1 3 "$cube                                   " -force
+	fi
+else
+	echo "ERROR:  $spstart  not found"
+	echo "exit 1"
+	exit 1
+fi
+
+# cube isze:
+xpx=`cat AAA.info/image-xpixels.txt`
+ypx=`cat AAA.info/image-ypixels.txt`
+
+echo "cube size:  $xpx  $ypx  pixels"
+
+# get average spectra for all mapped materials:
+avspec='cmds.all.support/cmd.get.mapped.material.spectral.averages-v4'
+shortid=`cat AAA.info/shortcubeid.txt`   # short cube ID  up to 10 characters
+cscale=`cat AAA.info/cube-scale-factor`
+
+echo " working,  short ID= $shortid   Cube scale facotor= $cscale"
+
+echo "$avspec  $shortid  $cubepath  $cscale  spreslt1 box 1 1 $xpx $ypx"
+
+      $avspec  $shortid  $cubepath  $cscale  spreslt1 box 1 1 $xpx $ypx
+
+echo "now add spreslt1 to restart file"
+
+cp -a r1 r1.bak
+
+# get size in specpr records
+
+spfilebytes=`ls -l spreslt1 | awk '{ print $5}'`
+sprecs=`expr $spfilebytes / 1536 - 1`
+
+ex - r1 <<EOI
+/^ivfl=/ s,ivfl=.dev.null,ivfl=spreslt1 ,
+/^isavt=/ s/.unasnd./spreslt1/
+/^iprtv=/ s/   0/$sprecs /
+w
+q
+EOI
+
+
+echo " "
+echo "finished getting average spectra " `date`
+echo " "

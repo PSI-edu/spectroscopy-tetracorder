@@ -1,0 +1,74 @@
+
+The State of the Art in Imaging Spectroscopy Materials Mapping
+
+Detection and mapping of minerals, vegetation species, chemicals,
+liquids, and solids is being done through the field of imaging
+spectroscopy. Imaging spectrometers are deployed on aircraft, spacecraft
+(throughout the Solar System) in the field, and in laboratories. Imaging
+spectrometers collect a spectrum at each image pixel with enough spectral
+resolution to to resolve absorption and emission features in compounds,
+whether crystalline or amorphous solids, liquids and gases. What
+can be detected remotely is mainly a function of spectral range and
+resolution. Analysis of imaging spectrometer data sets is quite complex
+and the most advanced system system in existence is the Tetracorder
+system first described in detail in Clark et al. 2003.
+
+Tetracorder is in use analyzing data from all over the Solar System,
+including mapping ice and other compounds on icy satellite surfaces in
+the Saturn and Jupiter systems, minerals on Mars, and was critical in
+making the discovery of widespread water on the Moon possible. Tetracorder
+is used for mapping ecosystems, and in rapid response to environmental
+disasters. It was used in assessing the environmental damage from the
+World Trade Center disaster and the the 2010 Deepwater Horizon oil spill
+in the Gulf of Mexico.
+
+Tetracorder uses multiple algorithms, including spectral fitting
+procedures to identify materials, and derives feature strengths (relative
+abundance) of those materials. It has demonstrated discrimination of grain
+sizes for some materials using the shape of the absorption features. The
+grain sizes and feature strengths can then be fed into radiative transfer
+models to derive component abundances.
+
+Tetracorder 5.x uses the U.S. Geological Survey digital spectral
+library splib06a (Clark et al., 2007) plus additional spectra.
+The native and convolved spectral libraries are maintained on guthub
+(__________________).
+
+Tetracorder 5.x+ adapts to both environmental conditions as well
+as instrument capability. Previous versions had to be adapted by an
+expert spectroscopist for each sensor and environment the data came
+from. Tetracorder produces maps of hundreds of materials, including
+chemical substitutions in some minerals. Imaging chemistry
+remotely, whether across a canyon, from a high point overlooking
+an environmental disaster, or a studying remote planets. This is now
+possible. Further, Tetracorder results are made into custom color-coded
+maps automatically.
+
+
+
+Clark et a., 2003 is availabel as a pdf in:a AAA.REFERENCE.documents.dir
+
+Papers that use tetracorder can reference the following papers. 
+
+Clark, R.N., Swayze, G.A., Livo, K.E., Kokaly, R.F., Sutley, S.J., Dalton,
+J.B., McDougal, R.R., and Gent, C.A., 2003, Imaging spectroscopy:
+Earth and planetary remote sensing with the USGS Tetracorder and
+expert systems, Journal of Geophysical Research, Vol. 108(E12), 5131,
+doi:10.1029/2002JE001847, p. 5-1 to 5-44.
+
+Clark, R.N., Swayze, G.A., Wise, R., Livo, E., Hoefen, T., Kokaly,
+R., Sutley, S.J., 2007, USGS digital spectral library splib06a:
+U.S. Geological Survey, Data Series 231.
+
+
+
+
+This paper evaluates the performance of the tetracorder core algorithm and
+is a knowledge base for strategy on which spectral features to use in
+the tetracorder expert system.
+
+Swayze, G.A., Clark, R.N., Goetz, F.H., Chrien, T.G., and Gorelick, N.S.,
+2003, Effects of spectrometer band pass, sampling, and signal-to-noise
+ratio on spectral identification using the Tetracorder algorithm:
+Journal of Geophysical Research (Planets), vol. 108(E9), 5105, doi:
+10.1029/2002JE001975, 30 p.

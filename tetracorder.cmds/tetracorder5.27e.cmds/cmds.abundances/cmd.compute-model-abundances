@@ -1,0 +1,42 @@
+#!/bin/sh
+
+# R. Clark May, 2021
+
+# Note: this command is executed from above the directory where this command is located/
+
+p="./cmds.abundances/davinci.compute.model.abundances.v1"
+
+if [ ! -d "results.abundances" ]
+then
+	echo "mkdir results.abundances"
+	      mkdir results.abundances
+fi
+
+if [ ! -d "results.abundances/model1" ]
+then
+	echo "mkdir results.abundances/model1"
+	      mkdir results.abundances/model1
+fi
+if [ ! -d "results.abundances/model2" ]
+then
+	echo "mkdir results.abundances/model2"
+	      mkdir results.abundances/model2
+fi
+if [ ! -d "results.abundances/model3" ]
+then
+	echo "mkdir results.abundances/model3"
+	      mkdir results.abundances/model3
+fi
+if [ ! -d "results.abundances/model4" ]
+then
+	echo "mkdir results.abundances/model4"
+	      mkdir results.abundances/model4
+fi
+
+echo "$p $*"
+
+$p $*
+
+cp -a cmds.abundances/cmd.get-model4-abundances-for-a-pixel \
+	cmds.abundances/davinci.get-model4-abundances-for-a-pixel \
+	results.abundances/model4

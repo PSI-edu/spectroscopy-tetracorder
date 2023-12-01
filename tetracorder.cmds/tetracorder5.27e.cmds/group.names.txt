@@ -1,0 +1,118 @@
+
+\# extracted from the cmd.lib.setup.* file
+
+\#################################################################################
+\#################################################################################
+\######               group and case strategy                       ##############
+\######  Starting with version 5.15, moving broad features up front ##############
+\######  and narrow features after, so we might in the future       ##############
+\######  adapt curved continua depending on the broad feature type. ##############
+\######                                                             ##############
+\#################################################################################
+\###### group 0:  catch for other declared groups                   ##############
+\###### group 1:  electronic absorptions UV to 1-micron region      ##############
+\###### group 2:  2 to 2.5-micron region narrow                     ##############
+\###### group 3:  vegetation detection                              ##############
+\###### group 4:  broad absorptions in the 1.5-micron region        ##############
+\###### group 5:  broad absorptions in the 2-micron region          ##############
+\###### group 6:  2.5-micron region                                 ##############
+\###### group 7:  2.7 to 3-micron OH region                         ##############
+\###### group 8:  2.7 - 2.8-micron OH region narrow bands           ##############
+\###### group 9:  UV (0.1 - 0.3 microns)                            ##############
+\###### group 10: testing 3.5 um curved continua                    ##############
+\###### group 11: 3.5-micron region linear continua                 ##############
+\###### group 12:                                                   ##############
+\###### group 13: 1.3-1.4 micron OH narrow                          ##############
+\###### group 14: 1.4-1.5 micron OH                                 ##############
+\###### group 15: 1.5 micron OH                                     ##############
+\###### group 16: 1.5-1.6 micron OH                                 ##############
+\###### group 17: 1.7 microns CH and water    Future                ##############
+\###### group 18: 1.8 micron region                                 ##############
+\###### group 19: 1.9-2 micron water and ice                        ##############
+\###### group 20: the search for rare-earth oxides                  ##############
+\###### group 21: the search for rare-earth oxide Neodymium         ##############
+\###### group 22: the search for rare-earth oxide Samarium          ##############
+\###### group 23: 3.8 micron region includes OD stretches           ##############
+\###### group 24: 4-micron region                                   ##############
+\###### group 25: 4.1-micron region                                 ##############
+\###### group 26: 4.25 micron CO2 trapped, ice                      ##############
+\###### group 27: 4.5-micron region includes sulfates               ##############
+\###### group 28: 5-micron region includes silicate overtones       ##############
+\###### group 29: 6-micron region, includes H-O-H bends             ##############
+\###### group 30: 7-8-micron region                                 ##############
+\###### group 31: 8-10-micron region                                ##############
+\###### group 32: 10-12-micron region                               ##############
+\###### group 33: 12-14-micron region                               ##############
+\###### group 34: 14-16-micron region                               ##############
+\###### group 35: 16-19-micron region                               ##############
+\###### group 36: 19-22-micron region                               ##############
+\###### group 37: search for methane plume 2.3 micron               ##############
+\###### group 38: search for CO2 gas, 2 microns                     ##############
+\###### group 39:                                                   ##############
+\###### group 40:                                                   ##############
+\######                                                             ##############
+\###### case 1:   Vegetation red edge shift                         ##############
+\###### case 2:   Vegetation spectral type                          ##############
+\###### case 3:   Vegetation 0.9um-band depth                       ##############
+\###### case 4:   Vegetation 1.2um-band depth                       ##############
+\###### case 5:   Vegetation 1.4um-band depth                       ##############
+\###### case 6:   Epidote-Chlorite-Calcite mixture series           ##############
+\###### case 7:   Carbonate 2.3 + 2.5 micron feature detection      ##############
+\#################################################################################
+\#
+
+\#            name (12 characters max)
+\#                     111
+\#            123456789012
+
+\#
+groupname  0  catchall      \#  catch for other declared groups            
+groupname  1  1um region    \#  electronic absorptions 1-micron region    
+groupname  2  2-2.5um       \#  2 to 2.5-micron region narrow            
+groupname  3  veg detect    \#  vegetation detection                    
+groupname  4  1.5um broad   \#  broad absorptions in the 1.5-micron region 
+groupname  5  2um broad     \#  broad absorptions in the 2-micron region  
+groupname  6  2.5um region  \#  2.5-micron region                        
+groupname  7  2.5-3um       \#  2.7 to 3-micron OH region               
+groupname  8  3.2um region  \#  3.2-micron region     
+groupname  9  UV            \#  Future: UV                                 
+groupname 10  3.5um curveC  \# testing 3.5 um curved continua            
+groupname 11  3.5um linear  \# 3.5-micron region linear continua        
+groupname 12  none12        \# 
+groupname 13  1.3-1.4 nrw   \# 1.3-1.4 micron OH narrow               
+groupname 14  1.4-1.5 nrw   \# 1.4-1.5 micron OH                     
+groupname 15  1.5um OH      \# 1.5 micron OH                        
+groupname 16  1.6um region  \# 1.5-1.6 micron OH                   
+groupname 17  1.7um region  \# 1.7 microns CH and water
+groupname 18  1.8um region  \# 1.8 micron region
+groupname 19  1.9-2um H2O   \# 1.9-2 micron water and ice       
+groupname 20  rare-earth    \# the search for rare-earth oxides
+groupname 21  Neodymium     \# the search for rare-earth oxide Neodymium
+groupname 22  Samarium      \# the search for rare-earth oxide Samarium
+groupname 23  3.8um region  \# 3.8 micron region includes OD stretches
+groupname 24  4-um region   \# 4-micron region
+groupname 25  4.1um region  \# 4.1-micron region (ice OD-stretch)
+groupname 26  4.25um CO2    \# 4.25 micron CO2 trapped, ice
+groupname 27  4.5um region  \# 4.5-micron region includes sulfates
+groupname 28  5um region    \# 5-micron region includes silicate overtones
+groupname 29  6um region    \# 6-micron region, includes H-O-H bends
+groupname 30  7-8um region  \# 7-8-micron region
+groupname 31  8-10um regn   \# 8-10-micron region
+groupname 32  10-12um regn  \# 10-12-micron region
+groupname 33  12-14um regn  \# 12-14-micron region
+groupname 34  14-16um regn  \# 14-16-micron region
+groupname 35  16-19um regn  \# 16-19-micron region
+groupname 36  19-22um regn  \# 19-22-micron region
+groupname 37  CH4 gas       \# CH4 gas detect 2.37um
+groupname 38  CO2 gas       \# CO2 gas detect 2um
+\#
+casename   1  veg red-edge  \# Vegetation red edge shift
+casename   2  veg spectype  \# Vegetation spectral type
+casename   3  veg 0.9um bd  \# Vegetation 0.9um-band depth
+casename   4  veg 1.2um bd  \# Vegetation 1.2um-band depth
+casename   5  veg 1.4um bd  \# Vegetation 1.4um-band depth
+casename   6  ep-chlor-cal  \# Epidote-Chlorite-Calcite mixture series
+casename   7  carbonate-2f \# carbonate 2.3 + 2.5 features
+\#
+
+
