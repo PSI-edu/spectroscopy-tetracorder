@@ -483,6 +483,13 @@
 	}
 
 	if (nch1 > nch2 || nch2+1 >= nch3 || nch3 > nch4) {
+
+		if (nch1 > nch2) write (ttyout,*) 'nch1 > nch2: ', nch1, nch2
+
+		if (nch2+1 >= nch3) write (ttyout,*) 'nch2+1 >= nch3, nch2, nch3: ', nch2, nch3
+
+		if (nch3 > nch4) write (ttyout,*) 'nch3 > nch4: ', nch3, nch4
+
 		write (ttyout,312)
 312		format ('ERROR: channels are not in a valid sequence:',/,
 			'       If channels = n1 n2 n3 n4, then the following',
@@ -713,12 +720,27 @@
 		return
 	}
 
-	if (nch1 > nch2 || nch2+1 >= nch3 || nch3 > nch4 || nch5 > nch6 || nch7 > nch8) {
+	if (nch1 > nch2 || nch2 >= nch3 || nch3 > nch4 || nch4+1 >= nch5 || nch5 > nch6 || nch6 >= nch7 || nch7 > nch8) {
+
+		if (nch1 > nch2) write (ttyout,*) 'ERROR: nch1 > nch2: ', nch1, nch2
+
+		if (nch2 >= nch3) write (ttyout,*) 'ERROR: nch2 >= nch3, nch2, nch3: ', nch2, nch3
+
+		if (nch3 > nch4) write (ttyout,*) 'ERROR: nch3 > nch4: ', nch3, nch4
+
+		if (nch4+1 >= nch5) write (ttyout,*) 'ERROR: nch4+1 >= nch5: ', nch4, nch5
+
+		if (nch5 > nch6) write (ttyout,*) 'ERROR: nch5 > nch6: ', nch5, nch6
+
+		if (nch6 > nch6) write (ttyout,*) 'ERROR: nch5 > nch7: ', nch6, nch7
+
+		if (nch7 > nch8) write (ttyout,*) 'ERROR: nch7 > nch8: ', nch7, nch8
+
 		write (ttyout,314)
 314		format ('ERROR: channels are not in a valid sequence:',/,
-			'       If channels = n1 n2 n3 n4, then the following',
+			'       If channels = n1 n2 n3 n4, n5, n6, n7, n8, then the following',
 					' must hold:',/,
-			'       n1 <= n2, n2+1 < n3, and n3 <= n4',//,
+			'       n1 <= n2, n2 < n3, n3 <= n4, n4+1 > n5, n5 <= n6, n6 <= n7, and n7 <= n8',//,
 			' REENTER ALL POINTS',//)
 		irtn = 1
 		return
