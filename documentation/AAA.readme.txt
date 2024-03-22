@@ -1,0 +1,13 @@
+
+This directory contains documentation related to specpr and tetracorder.
+
+Original journal paper on Tetracorder:
+clark.et.al.2003.tetracorder.JGR.2002JE001847.pdf
+
+Preprint:
+clark.et.al.2023.tetracorder-emit-trex-v1.4-preprint.pdf
+Status: reviews are in and revisions underway (2/2024)
+
+This paper includes new developments since 2003 and includes
+descriptions of post tetracorder analyses and radiative transfer
+models.
