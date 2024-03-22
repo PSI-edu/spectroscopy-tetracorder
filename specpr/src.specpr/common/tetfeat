@@ -11,19 +11,50 @@
 # tf1= Snow.H2O f1a DLw 0.958   0.986   1.080   1.110  ct 0.08
 # tf2= Snow.H2O f2a DLw 1.150   1.178   1.315   1.345  ct 0.08 lct/rct> 0.9 1.1
 
+# curved continuaa
+# tf1= test1    f1a DCw 1.785 1.815  1.845 1.870  1.925 1.955  1.985 2.015
+
+# nomenclature:
+#        an interval means two wavelengths over which the data are averaged to give
+#           a single x, y pair.
+#
+# Need 2 continuum intervals for a linear continuum:
+#             2 wavelengths on the left and 2 on the right
+#               left continuum  right continuum
+# variables:      tleftwave       trightwave 
+#
+# Need 4 continuum intervals for a curved continuum
+#            left continuum 1, left continuum 2, right continuum 1, right continuum 2
+# variables:  tleftcwave         tleftwave          trightwave         trightcwave
+
+
 	common /tetfeat/ tleftwave, tctrwave, trightwave, tbdepth
+	common /tetfeat/ tleftcwave, trightcwave
+
 	common /tetfeat/ tleftchan, tctrchan, trightchan
+	common /tetfeat/ tleftcchan, trightcchan
+
 	common /tetfeat/ tfeatname, tfmode, tetonoff
 	common /tetfeat/ tetflgmenu, tetfna, tetfnc, tfcont
-	common /tetfeat/ tlcavg, tbbavg, trcavg, tetfline
+	common /tetfeat/ tlccavg, tlcavg, tbbavg
+        common /tetfeat/    trcavg, trccavg, tetfline
 
+#        11111111112222222222333333333344444444445555555555666666666677777777778
+#2345678901234567890123456789012345678901234567890123456789012345678901234567890
+	
         real*4 tleftwave(2,imaxtet)        # left continuum interval
         real*4 tctrwave(2,imaxtet)         # band bottom interval
         real*4 trightwave(2,imaxtet)       # right continuum interval
 
+        real*4 tleftcwave(2,imaxtet)        # left curved continuum interval
+        real*4 trightcwave(2,imaxtet)       # right curved continuum interval
+
         integer*4 tleftchan(2,imaxtet)     # left continuum interval
         integer*4 tctrchan(2,imaxtet)      # band bottom interval
         integer*4 trightchan(2,imaxtet)    # right continuum interval
+
+        integer*4 tleftcchan(2,imaxtet)     # left curved continuum interval
+        integer*4 trightcchan(2,imaxtet)    # right curved continuum interval
 
         real*4 tbdepth(imaxtet)            # band depth
 
@@ -42,5 +73,8 @@
 	real*4 tlcavg(imax3pt)             # left continuum data average
 	real*4 tbbavg(imax3pt)             # band center data average
 	real*4 trcavg(imax3pt)             # right continuum data average
+
+	real*4 tlccavg(imax3pt)             # left curved continuum data average
+	real*4 trccavg(imax3pt)             # right curved continuum data average
 
 	character*80 tetfline(imaxtet)     # the full user line.

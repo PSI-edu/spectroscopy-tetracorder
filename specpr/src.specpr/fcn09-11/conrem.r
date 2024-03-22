@@ -85,22 +85,35 @@
 	}
 	il1=il
 	call wjfren(i,x,il)
-	iwtmpf = il
-	call wjfren(i,x,il)
-	if(il!=0) ir=1
-	iwavfl=x
-	if(ir!=0) {
-		write(ttyout,102) x1,x2
-102		format(' ir!=0, x1,x2=',2e16.6)
-		goto 3
-	}
-#
-#   read wavelength file
-#
-	if(nchans>maxchn) nchans=maxchn
-	if(il1!=ihh) call wavlng(iwtmpf,iwavfl,ier)
 
-	if (ier!=0) goto 3
+	if (il != 0 && i < 75) {
+		iwtmpf = il
+		call wjfren(i,x,il)
+		if(il!=0) ir=1
+		iwavfl=x
+		if(ir!=0) {
+			write(ttyout,102) x1,x2
+102			format(' ir!=0, x1,x2=',2e16.6)
+			goto 3
+		}
+		#
+		#   read wavelength file
+		#
+		if(nchans>maxchn) nchans=maxchn
+		if(il1!=ihh) call wavlng(iwtmpf,iwavfl,ier)
+
+		if (ier!=0) {
+			write(ttyout,*) "error reading wavelengths, error=", ier
+			goto 3
+		}
+	} else {
+
+		call wavlng (itrol(1), itrol(2), ier)
+		if (ier!=0) {
+			write(ttyout,*) "error reading wavelengths, error=", ier
+			goto 3
+		}
+	}
 
 #
 #     convert to energy space
@@ -120,7 +133,7 @@
 		m1=x1
 		m2=x2
 	}
-	if(m1>=nchans || m2>=nchans) {
+	if(m1>=nchans || m2>nchans) {
 		write(ttyout,104) nchans,m1,m2
 104		format(' m1,m2>nchans.',3i7)
 		goto 1

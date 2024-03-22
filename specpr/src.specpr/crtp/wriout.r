@@ -160,9 +160,12 @@ repeat {
 #
 #     write  identification to the plot
 #
+
+                                call namdev (idv1,aname)
+				write(ttyout,40) ititl, idv1, ifl1, aname   # also write to terminal screen  file info
+
                                 call movabs(0,590)
                                 call sb(0)
-                                call namdev (idv1,aname)
                                 write(outline,40)ititl,idv1,ifl1,aname
                                 call gwrite(outline)
                                 write(outline,41)ihist
@@ -336,9 +339,21 @@ repeat {
                                 xmin = wvmin
             			lbnd = bbnd
 				diff = ubnd-lbnd
+
+				# 3-point band depths
+
 				#write (ttyout,*) "DEBUG wriout.r before comp3ptbd"
 				call comp3ptbd (dataa, datac, nchans, xmax, xmin, lbnd, diff)
+                                  if (igrmod >= 50 && igrmod <= 53) {
+#XWIN					call xset_color(0)   # black
+				  }
+
+				# tetracorder features
+
 				call comptetf  (dataa, datac, nchans, xmax, xmin, lbnd, diff)
+                                  if (igrmod >= 50 && igrmod <= 53) {
+#XWIN					call xset_color(0)   # black
+				  }
 
                             }  # end of this is graphics modes for screens that can make a plot
                             if (ictrl==iho) go to 920

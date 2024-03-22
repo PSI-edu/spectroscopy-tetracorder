@@ -62,6 +62,20 @@ real*4    wavshift   # wavelength shift (not saved, initialized to zero each tim
 integer *4 ipt, ibd, itw
 real*4 lc, rc, bb, lcmin, lcmax, bbmin, bbmax, rcmin, rcmax
 
+                # Colors defined in xinit.c, xset_color:
+                #
+                #   black     0
+                #   gray      1 
+                #   red       2
+                #   blue      3
+                #   green     4
+                #   orange    5
+                #   cyan      6
+                #   magenta   7
+                #   purple    8
+                #   brown     9
+                #   white    10
+
 
 #ZZZZZZ
 			    if ( ovflgmenu == 1) {    # put overlay info on plot window
@@ -133,6 +147,9 @@ real*4 lc, rc, bb, lcmin, lcmax, bbmin, bbmax, rcmin, rcmax
 			    }
 1237    		    format(1x,'bd', i1,'=',a,'  ' ,f8.4)
 
+
+			    ################### tetracorder features ###############
+
 				#tetflgmenu = 1
 			    if ( tetflgmenu == 1) {   # 0=off, 1=on to print tetracorder features on plot
 
@@ -140,9 +157,18 @@ real*4 lc, rc, bb, lcmin, lcmax, bbmin, bbmax, rcmin, rcmax
 				for (itw=1; itw<=imaxtet; itw=itw+1) {
 
 				    if (tetonoff(itw) > 0 && tfmode(itw) > 0) {
-					#write (ttyout,*) "debug: wriout: tetfline=", tetfline(itw)
-					outline= tetfline(itw)
-					call gwrite(outline)
+
+					if (igrmod >= 50 && igrmod <= 53) {
+					    if (itw < 8) {
+#XWIN						call xset_color(itw+1)   # 2=red, 3=blue, 4=green, 5=orange, 6=magenta
+					    } else {
+#XWIN						call xset_color(1)   # 2=red, 3=blue, 4=green, 5=orange, 6=magenta
+					    }
+
+						#write (ttyout,*) "debug: wriout: tetfline=", tetfline(itw)
+						outline= tetfline(itw)
+						call gwrite(outline)
+					}
 				    }
 				}
 			    }
@@ -188,6 +214,7 @@ real*4 lc, rc, bb, lcmin, lcmax, bbmin, bbmax, rcmin, rcmax
 				for (itw=1; itw<=imaxtet; itw=itw+1) {
 
 				    if (tetonoff(itw) > 0 && tfmode(itw) > 0) {
+					#write (ttyout,*) "DEBUG: pmenus1 tetracorder feature tf", itw
 					write (ttyout,*) tetfline(itw)
 				    }
 				}

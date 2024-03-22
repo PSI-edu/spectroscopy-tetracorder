@@ -20,6 +20,12 @@
 # tf1= Snow.H2O f1a DLw 0.958   0.986   1.080   1.110  ct 0.08
 # tf2= Snow.H2O f2a DLw 1.150   1.178   1.315   1.345  ct 0.08 lct/rct> 0.9 1.1
 
+# curved continuaa
+
+# tf1= test1    f1a DCw 1.785 1.815  1.845 1.870  1.925 1.955  1.985 2.015
+#          11111111112222222222333333333344444444445555555555666666666677777777778
+# 12345678901234567890123456789012345678901234567890123456789012345678901234567890
+
 #       added 11/25/2018 - R. Clark
 
 #       ibd = band number,  current limit is 6 bands
@@ -90,7 +96,7 @@
 			return
 		}
 
-		call wjfren (i, x, il)  # now expect DLw, OLw. WLw
+		call wjfren (i, x, il)  # now expect DLw, MLw, OLw. WLw
 
 		if (il == ihcd || il == ihcm ||  il == ihco || il == ihcw) {
 			tetfnc(ibd) = '    '
@@ -99,7 +105,7 @@
 	 		tetfnc(ibd) = iname(1:4) 
 		} else {
 			call what(i)
-			write (*,*) "Error: input for tetracorder feature confused.  Expecting D, W or O"
+			write (*,*) "Error: input for tetracorder feature confused.  Expecting D, M, W or O"
 			write (ttyout, 222)   # example
 			tfmode(ibd)=0
 			ierw = 1
@@ -112,7 +118,7 @@
 		if (il == ihcl) {
 			tfcont(ibd) = 1   # linear continuum
 		} else if (il == ihcc) {
-			tfcont(ibd) = 1   # curved continuum
+			tfcont(ibd) = 2   # curved continuum
 		} else {
 			call what(i)
 			write (*,*) "Error: input for tetracorder feature continuum confused.  Expecting L or C"
@@ -190,6 +196,8 @@
 
 		if (tfmode(ibd) == 2) {   # get wavelengths
 
+		    if (tfcont(ibd) == 1) {    # linear continuum
+
 			# left continuum wavelengths
 			call wjfren (i, x, il)
 			if (x > 0.0 ) {
@@ -234,6 +242,98 @@
 				return
 			}
 
+		    }
+
+		    if (tfcont(ibd) == 2) {    # curved continuum
+			# left curved continuum wavelengths
+			call wjfren (i, x, il)
+			if (x > 0.0 ) {
+				tleftcwave(1,ibd) = x
+			} else {
+				call what(i)
+				write (*,*) 'Error: left continuum wavelength out of range'
+				write (ttyout, 222)   # example
+				ierw = 1
+				return
+			}
+			call wjfren (i, x, il)
+			if (x > 0.0 ) {
+				tleftcwave(2,ibd) = x
+			} else {
+				call what(i)
+				write (*,*) 'Error: left continuum wavelength out of range'
+				write (ttyout, 222)   # example
+				ierw = 1
+				return
+			}
+
+			# left continuum wavelengths
+			call wjfren (i, x, il)
+			if (x > 0.0 ) {
+				tleftwave(1,ibd) = x
+			} else {
+				call what(i)
+				write (*,*) 'Error: left continuum wavelength out of range'
+				write (ttyout, 222)   # example
+				ierw = 1
+				return
+			}
+			call wjfren (i, x, il)
+			if (x > 0.0 ) {
+				tleftwave(2,ibd) = x
+			} else {
+				call what(i)
+				write (*,*) 'Error: left continuum wavelength out of range'
+				write (ttyout, 222)   # example
+				ierw = 1
+				return
+			}
+
+			# right continuum wave
+			call wjfren (i, x, il)
+			if (x > 0.0 ) {
+				trightwave(1,ibd) = x
+			} else {
+				write (*,*) 'Error: right continuum wavelength out of range'
+				write (ttyout, 222)   # example
+				call what(i)
+				ierw = 1
+				return
+			}
+			call wjfren (i, x, il)
+			if (x > 0.0 ) {
+				trightwave(2,ibd) = x
+			} else {
+				call what(i)
+				write (*,*) 'Error: right continuum wavelength out of range'
+				write (ttyout, 222)   # example
+				ierw = 1
+				return
+			}
+
+			# right curved continuum wave
+			call wjfren (i, x, il)
+			if (x > 0.0 ) {
+				trightcwave(1,ibd) = x
+			} else {
+				write (*,*) 'Error: right curved continuum wavelength out of range'
+				write (ttyout, 222)   # example
+				call what(i)
+				ierw = 1
+				return
+			}
+			call wjfren (i, x, il)
+			if (x > 0.0 ) {
+				trightcwave(2,ibd) = x
+			} else {
+				call what(i)
+				write (*,*) 'Error: right curved continuum wavelength out of range'
+				write (ttyout, 222)   # example
+				ierw = 1
+				return
+			}
+		    }
+
 		}
 		tetonoff(ibd)=1  # band depth calculation on
 
@@ -243,6 +343,8 @@
 		#}
 
 		tetfline(ibd) = iopcon(1:80)   # the full user input line
+
+		write (*,*) "DEBUG gettetf tetfline(",ibd,") = ",tetfline(ibd)
 
 	}
 

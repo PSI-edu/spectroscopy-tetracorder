@@ -1527,6 +1527,11 @@ subroutine bdanal(lbnd,diff,xmax,xmin,wavshift)
 		call movabs(0,309*2)
 		call sb(0)
 
+		write(ttyout,2101) chan1, chan2,xdata(chan1), xdata(chan2), " "  # also write results to terminal
+		write(ttyout,2102) conldivr, conrdivl,  " "        # also write results to terminal
+		write(ttyout,2103) lcbbrc, rcbblc, " "             # also write results to terminal
+		write(ttyout,230)bndctr,bndwth,bnddep,asymet, " "  # also write results to terminal
+
 		call crtin 
 		atemp=iopcon
        		colpos=1

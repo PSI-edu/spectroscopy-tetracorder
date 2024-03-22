@@ -598,6 +598,9 @@
 				for (itf=1; itf<=imaxtet; itf=itf+1) {
 					if (tfmode(itf) > 0) {
 
+					    # write (*,*) "DEBUG: tfmode",itf,"= ",tfmode(itf)
+
+					    if (tfcont(itf) == 1) {            # linear
 						write (ttyout,1238) itf,
 							tfeatname(itf),
 							tetfna(itf),
@@ -607,10 +610,35 @@
 							trightwave(1,itf),
 							trightwave(2,itf),
 							tbdepth(itf)
+
+					    } else if (tfcont(itf) == 2) {              # curved
+						write (ttyout,1239) itf,
+							tfeatname(itf),
+							tetfna(itf),
+							tetfnc(itf),
+							tleftcwave(1,itf),
+							tleftcwave(2,itf),
+							tleftwave(1,itf),
+							tleftwave(2,itf),
+							trightwave(1,itf),
+							trightwave(2,itf),
+							trightcwave(1,itf),
+							trightcwave(2,itf),
+							tbdepth(itf)
+					    } else {
+
+						write (ttyout,*) "Error: tetracorder continuum mode, not L or C"
+						write (ttyout,*) "        tfcont(",itf,") = ", tfcont(itf)
+						call what(0)
+					    }
 					}
 				}
-1238				format(1x,'tf', i1,'=',1x,a,1x, a4,1x, a4,
-					f7.4,1x,f7.4,1x,f7.4,1x,f7.4,1x, f8.4)
+1238	format(1x,'tf', i1,'=',1x,a,1x, a4,1x, a4,
+			f7.4,1x,f7.4,1x,f7.4,1x,f7.4,1x, f8.4)
+1239	format(1x,'tf', i1,'=',1x,a,1x, a4,1x, a4,
+		f7.4,1x,f7.4,1x,f7.4,1x,f7.4,1x,f7.4,
+                  1x,f7.4,1x,f7.4,1x,f7.4,1x, f8.4)
+
 				go to 1000
 			}
 

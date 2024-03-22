@@ -52,7 +52,7 @@
 		call serase(0,636,1022,696)
 		call movabs (0,676)
 		call sb(0)
-		write (ttyout, 40) ixx,iyy
+		write (ttyout, 40) ixx,iyy   # also write results to terminal
 		call movabs (ixx, iyy)
 		ier = -1
 		return
@@ -68,6 +68,11 @@
 	call gwrite(outline)
 	call movabs (ixx,iyy)
 	call sb(0)
+
+	write (ttyout, *) " "
+	write (ttyout, 50) ixx,iyy, " "                              # also write results to terminal pixel coordinates
+	write (ttyout, 51) xpos,ypos, " "                            # also write results to terminal data coordinates
+	write (ttyout, 52)  imatch,xdata(imatch),ydata(imatch), " "  # also write results to terminal closest channel
 
 #RED Added commas just before each i4 and after last i4 in 40 format statement
 40	format(12x,'CANNOT FIND A CLOSE CHANNEL (',i4,',',i4,')')

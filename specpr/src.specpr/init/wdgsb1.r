@@ -132,7 +132,8 @@
 	# recl = maxchn *4
 	if (maxchn < 4852) {
 		write (ttyout,*) "wdgsb1: maxchn=", maxchn
-		call crtin (i,x,IL)
+		# was in 9/2022: call crtin (i,x,IL)
+		call crtin
 	}
 	irecl=maxchn*4
 	open(addlun,status='scratch',access='direct',recl=irecl,form='unformatted', iostat=ier)
@@ -245,7 +246,7 @@
 30  format(1x,72('*'),/,
 	1x,21('*'),' SPECtrum Processing Routines ',21('*'),/,
 	1x,72('*'),/,
-	1x,18('*'), ' Current program version: 06/20/2022 ',19('*'))
+	1x,18('*'), ' Current program version: 01/26/2023 ',19('*'))
 
 31 format (1x,29('*'),'            ',31('*'))
 

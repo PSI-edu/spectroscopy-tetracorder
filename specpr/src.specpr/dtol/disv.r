@@ -197,10 +197,14 @@
 # tf1= Clinochlore   f1a DLw 2.189   2.218   2.404   2.432 
 # tf2= Clinochlore   f2a DLw 2.189   2.218   2.267   2.287 
 # tf3= Clinochlore   f3a WLw 0.512   0.542   1.696   1.726 
+# curved continuaa
+# tf1= test1        f1a DCw 1.785 1.815  1.845 1.870  1.925 1.955  1.985 2.015
 
 	for (itf=1; itf<=imaxtet; itf=itf+1) {
-		if (tfmode(itf) > 0) {
 
+		if (tfmode(itf) > 0) {            # 0 means undefined
+
+		    if (tfcont(itf) == 1) {            # linear
 			write (ttyout,1238) itf,
 				tfeatname(itf),
 				tetfna(itf),
@@ -210,10 +214,36 @@
 				trightwave(1,itf),
 				trightwave(2,itf),
 				tbdepth(itf)
+
+		    } else if (tfcont(itf) == 2) {              # curved
+			write (ttyout,1239) itf,
+				tfeatname(itf),
+				tetfna(itf),
+				tetfnc(itf),
+				tleftcwave(1,itf),
+				tleftcwave(2,itf),
+				tleftwave(1,itf),
+				tleftwave(2,itf),
+				trightwave(1,itf),
+				trightwave(2,itf),
+				trightcwave(1,itf),
+				trightcwave(2,itf),
+				tbdepth(itf)
+		    } else {
+
+			write (ttyout,*) "Error: tetracorder continuum mode, not L or C"
+			write (ttyout,*) "        tfcont(",itf,") = ", tfcont(itf)
+			call what(0)
+		    }
 		}
 	}
 1238	format(1x,'tf', i1,'=',1x,a,1x, a4,1x, a4,
 		f7.4,1x,f7.4,1x,f7.4,1x,f7.4,1x, f8.4)
+
+1239	format(1x,'tf', i1,'=',1x,a,1x, a4,1x, a4,
+		f7.4,1x,f7.4,1x,f7.4,1x,f7.4,1x,f7.4,
+                  1x,f7.4,1x,f7.4,1x,f7.4,1x, f8.4)
+
 
 
 #  finally read the user input:
@@ -230,7 +260,6 @@
 
 #       check if overlay defined, form= ov1= v23 V22 color
 #       added 12/22/2009
-
 	#write (*,*) "DEBUG: overlay point 1"
 	if (i < 73 && il == iho && iopcon(i:i)=='v') {
 		iero = 0
@@ -418,6 +447,11 @@
 
 #	tf1= Snow.H2O f1a DLw 0.958   0.986   1.080   1.110  ct 0.08
 #	tf2= Snow.H2O f2a DLw 1.150   1.178   1.315   1.345  ct 0.08 lct/rct> 0.9 1.1
+
+# curved continuaa
+
+# tf1= test1    f1a DCw 1.785 1.815  1.845 1.870  1.925 1.955  1.985 2.015
+
 
 
 	#write (*,*) "DEBUG: checking for tetracorder feature definition"
