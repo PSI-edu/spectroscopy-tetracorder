@@ -53,6 +53,22 @@ fortran, ratfor, and C.  Support programs are mostly davinci and shell scripts, 
 some fortran/ratfor and C programs.  HTML is documentation in the spectral libraries.
 Spectral libraries are binary data.
 
+Each Tetracorder expert system is a numbered match to the same number
+source code.  For example, expert system files tetracorder5.27a2.cmds,
+tetracorder5.27a.cmds, tetracorder5.27c.cmds, and tetracorder5.27e.cmds
+in the tetracorder.cmds directory go with the Tetracorder 5.27 source
+code and both these are frozen except for cosmetic chages that to
+no affect results (e.g. spelling or printing more infornatio to the
+rerminal).  If expert system content changes, a new file name with a
+new directory will be added (for exampel after tetracorder5.27e.cmds
+would be tetracorder5.27f.cmds).  Any code changes that do not parse
+the expert system will result in a new series, e.g.5.28, thus terracorder5.28
+and expert system, e.g. tetracorder5.28a.cmds.
+
+Spectral library additions will only be additions and are fully backward
+compatible.
+
+
 # Background
 
 Detection and mapping of minerals, vegetation species, chemicals,
