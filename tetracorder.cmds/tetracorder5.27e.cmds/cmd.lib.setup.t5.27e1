@@ -445,7 +445,7 @@
 \#                            Sudoite                        Mg2(Al,Fe)3Si3AlO10(OH)8
 \#  
 \#  other: 
-\#    2                       chlorite-skarn 06, 07 BR93-22B TITLE=Chlorite_Serpentine BR93-22B
+\#    2                       chlorite-skarn 06, 07 BR93-22B       Chlorite_Serpentine BR93-22B
 \#  
 \# note: Chamosite was measured at USGS, but not in library (GDS183)
 \#       But, Thuringite is a ferroan variety of Chamosite
@@ -577,6 +577,13 @@
 \######                                                             ##############
 \#################################################################################
 \###### group 0:  catch for other declared groups                   ##############
+\######           Common materials analyzed in other declared groups #############
+\######           For example vegetation, water, ice and snow       ##############
+\######           need to be analyzed in multiple groups.           ##############
+\######           When these materials are found with strong        ##############
+\######           spectral signatures, materials in other groups    ##############
+\######           (e.g. surface minerals) can’t be detected.        ##############
+\######                                                             ##############
 \###### group 1:  electronic absorptions UV to 1-micron region      ##############
 \###### group 2:  2 to 2.5-micron region narrow                     ##############
 \###### group 3:  vegetation detection                              ##############
@@ -590,9 +597,9 @@
 \###### group 11: 3.5-micron region linear continua                 ##############
 \###### group 12:                                                   ##############
 \###### group 13: 1.3-1.4 micron OH narrow                          ##############
-\###### group 14: 1.4-1.5 micron OH                                 ##############
-\###### group 15: 1.5 micron OH                                     ##############
-\###### group 16: 1.5-1.6 micron OH                                 ##############
+\###### group 14: 1.4-1.5 micron OH narrow                          ##############
+\###### group 15: 1.5 micron OH     narrow                          ##############
+\###### group 16: 1.5-1.6 micron OH narrow                          ##############
 \###### group 17: 1.7 microns CH and water    Future                ##############
 \###### group 18: 1.8 micron region                                 ##############
 \###### group 19: 1.9-2 micron water and ice                        ##############
@@ -7547,7 +7554,7 @@ define library records
    a LARGE:  [splib06]  xxxx d         \# file ID, rec no. larger_chans_future
 endlibraryrecords
 \#=-=-=-=-=-=-=-=-=-=-=- TITLE=Muscovite GDS113 Ruby >37um  W1R1Hb
-\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Muscovite GDS113 Ruby        W1R1Bb   splib06  3348
+\#=-=-=-=-=-=-=-=-=-=-=-       Muscovite GDS113 Ruby        W1R1Bb   splib06  3348
 [DELETPTS]
 micagroup muscovite medhigh Al GDS113 Ruby    \# output title
 
@@ -17703,8 +17710,8 @@ define library records
    a MEDIUM: [splib06]  xxxx d         \# file ID, rec no. 2172 to 4852 channels
    a LARGE:  [splib06]  xxxx d         \# file ID, rec no. larger_chans_future
 endlibraryrecords
-\#=-=-=-=-=-=-= -=-=-=-=- TITLE=Muscovite GDS113 Ruby s06fs00a=bbb
-\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Muscovite GDS113 Ruby s06mm09c=b  was splib06 3348
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Muscovite GDS113 Ruby s06fs00a=bbb
+\#=-=-=-=-=-=-=-=-=-=-=-       Muscovite GDS113 Ruby s06mm09c=b  was splib06 3348
 \#                  above  previous to 5.2e1   but this did not include 2.8 um region
 [DELETPTS]
 OH 2.75um Muscovite GDS113                 \# output title
@@ -21574,7 +21581,7 @@ define library records
    a LARGE:  [splib06]  xxxx d         \# file ID, rec no. larger_chans_future
 endlibraryrecords
 \#=-=-=-=-=-=-=-=-=-=-=- TITLE=Muscovite GDS113 Ruby >37um  W1R1Hb
-\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Muscovite GDS113 Ruby        W1R1Bb   splib06  3348
+\#=-=-=-=-=-=-=-=-=-=-=-       Muscovite GDS113 Ruby        W1R1Bb   splib06  3348
 [DELETPTS]
 muscovite GDS113                 \# output title
 
