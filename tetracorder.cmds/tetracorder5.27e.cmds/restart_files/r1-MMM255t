@@ -3,18 +3,18 @@ SPECPR_Restart=2.00      # Restart Version
 # file names
 #
 ivfl=/dev/null                                                                       
-iwfl=/sl1/usgs/rlib06/r06fs00a                                                       
+iwfl=/sl1/usgs/rlib06/r06mm10t                                                       
 idfl=/dev/null                                                                       
-iufl=/dev/null                                                                       
-iyfl=/sl1/usgs/library06.conv/s06fs00a                                             
+iufl=/dev/null
+iyfl=/sl1/usgs/library06.conv/s06mm10t                                             
 isfl=/dev/null                                                                       
 ilfl=spoolfile                                                                       
-irfl=r1-asdfs                                                                        
+irfl=r1-emitc                                                                        
 #
 # protection number for open files (v,w,d,u,y,s)
 #
 iprtv=             0  # device protection v
-iprtw=          -731  # device protection w
+iprtw=          -557  # device protection w
 iprtd=             0  # device protection d
 iprtu=         -7356  # device protection u
 iprty=         -8219  # device protection y
@@ -23,17 +23,17 @@ iprts=             0  # device protection s
 # short 8 character names associated with file device letters
 #
 isavt=      *unasnd*  # file device letter v
-iwdgt=      r06fs00a  # file device letter w
+iwdgt=      r06mm10t  # file device letter w
 iwrkt=      *unasnd*  # file device letter d
-inmu=       spd0488   # file device letter u
-inmy=       s06fs00a  # file device letter y
+inmu=       *unasnd*  # file device letter u
+inmy=       s06mm10t  # file device letter y
 #
 # plot control values (real number format: ex. 0.23E+01)
 #
-wmina=  0.200000E+01  # plot min wavelength
-wmaxa=  0.250000E+01  # plot max wavelength
-bbnd=   0.144040E+00  # plot min reflectance
-ubnd=   0.617310E+00  # plot max reflectance
+wmina=  0.350000E+00  # plot min wavelength
+wmaxa=  0.305000E+01  # plot max wavelength
+bbnd=   0.000000E+00  # plot min reflectance
+ubnd=   0.105000E+01  # plot max reflectance
 #
 istarp(1)=         #  # star pack letter
 istarp(2)=         0  # star pack rec. no.
@@ -42,7 +42,7 @@ alat=      0.0000000  # observatory lat in rads
 ra=        0.0000000  # right ascension in radians
 dec=       0.0000000  # declination in radians
 ha=        0.0000000  # hour angle in radians
-airmas=    20.000000  # air mass of object
+airmas=    0.0000000  # air mass of object
 iwch=              0  # wavelength calib shift
 #
 # record pointers
@@ -59,7 +59,7 @@ ilpt=              1  # line printer
 icdr=              0  # card reader
 ipp=               1  # printer/plotter
 #
-nchans=         2151  # num wave chans
+nchans=          255  # num wave chans
 ibnrm1=           30  # band anal
 ibnrm2=           38  # band anal
 nchsav=            0  # num chan save
@@ -80,7 +80,7 @@ iother(9)=         0  #
 #
 cfile=#                                         #
 #
-igrmod=           52  # graphics mode
+igrmod=           51  # graphics mode
 #
 itrol(1)=          Y  # wavelength file id
 itrol(2)=          6  # record in use
