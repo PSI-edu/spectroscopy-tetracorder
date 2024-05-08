@@ -1,6 +1,6 @@
 #!/bin/sh
 
-libfile='cmd.lib.setup.t5.27c1'
+libfile='cmd.lib.setup.t5.27e1'
 
 echo "$libfile"
 
