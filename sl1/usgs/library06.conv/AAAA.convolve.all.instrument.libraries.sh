@@ -76,7 +76,11 @@
 
             ./mak.convol.library  s06mm09  a  260   MMM      12  # 2009 targeted waves
             ./mak.convol.library  s06mm09  c   85   MMM      12  # 2009 global waves
+            ./mak.convol.library  s06mm10  t  255   MMM255t  12  # 2010 255ch targetd mode MMM
 
+# NIRS3 on Hayabusa2 to the asteroid Ryugu, 2018+ mission
+
+            ./mak.convol.library  s06hyb2  a   76   HYB2ryug 12  # Hayabusa2 to the asteroid Ryugu
 
 # PRISMA ESA Earthorbiter:
             ./mak.convol.library  s06pr01  a  238   PRISMA1a 12  # 2021 PRISMA

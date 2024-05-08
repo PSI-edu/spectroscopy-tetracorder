@@ -144,7 +144,7 @@ STEP 5 details: run make.new.convol.library.start.file
 
         wave_title = title of the wavelengths specpr record
 
-        resol = title of the resolution specpr record
+        resol_title = title of the resolution specpr record
 
         NOTE: titles MUST be in quotes
 
@@ -157,6 +157,11 @@ STEP 5 details: run make.new.convol.library.start.file
               'Convolved AVIRIS 2018  224 ch library   '  \
               'Wavelengths in microns 224 ch AVIRIS18a ' \
               'Resolution  in microns 224 ch AVIRIS18a '
+
+	./make.new.convol.library.start.file  s06mm10t 255 \
+               'Convolved MMM255t targeted 255ch library'  \
+               'Wavelengths in microns 255 ch    MMM255t'  \
+               'Resolution  in microns 255 ch    MMM255t'  \
 
       #                 1111111111222222222233333333334
       #        1234567890123456789012345678901234567890
