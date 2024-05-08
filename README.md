@@ -230,7 +230,7 @@ the EMIT team and documented in Clark et al, 2023.  Model 4 is being
 adopted by the EMIT team moving forward with the reprocessing of EMIT
 starting in December.
 
-lark, R. N., Swayze, G. A., Livo, K. E., Brodrick, P., Noe Dobrea, E.,
+Clark, R. N., Swayze, G. A., Livo, K. E., Brodrick, P., Noe Dobrea, E.,
 Vijayarangan, S., Green, R.  O., Wettergreen, D., Garza, A. C., Hendrix,
 A., García-Pando, C. P., Pearson, N., Lane, M., González- Romero, A.,
 Querol, X. and the EMIT and TREX teams. 2023, Imaging spectroscopy: Earth
