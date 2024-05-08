@@ -561,11 +561,15 @@ EOI
 		echo "Making base images from cube $cube"    `date`
 		echo "         Cube scale factor = $scalefactor"
 
+		scalefactor2=$scalefactor
+
 		# The base images are defined in AAA.info/color-{dataset}
 		# e.g. AAA.info/color-emit_c:
 		# BASE     23 23 23  base-image.jpg    # base grayscale image
 		# COLOR1   38 23 11  color-visRGB.jpg  # visible color channels
 		# COLOR2  246 85 18  color-vir.jpg     # false color vis-IR
+		# MAXREFL  0.02                        # scale 255 DN to this reflectance level
+
 
 		if [ ! -d "base-image" ]
 		then
@@ -582,6 +586,31 @@ EOI
 		if [ -f "$basefile" ]
 		then
 			echo " "
+
+			MAXREFL="1.0"
+			maxr=`grep MAXREFL $basefile`
+			if [ -n "$maxr" ]
+			then
+				maxref=`echo $maxr | awk '{ print $2 }'`
+				if [ -n "$maxref" ]
+				then
+					MAXREFL=$maxref
+				else
+					MAXREFL="1.0"
+				fi
+
+			else
+				MAXREFL="1.0"
+			fi
+
+			# modified scale factor if we want darker surfaces shown lighter
+			scalefactor2=`echo "$scalefactor  $MAXREFL" | awk '{ print $1 / $2 }'`
+
+			echo "Maximum reflectance for bas and color images = $MAXREFL"
+			echo "cube scale factor to reflectance = $scalefactor"
+			echo "scale factor from cube to output image with amx reflectance = $MAXREFL is now: $scalefactor2"
+
+			echo " "
 			BASE=`grep BASE $basefile`
 			if [ -n "$BASE" ]
 			then
@@ -590,8 +619,8 @@ EOI
 				ch2=`echo $BASE | awk '{ print $3 }'`
 				ch3=`echo $BASE | awk '{ print $4 }'`
 				grayofile=`echo $BASE | awk '{ print $5 }'`
-				echo "davinci.make.rgb.image.from.cube $cube $scalefactor  $ch1 $ch2 $ch3  base-image/$grayofile"
-				davinci.make.rgb.image.from.cube $cube $scalefactor  $ch1 $ch2 $ch3  base-image/$grayofile
+				echo "davinci.make.rgb.image.from.cube $cube $scalefactor2  $ch1 $ch2 $ch3  base-image/$grayofile"
+				davinci.make.rgb.image.from.cube $cube $scalefactor2  $ch1 $ch2 $ch3  base-image/$grayofile
 				ls -l base-image/$grayofile
 			else
 				echo "NOT FOUND: BASE: $BASE"
@@ -606,8 +635,8 @@ EOI
 				ch2=`echo $COLOR1 | awk '{ print $3 }'`
 				ch3=`echo $COLOR1 | awk '{ print $4 }'`
 				color1ofile=`echo $COLOR1 | awk '{ print $5 }'`
-				echo "davinci.make.rgb.image.from.cube $cube $scalefactor  $ch1 $ch2 $ch3  base-image/$color1ofile"
-				davinci.make.rgb.image.from.cube $cube $scalefactor  $ch1 $ch2 $ch3  base-image/$color1ofile
+				echo "davinci.make.rgb.image.from.cube $cube $scalefactor2  $ch1 $ch2 $ch3  base-image/$color1ofile"
+				davinci.make.rgb.image.from.cube $cube $scalefactor2  $ch1 $ch2 $ch3  base-image/$color1ofile
 				ls -l base-image/$color1ofile
 			else
 				echo "NOT FOUND: COLOR1: $COLOR1"
@@ -622,8 +651,8 @@ EOI
 				ch2=`echo $COLOR2 | awk '{ print $3 }'`
 				ch3=`echo $COLOR2 | awk '{ print $4 }'`
 				color2ofile=`echo $COLOR2 | awk '{ print $5 }'`
-				echo "davinci.make.rgb.image.from.cube $cube $scalefactor  $ch1 $ch2 $ch3  base-image/$color2ofile"
-				davinci.make.rgb.image.from.cube $cube $scalefactor  $ch1 $ch2 $ch3  base-image/$color2ofile
+				echo "davinci.make.rgb.image.from.cube $cube $scalefactor2  $ch1 $ch2 $ch3  base-image/$color2ofile"
+				davinci.make.rgb.image.from.cube $cube $scalefactor2  $ch1 $ch2 $ch3  base-image/$color2ofile
 				ls -l base-image/$color2ofile
 			else
 				echo "NOT FOUND: COLOR2: $COLOR2"
