@@ -141,7 +141,8 @@ a=a+ read_an_image("group.2um/calcite.33+kaol.33+mus-AMXr2.fd.gif")
 
 
 # other carbnonates             orange
-c=c_blue
+#  NOTE error: was set to: c=c_blue previous to 5/30/2024
+c=c_orange
 a=   read_an_image("group.2um/carbonate_dolo+.5ca-mont.fd.gif")
 a=a+ read_an_image("group.2um/carbonate_dolomite.5+Na-mont.5.fd.gif")
 a=a+ read_an_image("group.2um/carbonate_dolomite.fd.gif")
@@ -164,8 +165,9 @@ a=   read_an_image("group.2um/sulfate_gypsum.fd.gif")
      a=0   # be sure array is cleared
 
 
-# gypsum mixtures              army gree
-c=c_paleseagreen
+# gypsum mixtures              c_armygreen
+#  NOTE error: was set to: c=c_paleseagreen previous to 5/30/2024
+c=c_armygreen
 a=   read_an_image("group.2um/sulfate-mix_gyp+jar+musc.amix.fd.gif")
 a=a+ read_an_image("group.2um/sulfate-mix_gyp+jar+musc+dick.amix.fd.gif")
 a=a+ read_an_image("group.2um/sulfate-mix_gypsum+jar+illite.intmix.fd.gif")
@@ -183,7 +185,6 @@ a=a+ read_an_image("group.2um/alunite.5+kaol.5.fd.gif")
 a=a+ read_an_image("group.2um/alunite.5+musc.5.fd.gif")
 a=a+ read_an_image("group.2um/sulfate_alunite_k.all.fd.gif")
 a=a+ read_an_image("group.2um/sulfate_alunite_na.all.fd.gif")
-a=a+ read_an_image("group.2um/alunite+kaolinite.muscovite.added.fd.gif")
 a=a+ read_an_image("group.2um/alunite+musc+pyroph.fd.gif")
 
      xcolor= xcolor + a*( c /255.)
@@ -236,8 +237,6 @@ a=a+ read_an_image("group.2um/kaolin.3+smect.7.fd.gif")
 a=a+ read_an_image("group.2um/kaolin.5+muscov.medAl.fd.gif")
 a=a+ read_an_image("group.2um/kaolin.5+muscov.medhighAl.fd.gif")
 a=a+ read_an_image("group.2um/kaolin.5+smect.5.fd.gif")
-a=a+ read_an_image("group.2um/kaolinite.3+.5+smectite.5+.7.added.fd.gif")
-a=a+ read_an_image("group.2um/kaolinite+muscovite.added.fd.gif")
 a=a+ read_an_image("group.2um/kaolin+musc.intimat.fd.gif")
 
      xcolor= xcolor + a*( c /255.)
