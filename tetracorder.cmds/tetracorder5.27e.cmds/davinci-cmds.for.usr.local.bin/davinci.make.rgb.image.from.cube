@@ -3,22 +3,22 @@
 ###########################  was:  #!/usr/local/bin/davinci -f
 
 
-verbose=0
+#verbose=0
 ###############################################################################
 #
 # Davinci Program to extract 3 channels from a cube, histogram stretch and make an RGB image
 #
 # Roger N. Clark  9/14/2022
 #
-#                                      1      2          3     4    5       6
-# davinci.make.rgb.image.from.cube   cube  scaletorefl chan1 chan2 chan3 outputimagejpg
+#                                      1      2          3     4    5       6                  7
+# davinci.make.rgb.image.from.cube   cube  scaletorefl chan1 chan2 chan3 outputimagejpg  [outputimagepng]
 #
 # if chan1 = chan2 = chan3 thaen output a single band gray image
 #
 
 if ( $argc < 6 ) {
 
-        printf ("davinci.make.rgb.image.from.cube   cube  scaletorefl chan1 chan2 chan3 outputimagejpg\n")
+        printf ("davinci.make.rgb.image.from.cube   cube  scaletorefl chan1 chan2 chan3 outputimagejpg  [outputimagepng]\n")
         exit(1)
 }
 
@@ -31,6 +31,10 @@ chan2 = atoi($4)
 chan3 = atoi($5)
 
 outfile = $6
+
+if ( $argc > 6 ) {
+	outfilepng  = $7
+}	
 
 # defaults (need to add command line args to change)
 
@@ -189,3 +193,7 @@ if ( chan1 == chan2 && chan2 == chan3 ) {   # make single band gray image
 }
 
 write (rgb, filename=outfile, type=jpg)
+
+if ( $argc > 6 ) {
+	write (rgb, filename=outfilepng, type=png)
+}

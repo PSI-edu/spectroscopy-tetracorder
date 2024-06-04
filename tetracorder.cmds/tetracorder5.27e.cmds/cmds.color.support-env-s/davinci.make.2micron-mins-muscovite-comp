@@ -100,6 +100,7 @@ a = read_an_image("group.2um/carbonate_calcite.fd.gif")    # change this to read
 # muscovite composition       red
 c=c_red
 a=   read_an_image("group.2um/micagrp_muscovite-medhigh-Al.fd.gif")
+a=a+ read_an_image("group.2um/kaolin.5+muscov.medhighAl.fd.gif")
 
      xcolor= xcolor + a*( c /255.)
      a=0   # be sure array is cleared
@@ -108,6 +109,7 @@ a=   read_an_image("group.2um/micagrp_muscovite-medhigh-Al.fd.gif")
 # muscovite composition       green
 c=c_green
 a=   read_an_image("group.2um/micagrp_muscovite-med-Al.fd.gif")
+a=a+ read_an_image("group.2um/kaolin.5+muscov.medAl.fd.gif")
 
      xcolor= xcolor + a*( c /255.)
      a=0   # be sure array is cleared

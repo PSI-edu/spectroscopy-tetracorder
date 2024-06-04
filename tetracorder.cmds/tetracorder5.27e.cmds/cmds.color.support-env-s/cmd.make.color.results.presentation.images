@@ -307,6 +307,24 @@ do
 
 	########################################################################################
 	#   color.result name                                color.keys  key file
+	# _2micron-minerals-b4.png                            key_2um-mins-b4-layout-1200w.png   
+
+	a="_2micron-mins-detail2.png"
+	key="key_2micron-mins-detail2-layout-1200w.png"
+	if [ `echo $i | grep $a` ]
+	then
+		echo " "
+		echo "########################    $a    ###########################"
+
+		echo "scaling image $i  by $imscale" 
+		makesmallimage
+
+		makesmallkey
+		catsmallimage
+	fi
+
+	########################################################################################
+	#   color.result name                                color.keys  key file
 	# _hematite+goethite.grain.size-a.png                 key_hematite+goethite.grain.size.a-wide.png
 
 	a="_hematite+goethite.grain.size-a.png"

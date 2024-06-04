@@ -259,6 +259,35 @@ cmds.color.support/davinci.cat.colormap+key-below    $cm  $ck $out
 
 
 echo " "  ###########################################################################
+echo "########################## color-results_2micron-mins-detail2   ################"
+
+j=${i}_color-results_2micron-minerals-detail2.png
+if [ ! -f "color.results/$j" ]
+then
+   if [ "$NCPU" -lt "$TETNCPU" ]  # can do more in parallel
+   then
+	# note assemblying correctly--need to debug
+	echo "cmds.color.support/davinci.make.2micron-mins-detail2.a  $gbase ${j}  parallel NCPU=$NCPU max=$TETNCPU"
+	cmds.color.support/davinci.make.2micron-mins-detail2.a $gbase ${j} &
+   else
+	echo "cmds.color.support/davinci.make.2micron-mins-detail2.a  $gbase ${j}"
+	cmds.color.support/davinci.make.2micron-mins-detail2.a  $gbase ${j}
+   fi
+else
+	echo "$j ALREADY EXISTS"
+fi
+
+	wait
+	mv $j color.results
+
+# color map + key pairs:   2-microns detail2 results, var = j
+cm=color.results/$j
+ck="color.keys/key_2micron-mins-detail2-layout-1200w.png"
+out="color.results+labels/${i}_color-results_2micron-minerals-detail2+labels.png"
+cmds.color.support/davinci.cat.colormap+key-below    $cm  $ck $out
+
+
+echo " "  ###########################################################################
 echo "########################## color-results_vegetation-cover  ####################"
 
 	#### 2019/04: not completed

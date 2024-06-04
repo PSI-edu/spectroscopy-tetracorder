@@ -1,0 +1,67 @@
+#!/usr/bin/env -S davinci -f  
+####!/usr/local/bin/davinci -f
+
+###########################  was:  #!/usr/local/bin/davinci -f
+
+
+# davinci.mineral-map-overlay-on-gray-image   gray-image.png  mineral-map-image.png  outputimage.png
+
+if ( $argc <  3 )  {
+	printf ("davinci.mineral-map-overlay-on-gray-image   gray-image.png  mineral-map-image.png  outputimage.png\n")
+	printf ("exit 1\n")
+	exit (1)
+}
+
+baseimage = $1    # example:   base-image/base-image.png
+
+g = read(filename=baseimage)
+
+mineralimage = $2  # example:  color.results/cuprite95_color-results_2micron-minerals-detail2.png
+
+a = read(filename=mineralimage)
+
+overlayimage = $3  # example: color.results.overlays/cuprite95_color-results_2micron-minerals-detail2-overlay-on-bw.png
+
+gdim = dim(g)
+gx   = gdim[1,,]
+gy   = gdim[2,,]
+gz   = gdim[3,,]
+
+a=a[1:gx, 1:gy, ]   # crop out mineral map in a side-by-side image
+
+a = float(a) / 255.0
+g = float(g) / 255.0
+
+b = a * 0.0
+
+b[,,1] = g
+b[,,2] = g
+b[,,3] = g    # now b is a 3 band gray scel image
+
+# blending modes math
+# https://photoblogstop.com/photoshop/photoshop-blend-modes-explained/
+
+# overlay mode: 50% screen mode + 50% multiply (but 1.0 multiply comes closer to visually better)
+# a = top layer,  b = bottom layer
+# Screen Math: 1−(1−a)×(1−b)
+# multiply math: a×b
+# best if the resulting blend is 75%
+
+# now make overlay factor  (not needed with the above overlay mode)
+# a3 = a[,,1]
+# a3[ where( a[,,2] > a3 ) ] = a[,,2]
+# a3[ where( a[,,3] > a3 ) ] = a[,,3]    # now ave max of 3 bands into one band
+
+overscale = 1.00
+
+c = 0.5 * (1.0 - (1.0 - a) * (1.0 - b)) + 1.0 * (a * b)
+
+c = c * overscale + (1.0 - overscale) * b
+
+printf ("moment of output image:\n")
+moment (c)
+
+c = byte(c * 255.0 + 0.5)   # 8-bit output image
+
+write (c, filename=overlayimage, type=png)
+

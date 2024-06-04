@@ -71,7 +71,6 @@ e=a1+a2+a3+a4+a5   # kaolinite group
 	e=cat(e,q,axis=z)  # make into 3-band image
 
 a1=read(filename="group.2um/alunite.5+kaol.5.fd.gif")
-a2=read(filename="group.2um/alunite+kaolinite.muscovite.added.fd.gif")
 a3=read(filename="group.2um/Kalun+kaol.intmx.fd.gif")
 a4=read(filename="group.2um/kaol.75+alun.25.fd.gif")
 a5=read(filename="group.2um/Na-alun+kaol.intmx.fd.gif")
@@ -105,7 +104,6 @@ h=a1+a2+a3+a4+a5+a6+a7+a8+a9+aa    # Na-alunite
 	h=cat(h,q,axis=z)  # make into 3-band image
 
 a1=read(filename="group.2um/alunite.5+musc.5.fd.gif")
-a2=read(filename="group.2um/alunite+kaolinite.muscovite.added.fd.gif")
 a3=read(filename="group.2um/alunite+musc+pyroph.fd.gif")
 a4=read(filename="group.2um/alunite+pyrophyl.fd.gif")
 a5=read(filename="group.2um/Kalun+kaol.intmx.fd.gif")
@@ -119,8 +117,6 @@ a3=read(filename="group.2um/kaolin.3+smect.7.fd.gif")
 a4=read(filename="group.2um/kaolin.5+muscov.medAl.fd.gif")
 a5=read(filename="group.2um/kaolin.5+muscov.medhighAl.fd.gif")
 a6=read(filename="group.2um/kaolin.5+smect.5.fd.gif")
-a7=read(filename="group.2um/kaolinite.3+.5+smectite.5+.7.added.fd.gif")
-a8=read(filename="group.2um/kaolinite+muscovite.added.fd.gif")
 a9=read(filename="group.2um/kaolin+musc.intimat.fd.gif")
 a10=read(filename="group.2um/calcite.33+kaol.33+mus-AMXr2.fd.gif")
 j=a1+a2+a3+a4+a5+a6+a7+a8+a9+a10   # kaolin+other

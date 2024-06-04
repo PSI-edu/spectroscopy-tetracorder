@@ -619,9 +619,10 @@ EOI
 				ch2=`echo $BASE | awk '{ print $3 }'`
 				ch3=`echo $BASE | awk '{ print $4 }'`
 				grayofile=`echo $BASE | awk '{ print $5 }'`
-				echo "davinci.make.rgb.image.from.cube $cube $scalefactor2  $ch1 $ch2 $ch3  base-image/$grayofile"
-				davinci.make.rgb.image.from.cube $cube $scalefactor2  $ch1 $ch2 $ch3  base-image/$grayofile
-				ls -l base-image/$grayofile
+                                graypngfile=`basename $grayofile .jpg`.png
+				echo "davinci.make.rgb.image.from.cube $cube $scalefactor2  $ch1 $ch2 $ch3  base-image/$grayofile  base-image/$graypngfile"
+				davinci.make.rgb.image.from.cube $cube $scalefactor2  $ch1 $ch2 $ch3  base-image/$grayofile base-image/$graypngfile
+				ls -l base-image/$grayofile 
 			else
 				echo "NOT FOUND: BASE: $BASE"
 			fi
@@ -635,8 +636,9 @@ EOI
 				ch2=`echo $COLOR1 | awk '{ print $3 }'`
 				ch3=`echo $COLOR1 | awk '{ print $4 }'`
 				color1ofile=`echo $COLOR1 | awk '{ print $5 }'`
-				echo "davinci.make.rgb.image.from.cube $cube $scalefactor2  $ch1 $ch2 $ch3  base-image/$color1ofile"
-				davinci.make.rgb.image.from.cube $cube $scalefactor2  $ch1 $ch2 $ch3  base-image/$color1ofile
+				color1pngfile=`basename $color1ofile .jpg`.png
+				echo "davinci.make.rgb.image.from.cube $cube $scalefactor2  $ch1 $ch2 $ch3  base-image/$color1ofile base-image/$color1pngfile"
+				davinci.make.rgb.image.from.cube $cube $scalefactor2  $ch1 $ch2 $ch3  base-image/$color1ofile  base-image/$color1pngfile
 				ls -l base-image/$color1ofile
 			else
 				echo "NOT FOUND: COLOR1: $COLOR1"
@@ -651,8 +653,9 @@ EOI
 				ch2=`echo $COLOR2 | awk '{ print $3 }'`
 				ch3=`echo $COLOR2 | awk '{ print $4 }'`
 				color2ofile=`echo $COLOR2 | awk '{ print $5 }'`
-				echo "davinci.make.rgb.image.from.cube $cube $scalefactor2  $ch1 $ch2 $ch3  base-image/$color2ofile"
-				davinci.make.rgb.image.from.cube $cube $scalefactor2  $ch1 $ch2 $ch3  base-image/$color2ofile
+				color2pngfile=`basename $color2ofile .jpg`.png
+				echo "davinci.make.rgb.image.from.cube $cube $scalefactor2  $ch1 $ch2 $ch3  base-image/$color2ofile base-image/$color2pngfile"
+				davinci.make.rgb.image.from.cube $cube $scalefactor2  $ch1 $ch2 $ch3  base-image/$color2ofile base-image/$color2pngfile
 				ls -l base-image/$color2ofile
 			else
 				echo "NOT FOUND: COLOR2: $COLOR2"
@@ -717,6 +720,13 @@ EOI
 	echo "./cmds.color.support/make.color.results.all $shortcubeid"
 	./cmds.color.support/make.color.results.all $shortcubeid
 
+	echo " "
+	echo "#############################################"
+	echo " "
+	echo "making color results overlayed on grey scale image" `date`
+	echo " "
+	echo "./cmds.color.support/cmd.make.colormap-overlay-on-bw-all"  `date`
+	./cmds.color.support/cmd.make.colormap-overlay-on-bw-all
 
 
 	echo " "
