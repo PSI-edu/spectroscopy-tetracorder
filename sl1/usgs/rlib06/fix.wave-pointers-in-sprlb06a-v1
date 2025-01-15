@@ -1,0 +1,137 @@
+#!/bin/sh
+
+set -x
+
+p='spsetwave  sprlb06a '
+
+#    1  ******* Research Library: sprlb06a ****    397 Characters of TEXT
+#    2  ****************************************    41 Characters of TEXT
+#    3  ****************************************    41 Characters of TEXT
+#    4  ****************************************    41 Characters of TEXT
+#    5  ..                                          41 Characters of TEXT
+
+$p    6  6  8 force  # Wavelengths USGS Denver Beckman STD 1x     480  02:57:26.00  10/15/1985      0      8
+$p    8  6  8 force  # Bandpass (FWHM) USGS Denver Beckman STD    480  02:57:26.00  10/15/1985      6      0
+
+$p   10 10 16 force  # Wavelengths Standard ASD FR 0.35-2.5um    2151  21:54:44.00  02/05/2002   1430      0
+$p   16 10 16 force  # Bandpass (FWHM) ASD FR 0.35-2.5um         2151  00:00:00.00  01/28/2003     10     16
+
+$p   22 22 32 force  # Wavelengths to Nicolet 1.3 - 5.2 microns  3325  00:00:00.00  02/07/1994      0      0
+$p   32 22 32 force  # Bandpass (FWHM) Nicolet FTIR 1.3-5.3 um   3325  12:30:00.00  03/24/1988     22      0
+
+$p   42 42 54 force  # Wavelengths to Nicolet 1.3-150 microns    4280  00:00:00.00  12/29/1992     42      0
+$p   54 42 54 force  # Bandpass (FWHM) Nicolet 1.3-150 microns   4280  19:39:49.00  06/16/1998     42      0
+
+$p   66 66 67 force  # Wavelengths AVIRIS 1996 0.4-2.5 microns    224  00:00:00.00  01/01/1996      0      0
+$p   67 66 67 force  # Bandpass (FWHM) AVIRIS 1996 0.4-2.5 um     224  00:00:00.00  01/01/1996     42      0
+
+$p   68 68 74 force  # Wavelengths High Res 0.35-2.5um     HASD  2151  21:54:44.00  02/05/2002   1430      0
+$p   74 68 74 force  # Bandpass (FWHM) High Res 0.35-2.5um HASD  2151  11:42:39.00  11/20/2007    522    528
+
+$p   80 80 92 force  # Wavelengths High Res 0.35-2.5u 4301 HASD  4301  00:00:00.00  02/13/2008     96    108
+$p   92 80 92 force  # Bandpass FWHM HighRes 0.35-2.5 4301 HASD  4301  11:42:39.00  11/20/2007     96    108
+
+$p  104 104 117 force  # Wavelengths to Nicolet 1.12-216 microns   4595  19:41:25.00  06/05/2012      0      0
+$p  117 104 117 force  # Bandpass (FWHM) Nicolet 1.12-216 microns  4595  19:39:49.00  08/04/2005     62      0
+
+#  130  ****************************************    41 Characters of TEXT
+#  131  ****************************************    41 Characters of TEXT
+
+$p  132  6  8 force  # Grass_dry+0.17%Na-Mont AMX35 W1R1Ba AREF   512  10:02:41.00  01/30/1986      0      8
+$p  134 10 16 force  # Chalcedony CU00-15D          W1R1F_ AREF  2151  18:06:27.00  12/10/2004     10     16
+$p  140 10 16 force  # Opal CU00-15E Opal           W1R1F_ AREF  2151  22:54:15.00  11/26/2004     10     16
+$p  146 10 16 force  # Prehnite GDS613A <250um      W1R1F_ AREF  2151  23:38:23.00  05/02/2008     10     16
+$p  152 10 16 force  # Montmorillonite_Fe GDS759A W5R4N___ AREF  3325  23:56:31.00  04/15/2008     22      0
+$p  162 10 16 force  # HyBasaltGlassMLUT03-9CMarP&T W1R1F_ AREF  2151  23:00:08.00  05/31/2007     10      0
+
+$p  168 10 16 force  # Kieserite Batch4 GDS671 Syn  W1R1F_ AREF  2151  23:59:00.00  07/07/2006     28      0
+$p  174 10 16 force  # Perchlorate_Mg GDS851.1 293K W1R1F_ AREF  2151  23:05:09.00  09/22/2008     28      0
+$p  180 10 16 force  # Perchlorate_Mg GDS851.2 293K W1R1F_ AREF  2151  23:05:09.00  09/22/2008     28      0
+$p  186 10 16 force  # Perchlorate_Mg GDS851.2 255K W1R1F_ AREF  2151  23:05:09.00  09/22/2008     28      0
+$p  192 10 16 force  # Perchlorate_Mg GDS851.2 230K W1R1F_ AREF  2151  23:05:10.00  09/22/2008     28      0
+$p  198 10 16 force  # Perchlorate_Mg GDS851.2 220K W1R1F_ AREF  2151  23:05:10.00  09/22/2008     28      0
+$p  204 10 16 force  # Perchlorate_Mg GDS851.2 200K W1R1F_ AREF  2151  23:05:10.00  09/22/2008     28      0
+$p  210 10 16 force  # Perchlorate_Mg GDS851.2 180K W1R1F_ AREF  2151  23:05:10.00  09/22/2008     28      0
+$p  216 10 16 force  # Perchlorate_Mg GDS851.2 170K W1R1F_ AREF  2151  23:05:10.00  09/22/2008     28      0
+$p  222 10 16 force  # Perchlorate_Mg GDS851.2 110K W1R1F_ AREF  2151  23:05:10.00  09/22/2008     28      0
+$p  228 10 16 force  # Perchlorate_Mg GDS851.2 103K W1R1F_ AREF  2151  23:05:10.00  09/22/2008     28      0
+$p  234 10 16 force  # Perchlorate_Mg GDS851.2 98K  W1R1F_ AREF  2151  23:05:10.00  09/22/2008     28      0
+$p  240 10 16 force  # Perchlorate_Mg GDS851.2 88K  W1R1F_ AREF  2151  23:05:10.00  09/22/2008     28      0
+$p  246 10 16 force  # Perchlorite_Na GDS857 230C   W1R1H_ AREF  2151  22:36:21.00  02/07/2009     68      0
+$p  252 10 16 force  # Szomolnokite NMNH104303 UT   W1R1H_ AREF  2151  22:35:41.00  02/07/2009     68      0
+$p  258 10 16 force  # Dehyd SynH30-jarosite GDS605 W1R1F_ AREF  2151  17:58:15.00  12/16/2002     28      0
+$p  264 10 16 force  # Jarosite_K GDS636 PenaBlanca W1R1F_ AREF  2151  16:20:38.00  11/18/2005     28      0
+$p  270 10 16 force  # Jarosite GDS641 Na53 RES24SynW1R1F_ AREF  2151  21:20:09.00  01/17/2008     28      0
+$p  276 10 16 force  # FeSO4OH+szomolnokite GDS871  W1R1F_ AREF  2151  02:45:15.00  07/24/2009     28      0
+$p  282 10 16 force  # Fe(OH)SO4_Possiblywxl GDS872 W1R1F_ AREF  2151  02:45:15.00  07/24/2009     28      0
+$p  288 10 16 force  # FeSO4*7H20 GDS873 SynChemReg W1R1F_ AREF  2151  03:38:55.00  07/28/2009     28      0
+$p  294 10 16 force  # Szomolnokite GDS874 Heat275C W1R1F_ AREF  2151  03:38:56.00  07/28/2009     28      0
+$p  300 10 16 force  # FeSO4*7H2O GDS875 Heat275C   W1R1F_ AREF  2151  03:38:56.00  07/28/2009     28      0
+$p  306 10 16 force  # Fe(OH)S04 GDS877 heatbutler  W1R1F_ AREF  2151  17:58:32.00  08/24/2009     28      0
+
+$p  312 22 32 force  # Magnesite WS282 OkanoganWA W5R4N___ AREF  3325  00:22:50.00  11/21/2009     40      0
+$p  322 22 32 force  # Biedellite GDS128          W5R4N___ AREF  3325  00:23:26.00  11/21/2009     40      0
+$p  332 22 32 force  # Beidellite GDS124          W5R4N___ AREF  3325  18:55:08.00  12/01/2009     40      0
+$p  342 22 32 force  # Beidellite GDS123          W5R4N___ AREF  3325  18:57:26.00  12/01/2009     40      0
+$p  352 22 32 force  # Potassium Nitrate GDS43    W5R4N___ AREF  3325  18:59:14.00  12/01/2009     40      0
+$p  362 22 32 force  # Sodium Nitrate GDS883      W5R4N___ AREF  3325  20:30:13.00  12/01/2009     40      0
+$p  372 22 32 force  # Fe(OH)SO4 GDS877 Syn       W5R4N___ AREF  3325  20:30:24.00  12/01/2009     40      0
+
+$p  382 42 54 force  # Prehnite+.50Chlorite AMIX  W5R4Naa_ AREF  4280  00:00:00.00  03/09/2015     42     54
+$p  394 42 54 force  # Prehnite+.67Chlorite AMIX  W5R4Naa_ AREF  4280  00:00:00.00  03/09/2015     42     54
+$p  406 42 54 force  # Prehnite+.75Chlorite AMIX  W5R4Naa_ AREF  4280  00:00:00.00  03/09/2015     42     54
+ 
+$p  418 10 16 force  # Clam Shell RB10-2B Aragonite W1R1F_ AREF  2151  00:56:18.00  02/15/2011     10      0
+$p  424 10 16 force  # Aragonite GDS898 Moracco grd W1R1F_ AREF  2151  00:56:18.00  02/15/2011     10      0
+$p  430 10 16 force  # Oil_on_snow GDS775 SuncoCrud W1R1F_ AREF  2151  00:56:18.00  02/15/2011     10      0
+$p  436 10 16 force  # Oil_on_ice GDS775 SuncoCrude W1R1F_ AREF  2151  00:56:18.00  02/15/2011     10      0
+$p  442 10 16 force  # Snow_clean_for_oil_on_snow   W1R1F_ AREF  2151  00:56:18.00  02/15/2011     10      0
+$p  448 10 16 force  # Ice_clean_for_oil_on_ice     W1R1F_ AREF  2151  00:56:18.00  02/15/2011     10      0
+
+$p  454 104 117 force  # BHVO-2F+4%_Decalin           W5R4N  RREF  4595  19:04:02.00  07/02/2009     62      0
+$p  467 104 117 force  # BHVO-2F+4%_Formaldehyde      W5R4N  RREF  4595  20:50:28.00  08/21/2009     62      0
+$p  480 104 117 force  # BHVO-2F+4%_Formaldehyde      W5R4N  RREF  4595  21:05:07.00  08/21/2009     62      0
+$p  493 104 117 force  # BHVO-2F+4%_Ammonia Solution  W5R4N  RREF  4595  21:05:07.00  08/21/2009     62      0
+$p  506 104 117 force  # BHVO-2F+4%_Acetone 85K       W5R4N  RREF  4595  23:37:18.00  12/10/2009     62      0
+$p  519 104 117 force  # BHVO-2F+4%_Chloroform        W5R4N  RREF  4595  21:05:07.00  08/21/2009     62      0
+$p  532 104 117 force  # BHVO-2F+4%_Dimethylformamide W5R4N  RREF  4595  20:50:25.00  08/21/2009     62      0
+$p  545 104 117 force  # BHVO-2F+4%_Hydrogen Peroxide W5R4N  RREF  4595  20:50:28.00  08/21/2009     62      0
+$p  558 104 117 force  # BHVO-2F+4%_1-CNbnzcyclobuten W5R4N  RREF  4595  23:37:21.00  12/10/2009     62      0
+$p  571 104 117 force  # BHVO-2F+4%_1-Decene          W5R4N  RREF  4595  20:50:28.00  08/21/2009     62      0
+$p  584 104 117 force  # BHVO-2F+4%_1-Decyne          W5R4N  RREF  4595  21:05:06.00  08/21/2009     62      0
+$p  597 104 117 force  # BHVO-2F+4%_1-Heptene         W5R4N  RREF  4595  21:05:05.00  08/21/2009     62      0
+$p  610 104 117 force  # BHVO-2F+4%_1-Heptyne         W5R4N  RREF  4595  21:05:05.00  08/21/2009     62      0
+$p  623 104 117 force  # BHVO-2F+4%_1-Hexyne          W5R4N  RREF  4595  21:05:05.00  08/21/2009     62      0
+$p  636 104 117 force  # BHVO-2F+4%_1-Nonene          W5R4N  RREF  4595  21:05:06.00  08/21/2009     62      0
+$p  649 104 117 force  # BHVO-2F+4%_1-Nonyne          W5R4N  RREF  4595  21:05:06.00  08/21/2009     62      0
+$p  662 104 117 force  # BHVO-2F+4%_1-Octene          W5R4N  RREF  4595  21:05:06.00  08/21/2009     62      0
+$p  675 104 117 force  # BHVO-2F+4%_1-Octyne          W5R4N  RREF  4595  21:05:06.00  08/21/2009     62      0
+$p  688 104 117 force  # BHVO-2F+4%_1-Pentene         W5R4N  RREF  4595  21:05:05.00  08/21/2009     62      0
+$p  701 104 117 force  # BHVO-2F+4%_2-Propanol        W5R4N  RREF  4595  19:04:01.00  07/02/2009     62      0
+$p  714 104 117 force  # BHVO-2F+4%_3-Hexyne          W5R4N  RREF  4595  21:05:05.00  08/21/2009     62      0
+$p  727 104 117 force  # BHVO-2F+4%_4-Octyne          W5R4N  RREF  4595  21:05:05.00  08/21/2009     62      0
+$p  740 104 117 force  # BHVO-2F+4%_5-Decyne          W5R4N  RREF  4595  21:05:06.00  08/21/2009     62      0
+$p  753 104 117 force  # BHVO-2F+4%_Acetonitrile      W5R4N  RREF  4595  19:04:00.00  07/02/2009     62      0
+$p  766 104 117 force  # BHVO-2F+4%_Acrylonitrile     W5R4N  RREF  4595  19:04:00.00  07/02/2009     62      0
+$p  779 104 117 force  # BHVO-2F+4%_Benzene 84K       W5R4N  RREF  4595  23:37:16.00  12/10/2009     62      0
+$p  792 104 117 force  # BHVO-2F+4%_Benzyl Alcohol    W5R4N  RREF  4595  19:03:54.00  07/02/2009     62      0
+$p  805 104 117 force  # BHVO-2F+4%_Benzylamine       W5R4N  RREF  4595  21:05:04.00  08/21/2009     62      0
+$p  818 104 117 force  # BHVO-2F+4%_Cyclohexane       W5R4N  RREF  4595  19:04:03.00  07/02/2009     62      0
+$p  831 104 117 force  # BHVO-2F+4%_Cyclopentane      W5R4N  RREF  4595  19:03:58.00  07/02/2009     62      0
+$p  844 104 117 force  # BHVO-2F+4%_Ethanol           W5R4N  RREF  4595  19:03:57.00  07/02/2009     62      0
+$p  857 104 117 force  # BHVO-2F+4%_Heptane           W5R4N  RREF  4595  19:04:05.00  07/02/2009     62      0
+$p  870 104 117 force  # BHVO-2F+4%_Nonane            W5R4N  RREF  4595  19:04:07.00  07/02/2009     62      0
+$p  883 104 117 force  # BHVO-2F+4%_Pentane           W5R4N  RREF  4595  20:50:28.00  08/21/2009     62      0
+$p  896 104 117 force  # BHVO-2F+4%_Propionitrile     W5R4N  RREF  4595  20:50:26.00  08/21/2009     62      0
+$p  909 104 117 force  # BHVO-2F+4%_Pyridine          W5R4N  RREF  4595  21:05:05.00  08/21/2009     62      0
+$p  922 104 117 force  # BHVO-2F+4%_Pyrrole           W5R4N  RREF  4595  19:03:56.00  07/02/2009     62      0
+$p  935 104 117 force  # BHVO-2F+4%_trans-2-Octene    W5R4N  RREF  4595  20:50:27.00  08/21/2009     62      0
+$p  948 104 117 force  # BHVO-2F+4%_cis-2-Heptene     W5R4N  RREF  4595  20:50:26.00  08/21/2009     62      0
+$p  961 104 117 force  # BHVO-2F+4%_trans-5-Decene    W5R4N  RREF  4595  20:50:27.00  08/21/2009     62      0
+$p  974 104 117 force  # BHVO-2F+6.8% Decane          W5R4N  RREF  4595  19:03:52.00  07/02/2009     62      0
+$p  987 104 117 force  # BHVO-2F+8%_Nitrobenzene      W5R4N  RREF  4595  20:50:25.00  08/21/2009     62      0
+$p 1000 104 117 force  # BHVO-2F+4%HydrognPeroxid 85K W5R4N  RREF  4595  23:37:20.00  12/10/2009    104      0
+$p 1013 104 117 force  # H2O+CO2 frost grndAl 82K #14 W5R4N  RREF  4595  21:14:43.00  01/02/2008    104      0
+$p 1026 104 117 force  # CO2 frost on H2O ice 100K #2 W5R4N  RREF  4595  18:58:40.00  10/21/2007    104      0
+$p 1039 104 117 force  # Fe<10um+CO2+H2+H2O 79k #3    W5R4N  RREF  4595  17:58:32.00  10/01/2007    104      0
+$p 1052 104 117 force  # Fe<10um+CO2+H2+H2O 79k #8    W5R4N  RREF  4595  17:58:33.00  10/01/2007    104      0

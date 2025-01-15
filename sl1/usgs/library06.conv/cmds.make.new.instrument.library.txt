@@ -1,0 +1,20 @@
+
+
+
+./AAA.make.new.instrument.convolved.spectral.library.sh  s06hyb2 a   76   HYB2ryug 12 \
+       'Convolved Hayabusa2 Ryugu 76ch library  '  \
+       'Wavelengths in microns  76 ch HYB2ryug  ' \
+       'Resolution  in microns  76 ch HYB2ryug  ' \
+       -waves waves.ascii.files/waves-ryugu-microns-ch76.txt \
+       -fwhm  waves.ascii.files/resol-ryugu-microns-ch76.txt
+
+
+# AVIRIS 3 2025:
+
+./AAA.make.new.instrument.convolved.spectral.library.sh  s06a325 a  284 AVIRIS3-25 12 \
+       'Convolved AVIRIS3 2025   284ch library  '  \
+       'Wavelengths in microns 284 ch AVIRIS3-25' \
+       'Resolution  in microns 284 ch AVIRIS3-25' \
+       -waves waves.ascii.files/waves-aviris3_2025a.txt \
+       -fwhm  waves.ascii.files/resol-aviris3_2025a_fwhm.txt
+
