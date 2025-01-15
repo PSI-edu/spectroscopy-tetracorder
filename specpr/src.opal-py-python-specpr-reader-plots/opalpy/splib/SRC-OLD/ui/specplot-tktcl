@@ -1,0 +1,90 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+# specplot
+# package opalpy/splib/ui
+
+import matplotlib as mpl
+import matplotlib.pyplot as plt
+import numpy as np
+import threading
+
+"""
+Created on Thu Sep 22 09:27:58 2022
+
+@author: elivo
+"""
+
+class SpecPlot:
+
+    # constructor initialization of class variables
+    def __init__(self):
+        pass
+        #def __init__(self, spArray, spReflRec):
+        #construct plot GUI Window, plot data
+        #self.plot_gui()
+        #self.sp_plot(spArray, spReflRec)
+
+
+    def sp_plot(self, spArray, spReflRec):
+        #spReflRec = 99  #Acmite (Beckman waves)
+
+        spListArray = spArray.SpListArray  #from splib/util/specplot
+        spRecDict = spArray.SpRecDict
+
+        # read spectrum at SpecPR record
+        spRefl = spListArray[spRecDict[spReflRec]].data
+        self.rmDelPtstoZero(spRefl)  #replace SpecPR del pt (-1.23E34) with -0.05
+        #print(spRefl[0], spRefl[200], spRefl[440])
+
+        # read wavelengths used by SpecPR record spReflRec
+        spWaveRec = spListArray[spRecDict[spReflRec]].irwav
+        spWaves = spListArray[spRecDict[spWaveRec]].data
+        self.rmDelPtstoZero(spWaves)  #replace SpecPR del pt with -0.05
+        #print(spWaves[0], spWaves[200], spWaves[440])
+        #print(spReflRec, spRecDict[spReflRec], spWaveRec)
+
+        # plot spectrum
+        #plt.title(spListArray[spRecDict[spReflRec]].ititle)
+        #plt.plot(spWaves, spRefl)  #sometimes (Beckman waves) 1st refl ch = -1.23E34
+        #plt.show()
+        #fig, ax = plt.subplots()
+
+        #plt.ion()
+        fig = plt.figure()
+        ax = fig.add_subplot()
+
+        plt.title(spListArray[spRecDict[spReflRec]].ititle)
+        plt.xlabel("Wavelength (micronmeters)")
+        plt.ylabel("% Reflectance")
+
+        #ax.plot(spWaves, spRefl);
+        line1, = ax.plot(spWaves, spRefl)
+        #line1.set_xdata(spWaves)
+        #line1.set_ydata(spRefl)
+        #fig.canvas.draw()
+        #fig.canvas.flush_events()
+
+        #Note: matplotlib not miltitheaded (set up for future custom plot package)
+        #t1 = threading.Thread(target=plt.show(), args=(10,))
+        #t1.start()
+
+        plt.show()
+
+
+    def plot_gui(self):
+        # annotation
+        #plt.title(spListArray[spRecDict[spReflRec]].ititle)
+        plt.xlabel("Wavelength (micronmeters)")
+        plt.ylabel("% Reflectance")
+        #plt.plot(spWaves, spRefl, color="red")
+        #plt.plot(spWaves, spRefl, color="black")
+
+        # plot spectrum
+        #plt.plot(spWaves, spRefl)  #sometimes (Beckman waves) 1st refl ch = -1.23E34
+        #plt.show()
+
+
+    def rmDelPtstoZero(selp, spData):
+        for ich in range(len(spData)):
+            if(spData[ich] < -10): spData[ich] = -0.05

@@ -1,0 +1,12 @@
+[workspace]
+restore_data_on_startup = True
+save_data_on_exit = True
+save_history = True
+save_non_project_files = False
+project_type = 'empty-project-type'
+recent_files = ['opalpy.py', 'splib/ui/opalpy_mainmenu.py', 'splib/ui/titlestrlistarray.py', 'splib/io/spio.py', 'splib/util/splibfind.py', 'splib/ui/pyqtmatplotlib.py', 'splib/ui/pyqthtmlwin.py', 'splib/io/sparray.py', 'splib/io/specpr.py']
+
+[main]
+version = 0.2.0
+recent_files = []
+

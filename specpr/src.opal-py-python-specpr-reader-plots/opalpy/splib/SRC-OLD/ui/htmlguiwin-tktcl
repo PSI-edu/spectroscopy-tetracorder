@@ -1,0 +1,143 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+# htmlguiwin
+# package opalpy/splib/ui
+
+"""
+Created on Fri Oct  7 20:24:50 2022
+
+@author: elivo
+"""
+
+import tkinter as tk
+from tkinter import *
+from tkinter import font, filedialog
+from tkinter import ttk
+from tkinter import messagebox as mbox
+from tkhtmlview import HTMLLabel
+from tkhtmlview import HTMLText
+from tkhtmlview import RenderHTML
+
+""" Html Text Class with SpecPR sample Input, and helper methods """
+class HtmlGUIWin(tk.Toplevel):
+    def __init__(self, parent):
+        super().__init__(parent)
+        self.geometry('300x100')
+        self.title('Toplevel Window')
+
+        # set  size and position
+        srcWidth = self.winfo_screenwidth()    #screen pixel width
+        srcHeight = self.winfo_screenheight()  #screen pixel height
+        widowWidth = 600
+        windowHeight = 700
+        #windowHeight = srcHeight - windowSrcnPosY
+        windowSrcnPosX = 100
+        windowSrcnPosY = 1
+        #windowSrcnPosY = 45
+        self.geometry('%dx%d+%d+%d' % (widowWidth, windowHeight, windowSrcnPosX, windowSrcnPosY))
+        #self.geometry("400x800")
+
+        #self.init_window()
+
+    """
+    def __init__(self, master=None) -> None:
+        Frame.__init__(self, master)
+        self.master = master
+        self.myfont = font.Font(family="Helvetica", size=14)
+        self.init_window()
+    """
+    """
+    def init_window(self) -> None:
+        #textFrame.title("Spectral Text")
+        #textFrame.pack(fill=BOTH, expand=1)
+
+        #self.sp_text(spArray, spTextRec):
+
+        textFrame.outputbox = HTMLLabel(
+            self, width="1", background="white", html="<h2>Welcome</h2>")
+        textFrame.outputbox.pack(fill=BOTH, expand=1, side=RIGHT)
+        textFrame.outputbox.fit_height()
+    """
+
+    def sp_text(self, spArray, spTextRec) -> bytearray:
+        spListArray = spArray.SpListArray  #from splib/util/specplot
+        spRecDict = spArray.SpRecDict
+
+        # read spectrum at SpecPR
+        spSampleByteArray = spListArray[spRecDict[spTextRec]].spSampleByteArray
+        #spText = spListArray[spRecDict[spTextRec]].itext
+
+        #display HTML Text Window
+        frame = Frame(self)
+
+        self.font='Times New Roman'
+        html_label = HTMLText(self, html=spSampleByteArray.decode())
+        #html_label = HTMLLabel(self, html=spSampleByteArray.decode('ascii'))
+        #html_label = HTMLText(frame, html=spSampleByteArray.decode('ascii'))
+        #html_label = HTMLText(self, html=spSampleByteArray.decode('ascii'))
+        html_label.font = 'Times New Roman'
+        html_label.pack(fill="both", expand=True)
+
+        #yscroll = tk.Scrollbar(frame, orient='vertical', command=html_label.yview)
+        #html_label.config(yscrollcommand=yscroll.set)
+
+        #frame.pack
+        #frame.grid()
+
+        #html_label.grid(row=0, column=0)
+        #yscroll.grid(row=0, column=1)
+
+        return (spSampleByteArray)
+
+    """
+    def html_file_gui(self, spSampleByteArray):
+
+        frame = Frame(self)
+        frame.font = 'Times New Roman'
+        frame.pack(fill="both", expand=True)
+
+        html_label = HTMLText(frame, html=spSampleByteArray.decode('ascii'))
+        #html_label = HTMLText(frame, html=RenderHTML('Willow.html'))
+
+        html_label.font = 'Times New Roman'
+        html_label.pack(fill="both", expand=True)
+        html_label.fit_height()
+    """
+
+    """
+        #html_label = HTMLText(frame, html="<h1>hello <p> line2</p></h1>")
+        #b = bytes([80, 78, 71, 13, 10, 80, 78, 71])
+        #html_label = HTMLText(frame, html=b.decode('ascii'))
+        #html_label.fit_height()
+
+        #yscroll = tk.Scrollbar(frame, orient='vertical', command=html_label.yview)
+        #html_label.config(yscrollcommand=yscroll.set)
+
+        #frame.grid()
+        #html_label.grid(row=0, column=0)
+        #yscroll.grid(row=0, column=1)
+    """
+    """
+    def html_text_window(self, spSampleByteArray) -> None:
+        textFrame = Frame(self)
+
+        html_label = HTMLText(textFrame, html=RenderHTML('Willow.html'))
+        #html_label.font = 'Times New Roman'
+        html_label.pack(fill="both", expand=True)
+        html_label.fit_height()
+
+        #menuBar = Menu(self.master)
+        #self.master.config(menu=menuBar)
+
+        #textFrame.title("Spectral Text")
+        #textFrame.pack(fill=BOTH, expand=1)
+
+        #self.sp_text(spArray, spTextRec):
+
+        textFrame.outputbox = HTMLLabel(
+            self, width="1", background="white", html=spSampleByteArray)
+            #self, width="1", background="white", html="<h2>Welcome</h2>")
+        textFrame.outputbox.pack(fill=BOTH, expand=1, side=RIGHT)
+        textFrame.outputbox.fit_height()
+    """

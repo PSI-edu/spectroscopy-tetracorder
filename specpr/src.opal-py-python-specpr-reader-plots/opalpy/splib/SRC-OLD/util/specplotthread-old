@@ -1,0 +1,49 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+# specplotthread
+# package opalpy/splib/util
+
+import threading
+
+from splib.ui.specplot import SpecPlot
+from splib.ui.htmlguiwin import HtmlGUIWin
+
+"""spFileRec = spArray.SpListArray[spListArrayIndex].specpr_file_record_number
+spReflTitle = spArray.SpListArray[spListArrayIndex].ititle
+Created on Sun Sep 25 11:46:35 2022
+
+@author: elivo
+"""
+
+class SpecPlotThread:
+
+    # constructor initialization of class variables
+    def __init__(self):
+        pass
+
+
+    def spec_plot_thread(self, spArray, spReflRec):
+        #spReflRec = 99  #Acmite (Beckman waves)
+        #print(spReflRec)
+        self.call_spec_plot(spArray, spReflRec)
+
+    def call_spec_plot(self, spArray, spReflRec):
+        specPlot = SpecPlot()  #create plot GUI window (not shown)
+
+        #print(spReflRec)
+        #t1 = threading.Thread(target=specPlot.sp_plot(spArray, spReflRec), args=(10,))
+        #t1 = threading.Thread(target=SpecPlot(spArray, spReflRec), args=(10,))
+
+        #Note: matplotlib not miltitheaded (set up for future custom plot package)
+        tPlot = threading.Thread(target=specPlot.sp_plot(spArray, spReflRec))
+        tPlot.start()
+
+    #def spec_text_thread(self, spArray, spFileTextRec):
+    #    self.call_spec_text(spArray, spFileTextRec)
+
+    #def call_spec_text(self, spArray, spFileTextRec):
+    #    htmlGUIWin = HtmlGUIWin() #create html text gui window
+        
+    #    tText = threading.Thread(target=htmlGUIWin.sp_text(spArray, spFileTextRec))
+    #    tText.start()

@@ -1,0 +1,50 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+# strinfile
+# package opalpy/splib/util
+
+"""
+#package opalpy/splib/util
+
+Created on Sat Nov 26 17:32:34 2022
+
+@author: elivo
+"""
+
+import os
+
+class StrInFile:
+    def __init__(self):
+        super().__init__()
+
+
+    def matchstr(self, dirPathStr: str, fileList: list, searchStr: str, caseSensitivity: bool) -> None:
+        matchList = []
+        for fileName in fileList:
+            fullname = os.path.join(dirPathStr, fileName)
+            fileObj = open(fullname, 'r')
+            #fileObj = open(dirPathStr + "/" + fileName, 'r')
+            # iterate through file, index is count i (0 start), line is record text string
+            for index, line in enumerate(fileObj):
+                if (caseSensitivity):
+                    if searchStr in line:
+                        matchList.append(fileName + ": " + line)
+                else:
+                    if searchStr.lower() in line.lower():
+                        matchList.append(fileName + ": " + line)
+        return(matchList)
+
+
+    def listfilesindir(self, dirPathStr: str) -> list:
+        #dir_path =r'data'
+        fileList = []
+
+        for path in os.listdir(dirPathStr):
+            # check if current path is a file
+            #if os.path.isfile(path):
+            if os.path.isfile(os.path.join(dirPathStr, path)):
+                fileList.append(path)
+                #fileList.append(dirPathStr + path)
+        print(fileList)
+        return(fileList)

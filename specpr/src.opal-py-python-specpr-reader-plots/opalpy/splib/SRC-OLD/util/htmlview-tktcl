@@ -1,0 +1,181 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+# htmlview
+# package opalpy/splib/util
+
+"""
+Created on Thu Sep 29 07:51:23 2022
+
+@author: elivo
+"""
+
+import sys
+import struct
+import numpy as np
+import tkinter as tk
+from tkinter import *
+from tkinter import ttk
+from PIL import Image, ImageTk
+#calls website with system browser ((Firefox)) using tkhtmlview HTMLLabel
+#from tkhtml import HtmlFrame
+from tkhtmlview import HTMLLabel
+from tkhtmlview import HTMLText
+from tkhtmlview import RenderHTML
+
+import webbrowser  #direct within core Python
+
+#from splib.util.specpr import SpecPR
+#from splib.util.sparray import SpArray
+
+
+class HtmlView:
+
+    # constructor initialization of class variables
+    def __init__(self):
+        self.website_gui()
+        #self.image_gui()
+        #self.html_file_gui()
+        #x = dummyStatement
+
+
+    def html_file_gui(self):
+        #root = Tk()
+        root = tk.Toplevel()
+        root.title("Html File Viewer")
+        root.geometry("700x600")
+
+        frame = tk.Frame(root)
+        #html_label = HTMLText(frame, html=RenderHTML('Willow.html'))
+        #html_label = HTMLText(frame, html="<h1>hello <p> line2</p></h1>")
+        b = bytes([80, 78, 71, 13, 10, 80, 78, 71])
+        html_label = HTMLText(frame, html=b.decode('ascii'))
+        #html_label.fit_height()
+        yscroll = tk.Scrollbar(root, orient='vertical', command=html_label.yview)
+        html_label.config(yscrollcommand=yscroll.set)
+
+        frame.grid()
+        html_label.grid(row=0, column=0)
+        yscroll.grid(row=0, column=1)
+
+        root.mainloop()
+
+
+        """
+        frm = HtmlFrame(root, horizontal_scrollbar="auto")
+        frm.set_content("<html>abc</html>")  #html from file or manual input
+        #html request & render
+        #frm.set_content(urllib.request.urlopen("http://thonny.cs.ut.ee").read().decode())
+
+        root.mainloop()
+        """
+
+
+    """
+    #good, no sliders
+    def html_file_gui(self):
+        #root = Tk()
+        root = tkinter.Toplevel()
+        root.title("Html File Viewer")
+        root.geometry("500x600")
+
+        html_label = HTMLText(root, html=RenderHTML('Willow.html'))
+        #html_label.font = 'Times New Roman'
+        html_label.pack(fill="both", expand=True)
+        html_label.fit_height()
+
+        root.mainloop()
+    """
+
+    def website_gui(self):  #call default browser directly from core Python
+        #import webbrowser
+        webbrowser.open("Willow.html")
+
+
+    def call_website_from_tkhtmlview_HTMLLabel(self):
+        root = tk.Tk()
+        root.title("Website Viewer")
+        root.geometry("500x600")
+
+        #calls website with system browser ((Firefox)) using tkhtmlview HTMLLabel
+        mylabel = HTMLLabel(root, html="\
+            <h1>\
+            <a href='https://codemy.com'>Learn To Code!</a>\
+            </h1>")
+        mylabel.pack(pady=20, padx=20)
+
+        root.mainloop()
+
+
+    def image_gui(self):
+
+        def resizer(e):  #e is event
+            global bgImage, resized_bgImage, new_bg  #prevent garbage collection from erasing
+            bgImage = Image.open("s51.jpg")
+            resized_bgImage = bgImage.resize((e.width, e.height), Image.ANTIALIAS)
+            new_bg = ImageTk.PhotoImage(resized_bgImage)
+            #print(new_bg.width(), new_bg.height())
+            my_canvas.create_image(0, 0, image=new_bg, anchor="nw")
+            #print(my_canvas.size())
+
+        #def image_gui(self):
+        #root = Tk()
+        root = tk.Toplevel()
+        root.title("Image Viewer")
+        root.geometry("800x500")
+
+        bg = ImageTk.PhotoImage(file="s51.jpg")
+
+        my_canvas = Canvas(root, width=800, height=500)
+        my_canvas.pack(fill="both", expand=TRUE)
+        my_canvas.create_image(0, 0, image=bg, anchor="nw")
+
+        root.bind('<Configure>', resizer)
+        root.mainloop()
+
+
+    def lable_image_gui(self):
+        #root = Tk()  #problem with window order (see below)
+        root = tk.Toplevel()
+        root.title("Image Viewer")
+        root.geometry("800x500")
+        root.resizable(width = True, height = True)
+
+        #all lines work well
+        image1 = Image.open("s51.png")
+        #image1 = Image.open("/src/local/spyder/projects/opalpy/s51.jpg")
+        test = ImageTk.PhotoImage(image1)
+
+        #both lines work well
+        #test = PhotoImage(file="/src/local/spyder/projects/opalpy/s51.png")
+        #test = PhotoImage(file="s51.png")  #PhotoImage() w/ jpg, etc require use of Pillow
+
+        #test = PhotoImage(file="s51.jpg")
+        """tkinter.TclError: couldn't recognize data in image file s51.jpg """
+
+        label1 = Label(root, image=test)
+        label1.place(x=0, y=0, relwidth=1, relheight=1)
+        #label1.pack()
+
+        root.mainloop()
+
+    """
+         I found the issue so figured I'd answer myself for anyone who has this issue 
+    in the future.
+         When the wlcm_scrn runs procedurely it is the only window that exists at that 
+    point in time, and so it can use tkinter.Tk(). The error arises because the 
+    button that calls the function is itself sitting in an active window that is also 
+    running as Tkinter.Tk(). So when Python/Tkinter tries to build wlcm_scrn from the 
+    button, it's essentially trying to create two windows under root and falling over.
+         The solution:
+
+              Changing line...
+                   wlcm_scrn = tkinter.Tk()
+              to this...
+                   wlcm_scrn = tkinter.Toplevel()
+
+         ...stops the error, and the image shows.
+         I personally am going to have two instances of the function. One called 
+         procedurely under Tk(), and one called within the application under TopLevel().
+    """
+    

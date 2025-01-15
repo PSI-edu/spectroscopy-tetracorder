@@ -1,0 +1,79 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+# textgui
+# package opalpy/splib/ui
+
+import tkinter as tk
+from tkhtmlview import HTMLLabel
+from tkhtmlview import HTMLText
+from tkhtmlview import RenderHTML
+
+"""
+Created on Sun Oct  2 15:35:57 2022
+
+@author: elivo
+"""
+
+class TextGUI:
+
+    # constructor initialization of class variables
+    def __init__(self):
+        #def __init__(self, spArray, spReflRec):
+        #construct plot GUI Window, plot data
+        #self.plot_gui()
+        #self.sp_plot(spArray, spReflRec)
+        abc = "dummy"
+
+
+    def sp_text(self, spArray, spTextRec):
+
+        spListArray = spArray.SpListArray  #from splib/util/specplot
+        spRecDict = spArray.SpRecDict
+
+        # read spectrum at SpecPR
+        spSampleByteArray = spListArray[spRecDict[spTextRec]].spSampleByteArray
+        #spText = spListArray[spRecDict[spTextRec]].itext
+
+        #display HTML Text Window
+        self.html_text_gui(spSampleByteArray)
+
+
+    def html_text_gui(self, spSampleByteArray):
+        #root = Tk()
+        root = tk.Toplevel()
+        root.title("Html File Viewer")
+
+        # set  size and position
+        srcWidth = root.winfo_screenwidth()    #screen pixel width
+        srcHeight = root.winfo_screenheight()  #screen pixel height
+        widowWidth = 600
+        windowHeight = 700
+        #windowHeight = srcHeight - windowSrcnPosY
+        windowSrcnPosX = 100
+        windowSrcnPosY = 1
+        #windowSrcnPosY = 45
+        root.geometry('%dx%d+%d+%d' % (widowWidth, windowHeight, windowSrcnPosX, windowSrcnPosY))
+        #root.geometry("400x800")
+
+        frame = tk.Frame(root)
+
+        #html_label = HTMLText(frame, html=RenderHTML('Willow.html'))
+        #html_label = HTMLText(frame, html="<h1>hello <p> line2</p></h1>")
+        #spByteArray = bytes([80, 78, 71, 13, 10, 80, 78, 71])
+        #spRecTuple = struct.unpack('>8s', byteArray)
+        #html_label = HTMLText(frame, html=spRecTuple[0])
+
+        html_label = HTMLText(frame, html=spSampleByteArray.decode('ascii'))
+        #html_label.fit_height()
+
+        yscroll = tk.Scrollbar(frame, orient='vertical', command=html_label.yview)
+
+        html_label.config(yscrollcommand=yscroll.set)
+
+        frame.grid()
+
+        html_label.grid(row=0, column=0)
+        yscroll.grid(row=0, column=1)
+
+        root.mainloop()
