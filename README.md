@@ -257,13 +257,13 @@ and added AVIRIS3 2025 convolved libraries.
 Updated tetracorder 5.27: Improved diagnostic output in single spectrum mode
 and added a disable groups directory that the user can add groups they
 deem unimportant.  This will speed run times by not doing calculations
-that are not useful.  Foe example, imaging spectrometers measuring through
+that are not useful.  For example, imaging spectrometers measuring through
 the Earth's atmosphere, like AVIRIS or EMIT can't measure quality data
 in the 1.4 and 1.9 micron atmospheric water bands.  Therefore any 
 material ID using these wavelength ranges (e.g. groups 13, 14, 19)
 do not need to be calculated, and if results are reported, the answer
 is likely biased and wrong.  With the disable feature, these groups
-(and other not needed) can be disabled before the image cube
+(and others not needed) can be disabled before the image cube
 analysis is started.  While the disable file will be automatically
 implemented in expert system 5.27f1, it can be added to previous expert
 systems by adding in the mapping directory a file called:
