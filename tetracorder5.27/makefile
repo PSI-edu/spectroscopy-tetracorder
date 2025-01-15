@@ -37,6 +37,7 @@ getnotfeat.o		\
 getifeat.o		\
 applygtpconstraints.o	\
 enabldisablhist.o	\
+readforcedisable.o	\
 ../specpr/src.specpr/common/spblockdata.o
 
 INCL= \
@@ -59,16 +60,18 @@ tri1.h		\
 obuffers.h	\
 multmap.h
 
+mcmodelflags=-mcmodel=medium
+
 tetracorder5.27:	$(OBJ) $(SPRDIR)/lib/specpr.a $(INCL)
 	./checkmultmapcompilemode  cube
-	$(F77) $(SP_FFLAGS) $(SP_LDFLAGS) -o tetracorder $(OBJ) \
+	$(F77) $(SP_FFLAGS) $(mcmodelflags) $(SP_LDFLAGS) -o tetracorder $(OBJ) \
 			$(SPRDIR)/lib/specpr.a	\
 			$(SP_LDLIBS)
 	mv tetracorder tetracorder5.27
 
 tetracorder5.27single:	$(OBJ) $(SPRDIR)/lib/specpr.a $(INCL)
 	./checkmultmapcompilemode  singlespectrum
-	$(F77) $(SP_FFLAGS) $(SP_LDFLAGS) -o tetracorder $(OBJ) \
+	$(F77) $(SP_FFLAGS) $(mcmodelflags) $(SP_LDFLAGS) -o tetracorder $(OBJ) \
 			$(SPRDIR)/lib/specpr.a	\
 			$(SP_LDLIBS)
 	mv tetracorder tetracorder5.27single
@@ -99,53 +102,53 @@ tetracorder.o:	tetracorder.r $(INCL)
 		$(SSPP) -r -$(SSPPFLAGS) tetracorder.r > tetracorder.x
 		$(RF) $(SP_RFLAGS) tetracorder.x > tetracorder.f
 		rm tetracorder.x
-		$(F77) $(SP_FFLAGS) -c tetracorder.f
+		$(F77) $(SP_FFLAGS) $(mcmodelflags) -c tetracorder.f
 		rm tetracorder.f
 
 makvicarlabel.o:	makvicarlabel.r $(INCL)
 		$(RF) $(SP_RFLAGS) makvicarlabel.r > makvicarlabel.f
-		$(F77) $(SP_FFLAGS) -c makvicarlabel.f
+		$(F77) $(SP_FFLAGS) $(mcmodelflags) -c makvicarlabel.f
 		rm makvicarlabel.f
 
 parsevicarlabel.o:	parsevicarlabel.r $(INCL)
 		$(RF) $(SP_RFLAGS) parsevicarlabel.r > parsevicarlabel.f
-		$(F77) $(SP_FFLAGS) -c parsevicarlabel.f
+		$(F77) $(SP_FFLAGS) $(mcmodelflags) -c parsevicarlabel.f
 		rm parsevicarlabel.f
 
 parseenvilabel.o: parseenvilabel.r $(INCL)
 		$(RF) $(SP_RFLAGS) parseenvilabel.r > parseenvilabel.f
-		$(F77) $(SP_FFLAGS) -c parseenvilabel.f
+		$(F77) $(SP_FFLAGS) $(mcmodelflags) -c parseenvilabel.f
 		rm parseenvilabel.f
 
 wrtenvihdr.o:	wrtenvihdr.r $(INCL)
 		$(RF) $(SP_RFLAGS) wrtenvihdr.r > wrtenvihdr.f
-		$(F77) $(SP_FFLAGS) -c wrtenvihdr.f
+		$(F77) $(SP_FFLAGS) $(mcmodelflags) -c wrtenvihdr.f
 		rm wrtenvihdr.f
 
 str2tmonth.o:	str2tmonth.r $(INCL)
 		$(RF) $(SP_RFLAGS) str2tmonth.r > str2tmonth.f
-		$(F77) $(SP_FFLAGS) -c str2tmonth.f
+		$(F77) $(SP_FFLAGS) $(mcmodelflags) -c str2tmonth.f
 		rm str2tmonth.f
 
 read2sheet.o:	read2sheet.r $(INCL)
 		$(RF) $(SP_RFLAGS) read2sheet.r > read2sheet.f
-		$(F77) $(SP_FFLAGS) -c read2sheet.f
+		$(F77) $(SP_FFLAGS) $(mcmodelflags) -c read2sheet.f
 		rm read2sheet.f
 
 setupreadsheet.o:	setupreadsheet.r $(INCL)
 		$(RF) $(SP_RFLAGS) setupreadsheet.r > setupreadsheet.f
-		$(F77) $(SP_FFLAGS) -c setupreadsheet.f
+		$(F77) $(SP_FFLAGS) $(mcmodelflags) -c setupreadsheet.f
 		rm setupreadsheet.f
 
 strdate.o:	strdate.r $(INCL)
 		$(RF) $(SP_RFLAGS) strdate.r > strdate.f
-		$(F77) $(SP_FFLAGS) -c strdate.f
+		$(F77) $(SP_FFLAGS) $(mcmodelflags) -c strdate.f
 		rm strdate.f
 
 rstbgn.o:	rstbgn.r $(INCL)
 		$(SSPP) -r -$(SSPPFLAGS) rstbgn.r > rstbgn.x
 		$(RF) $(SP_RFLAGS) rstbgn.x > rstbgn.f
-		$(F77) $(SP_FFLAGS)  -c rstbgn.f
+		$(F77) $(SP_FFLAGS) $(mcmodelflags)  -c rstbgn.f
 		rm rstbgn.f rstbgn.x
 
 #i4pack4.o:	i4pack4.c
@@ -157,131 +160,136 @@ i4pack4.o:	i4pack4.r $(INCL)
 		$(SSPP) -r -$(SSPPFLAGS) i4pack4.r > i4pack4.x
 		$(RF) $(SP_RFLAGS) i4pack4.x > i4pack4.f
 		rm i4pack4.x
-		$(F77) $(SP_FFLAGS) -c i4pack4.f
+		$(F77) $(SP_FFLAGS) $(mcmodelflags) -c i4pack4.f
 		rm i4pack4.f
 
 delhist.o:	delhist.r $(INCL)
 		$(RF) $(SP_RFLAGS) delhist.r > delhist.f
-		$(F77) $(SP_FFLAGS) -c delhist.f
+		$(F77) $(SP_FFLAGS) $(mcmodelflags) -c delhist.f
 		rm delhist.f
 
 tri1setup.o:	tri1setup.r $(INCL)
 		$(RF) $(SP_RFLAGS) tri1setup.r > tri1setup.f
-		$(F77) $(SP_FFLAGS) -c tri1setup.f
+		$(F77) $(SP_FFLAGS) $(mcmodelflags) -c tri1setup.f
 		rm tri1setup.f
 
 reflsetup.o:	reflsetup.r $(INCL)
 		$(RF) $(SP_RFLAGS) reflsetup.r > reflsetup.f
-		$(F77) $(SP_FFLAGS) $(BSLASH) -c reflsetup.f
+		$(F77) $(SP_FFLAGS) $(mcmodelflags) $(BSLASH) -c reflsetup.f
 		rm reflsetup.f
 
 getconstraints.o:	getconstraints.r  $(INCL)
 		$(RF) $(SP_RFLAGS) getconstraints.r > getconstraints.f
-		$(F77) $(SP_FFLAGS) $(BSLASH) -c getconstraints.f
+		$(F77) $(SP_FFLAGS) $(mcmodelflags) $(BSLASH) -c getconstraints.f
 		rm getconstraints.f
 
 getaction.o:	getaction.r  $(INCL)
 		$(RF) $(SP_RFLAGS) getaction.r > getaction.f
-		$(F77) $(SP_FFLAGS) $(BSLASH) -c getaction.f
+		$(F77) $(SP_FFLAGS) $(mcmodelflags) $(BSLASH) -c getaction.f
 		rm getaction.f
 
 getgrpcasenam.o: 	getgrpcasenam.r  $(INCL)
 		$(RF) $(SP_RFLAGS) getgrpcasenam.r > getgrpcasenam.f
-		$(F77) $(SP_FFLAGS) $(BSLASH) -c getgrpcasenam.f
+		$(F77) $(SP_FFLAGS) $(mcmodelflags) $(BSLASH) -c getgrpcasenam.f
 		rm getgrpcasenam.f
 
 getlibrecs.o:	getlibrecs.r  $(INCL)
 		$(RF) $(SP_RFLAGS) getlibrecs.r > getlibrecs.f
-		$(F77) $(SP_FFLAGS) $(BSLASH) -c getlibrecs.f
+		$(F77) $(SP_FFLAGS) $(mcmodelflags) $(BSLASH) -c getlibrecs.f
 		rm getlibrecs.f
 
 cubecorder.o:	cubecorder.r  $(INCL)
 		$(RF) $(SP_RFLAGS) cubecorder.r > cubecorder.f
-		$(F77) $(SP_FFLAGS) -c cubecorder.f
+		$(F77) $(SP_FFLAGS) $(mcmodelflags) -c cubecorder.f
 		rm cubecorder.f
 
 specorder.o:	specorder.r  $(INCL)
 		$(RF) $(SP_RFLAGS) specorder.r > specorder.f
-		$(F77) $(SP_FFLAGS) -c specorder.f
+		$(F77) $(SP_FFLAGS) $(mcmodelflags) -c specorder.f
 		rm specorder.f
 
 tp1mat.o:	tp1mat.r  $(INCL)
 		$(RF) $(SP_RFLAGS) tp1mat.r > tp1mat.f
-		$(F77) $(SP_FFLAGS2) $(FOPT2) -c tp1mat.f
+		$(F77) $(SP_FFLAGS2) $(mcmodelflags) $(FOPT2) -c tp1mat.f
 		rm tp1mat.f
 
 tp1all.o:	tp1all.r  $(INCL)
 		$(RF) $(SP_RFLAGS) tp1all.r > tp1all.f
-		$(F77) $(SP_FFLAGS2) $(FOPT2) -c tp1all.f
+		$(F77) $(SP_FFLAGS2) $(mcmodelflags) $(FOPT2) -c tp1all.f
 		rm tp1all.f
 
 flushseqfile.o:	flushseqfile.r  $(INCL)
 		$(RF) $(SP_RFLAGS) flushseqfile.r > flushseqfile.f
-		$(F77) $(SP_FFLAGS) -c flushseqfile.f
+		$(F77) $(SP_FFLAGS) $(mcmodelflags) -c flushseqfile.f
 		rm flushseqfile.f
 
 opencube.o:	opencube.r  $(INCL)
 		$(RF) $(SP_RFLAGS) opencube.r > opencube.f
-		$(F77) $(SP_FFLAGS) -c opencube.f
+		$(F77) $(SP_FFLAGS) $(mcmodelflags) -c opencube.f
 		rm opencube.f
 
 wrtspcrdrout.o:	wrtspcrdrout.r  $(INCL)
 		$(RF) $(SP_RFLAGS) wrtspcrdrout.r > wrtspcrdrout.f
-		$(F77) $(SP_FFLAGS) -c wrtspcrdrout.f
+		$(F77) $(SP_FFLAGS) $(mcmodelflags) -c wrtspcrdrout.f
 		rm wrtspcrdrout.f
 
 wrtcrdrout.o:	wrtcrdrout.r  $(INCL)
 		$(RF) $(SP_RFLAGS) wrtcrdrout.r > wrtcrdrout.f
-		$(F77) $(SP_FFLAGS) -c wrtcrdrout.f
+		$(F77) $(SP_FFLAGS) $(mcmodelflags) -c wrtcrdrout.f
 		rm wrtcrdrout.f
 
 gcsetup.o:	gcsetup.r  $(INCL)
 		$(RF) $(SP_RFLAGS) gcsetup.r > gcsetup.f
-		$(F77) $(SP_FFLAGS) -c gcsetup.f
+		$(F77) $(SP_FFLAGS) $(mcmodelflags) -c gcsetup.f
 		rm gcsetup.f
 
 wrtgcsetup.o:	wrtgcsetup.r  $(INCL)
 		$(RF) $(SP_RFLAGS) wrtgcsetup.r > wrtgcsetup.f
-		$(F77) $(SP_FFLAGS) -c wrtgcsetup.f
+		$(F77) $(SP_FFLAGS) $(mcmodelflags) -c wrtgcsetup.f
 		rm wrtgcsetup.f
 
 creatoutfiles.o:	creatoutfiles.r  $(INCL)
 		$(RF) $(SP_RFLAGS) creatoutfiles.r > creatoutfiles.f
-		$(F77) $(SP_FFLAGS) -c creatoutfiles.f
+		$(F77) $(SP_FFLAGS) $(mcmodelflags) -c creatoutfiles.f
 		rm creatoutfiles.f
 
 cublineout.o:	cublineout.r  $(INCL)
 		$(RF) $(SP_RFLAGS) cublineout.r > cublineout.f
-		$(F77) $(SP_FFLAGS) -c cublineout.f
+		$(F77) $(SP_FFLAGS) $(mcmodelflags) -c cublineout.f
 		rm cublineout.f
 
 nvres1mat.o:	nvres1mat.r  $(INCL)
 		$(RF) $(SP_RFLAGS) nvres1mat.r > nvres1mat.f
-		$(F77) $(SP_FFLAGS) -c nvres1mat.f
+		$(F77) $(SP_FFLAGS) $(mcmodelflags) -c nvres1mat.f
 		rm nvres1mat.f
 
 tp1cse.o:	tp1cse.r  $(INCL)
 		$(RF) $(SP_RFLAGS)  tp1cse.r > tp1cse.f
-		$(F77) $(SP_FFLAGS2) $(FOPT2) -c tp1cse.f
+		$(F77) $(SP_FFLAGS2) $(mcmodelflags) $(FOPT2) -c tp1cse.f
 		rm tp1cse.f
 
 getifeat.o:	getifeat.r  $(INCL)
 		$(RF) $(SP_RFLAGS)  getifeat.r > getifeat.f
-		$(F77) $(SP_FFLAGS2) $(FOPT2) -c getifeat.f
+		$(F77) $(SP_FFLAGS2) $(mcmodelflags) $(FOPT2) -c getifeat.f
 		rm getifeat.f
 
 getnotfeat.o:	getnotfeat.r  $(INCL)
 		$(RF) $(SP_RFLAGS)  getnotfeat.r > getnotfeat.f
-		$(F77) $(SP_FFLAGS2) $(FOPT2) -c getnotfeat.f
+		$(F77) $(SP_FFLAGS2) $(mcmodelflags) $(FOPT2) -c getnotfeat.f
 		rm getnotfeat.f
 
 enabldisablhist.o:	enabldisablhist.r  $(INCL)
 		$(RF) $(SP_RFLAGS)  enabldisablhist.r > enabldisablhist.f
-		$(F77) $(SP_FFLAGS2) $(FOPT2) -c enabldisablhist.f
+		$(F77) $(SP_FFLAGS2) $(mcmodelflags) $(FOPT2) -c enabldisablhist.f
 		rm enabldisablhist.f
+
+readforcedisable.o:	readforcedisable.r  $(INCL)
+		$(RF) $(SP_RFLAGS)  readforcedisable.r > readforcedisable.f
+		$(F77) $(SP_FFLAGS2) $(mcmodelflags) $(FOPT2) -c readforcedisable.f
+		rm readforcedisable.f
 
 applygtpconstraints.o:	applygtpconstraints.r  $(INCL)
 		$(RF) $(SP_RFLAGS)  applygtpconstraints.r > applygtpconstraints.f
-		$(F77) $(SP_FFLAGS2) $(FOPT2) -c applygtpconstraints.f
+		$(F77) $(SP_FFLAGS2) $(mcmodelflags) $(FOPT2) -c applygtpconstraints.f
 		rm applygtpconstraints.f
 
