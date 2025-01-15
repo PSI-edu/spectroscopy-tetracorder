@@ -237,3 +237,19 @@ Querol, X. and the EMIT and TREX teams. 2023, Imaging spectroscopy: Earth
 and planetary remote sensing with the PSI Tetracorder and expert systems:
 from Rovers to EMIT and Beyond, Planetary Science Journal, in review.
 
+
+# December 2024: New Tetracorder paper is published (open paper).
+
+Clark, R. N., G. A. Swayze, K. E. Livo, P. Brodrick, E. Noe
+Dobrea, S. Vijayarangan, R. O. Green, D. Wettergreen,
+A. Candela, A. Hendrix, C. P. Garcia-Pando, N. Pearson,
+M. D. Lane, A. Gonzalez-Romero, X. Querol, and the EMIT and
+TREX teams, 2024, Imaging spectroscopy: Earth and planetary
+remote sensing with the PSI Tetracorder and expert systems
+from Rovers to EMIT and Beyond Planetary Science Journal 5:276,
+48pp. https://iopscience.iop.org/article/10.3847/PSJ/ad6c3a
+
+# January 15, 2025:
+
+Updated the spectral libraries.  Added new reference spectra to the rlib series
+and added AVIRIS3 2025 convolved libraries.
