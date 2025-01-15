@@ -278,3 +278,13 @@ DISABLE cse  7
 
 Changed Tetracorder makefile to use medium memory model so larger arrays and more reference
 materials can be used.
+
+# January 15, 2025 added opal-py
+
+The opal-py is a new program contributed by Eric Livo for reading
+specpr format files, making plots of spectra and displaying contents
+of specpr text records.
+
+If you want a python specpr file reading routine, check here:
+
+specpr/src.opal-py-python-specpr-reader-plots
