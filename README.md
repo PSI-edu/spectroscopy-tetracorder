@@ -57,12 +57,12 @@ Each Tetracorder expert system is a numbered match to the same number
 source code.  For example, expert system files tetracorder5.27a2.cmds,
 tetracorder5.27a.cmds, tetracorder5.27c.cmds, and tetracorder5.27e.cmds
 in the tetracorder.cmds directory go with the Tetracorder 5.27 source
-code and both these are frozen except for cosmetic chages that to
-no affect results (e.g. spelling or printing more infornatio to the
-rerminal).  If expert system content changes, a new file name with a
-new directory will be added (for exampel after tetracorder5.27e.cmds
+code and both these are frozen except for cosmetic changes that to
+no affect results (e.g. spelling or printing more information to the
+terminal).  If expert system content changes, a new file name with a
+new directory will be added (for example after tetracorder5.27e.cmds
 would be tetracorder5.27f.cmds).  Any code changes that do not parse
-the expert system will result in a new series, e.g.5.28, thus terracorder5.28
+the expert system will result in a new series, e.g.5.28, thus tetracorder5.28
 and expert system, e.g. tetracorder5.28a.cmds.
 
 Spectral library additions will only be additions and are fully backward
@@ -203,9 +203,9 @@ and a larger than plausible amount of jarosite and gypsum.
 See the tetracorder.cmds/tetracorder5.27c.cmds/AAAAA.KNOWN-ISSUES.txt
 file for details.  A mitigation study is underway.
 
-NOTE on adding entried to the spectral libraries.
+NOTE on adding entries to the spectral libraries.
 When new entries are added to the spectral libraries, the convolved libraries
-need to be regenerated.  There is no need to store changes, as only additiyons
+need to be regenerated.  There is no need to store changes, as only additions
 are added and they are always fully backward compatible.  Thus to update
 the libraries, the entire library directory is removed from github
 and the new one added.  This prevents huge data volume growth that is not needed.
@@ -222,7 +222,7 @@ and mitigate the known problems, Tetracorder Expert System 5.27e1 is
 released with this update.  For example, some areas were found to map
 as jarosite when the spectra showed a mixture of hematite and goethite
 of specific fine grain sizes.  One reference spectrum of such a mixture
-was added that greatly reduced the misidentifiction, but more reference
+was added that greatly reduced the misidentification, but more reference
 spectra are needed and will be added when appropriate samples are found.
 REE mapping is significantly improved with the new 5.27e1 expert system.
 Also new in the 5.27e release is the 4 abundance models developed by
@@ -253,3 +253,28 @@ from Rovers to EMIT and Beyond Planetary Science Journal 5:276,
 
 Updated the spectral libraries.  Added new reference spectra to the rlib series
 and added AVIRIS3 2025 convolved libraries.
+
+Updated tetracorder 5.27: Improved diagnostic output in single spectrum mode
+and added a disable groups directory that the user can add groups they
+deem unimportant.  This will speed run times by not doing calculations
+that are not useful.  Foe example, imaging spectrometers measuring through
+the Earth's atmosphere, like AVIRIS or EMIT can't measure quality data
+in the 1.4 and 1.9 micron atmospheric water bands.  Therefore any 
+material ID using these wavelength ranges (e.g. groups 13, 14, 19)
+do not need to be calculated, and if results are reported, the answer
+is likely biased and wrong.  With the disable feature, these groups
+(and other not needed) can be disabled before the image cube
+analysis is started.  While the disable file will be automatically
+implemented in expert system 5.27f1, it can be added to previous expert
+systems by adding in the mapping directory a file called:
+
+DISABLE/force-disable.txt
+
+with entries like:
+
+DISABLE grp 14
+
+DISABLE cse  7
+
+Changed Tetracorder makefile to use medium memory model so larger arrays and more reference
+materials can be used.
