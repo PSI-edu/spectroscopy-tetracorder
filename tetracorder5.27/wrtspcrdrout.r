@@ -162,7 +162,7 @@
 
 		#################################
 		#
-		#  case ouput is doen in tp1cse
+		#  case ouput is done in tp1cse
 		#
 		#################################
 	}
@@ -171,6 +171,7 @@
 		#if (diaflg != 4) call eralph
 		do igroup = 1, nzgroup {
 			if (nmatgrp(igroup) == 0) next
+			if (groupenable(igroup) == 0) next
 			ibest = grpbest(igroup)
 
 			  absdepth = abs(odepth(ibest,xel))
@@ -224,7 +225,7 @@
 			1x,'T    Fit   Depth',
 			'    f*d      Nrmlz')
 		  do jj = 1, nmats {
-			if (group(jj) > -1) { # valid group
+			if (group(jj) > -1 && groupenable(group(jj)) > 0 ) { # valid group
 			    if (diaflg == 3) write (ttyout, 112) (otitle(jj)(1:32),
 				jj,ii,
 				imch(featimprt(ii,jj)+1),
@@ -275,19 +276,19 @@
 					}
 				}
 			    }
-			}     # end if statement for valid group
+			}            # end if statement for valid group
 		  }           # end for do loop jj
 		  if (diaflg == 3) write (ttyout,*) ' '
 		  write (lunresult,*) ' '
 
-		if (diaflg == 3) write (ttyout,114)
-		write (lunresult,114)
-114		format ('Weighted Fits, Depths,',
+		if (diaflg == 3) write (ttyout,114) diaflg
+		write (lunresult,114) diaflg
+114		format ('### case',i3,' diagnostics:',/,'Weighted Fits, Depths,',
 			' and F*Ds values:',/,
 			10x,'Title',21x,' Group Material',
 			2x,'Fit',4x,'Depth',4x,'F*D')
 		do jj = 1, nmats {
-			if (group(jj) > -1) { # valid group
+			if (group(jj) > -1 && groupenable(group(jj)) > 0 ) { # valid group
 			   if (diaflg == 3) write (ttyout,113) otitle(jj)(1:32),
 				group(jj),jj,
 				ofit(jj,xel),

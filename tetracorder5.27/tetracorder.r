@@ -382,17 +382,21 @@
 
         }
 
+	write (ttyout, *)  'Initializing: setting all ', maxgrp, ' groups to 1 (enable) for readforcedisable'
         do i = 1, maxgrp {
 
 		groupenable(i) = 0
 		groupname(i) = '            '
                              #           111
                              #  123456789012
+		groupfdisable(i) = 1   # default: all groups enabled for forced
 	}
+	write (ttyout, *)  'Initializing: setting all ', maxcse, ' cases to 1 (enable) for readforcedisable'
         do i = 1, maxcse {
 
 		caseenable(i) = 0
 		casename(i) = '            '
+		casefdisable(i) = 1    # default: all cases enabled for forced
 	}
 
 	iversion = 5.271     # program version

@@ -60,7 +60,9 @@
 
 				if (imatenable(imat) > 0) {
 
-					groupenable(ig) = groupenable(ig) + 1  # number materials enabled in group
+					groupenable(ig) = (groupenable(ig) + 1) * groupfdisable(ig)  # number materials enabled in group
+										# groupfdisable = 0 if disabled, =1 otherwise
+					write (ttyout,*) 'DEBUG: imat=', imat, ' group= ',ig,' groupenable=',groupenable(ig),' groupfdisable=', groupfdisable(ig)
 				}
 
 			}
@@ -86,7 +88,8 @@
 				matcse(jmat,ic) = imat
 
 				if (imatenable(imat) > 0) {
-					caseenable(ic) = caseenable(ic) + 1  # number materials enabled in case
+					caseenable(ic) = (caseenable(ic) + 1) * casefdisable(ic)  # number materials enabled in case
+										# casefdisable = 0 if disabled, =1 otherwise
 				}
 
 			}

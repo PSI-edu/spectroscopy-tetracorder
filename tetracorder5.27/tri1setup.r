@@ -423,6 +423,13 @@
 		go to 400
 	}
 
+##################### check for forced disable ###########################
+
+write (ttyout,*) ' '
+write (ttyout,*) 'checking for forced disable of groupd and cases, file DISABLE/force-disable.txt'
+call readforcedisable
+write (ttyout,*) ' '
+
 ##################### tetracorder mode  ##################################
 
 600	if (cmdverbose(-1) <= 1) write (ttyout, 601)

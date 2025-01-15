@@ -24,8 +24,11 @@
 	integer*4	lunfd
 	integer*4	luntr
 
+	integer*4	lunfdisable
+	integer*4	lunenblgrp
 
-	parameter       (maxmat=670)     # maximum materials
+
+	parameter       (maxmat=690)     # maximum materials
 	parameter       (maxmat1=300)    # maximum materials in one group/case
         parameter       (maxfeat=16)     # maximum features per material
         parameter       (maxnotfeat=8)   # maximum NOT features per material
@@ -117,17 +120,17 @@
 
 ####### use the following set of lines for image cubes with 710 channels or less, huge cubes
 # A
-#       parameter       (imaxch=710)   # maximum channels in spectrum
-#       parameter       (maxpix=32765) # maximum pixels per line
-#       parameter       (maxpi2=65530) # = maxpix *2
-#       parameter       (maxpi4=131060) # = maxpix *4
+        parameter       (imaxch=710)   # maximum channels in spectrum
+        parameter       (maxpix=32765) # maximum pixels per line
+        parameter       (maxpi2=65530) # = maxpix *2
+        parameter       (maxpi4=131060) # = maxpix *4
 
 ######## NOTE: use the following 4 lines for single spectra analysis, and reasonable cubes
 # B                                        e.g. FTIR, ASD
-         parameter       (imaxch=4852)   # maximum channels in spectrum
-         parameter       (maxpix=4000) # maximum pixels per line
-         parameter       (maxpi2=8000) # = maxpix *2
-         parameter       (maxpi4=16000) # = maxpix *4
+#        parameter       (imaxch=4852)   # maximum channels in spectrum
+#        parameter       (maxpix=4000) # maximum pixels per line
+#        parameter       (maxpi2=8000) # = maxpix *2
+#        parameter       (maxpi4=16000) # = maxpix *4
 	 # setting maxpix <219 causes memory fault--need to investigate.
 
 ######## NOTE: use the following 4 lines for single spectra analysis, essentially no cubes
@@ -172,6 +175,17 @@
 	parameter	(lunf=57)     # lun for fit file
 	parameter	(lunfd=58)    # lun for fit*depth file
 	parameter	(luntr=59)    # lun for tetracorder-format file
+
+        parameter       (lunfdisable=70)  # lun for reading forced group disable list
+        parameter       (lunenblgrp=71)   # lun for enable output list
+
+
+# other lun definitions:
+#	tetracorder.r:	outfile = 50        # output lun for images
+#	tetracorder.r:	lunhist = 61
+#	tetracorder.r:	lunresult = 62
+#	tetracorder.r:	qlun = 63
+
 
         common /rlib0/ rlb, isplibs
         real*4    rlb(imaxch,maxlibs,maxmat)         # reflectance of spectra in library
@@ -221,6 +235,7 @@
 	common /multmap/ icontype, icurvchans, curvcwaves, cvwav
 	common /multmap/ ncvchmin, ncvchmax, groupname, casename
 	common /multmap/ groupenable, caseenable
+	common /multmap/ groupfdisable, casefdisable
 
 # Arrays for mapping multiple materials at same time
 
@@ -291,6 +306,14 @@
 
 	integer*4 groupenable(maxgrp)   # disable group = 0, enable >= 1
 	integer*4 caseenable(maxcse)    # disable case  = 0, enable >= 1
+
+	integer*4 groupfdisable(maxgrp)  # force disable group (read from DISABLE/force-disable.txt)
+                                         #   final enable is groupenable * groupfdisable
+                                         #    group = 0, enable >= 1
+
+	integer*4 casefdisable(maxcse)   # force disable case (read from DISABLE/force-disable.txt)
+                                         #   final enable is caseenable * casefdisable
+                                         # disable case  = 0, enable >= 1
 
 
 	character*40 matid(maxmat)        # material ID
