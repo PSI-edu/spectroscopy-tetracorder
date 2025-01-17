@@ -158,11 +158,11 @@
 				      # NOTE: maxgrpcse = maxgrp+maxcse
 				      # A MUST==========================
 
-	parameter	(mfilelen=72) # max length of output file names
+	parameter	(mfilelen=50) # max length of output file names
                                       # if change, must change values below
-	parameter	(mpgfilelen=150) # max length of output file names + path + group
+	parameter	(mpgfilelen=116) # max length of output file names + path + group
                                          # mfilelen + pathgrp length + 6
-					 # pathgrp length is currently 72 characters
+					 # pathgrp length is currently 60 characters
                                       # if change, must change values below
 
 	parameter	(maxaltlib=9) # number of alternate library keywords
@@ -316,7 +316,7 @@
                                          # disable case  = 0, enable >= 1
 
 
-	character*60 matid(maxmat)        # material ID
+	character*40 matid(maxmat)        # material ID
         character*20 matmode(maxmodes,maxmat)  # material modes, as in all earth mars
 
 	integer*4 featmode   # ZZZZ??? future?
@@ -598,18 +598,18 @@
 
 	integer*2 outbuff(maxpix)        # I*2 output buffer
 
-	# NOTE: maxfilelen was not defined previous to 4/2021.  mfilelen=72 is defined, 
+	# NOTE: maxfilelen was not defined previous to 4/2021.  mfilelen=50 is defined, 
 	#			so change maxfilelen to mfilelen
-	#       pathgrp is defined below as 72 characters.
+	#       pathgrp is defined below as 60 characters.
 	# the character lengths are hard coded and fortran won't let them be a parameter
 	#     if change the constabts here, also change mfilelen and  mpgfilelen parameters above
-        character mfile(maxmat)*72        # base file name (*mfilelen)
-	character dfile*150               # file names  (*mfilelen+pathgrp+6)
-	character ffile*150               # file names  (*mfilelen+pathgrp+6)
-	character fdfile*150              # file names  (*mfilelen+pathgrp+6)
+        character mfile(maxmat)*50        # base file name (*mfilelen)
+	character dfile*116               # file names  (*mfilelen+pathgrp+6)
+	character ffile*116               # file names  (*mfilelen+pathgrp+6)
+	character fdfile*116              # file names  (*mfilelen+pathgrp+6)
 
-	character*72 pathgrp(0:maxgrp)    # group path name NOTE: keep pathgrp and pathcase length the same
-	character*72 pathcase(maxcse)     # case  path name NOTE: keep pathgrp and pathcase length the same
+	character*60 pathgrp(0:maxgrp)    # group path name NOTE: keep pathgrp and pathcase length the same
+	character*60 pathcase(maxcse)     # case  path name NOTE: keep pathgrp and pathcase length the same
 
 	integer*4 obits(maxmat)         # output bits/pixel= 8 or 16
 
