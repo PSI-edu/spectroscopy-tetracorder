@@ -1,0 +1,21 @@
+
+# the commands below are run from the tetracorder mapping directory.
+
+./cmds.abundances/cmd.compute-model-abundances model3 \
+	cube ../cube/cuprite.95.cal.rtgc.v 0.00005 waves /sl1/usgs/library06.conv/s06av95a 6
+
+./cmds.abundances/cmd.compute-model-abundances model3 \
+	cube ../cube/cuprite.95.cal.rtgc.v 0.00005 \
+	waves /sl1/usgs/library06.conv/s06av95a 6 model4 quartz 20.0
+
+
+./cmds.abundances/cmd.compute-model-abundances model3 \
+	cube ../cubes/f130924t01p00_mosaic.bil20k.v  0.00005  \
+	waves /sl1/usgs/library06.conv/s06av13a 6 model4 quartz 20.0
+
+
+./cmds.abundances/cmd.compute-model-abundances model3 \
+	cube ../cubes/f130924t01p00_mosaic.bil20k.v  0.00005  \
+	waves /sl1/usgs/library06.conv/s06av13a 6 model4 quartz 20.0 | \
+	tee cmd.compute-model-abundances.out
+

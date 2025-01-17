@@ -1,0 +1,90 @@
+#!/bin/sh
+
+set -x
+
+# usage:
+#        cmds.all.support/make.spreslt1.file.for.spectral.extractions   specpr_file_name
+
+# iwfl=/sl1/usgs/rlib06/r06mm09c 
+#
+#    1  USGS Digital Spectral Library: r06mm09c    302 Characters of TEXT
+#    2  Convolved MMM 2009c global mode Library    150 Characters of TEXT
+#    3  ****************************************    41 Characters of TEXT
+#    4  ****************************************    41 Characters of TEXT
+#    5  ..                                          41 Characters of TEXT
+#    6  Wavelengths (um) M3 global mode 2009g2      85  00:00:00.01  05/08/2009      6     12
+#    7  ..                                          41 Characters of TEXT
+#    8  ..                                          41 Characters of TEXT
+#    9  ..                                          41 Characters of TEXT
+#   10  ..                                          41 Characters of TEXT
+#   11  ..                                          41 Characters of TEXT
+#   12  bandpasses FWHM microns M3 global 2009g2    85  00:00:00.00  04/21/2008      6     12
+#   13  ..                                          41 Characters of TEXT
+#   14  ..                                          41 Characters of TEXT
+#   15  ..                                          41 Characters of TEXT
+#   16  ..                                          41 Characters of TEXT
+#   17  ..                                          41 Characters of TEXT
+#   18  Data value = channel number (86 ch)         85  00:00:00.00  04/21/2008      6      0
+#   19  ..                                          41 Characters of TEXT
+
+#    6  Wavelengths (um) M3 global mode 2009g2      85  00:00:00.01  05/08/2009      6     12
+#        11111111112222222222333333333344444444445555555555666666666677777777778
+#2345678901234567890123456789012345678901234567890123456789012345678901234567890
+
+if [ -z "$1" ]
+then
+	echo "Usage:   cmds.all.support/make.spreslt1.file.for.spectral.extractions   specpr_file_name"
+	echo "exit 1"
+	exit 1
+
+fi
+
+
+spout=$1
+
+if [ -f "$spout" ]
+then
+	echo "output specpr file $spout exists, not overwriting"
+	echo "exit 1"
+	exit 1
+fi
+
+if [ ! -f "r1" ]
+then
+	echo "no specpr restart file, r1 found.  exit 1"
+	echo "exit 1"
+	exit 1
+fi
+splib=`grep '^iwfl=' r1 | sed -e 's/iwfl=//'`
+
+echo "extracting specpr file setup from ", $splib
+
+spwavrec=`spprint $splib | head -29 | grep -i wavelength | head -1 | awk '{ print $1 }'`
+
+spresrec=`spprint $splib | head -29 | egrep -i 'fwhm|bandpass' | head -1 | awk '{ print $1 }'`
+
+spchans=`spprint "$spwav" | head -29 | grep -i wavelength | head -1 | cut -c 50-55 | awk '{ print $1 }'`
+
+echo "channels    = $spchans"
+echo "wavelengths = $spwav"
+echo "resolution  = $spres"
+
+dd if=$splib ibs=1536 of=$spout count=6      # note: 1536 is a specpr record size in bytes
+
+sp_stamp $spout   # add header at record 0
+
+spsettitle  $spout 1 "################ $spout ################" force
+#                              1111111111222222222233333333334
+#                     1234567890123456789012345678901234567890
+spsettitle  $spout 2 "################ $spout ################" force
+spsettitle  $spout 3 "################ $spout ################" force
+spsettitle  $spout 4 "################ $spout ################" force
+spsettitle  $spout 5 "..                                      " force
+
+# now copy specpr records 6 - 25 to the new file
+
+dd if=$splib ibs=1536 skip=6 count=19   >> $spout
+
+
+spprint $spout
+

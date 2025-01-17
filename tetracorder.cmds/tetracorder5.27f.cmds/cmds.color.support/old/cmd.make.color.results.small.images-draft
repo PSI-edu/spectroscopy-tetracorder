@@ -1,0 +1,185 @@
+#!/bin/sh
+
+# run this from in the cmds.abundances directory in your mapping run
+
+# cd cmds.abundances
+# ./cmd.make.color.results.small.images
+
+
+if [ ! -d "color.results" ]
+then
+	echo "ERROR: directory color.results not found from this location"
+	echo "are you in the correct directory?"
+	echo "run this command from your tetracorder mapping directory:"
+        echo "    ./cmds.color.support/cmd.make.color.results.small.images"
+	echo "exit 1"
+	exit 1
+fi
+
+
+outdir="color.results-small1280"
+
+if [ ! -d "$outdir" ]
+then
+	echo "mkdir $outdir"
+	mkdir $outdir
+fi
+
+#  define function makesmallkey 
+
+makesmallkey () {
+		b=`echo $i | grep "$a"`
+		if [ -n "$b" ]
+		then
+			aa=`basename $a .png`
+			cfile=`basename $i $a`
+			echo "###### makesmallkey: aa= $aa"
+			echo "###### makesmallkey: cfile= $cfile"
+			keyfileout="color.results-small1280/$cfile$aa-key.jpg"
+
+			echo "jpegtopnm color.keys/$key | pnmscale 0.67 | ppmtojpeg > $keyfileout"
+			jpegtopnm color.keys/$key | pnmscale 0.67 | ppmtojpeg > $keyfileout
+		fi
+}
+
+
+for i in color.results/*.png
+do
+	echo "$i"
+
+	bfile=`basename $i .png`
+
+	ofile="${bfile}-1280.jpg"
+
+	if [ ! -f "$outdir/$ofile" ]
+	then
+
+		echo "pngtopnm $i  | pnmscale -width=1280 | ppmtojpeg > $outdir/$ofile"
+		pngtopnm $i  | pnmscale -width=1280 | ppmtojpeg > $outdir/$ofile
+
+		#   color.result name                                color.keys  key file
+
+		# _1.5um.broadfeats.png                               key_1.5um-broadfeats.a.jpg
+		# _1.9um.water.band.position.png                      key_1.9-water.a.jpg
+		# _1.9um.water.sulfates.band.position.png             key_1.9-water-sulfates.a.jpg
+		# _1.9um.water.wave.position.a.png                    key_water-map-1.9-2um_labels_b.jpg
+		# _1micron-minerals-a.png                             key_1um-map.fe2+,fe3+.a-1200w.jpg
+		# _2micron-minerals-b3.png                            key_2um-mins-b2+.a-layout-1200w.jpg
+		# _2micron-minerals.png                               key_2micron-mins_labels_a.jpg
+		# _hematite+goethite.grain.size-a.png                 key_hematite+goethite.grain.size.a-wide.jpg
+		# _prehnite-chlorite-mix+perchlorate.png              key_prehnite-chloriteserp-perchlorate_labels_a.jpg
+		# _pyroxene.2um.band.position.png                     key_pyroxene_labels_a.jpg
+		# _red-edge-shift-a.png                               key_red-edge-shift.a.jpg
+		# _vegetation-cover-a.png                             key_vegetation-cover.a.jpg
+		# _water-a.png                                        key_water.a.jpg
+		########################################################################################
+
+		########################################################################################
+		#   color.result name                                color.keys  key file
+		# _1.5um.broadfeats.png                               key_1.5um-broadfeats.a.jpg
+
+		a="_1.5um.broadfeats.png"
+		key="key_1.5um-broadfeats.a.jpg"
+		makesmallkey
+
+
+		########################################################################################
+		#   color.result name                                color.keys  key file
+		# _1.9um.water.band.position.png                      key_1.9-water.a.jpg
+
+		a="_1.9um.water.band.position.png"
+		key="key_1.9-water.a.jpg"
+		makesmallkey
+
+		########################################################################################
+		#   color.result name                                color.keys  key file
+		# _1.9um.water.sulfates.band.position.png             key_1.9-water-sulfates.a.jpg
+
+		a="_1.9um.water.sulfates.band.position.png"
+		key="key_1.9-water-sulfates.a.jpg"
+		makesmallkey
+
+		########################################################################################
+		#   color.result name                                color.keys  key file
+		# _1.9um.water.wave.position.a.png                    key_water-map-1.9-2um_labels_b.jpg
+
+		a="_1.9um.water.wave.position.a.png"
+		key="key_water-map-1.9-2um_labels_b.jpg"
+		makesmallkey
+
+		########################################################################################
+		#   color.result name                                color.keys  key file
+		# _1micron-minerals-a.png                             key_1um-map.fe2+,fe3+.a-1200w.jpg
+
+		a="_1micron-minerals-a.png"
+		key="key_1um-map.fe2+,fe3+.a-1200w.jpg"
+		makesmallkey
+
+		########################################################################################
+		#   color.result name                                color.keys  key file
+		# _2micron-minerals-b3.png                            key_2um-mins-b2+.a-layout-1200w.jpg
+
+		a="_2micron-minerals-b4.png"
+		key="key_2um-mins-b4-layout-1200w.png"
+		makesmallkey
+
+		########################################################################################
+		#   color.result name                                color.keys  key file
+		# _2micron-minerals.png                               key_2micron-mins_labels_a.jpg
+
+		a="_2micron-minerals.png"
+		key="key_2micron-mins_labels_a.jpg"
+		makesmallkey
+
+		########################################################################################
+		#   color.result name                                color.keys  key file
+		# _hematite+goethite.grain.size-a.png                 key_hematite+goethite.grain.size.a-wide.jpg
+
+		a="_hematite+goethite.grain.size-a.png"
+		key="key_hematite+goethite.grain.size.a-wide.jpg"
+		makesmallkey
+
+		########################################################################################
+		#   color.result name                                color.keys  key file
+		# _prehnite-chlorite-mix+perchlorate.png              key_prehnite-chloriteserp-perchlorate_labels_a.jpg
+
+		a="_prehnite-chlorite-mix+perchlorate.png"
+		key="key_prehnite-chloriteserp-perchlorate_labels_a.jpg"
+		makesmallkey
+
+		########################################################################################
+		#   color.result name                                color.keys  key file
+		# _pyroxene.2um.band.position.png                     key_pyroxene_labels_a.jpg
+
+		a="_pyroxene.2um.band.position.png"
+		key="key_pyroxene_labels_a.jpg"
+		makesmallkey
+
+		########################################################################################
+		#   color.result name                                color.keys  key file
+		# _red-edge-shift-a.png                               key_red-edge-shift.a.jpg
+
+		a="_red-edge-shift-a.png"
+		key="key_red-edge-shift.a.jpg"
+		makesmallkey
+
+		########################################################################################
+		#   color.result name                                color.keys  key file
+		# _vegetation-cover-a.png                             key_vegetation-cover.a.jpg
+
+		a="_vegetation-cover-a.png"
+		key="key_vegetation-cover.a.jpg"
+		makesmallkey
+
+		########################################################################################
+		#   color.result name                                color.keys  key file
+		# _water-a.png                                        key_water.a.jpg
+
+		a="_water-a.png"
+		key="key_water.a.jpg"
+		makesmallkey
+
+	else
+		echo "$outdir/$ofile already exists"
+	fi
+done

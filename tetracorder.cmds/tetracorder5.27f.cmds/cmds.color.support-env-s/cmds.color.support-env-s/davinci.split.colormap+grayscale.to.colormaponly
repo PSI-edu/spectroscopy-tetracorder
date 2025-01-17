@@ -1,0 +1,47 @@
+#!/usr/bin/env -S davinci -f  
+####!/usr/local/bin/davinci -f
+
+# copy this script to the tetracorder mapping directory: color.results
+
+###########################  was:  #!/usr/local/bin/davinci -f
+# So with the old method the first line would need to be:
+# On linux and windows the above line should be:
+#
+#  #!/usr/local/bin/davinci -f
+#
+# on macs, change the above to:
+#
+#  #!/Applications/davinci.app/Contents/Resources/bin/davinci -f
+#
+# with the new 1st line method, it should work on linux, macs and windows with no changes.
+
+# verbose=0
+
+###################################################
+# User:   rclark    Date:  Fri Sep 24 12:51:25 2021
+###################################################
+
+if ( $argc < 1 ) {
+	printf ("ERROR: need input file name\n")
+}
+
+f1=$1
+
+a=read(filename=f1)
+
+adim=dim(a)
+
+awidth = int(adim[1,,]/2)
+
+acolor1 = a[1:awidth,,]
+
+b = byte(acolor1)
+
+f2="../color.results-maponly/" + f1
+
+write (b,filename=f2, type=png)
+
+f3 = "../color.results-maponly/" + basename (f2,ext=".png") + ".v"
+
+write (b,filename=f3, type=vicar)
+

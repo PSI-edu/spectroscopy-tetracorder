@@ -1,0 +1,100 @@
+
+preprocess algorithms:
+     suhl: segmented upper hull continuum, linear
+     suhc: segmented upper hull continuum, curved
+     schcl: segmented collapsing hull continuum, linear
+     schcc: segmented collapsing hull continuum, curved
+
+\#######################################################################
+
+group 0
+use= yes           \# yes or no,     if no,    skip this entry.   DONE 5.0
+udata: reflectance
+convolve: no
+preratio: none
+preprocess: none
+algorithm: tricorder-primary
+ID=Melting_snow_mSnw1a
+define library records     \# DONE 6/24/2011
+                           \# need to add a, b below 6/24
+  a SMALL:  [splib06]  6216 d      \# file ID, rec no.    1 to 2171 channels
+  a MEDIUM: [splib06]  xxxx d      \# file ID, rec no. 2172 to 4852 channels
+  a LARGE:  [splib06]  xxxx d      \# file ID, rec no. larger_chans_future
+           \# need to have more than one reference spectrum per test, e.g.
+           \# use an ASD and a Nicolet convolved spectrum, and different
+           \# features in each.  label spectra: a, b, c  allow max 3 spectra
+  b SMALL:  [splib06]  6216 d      \# file ID, rec no.    1 to 2171 channels
+  b MEDIUM: [splib06]  xxxx d      \# file ID, rec no. 2172 to 4852 channels
+  b LARGE:  [splib06]  xxxx d      \# file ID, rec no. larger_chans_future
+endlibraryrecords     \# DONE 6/24/2011
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Melting_snow mSnw1a     W1R1Fa
+[DELETPTS]
+Melting Snow 1a                  \# output title
+define features                  \# Number of features, and not feats
+                  \# blank line recycles to same input line
+                  \# defining features outside of range of work is OK
+                  \# if outside, they are ignored
+   f1a Dw 0.902  0.930  1.080  1.110  ct 0.08 0.7
+   f1a                                rcbblc> .1 .2  \# shoulderness
+   f1a                                weight*2.2     \# multiply weight by 2.2
+   f1a ignore w 0.98 0.99  \# ignore wavelength range from 0.98 to 0.99
+   f1a ignore w 1.01 1.02  \# ignore wavelength range from 1.01 to 1.02
+                          \# can specify up to 3 ranges per feature.
+   f1a mode= all  \# could be airless, mars_orbit, earth_orbit, moon, lab, titan, comet ...
+   f1a move leftc left 2c    \# allow left continuum to move left up to 2 channels
+   f1a move rightc right 2c  \# allow left continuum to move right up to 2 channels
+
+   f2a Dw 1.150   1.178   1.315   1.345  ct 0.05 lct/rct> 0.9 1.1
+   f2a mode= all  
+
+   f3b DW 3.4     3.5     3.6     3.7    ct 0.01 0.02   lct/rct> 0.9 1.1
+
+   n1a NOT [NOTGREENVEG]  1  0.50a 0.5   \# NOT veg, feat 1, depth .50, fit .5
+                \# the [NOTGREENVEG] could (should) be changed to the ID
+                \# no mode specified, so default = all
+
+    \# concept for future: need a "degrades to" so if diagnostic features are
+    \# all deleted, the entry degrades to a simpler answer.
+	\# how about a case: degrades to case X
+
+endfeatures
+
+\#  NOT feature at wavelength   .683 for:Fir_Tree IH91-2
+\# Notes:
+
+define constraints
+
+   constraint: FITALL>0.5 0.7  DEPTHALL>0.04 0.06
+   constraint: bdratio: f1/f2 0.1 0.2 0.8 0.9 \# band depth ratio fuzzy logic min max
+   constraint: temperature: C -50 0 10 50     \# temp fuzzy logic C=Centigrade  K= Kelvin
+   constraint: pressure: Torr  0 1 999 1000   \# Torr or Bar
+
+   \# alternate methods of specifying pressure:
+   constraint: mode = [CONSTRAINTMODE]         \# earth mode applies (this should be a
+                                               \# a variable, set at execution time)
+                                               \# e.g. = Earth
+
+   constraint: pressure: Mars                  \# mars conditions
+   constraint: pressure: Earth                 \# earth conditions
+   constraint: elevation: earth m 0 1 1000 2000 \# m=meters, f=feet fuzzy logic
+                                                \# if in earth mode
+   constraint: elevation: mars  m 0 1 1000 2000 \# m=meters, f=feet fuzzy logic
+                                                \# if in mars  mode
+                \# note: elevation may be more complex, e.g. where vegetation 
+                \#       grows is a function of both elevation and latitude.
+                \#       perhaps need elevation * cosine latitude
+
+endconstraint
+
+define output
+   output=fit depth fd
+   snow.melting.1a             \# Output base file name
+   8 DN 255 = 0.5              \#    
+   compress= zip
+endoutput
+
+define actions
+   action: sound1
+   action: degrades to case 23  \# if no diagnostic features, then no answer but
+                                \# degrades to case 23.
+endaction

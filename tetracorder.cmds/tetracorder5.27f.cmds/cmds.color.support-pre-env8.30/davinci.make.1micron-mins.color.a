@@ -1,0 +1,322 @@
+#!/usr/local/bin/davinci -q -f
+####!/usr/bin/env -S davinci -q -f  
+
+###########################  was:  #!/usr/local/bin/davinci -q -f
+
+
+
+# command line:
+# prog    gray_base_image  prefix-file-name   [dual|nodual]
+
+prog="davinci.make.1micron-mins.color.a"           # CHANGE THIS if program name changes
+
+####################  Begin static: no need to change inything in this section ################
+
+if ($argc < 2) {
+
+        printf("Insufficient input\n")
+        printf("%s input_gray_image  outputcolorimage\n", prog)
+        printf("exit 1\n")
+        exit(1)
+}
+
+
+dual    = 1     # default color + base image 
+dualmax = 2000  # no dual if width is greater than this
+
+if ($argc >= 3) {
+
+	if ( "$3" == "nodual" ) {
+		dual = 0
+	}
+	if ( "$3" == "dual" ) {
+		dual = 1
+		dualmax = 999999 
+	}
+}
+
+# read base gray image
+
+gbase=read(filename=$1)
+if (HasValue(gbase) ==0) {                   # check that read worked
+      printf ("read ERROR on file: %s\n",$1)
+      printf ("^GEXIT 1\n")
+      exit(1)
+}
+
+# A master color set.  Just read in the files, assign the colors
+# and write the results.    R. Clark 4/16/2015 - 11/16/2015
+# execute this program in the same directory asthe source code below
+source ("cmds.color.support/davinci.master.colors")
+
+# available colors:
+# c_red     c_green          c_blue       c_yellow        c_magenta       c_cyan          c_armygreen  
+# c_salmon  c_flesh          c_orange     c_deeppink      c_yellowgreen   c_lavender      c_bluegreen
+# c_skyblue c_paleseagreen   c_white      c_redpink       c_gold          c_mudyellow     c_lightpink
+# c_purple
+
+# a blue to red 12 spectral color sequence:
+#
+# c_purple c_blue c_skyblue c_cyan c_bluegreen c_green c_paleseagreen c_yellowgreen c_yellow c_gold  c_orange c_red
+
+# a = first input image, 3-band color, xcolor = the color output image, RGB float
+# colorout = the color output image, 3-byte RGB
+
+
+define read_an_image(1,1) {
+
+	# read a gray-scale image and convert to 3-bands
+
+	afile = $1   # file to read
+
+	fileexist = fexists(afile)
+	if (fileexist == 0) {
+
+		printf ("davinci.make.1micron-mins.color.a ERROR: file does not exist: %s\n", afile)
+	} else {
+
+		printf ("davinci.make.1micron-mins.color.a file exists: %s\n", afile)
+	}
+
+	printf ("davinci.make.1micron-mins.color.a reading file %s\n", afile)
+	aaa=read(filename=afile)
+	if (HasValue(aaa) ==0) {  # check that read worked
+		printf ("davinci.make.1micron-mins.color.a read ERROR on file: %s\n",afile)
+		printf ("setting to zero\n")
+		aaa=0
+	}
+	qqq = cat(aaa,aaa,axis=z)  # make into 2-band image
+	aaa = cat(aaa,qqq,axis=z)  # make into 3-band image
+
+	return (aaa)
+
+}  # end define
+
+
+
+###################   begin custom section ##########################################
+
+
+
+# 22 available colors:
+# c_red     c_green          c_blue       c_yellow        c_magenta       c_cyan          c_armygreen  
+# c_salmon  c_flesh          c_orange     c_deeppink      c_yellowgreen   c_lavender      c_bluegreen
+# c_skyblue c_paleseagreen   c_white      c_redpink       c_gold          c_mudyellow     c_lightpink
+# c_purple
+
+# first image:
+
+
+a = read_an_image("group.1um/fe3+_hematite.fine.gr.all.fd.gif")
+
+        # set up output image xcolor:
+        xcolor=float(a*0)
+        xdim=dim(a)
+
+        # now add the colors
+
+# Fe2+, generic  (blues)
+
+c= c_blue
+a = read_an_image("group.1um/fe2+generic.all.fd.gif")
+xcolor= xcolor + a*( c /255.)
+
+####
+
+c= c_skyblue
+a = read_an_image("group.1um/fe2+_pyroxene.hypersthene.fd.gif")
+xcolor= xcolor + a*( c /255.)
+
+####
+
+c= c_cyan
+a = read_an_image("group.1um/fe2+generic_carbonate_siderite1.fd.gif")
+xcolor= xcolor + a*( c /255.)
+
+
+##### Fe2+ Fe3+ mixtures (lavender)
+
+c= c_lavender
+a = read_an_image("group.1um/fe2+fe3+_hematite_weathering.fd.gif")
+a = a + read_an_image("group.1um/fe2+_goeth+musc.fd.gif")
+xcolor= xcolor + a*( c /255.)
+
+
+######### Fe3+ mixtures (flesh)
+
+c= c_flesh
+
+a = read_an_image("group.1um/fe3+mix_AMD.assemb1.fd.gif")
+a = a + read_an_image("group.1um/fe3+mix_AMD.assemb2.fd.gif")
+a = a + read_an_image("group.1um/fe3+_goeth+jarosite.fd.gif")
+xcolor= xcolor + a*( c /255.)
+
+######### Fe3+ hematite-goethite mixtures  (salmon)
+
+c= c_salmon
+
+a = read_an_image("group.1um/fe3+_hematite-nano+goethite-fg-amix.fd.gif")
+a = a + read_an_image("group.1um/fe3+_hematite.1+goethite.9hg1.fd.gif")
+a = a + read_an_image("group.1um/fe3+_hematite.2+goethite.8hg2.fd.gif")
+a = a + read_an_image("group.1um/fe3+_hematite.3+goethite.7hg3.fd.gif")
+a = a + read_an_image("group.1um/fe3+_hematite.1+goeth.4+qtz.fd.gif")
+a = a + read_an_image("group.1um/fe3+_hematite.4+goeth.1+qtz.fd.gif")
+xcolor= xcolor + a*( c /255.)
+
+###### Fe3+ sulphate  (paleseagreen)
+
+c= c_paleseagreen
+a = read_an_image("group.1um/fe3+fe2+_sulfate_copiapite.fd.gif")
+xcolor= xcolor + a*( c /255.)
+
+
+#### jarosite  (green)
+
+c= c_green
+a = read_an_image("group.1um/fe3+_sulfate_nh3jarosite.fd.gif")
+a = a + read_an_image("group.1um/fe3+_sulfate_jarosite-na-gds100.fd.gif")
+a = a + read_an_image("group.1um/fe3+_sulfate_jarosite-na-gds101.fd.gif")
+a = a + read_an_image("group.1um/fe3+_sulfate_jarosite-k-90c.fd.gif")
+a = a + read_an_image("group.1um/fe3+_sulfate_kjarosite200.fd.gif")
+a = a + read_an_image("group.1um/fe3+_sulfate_jarosite-K-JR2501.fd.gif")
+a = a + read_an_image("group.1um/fe3+_sulfate_jarosite-na-nmnh.fd.gif")
+a = a + read_an_image("group.1um/fe3+_sulfate_jarosite-H3O-SJ-1.fd.gif")
+a = a + read_an_image("group.1um/fe3+_sulfate_jarosite_br34a2.fd.gif")
+a = a + read_an_image("group.1um/fe3+_sulfate_jarosite-thinfilm.fd.gif")
+xcolor= xcolor + a*( c /255.)
+
+###############################################
+# Fe3+  hydroxide, goethites FeOOH  (yellows)
+
+##### coarse grained goethite
+
+c= c_mudyellow
+a = read_an_image("group.1um/fe3+_goethite.coarsegr.ws222.fd.gif")
+a = a + read_an_image("group.1um/fe3+_goethite.medcoarsegr.mpcma2.fd.gif")  # note: spectrum has no trace jarosite
+xcolor= xcolor + a*( c /255.)
+
+##### medium grained goethite
+
+c= c_mudyellow
+a = read_an_image("group.1um/fe3+_goethite.medgr.ws222.fd.gif")
+a = a + read_an_image("group.1um/fe3+_goethite+qtz.medgr.gds240.fd.gif")
+xcolor= xcolor + a*( c /255.)
+
+##### fine grained goethite
+
+c= c_gold
+a = read_an_image("group.1um/fe3+_goethite.fingr.mpcma2.fd.gif")
+xcolor= xcolor + a*( c /255.)
+
+#################### nano goethite   c_yellow
+
+c= c_yellow
+a = read_an_image("group.1um/fe3+_goethite.thincoat.fd.gif")
+a = a + read_an_image("group.1um/fe3+_goethite.nano-70nm.fd.gif")
+a = a + read_an_image("group.1um/fe3+_goethite.nano0.5+qtz.fd.gif")
+xcolor= xcolor + a*( c /255.)
+
+printf ("DEBUG:\n\n")
+printf ("DEBUG: davinci.make.1micron-mins.color.a  nano goethite  c_yellow\n")
+printf ("DEBUG:   c_yellow = c =  %f  %f  %f \n", c[1,1,1], c[1,1,2], c[1,1,3])
+bbb = a*( c /255.) 
+amom1=moment(bbb[,,1])
+amom2=moment(bbb[,,2])
+amom3=moment(bbb[,,3])
+printf ("DEBUG:   moment channel 1 min max mean: a*( c /255.) = %f  %f  %f\n", amom1[1,,] , amom1[2,,], amom1[3,,])
+printf ("DEBUG:   moment channel 2 min max mean: a*( c /255.) = %f  %f  %f\n", amom2[1,,] , amom2[2,,], amom2[3,,])
+printf ("DEBUG:   moment channel 3 min max mean: a*( c /255.) = %f  %f  %f\n", amom3[1,,] , amom3[2,,], amom3[3,,])
+
+###############################################
+# Fe3+ oxide Hematites  (red to orange)
+
+##### coarse grained hematite
+
+c= c_red
+#### was: a = read_an_image("group.1um/fe3+_hematite.lg.gr.all.fd.gif")
+
+a = read_an_image("group.1um/fe3+_hematite.lg.gr.br25a.fd.gif")
+a = a + read_an_image("group.1um/fe3+_hematite.lg.gr.br25c.fd.gif")
+a = a + read_an_image("group.1um/fe3+_hematite.lg.gr.br34c.fd.gif")
+xcolor= xcolor + a*( c /255.)
+
+##### medium  grained hematite
+
+c= c_redpink
+#### was: a = read_an_image("group.1um/fe3+_hematite.med.gr.all.fd.gif")
+
+a = read_an_image("group.1um/fe3+_hematite.med.gr.gds27.fd.gif")
+a = a + read_an_image("group.1um/fe3+_hematite.med.gr.br25b.fd.gif")
+xcolor= xcolor + a*( c /255.)
+
+##### fine  grained hematite
+
+c= c_deeppink
+##### was: a = read_an_image("group.1um/fe3+_hematite.fine.gr.all.fd.gif")
+
+a = read_an_image("group.1um/fe3+_hematite.fine.gr.fe2602.fd.gif")
+a = a + read_an_image("group.1um/fe3+_hematite.fine.gr.gds76.fd.gif")
+a = a + read_an_image("group.1um/fe3+_hematite.fine.gr.ws161.fd.gif")
+xcolor= xcolor + a*( c /255.)
+
+###### nano hematite    c_orange
+
+c= c_orange
+a = read_an_image("group.1um/fe3+_hematite.nano.BR34b2.fd.gif")
+a = a + read_an_image("group.1um/fe3+_hematite.nano.BR34b2b.fd.gif")
+a = a + read_an_image("group.1um/fe3+_hematite.nano.KP58610.fd.gif")
+a = a + read_an_image("group.1um/fe3+_hematite.nano-0.3+qtz.fd.gif")
+a = a + read_an_image("group.1um/fe3+_hematite.thincoat.fd.gif")
+xcolor= xcolor + a*( c /255.)
+
+###############################################
+
+# 22 available colors:
+# c_red     c_green          c_blue       c_yellow        c_magenta       c_cyan          c_armygreen  
+# c_salmon  c_flesh          c_orange     c_deeppink      c_yellowgreen   c_lavender      c_bluegreen
+# c_skyblue c_paleseagreen   c_white      c_redpink       c_gold          c_mudyellow     c_lightpink
+# c_purple
+
+########### end custom, no need to change anything below this line ###############################
+
+xout=byte(xcolor+0.5)   # output color image, byte
+xout = bip(xout)
+xdim=dim(xout)
+xdimx=xdim[1,,]      # color image width
+
+fout=$2
+
+foute="color.results-envi/" + fout
+
+write (xout, filename=foute, type=vicar)
+
+
+gbasedim=dim(gbase)
+x=gbasedim[1,,]      # base image width
+
+if (x > dualmax) {
+	dual = 0
+}
+
+if ( dual == 1 ) {
+	
+	gbase = bip(gbase)
+	xout = cat (xout, gbase, axis=x)
+}
+
+if (HasValue(xout) ==0) {
+
+	printf ("davinci.make.1micron-mins.color.a: xout has no value\n")
+	printf ("EXIT 1\n")
+	exit(1)
+}
+
+
+adim=dim(xout)
+if ( adim[1,,] > 5 || adim[2,,] > 5 ) {
+	printf ("writing %s\n", fout)
+	write (xout, filename=fout, type=png)
+} else {
+	printf ("not writing %s\n", fout)
+	printf ("    image size < 6 pixels\n")
+}

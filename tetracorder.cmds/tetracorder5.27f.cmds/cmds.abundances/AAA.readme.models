@@ -1,0 +1,175 @@
+
+Model 1) Relative linear band depth as a proxy for abundance.
+         Linear Band Depth  method:
+         Scale band depth to band depth of pure mineral.
+         Assume linear scaling of this scaled band depth = fractional abundance
+
+         RA = RAB * BDO / BDR,   RA = Relative Abundance
+
+         where:
+                RAB = Reference material abundance in the reference spectrum.
+                BDO = Band depth in the observed spectrum (the unknown).
+                BDR = Band depth in the reference spectrum.
+
+
+Model 2) Absolute Abundance in a non-scattering 2-way slab model.
+         Assumes no scattering slab model.  Path length is a 2-way path.
+         Simple Beers Law 2-way non scattering path length.
+
+         This model gives an upper limit to the abundance of material in the
+         optical surface.
+         Model input: includes cosines of the incidence and emission angles
+         Needed: absorption coefficients for each mineral absorption fature
+
+         Beers Law:
+         R  = e^(-k*x)                                  (after Clark and Roush, 1984, eqn 11)
+
+         where
+                k = absorption coefficient (usually expressed in inverse centimeters).
+                x = path length through the material 
+                   = Mean Optical Path Length in a scattering medium, MOPL.
+         
+         -ln(R) = kx
+         
+         BD = Band Depth = (Rc – Rb)/Rc = 1 – Rb/Rc   (after Clark and Roush, 1984, eqn 32)
+         
+         Rc = reflectance of the continuum = exp(-kc * xc)
+         Rb = reflectance at the band center = exp(-kb * xb)
+         kc = absorption coefficient of the continuum
+         xc =  mean optical path length of the continuum
+         kb = absorption coefficient at the band center
+         xb =  mean optical path length at the band center
+         
+         x = ln(1-BD) / (-Δk),  where Δk kb-kc = delta absorption coefficient
+         Depth probed Tslab   = x/2.         For 3 optical depths:
+         
+         Mass = Tslab * (100^2) * density, (density in gm/cc) = grams per sq meter in optical layer
+         
+
+Model 3) Mass in the optical layer assuming isotropic random walk by photons.
+         Uses a random walk process to estimate the equivalent depth
+         into the surface.  Required: grain size of the material.
+
+
+         MOPL = x = ln(1-BD) / (-Δk) for a given spectral feature.
+
+         Given grain size (derived from spectral feature shape):
+
+         m = ln(R) / ln(1/(1+2kD)).     (From Clark and Roush, 1984, equations 16 and 19)
+             Note: this is for the surface as a whole,
+                   but we want m for just the individual mineral.
+
+         m = number of scatters, k = absorption coefficient, D= distance between scatters,
+                                                        which = grain diameter for this model.
+
+         #################
+	 # from Clark and Roush (1984) = C&R, and Clark and Swayze (AGU, 2018) = C&S
+	 #
+	 # R     = reflectance at a given wavelength
+	 # Rc    = reflectance at a continuum wavelength
+	 # Rb    = reflectance at a band center wavelength
+	 # t     = 1/e depth into the surface
+	 # k     = absotprion coefficient
+	 # kc    = absotprion coefficient at the continuum
+	 # kb    = absotprion coefficient at the band center
+	 # delk  = kb - kc
+	 # lbarp = mean optical path in a single grain   lbarp = lbarprime = lbar'
+	 # lbar  = mopl = mean optical path length in the material
+	 # xc    = lbar at the continuum
+	 # xb    = lbar at the band center
+	 # x     = lbar = mopl of the material (for weak bands xc ~ xb = x)
+	 # gd    = grain diameter
+	 # BD    = band depth
+	 # m     = mean number of scatterings
+	 # w     = single_scattering_albedo
+	 #
+	 # single_scattering_albedo = w = 1/(1+2*k*gd)     C&R eqn 16
+	 # lbarp = (-1/k) * ln(single_scattering_albedo)   C&R eqn 18
+	 #    question: where did eqb 18 come from?
+	 #
+	 # m = ln(R) / ln(w)                               C&R eqn 19
+	 # R = w^m
+	 #
+	 # combine C&R 16 + 18:
+	 # lbarp = (-1/k) * ln(1/(1+2*k*gd))
+	 #       = (-1/k) * -1 * ln(1+2*k*gd)
+	 #                                    note ln(1 + x) ~ x
+	 #       ~ 1/k * 2*k*gd
+	 #       ~ 2 * gd                                  C&R eqn 21
+	 #
+	 # R = exp(-k * lbar)                              C&R eqn 11
+	 # -ln(R) = k1*lbar1 + k2*lbar2 + ...              C&r eqn 30
+	 #
+	 # BD =  1 - Rb / Rc = 1 - exp(-kb*xb) / exp(-kc*xc)
+	 # weak bands: xc ~ xb = x
+	 #
+	 # ln(1-BD) = (-kb*xb) - (-kc*xc) ~ -1 * (kb - kc) * x
+	 #          = -1 * delk * x
+	 # x = lbar = -1 * ln(1-BD) / delk
+	 #  
+	 # lbarp = -1 * ln(w) / k                          C&R eqn 18
+	 # ln(w) = -1 * k * lbarp
+	 #
+	 # mopl = m * lbarp                                C&R eqn 20
+	 # lbarp = 2 * gd                                  C&R eqn 21
+	 # mopl  = m * 2 * gd  or
+	 # m     = mopl / (2 * gd)
+	 #  
+	 # t = (pi / 4.) * gd * sqrt(m/2.)                 C&R eqn 24
+	 #   = (pi / 4.) * gd * sqrt(mopl / 2*gd))
+	 #   = (pi / 4.) * sqrt(gd) * sqrt(mopl / 2)
+	 #      units = length (cm)
+
+	 m     = mopl / (2 * gd
+
+         Light penetration depth = T =  (pi/4) * D * (m/2)^0.5,  and for 3 optical depths:
+
+         Mass =  3 *T * (100^2) * density,     (density in gm/cc) 
+                   = grams per sq meter in optical layer.
+
+
+
+
+
+Model 4) Relative Abundance in the optical layer assuming isotropic random
+         walk by photons with estimates of grain sizes of quartz and feldspar.
+         Same as model 3, but assume surface has high abundance of
+         quartz and feldspar so distance between scatters is dominated
+         by the grain size of quartx and feldspar.
+
+         Using average grain sizes of quartz and feldspar from other studies, compute the depth 
+         of penetration, and from that depth, along with derived mean optical path lengths for 
+         each EMIT mineral, compute relative abundances (again by grain size), 
+         including the relative abundances of quartz/feldspar.
+         
+         = Model 3 with distance between scatters equal to the probable grain diameter 
+            of quartz and feldspar.
+
+         T = (pi/4) * (d/n) * (m/2)^0.5,                              (Clark and Roush, 1984, eqn 24)
+
+         m from model 3 for each mineral.
+         d = grain sizes of quartz and feldspar
+         n = average number of mineral grains (e.g. hematite) per quartz/feldspar grain.
+                (for low abundances n~1  for higher abundances need to develop a model and
+                 check against observations.)
+
+         Compute absolute masses of each mineral in the optical layer (from Model 3).
+         
+         Compute mass of quartz and feldspar (q,f) with average soil density in the optical depth.
+                The values of m and n determine the number of q,f grains in depth T, thus
+                the q,f mass can be derived.
+         
+         The relative abundance for component i of j components is:
+         
+         Relative Mass, RMi  of ith component absolute mass, Mi  = RMi = Mi / (Σij (Mi).
+
+
+More details can be found in 
+
+Clark, R. N., Swayze, G. A., Livo, K. E., Brodrick, P., Noe Dobrea, E.,
+Vijayarangan, S., Green, R.  O., Wettergreen, D., Garza, A. C., Hendrix,
+A., García-Pando, C. P., Pearson, N., Lane, M., González- Romero, A.,
+Querol, X. and the EMIT and TREX teams. 2023, Imaging spectroscopy: Earth
+and planetary remote sensing with the PSI Tetracorder and expert systems:
+from Rovers to EMIT and Beyond, Planetary Science Journal, in review.
+

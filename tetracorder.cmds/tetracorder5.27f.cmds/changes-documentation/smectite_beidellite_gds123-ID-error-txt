@@ -1,0 +1,1614 @@
+ Spectrum:  y       372     Ammonio-Illite/Smectit GDS87 s06av95a=b 
+
+
+Enter the the minumum and maximum data thresholds.
+
+     The thresholds are in real number (scaled) values, and
+     if = 0.0  no thresholds are set
+>
+Enter the amount of output you desire:
+          0    (default) for one-line answers only
+          1    for abreviated answers only
+          2    for weighted fit + answer
+          3    for full diagnostic output:
+                   (individual fits, weighted fits
+                   and answer
+          4    one-line answers to screen, and 
+                    full diagnostic output to results file
+>3
+ Type in an output comment
+---------------------------------------|
+>
+
+                  FITS, DEPTHS, F*D before best fit selection:
+          Title                   Mat Feat T    Fit   Depth    f*d      Nrmlz
+vegetation.green                    1    1 D  0.000  0.0000  0.0000  0.842, 0.0 vegetation1                                       
+vegetation.green                    1    2 D  0.000  0.0000  0.0000  0.053, 0.0 vegetation1                                       
+vegetation.green                    1    3 D  0.000  0.0000  0.0000  0.105, 0.0 vegetation1                                       
+vegetation: 70% dry +30% green      2    1 D  0.000  0.0000  0.0000  0.696, 0.0 vegetation.dry+green                              
+vegetation: 70% dry +30% green      2    2 D  0.000  0.0000  0.0000  0.039, 0.0 vegetation.dry+green                              
+vegetation: 70% dry +30% green      2    3 D  0.000  0.0000  0.0000  0.088, 0.0 vegetation.dry+green                              
+vegetation: 70% dry +30% green      2    4 D  0.000  0.0000  0.0000  0.073, 0.0 vegetation.dry+green                              
+vegetation: 70% dry +30% green      2    5 D  0.000  0.0000  0.0000  0.104, 0.0 vegetation.dry+green                              
+snow H2O ice                        3    1 D  0.000  0.0000  0.0000  0.246, 0.0 snow.and.ice                                      
+snow H2O ice                        3    2 D  0.000  0.0000  0.0000  0.754, 0.0 snow.and.ice                                      
+ NO NOT condition:    on material   3 feat   1, material   1
+melting Snow 1a                     4    1 D  0.000  0.0000  0.0000  0.383, 0.0 snow.melting.1a                                   
+melting Snow 1a                     4    2 D  0.000  0.0000  0.0000  0.617, 0.0 snow.melting.1a                                   
+ NO NOT condition:    on material   4 feat   1, material   1
+melting snow 3                      5    1 D  0.000  0.0000  0.0000  0.310, 0.0 snow.melting.3                                    
+melting snow 3                      5    2 D  0.000  0.0000  0.0000  0.690, 0.0 snow.melting.3                                    
+ NO NOT condition:    on material   5 feat   1, material   1
+melting snow 8                      6    1 D  0.000  0.0000  0.0000  0.328, 0.0 snow.melting.8                                    
+melting snow 8                      6    2 D  0.000  0.0000  0.0000  0.672, 0.0 snow.melting.8                                    
+ NO NOT condition:    on material   6 feat   1, material   1
+melting snow (slush) 9              7    1 D  0.000  0.0000  0.0000  0.369, 0.0 snow.slush.9                                      
+melting snow (slush) 9              7    2 D  0.000  0.0000  0.0000  0.631, 0.0 snow.slush.9                                      
+ NO NOT condition:    on material   7 feat   1, material   1
+melting snow (slush) 16             8    1 D  0.000  0.0000  0.0000  0.436, 0.0 snow.slush.16                                     
+melting snow (slush) 16             8    2 D  0.000  0.0000  0.0000  0.564, 0.0 snow.slush.16                                     
+ NO NOT condition:    on material   8 feat   1, material   1
+5 melting snow 1a + veg 0.5         9    1 D  0.000  0.0000  0.0000  0.586, 0.0 snow.melting1a+0.5veg                             
+5 melting snow 1a + veg 0.5         9    2 D  0.000  0.0000  0.0000  0.211, 0.0 snow.melting1a+0.5veg                             
+5 melting snow 1a + veg 0.5         9    3 D  0.000  0.0000  0.0000  0.203, 0.0 snow.melting1a+0.5veg                             
+5 melting snow 9 + veg 0.5         10    1 D  0.000  0.0000  0.0000  0.445, 0.0 snow.melting9+0.5veg                              
+5 melting snow 9 + veg 0.5         10    2 D  0.000  0.0000  0.0000  0.250, 0.0 snow.melting9+0.5veg                              
+5 melting snow 9 + veg 0.5         10    3 D  0.000  0.0000  0.0000  0.305, 0.0 snow.melting9+0.5veg                              
+5 melting snow 16 + veg 0.5        11    1 D  0.774 -0.0177 -0.0137  0.143, 1.0 snow.melting16+0.5veg                             
+5 melting snow 16 + veg 0.5        11    2 D  0.000  0.0000  0.0000  0.374, 0.0 snow.melting16+0.5veg                             
+5 melting snow 16 + veg 0.5        11    3 D  0.000  0.0000  0.0000  0.483, 0.0 snow.melting16+0.5veg                             
+water high chlorophyll             12    1 D  0.000  0.0000  0.0000  0.909, 0.0 water.high.chlorophyll                            
+water high chlorophyll             12    2 D  0.000  0.0000  0.0000  0.081, 0.0 water.high.chlorophyll                            
+water high chlorophyll             12    3 D  0.000  0.0000  0.0000  0.010, 0.0 water.high.chlorophyll                            
+water low chlorophyll              13    1 D  0.000  0.0000  0.0000  0.867, 0.0 water.low.chlorophyll                             
+water low chlorophyll              13    2 D  0.000  0.0000  0.0000  0.133, 0.0 water.low.chlorophyll                             
+red coated algea water             14    1 D  0.000  0.0000  0.0000  1.000, 0.0 water.red.algae                                   
+water + mont. (16.5g/liter)        15    1 D  0.000  0.0000  0.0000  0.392, 0.0 water+mont16.5gpl                                 
+water + mont. (16.5g/liter)        15    2 D  0.000  0.0000  0.0000  0.025, 0.0 water+mont16.5gpl                                 
+water + mont. (16.5g/liter)        15    3 D  0.000  0.0000  0.0000  0.011, 0.0 water+mont16.5gpl                                 
+water + mont. (16.5g/liter)        15    4 D  0.000  0.0000  0.0000  0.571, 0.0 water+mont16.5gpl                                 
+water + mont. (5.01g/liter)        16    1 D  0.000  0.0000  0.0000  0.868, 0.0 water+mont5.01gpl                                 
+water + mont. (5.01g/liter)        16    2 D  0.000  0.0000  0.0000  0.064, 0.0 water+mont5.01gpl                                 
+water + mont. (5.01g/liter)        16    3 D  0.000  0.0000  0.0000  0.068, 0.0 water+mont5.01gpl                                 
+water + mont. (1.67g/liter)        17    1 D  0.000  0.0000  0.0000  0.840, 0.0 water+mont1.67gpl                                 
+water + mont. (1.67g/liter)        17    2 D  0.000  0.0000  0.0000  0.069, 0.0 water+mont1.67gpl                                 
+water + mont. (1.67g/liter)        17    3 D  0.000  0.0000  0.0000  0.091, 0.0 water+mont1.67gpl                                 
+water + mont. (0.5g/liter)         18    1 D  0.000  0.0000  0.0000  0.796, 0.0 water+mont0.5gpl                                  
+water + mont. (0.5g/liter)         18    2 D  0.000  0.0000  0.0000  0.079, 0.0 water+mont0.5gpl                                  
+water + mont. (0.5g/liter)         18    3 D  0.000  0.0000  0.0000  0.125, 0.0 water+mont0.5gpl                                  
+dry long grass AV87-2              19    1 D  0.427  0.0864  0.0369  0.253, 1.0 organic_dry_long_grass-thick                      
+dry long grass AV87-2              19    2 D  0.000  0.0000  0.0000  0.306, 0.0 organic_dry_long_grass-thick                      
+dry long grass AV87-2              19    3 D  0.000  0.0000  0.0000  0.441, 0.0 organic_dry_long_grass-thick                      
+white PVC pipe                     20    1 D  0.000  0.0000  0.0000  0.449, 0.0 organic_white_pvc_pipe                            
+white PVC pipe                     20    2 D  0.000  0.0000  0.0000  0.551, 0.0 organic_white_pvc_pipe                            
+organic, green plastic tarp        21    1 D  0.000  0.0000  0.0000  0.308, 0.0 organic_green_plastic_tarp                        
+organic, green plastic tarp        21    2 D  0.000  0.0000  0.0000  0.692, 0.0 organic_green_plastic_tarp                        
+organic, green plastic tarp        22    1 D  0.820 -0.0317 -0.0259  0.406, 1.0 organic_green_plastic_tarp_1um                    
+organic, green plastic tarp        22    2 D  0.000  0.0000  0.0000  0.528, 0.0 organic_green_plastic_tarp_1um                    
+organic, green plastic tarp        22    3 D  0.000  0.0000  0.0000  0.020, 0.0 organic_green_plastic_tarp_1um                    
+organic, green plastic tarp        22    4 D  0.000  0.0000  0.0000  0.046, 0.0 organic_green_plastic_tarp_1um                    
+Fe3+ hematite fine grain + qtz G   23    1 D  0.000  0.0000  0.0000  0.643, 0.0 fe3+_hematite.fine.gr.gds76                       
+Fe3+ hematite fine grain + qtz G   23    2 O  0.000  0.0000  0.0000  0.357, 0.0 fe3+_hematite.fine.gr.gds76                       
+Fe3+ goethite med grain WS222      24    1 D  0.316  0.0074  0.0023  0.210, 1.0 fe3+_goethite.medgr.ws222                         
+Fe3+ goethite med grain WS222      24    2 D  0.000  0.0000  0.0000  0.790, 0.0 fe3+_goethite.medgr.ws222                         
+Fe3+ goethite + qtz med gr GDS24   25    1 D  0.148  0.0051  0.0008  0.251, 1.0 fe3+_goethite+qtz.medgr.gds240                    
+Fe3+ goethite + qtz med gr GDS24   25    2 O  0.374 -0.0089 -0.0033  0.749, 0.0 fe3+_goethite+qtz.medgr.gds240                    
+Fe3+ geothite fine gr MPCMA2-B     26    1 D  0.242  0.0069  0.0017  0.307, 1.0 fe3+_goethite.fingr                               
+Fe3+ geothite fine gr MPCMA2-B     26    2 O  0.318 -0.0076 -0.0024  0.693, 0.0 fe3+_goethite.fingr                               
+Fe3+ goethite m-crs gr MPCMA2-C    27    1 D  0.313  0.0099  0.0031  0.220, 1.0 fe3+_goethite.medcoarsegr.mpc.trjar               
+Fe3+ goethite m-crs gr MPCMA2-C    27    2 D  0.000  0.0000  0.0000  0.780, 0.0 fe3+_goethite.medcoarsegr.mpc.trjar               
+Fe3+ goethite coarse gr. WS222     28    1 D  0.203  0.0066  0.0013  0.092, 1.0 fe3+_goethite.coarsegr                            
+Fe3+ goethite coarse gr. WS222     28    2 D  0.000  0.0000  0.0000  0.908, 0.0 fe3+_goethite.coarsegr                            
+Fe3+ goethite thin coating WS222   29    1 D  0.126  0.0040  0.0005  0.362, 1.0 fe3+_goethite.thincoat                            
+Fe3+ goethite thin coating WS222   29    2 O  0.119 -0.0024 -0.0003  0.638, 0.0 fe3+_goethite.thincoat                            
+Fe3+ goethite + jarosite           30    1 D  0.400  0.0160  0.0064  0.129, 1.0 fe3+_goeth+jarosite                               
+Fe3+ goethite + jarosite           30    2 O  0.564 -0.0162 -0.0091  0.871, 0.0 fe3+_goeth+jarosite                               
+sulfide weathered pyrite LV95-6A   31    1 D  0.000  0.0000  0.0000  1.000, 0.0 sulfide_pyrite                                    
+Fe3+ sulfate Schwertmannite? BZ9   32    1 D  0.092  0.0036  0.0003  0.378, 1.0 fe3+_sulfate_schwertmannite                       
+Fe3+ sulfate Schwertmannite? BZ9   32    2 D  0.000  0.0000  0.0000  0.622, 0.0 fe3+_sulfate_schwertmannite                       
+black Mn coating tailings LV95-3   33    1 D  0.000  0.0000  0.0000  1.000, 0.0 Mn-Coating                                        
+Fe3+ mix acid mine dr assemb 1     34    1 D  0.000  0.0000  0.0000  0.348, 0.0 fe3+mix_AMD.assemb1                               
+Fe3+ mix acid mine dr assemb 1     34    2 D  0.000  0.0000  0.0000  0.652, 0.0 fe3+mix_AMD.assemb1                               
+Fe3+ mix acid mine dr assemb 2     35    1 D  0.247  0.0040  0.0010  0.414, 1.0 fe3+mix_AMD.assemb2                               
+Fe3+ mix acid mine dr assemb 2     35    2 D  0.000  0.0000  0.0000  0.586, 0.0 fe3+mix_AMD.assemb2                               
+Fe3_ sulfate K-jarosite GDS99 20   36    1 D  0.000  0.0000  0.0000  1.000, 0.0 fe3+_sulfate_kjarosite200                         
+Fe3_ sulfate K-jarosite GDS99 20   36    2 W  0.000  0.0000  0.0000  0.000, 0.0 fe3+_sulfate_kjarosite200                         
+Fe3+ goethite lepidocrosite GDS8   37    1 D  0.000  0.0000  0.0000  0.253, 0.0 fe3+_goethite.lepidocrosite                       
+Fe3+ goethite lepidocrosite GDS8   37    2 D  0.000  0.0000  0.0000  0.747, 0.0 fe3+_goethite.lepidocrosite                       
+Fe2+ chlorite + muscovite CU93-6   38    1 D  0.000  0.0000  0.0000  0.604, 0.0 fe2+_chlor+muscphy                                
+Fe2+ chlorite + muscovite CU93-6   38    2 D  0.000  0.0000  0.0000  0.273, 0.0 fe2+_chlor+muscphy                                
+Fe2+ chlorite + muscovite CU93-6   38    3 D  0.000  0.0000  0.0000  0.123, 0.0 fe2+_chlor+muscphy                                
+Fe2+ goethite + muscovite CU91-2   39    1 D  0.000  0.0000  0.0000  0.785, 0.0 fe2+_goeth+musc                                   
+Fe2+ goethite + muscovite CU91-2   39    2 D  0.000  0.0000  0.0000  0.154, 0.0 fe2+_goeth+musc                                   
+Fe2+ goethite + muscovite CU91-2   39    3 D  0.000  0.0000  0.0000  0.061, 0.0 fe2+_goeth+musc                                   
+Fe2+Fe3+ chlor + goethite phyl C   40    1 D  0.000  0.0000  0.0000  0.604, 0.0 fe2+fe3+_chlor+goeth.propylzone                   
+Fe2+Fe3+ chlor + goethite phyl C   40    2 D  0.000  0.0000  0.0000  0.396, 0.0 fe2+fe3+_chlor+goeth.propylzone                   
+Fe2+ generic, ref= cummingtonite   41    1 D  0.000  0.0000  0.0000  1.000, 0.0 fe2+generic_nrw.cummingtonite                     
+ NO NOT condition:    on material  41 feat   2, material  36
+Fe2+ generic, ref= actinolite NM   42    1 D  0.000  0.0000  0.0000  1.000, 0.0 fe2+generic_nrw.actinolite                        
+Fe2+ generic, ref= actinolite HS   43    1 D  0.000  0.0000  0.0000  1.000, 0.0 fe2+generic_nrw.hs-actinolite                     
+Fe2+ pyroxene hypersthene NMNHC2   44    1 D  0.194  0.0042  0.0008  0.368, 1.0 fe2+_pyroxene.hypersthene                         
+Fe2+ pyroxene hypersthene NMNHC2   44    2 D  0.000  0.0000  0.0000  0.632, 0.0 fe2+_pyroxene.hypersthene                         
+Fe2+ generic, ref= diopside NMNH   45    1 D  0.000  0.0000  0.0000  1.000, 0.0 fe2+_pyroxene.diopside                            
+Fe2+ generic, ref= jadeite HS343   46    1 D  0.000  0.0000  0.0000  1.000, 0.0 fe2+generic_med.jadeite                           
+Fe2+ pyroxene pigeonite HS199.3B   47    1 D  0.000  0.0000  0.0000  0.474, 0.0 fe2+_pyroxene_clino_pigeonite                     
+Fe2+ pyroxene pigeonite HS199.3B   47    2 D  0.000  0.0000  0.0000  0.526, 0.0 fe2+_pyroxene_clino_pigeonite                     
+epidote GDS26.a 75-200um           48    1 D  0.991  0.0298  0.0295  0.097, 1.0 epidote                                           
+epidote GDS26.a 75-200um           48    2 D  0.000  0.0000  0.0000  0.377, 0.0 epidote                                           
+epidote GDS26.a 75-200um           48    3 D  0.000  0.0000  0.0000  0.526, 0.0 epidote                                           
+Fe3+ ref= hydroxide summitville    49    1 D  0.000  0.0000  0.0000  0.560, 0.0 fe3+bearing1                                      
+Fe3+ ref= hydroxide summitville    49    2 O  0.000  0.0000  0.0000  0.440, 0.0 fe3+bearing1                                      
+Fe3+ ferrihydrite GDS75 Sy, F6     50    1 D  0.000  0.0000  0.0000  0.355, 0.0 fe3+_ferrihydrite                                 
+Fe3+ ferrihydrite GDS75 Sy, F6     50    2 D  0.000  0.0000  0.0000  0.645, 0.0 fe3+_ferrihydrite                                 
+Fe3+ hematite GDS27 med grained    51    1 D  0.000  0.0000  0.0000  0.367, 0.0 fe3+_hematite.med.gr.gds27                        
+Fe3+ hematite GDS27 med grained    51    2 D  0.000  0.0000  0.0000  0.633, 0.0 fe3+_hematite.med.gr.gds27                        
+Fe3+ hematite thin coating GDS27   52    1 D  0.000  0.0000  0.0000  0.688, 0.0 fe3+_hematite.thincoat                            
+Fe3+ hematite thin coating GDS27   52    2 O  0.000  0.0000  0.0000  0.312, 0.0 fe3+_hematite.thincoat                            
+Fe3+ hematite FE2602               53    1 D  0.000  0.0000  0.0000  0.170, 0.0 fe3+_hematite.fine.gr.fe2602                      
+Fe3+ hematite FE2602               53    2 D  0.000  0.0000  0.0000  0.830, 0.0 fe3+_hematite.fine.gr.fe2602                      
+Fe3+ hematite WS161                54    1 D  0.000  0.0000  0.0000  0.408, 0.0 fe3+_hematite.fine.gr.ws161                       
+Fe3+ hematite WS161                54    2 D  0.000  0.0000  0.0000  0.592, 0.0 fe3+_hematite.fine.gr.ws161                       
+Fe3+ smectite nontronite NG-1.a    55    1 D  0.596  0.0209  0.0125  0.194, 1.0 fe3+_smectite_nontronite                          
+Fe3+ smectite nontronite NG-1.a    55    2 D  0.000  0.0000  0.0000  0.700, 0.0 fe3+_smectite_nontronite                          
+Fe3+ smectite nontronite NG-1.a    55    3 D  0.000  0.0000  0.0000  0.107, 0.0 fe3+_smectite_nontronite                          
+Fe2+ generic, ref= BR5A actinoli   56    1 D  0.000  0.0000  0.0000  1.000, 0.0 fe2+generic_brd.br5a_actinolite                   
+Fe2+Fe3+ mix ref= magnetite scar   57    1 D  0.000  0.0000  0.0000  1.000, 0.0 fe2+fe3+mix_with_hematite_br5b                    
+Fe2+ generic brd.br22c actinolit   58    1 D  0.000  0.0000  0.0000  1.000, 0.0 fe2+generic_brd.br22c_actinolite                  
+Fe2+ generic, ref= BR33a bio qtz   59    1 D  0.977  0.0291  0.0284  0.112, 1.0 fe2+generic_br33a_bioqtzmonz_epidote              
+Fe2+ generic, ref= BR33a bio qtz   59    2 D  0.000  0.0000  0.0000  0.888, 0.0 fe2+generic_br33a_bioqtzmonz_epidote              
+Fe2+ generic, ref= BR36A fresh g   60    1 D  0.000  0.0000  0.0000  1.000, 0.0 fe2+generic_brd.br36a_chlorite                    
+Fe2+Fe3+ hematite weathering       61    1 D  0.000  0.0000  0.0000  1.000, 0.0 fe2+fe3+_hematite_weathering                      
+Fe2+ generic, ref= BR46b fresh b   62    1 D  0.000  0.0000  0.0000  1.000, 0.0 fe2+generic_basalt_br46b                          
+Fe3+ hematite large gr BR25a       63    1 D  0.000  0.0000  0.0000  0.106, 0.0 fe3+_hematite.lg.gr.br25a                         
+Fe3+ hematite large gr BR25a       63    2 D  0.000  0.0000  0.0000  0.894, 0.0 fe3+_hematite.lg.gr.br25a                         
+Fe3+ hematite med gr BR25b         64    1 D  0.000  0.0000  0.0000  0.219, 0.0 fe3+_hematite.med.gr.br25b                        
+Fe3+ hematite med gr BR25b         64    2 D  0.000  0.0000  0.0000  0.781, 0.0 fe3+_hematite.med.gr.br25b                        
+Fe3+ hematite large gr BR25c       65    1 D  0.732 -0.0239 -0.0175  0.167, 1.0 fe3+_hematite.lg.gr.br25c                         
+Fe3+ hematite large gr BR25c       65    2 D  0.000  0.0000  0.0000  0.833, 0.0 fe3+_hematite.lg.gr.br25c                         
+Fe3+ nanohematite  BR34B2          66    1 D  0.000  0.0000  0.0000  0.719, 0.0 fe3+_hematite.nano.BR34b2                         
+Fe3+ nanohematite  BR34B2          66    2 O  0.000  0.0000  0.0000  0.281, 0.0 fe3+_hematite.nano.BR34b2                         
+Fe3+ hematite lg gr  BR34C         67    1 D  0.000  0.0000  0.0000  0.231, 0.0 fe3+_hematite.lg.gr.br34c                         
+Fe3+ hematite lg gr  BR34C         67    2 D  0.000  0.0000  0.0000  0.769, 0.0 fe3+_hematite.lg.gr.br34c                         
+sulfate jarosite BR34A2 on quart   68    1 D  0.000  0.0000  0.0000  0.101, 0.0 fe3+_sulfate_jarosite_br34a2                      
+sulfate jarosite BR34A2 on quart   68    2 D  0.000  0.0000  0.0000  0.899, 0.0 fe3+_sulfate_jarosite_br34a2                      
+Fe2+ generic broad ref= BR60B ac   69    1 D  0.000  0.0000  0.0000  1.000, 0.0 fe2+generic_broad_br60b                           
+Fe2+ generic vbroad ref= alt bio   70    1 D  0.000  0.0000  0.0000  1.000, 0.0 fe2+generic_vbroad_br20                           
+Fe2+Fe3+ water ref= Renyolds tun   71    1 D  0.000  0.0000  0.0000  1.000, 0.0 fe2+fe3+_water_RTsludge                           
+ NO NOT condition:    on material  71 feat   1, material  19
+Fe2+ generic, ref= chlrite clino   72    1 D  0.000  0.0000  0.0000  0.970, 0.0 fe2+_chlorite.clinochlor                          
+Fe2+ generic, ref= chlrite clino   72    2 D  0.000  0.0000  0.0000  0.030, 0.0 fe2+_chlorite.clinochlor                          
+Fe2+ generic, ref= clinochlore N   73    1 D  0.000  0.0000  0.0000  0.957, 0.0 fe2+_chlorite.Felow.clinochlor                    
+Fe2+ generic, ref= clinochlore N   73    2 D  0.000  0.0000  0.0000  0.043, 0.0 fe2+_chlorite.Felow.clinochlor                    
+Fe2+ generic, ref= chlorite thur   74    1 D  0.000  0.0000  0.0000  0.975, 0.0 fe2+_chlorite.thuringite                          
+Fe2+ generic, ref= chlorite thur   74    2 D  0.000  0.0000  0.0000  0.025, 0.0 fe2+_chlorite.thuringite                          
+copper carbonate, azurite WS316    75    1 D  0.000  0.0000  0.0000  0.901, 0.0 copper_carbonate_azurite                          
+copper carbonate, azurite WS316    75    2 D  0.000  0.0000  0.0000  0.099, 0.0 copper_carbonate_azurite                          
+ NO NOT condition:    on material  75 feat   1, material  19
+Fe3+ copper hydroxide pitch_limo   76    1 D  0.000  0.0000  0.0000  0.966, 0.0 fe3+copper-hydroxide_pitchlimonite                
+Fe3+ copper hydroxide pitch_limo   76    2 D  0.000  0.0000  0.0000  0.034, 0.0 fe3+copper-hydroxide_pitchlimonite                
+copper carbonate malachite HS254   77    1 D  0.000  0.0000  0.0000  0.558, 0.0 copper_carbonate_malachite                        
+copper carbonate malachite HS254   77    2 D  0.000  0.0000  0.0000  0.349, 0.0 copper_carbonate_malachite                        
+copper carbonate malachite HS254   77    3 D  0.000  0.0000  0.0000  0.081, 0.0 copper_carbonate_malachite                        
+copper carbonate malachite HS254   77    4 O  0.000  0.0000  0.0000  0.013, 0.0 copper_carbonate_malachite                        
+copper carbonate blue effloresce   78    1 D  0.000  0.0000  0.0000  0.846, 0.0 copper_sulfate_bluefflor                          
+copper carbonate blue effloresce   78    2 D  0.000  0.0000  0.0000  0.154, 0.0 copper_sulfate_bluefflor                          
+copper precipitate, ref= green s   79    1 D  0.000  0.0000  0.0000  0.675, 0.0 copper_precipitate_greenslime                     
+copper precipitate, ref= green s   79    2 D  0.000  0.0000  0.0000  0.325, 0.0 copper_precipitate_greenslime                     
+Fe2+ olivine HS285.4B              80    1 D  0.000  0.0000  0.0000  1.000, 0.0 fe2+_olivine-lrg-gr                               
+Fe2+ olivine GDS71.a TSD 65um      81    1 D  0.000  0.0000  0.0000  1.000, 0.0 fe2+_olivine-fine-gr                              
+carbnate rhodochrosite HS338.3B    82    1 D  0.000  0.0000  0.0000  0.144, 0.0 carbonate_rhodochrosite                           
+carbnate rhodochrosite HS338.3B    82    2 D  0.000  0.0000  0.0000  0.518, 0.0 carbonate_rhodochrosite                           
+carbnate rhodochrosite HS338.3B    82    3 D  0.000  0.0000  0.0000  0.338, 0.0 carbonate_rhodochrosite                           
+Fe2+ generic, ref= siderite HS27   83    1 D  0.000  0.0000  0.0000  1.000, 0.0 fe2+generic_carbonate_siderite1                   
+Fe2+ generic, ref= siderite HS27   83    2 W  0.000  0.0000  0.0000  0.000, 0.0 fe2+generic_carbonate_siderite1                   
+Fe2+ generic, ref= riebeckite NM   84    1 D  0.000  0.0000  0.0000  0.988, 0.0 fe2+generic_amphibole_riebeckite                  
+Fe2+ generic, ref= riebeckite NM   84    2 D  0.000  0.0000  0.0000  0.012, 0.0 fe2+generic_amphibole_riebeckite                  
+Fe3+ Fe2+ sulfate, coquimbite GD   85    1 D  0.000  0.0000  0.0000  0.022, 0.0 fe3+fe2+_sulfate_coquimbite                       
+Fe3+ Fe2+ sulfate, coquimbite GD   85    2 D  0.000  0.0000  0.0000  0.043, 0.0 fe3+fe2+_sulfate_coquimbite                       
+Fe3+ Fe2+ sulfate, coquimbite GD   85    3 D  0.000  0.0000  0.0000  0.935, 0.0 fe3+fe2+_sulfate_coquimbite                       
+ NO NOT condition:    on material  85 feat   1, material   1
+Fe3+ Fe2+ sulfate, copiapite GDS   86    1 D  0.000  0.0000  0.0000  0.260, 0.0 fe3+fe2+_sulfate_copiapite                        
+Fe3+ Fe2+ sulfate, copiapite GDS   86    2 D  0.000  0.0000  0.0000  0.740, 0.0 fe3+fe2+_sulfate_copiapite                        
+ NO NOT condition:    on material  86 feat   1, material   1
+copper chrysocolla HS297.3B        87    1 D  0.000  0.0000  0.0000  0.775, 0.0 copper_chrysocolla                                
+copper chrysocolla HS297.3B        87    2 D  0.000  0.0000  0.0000  0.023, 0.0 copper_chrysocolla                                
+copper chrysocolla HS297.3B        87    3 D  0.000  0.0000  0.0000  0.202, 0.0 copper_chrysocolla                                
+REE neodymium_oxide GDS34          88    1 D  0.000  0.0000  0.0000  0.200, 0.0 ree_neodymium_oxide                               
+REE neodymium_oxide GDS34          88    2 D  0.000  0.0000  0.0000  0.284, 0.0 ree_neodymium_oxide                               
+REE neodymium_oxide GDS34          88    3 D  0.000  0.0000  0.0000  0.304, 0.0 ree_neodymium_oxide                               
+REE neodymium_oxide GDS34          88    4 D  0.000  0.0000  0.0000  0.213, 0.0 ree_neodymium_oxide                               
+ NO NOT condition:    on material  88 feat   1, material   1
+REE samarium_oxide GDS36           89    1 D  0.000  0.0000  0.0000  0.330, 0.0 ree_samarium_oxide                                
+REE samarium_oxide GDS36           89    2 D  0.000  0.0000  0.0000  0.494, 0.0 ree_samarium_oxide                                
+REE samarium_oxide GDS36           89    3 O  0.000  0.0000  0.0000  0.108, 0.0 ree_samarium_oxide                                
+REE samarium_oxide GDS36           89    4 O  0.000  0.0000  0.0000  0.068, 0.0 ree_samarium_oxide                                
+Fe2+ generic, ref= axinite HS342   90    1 D  0.000  0.0000  0.0000  0.564, 0.0 fe2+generic_axinite                               
+Fe2+ generic, ref= axinite HS342   90    2 D  0.000  0.0000  0.0000  0.436, 0.0 fe2+generic_axinite                               
+Fe2+ generic, ref= staurolite HS   91    1 D  0.858 -0.2924 -0.2509  0.659, 1.0 fe2+generic_staurolite                            
+Fe2+ generic, ref= staurolite HS   91    2 D  0.000  0.0000  0.0000  0.221, 0.0 fe2+generic_staurolite                            
+Fe2+ generic, ref= staurolite HS   91    3 D  0.000  0.0000  0.0000  0.121, 0.0 fe2+generic_staurolite                            
+ NO NOT condition:    on material  91 feat   1, material   1
+ NO NOT condition:    on material  91 feat   3, material   1
+Fe2+ generic, ref= almandine WS4   92    1 D  0.000  0.0000  0.0000  0.836, 0.0 fe2+generic_almandine                             
+Fe2+ generic, ref= almandine WS4   92    2 D  0.000  0.0000  0.0000  0.108, 0.0 fe2+generic_almandine                             
+Fe2+ generic, ref= almandine WS4   92    3 D  0.000  0.0000  0.0000  0.056, 0.0 fe2+generic_almandine                             
+Fe2+ pyroxene augite NMNH120049    93    1 D  0.000  0.0000  0.0000  0.718, 0.0 fe2+_pyroxene_augite                              
+Fe2+ pyroxene augite NMNH120049    93    2 D  0.000  0.0000  0.0000  0.282, 0.0 fe2+_pyroxene_augite                              
+Fe2+ pyroxene bronzite HS9.3B      94    1 D  0.000  0.0000  0.0000  0.409, 0.0 fe2+_pyroxene.bronzite                            
+Fe2+ pyroxene bronzite HS9.3B      94    2 D  0.000  0.0000  0.0000  0.591, 0.0 fe2+_pyroxene.bronzite                            
+Fe2+ generic sulfate, ref= butle   95    1 D  0.000  0.0000  0.0000  0.662, 0.0 fe2+generic_sulfate_butlerite                     
+Fe2+ generic sulfate, ref= butle   95    2 D  0.000  0.0000  0.0000  0.262, 0.0 fe2+generic_sulfate_butlerite                     
+Fe2+ generic sulfate, ref= butle   95    3 O  0.000  0.0000  0.0000  0.076, 0.0 fe2+generic_sulfate_butlerite                     
+Fe2+ feldspar bytownite HS106.3B   96    1 D  0.000  0.0000  0.0000  1.000, 0.0 fe2+_feldspar.bytownite                           
+sulfate copper chalcopyrite HS43   97    1 D  0.000  0.0000  0.0000  0.861, 0.0 sulfide_copper_chalcopyrite                       
+sulfate copper chalcopyrite HS43   97    2 D  0.000  0.0000  0.0000  0.139, 0.0 sulfide_copper_chalcopyrite                       
+Fe2+ chromite HS281.3B             98    1 D  0.000  0.0000  0.0000  0.854, 0.0 fe2+_chromite                                     
+Fe2+ chromite HS281.3B             98    2 D  0.000  0.0000  0.0000  0.146, 0.0 fe2+_chromite                                     
+sulfide cinnabar HS133.3B          99    1 D  0.000  0.0000  0.0000  0.185, 0.0 sulfide_cinnabar                                  
+sulfide cinnabar HS133.3B          99    2 D  0.000  0.0000  0.0000  0.815, 0.0 sulfide_cinnabar                                  
+copper oxide cuprite HS127.3B     100    1 D  0.000  0.0000  0.0000  0.532, 0.0 copper_oxide_cuprite                              
+copper oxide cuprite HS127.3B     100    2 D  0.000  0.0000  0.0000  0.468, 0.0 copper_oxide_cuprite                              
+ NO NOT condition:    on material 100 feat   1, material  19
+ NO NOT condition:    on material 100 feat   2, material  19
+desert varnish GDS141             101    1 D  0.000  0.0000  0.0000  0.367, 0.0 fe3+mn_desert.varnish1                            
+desert varnish GDS141             101    2 D  0.000  0.0000  0.0000  0.633, 0.0 fe3+mn_desert.varnish1                            
+ NO NOT condition:    on material 101 feat   1, material  19
+ NO NOT condition:    on material 101 feat   2, material  19
+desert_ arnish GDS78A             102    1 D  0.000  0.0000  0.0000  1.000, 0.0 fe3+mn_desert.varnish2                            
+ NO NOT condition:    on material 102 feat   1, material  19
+ NO NOT condition:    on material 102 feat   2, material  19
+Fe2+ pyroxene enstatite NMNH1282  103    1 D  0.061  0.0013  0.0001  0.492, 1.0 fe2+_pyroxene_enstatite                           
+Fe2+ pyroxene enstatite NMNH1282  103    2 D  0.000  0.0000  0.0000  0.508, 0.0 fe2+_pyroxene_enstatite                           
+Fe2+ pyroxene hedenbergite NMNH1  104    1 D  0.000  0.0000  0.0000  0.943, 0.0 fe2+_pyroxene_hedenbergite                        
+Fe2+ pyroxene hedenbergite NMNH1  104    2 D  0.000  0.0000  0.0000  0.057, 0.0 fe2+_pyroxene_hedenbergite                        
+sulfate lazurite HS418.3B         105    1 D  0.000  0.0000  0.0000  0.543, 0.0 sulfate_lazurite                                  
+sulfate lazurite HS418.3B         105    2 D  0.000  0.0000  0.0000  0.347, 0.0 sulfate_lazurite                                  
+sulfate lazurite HS418.3B         105    3 D  0.000  0.0000  0.0000  0.110, 0.0 sulfate_lazurite                                  
+Fe3+ maghemite GDS81 Sy (M-3)     106    1 D  0.000  0.0000  0.0000  0.264, 0.0 fe3+_maghemite                                    
+Fe3+ maghemite GDS81 Sy (M-3)     106    2 D  0.000  0.0000  0.0000  0.678, 0.0 fe3+_maghemite                                    
+Fe3+ maghemite GDS81 Sy (M-3)     106    3 D  0.000  0.0000  0.0000  0.057, 0.0 fe3+_maghemite                                    
+magnetite HS195.3B                107    1 D  0.000  0.0000  0.0000  1.000, 0.0 magnetite                                         
+Mn oxide pyrolusite HS138.3B      108    1 D  0.000  0.0000  0.0000  0.749, 0.0 mn_oxide_pyrolusite                               
+Mn oxide pyrolusite HS138.3B      108    2 D  0.000  0.0000  0.0000  0.251, 0.0 mn_oxide_pyrolusite                               
+Fe2+ feldspar microcline HS103.3  109    1 D  0.013  0.0027  0.0000  1.000, 1.0 fe2+_feldspar_microcline                          
+Fe2+ feldspar albite HS143.3B     110    1 D  0.056  0.0127  0.0007  1.000, 1.0 fe2+_feldspar_albite                              
+Fe2+ feldspar orthoclase NMNH142  111    1 D  0.000  0.0000  0.0000  1.000, 0.0 fe2+_feldspar_orthoclase                          
+inosilicate pectolite NMNH94865.  112    1 D  0.530 -0.2052 -0.1087  0.612, 1.0 inosilicate_pectolite                             
+inosilicate pectolite NMNH94865.  112    2 D  0.714  0.3299  0.2357  0.388, 1.0 inosilicate_pectolite                             
+Mn2+ rhodonite NMNHC6148 >250u    113    1 D  0.000  0.0000  0.0000  0.808, 0.0 mn2+_rhodonite                                    
+Mn2+ rhodonite NMNHC6148 >250u    113    2 D  0.000  0.0000  0.0000  0.192, 0.0 mn2+_rhodonite                                    
+sulfur GDS94 Reagent       =a     114    1 D  0.000  0.0000  0.0000  0.043, 0.0 sulfur                                            
+sulfur GDS94 Reagent       =a     114    2 D  0.000  0.0000  0.0000  0.340, 0.0 sulfur                                            
+sulfur GDS94 Reagent       =a     114    3 D  0.000  0.0000  0.0000  0.617, 0.0 sulfur                                            
+dry long grass AV87-2             115    1 D  0.427  0.0864  0.0369  0.453, 1.0 organic_vegetation-dry-grass-long                 
+dry long grass AV87-2             115    2 D  0.000  0.0000  0.0000  0.547, 0.0 organic_vegetation-dry-grass-long                 
+golden dry grass GDS480           116    1 D  0.439  0.0802  0.0352  0.379, 1.0 organic_vegetation-dry-grass-golden               
+golden dry grass GDS480           116    2 D  0.000  0.0000  0.0000  0.621, 0.0 organic_vegetation-dry-grass-golden               
+fresh wood, pine plywood GDS365   117    1 D  0.457  0.0820  0.0374  0.476, 1.0 organic_vegetation-dry-wood                       
+fresh wood, pine plywood GDS365   117    2 D  0.000  0.0000  0.0000  0.524, 0.0 organic_vegetation-dry-wood                       
+organic, plastic tarp 1, blue wo  118    1 D  0.000  0.0000  0.0000  0.294, 0.0 organic_plastic-tarp1                             
+organic, plastic tarp 1, blue wo  118    2 D  0.000  0.0000  0.0000  0.706, 0.0 organic_plastic-tarp1                             
+organic, plastic, vinyl           119    1 D  0.000  0.0000  0.0000  0.219, 0.0 organic_plastic-vinyl                             
+organic, plastic, vinyl           119    2 D  0.000  0.0000  0.0000  0.781, 0.0 organic_plastic-vinyl                             
+organic, fiberglass roofing       120    1 D  0.000  0.0000  0.0000  0.286, 0.0 organic_fiberglass-roofing                        
+organic, fiberglass roofing       120    2 D  0.000  0.0000  0.0000  0.507, 0.0 organic_fiberglass-roofing                        
+organic, fiberglass roofing       120    3 D  0.000  0.0000  0.0000  0.207, 0.0 organic_fiberglass-roofing                        
+organic, polystyrene, blue insul  121    1 D  0.000  0.0000  0.0000  0.377, 0.0 organic_plastic-polystyrene                       
+organic, polystyrene, blue insul  121    2 D  0.000  0.0000  0.0000  0.384, 0.0 organic_plastic-polystyrene                       
+organic, polystyrene, blue insul  121    3 D  0.000  0.0000  0.0000  0.239, 0.0 organic_plastic-polystyrene                       
+organic, PETE plastic             122    1 D  0.000  0.0000  0.0000  0.275, 0.0 organic_plastic-pete                              
+organic, PETE plastic             122    2 D  0.000  0.0000  0.0000  0.193, 0.0 organic_plastic-pete                              
+organic, PETE plastic             122    3 D  0.000  0.0000  0.0000  0.532, 0.0 organic_plastic-pete                              
+organic, PETE plastic transluc B  123    1 D  0.000  0.0000  0.0000  0.240, 0.0 organic_plastic-pete2                             
+organic, PETE plastic transluc B  123    2 D  0.000  0.0000  0.0000  0.183, 0.0 organic_plastic-pete2                             
+organic, PETE plastic transluc B  123    3 D  0.000  0.0000  0.0000  0.576, 0.0 organic_plastic-pete2                             
+organic, HDPE plastic GDS393      124    1 D  0.000  0.0000  0.0000  0.325, 0.0 organic_plastic-hdpe.1                            
+organic, HDPE plastic GDS393      124    2 D  0.000  0.0000  0.0000  0.675, 0.0 organic_plastic-hdpe.1                            
+organic, HDPE plastic GDS393      124    3 W  0.000  0.0000  0.0000  0.000, 0.0 organic_plastic-hdpe.1                            
+organic, light gray paint alumin  125    1 D  0.000  0.0000  0.0000  0.109, 0.0 organic_paint-1                                   
+organic, light gray paint alumin  125    2 D  0.000  0.0000  0.0000  0.891, 0.0 organic_paint-1                                   
+organic, PETE plastc, clr-bluish  126    1 D  0.000  0.0000  0.0000  0.124, 0.0 organic_plastic-pete3                             
+organic, PETE plastc, clr-bluish  126    2 D  0.000  0.0000  0.0000  0.694, 0.0 organic_plastic-pete3                             
+organic, PETE plastc, clr-bluish  126    3 D  0.000  0.0000  0.0000  0.182, 0.0 organic_plastic-pete3                             
+organic, PETE plastic transluc b  127    1 D  0.000  0.0000  0.0000  0.128, 0.0 organic_plastic-pete4                             
+organic, PETE plastic transluc b  127    2 D  0.000  0.0000  0.0000  0.675, 0.0 organic_plastic-pete4                             
+organic, PETE plastic transluc b  127    3 D  0.000  0.0000  0.0000  0.197, 0.0 organic_plastic-pete4                             
+sulfate K-alunite 150C            128    1 D  0.875  0.2231  0.1951  0.913, 1.0 sulfate_kalun150c                                 
+sulfate K-alunite 150C            128    2 D  0.000  0.0000  0.0000  0.087, 0.0 sulfate_kalun150c                                 
+sulfate K-alunite GDS96 250C      129    1 D  0.835  0.2264  0.1890  0.908, 1.0 sulfate_kalun250c                                 
+sulfate K-alunite GDS96 250C      129    2 D  0.000  0.0000  0.0000  0.092, 0.0 sulfate_kalun250c                                 
+sulfate K-alunite RES-2 450C      130    1 D  0.828  0.2253  0.1865  0.929, 1.0 sulfate_kalun450c                                 
+sulfate K-alunite RES-2 450C      130    2 D  0.000  0.0000  0.0000  0.071, 0.0 sulfate_kalun450c                                 
+sulfate Na-alunite GDS95 150C     131    1 D  0.856  0.2233  0.1911  0.906, 1.0 sulfate_naalun150c                                
+sulfate Na-alunite GDS95 150C     131    2 D  0.000  0.0000  0.0000  0.094, 0.0 sulfate_naalun150c                                
+sulfate Na-alunite RES-4 300C     132    1 D  0.767  0.2275  0.1745  0.918, 1.0 sulfate_naalun300c                                
+sulfate Na-alunite RES-4 300C     132    2 D  0.000  0.0000  0.0000  0.082, 0.0 sulfate_naalun300c                                
+sulfate Na-alunite RES-3 450C     133    1 D  0.774  0.2288  0.1771  0.908, 1.0 sulfate_naalun450c                                
+sulfate Na-alunite RES-3 450C     133    2 D  0.000  0.0000  0.0000  0.092, 0.0 sulfate_naalun450c                                
+sulfate alunite GDS82 Na82 low t  134    1 D  0.841  0.2291  0.1927  0.933, 1.0 sulfate_na82alun100c                              
+sulfate alunite GDS82 Na82 low t  134    2 D  0.000  0.0000  0.0000  0.067, 0.0 sulfate_na82alun100c                              
+sulfate+clay natroalunite + dick  135    1 D  0.865  0.2175  0.1882  0.919, 1.0 sulfate+kaolingrp_natroalun+dickite               
+sulfate+clay natroalunite + dick  135    2 D  0.000  0.0000  0.0000  0.081, 0.0 sulfate+kaolingrp_natroalun+dickite               
+sulfate+clay natroalunite + dick  135    3 W  0.000  0.0000  0.0000  0.000, 0.0 sulfate+kaolingrp_natroalun+dickite               
+sulfate alunite GDS83 Na63        136    1 D  0.847  0.2358  0.1996  0.914, 1.0 sulfate_na63alun300c                              
+sulfate alunite GDS83 Na63        136    2 D  0.000  0.0000  0.0000  0.086, 0.0 sulfate_na63alun300c                              
+sulfate alunite RES-9 Summitv 40  137    1 D  0.849  0.2447  0.2078  0.910, 1.0 sulfate_na40alun400c                              
+sulfate alunite RES-9 Summitv 40  137    2 D  0.000  0.0000  0.0000  0.090, 0.0 sulfate_na40alun400c                              
+sulfate K-alunite (Na03) GDS84 h  138    1 D  0.851  0.2292  0.1950  0.916, 1.0 sulfate_alunNa03                                  
+sulfate K-alunite (Na03) GDS84 h  138    2 D  0.000  0.0000  0.0000  0.084, 0.0 sulfate_alunNa03                                  
+sulfate alunite syn Na56% RES10   139    1 D  0.831  0.2475  0.2056  0.977, 1.0 sulfate_alunNa56450c                              
+sulfate alunite syn Na56% RES10   139    2 D  0.000  0.0000  0.0000  0.023, 0.0 sulfate_alunNa56450c                              
+sulfate alunite syn Na78% RES12   140    1 D  0.813  0.2452  0.1994  0.911, 1.0 sulfate_alunNa78.450c                             
+sulfate alunite syn Na78% RES12   140    2 D  0.000  0.0000  0.0000  0.089, 0.0 sulfate_alunNa78.450c                             
+sulfate alunite 35%K+65%Na CU91-  141    1 D  0.807  0.2380  0.1922  0.859, 1.0 sulfate_alun35K65Na.low                           
+sulfate alunite 35%K+65%Na CU91-  141    2 D  0.000  0.0000  0.0000  0.141, 0.0 sulfate_alun35K65Na.low                           
+sulfate alunite 73%K+27%Na CU91-  142    1 D  0.861  0.2556  0.2202  0.936, 1.0 sulfate_alun73K27Na.low                           
+sulfate alunite 73%K+27%Na CU91-  142    2 D  0.000  0.0000  0.0000  0.064, 0.0 sulfate_alun73K27Na.low                           
+sulfate alunite 66%K+34%Na CU91-  143    1 D  0.831  0.2431  0.2020  0.918, 1.0 sulfate_alun66K34Na.low                           
+sulfate alunite 66%K+34%Na CU91-  143    2 D  0.000  0.0000  0.0000  0.082, 0.0 sulfate_alun66K34Na.low                           
+micagroup muscovite med-Al  CU91  144    1 D  0.638  0.1655  0.1056  0.733, 1.0 micagrp_muscovite-med-Al                          
+micagroup muscovite med-Al  CU91  144    2 D  0.178  0.0044  0.0008  0.267, 1.0 micagrp_muscovite-med-Al                          
+micagroup muscovite medhigh Al G  145    1 D  0.776  0.2060  0.1599  0.728, 1.0 micagrp_muscovite-medhigh-Al                      
+micagroup muscovite medhigh Al G  145    2 D  0.077  0.0021  0.0002  0.272, 1.0 micagrp_muscovite-medhigh-Al                      
+micagroup paragonite GDS109       146    1 D  0.945  0.2489  0.2351  0.739, 1.0 micagrp_paragonite                                
+micagroup paragonite GDS109       146    2 D  0.000  0.0000  0.0000  0.261, 0.0 micagrp_paragonite                                
+micagroup illite IMt-1.b <2um     147    1 D  0.265  0.0630  0.0167  0.741, 1.0 micagrp_illite                                    
+micagroup illite IMt-1.b <2um     147    2 D  0.007  0.0002  0.0000  0.258, 1.0 micagrp_illite                                    
+micagroup illite IMt-1.b <2um     147    3 O  0.369 -0.0071 -0.0026  0.001, 0.0 micagrp_illite                                    
+micagroup illite GDS4 (Marblehea  148    1 D  0.041  0.0097  0.0004  0.726, 1.0 micagrp_illite.gds4                               
+micagroup illite GDS4 (Marblehea  148    2 D  0.058  0.0020  0.0001  0.274, 1.0 micagrp_illite.gds4                               
+micagroup muscovite low-Al  CU93  149    1 D  0.361  0.0908  0.0328  0.715, 1.0 micagrp_muscovite-low-Al                          
+micagroup muscovite low-Al  CU93  149    2 D  0.000  0.0000  0.0000  0.285, 0.0 micagrp_muscovite-low-Al                          
+micagroup muscovite Fe rich GDS1  150    1 D  0.177  0.0442  0.0078  0.703, 1.0 micagrp_muscoviteFerich                           
+micagroup muscovite Fe rich GDS1  150    2 D  0.000  0.0000  0.0000  0.297, 0.0 micagrp_muscoviteFerich                           
+kaolingroup kaolinite CM9 wxl     151    1 D  0.871  0.2219  0.1933  1.000, 1.0 kaolgrp_kaolinite_wxl                             
+ NO NOT condition:    on material 151 feat   2, material 145
+ NO NOT condition:    on material 151 feat   2, material 129
+kaolingroup kaolinite KGa-2 pxl   152    1 D  0.855  0.2434  0.2082  1.000, 1.0 kaolgrp_kaolinite_pxl                             
+ NO NOT condition:    on material 152 feat   2, material 145
+ NO NOT condition:    on material 152 feat   2, material 129
+kaolingroup halloysite NMNH10623  153    1 D  0.849  0.2310  0.1961  1.000, 1.0 kaolgrp_halloysite                                
+ NO NOT condition:    on material 153 feat   2, material 145
+ NO NOT condition:    on material 153 feat   2, material 129
+kaolingroup dickite NMNH106242    154    1 D  0.845  0.2310  0.1953  1.000, 1.0 kaolgrp_dickite                                   
+ NO NOT condition:    on material 154 feat   2, material 129
+ NO NOT condition:    on material 154 feat   2, material 128
+ NO NOT condition:    on material 154 feat   2, material 131
+ NO NOT condition:    on material 154 feat   2, material 145
+sulfate gypsum HS333.3B           155    1 D  0.410  0.1050  0.0431  0.639, 1.0 sulfate_gypsum                                    
+sulfate gypsum HS333.3B           155    2 D  0.801  0.0356  0.0285  0.087, 1.0 sulfate_gypsum                                    
+sulfate gypsum HS333.3B           155    3 D  0.000  0.0000  0.0000  0.231, 0.0 sulfate_gypsum                                    
+sulfate gypsum HS333.3B           155    4 D  0.000  0.0000  0.0000  0.043, 0.0 sulfate_gypsum                                    
+kaolinite 0.5 smectite 0.5        156    1 D  0.898  0.2290  0.2055  1.000, 1.0 kaolin.5+smect.5                                  
+ NO NOT condition:    on material 156 feat   2, material 129
+ NO NOT condition:    on material 156 feat   2, material 145
+ NO NOT condition:    on material 156 feat   0, material   0
+kaolinite 0.3 smectite 0.7        157    1 D  0.896  0.2168  0.1943  1.000, 1.0 kaolin.3+smect.7                                  
+ NO NOT condition:    on material 157 feat   2, material 144
+ NO NOT condition:    on material 157 feat   2, material 129
+ NO NOT condition:    on material 157 feat   0, material   0
+smectite montmorillonite SWy-1 h  158    1 D  0.588  0.1459  0.0857  1.000, 1.0 smectite_montmorillonite_na_highswelling          
+ NO NOT condition:    on material 158 feat   2, material 145
+ NO NOT condition:    on material 158 feat   0, material   0
+smectite montmorillonite Fe GDS7  159    1 D  0.000  0.0000  0.0000  0.648, 0.0 smectite_montmorillonite_fe_swelling              
+smectite montmorillonite Fe GDS7  159    2 D  0.000  0.0000  0.0000  0.352, 0.0 smectite_montmorillonite_fe_swelling              
+smectite montmorillonite SAz-1 (  160    1 D  0.023  0.0050  0.0001  1.000, 1.0 smectite_montmorillonite_ca_swelling              
+ NOT condition:       feat   2, material 145 excludes material  160
+ NO NOT condition:    on material 160 feat   0, material   0
+Si-OH glass, hydrated basaltic M  161    1 D  0.000  0.0000  0.0000  1.000, 0.0 sioh_hydrated_basaltic_glass                      
+sulfate kieserite batch4 GDS671   162    1 D  0.000  0.0000  0.0000  0.000, 0.0 sulfate_kieserite                                 
+sulfate kieserite batch4 GDS671   162    2 D  0.000  0.0000  0.0000  1.000, 0.0 sulfate_kieserite                                 
+sulfate szomolnokite NMNH104303   163    1 D  0.000  0.0000  0.0000  0.000, 0.0 sulfate_szomolnokite                              
+sulfate szomolnokite NMNH104303   163    2 D  0.000  0.0000  0.0000  1.000, 0.0 sulfate_szomolnokite                              
+sulfate szomolnokite GDS874 Heat  164    1 D  0.000  0.0000  0.0000  0.562, 0.0 sulfate_szomolnokite_heated                       
+sulfate szomolnokite GDS874 Heat  164    2 D  0.000  0.0000  0.0000  0.438, 0.0 sulfate_szomolnokite_heated                       
+perchlorate Mg GDS851.2 220K      165    1 D  0.000  0.0000  0.0000  0.000, 0.0 perchlorate_mg                                    
+perchlorate Mg GDS851.2 220K      165    2 D  0.000  0.0000  0.0000  1.000, 0.0 perchlorate_mg                                    
+perchlorate Na GDS857 230C =_     166    1 D  0.000  0.0000  0.0000  0.000, 0.0 perchlorate_na                                    
+perchlorate Na GDS857 230C =_     166    2 D  0.000  0.0000  0.0000  1.000, 0.0 perchlorate_na                                    
+smectite beidellite + montmorill  167    1 D  0.944  0.2323  0.2192  1.000, 1.0 smectite_beidellite_gds123                        
+ NO NOT condition:    on material 167 feat   2, material 145
+ NO NOT condition:    on material 167 feat   0, material   0
+smectite beidellite + montmorill  168    1 D  0.938  0.2463  0.2309  1.000, 1.0 smectite_beidellite_gds124                        
+ NO NOT condition:    on material 168 feat   2, material 145
+ NO NOT condition:    on material 168 feat   0, material   0
+SiOH chalcedony CU91-6A           169    1 D  0.000  0.0000  0.0000  1.000, 0.0 sioh_chalcedony                                   
+hydroxide diaspore HS416.3B       170    1 D  0.000  0.0000  0.0000  1.000, 0.0 hydroxide_diaspore                                
+pyrophyllite PYS1A fine g         171    1 D  0.464  0.0753  0.0349  1.000, 1.0 pyrophyllite                                      
+ NO NOT condition:    on material 171 feat   2, material 129
+kaolwxl CM9 75% + pyrophyl PYS1A  172    1 D  0.863  0.2184  0.1885  0.793, 1.0 kaol.75+pyroph.25                                 
+kaolwxl CM9 75% + pyrophyl PYS1A  172    2 D  0.137  0.0141  0.0019  0.207, 1.0 kaol.75+pyroph.25                                 
+ NO NOT condition:    on material 172 feat   2, material 129
+ NO NOT condition:    on material 172 feat   2, material 145
+pyrophyllite 50% montmorillonite  173    1 D  0.195  0.0138  0.0027  0.418, 1.0 pyroph.5+mont0.5                                  
+pyrophyllite 50% montmorillonite  173    2 D  0.000  0.0000  0.0000  0.582, 0.0 pyroph.5+mont0.5                                  
+ NO NOT condition:    on material 173 feat   2, material 129
+alunite 50% & pyrophyllite PYS1A  174    1 D  0.827  0.2116  0.1749  0.868, 1.0 pyroph.5+alunit.5                                 
+alunite 50% & pyrophyllite PYS1A  174    2 D  0.000  0.0000  0.0000  0.132, 0.0 pyroph.5+alunit.5                                 
+alunite 50% & pyrophyllite PYS1A  174    3 W  0.000  0.0000  0.0000  0.000, 0.0 pyroph.5+alunit.5                                 
+alunite + pyrophyllite SD1093A    175    1 D  0.805  0.2425  0.1951  0.939, 1.0 alunite+pyrophyl                                  
+alunite + pyrophyllite SD1093A    175    2 D  0.000  0.0000  0.0000  0.061, 0.0 alunite+pyrophyl                                  
+alunite + pyrophyllite SD1093A    175    3 W  0.000  0.0000  0.0000  0.000, 0.0 alunite+pyrophyl                                  
+pyrophyllite + trace muscovite J  176    1 D  0.889  0.2575  0.2289  0.707, 1.0 pyroph+tr.musc                                    
+pyrophyllite + trace muscovite J  176    2 D  0.000  0.0000  0.0000  0.293, 0.0 pyroph+tr.musc                                    
+ NO NOT condition:    on material 176 feat   2, material 129
+muscovite + pyrophyllite  JH_PYR  177    1 D  0.979  0.2272  0.2224  0.777, 1.0 musc+pyroph                                       
+muscovite + pyrophyllite  JH_PYR  177    2 D  0.000  0.0000  0.0000  0.223, 0.0 musc+pyroph                                       
+ NO NOT condition:    on material 177 feat   2, material 129
+alunite + muscovite + pyrophylli  178    1 D  0.932  0.2300  0.2143  0.808, 1.0 alunite+musc+pyroph                               
+alunite + muscovite + pyrophylli  178    2 D  0.048  0.0018  0.0001  0.192, 1.0 alunite+musc+pyroph                               
+alunite + muscovite + pyrophylli  178    3 W  0.000  0.0000  0.0000  0.000, 0.0 alunite+musc+pyroph                               
+alunite .5 +kaolinite KGa-1 .5ar  179    1 D  0.890  0.2068  0.1841  0.896, 1.0 alunite.5+kaol.5                                  
+alunite .5 +kaolinite KGa-1 .5ar  179    2 D  0.000  0.0000  0.0000  0.104, 0.0 alunite.5+kaol.5                                  
+alunite .5 +kaolinite KGa-1 .5ar  179    3 W  0.000  0.0000  0.0000  0.000, 0.0 alunite.5+kaol.5                                  
+kaolinite wxl CM9 .75 +alunite .  180    1 D  0.879  0.2144  0.1886  0.949, 1.0 kaol.75+alun.25                                   
+kaolinite wxl CM9 .75 +alunite .  180    2 D  0.000  0.0000  0.0000  0.051, 0.0 kaol.75+alun.25                                   
+kaolinite wxl CM9 .75 +alunite .  180    3 W  0.000  0.0000  0.0000  0.000, 0.0 kaol.75+alun.25                                   
+K-alunite +kaolinite +goethite i  181    1 D  0.887  0.2102  0.1865  0.892, 1.0 Kalun+kaol.intmx                                  
+K-alunite +kaolinite +goethite i  181    2 D  0.000  0.0000  0.0000  0.108, 0.0 Kalun+kaol.intmx                                  
+K-alunite +kaolinite +goethite i  181    3 W  0.000  0.0000  0.0000  0.000, 0.0 Kalun+kaol.intmx                                  
+Na-alunite +kaolinite +hematite   182    1 D  0.880  0.2135  0.1879  0.950, 1.0 Na-alun+kaol.intmx                                
+Na-alunite +kaolinite +hematite   182    2 D  0.000  0.0000  0.0000  0.050, 0.0 Na-alun+kaol.intmx                                
+Na-alunite +kaolinite +hematite   182    3 W  0.000  0.0000  0.0000  0.000, 0.0 Na-alun+kaol.intmx                                
+kaolinite .5+ muscovite CU91-250  183    1 D  0.843  0.2194  0.1849  1.000, 1.0 kaolin.5+muscov.medAl                             
+kaolinite .5+ muscovite CU91-250  183    2 W  0.000  0.0000  0.0000  0.000, 0.0 kaolin.5+muscov.medAl                             
+ NO NOT condition:    on material 183 feat   2, material 129
+kaolinite Wxl + 50% muscovite Ru  184    1 D  0.871  0.2345  0.2043  1.000, 1.0 kaolin.5+muscov.medhighAl                         
+kaolinite Wxl + 50% muscovite Ru  184    2 W  0.000  0.0000  0.0000  0.000, 0.0 kaolin.5+muscov.medhighAl                         
+ NO NOT condition:    on material 184 feat   2, material 129
+kaolinite + muscovite intimate C  185    1 D  0.732  0.1986  0.1455  1.000, 1.0 kaolin+musc.intimat                               
+kaolinite + muscovite intimate C  185    2 W  0.068  0.0023  0.0002  0.000, 1.0 kaolin+musc.intimat                               
+ NO NOT condition:    on material 185 feat   2, material 129
+muscovovite + Jarosite Coating C  186    1 D  0.003  0.0007  0.0000  1.000, 1.0 musc+jarosite.intimat                             
+muscovovite + Jarosite Coating C  186    2 W  0.695  0.0158  0.0110  0.000, 1.0 musc+jarosite.intimat                             
+muscovovite + Jarosite Coating C  186    3 W  0.000  0.0000  0.0000  0.000, 0.0 musc+jarosite.intimat                             
+gypsum +jarosite +illite intimat  187    1 D  0.281  0.0765  0.0215  0.946, 1.0 sulfate-mix_gypsum+jar+illite.intmix              
+gypsum +jarosite +illite intimat  187    2 D  0.643  0.0224  0.0144  0.020, 1.0 sulfate-mix_gypsum+jar+illite.intmix              
+gypsum +jarosite +illite intimat  187    3 D  0.000  0.0000  0.0000  0.034, 0.0 sulfate-mix_gypsum+jar+illite.intmix              
+gypsum +jarosite +illite intimat  187    4 W  0.000  0.0000  0.0000  0.000, 0.0 sulfate-mix_gypsum+jar+illite.intmix              
+gypsum +jarosite +illite intimat  187    5 W  0.000  0.0000  0.0000  0.000, 0.0 sulfate-mix_gypsum+jar+illite.intmix              
+gypsum +jarosite +muscovite area  188    1 D  0.282  0.0789  0.0223  0.856, 1.0 sulfate-mix_gyp+jar+musc.amix                     
+gypsum +jarosite +muscovite area  188    2 D  0.807  0.0266  0.0214  0.046, 1.0 sulfate-mix_gyp+jar+musc.amix                     
+gypsum +jarosite +muscovite area  188    3 D  0.000  0.0000  0.0000  0.097, 0.0 sulfate-mix_gyp+jar+musc.amix                     
+gypsum +jarosite +muscovite area  188    4 W  0.000  0.0000  0.0000  0.000, 0.0 sulfate-mix_gyp+jar+musc.amix                     
+gypsum +jarosite +muscovite +dic  189    1 D  0.643  0.2040  0.1310  0.912, 1.0 sulfate-mix_gyp+jar+musc+dick.amix                
+gypsum +jarosite +muscovite +dic  189    2 D  0.814  0.0274  0.0223  0.028, 1.0 sulfate-mix_gyp+jar+musc+dick.amix                
+gypsum +jarosite +muscovite +dic  189    3 D  0.000  0.0000  0.0000  0.060, 0.0 sulfate-mix_gyp+jar+musc+dick.amix                
+gypsum +jarosite +muscovite +dic  189    4 W  0.000  0.0000  0.0000  0.000, 0.0 sulfate-mix_gyp+jar+musc+dick.amix                
+muscovite +gypsum +jarosite +dic  190    1 D  0.859  0.2086  0.1792  0.903, 1.0 musc+gyp+jar+dick.amix                            
+muscovite +gypsum +jarosite +dic  190    2 D  0.813  0.0278  0.0226  0.031, 1.0 musc+gyp+jar+dick.amix                            
+muscovite +gypsum +jarosite +dic  190    3 D  0.000  0.0000  0.0000  0.066, 0.0 musc+gyp+jar+dick.amix                            
+muscovite +gypsum +jarosite +dic  190    4 W  0.000  0.0000  0.0000  0.000, 0.0 musc+gyp+jar+dick.amix                            
+muscovite +gypsum +jarosite +dic  190    5 W  0.000  0.0000  0.0000  0.000, 0.0 musc+gyp+jar+dick.amix                            
+muscovite +gypsum +jarosite +dic  190    6 W  0.000  0.0000  0.0000  0.000, 0.0 musc+gyp+jar+dick.amix                            
+dickite +muscovite +gypsum +jaro  191    1 D  0.903  0.2076  0.1875  0.949, 1.0 dick+musc+gyp+jar.amix                            
+dickite +muscovite +gypsum +jaro  191    2 D  0.817  0.0283  0.0231  0.019, 1.0 dick+musc+gyp+jar.amix                            
+dickite +muscovite +gypsum +jaro  191    3 D  0.000  0.0000  0.0000  0.032, 0.0 dick+musc+gyp+jar.amix                            
+dickite +muscovite +gypsum +jaro  191    4 W  0.000  0.0000  0.0000  0.000, 0.0 dick+musc+gyp+jar.amix                            
+dickite +muscovite +gypsum +jaro  191    5 W  0.000  0.0000  0.0000  0.000, 0.0 dick+musc+gyp+jar.amix                            
+alunite .5 +muscovite CU91-250A   192    1 D  0.860  0.2415  0.2078  0.774, 1.0 alunite.5+musc.5                                  
+alunite .5 +muscovite CU91-250A   192    2 D  0.120  0.0037  0.0004  0.118, 1.0 alunite.5+musc.5                                  
+alunite .5 +muscovite CU91-250A   192    3 D  0.000  0.0000  0.0000  0.107, 0.0 alunite.5+musc.5                                  
+alunite .33 +kaolinite .33 +musc  193    1 D  0.875  0.2339  0.2046  0.825, 1.0 alunite.33+kaol.33+musc.33                        
+alunite .33 +kaolinite .33 +musc  193    2 D  0.062  0.0021  0.0001  0.097, 1.0 alunite.33+kaol.33+musc.33                        
+alunite .33 +kaolinite .33 +musc  193    3 D  0.000  0.0000  0.0000  0.077, 0.0 alunite.33+kaol.33+musc.33                        
+muscovite + chlorite CU91-253D    194    1 D  0.842  0.2044  0.1722  0.574, 1.0 muscovite+chlorite                                
+muscovite + chlorite CU91-253D    194    2 D  0.582  0.0481  0.0280  0.019, 1.0 muscovite+chlorite                                
+muscovite + chlorite CU91-253D    194    3 D  0.000  0.0000  0.0000  0.044, 0.0 muscovite+chlorite                                
+muscovite + chlorite CU91-253D    194    4 D  0.000  0.0000  0.0000  0.362, 0.0 muscovite+chlorite                                
+smectite ammonio-illite/smectite  195    1 D  0.914  0.2157  0.1971  0.867, 1.0 smectite_ammonillsmec                             
+smectite ammonio-illite/smectite  195    2 O  0.744  0.0462  0.0344  0.133, 0.0 smectite_ammonillsmec                             
+ NO NOT condition:    on material 195 feat   2, material 129
+feldspar buddingtonite GDS85 D-2  196    1 D  0.736  0.2090  0.1539  0.943, 1.0 feldspar_buddingtonite_ammonium                   
+feldspar buddingtonite GDS85 D-2  196    2 O  0.704 -0.0287 -0.0202  0.057, 0.0 feldspar_buddingtonite_ammonium                   
+ NO NOT condition:    on material 196 feat   2, material 115
+feldspar buddingtonite + Na-mont  197    1 D  0.211  0.0225  0.0048  0.461, 1.0 feldspar_buddington.namont                        
+feldspar buddingtonite + Na-mont  197    2 D  0.746  0.1695  0.1264  0.539, 1.0 feldspar_buddington.namont                        
+ NO NOT condition:    on material 197 feat   2, material 115
+feldspar buddingtonite + Na-mont  198    1 D  0.895  0.2353  0.2106  1.000, 1.0 feldspar_buddington.namont2                       
+ NO NOT condition:    on material 198 feat   2, material 115
+sulfate ammonio alunite NMNH1455  199    1 D  0.826  0.2475  0.2043  0.867, 1.0 sulfate_ammonalunite                              
+sulfate ammonio alunite NMNH1455  199    2 D  0.000  0.0000  0.0000  0.066, 0.0 sulfate_ammonalunite                              
+sulfate ammonio alunite NMNH1455  199    3 W  0.000  0.0000  0.0000  0.000, 0.0 sulfate_ammonalunite                              
+sulfate ammonio alunite NMNH1455  199    4 O  0.000  0.0000  0.0000  0.067, 0.0 sulfate_ammonalunite                              
+ NO NOT condition:    on material 199 feat   2, material 115
+sulfate ammonio jarosite SCR-NHJ  200    1 D  0.581  0.1599  0.0930  0.537, 1.0 sulfate_ammonjarosite                             
+sulfate ammonio jarosite SCR-NHJ  200    2 D  0.000  0.0000  0.0000  0.366, 0.0 sulfate_ammonjarosite                             
+sulfate ammonio jarosite SCR-NHJ  200    3 O  0.000  0.0000  0.0000  0.097, 0.0 sulfate_ammonjarosite                             
+ NO NOT condition:    on material 200 feat   2, material 115
+carbonate dolomite HS102.3B       201    1 D  0.000  0.0000  0.0000  1.000, 0.0 carbonate_dolomite                                
+actinolite NMNHR16485             202    1 D  0.000  0.0000  0.0000  1.000, 0.0 actinolite                                        
+actinolite NMNHR16485             202    2 W  0.000  0.0000  0.0000  0.000, 0.0 actinolite                                        
+ NO NOT condition:    on material 202 feat   1, material  20
+ NO NOT condition:    on material 202 feat   1, material 115
+amphibole NMNH78662               203    1 D  0.000  0.0000  0.0000  0.734, 0.0 amphibole                                         
+amphibole NMNH78662               203    2 D  0.000  0.0000  0.0000  0.266, 0.0 amphibole                                         
+ NO NOT condition:    on material 203 feat   1, material  20
+micagroup biotite HS28.3B         204    1 D  0.000  0.0000  0.0000  0.744, 0.0 micagrp_biotite                                   
+micagroup biotite HS28.3B         204    2 D  0.000  0.0000  0.0000  0.256, 0.0 micagrp_biotite                                   
+micagroup biotite HS28.3B         204    3 W  0.000  0.0000  0.0000  0.000, 0.0 micagrp_biotite                                   
+chlorite-scarn BR22B              205    1 D  0.000  0.0000  0.0000  1.000, 0.0 chlorite-scarn                                    
+chlorite-scarn BR22B              205    2 W  0.000  0.0000  0.0000  0.000, 0.0 chlorite-scarn                                    
+ NO NOT condition:    on material 205 feat   1, material  20
+chlorite SMR-13.b                 206    1 D  0.000  0.0000  0.0000  0.940, 0.0 chlorite                                          
+chlorite SMR-13.b                 206    2 D  0.000  0.0000  0.0000  0.060, 0.0 chlorite                                          
+chlorite SMR-13.b                 206    3 W  0.000  0.0000  0.0000  0.000, 0.0 chlorite                                          
+ NO NOT condition:    on material 206 feat   1, material  20
+prehnite +.50chlorite AMIX        207    1 D  0.000  0.0000  0.0000  1.000, 0.0 prehnite+.50chlorite                              
+ NO NOT condition:    on material 207 feat   1, material  20
+prehnite +.67chlorite AMIX        208    1 D  0.000  0.0000  0.0000  1.000, 0.0 prehnite+.67chlorite                              
+ NO NOT condition:    on material 208 feat   1, material  20
+prehnite +.75chlorite AMIX        209    1 D  0.000  0.0000  0.0000  1.000, 0.0 prehnite+.75chlorite                              
+ NO NOT condition:    on material 209 feat   1, material  20
+carbonate aragonite GDS898 Morac  210    1 D  0.000  0.0000  0.0000  1.000, 0.0 carbonate_aragonite                               
+chlorite clinochlore GDS158       211    1 D  0.000  0.0000  0.0000  0.902, 0.0 chlorite_clinochlore                              
+chlorite clinochlore GDS158       211    2 D  0.000  0.0000  0.0000  0.098, 0.0 chlorite_clinochlore                              
+chlorite clinochlore GDS158       211    3 W  0.000  0.0000  0.0000  0.000, 0.0 chlorite_clinochlore                              
+ NO NOT condition:    on material 211 feat   1, material  20
+chlorite clinochlore NMNH83369    212    1 D  0.000  0.0000  0.0000  1.000, 0.0 chlorite_clinochlore.nmnh83369                    
+chlorite clinochlore NMNH83369    212    2 W  0.000  0.0000  0.0000  0.000, 0.0 chlorite_clinochlore.nmnh83369                    
+ NO NOT condition:    on material 212 feat   1, material  20
+chlorite clinochlore GDS157       213    1 D  0.000  0.0000  0.0000  1.000, 0.0 chlorite_clinochlore.fe.gds157                    
+chlorite clinochlore GDS157       213    2 W  0.000  0.0000  0.0000  0.000, 0.0 chlorite_clinochlore.fe.gds157                    
+ NO NOT condition:    on material 213 feat   1, material  20
+chlorite clinochlore Fe SC-CCa-1  214    1 D  0.000  0.0000  0.0000  1.000, 0.0 chlorite_clinochlore.fe.sc-cca-1                  
+chlorite clinochlore Fe SC-CCa-1  214    2 W  0.000  0.0000  0.0000  0.000, 0.0 chlorite_clinochlore.fe.sc-cca-1                  
+ NO NOT condition:    on material 214 feat   1, material  20
+chlorite Cookeite CAr-1.a 104-15  215    1 D  0.787  0.1857  0.1461  1.000, 1.0 chlorite_cookeite-car-1.a                         
+chlorite Cookeite CAr-1.a 104-15  215    2 W  0.000  0.0000  0.0000  0.000, 0.0 chlorite_cookeite-car-1.a                         
+ NO NOT condition:    on material 215 feat   1, material  20
+chlorite Cookeite CAr-1.c <30um   216    1 D  0.835  0.2029  0.1695  1.000, 1.0 chlorite_cookeite-car-1.c                         
+chlorite Cookeite CAr-1.c <30um   216    2 W  0.000  0.0000  0.0000  0.000, 0.0 chlorite_cookeite-car-1.c                         
+ NO NOT condition:    on material 216 feat   1, material  20
+chlorite thuringite SMR-15.b      217    1 D  0.000  0.0000  0.0000  0.795, 0.0 chlorite_thuringite                               
+chlorite thuringite SMR-15.b      217    2 D  0.000  0.0000  0.0000  0.205, 0.0 chlorite_thuringite                               
+chlorite thuringite SMR-15.b      217    3 W  0.000  0.0000  0.0000  0.000, 0.0 chlorite_thuringite                               
+ NO NOT condition:    on material 217 feat   1, material  20
+epidote GDS26.a                   218    1 D  0.000  0.0000  0.0000  0.076, 0.0 epidote                                           
+epidote GDS26.a                   218    2 D  0.000  0.0000  0.0000  0.924, 0.0 epidote                                           
+hornblende_Fe HS115.3B            219    1 D  0.000  0.0000  0.0000  0.645, 0.0 hornblende                                        
+hornblende_Fe HS115.3B            219    2 D  0.000  0.0000  0.0000  0.355, 0.0 hornblende                                        
+ NO NOT condition:    on material 219 feat   1, material  20
+sulfate jarosite GDS24 Na         220    1 D  0.000  0.0000  0.0000  1.000, 0.0 sulfate_jarosite-Na                               
+sulfate jarosite GDS99 K,Sy 200C  221    1 D  0.000  0.0000  0.0000  1.000, 0.0 sulfate_jarosite-K                                
+sulfate jarosite SJ-1 H3O,10-20%  222    1 D  0.000  0.0000  0.0000  1.000, 0.0 sulfate_jarosite-lowT                             
+phlogopite HS23.3B                223    1 D  0.000  0.0000  0.0000  0.749, 0.0 phlogopite                                        
+phlogopite HS23.3B                223    2 D  0.000  0.0000  0.0000  0.251, 0.0 phlogopite                                        
+tremolite or talc HS18.3          224    1 D  0.000  0.0000  0.0000  1.000, 0.0 tremolite.or.talc                                 
+tremolite or talc HS18.3          224    2 W  0.000  0.0000  0.0000  0.000, 0.0 tremolite.or.talc                                 
+ NO NOT condition:    on material 224 feat   1, material  20
+ NO NOT condition:    on material 224 feat   1, material 115
+ NO NOT condition:    on material 224 feat   1, material 201
+talc, coarse grain GDS23          225    1 D  0.000  0.0000  0.0000  1.000, 0.0 talc.crsgrnd                                      
+talc, coarse grain GDS23          225    2 W  0.000  0.0000  0.0000  0.000, 0.0 talc.crsgrnd                                      
+ NO NOT condition:    on material 225 feat   1, material  20
+ NO NOT condition:    on material 225 feat   1, material 115
+ NO NOT condition:    on material 225 feat   1, material 201
+talc, fine gr WS659               226    1 D  0.000  0.0000  0.0000  1.000, 0.0 talc.fngrnd                                       
+talc, fine gr WS659               226    2 W  0.000  0.0000  0.0000  0.000, 0.0 talc.fngrnd                                       
+ NO NOT condition:    on material 226 feat   1, material  20
+ NO NOT condition:    on material 226 feat   1, material 115
+talc +calcite   PC99-1G           227    1 D  0.000  0.0000  0.0000  1.000, 0.0 talc+calcite.parkcity                             
+talc +calcite   PC99-1G           227    2 W  0.000  0.0000  0.0000  0.000, 0.0 talc+calcite.parkcity                             
+ NO NOT condition:    on material 227 feat   1, material  20
+ NO NOT condition:    on material 227 feat   1, material 115
+ NO NOT condition:    on material 227 feat   1, material 201
+talc + carbonate   PC99-1E        228    1 D  0.000  0.0000  0.0000  1.000, 0.0 talc+carbonate.parkcity                           
+talc + carbonate   PC99-1E        228    2 W  0.000  0.0000  0.0000  0.000, 0.0 talc+carbonate.parkcity                           
+ NO NOT condition:    on material 228 feat   1, material  20
+ NO NOT condition:    on material 228 feat   1, material 115
+ NO NOT condition:    on material 228 feat   1, material 201
+carbonate calcite 0.8 + montmori  229    1 D  0.000  0.0000  0.0000  0.546, 0.0 carbonate_calcite+0.2Ca-mont                      
+carbonate calcite 0.8 + montmori  229    2 D  0.000  0.0000  0.0000  0.454, 0.0 carbonate_calcite+0.2Ca-mont                      
+carbonate magnesite +hydromagnes  230    1 D  0.000  0.0000  0.0000  1.000, 0.0 carbonate_magnesite                               
+carbonate calcite WS272           231    1 D  0.000  0.0000  0.0000  1.000, 0.0 carbonate_calcite                                 
+ NO NOT condition:    on material 231 feat   1, material  38
+ NO NOT condition:    on material 231 feat   1, material 218
+carbonate calcite + dolomite .5   232    1 D  0.000  0.0000  0.0000  1.000, 0.0 carbonate_calcite+dolomite.5                      
+ NO NOT condition:    on material 232 feat   1, material  38
+ NO NOT condition:    on material 232 feat   1, material 218
+ NO NOT condition:    on material 232 feat   1, material 115
+carbonate dolomite + 50% Ca-Mont  233    1 D  0.000  0.0000  0.0000  0.201, 0.0 carbonate_dolo+.5ca-mont                          
+carbonate dolomite + 50% Ca-Mont  233    2 D  0.000  0.0000  0.0000  0.799, 0.0 carbonate_dolo+.5ca-mont                          
+calcite.25+dolom.25+Na-mont.5     234    1 D  0.000  0.0000  0.0000  0.757, 0.0 calcite.25+dolom.25+Na-mont.5                     
+calcite.25+dolom.25+Na-mont.5     234    2 D  0.000  0.0000  0.0000  0.243, 0.0 calcite.25+dolom.25+Na-mont.5                     
+carbonate calcite.25+dolom.25+Ca  235    1 D  0.000  0.0000  0.0000  0.830, 0.0 carbonate_calcite.25+dolom.25+Ca-mont.5           
+carbonate calcite.25+dolom.25+Ca  235    2 D  0.000  0.0000  0.0000  0.170, 0.0 carbonate_calcite.25+dolom.25+Ca-mont.5           
+carbonate siderite HS271.3B       236    1 D  0.000  0.0000  0.0000  1.000, 0.0 carbonate_siderite                                
+carbonate siderite HS271.3B       236    2 W  0.000  0.0000  0.0000  0.000, 0.0 carbonate_siderite                                
+smectite nontronite NG-1.a        237    1 D  0.000  0.0000  0.0000  0.105, 0.0 smectite_nontronite_swelling                      
+smectite nontronite NG-1.a        237    2 D  0.000  0.0000  0.0000  0.105, 0.0 smectite_nontronite_swelling                      
+smectite nontronite NG-1.a        237    3 D  0.000  0.0000  0.0000  0.105, 0.0 smectite_nontronite_swelling                      
+smectite nontronite NG-1.a        237    4 D  0.000  0.0000  0.0000  0.686, 0.0 smectite_nontronite_swelling                      
+clay hectorite SHCa-1.Ac-B        238    1 D  0.000  0.0000  0.0000  1.000, 0.0 clay_hectorite                                    
+clay hectorite SHCa-1.Ac-B        238    2 W  0.000  0.0000  0.0000  0.000, 0.0 clay_hectorite                                    
+ NO NOT condition:    on material 238 feat   1, material 158
+ NO NOT condition:    on material 238 feat   1, material 160
+ NO NOT condition:    on material 238 feat   1, material  20
+ NO NOT condition:    on material 238 feat   1, material 115
+saponite SapCa-1.AcB              239    1 D  0.000  0.0000  0.0000  1.000, 0.0 saponite.or.talc                                  
+saponite SapCa-1.AcB              239    2 W  0.000  0.0000  0.0000  0.000, 0.0 saponite.or.talc                                  
+ NO NOT condition:    on material 239 feat   1, material  20
+ NO NOT condition:    on material 239 feat   1, material 115
+sepiolite SepNev-1.AcB            240    1 D  0.000  0.0000  0.0000  0.741, 0.0 sepiolite                                         
+sepiolite SepNev-1.AcB            240    2 O  0.000  0.0000  0.0000  0.259, 0.0 sepiolite                                         
+ NO NOT condition:    on material 240 feat   1, material  20
+carbonate calcite 80% +montmore   241    1 D  0.000  0.0000  0.0000  0.505, 0.0 calcite+0.2Na-mont                                
+carbonate calcite 80% +montmore   241    2 D  0.000  0.0000  0.0000  0.495, 0.0 calcite+0.2Na-mont                                
+calcite + 50% Ca-mont areal       242    1 D  0.000  0.0000  0.0000  0.878, 0.0 calcite+0.5Ca-mont                                
+calcite + 50% Ca-mont areal       242    2 D  0.000  0.0000  0.0000  0.122, 0.0 calcite+0.5Ca-mont                                
+carbonate calcite + 33% muscovit  243    1 D  0.000  0.0000  0.0000  0.857, 0.0 carbonate_calcite+0.3muscovite                    
+carbonate calcite + 33% muscovit  243    2 D  0.000  0.0000  0.0000  0.143, 0.0 carbonate_calcite+0.3muscovite                    
+ NO NOT condition:    on material 243 feat   1, material 218
+dry grass + 17% Na-montmorilloni  244    1 D  0.892  0.0782  0.0697  0.309, 1.0 organic_drygrass+.17Na-mont                       
+dry grass + 17% Na-montmorilloni  244    2 D  0.630  0.1529  0.0964  0.218, 1.0 organic_drygrass+.17Na-mont                       
+dry grass + 17% Na-montmorilloni  244    3 D  0.000  0.0000  0.0000  0.473, 0.0 organic_drygrass+.17Na-mont                       
+carbonate dolomite .5 +Na-montmo  245    1 D  0.496  0.1270  0.0629  0.311, 1.0 carbonate_dolomite.5+Na-mont.5                    
+carbonate dolomite .5 +Na-montmo  245    2 D  0.000  0.0000  0.0000  0.689, 0.0 carbonate_dolomite.5+Na-mont.5                    
+calcite.33+Ca-mont.67 AVIRIS      246    1 D  0.000  0.0000  0.0000  0.286, 0.0 carbonate_smectite_calcite.33+Ca-mont.67          
+calcite.33+Ca-mont.67 AVIRIS      246    2 D  0.000  0.0000  0.0000  0.714, 0.0 carbonate_smectite_calcite.33+Ca-mont.67          
+calcite 80wt%+ kaolinite CM9 GDS  247    1 D  0.846  0.1969  0.1665  0.531, 1.0 carbonate_calcite+0.2kaolwxl                      
+calcite 80wt%+ kaolinite CM9 GDS  247    2 D  0.000  0.0000  0.0000  0.469, 0.0 carbonate_calcite+0.2kaolwxl                      
+calcite WS272 70%+kaolinite KGa-  248    1 D  0.646  0.1666  0.1077  0.183, 1.0 carbonate_calcite0.7+kaol0.3                      
+calcite WS272 70%+kaolinite KGa-  248    2 D  0.000  0.0000  0.0000  0.817, 0.0 carbonate_calcite0.7+kaol0.3                      
+phyllosilicate clintonite NMNH12  249    1 D  0.000  0.0000  0.0000  0.693, 0.0 phyllosilicate.clintonite                         
+phyllosilicate clintonite NMNH12  249    2 D  0.000  0.0000  0.0000  0.208, 0.0 phyllosilicate.clintonite                         
+phyllosilicate clintonite NMNH12  249    3 D  0.000  0.0000  0.0000  0.099, 0.0 phyllosilicate.clintonite                         
+ NO NOT condition:    on material 249 feat   1, material  20
+phyllosilicate palygorskite PFL-  250    1 D  0.157  0.0442  0.0070  1.000, 1.0 palygorskite                                      
+ NOT condition:       feat   2, material 145 excludes material  250
+Zoisite HS347.3B                  251    1 D  0.000  0.0000  0.0000  0.388, 0.0 zoisite                                           
+Zoisite HS347.3B                  251    2 D  0.000  0.0000  0.0000  0.612, 0.0 zoisite                                           
+elbaite NMNH94217-1.c <74um       252    1 D  0.665  0.1532  0.1019  0.615, 1.0 elbaite                                           
+elbaite NMNH94217-1.c <74um       252    2 D  0.000  0.0000  0.0000  0.202, 0.0 elbaite                                           
+elbaite NMNH94217-1.c <74um       252    3 O  0.000  0.0000  0.0000  0.111, 0.0 elbaite                                           
+elbaite NMNH94217-1.c <74um       252    4 O  0.000  0.0000  0.0000  0.072, 0.0 elbaite                                           
+hydroxide gibbsite WS214          253    1 D  0.000  0.0000  0.0000  0.878, 0.0 hydroxide_gibbsite                                
+hydroxide gibbsite WS214          253    2 D  0.000  0.0000  0.0000  0.122, 0.0 hydroxide_gibbsite                                
+nitrate niter GDS43 (K-Saltpeter  254    1 D  0.950  0.1109  0.1054  0.481, 1.0 nitrate_niter                                     
+nitrate niter GDS43 (K-Saltpeter  254    2 D  0.000  0.0000  0.0000  0.519, 0.0 nitrate_niter                                     
+topaz Mt. Antero_#5               255    1 D  0.779  0.0847  0.0660  0.777, 1.0 topaz                                             
+topaz Mt. Antero_#5               255    2 D  0.498  0.1110  0.0553  0.223, 1.0 topaz                                             
+carbonate rhodochrosite HS338.3B  256    1 D  0.000  0.0000  0.0000  1.000, 0.0 carbonate_rhodochrosite                           
+carbonate rhodochrosite HS338.3B  256    2 W  0.000  0.0000  0.0000  0.000, 0.0 carbonate_rhodochrosite                           
+carbonate rhodochrosite HS338.3B  256    3 W  0.000  0.0000  0.0000  0.000, 0.0 carbonate_rhodochrosite                           
+carbonate witherite HS273.3B      257    1 D  0.000  0.0000  0.0000  0.941, 0.0 carbonate_witherite                               
+carbonate witherite HS273.3B      257    2 D  0.000  0.0000  0.0000  0.059, 0.0 carbonate_witherite                               
+prehnite GDS613.a <60um           258    1 D  0.000  0.0000  0.0000  0.891, 0.0 prehnite                                          
+prehnite GDS613.a <60um           258    2 O  0.000  0.0000  0.0000  0.109, 0.0 prehnite                                          
+prehnite + muscovite              259    1 D  0.000  0.0000  0.0000  0.524, 0.0 prehnite+muscovite                                
+prehnite + muscovite              259    2 O  0.000  0.0000  0.0000  0.084, 0.0 prehnite+muscovite                                
+prehnite + muscovite              259    3 D  0.000  0.0000  0.0000  0.392, 0.0 prehnite+muscovite                                
+borate pinnoite NMNH123943        260    1 D  0.000  0.0000  0.0000  0.373, 0.0 borate_pinnoite                                   
+borate pinnoite NMNH123943        260    2 D  0.000  0.0000  0.0000  0.370, 0.0 borate_pinnoite                                   
+borate pinnoite NMNH123943        260    3 D  0.000  0.0000  0.0000  0.257, 0.0 borate_pinnoite                                   
+polyhalite NMNH92669-4            261    1 D  0.000  0.0000  0.0000  0.761, 0.0 polyhalite                                        
+polyhalite NMNH92669-4            261    2 D  0.000  0.0000  0.0000  0.146, 0.0 polyhalite                                        
+polyhalite NMNH92669-4            261    3 D  0.000  0.0000  0.0000  0.093, 0.0 polyhalite                                        
+rivadavite NMNH170164             262    1 D  0.842  0.2873  0.2420  0.586, 1.0 rivadavite                                        
+rivadavite NMNH170164             262    2 D  0.025 -0.0014 -0.0000  0.375, 1.0 rivadavite                                        
+rivadavite NMNH170164             262    3 O  0.001  0.0000  0.0000  0.039, 1.0 rivadavite                                        
+ NO NOT condition:    on material 262 feat   2, material 129
+howlite GDS155                    263    1 D  0.649  0.2356  0.1530  0.844, 1.0 howlite                                           
+howlite GDS155                    263    2 D  0.000  0.0000  0.0000  0.045, 0.0 howlite                                           
+howlite GDS155                    263    3 D  0.000  0.0000  0.0000  0.097, 0.0 howlite                                           
+howlite GDS155                    263    4 D  0.000  0.0000  0.0000  0.014, 0.0 howlite                                           
+ulexite HS441.3B                  264    1 D  0.895  0.2945  0.2636  0.548, 1.0 ulexite                                           
+ulexite HS441.3B                  264    2 D  0.000  0.0000  0.0000  0.414, 0.0 ulexite                                           
+ulexite HS441.3B                  264    3 D  0.000  0.0000  0.0000  0.038, 0.0 ulexite                                           
+ NO NOT condition:    on material 264 feat   1, material   1
+white salt crust starkeyite LV30  265    1 D  0.000  0.0000  0.0000  1.000, 0.0 white.crust.starkeyite                            
+zeolite analcime GDS1             266    1 D  0.000  0.0000  0.0000  0.017, 0.0 zeolite_analcime                                  
+zeolite analcime GDS1             266    2 D  0.000  0.0000  0.0000  0.741, 0.0 zeolite_analcime                                  
+zeolite analcime GDS1             266    3 D  0.000  0.0000  0.0000  0.208, 0.0 zeolite_analcime                                  
+zeolite analcime GDS1             266    4 D  0.000  0.0000  0.0000  0.034, 0.0 zeolite_analcime                                  
+ NO NOT condition:    on material 266 feat   1, material   1
+hydroxide brucite HS247.3B        267    1 D  0.000  0.0000  0.0000  0.857, 0.0 hydroxide_brucite                                 
+hydroxide brucite HS247.3B        267    2 D  0.000  0.0000  0.0000  0.143, 0.0 hydroxide_brucite                                 
+ NO NOT condition:    on material 267 feat   1, material  20
+chloride carnallite NMNH98011     268    1 D  0.000  0.0000  0.0000  0.189, 0.0 chloride_carnallite                               
+chloride carnallite NMNH98011     268    2 D  0.000  0.0000  0.0000  0.764, 0.0 chloride_carnallite                               
+chloride carnallite NMNH98011     268    3 D  0.000  0.0000  0.0000  0.047, 0.0 chloride_carnallite                               
+ NO NOT condition:    on material 268 feat   1, material   1
+borate colemanite GDS143          269    1 D  0.802  0.0706  0.0567  0.303, 1.0 borate_colemanite                                 
+borate colemanite GDS143          269    2 D  0.576  0.1436  0.0828  0.418, 1.0 borate_colemanite                                 
+borate colemanite GDS143          269    3 D  0.000  0.0000  0.0000  0.279, 0.0 borate_colemanite                                 
+datolite HS442.3B                 270    1 D  0.383  0.1105  0.0423  0.728, 1.0 datolite                                          
+datolite HS442.3B                 270    2 D  0.000  0.0000  0.0000  0.050, 0.0 datolite                                          
+datolite HS442.3B                 270    3 D  0.000  0.0000  0.0000  0.222, 0.0 datolite                                          
+hydrogrossular NMNH120555         271    1 D  0.000  0.0000  0.0000  0.720, 0.0 hydrogrossular                                    
+hydrogrossular NMNH120555         271    2 D  0.000  0.0000  0.0000  0.280, 0.0 hydrogrossular                                    
+micagroup lepidolite NMNH88526-1  272    1 D  0.755  0.1910  0.1443  0.709, 1.0 micagrp_lepidolite                                
+micagroup lepidolite NMNH88526-1  272    2 D  0.000  0.0000  0.0000  0.291, 0.0 micagrp_lepidolite                                
+micagroup lepidolite NMNH88526-1  272    3 W  0.000  0.0000  0.0000  0.000, 0.0 micagrp_lepidolite                                
+micagroup margarite GDS106        273    1 D  0.775  0.2162  0.1676  0.547, 1.0 micagrp_margarite                                 
+micagroup margarite GDS106        273    2 D  0.000  0.0000  0.0000  0.095, 0.0 micagrp_margarite                                 
+micagroup margarite GDS106        273    3 D  0.000  0.0000  0.0000  0.358, 0.0 micagrp_margarite                                 
+micagroup margarite GDS106        273    4 W  0.000  0.0000  0.0000  0.000, 0.0 micagrp_margarite                                 
+sulfate mascagnite GDS65.b (fn)   274    1 D  0.728  0.2749  0.2002  0.249, 1.0 sulfate_mascagnite                                
+sulfate mascagnite GDS65.b (fn)   274    2 D  0.812  0.3975  0.3227  0.592, 1.0 sulfate_mascagnite                                
+sulfate mascagnite GDS65.b (fn)   274    3 D  0.135  0.0070  0.0009  0.159, 1.0 sulfate_mascagnite                                
+sulfate mirabilite GDS150 Na2SO4  275    1 D  0.000  0.0000  0.0000  0.610, 0.0 sulfate_mirabilite-wet_soil                       
+sulfate mirabilite GDS150 Na2SO4  275    2 D  0.000  0.0000  0.0000  0.013, 0.0 sulfate_mirabilite-wet_soil                       
+sulfate mirabilite GDS150 Na2SO4  275    3 D  0.000  0.0000  0.0000  0.019, 0.0 sulfate_mirabilite-wet_soil                       
+sulfate mirabilite GDS150 Na2SO4  275    4 D  0.000  0.0000  0.0000  0.358, 0.0 sulfate_mirabilite-wet_soil                       
+sulfate mirabilite GDS150 Na2SO4  275    5 W  0.000  0.0000  0.0000  0.000, 0.0 sulfate_mirabilite-wet_soil                       
+sulfate mirabilite GDS150 Na2SO4  275    6 W  0.000  0.0000  0.0000  0.000, 0.0 sulfate_mirabilite-wet_soil                       
+ NO NOT condition:    on material 275 feat   1, material   1
+zeolite natrolite HS169.3B        276    1 D  0.874  0.2354  0.2056  0.062, 1.0 zeolite_natrolite                                 
+zeolite natrolite HS169.3B        276    2 D  0.000  0.0000  0.0000  0.012, 0.0 zeolite_natrolite                                 
+zeolite natrolite HS169.3B        276    3 D  0.000  0.0000  0.0000  0.025, 0.0 zeolite_natrolite                                 
+zeolite natrolite HS169.3B        276    4 D  0.000  0.0000  0.0000  0.417, 0.0 zeolite_natrolite                                 
+zeolite natrolite HS169.3B        276    5 D  0.000  0.0000  0.0000  0.484, 0.0 zeolite_natrolite                                 
+ NO NOT condition:    on material 276 feat   1, material   1
+richterite NMNH150800 HCl         277    1 D  0.000  0.0000  0.0000  0.633, 0.0 richterite                                        
+richterite NMNH150800 HCl         277    2 D  0.000  0.0000  0.0000  0.367, 0.0 richterite                                        
+ NO NOT condition:    on material 277 feat   1, material  20
+ NO NOT condition:    on material 277 feat   1, material 201
+serpentine chrysotile, coarse fi  278    1 D  0.000  0.0000  0.0000  1.000, 0.0 serpentine_chrysotile.coarse-fibrous              
+ NO NOT condition:    on material 278 feat   1, material  20
+ NOT condition:       feat   1, material 201 excludes material  278
+serpentine chrysotile medium fin  279    1 D  0.000  0.0000  0.0000  1.000, 0.0 serpentine_chrysotile.med-fine-fibrous            
+ NO NOT condition:    on material 279 feat   1, material  20
+ NOT condition:       feat   1, material 201 excludes material  279
+serpentine chrysotile fine fibro  280    1 D  0.000  0.0000  0.0000  1.000, 0.0 serpentine_chrysotile.fine-fibrous                
+ NO NOT condition:    on material 280 feat   1, material  20
+ NOT condition:       feat   1, material 201 excludes material  280
+serpentine Cronstedtite M3542     281    1 D  0.000  0.0000  0.0000  1.000, 0.0 serpentine_cronstedtite                           
+ NO NOT condition:    on material 281 feat   1, material  20
+ NO NOT condition:    on material 281 feat   1, material 201
+micagroup roscoelite EN124        282    1 D  0.265  0.0652  0.0173  0.791, 1.0 micagrp_illite.roscoelite                         
+micagroup roscoelite EN124        282    2 D  0.000  0.0000  0.0000  0.209, 0.0 micagrp_illite.roscoelite                         
+carbonate strontianite HS272.3B   283    1 D  0.000  0.0000  0.0000  0.966, 0.0 carbonate_strontianite                            
+carbonate strontianite HS272.3B   283    2 D  0.000  0.0000  0.0000  0.034, 0.0 carbonate_strontianite                            
+ NO NOT condition:    on material 283 feat   1, material  38
+ NO NOT condition:    on material 283 feat   1, material 218
+sulfate syngenite GDS139          284    1 D  0.802  0.0827  0.0663  0.293, 1.0 sulfate_syngenite                                 
+sulfate syngenite GDS139          284    2 D  0.888  0.2194  0.1949  0.111, 1.0 sulfate_syngenite                                 
+sulfate syngenite GDS139          284    3 D  0.745 -0.0331 -0.0247  0.151, 1.0 sulfate_syngenite                                 
+sulfate syngenite GDS139          284    4 D  0.339  0.0139  0.0047  0.445, 1.0 sulfate_syngenite                                 
+Chrysocolla HS297.3B              285    1 D  0.000  0.0000  0.0000  1.000, 0.0 chrysocolla                                       
+Chrysocolla HS297.3B              285    2 W  0.000  0.0000  0.0000  0.000, 0.0 chrysocolla                                       
+Chrysocolla HS297.3B              285    3 W  0.000  0.0000  0.0000  0.000, 0.0 chrysocolla                                       
+carbonate azurite WS316           286    1 D  0.000  0.0000  0.0000  1.000, 0.0 carbonate_azurite                                 
+carbonate azurite WS316           286    2 W  0.000  0.0000  0.0000  0.000, 0.0 carbonate_azurite                                 
+ NO NOT condition:    on material 286 feat   1, material 115
+carbonate malachite HS254.3B      287    1 D  0.000  0.0000  0.0000  0.125, 0.0 carbonate_malachite                               
+carbonate malachite HS254.3B      287    2 D  0.000  0.0000  0.0000  0.856, 0.0 carbonate_malachite                               
+carbonate malachite HS254.3B      287    3 W  0.000  0.0000  0.0000  0.000, 0.0 carbonate_malachite                               
+carbonate malachite HS254.3B      287    4 O  0.000  0.0000  0.0000  0.019, 0.0 carbonate_malachite                               
+cyanide, CdK                      288    1 D  0.742  0.0209  0.0155  1.000, 1.0 cyanide-CdK                                       
+cyanide NiK                       289    1 D  0.000  0.0000  0.0000  1.000, 0.0 cyanide-NiK                                       
+cyanide trihydrate                290    1 D  0.000  0.0000  0.0000  0.062, 0.0 cyanide-trihydrate                                
+cyanide trihydrate                290    2 D  0.000  0.0000  0.0000  0.028, 0.0 cyanide-trihydrate                                
+cyanide trihydrate                290    3 D  0.000  0.0000  0.0000  0.911, 0.0 cyanide-trihydrate                                
+cyanide potassium ferro           291    1 D  0.000  0.0000  0.0000  1.000, 0.0 cyanide-KFe                                       
+cyanide ZnK                       292    1 D  0.119  0.0032  0.0004  1.000, 1.0 cyanide-ZnK                                       
+organic, plastic greenhouse roof  293    1 D  0.000  0.0000  0.0000  0.448, 0.0 organic_plastic.grnhs.roof                        
+organic, plastic greenhouse roof  293    2 D  0.000  0.0000  0.0000  0.194, 0.0 organic_plastic.grnhs.roof                        
+organic, plastic greenhouse roof  293    3 D  0.000  0.0000  0.0000  0.357, 0.0 organic_plastic.grnhs.roof                        
+organic, montmor SWy + benzene (  294    1 D  0.000  0.0000  0.0000  0.881, 0.0 organic_benzene+montswy                           
+organic, montmor SWy + benzene (  294    2 D  0.000  0.0000  0.0000  0.119, 0.0 organic_benzene+montswy                           
+organic, montmor SWy + trichlor   295    1 D  0.000  0.0000  0.0000  0.342, 0.0 organic_trichlor+montswy                          
+organic, montmor SWy + trichlor   295    2 D  0.000  0.0000  0.0000  0.658, 0.0 organic_trichlor+montswy                          
+organic, montmor SWy + toluene .  296    1 D  0.000  0.0000  0.0000  0.400, 0.0 organic_toluene+montswy                           
+organic, montmor SWy + toluene .  296    2 D  0.000  0.0000  0.0000  0.501, 0.0 organic_toluene+montswy                           
+organic, montmor SWy + toluene .  296    3 D  0.000  0.0000  0.0000  0.099, 0.0 organic_toluene+montswy                           
+organic, montmor SWy + unleaded   297    1 D  0.000  0.0000  0.0000  0.401, 0.0 organic_unleaded.gas+montswy                      
+organic, montmor SWy + unleaded   297    2 D  0.000  0.0000  0.0000  0.599, 0.0 organic_unleaded.gas+montswy                      
+organic, montmor SWy + TCE satur  298    1 D  0.000  0.0000  0.0000  0.439, 0.0 organic_tce+montswy                               
+organic, montmor SWy + TCE satur  298    2 D  0.000  0.0000  0.0000  0.561, 0.0 organic_tce+montswy                               
+Zunyite GDS-241b - crushed <150u  299    1 D  0.000  0.0000  0.0000  0.115, 0.0 zunyite                                           
+Zunyite GDS-241b - crushed <150u  299    2 D  0.000  0.0000  0.0000  0.145, 0.0 zunyite                                           
+Zunyite GDS-241b - crushed <150u  299    3 D  0.000  0.0000  0.0000  0.741, 0.0 zunyite                                           
+ NO NOT condition:    on material 299 feat   2, material 115
+sulfate trace-gypsum   WTC01-2    300    1 D  0.488  0.1163  0.0567  0.542, 1.0 sulfate-mix_gypsum.trace.dust+debris-WTC01-2      
+sulfate trace-gypsum   WTC01-2    300    2 D  0.000  0.0000  0.0000  0.236, 0.0 sulfate-mix_gypsum.trace.dust+debris-WTC01-2      
+sulfate trace-gypsum   WTC01-2    300    3 D  0.000  0.0000  0.0000  0.222, 0.0 sulfate-mix_gypsum.trace.dust+debris-WTC01-2      
+sulfate trace-gypsum   WTC01-2    300    4 W  0.000  0.0000  0.0000  0.000, 0.0 sulfate-mix_gypsum.trace.dust+debris-WTC01-2      
+sulfate trace-gypsum  WTC01-28    301    1 D  0.728  0.1865  0.1358  0.524, 1.0 sulfate-mix_gypsum.trace.dust+debris-WTC01-28     
+sulfate trace-gypsum  WTC01-28    301    2 D  0.000  0.0000  0.0000  0.254, 0.0 sulfate-mix_gypsum.trace.dust+debris-WTC01-28     
+sulfate trace-gypsum  WTC01-28    301    3 D  0.000  0.0000  0.0000  0.222, 0.0 sulfate-mix_gypsum.trace.dust+debris-WTC01-28     
+sulfate trace-gypsum  WTC01-28    301    4 W  0.000  0.0000  0.0000  0.000, 0.0 sulfate-mix_gypsum.trace.dust+debris-WTC01-28     
+serpentine chrysotile + gypsum W  302    1 D  0.000  0.0000  0.0000  0.885, 0.0 chrysotile.gypsum.wtc01-8                         
+serpentine chrysotile + gypsum W  302    2 D  0.000  0.0000  0.0000  0.038, 0.0 chrysotile.gypsum.wtc01-8                         
+serpentine chrysotile + gypsum W  302    3 D  0.000  0.0000  0.0000  0.076, 0.0 chrysotile.gypsum.wtc01-8                         
+ NO NOT condition:    on material 302 feat   1, material  20
+ NO NOT condition:    on material 302 feat   1, material 201
+portlandite GDS525 Ca(OH)2        303    1 D  0.000  0.0000  0.0000  1.000, 0.0 portlandite                                       
+nitrate, Potassium GDS43          304    1 D  0.000  0.0000  0.0000  0.000, 0.0 
+nitrate, Sodium GDS883            305    1 D  0.000  0.0000  0.0000  1.000, 0.0 nitrate_sodium                                    
+vegetation detection              306    1 D  0.000  0.0000  0.0000  0.907, 0.0 vegetation.map                                    
+vegetation detection              306    2 D  0.000  0.0000  0.0000  0.032, 0.0 vegetation.map                                    
+vegetation detection              306    3 D  0.000  0.0000  0.0000  0.061, 0.0 vegetation.map                                    
+vegetation, weak                  307    1 D  0.000  0.0000  0.0000  0.768, 0.0 vegetation.weak.map                               
+vegetation, weak                  307    2 O  0.000  0.0000  0.0000  0.129, 0.0 vegetation.weak.map                               
+vegetation, weak                  307    3 O  0.000  0.0000  0.0000  0.103, 0.0 vegetation.weak.map                               
+vegetation  dry + green           308    1 D  0.000  0.0000  0.0000  0.696, 0.0 vegetation.dry+green                              
+vegetation  dry + green           308    2 D  0.000  0.0000  0.0000  0.039, 0.0 vegetation.dry+green                              
+vegetation  dry + green           308    3 D  0.000  0.0000  0.0000  0.088, 0.0 vegetation.dry+green                              
+vegetation  dry + green           308    4 D  0.000  0.0000  0.0000  0.073, 0.0 vegetation.dry+green                              
+vegetation  dry + green           308    5 D  0.000  0.0000  0.0000  0.104, 0.0 vegetation.dry+green                              
+vegetation dry nonphotosynthetic  309    1 D  0.427  0.0864  0.0369  0.453, 1.0 vegetation.dry_nonphotosyn                        
+vegetation dry nonphotosynthetic  309    2 D  0.000  0.0000  0.0000  0.547, 0.0 vegetation.dry_nonphotosyn                        
+ NO NOT condition:    on material 309 feat   1, material   1
+feldspar anorthite HS201.3B Plag  310    1 D  0.000  0.0000  0.0000  1.000, 0.0 anorthite_hs201.3b                                
+feldspar bytownite HS106.3B Plag  311    1 D  0.000  0.0000  0.0000  1.000, 0.0 bytownite_hs106.3b                                
+feldspar microcline HS103.3B      312    1 D  0.025  0.0052  0.0001  1.000, 1.0 microcline_hs103.3b                               
+magnetite HS195.3B                313    1 D  0.000  0.0000  0.0000  1.000, 0.0 magnetite_hs195.3b.or.olivine                     
+sulfide sphalerite S26-34         314    1 D  0.690  0.1448  0.0999  1.000, 1.0 sphalerite_s26-341_1.5um                          
+oxide rutile HS126.3B             315    1 D  0.359  0.0792  0.0284  1.000, 1.0 rutile_hs126.3b                                   
+wollastonite HS348.3B             316    1 D  0.485  0.1055  0.0512  1.000, 1.0 fe2+_wollastonite_hs348.3b                        
+olivine fo91 GDS71.b              317    1 D  0.000  0.0000  0.0000  1.000, 0.0 olivine_fo91_gds71.b                              
+olivine fo89 GDS70.a              318    1 D  0.000  0.0000  0.0000  1.000, 0.0 olivine_fo89_gds70.a                              
+olivine fo89 GDS71.c              319    1 D  0.000  0.0000  0.0000  1.000, 0.0 olivine_fo89_gds70.c                              
+olivine fo89 GDS70.d              320    1 D  0.000  0.0000  0.0000  1.000, 0.0 olivine_fo89_gds70.d                              
+olivine fo66 KI3054               321    1 D  0.000  0.0000  0.0000  1.000, 0.0 olivine_fo66_ki3054                               
+olivine fo60 KI3189               322    1 D  0.000  0.0000  0.0000  1.000, 0.0 olivine_fo60_ki3189                               
+olivine HS285.4B Fo80 =b          323    1 D  0.000  0.0000  0.0000  1.000, 0.0 olivine_fo80_ki3377                               
+olivine KI3377 Fo18               324    1 D  0.000  0.0000  0.0000  1.000, 0.0 olivine_fo18_ki3377                               
+oxide diaspore HS416.3B           325    1 D  0.000  0.0000  0.0000  1.000, 0.0 diaspore                                          
+pyroxene augite NMNH120049        326    1 D  0.568  0.1753  0.0997  1.000, 1.0 pyroxene.augite                                   
+pyroxene bronzite HS9.3B Pyroxen  327    1 D  0.000  0.0000  0.0000  1.000, 0.0 pyroxene.bronzite                                 
+pyroxene enstatite NMNH12828      328    1 D  0.000  0.0000  0.0000  1.000, 0.0 pyroxene.enstatite                                
+pyroxene hypersthene PYX02.e 34u  329    1 D  0.000  0.0000  0.0000  1.000, 0.0 pyroxene.hypersthene                              
+pyroxene pigeonite HS199.3B       330    1 D  0.498  0.2372  0.1182  1.000, 1.0 pyroxene.pigeonite                                
+sulfate eugsterite GDS140 H2O     331    1 D  0.000  0.0000  0.0000  0.000, 0.0 
+orthoclase adularia GDS57         332    1 D  0.000  0.0000  0.0000  0.000, 0.0 
+sulfate Na-alunite RES-3 450C     333    1 D  0.000  0.0000  0.0000  0.000, 0.0 
+zeolite analcime GDS1             334    1 D  0.000  0.0000  0.0000  0.000, 0.0 
+carbonate calcite 2.5u WS272      335    1 D  0.000  0.0000  0.0000  0.000, 0.0 
+carbonate dolomite 2.5u HS102.3B  336    1 D  0.000  0.0000  0.0000  0.000, 0.0 
+carbonate magnesite+hydromagnesi  337    1 D  0.000  0.0000  0.0000  0.000, 0.0 
+carbonate siderite HS271.3B       338    1 D  0.000  0.0000  0.0000  0.000, 0.0 
+carbonate rhodochrosite HS338.3B  339    1 D  0.000  0.0000  0.0000  0.000, 0.0 
+carbonate witherite HS273.3B      340    1 D  0.000  0.0000  0.0000  0.000, 0.0 
+carbonate strontianite HS272.3B   341    1 D  0.000  0.0000  0.0000  0.000, 0.0 
+Fe3+OH goethite 3.18um            342    1 D  0.000  0.0000  0.0000  0.000, 0.0 
+garnet grossular 3.18um           343    1 D  0.000  0.0000  0.0000  0.000, 0.0 
+sulfate jarosite GDS101           344    1 D  0.000  0.0000  0.0000  0.000, 0.0 
+OH 2.72um Pyrophyllite PYS1A <85  345    1 D  0.000  0.0000  0.0000  0.000, 0.0 
+OH 2.75um Muscovite GDS113        346    1 D  0.000  0.0000  0.0000  0.000, 0.0 
+OH 2.76um Illite GDS4 (Marblehea  347    1 D  0.000  0.0000  0.0000  0.000, 0.0 
+OH 2.81um Tourmaline HS282.2B     348    1 D  0.000  0.0000  0.0000  0.000, 0.0 
+OH 2.83um Thenardite GDS146       349    1 D  0.000  0.0000  0.0000  0.000, 0.0 
+OH 2.82um Psilomelane HS139.3B    350    1 D  0.000  0.0000  0.0000  0.000, 0.0 
+organic benzene BHVO-2F+4%_Benze  351    1 D  0.000  0.0000  0.0000  0.000, 0.0 
+trace organic Clinochl_Fe CURVC   352    1 D  0.000  0.0000  0.0000  0.000, 0.0 
+trace organic Clinochl_Fe CURVC   352    2 D  0.000  0.0000  0.0000  0.000, 0.0 
+carbonate calcite saturated CURV  353    1 D  0.000  0.0000  0.0000  0.000, 0.0 
+carbonate dolomite saturated CUR  354    1 D  0.000  0.0000  0.0000  0.000, 0.0 
+carbonate trace 3.5um CURVC       355    1 D  0.000  0.0000  0.0000  0.000, 0.0 
+carbonate magnesite +Hydromagnes  356    1 D  0.000  0.0000  0.0000  0.000, 0.0 
+carbonate magnesite +Hydromagnes  356    2 D  0.000  0.0000  0.0000  0.000, 0.0 
+nitrate niter GDS43 (K-Saltpeter  357    1 D  0.000  0.0000  0.0000  0.000, 0.0 
+organic nonyne 3.41um BHVO-2F+4%  358    1 D  0.000  0.0000  0.0000  0.000, 0.0 
+organic pentene 3.37um BHVO-2F+4  359    1 D  0.000  0.0000  0.0000  0.000, 0.0 
+organic pyridine 3.24um BHVO-2F+  360    1 D  0.000  0.0000  0.0000  0.000, 0.0 
+organic nitrobenzene 3.25um BHVO  361    1 D  0.000  0.0000  0.0000  0.000, 0.0 
+hydrogen peroxide BHVO-2F+4%_Hyd  362    1 D  0.000  0.0000  0.0000  0.000, 0.0 
+trace organic on Clinochlore_Fe   363    1 D  0.000  0.0000  0.0000  0.000, 0.0 
+trace organic on Clinochlore_Fe   363    2 D  0.000  0.0000  0.0000  0.000, 0.0 
+carbonate calcite saturated       364    1 D  0.000  0.0000  0.0000  0.000, 0.0 
+carbonate calcite saturated       364    2 D  0.000  0.0000  0.0000  0.000, 0.0 
+carbonate calcite saturated       364    3 D  0.000  0.0000  0.0000  0.000, 0.0 
+carbonate dolomite saturated      365    1 D  0.000  0.0000  0.0000  0.000, 0.0 
+carbonate trace_3.5um             366    1 D  0.000  0.0000  0.0000  0.000, 0.0 
+carbonate magnesite +hydromagnes  367    1 D  0.000  0.0000  0.0000  0.000, 0.0 
+carbonate magnesite +hydromagnes  367    2 D  0.000  0.0000  0.0000  0.000, 0.0 
+nitrate niter GDS43  (K-Saltpete  368    1 D  0.000  0.0000  0.0000  0.000, 0.0 
+phlogopite GDS20 fine fr =b       369    1 D  0.757  0.2160  0.1635  1.000, 1.0 oh_1.397_mica-phlogopite                          
+richterite NMNH150800 HCl =b      370    1 D  0.602  0.1622  0.0977  1.000, 1.0 oh_1.383_amphibole-richterite                     
+serpentine chrysotile HS323.1B =  371    1 D  0.844  0.2725  0.2300  1.000, 1.0 oh_1.378_phyllo-ksg-chrysotile                    
+dickite NMNH46967 =a              372    1 D  0.904  0.3014  0.2725  1.000, 1.0 oh_1.381_phyllo-ksg-dickite                       
+chlorite SMR-13.c 45-60um =a      373    1 D  0.882  0.2313  0.2040  1.000, 1.0 oh_1.388_phyllo-chlorite                          
+nacrite GDS88 =c                  374    1 D  0.907  0.2897  0.2626  1.000, 1.0 oh_1.385_phyllo-ksg-nacrite                       
+endellite GDS16 =b                375    1 D  0.989  0.3089  0.3056  1.000, 1.0 oh_1.390_phyllo-ksg-endellite                     
+tremolite HS18.3 =c               376    1 D  0.750  0.1667  0.1250  1.000, 1.0 oh_1.392_amphibole-tremolite                      
+Saponite SapCa-1.AcB =b           377    1 D  0.927  0.2702  0.2505  1.000, 1.0 oh_1.392_smectite-saponite                        
+serpentine lizardite NMNHR4687.c  378    1 D  0.824  0.3168  0.2611  1.000, 1.0 oh_1.392_phyllo-ksg-lizardite                     
+serpentine HS8.3B =c              379    1 D  0.848  0.3155  0.2674  1.000, 1.0 oh_1.393_phyllo-serpentine                        
+talc GDS23 74-250um fr =a         380    1 D  0.824  0.2945  0.2426  1.000, 1.0 oh_1.393_phyllo-talc                              
+pyrophyllite PYS1A <850um         381    1 D  0.771  0.2550  0.1965  1.000, 1.0 oh_1.394_phyllo-pyrophyllite                      
+serpentine antigorite NMNH96917.  382    1 D  0.908  0.2949  0.2676  1.000, 1.0 oh_1.395_phyllo-ksg-antigorite                    
+actinolite HS116.3B               383    1 D  0.700  0.2316  0.1622  1.000, 1.0 oh_1.396_amphibole-actinolite                     
+clinochlore GDS158 Flagst =b      384    1 D  0.798  0.2464  0.1967  1.000, 1.0 oh_1.398_phyllo-clinochlore                       
+uralite HS345.3B =b               385    1 D  0.815  0.2711  0.2210  1.000, 1.0 oh_1.396_amphibole-uralite                        
+smaragdite HS290.3B Amphibol =b   386    1 D  0.929  0.2999  0.2786  1.000, 1.0 oh_1.398_amphibole-smaragdit                      
+kaolinite KGa-1 (wxl) =b          387    1 D  0.954  0.3031  0.2891  1.000, 1.0 oh_1.398-phyllo-kaolinite-wxl                     
+Cookeite CAr-1.b 90-150um         388    1 D  0.953  0.3573  0.3404  1.000, 1.0 oh_1.400_phyllo-chlorgrp-cookeite                 
+lepidolite HS167.3B =b            389    1 D  0.920  0.3196  0.2940  1.000, 1.0 oh_1.401_mica-lepidolite                          
+opal TM8896 (Hyalite) =a          390    1 D  0.896  0.2664  0.2387  1.000, 1.0 oh_1.406_silica-opal                              
+paragonite GDS109 =a              391    1 D  0.991  0.2964  0.2938  1.000, 1.0 oh_1.408_mica-paragonite                          
+lepidolite NMNH105538 =b          392    1 D  0.997  0.2986  0.2977  1.000, 1.0 oh_1.409_mica-lepidolite                          
+kaolinite Wxl +50% muscovite Rub  393    1 D  0.975  0.3102  0.3025  1.000, 1.0 kaolin.5+muscov.medhighAl1.41                     
+kaolinite KGa-2 (pxl) =b          394    1 D  0.972  0.3204  0.3114  1.000, 1.0 oh_1.413_phyllo-kaolinite-pxl                     
+vermiculite GDS13 Llano =a        395    1 D  0.601  0.1599  0.0960  1.000, 1.0 oh_1.432_phyllo-vermiculite                       
+nacrite GDS88 =c                  396    1 D  0.907  0.2897  0.2626  1.000, 1.0 ohb_1.385_phyllo-nacrite                          
+kaolinite KGa-1 (wxl) =b          397    1 D  0.954  0.3031  0.2891  1.000, 1.0 ohb_1.398_phyllo-kaolinite-wxl                    
+Cookeite CAr-1.d 90-150um         398    1 D  0.953  0.3573  0.3404  1.000, 1.0 ohb_1.400_phyllo-cookeite                         
+topaz Cameron_Cone_#42 =b         399    1 D  0.904  0.2868  0.2594  1.000, 1.0 ohb_1.406_nesosil-topaz                           
+opal TM8896 (Hyalite) =a          400    1 D  0.896  0.2664  0.2387  1.000, 1.0 ohb_1.406_tectosil-opal                           
+paragonite GDS109 =a              401    1 D  0.991  0.2964  0.2938  1.000, 1.0 ohb_1.408_mica-paragonite                         
+lepidolite NMNH105538 =b          402    1 D  0.997  0.2986  0.2977  1.000, 1.0 ohb_1.409_phyllo-lepidolite                       
+sauconite GDS135 =b               403    1 D  0.871  0.2665  0.2321  1.000, 1.0 ohb_1.409_smectite-sauconite                      
+chrysocolla HS297.3B =b           404    1 D  0.898  0.2800  0.2515  1.000, 1.0 ohb_1.410_phyllo-chrysocolla                      
+halloysite NMNH106237 =a          405    1 D  0.987  0.3165  0.3124  1.000, 1.0 ohb_1.410_kaolgrp-halloysite                      
+margarite GDS106 =c               406    1 D  0.933  0.3249  0.3031  1.000, 1.0 ohb_1.410_mica-margarite                          
+kaolinite Wxl +50% muscovite Rub  407    1 D  0.975  0.3102  0.3025  1.000, 1.0 kaolin.5+muscov.medhighAl1.41b                    
+muscovite GDS113                  408    1 D  0.990  0.3003  0.2972  1.000, 1.0 ohb_1.410_mica-muscovite                          
+montmorillonite SWy-1 =b          409    1 D  0.991  0.3227  0.3196  1.000, 1.0 ohb_1.411_smectite-montmor-swy                    
+kaolinite KGa-2 (pxl) =b          410    1 D  0.972  0.3204  0.3114  1.000, 1.0 ohb_1.413_kaolgrp-kaolinite-pxl                   
+hydrogrossular NMNH120555 =b      411    1 D  0.954  0.2629  0.2509  1.000, 1.0 ohb_1.413_nesosil-hydrogross                      
+hectorite SHCa-1.Ac-B =b          412    1 D  0.870  0.2610  0.2271  1.000, 1.0 ohb_1.414_smectite-hectorite                      
+sepiolite SepNev-1.AcB =a         413    1 D  0.738  0.2040  0.1506  1.000, 1.0 ohb_1.416_phyllo-sepiolite                        
+roscoelite EN124 =b               414    1 D  0.917  0.2799  0.2567  1.000, 1.0 ohb_1.416_mica-roscoelite                         
+illite IL101 (2M2)                415    1 D  0.000  0.0000  0.0000  0.000, 0.0 
+montmorillonite SAz-1 =a          416    1 D  0.843  0.2558  0.2157  1.000, 1.0 ohb_1.416_smectite-montmor-saz                    
+palygorskite CM46a Attapulg =b    417    1 D  0.803  0.2399  0.1925  1.000, 1.0 ohb_1.417_phyllo-palygorsk                        
+muscovite GDS111 Guatemal =a      418    1 D  0.846  0.2667  0.2256  1.000, 1.0 ohb_1.418_mica_muscovite                          
+mordenite GDS18 =b                419    1 D  0.811  0.2278  0.1847  1.000, 1.0 ohb_1.418_zeolite_mordonite                       
+stilbite HS482.3B Zeolite =b      420    1 D  0.750  0.1941  0.1457  1.000, 1.0 ohb_1.419_zeolite-stilbite                        
+clinoptilolite GDS152 Zeolit =b   421    1 D  0.790  0.2164  0.1710  1.000, 1.0 ohb_1.419_zeolite-clinpt                          
+heulandite GDS3 =a                422    1 D  0.752  0.1990  0.1497  1.000, 1.0 ohb_1.422_zeolite-heuland                         
+meionite WS700.HLsp =b            423    1 D  0.805  0.2746  0.2211  1.000, 1.0 ohb_1.423_scapolute-meionite                      
+nontronite NG-1.b <2um fr =b      424    1 D  0.778  0.2237  0.1741  1.000, 1.0 ohb_1.424_smectite-nontronite                     
+mizzonite NMNH113775-1 Scap =b    425    1 D  0.686  0.2357  0.1617  1.000, 1.0 ohb_1.425_scapolite-mizzonite                     
+alunite HS295                     426    1 D  0.784  0.0261  0.0205  1.000, 1.0 ohb_1.425_sulfate-alunite                         
+lazurite HS418.3B =b              427    1 D  0.543  0.1466  0.0796  1.000, 1.0 ohb_1.429_sodalite-lazurite                       
+laumontite GDS5 Zeolite =b        428    1 D  0.594  0.1556  0.0924  1.000, 1.0 ohb_1.431_zeolite-laumontite                      
+elbaite NMNH94217-1.c <74 =b      429    1 D  0.320  0.1113  0.0357  1.000, 1.0 ohb_1.431_cyclosil-elbaite                        
+tourmaline HS282.2B               430    1 D  0.000  0.0000  0.0000  1.000, 0.0 ohb_1.435_tourmaline                              
+alunite AL706 Na__                431    1 D  0.000  0.0000  0.0000  1.000, 0.0 ohb_1.438_sulfate-alunite-na                      
+analcime GDS1 Zeolite             432    1 D  0.707  0.2284  0.1614  1.000, 1.0 ohb_1.424_zeolite-analcime                        
+eugsterite GDS140 Syn =b          433    1 D  0.392  0.1125  0.0441  1.000, 1.0 ohb_1.436_sulfate-eugsterite                      
+scolecite GDS7 Zeolite =b         434    1 D  0.411  0.1226  0.0504  1.000, 1.0 ohb_1.440_zeolite-scolecite                       
+gypsum SU2202 =a                  435    1 D  0.178  0.0509  0.0091  1.000, 1.0 ohb_1.447_sulfate-gypsum                          
+schwertmannite BZ93-1 =b          436    1 D  0.331  0.0825  0.0273  1.000, 1.0 ohb_1.449_sulfate-schwertm                        
+copiapite GDS21 =b                437    1 D  0.258  0.0695  0.0179  1.000, 1.0 ohb_1.450_sulfate-copiapite                       
+vermiculite GDS13 Llano =a        438    1 D  0.601  0.1599  0.0960  1.000, 1.0 ohb_1.432_phyllo-vermiculite                      
+natrolite HS169.3B Zeolite =b     439    1 D  0.150  0.0472  0.0071  1.000, 1.0 ohb_1.455_zeolite-natrolite                       
+gibbsite HS423.3B =b              440    1 D  0.594  0.1588  0.0943  1.000, 1.0 ohb_1.451_hydroxide-gibbsite                      
+gibbsite HS423.3B =b              441    1 D  0.594  0.1588  0.0943  1.000, 1.0 ohc_1.451_hydroxide-gibbsite                      
+natrolite HS169.3B Zeolite =b     442    1 D  0.150  0.0472  0.0071  1.000, 1.0 ohc_1.455_zeolite-natrolite                       
+bloedite GDS147 =a                443    1 D  0.000  0.0000  0.0000  0.000, 0.0 
+jarosite GDS99 K 200C Syn =a      444    1 D  0.000  0.0000  0.0000  1.000, 0.0 ohc_1.469_sulfate-jarosite-k                      
+jarosite GDS98 K 90C Syn =a       445    1 D  0.000  0.0000  0.0000  1.000, 0.0 ohc_1.471_sulfate-jarosite-k                      
+datolite HS442.3B =b              446    1 D  0.000  0.0000  0.0000  0.000, 0.0 
+jarosite GDS100 Na,Sy 90C =a      447    1 D  0.000  0.0000  0.0000  1.000, 0.0 ohc_1.478_sulfate-jarosite-na90c                  
+jarosite GDS101 Na,Sy 200C =a     448    1 D  0.000  0.0000  0.0000  1.000, 0.0 ohc_1.479_sulfate-jarosite-na200c                 
+prehnite GDS613.a <60um =aa_      449    1 D  0.000  0.0000  0.0000  1.000, 0.0 ohc_1.480_phyllo-prehnite                         
+beryl GDS9 <150um gs s06crj3a=bb  450    1 D  0.000  0.0000  0.0000  0.000, 0.0 
+opal TM8896 (hyalite) s06crj3a=a  451    1 D  0.000  0.0000  0.0000  0.000, 0.0 
+saponite SapCa-1.AcB s06crj3a=bb  452    1 D  0.000  0.0000  0.0000  0.000, 0.0 
+montmorillonite SWy-1 1.9um wate  453    1 D  0.000  0.0000  0.0000  0.000, 0.0 
+nontronite NG-1.a s06crj3a=cd     454    1 D  0.000  0.0000  0.0000  0.000, 0.0 
+beidellite GDS123 =___            455    1 D  0.000  0.0000  0.0000  0.000, 0.0 
+illite GDS4 (Marblehead)          456    1 D  0.000  0.0000  0.0000  0.000, 0.0 
+montmorillonite SAz-1 s06crj3a=b  457    1 D  0.000  0.0000  0.0000  0.000, 0.0 
+halloysite CU91-242D 1.9um water  458    1 D  0.000  0.0000  0.0000  0.000, 0.0 
+clinoptilolite GDS152 Zeol =bbb   459    1 D  0.000  0.0000  0.0000  0.000, 0.0 
+stonewall_Playa_Dry_Mud  1.91um   460    1 D  0.000  0.0000  0.0000  0.000, 0.0 
+mordenite GDS18 =bb_              461    1 D  0.000  0.0000  0.0000  0.000, 0.0 
+analcime GDS1 Zeolite =aaa        462    1 D  0.000  0.0000  0.0000  0.000, 0.0 
+sillimanite HS186.3B =cc_         463    1 D  0.000  0.0000  0.0000  0.000, 0.0 
+heulandite NMNH84534 =a           464    1 D  0.000  0.0000  0.0000  0.000, 0.0 
+bassanite GDS145 (syn) =aa_       465    1 D  0.000  0.0000  0.0000  0.000, 0.0 
+perchlorate_Mg GDS851.2 220K      466    1 D  0.000  0.0000  0.0000  0.000, 0.0 
+chert ANP90-6D (White) =?         467    1 D  0.000  0.0000  0.0000  0.000, 0.0 
+perchlorate_Na GDS857 230C =_     468    1 D  0.000  0.0000  0.0000  0.000, 0.0 
+aspen Aspen-1 Green-Top 1.93um w  469    1 D  0.000  0.0000  0.0000  0.000, 0.0 
+epsomite GDS149 =cc_              470    1 D  0.000  0.0000  0.0000  0.000, 0.0 
+cheatgrass ANP92-11A narrow 1.93  471    1 D  0.000  0.0000  0.0000  0.000, 0.0 
+eugsterite GDS140 Syn =bb_        472    1 D  0.000  0.0000  0.0000  0.000, 0.0 
+natrolite HS169.3B Zeolite =bbb   473    1 D  0.000  0.0000  0.0000  0.000, 0.0 
+natrolite HS169.3B Zeolite =b     474    1 D  0.000  0.0000  0.0000  0.000, 0.0 
+scolecite GDS7 zeolite =bb_       475    1 D  0.000  0.0000  0.0000  0.000, 0.0 
+schwertmannite BZ93-1 =b          476    1 D  0.000  0.0000  0.0000  0.000, 0.0 
+gypsum HS333.3B (Selenite) =aaa   477    1 D  0.000  0.0000  0.0000  0.000, 0.0 
+brick GDS347 1.94um water =a      478    1 D  0.000  0.0000  0.0000  0.000, 0.0 
+polyhalite NMNH92669-4 =aa_       479    1 D  0.000  0.0000  0.0000  0.000, 0.0 
+copiapite GDS21 =bc_              480    1 D  0.000  0.0000  0.0000  0.000, 0.0 
+bloedite GDS147 =aa_              481    1 D  0.000  0.0000  0.0000  0.000, 0.0 
+butlerite GDS25 =a                482    1 D  0.000  0.0000  0.0000  0.000, 0.0 
+ZFeSO4*7H20 GDS873 SynChemReg     483    1 D  0.000  0.0000  0.0000  0.000, 0.0 
+kainite NMNH83904 =aa_            484    1 D  0.000  0.0000  0.0000  0.000, 0.0 
+carnallite NMNH98011 =bb_         485    1 D  0.000  0.0000  0.0000  0.000, 0.0 
+coquimbite GDS22 =c               486    1 D  0.000  0.0000  0.0000  0.000, 0.0 
+syngenite GDS139 =aa_             487    1 D  0.000  0.0000  0.0000  0.000, 0.0 
+H2O-ice GDS136 77K                488    1 D  0.000  0.0000  0.0000  0.000, 0.0 
+kieserite batch4 GDS671           489    1 D  0.000  0.0000  0.0000  0.000, 0.0 
+szomolnokite GDS874 heat275C =    490    1 D  0.000  0.0000  0.0000  0.460, 0.0 water_2.060_sulfate_szomoln                       
+szomolnokite GDS874 heat275C =    490    2 D  0.000  0.0000  0.0000  0.540, 0.0 water_2.060_sulfate_szomoln                       
+szomolnokite NMNH104303 UT =      491    1 D  0.000  0.0000  0.0000  0.000, 0.0 
+buddingtonite NHB2301 =b          492    1 D  0.000  0.0000  0.0000  0.000, 0.0 
+kieserite KIEDE1.a crse gr =cc_   493    1 D  0.000  0.0000  0.0000  0.000, 0.0 
+mascagnite GDS65.b (fr) =aa_      494    1 D  0.000  0.0000  0.0000  0.000, 0.0 
+REE neodymium_oxide GDS34         495    1 D  0.000  0.0000  0.0000  0.200, 0.0 neodymium_oxide_compete                           
+REE neodymium_oxide GDS34         495    2 D  0.000  0.0000  0.0000  0.284, 0.0 neodymium_oxide_compete                           
+REE neodymium_oxide GDS34         495    3 D  0.000  0.0000  0.0000  0.304, 0.0 neodymium_oxide_compete                           
+REE neodymium_oxide GDS34         495    4 D  0.000  0.0000  0.0000  0.213, 0.0 neodymium_oxide_compete                           
+ NO NOT condition:    on material 495 feat   1, material   1
+REE samarium_oxide GDS36          496    1 D  0.000  0.0000  0.0000  0.330, 0.0 samarium_oxide_compete                            
+REE samarium_oxide GDS36          496    2 D  0.000  0.0000  0.0000  0.494, 0.0 samarium_oxide_compete                            
+REE samarium_oxide GDS36          496    3 O  0.000  0.0000  0.0000  0.108, 0.0 samarium_oxide_compete                            
+REE samarium_oxide GDS36          496    4 O  0.000  0.0000  0.0000  0.068, 0.0 samarium_oxide_compete                            
+REE neodymium_oxide GDS34         497    1 D  0.000  0.0000  0.0000  0.200, 0.0 neodymium_oxide1                                  
+REE neodymium_oxide GDS34         497    2 D  0.000  0.0000  0.0000  0.284, 0.0 neodymium_oxide1                                  
+REE neodymium_oxide GDS34         497    3 D  0.000  0.0000  0.0000  0.304, 0.0 neodymium_oxide1                                  
+REE neodymium_oxide GDS34         497    4 O  0.000  0.0000  0.0000  0.213, 0.0 neodymium_oxide1                                  
+ NO NOT condition:    on material 497 feat   1, material   1
+REE samarium_oxide GDS36          498    1 D  0.000  0.0000  0.0000  0.330, 0.0 samarium_oxide1                                   
+REE samarium_oxide GDS36          498    2 D  0.000  0.0000  0.0000  0.494, 0.0 samarium_oxide1                                   
+REE samarium_oxide GDS36          498    3 O  0.000  0.0000  0.0000  0.108, 0.0 samarium_oxide1                                   
+REE samarium_oxide GDS36          498    4 O  0.000  0.0000  0.0000  0.068, 0.0 samarium_oxide1                                   
+  
+Weighted Fits, Depths, and F*Ds values:
+          Title                      Group Material  Fit    Depth    F*D
+vegetation.green                         0     1    0.000  0.0000  0.0000 vegetation1                                       
+vegetation: 70% dry +30% green           0     2    0.000  0.0000  0.0000 vegetation.dry+green                              
+snow H2O ice                             0     3    0.000  0.0000  0.0000 snow.and.ice                                      
+melting Snow 1a                          0     4    0.000  0.0000  0.0000 snow.melting.1a                                   
+melting snow 3                           0     5    0.000  0.0000  0.0000 snow.melting.3                                    
+melting snow 8                           0     6    0.000  0.0000  0.0000 snow.melting.8                                    
+melting snow (slush) 9                   0     7    0.000  0.0000  0.0000 snow.slush.9                                      
+melting snow (slush) 16                  0     8    0.000  0.0000  0.0000 snow.slush.16                                     
+5 melting snow 1a + veg 0.5              0     9    0.000  0.0000  0.0000 snow.melting1a+0.5veg                             
+5 melting snow 9 + veg 0.5               0    10    0.000  0.0000  0.0000 snow.melting9+0.5veg                              
+5 melting snow 16 + veg 0.5              0    11    0.000  0.0000  0.0000 snow.melting16+0.5veg                             
+water high chlorophyll                   0    12    0.000  0.0000  0.0000 water.high.chlorophyll                            
+water low chlorophyll                    0    13    0.000  0.0000  0.0000 water.low.chlorophyll                             
+red coated algea water                   0    14    0.000  0.0000  0.0000 water.red.algae                                   
+water + mont. (16.5g/liter)              0    15    0.000  0.0000  0.0000 water+mont16.5gpl                                 
+water + mont. (5.01g/liter)              0    16    0.000  0.0000  0.0000 water+mont5.01gpl                                 
+water + mont. (1.67g/liter)              0    17    0.000  0.0000  0.0000 water+mont1.67gpl                                 
+water + mont. (0.5g/liter)               0    18    0.000  0.0000  0.0000 water+mont0.5gpl                                  
+dry long grass AV87-2                    0    19    0.000  0.0000  0.0000 organic_dry_long_grass-thick                      
+white PVC pipe                           0    20    0.000  0.0000  0.0000 organic_white_pvc_pipe                            
+organic, green plastic tarp              0    21    0.000  0.0000  0.0000 organic_green_plastic_tarp                        
+organic, green plastic tarp              1    22    0.000  0.0000  0.0000 organic_green_plastic_tarp_1um                    
+Fe3+ hematite fine grain + qtz G         1    23    0.000  0.0000  0.0000 fe3+_hematite.fine.gr.gds76                       
+Fe3+ goethite med grain WS222            1    24    0.000  0.0000  0.0000 fe3+_goethite.medgr.ws222                         
+Fe3+ goethite + qtz med gr GDS24         1    25    0.000  0.0000  0.0000 fe3+_goethite+qtz.medgr.gds240                    
+Fe3+ geothite fine gr MPCMA2-B           1    26    0.000  0.0000  0.0000 fe3+_goethite.fingr                               
+Fe3+ goethite m-crs gr MPCMA2-C          1    27    0.000  0.0000  0.0000 fe3+_goethite.medcoarsegr.mpc.trjar               
+Fe3+ goethite coarse gr. WS222           1    28    0.000  0.0000  0.0000 fe3+_goethite.coarsegr                            
+Fe3+ goethite thin coating WS222         1    29    0.000  0.0000  0.0000 fe3+_goethite.thincoat                            
+Fe3+ goethite + jarosite                 1    30    0.000  0.0000  0.0000 fe3+_goeth+jarosite                               
+sulfide weathered pyrite LV95-6A         1    31    0.000  0.0000  0.0000 sulfide_pyrite                                    
+Fe3+ sulfate Schwertmannite? BZ9         1    32    0.000  0.0000  0.0000 fe3+_sulfate_schwertmannite                       
+black Mn coating tailings LV95-3         1    33    0.000  0.0000  0.0000 Mn-Coating                                        
+Fe3+ mix acid mine dr assemb 1           1    34    0.000  0.0000  0.0000 fe3+mix_AMD.assemb1                               
+Fe3+ mix acid mine dr assemb 2           1    35    0.000  0.0000  0.0000 fe3+mix_AMD.assemb2                               
+Fe3_ sulfate K-jarosite GDS99 20         1    36    0.000  0.0000  0.0000 fe3+_sulfate_kjarosite200                         
+Fe3+ goethite lepidocrosite GDS8         1    37    0.000  0.0000  0.0000 fe3+_goethite.lepidocrosite                       
+Fe2+ chlorite + muscovite CU93-6         1    38    0.000  0.0000  0.0000 fe2+_chlor+muscphy                                
+Fe2+ goethite + muscovite CU91-2         1    39    0.000  0.0000  0.0000 fe2+_goeth+musc                                   
+Fe2+Fe3+ chlor + goethite phyl C         1    40    0.000  0.0000  0.0000 fe2+fe3+_chlor+goeth.propylzone                   
+Fe2+ generic, ref= cummingtonite         1    41    0.000  0.0000  0.0000 fe2+generic_nrw.cummingtonite                     
+Fe2+ generic, ref= actinolite NM         1    42    0.000  0.0000  0.0000 fe2+generic_nrw.actinolite                        
+Fe2+ generic, ref= actinolite HS         1    43    0.000  0.0000  0.0000 fe2+generic_nrw.hs-actinolite                     
+Fe2+ pyroxene hypersthene NMNHC2         1    44    0.000  0.0000  0.0000 fe2+_pyroxene.hypersthene                         
+Fe2+ generic, ref= diopside NMNH         1    45    0.000  0.0000  0.0000 fe2+_pyroxene.diopside                            
+Fe2+ generic, ref= jadeite HS343         1    46    0.000  0.0000  0.0000 fe2+generic_med.jadeite                           
+Fe2+ pyroxene pigeonite HS199.3B         1    47    0.000  0.0000  0.0000 fe2+_pyroxene_clino_pigeonite                     
+epidote GDS26.a 75-200um                 1    48    0.000  0.0000  0.0000 epidote                                           
+Fe3+ ref= hydroxide summitville          1    49    0.000  0.0000  0.0000 fe3+bearing1                                      
+Fe3+ ferrihydrite GDS75 Sy, F6           1    50    0.000  0.0000  0.0000 fe3+_ferrihydrite                                 
+Fe3+ hematite GDS27 med grained          1    51    0.000  0.0000  0.0000 fe3+_hematite.med.gr.gds27                        
+Fe3+ hematite thin coating GDS27         1    52    0.000  0.0000  0.0000 fe3+_hematite.thincoat                            
+Fe3+ hematite FE2602                     1    53    0.000  0.0000  0.0000 fe3+_hematite.fine.gr.fe2602                      
+Fe3+ hematite WS161                      1    54    0.000  0.0000  0.0000 fe3+_hematite.fine.gr.ws161                       
+Fe3+ smectite nontronite NG-1.a          1    55    0.000  0.0000  0.0000 fe3+_smectite_nontronite                          
+Fe2+ generic, ref= BR5A actinoli         1    56    0.000  0.0000  0.0000 fe2+generic_brd.br5a_actinolite                   
+Fe2+Fe3+ mix ref= magnetite scar         1    57    0.000  0.0000  0.0000 fe2+fe3+mix_with_hematite_br5b                    
+Fe2+ generic brd.br22c actinolit         1    58    0.000  0.0000  0.0000 fe2+generic_brd.br22c_actinolite                  
+Fe2+ generic, ref= BR33a bio qtz         1    59    0.000  0.0000  0.0000 fe2+generic_br33a_bioqtzmonz_epidote              
+Fe2+ generic, ref= BR36A fresh g         1    60    0.000  0.0000  0.0000 fe2+generic_brd.br36a_chlorite                    
+Fe2+Fe3+ hematite weathering             1    61    0.000  0.0000  0.0000 fe2+fe3+_hematite_weathering                      
+Fe2+ generic, ref= BR46b fresh b         1    62    0.000  0.0000  0.0000 fe2+generic_basalt_br46b                          
+Fe3+ hematite large gr BR25a             1    63    0.000  0.0000  0.0000 fe3+_hematite.lg.gr.br25a                         
+Fe3+ hematite med gr BR25b               1    64    0.000  0.0000  0.0000 fe3+_hematite.med.gr.br25b                        
+Fe3+ hematite large gr BR25c             1    65    0.000  0.0000  0.0000 fe3+_hematite.lg.gr.br25c                         
+Fe3+ nanohematite  BR34B2                1    66    0.000  0.0000  0.0000 fe3+_hematite.nano.BR34b2                         
+Fe3+ hematite lg gr  BR34C               1    67    0.000  0.0000  0.0000 fe3+_hematite.lg.gr.br34c                         
+sulfate jarosite BR34A2 on quart         1    68    0.000  0.0000  0.0000 fe3+_sulfate_jarosite_br34a2                      
+Fe2+ generic broad ref= BR60B ac         1    69    0.000  0.0000  0.0000 fe2+generic_broad_br60b                           
+Fe2+ generic vbroad ref= alt bio         1    70    0.000  0.0000  0.0000 fe2+generic_vbroad_br20                           
+Fe2+Fe3+ water ref= Renyolds tun         1    71    0.000  0.0000  0.0000 fe2+fe3+_water_RTsludge                           
+Fe2+ generic, ref= chlrite clino         1    72    0.000  0.0000  0.0000 fe2+_chlorite.clinochlor                          
+Fe2+ generic, ref= clinochlore N         1    73    0.000  0.0000  0.0000 fe2+_chlorite.Felow.clinochlor                    
+Fe2+ generic, ref= chlorite thur         1    74    0.000  0.0000  0.0000 fe2+_chlorite.thuringite                          
+copper carbonate, azurite WS316          1    75    0.000  0.0000  0.0000 copper_carbonate_azurite                          
+Fe3+ copper hydroxide pitch_limo         1    76    0.000  0.0000  0.0000 fe3+copper-hydroxide_pitchlimonite                
+copper carbonate malachite HS254         1    77    0.000  0.0000  0.0000 copper_carbonate_malachite                        
+copper carbonate blue effloresce         1    78    0.000  0.0000  0.0000 copper_sulfate_bluefflor                          
+copper precipitate, ref= green s         1    79    0.000  0.0000  0.0000 copper_precipitate_greenslime                     
+Fe2+ olivine HS285.4B                    1    80    0.000  0.0000  0.0000 fe2+_olivine-lrg-gr                               
+Fe2+ olivine GDS71.a TSD 65um            1    81    0.000  0.0000  0.0000 fe2+_olivine-fine-gr                              
+carbnate rhodochrosite HS338.3B          1    82    0.000  0.0000  0.0000 carbonate_rhodochrosite                           
+Fe2+ generic, ref= siderite HS27         1    83    0.000  0.0000  0.0000 fe2+generic_carbonate_siderite1                   
+Fe2+ generic, ref= riebeckite NM         1    84    0.000  0.0000  0.0000 fe2+generic_amphibole_riebeckite                  
+Fe3+ Fe2+ sulfate, coquimbite GD         1    85    0.000  0.0000  0.0000 fe3+fe2+_sulfate_coquimbite                       
+Fe3+ Fe2+ sulfate, copiapite GDS         1    86    0.000  0.0000  0.0000 fe3+fe2+_sulfate_copiapite                        
+copper chrysocolla HS297.3B              1    87    0.000  0.0000  0.0000 copper_chrysocolla                                
+REE neodymium_oxide GDS34                1    88    0.000  0.0000  0.0000 ree_neodymium_oxide                               
+REE samarium_oxide GDS36                 1    89    0.000  0.0000  0.0000 ree_samarium_oxide                                
+Fe2+ generic, ref= axinite HS342         1    90    0.000  0.0000  0.0000 fe2+generic_axinite                               
+Fe2+ generic, ref= staurolite HS         1    91    0.000  0.0000  0.0000 fe2+generic_staurolite                            
+Fe2+ generic, ref= almandine WS4         1    92    0.000  0.0000  0.0000 fe2+generic_almandine                             
+Fe2+ pyroxene augite NMNH120049          1    93    0.000  0.0000  0.0000 fe2+_pyroxene_augite                              
+Fe2+ pyroxene bronzite HS9.3B            1    94    0.000  0.0000  0.0000 fe2+_pyroxene.bronzite                            
+Fe2+ generic sulfate, ref= butle         1    95    0.000  0.0000  0.0000 fe2+generic_sulfate_butlerite                     
+Fe2+ feldspar bytownite HS106.3B         1    96    0.000  0.0000  0.0000 fe2+_feldspar.bytownite                           
+sulfate copper chalcopyrite HS43         1    97    0.000  0.0000  0.0000 sulfide_copper_chalcopyrite                       
+Fe2+ chromite HS281.3B                   1    98    0.000  0.0000  0.0000 fe2+_chromite                                     
+sulfide cinnabar HS133.3B                1    99    0.000  0.0000  0.0000 sulfide_cinnabar                                  
+copper oxide cuprite HS127.3B            1   100    0.000  0.0000  0.0000 copper_oxide_cuprite                              
+desert varnish GDS141                    1   101    0.000  0.0000  0.0000 fe3+mn_desert.varnish1                            
+desert_ arnish GDS78A                    1   102    0.000  0.0000  0.0000 fe3+mn_desert.varnish2                            
+Fe2+ pyroxene enstatite NMNH1282         1   103    0.000  0.0000  0.0000 fe2+_pyroxene_enstatite                           
+Fe2+ pyroxene hedenbergite NMNH1         1   104    0.000  0.0000  0.0000 fe2+_pyroxene_hedenbergite                        
+sulfate lazurite HS418.3B                1   105    0.000  0.0000  0.0000 sulfate_lazurite                                  
+Fe3+ maghemite GDS81 Sy (M-3)            1   106    0.000  0.0000  0.0000 fe3+_maghemite                                    
+magnetite HS195.3B                       1   107    0.000  0.0000  0.0000 magnetite                                         
+Mn oxide pyrolusite HS138.3B             1   108    0.000  0.0000  0.0000 mn_oxide_pyrolusite                               
+Fe2+ feldspar microcline HS103.3         1   109    0.000  0.0000  0.0000 fe2+_feldspar_microcline                          
+Fe2+ feldspar albite HS143.3B            1   110    0.000  0.0000  0.0000 fe2+_feldspar_albite                              
+Fe2+ feldspar orthoclase NMNH142         1   111    0.000  0.0000  0.0000 fe2+_feldspar_orthoclase                          
+inosilicate pectolite NMNH94865.         1   112    0.602  0.2537  0.1581 inosilicate_pectolite                             
+Mn2+ rhodonite NMNHC6148 >250u           1   113    0.000  0.0000  0.0000 mn2+_rhodonite                                    
+sulfur GDS94 Reagent       =a            1   114    0.000  0.0000  0.0000 sulfur                                            
+dry long grass AV87-2                    2   115    0.000  0.0000  0.0000 organic_vegetation-dry-grass-long                 
+golden dry grass GDS480                  2   116    0.000  0.0000  0.0000 organic_vegetation-dry-grass-golden               
+fresh wood, pine plywood GDS365          2   117    0.000  0.0000  0.0000 organic_vegetation-dry-wood                       
+organic, plastic tarp 1, blue wo         2   118    0.000  0.0000  0.0000 organic_plastic-tarp1                             
+organic, plastic, vinyl                  2   119    0.000  0.0000  0.0000 organic_plastic-vinyl                             
+organic, fiberglass roofing              2   120    0.000  0.0000  0.0000 organic_fiberglass-roofing                        
+organic, polystyrene, blue insul         2   121    0.000  0.0000  0.0000 organic_plastic-polystyrene                       
+organic, PETE plastic                    2   122    0.000  0.0000  0.0000 organic_plastic-pete                              
+organic, PETE plastic transluc B         2   123    0.000  0.0000  0.0000 organic_plastic-pete2                             
+organic, HDPE plastic GDS393             2   124    0.000  0.0000  0.0000 organic_plastic-hdpe.1                            
+organic, light gray paint alumin         2   125    0.000  0.0000  0.0000 organic_paint-1                                   
+organic, PETE plastc, clr-bluish         2   126    0.000  0.0000  0.0000 organic_plastic-pete3                             
+organic, PETE plastic transluc b         2   127    0.000  0.0000  0.0000 organic_plastic-pete4                             
+sulfate K-alunite 150C                   2   128    0.000  0.0000  0.0000 sulfate_kalun150c                                 
+sulfate K-alunite GDS96 250C             2   129    0.000  0.0000  0.0000 sulfate_kalun250c                                 
+sulfate K-alunite RES-2 450C             2   130    0.000  0.0000  0.0000 sulfate_kalun450c                                 
+sulfate Na-alunite GDS95 150C            2   131    0.000  0.0000  0.0000 sulfate_naalun150c                                
+sulfate Na-alunite RES-4 300C            2   132    0.000  0.0000  0.0000 sulfate_naalun300c                                
+sulfate Na-alunite RES-3 450C            2   133    0.000  0.0000  0.0000 sulfate_naalun450c                                
+sulfate alunite GDS82 Na82 low t         2   134    0.000  0.0000  0.0000 sulfate_na82alun100c                              
+sulfate+clay natroalunite + dick         2   135    0.000  0.0000  0.0000 sulfate+kaolingrp_natroalun+dickite               
+sulfate alunite GDS83 Na63               2   136    0.000  0.0000  0.0000 sulfate_na63alun300c                              
+sulfate alunite RES-9 Summitv 40         2   137    0.000  0.0000  0.0000 sulfate_na40alun400c                              
+sulfate K-alunite (Na03) GDS84 h         2   138    0.000  0.0000  0.0000 sulfate_alunNa03                                  
+sulfate alunite syn Na56% RES10          2   139    0.000  0.0000  0.0000 sulfate_alunNa56450c                              
+sulfate alunite syn Na78% RES12          2   140    0.000  0.0000  0.0000 sulfate_alunNa78.450c                             
+sulfate alunite 35%K+65%Na CU91-         2   141    0.000  0.0000  0.0000 sulfate_alun35K65Na.low                           
+sulfate alunite 73%K+27%Na CU91-         2   142    0.000  0.0000  0.0000 sulfate_alun73K27Na.low                           
+sulfate alunite 66%K+34%Na CU91-         2   143    0.000  0.0000  0.0000 sulfate_alun66K34Na.low                           
+micagroup muscovite med-Al  CU91         2   144    0.515  0.0000  0.0776 micagrp_muscovite-med-Al                          
+micagroup muscovite medhigh Al G         2   145    0.586  0.0000  0.1165 micagrp_muscovite-medhigh-Al                      
+micagroup paragonite GDS109              2   146    0.000  0.0000  0.0000 micagrp_paragonite                                
+micagroup illite IMt-1.b <2um            2   147    0.000  0.0000  0.0000 micagrp_illite                                    
+micagroup illite GDS4 (Marblehea         2   148    0.000  0.0000  0.0000 micagrp_illite.gds4                               
+micagroup muscovite low-Al  CU93         2   149    0.000  0.0000  0.0000 micagrp_muscovite-low-Al                          
+micagroup muscovite Fe rich GDS1         2   150    0.000  0.0000  0.0000 micagrp_muscoviteFerich                           
+kaolingroup kaolinite CM9 wxl            2   151    0.871  0.2219  0.1933 kaolgrp_kaolinite_wxl                             
+kaolingroup kaolinite KGa-2 pxl          2   152    0.855  0.2434  0.2082 kaolgrp_kaolinite_pxl                             
+kaolingroup halloysite NMNH10623         2   153    0.849  0.2310  0.1961 kaolgrp_halloysite                                
+kaolingroup dickite NMNH106242           2   154    0.845  0.2310  0.1953 kaolgrp_dickite                                   
+sulfate gypsum HS333.3B                  2   155    0.000  0.0000  0.0000 sulfate_gypsum                                    
+kaolinite 0.5 smectite 0.5               2   156    0.898  0.2290  0.2055 kaolin.5+smect.5                                  
+kaolinite 0.3 smectite 0.7               2   157    0.896  0.2168  0.1943 kaolin.3+smect.7                                  
+smectite montmorillonite SWy-1 h         2   158    0.588  0.0000  0.0857 smectite_montmorillonite_na_highswelling          
+smectite montmorillonite Fe GDS7         2   159    0.000  0.0000  0.0000 smectite_montmorillonite_fe_swelling              
+smectite montmorillonite SAz-1 (         2   160    0.000  0.0000  0.0000 smectite_montmorillonite_ca_swelling              
+Si-OH glass, hydrated basaltic M         2   161    0.000  0.0000  0.0000 sioh_hydrated_basaltic_glass                      
+sulfate kieserite batch4 GDS671          2   162    0.000  0.0000  0.0000 sulfate_kieserite                                 
+sulfate szomolnokite NMNH104303          2   163    0.000  0.0000  0.0000 sulfate_szomolnokite                              
+sulfate szomolnokite GDS874 Heat         2   164    0.000  0.0000  0.0000 sulfate_szomolnokite_heated                       
+perchlorate Mg GDS851.2 220K             2   165    0.000  0.0000  0.0000 perchlorate_mg                                    
+perchlorate Na GDS857 230C =_            2   166    0.000  0.0000  0.0000 perchlorate_na                                    
+smectite beidellite + montmorill         2   167    0.944  0.2323  0.2192 smectite_beidellite_gds123                        
+smectite beidellite + montmorill         2   168    0.938  0.2463  0.2309 smectite_beidellite_gds124                        
+SiOH chalcedony CU91-6A                  2   169    0.000  0.0000  0.0000 sioh_chalcedony                                   
+hydroxide diaspore HS416.3B              2   170    0.000  0.0000  0.0000 hydroxide_diaspore                                
+pyrophyllite PYS1A fine g                2   171    0.464  0.0000  0.0349 pyrophyllite                                      
+kaolwxl CM9 75% + pyrophyl PYS1A         2   172    0.713  0.1761  0.1499 kaol.75+pyroph.25                                 
+pyrophyllite 50% montmorillonite         2   173    0.000  0.0000  0.0000 pyroph.5+mont0.5                                  
+alunite 50% & pyrophyllite PYS1A         2   174    0.000  0.0000  0.0000 pyroph.5+alunit.5                                 
+alunite + pyrophyllite SD1093A           2   175    0.000  0.0000  0.0000 alunite+pyrophyl                                  
+pyrophyllite + trace muscovite J         2   176    0.000  0.0000  0.0000 pyroph+tr.musc                                    
+muscovite + pyrophyllite  JH_PYR         2   177    0.000  0.0000  0.0000 musc+pyroph                                       
+alunite + muscovite + pyrophylli         2   178    0.000  0.0000  0.0000 alunite+musc+pyroph                               
+alunite .5 +kaolinite KGa-1 .5ar         2   179    0.000  0.0000  0.0000 alunite.5+kaol.5                                  
+kaolinite wxl CM9 .75 +alunite .         2   180    0.000  0.0000  0.0000 kaol.75+alun.25                                   
+K-alunite +kaolinite +goethite i         2   181    0.000  0.0000  0.0000 Kalun+kaol.intmx                                  
+Na-alunite +kaolinite +hematite          2   182    0.000  0.0000  0.0000 Na-alun+kaol.intmx                                
+kaolinite .5+ muscovite CU91-250         2   183    0.000  0.0000  0.0000 kaolin.5+muscov.medAl                             
+kaolinite Wxl + 50% muscovite Ru         2   184    0.000  0.0000  0.0000 kaolin.5+muscov.medhighAl                         
+kaolinite + muscovite intimate C         2   185    0.732  0.1986  0.1455 kaolin+musc.intimat                               
+muscovovite + Jarosite Coating C         2   186    0.000  0.0000  0.0000 musc+jarosite.intimat                             
+gypsum +jarosite +illite intimat         2   187    0.000  0.0000  0.0000 sulfate-mix_gypsum+jar+illite.intmix              
+gypsum +jarosite +muscovite area         2   188    0.000  0.0000  0.0000 sulfate-mix_gyp+jar+musc.amix                     
+gypsum +jarosite +muscovite +dic         2   189    0.000  0.0000  0.0000 sulfate-mix_gyp+jar+musc+dick.amix                
+muscovite +gypsum +jarosite +dic         2   190    0.000  0.0000  0.0000 musc+gyp+jar+dick.amix                            
+dickite +muscovite +gypsum +jaro         2   191    0.000  0.0000  0.0000 dick+musc+gyp+jar.amix                            
+alunite .5 +muscovite CU91-250A          2   192    0.000  0.0000  0.0000 alunite.5+musc.5                                  
+alunite .33 +kaolinite .33 +musc         2   193    0.000  0.0000  0.0000 alunite.33+kaol.33+musc.33                        
+muscovite + chlorite CU91-253D           2   194    0.000  0.0000  0.0000 muscovite+chlorite                                
+smectite ammonio-illite/smectite         2   195    0.792  0.1807  0.1662 smectite_ammonillsmec                             
+feldspar buddingtonite GDS85 D-2         2   196    0.694  0.1722  0.1439 feldspar_buddingtonite_ammonium                   
+feldspar buddingtonite + Na-mont         2   197    0.499  0.0000  0.0703 feldspar_buddington.namont                        
+feldspar buddingtonite + Na-mont         2   198    0.895  0.2353  0.2106 feldspar_buddington.namont2                       
+sulfate ammonio alunite NMNH1455         2   199    0.000  0.0000  0.0000 sulfate_ammonalunite                              
+sulfate ammonio jarosite SCR-NHJ         2   200    0.000  0.0000  0.0000 sulfate_ammonjarosite                             
+carbonate dolomite HS102.3B              2   201    0.000  0.0000  0.0000 carbonate_dolomite                                
+actinolite NMNHR16485                    2   202    0.000  0.0000  0.0000 actinolite                                        
+amphibole NMNH78662                      2   203    0.000  0.0000  0.0000 amphibole                                         
+micagroup biotite HS28.3B                2   204    0.000  0.0000  0.0000 micagrp_biotite                                   
+chlorite-scarn BR22B                     2   205    0.000  0.0000  0.0000 chlorite-scarn                                    
+chlorite SMR-13.b                        2   206    0.000  0.0000  0.0000 chlorite                                          
+prehnite +.50chlorite AMIX               2   207    0.000  0.0000  0.0000 prehnite+.50chlorite                              
+prehnite +.67chlorite AMIX               2   208    0.000  0.0000  0.0000 prehnite+.67chlorite                              
+prehnite +.75chlorite AMIX               2   209    0.000  0.0000  0.0000 prehnite+.75chlorite                              
+carbonate aragonite GDS898 Morac         2   210    0.000  0.0000  0.0000 carbonate_aragonite                               
+chlorite clinochlore GDS158              2   211    0.000  0.0000  0.0000 chlorite_clinochlore                              
+chlorite clinochlore NMNH83369           2   212    0.000  0.0000  0.0000 chlorite_clinochlore.nmnh83369                    
+chlorite clinochlore GDS157              2   213    0.000  0.0000  0.0000 chlorite_clinochlore.fe.gds157                    
+chlorite clinochlore Fe SC-CCa-1         2   214    0.000  0.0000  0.0000 chlorite_clinochlore.fe.sc-cca-1                  
+chlorite Cookeite CAr-1.a 104-15         2   215    0.000  0.0000  0.0000 chlorite_cookeite-car-1.a                         
+chlorite Cookeite CAr-1.c <30um          2   216    0.000  0.0000  0.0000 chlorite_cookeite-car-1.c                         
+chlorite thuringite SMR-15.b             2   217    0.000  0.0000  0.0000 chlorite_thuringite                               
+epidote GDS26.a                          2   218    0.000  0.0000  0.0000 epidote                                           
+hornblende_Fe HS115.3B                   2   219    0.000  0.0000  0.0000 hornblende                                        
+sulfate jarosite GDS24 Na                2   220    0.000  0.0000  0.0000 sulfate_jarosite-Na                               
+sulfate jarosite GDS99 K,Sy 200C         2   221    0.000  0.0000  0.0000 sulfate_jarosite-K                                
+sulfate jarosite SJ-1 H3O,10-20%         2   222    0.000  0.0000  0.0000 sulfate_jarosite-lowT                             
+phlogopite HS23.3B                       2   223    0.000  0.0000  0.0000 phlogopite                                        
+tremolite or talc HS18.3                 2   224    0.000  0.0000  0.0000 tremolite.or.talc                                 
+talc, coarse grain GDS23                 2   225    0.000  0.0000  0.0000 talc.crsgrnd                                      
+talc, fine gr WS659                      2   226    0.000  0.0000  0.0000 talc.fngrnd                                       
+talc +calcite   PC99-1G                  2   227    0.000  0.0000  0.0000 talc+calcite.parkcity                             
+talc + carbonate   PC99-1E               2   228    0.000  0.0000  0.0000 talc+carbonate.parkcity                           
+carbonate calcite 0.8 + montmori         2   229    0.000  0.0000  0.0000 carbonate_calcite+0.2Ca-mont                      
+carbonate magnesite +hydromagnes         2   230    0.000  0.0000  0.0000 carbonate_magnesite                               
+carbonate calcite WS272                  2   231    0.000  0.0000  0.0000 carbonate_calcite                                 
+carbonate calcite + dolomite .5          2   232    0.000  0.0000  0.0000 carbonate_calcite+dolomite.5                      
+carbonate dolomite + 50% Ca-Mont         2   233    0.000  0.0000  0.0000 carbonate_dolo+.5ca-mont                          
+calcite.25+dolom.25+Na-mont.5            2   234    0.000  0.0000  0.0000 calcite.25+dolom.25+Na-mont.5                     
+carbonate calcite.25+dolom.25+Ca         2   235    0.000  0.0000  0.0000 carbonate_calcite.25+dolom.25+Ca-mont.5           
+carbonate siderite HS271.3B              2   236    0.000  0.0000  0.0000 carbonate_siderite                                
+smectite nontronite NG-1.a               2   237    0.000  0.0000  0.0000 smectite_nontronite_swelling                      
+clay hectorite SHCa-1.Ac-B               2   238    0.000  0.0000  0.0000 clay_hectorite                                    
+saponite SapCa-1.AcB                     2   239    0.000  0.0000  0.0000 saponite.or.talc                                  
+sepiolite SepNev-1.AcB                   2   240    0.000  0.0000  0.0000 sepiolite                                         
+carbonate calcite 80% +montmore          2   241    0.000  0.0000  0.0000 calcite+0.2Na-mont                                
+calcite + 50% Ca-mont areal              2   242    0.000  0.0000  0.0000 calcite+0.5Ca-mont                                
+carbonate calcite + 33% muscovit         2   243    0.000  0.0000  0.0000 carbonate_calcite+0.3muscovite                    
+dry grass + 17% Na-montmorilloni         2   244    0.000  0.0000  0.0000 organic_drygrass+.17Na-mont                       
+carbonate dolomite .5 +Na-montmo         2   245    0.000  0.0000  0.0000 carbonate_dolomite.5+Na-mont.5                    
+calcite.33+Ca-mont.67 AVIRIS             2   246    0.000  0.0000  0.0000 carbonate_smectite_calcite.33+Ca-mont.67          
+calcite 80wt%+ kaolinite CM9 GDS         2   247    0.000  0.0000  0.0000 carbonate_calcite+0.2kaolwxl                      
+calcite WS272 70%+kaolinite KGa-         2   248    0.000  0.0000  0.0000 carbonate_calcite0.7+kaol0.3                      
+phyllosilicate clintonite NMNH12         2   249    0.000  0.0000  0.0000 phyllosilicate.clintonite                         
+phyllosilicate palygorskite PFL-         2   250    0.000  0.0000  0.0000 palygorskite                                      
+Zoisite HS347.3B                         2   251    0.000  0.0000  0.0000 zoisite                                           
+elbaite NMNH94217-1.c <74um              2   252    0.000  0.0000  0.0000 elbaite                                           
+hydroxide gibbsite WS214                 2   253    0.000  0.0000  0.0000 hydroxide_gibbsite                                
+nitrate niter GDS43 (K-Saltpeter         2   254    0.000  0.0000  0.0000 nitrate_niter                                     
+topaz Mt. Antero_#5                      2   255    0.717  0.0906  0.0637 topaz                                             
+carbonate rhodochrosite HS338.3B         2   256    0.000  0.0000  0.0000 carbonate_rhodochrosite                           
+carbonate witherite HS273.3B             2   257    0.000  0.0000  0.0000 carbonate_witherite                               
+prehnite GDS613.a <60um                  2   258    0.000  0.0000  0.0000 prehnite                                          
+prehnite + muscovite                     2   259    0.000  0.0000  0.0000 prehnite+muscovite                                
+borate pinnoite NMNH123943               2   260    0.000  0.0000  0.0000 borate_pinnoite                                   
+polyhalite NMNH92669-4                   2   261    0.000  0.0000  0.0000 polyhalite                                        
+rivadavite NMNH170164                    2   262    0.503  0.0000  0.1419 rivadavite                                        
+howlite GDS155                           2   263    0.000  0.0000  0.0000 howlite                                           
+ulexite HS441.3B                         2   264    0.000  0.0000  0.0000 ulexite                                           
+white salt crust starkeyite LV30         2   265    0.000  0.0000  0.0000 white.crust.starkeyite                            
+zeolite analcime GDS1                    2   266    0.000  0.0000  0.0000 zeolite_analcime                                  
+hydroxide brucite HS247.3B               2   267    0.000  0.0000  0.0000 hydroxide_brucite                                 
+chloride carnallite NMNH98011            2   268    0.000  0.0000  0.0000 chloride_carnallite                               
+borate colemanite GDS143                 2   269    0.000  0.0000  0.0000 borate_colemanite                                 
+datolite HS442.3B                        2   270    0.000  0.0000  0.0000 datolite                                          
+hydrogrossular NMNH120555                2   271    0.000  0.0000  0.0000 hydrogrossular                                    
+micagroup lepidolite NMNH88526-1         2   272    0.000  0.0000  0.0000 micagrp_lepidolite                                
+micagroup margarite GDS106               2   273    0.000  0.0000  0.0000 micagrp_margarite                                 
+sulfate mascagnite GDS65.b (fn)          2   274    0.683  0.3050  0.2411 sulfate_mascagnite                                
+sulfate mirabilite GDS150 Na2SO4         2   275    0.000  0.0000  0.0000 sulfate_mirabilite-wet_soil                       
+zeolite natrolite HS169.3B               2   276    0.000  0.0000  0.0000 zeolite_natrolite                                 
+richterite NMNH150800 HCl                2   277    0.000  0.0000  0.0000 richterite                                        
+serpentine chrysotile, coarse fi         2   278    0.000  0.0000  0.0000 serpentine_chrysotile.coarse-fibrous              
+serpentine chrysotile medium fin         2   279    0.000  0.0000  0.0000 serpentine_chrysotile.med-fine-fibrous            
+serpentine chrysotile fine fibro         2   280    0.000  0.0000  0.0000 serpentine_chrysotile.fine-fibrous                
+serpentine Cronstedtite M3542            2   281    0.000  0.0000  0.0000 serpentine_cronstedtite                           
+micagroup roscoelite EN124               2   282    0.000  0.0000  0.0000 micagrp_illite.roscoelite                         
+carbonate strontianite HS272.3B          2   283    0.000  0.0000  0.0000 carbonate_strontianite                            
+sulfate syngenite GDS139                 2   284    0.597  0.0000  0.0469 sulfate_syngenite                                 
+Chrysocolla HS297.3B                     2   285    0.000  0.0000  0.0000 chrysocolla                                       
+carbonate azurite WS316                  2   286    0.000  0.0000  0.0000 carbonate_azurite                                 
+carbonate malachite HS254.3B             2   287    0.000  0.0000  0.0000 carbonate_malachite                               
+cyanide, CdK                             2   288    0.000  0.0000  0.0000 cyanide-CdK                                       
+cyanide NiK                              2   289    0.000  0.0000  0.0000 cyanide-NiK                                       
+cyanide trihydrate                       2   290    0.000  0.0000  0.0000 cyanide-trihydrate                                
+cyanide potassium ferro                  2   291    0.000  0.0000  0.0000 cyanide-KFe                                       
+cyanide ZnK                              2   292    0.000  0.0000  0.0000 cyanide-ZnK                                       
+organic, plastic greenhouse roof         2   293    0.000  0.0000  0.0000 organic_plastic.grnhs.roof                        
+organic, montmor SWy + benzene (         2   294    0.000  0.0000  0.0000 organic_benzene+montswy                           
+organic, montmor SWy + trichlor          2   295    0.000  0.0000  0.0000 organic_trichlor+montswy                          
+organic, montmor SWy + toluene .         2   296    0.000  0.0000  0.0000 organic_toluene+montswy                           
+organic, montmor SWy + unleaded          2   297    0.000  0.0000  0.0000 organic_unleaded.gas+montswy                      
+organic, montmor SWy + TCE satur         2   298    0.000  0.0000  0.0000 organic_tce+montswy                               
+Zunyite GDS-241b - crushed <150u         2   299    0.000  0.0000  0.0000 zunyite                                           
+sulfate trace-gypsum   WTC01-2           2   300    0.000  0.0000  0.0000 sulfate-mix_gypsum.trace.dust+debris-WTC01-2      
+sulfate trace-gypsum  WTC01-28           2   301    0.000  0.0000  0.0000 sulfate-mix_gypsum.trace.dust+debris-WTC01-28     
+serpentine chrysotile + gypsum W         2   302    0.000  0.0000  0.0000 chrysotile.gypsum.wtc01-8                         
+portlandite GDS525 Ca(OH)2               2   303    0.000  0.0000  0.0000 portlandite                                       
+nitrate, Potassium GDS43                 2   304    0.000  0.0000  0.0000 
+nitrate, Sodium GDS883                   2   305    0.000  0.0000  0.0000 nitrate_sodium                                    
+vegetation detection                     3   306    0.000  0.0000  0.0000 vegetation.map                                    
+vegetation, weak                         3   307    0.000  0.0000  0.0000 vegetation.weak.map                               
+vegetation  dry + green                  3   308    0.000  0.0000  0.0000 vegetation.dry+green                              
+vegetation dry nonphotosynthetic         3   309    0.000  0.0000  0.0000 vegetation.dry_nonphotosyn                        
+feldspar anorthite HS201.3B Plag         4   310    0.000  0.0000  0.0000 anorthite_hs201.3b                                
+feldspar bytownite HS106.3B Plag         4   311    0.000  0.0000  0.0000 bytownite_hs106.3b                                
+feldspar microcline HS103.3B             4   312    0.000  0.0000  0.0000 microcline_hs103.3b                               
+magnetite HS195.3B                       4   313    0.000  0.0000  0.0000 magnetite_hs195.3b.or.olivine                     
+sulfide sphalerite S26-34                4   314    0.690  0.1145  0.0999 sphalerite_s26-341_1.5um                          
+oxide rutile HS126.3B                    4   315    0.359  0.0000  0.0167 rutile_hs126.3b                                   
+wollastonite HS348.3B                    4   316    0.485  0.0000  0.0512 fe2+_wollastonite_hs348.3b                        
+olivine fo91 GDS71.b                     4   317    0.000  0.0000  0.0000 olivine_fo91_gds71.b                              
+olivine fo89 GDS70.a                     4   318    0.000  0.0000  0.0000 olivine_fo89_gds70.a                              
+olivine fo89 GDS71.c                     4   319    0.000  0.0000  0.0000 olivine_fo89_gds70.c                              
+olivine fo89 GDS70.d                     4   320    0.000  0.0000  0.0000 olivine_fo89_gds70.d                              
+olivine fo66 KI3054                      4   321    0.000  0.0000  0.0000 olivine_fo66_ki3054                               
+olivine fo60 KI3189                      4   322    0.000  0.0000  0.0000 olivine_fo60_ki3189                               
+olivine HS285.4B Fo80 =b                 4   323    0.000  0.0000  0.0000 olivine_fo80_ki3377                               
+olivine KI3377 Fo18                      4   324    0.000  0.0000  0.0000 olivine_fo18_ki3377                               
+oxide diaspore HS416.3B                  5   325    0.000  0.0000  0.0000 diaspore                                          
+pyroxene augite NMNH120049               5   326    0.568  0.0000  0.0997 pyroxene.augite                                   
+pyroxene bronzite HS9.3B Pyroxen         5   327    0.000  0.0000  0.0000 pyroxene.bronzite                                 
+pyroxene enstatite NMNH12828             5   328    0.000  0.0000  0.0000 pyroxene.enstatite                                
+pyroxene hypersthene PYX02.e 34u         5   329    0.000  0.0000  0.0000 pyroxene.hypersthene                              
+pyroxene pigeonite HS199.3B              5   330    0.498  0.0000  0.1182 pyroxene.pigeonite                                
+sulfate eugsterite GDS140 H2O            6   331    0.000  0.0000  0.0000 
+orthoclase adularia GDS57                6   332    0.000  0.0000  0.0000 
+sulfate Na-alunite RES-3 450C            6   333    0.000  0.0000  0.0000 
+zeolite analcime GDS1                    6   334    0.000  0.0000  0.0000 
+carbonate calcite 2.5u WS272             6   335    0.000  0.0000  0.0000 
+carbonate dolomite 2.5u HS102.3B         6   336    0.000  0.0000  0.0000 
+carbonate magnesite+hydromagnesi         6   337    0.000  0.0000  0.0000 
+carbonate siderite HS271.3B              6   338    0.000  0.0000  0.0000 
+carbonate rhodochrosite HS338.3B         6   339    0.000  0.0000  0.0000 
+carbonate witherite HS273.3B             6   340    0.000  0.0000  0.0000 
+carbonate strontianite HS272.3B          6   341    0.000  0.0000  0.0000 
+Fe3+OH goethite 3.18um                   7   342    0.000  0.0000  0.0000 
+garnet grossular 3.18um                  7   343    0.000  0.0000  0.0000 
+sulfate jarosite GDS101                  7   344    0.000  0.0000  0.0000 
+OH 2.72um Pyrophyllite PYS1A <85         8   345    0.000  0.0000  0.0000 
+OH 2.75um Muscovite GDS113               8   346    0.000  0.0000  0.0000 
+OH 2.76um Illite GDS4 (Marblehea         8   347    0.000  0.0000  0.0000 
+OH 2.81um Tourmaline HS282.2B            8   348    0.000  0.0000  0.0000 
+OH 2.83um Thenardite GDS146              8   349    0.000  0.0000  0.0000 
+OH 2.82um Psilomelane HS139.3B           8   350    0.000  0.0000  0.0000 
+organic benzene BHVO-2F+4%_Benze        10   351    0.000  0.0000  0.0000 
+trace organic Clinochl_Fe CURVC         10   352    0.000  0.0000  0.0000 
+carbonate calcite saturated CURV        10   353    0.000  0.0000  0.0000 
+carbonate dolomite saturated CUR        10   354    0.000  0.0000  0.0000 
+carbonate trace 3.5um CURVC             10   355    0.000  0.0000  0.0000 
+carbonate magnesite +Hydromagnes        10   356    0.000  0.0000  0.0000 
+nitrate niter GDS43 (K-Saltpeter        10   357    0.000  0.0000  0.0000 
+organic nonyne 3.41um BHVO-2F+4%        10   358    0.000  0.0000  0.0000 
+organic pentene 3.37um BHVO-2F+4        10   359    0.000  0.0000  0.0000 
+organic pyridine 3.24um BHVO-2F+        10   360    0.000  0.0000  0.0000 
+organic nitrobenzene 3.25um BHVO        10   361    0.000  0.0000  0.0000 
+hydrogen peroxide BHVO-2F+4%_Hyd        10   362    0.000  0.0000  0.0000 
+trace organic on Clinochlore_Fe         11   363    0.000  0.0000  0.0000 
+carbonate calcite saturated             11   364    0.000  0.0000  0.0000 
+carbonate dolomite saturated            11   365    0.000  0.0000  0.0000 
+carbonate trace_3.5um                   11   366    0.000  0.0000  0.0000 
+carbonate magnesite +hydromagnes        11   367    0.000  0.0000  0.0000 
+nitrate niter GDS43  (K-Saltpete        11   368    0.000  0.0000  0.0000 
+phlogopite GDS20 fine fr =b             13   369    0.757  0.2160  0.1635 oh_1.397_mica-phlogopite                          
+richterite NMNH150800 HCl =b            13   370    0.602  0.0000  0.0977 oh_1.383_amphibole-richterite                     
+serpentine chrysotile HS323.1B =        13   371    0.844  0.2725  0.2300 oh_1.378_phyllo-ksg-chrysotile                    
+dickite NMNH46967 =a                    13   372    0.904  0.3014  0.2725 oh_1.381_phyllo-ksg-dickite                       
+chlorite SMR-13.c 45-60um =a            13   373    0.882  0.2313  0.2040 oh_1.388_phyllo-chlorite                          
+nacrite GDS88 =c                        13   374    0.907  0.2897  0.2626 oh_1.385_phyllo-ksg-nacrite                       
+endellite GDS16 =b                      13   375    0.989  0.3089  0.3056 oh_1.390_phyllo-ksg-endellite                     
+tremolite HS18.3 =c                     13   376    0.750  0.1667  0.1250 oh_1.392_amphibole-tremolite                      
+Saponite SapCa-1.AcB =b                 13   377    0.927  0.2702  0.2505 oh_1.392_smectite-saponite                        
+serpentine lizardite NMNHR4687.c        13   378    0.824  0.3168  0.2611 oh_1.392_phyllo-ksg-lizardite                     
+serpentine HS8.3B =c                    13   379    0.848  0.3155  0.2674 oh_1.393_phyllo-serpentine                        
+talc GDS23 74-250um fr =a               13   380    0.824  0.2945  0.2426 oh_1.393_phyllo-talc                              
+pyrophyllite PYS1A <850um               13   381    0.771  0.2550  0.1965 oh_1.394_phyllo-pyrophyllite                      
+serpentine antigorite NMNH96917.        13   382    0.908  0.2949  0.2676 oh_1.395_phyllo-ksg-antigorite                    
+actinolite HS116.3B                     13   383    0.700  0.2316  0.1622 oh_1.396_amphibole-actinolite                     
+clinochlore GDS158 Flagst =b            13   384    0.798  0.2464  0.1967 oh_1.398_phyllo-clinochlore                       
+uralite HS345.3B =b                     13   385    0.815  0.2711  0.2210 oh_1.396_amphibole-uralite                        
+smaragdite HS290.3B Amphibol =b         13   386    0.929  0.2999  0.2786 oh_1.398_amphibole-smaragdit                      
+kaolinite KGa-1 (wxl) =b                13   387    0.954  0.3031  0.2891 oh_1.398-phyllo-kaolinite-wxl                     
+Cookeite CAr-1.b 90-150um               13   388    0.953  0.3573  0.3404 oh_1.400_phyllo-chlorgrp-cookeite                 
+lepidolite HS167.3B =b                  13   389    0.920  0.3196  0.2940 oh_1.401_mica-lepidolite                          
+opal TM8896 (Hyalite) =a                13   390    0.896  0.2664  0.2387 oh_1.406_silica-opal                              
+paragonite GDS109 =a                    13   391    0.991  0.2964  0.2938 oh_1.408_mica-paragonite                          
+lepidolite NMNH105538 =b                13   392    0.997  0.2986  0.2977 oh_1.409_mica-lepidolite                          
+kaolinite Wxl +50% muscovite Rub        13   393    0.975  0.3102  0.3025 kaolin.5+muscov.medhighAl1.41                     
+kaolinite KGa-2 (pxl) =b                13   394    0.972  0.3204  0.3114 oh_1.413_phyllo-kaolinite-pxl                     
+vermiculite GDS13 Llano =a              13   395    0.601  0.0000  0.0960 oh_1.432_phyllo-vermiculite                       
+nacrite GDS88 =c                        14   396    0.907  0.2897  0.2626 ohb_1.385_phyllo-nacrite                          
+kaolinite KGa-1 (wxl) =b                14   397    0.954  0.3031  0.2891 ohb_1.398_phyllo-kaolinite-wxl                    
+Cookeite CAr-1.d 90-150um               14   398    0.953  0.3573  0.3404 ohb_1.400_phyllo-cookeite                         
+topaz Cameron_Cone_#42 =b               14   399    0.904  0.2868  0.2594 ohb_1.406_nesosil-topaz                           
+opal TM8896 (Hyalite) =a                14   400    0.896  0.2664  0.2387 ohb_1.406_tectosil-opal                           
+paragonite GDS109 =a                    14   401    0.991  0.2964  0.2938 ohb_1.408_mica-paragonite                         
+lepidolite NMNH105538 =b                14   402    0.997  0.2986  0.2977 ohb_1.409_phyllo-lepidolite                       
+sauconite GDS135 =b                     14   403    0.871  0.2665  0.2321 ohb_1.409_smectite-sauconite                      
+chrysocolla HS297.3B =b                 14   404    0.898  0.2800  0.2515 ohb_1.410_phyllo-chrysocolla                      
+halloysite NMNH106237 =a                14   405    0.987  0.3165  0.3124 ohb_1.410_kaolgrp-halloysite                      
+margarite GDS106 =c                     14   406    0.933  0.3249  0.3031 ohb_1.410_mica-margarite                          
+kaolinite Wxl +50% muscovite Rub        14   407    0.975  0.3102  0.3025 kaolin.5+muscov.medhighAl1.41b                    
+muscovite GDS113                        14   408    0.990  0.3003  0.2972 ohb_1.410_mica-muscovite                          
+montmorillonite SWy-1 =b                14   409    0.991  0.3227  0.3196 ohb_1.411_smectite-montmor-swy                    
+kaolinite KGa-2 (pxl) =b                14   410    0.972  0.3204  0.3114 ohb_1.413_kaolgrp-kaolinite-pxl                   
+hydrogrossular NMNH120555 =b            14   411    0.954  0.2629  0.2509 ohb_1.413_nesosil-hydrogross                      
+hectorite SHCa-1.Ac-B =b                14   412    0.870  0.2610  0.2271 ohb_1.414_smectite-hectorite                      
+sepiolite SepNev-1.AcB =a               14   413    0.738  0.2040  0.1506 ohb_1.416_phyllo-sepiolite                        
+roscoelite EN124 =b                     14   414    0.917  0.2799  0.2567 ohb_1.416_mica-roscoelite                         
+illite IL101 (2M2)                      14   415    0.000  0.0000  0.0000 
+montmorillonite SAz-1 =a                14   416    0.843  0.2558  0.2157 ohb_1.416_smectite-montmor-saz                    
+palygorskite CM46a Attapulg =b          14   417    0.803  0.2399  0.1925 ohb_1.417_phyllo-palygorsk                        
+muscovite GDS111 Guatemal =a            14   418    0.846  0.2667  0.2256 ohb_1.418_mica_muscovite                          
+mordenite GDS18 =b                      14   419    0.811  0.2278  0.1847 ohb_1.418_zeolite_mordonite                       
+stilbite HS482.3B Zeolite =b            14   420    0.750  0.1941  0.1457 ohb_1.419_zeolite-stilbite                        
+clinoptilolite GDS152 Zeolit =b         14   421    0.790  0.2164  0.1710 ohb_1.419_zeolite-clinpt                          
+heulandite GDS3 =a                      14   422    0.752  0.1990  0.1497 ohb_1.422_zeolite-heuland                         
+meionite WS700.HLsp =b                  14   423    0.805  0.2746  0.2211 ohb_1.423_scapolute-meionite                      
+nontronite NG-1.b <2um fr =b            14   424    0.778  0.2237  0.1741 ohb_1.424_smectite-nontronite                     
+mizzonite NMNH113775-1 Scap =b          14   425    0.686  0.1696  0.1617 ohb_1.425_scapolite-mizzonite                     
+alunite HS295                           14   426    0.784  0.0261  0.0205 ohb_1.425_sulfate-alunite                         
+lazurite HS418.3B =b                    14   427    0.543  0.0000  0.0796 ohb_1.429_sodalite-lazurite                       
+laumontite GDS5 Zeolite =b              14   428    0.594  0.0000  0.0924 ohb_1.431_zeolite-laumontite                      
+elbaite NMNH94217-1.c <74 =b            14   429    0.320  0.0000  0.0072 ohb_1.431_cyclosil-elbaite                        
+tourmaline HS282.2B                     14   430    0.000  0.0000  0.0000 ohb_1.435_tourmaline                              
+alunite AL706 Na__                      14   431    0.000  0.0000  0.0000 ohb_1.438_sulfate-alunite-na                      
+analcime GDS1 Zeolite                   14   432    0.707  0.2284  0.1614 ohb_1.424_zeolite-analcime                        
+eugsterite GDS140 Syn =b                14   433    0.392  0.0000  0.0407 ohb_1.436_sulfate-eugsterite                      
+scolecite GDS7 Zeolite =b               14   434    0.411  0.0000  0.0504 ohb_1.440_zeolite-scolecite                       
+gypsum SU2202 =a                        14   435    0.000  0.0000  0.0000 ohb_1.447_sulfate-gypsum                          
+schwertmannite BZ93-1 =b                14   436    0.331  0.0000  0.0086 ohb_1.449_sulfate-schwertm                        
+copiapite GDS21 =b                      14   437    0.151  0.0000  0.0000 ohb_1.450_sulfate-copiapite                       
+vermiculite GDS13 Llano =a              14   438    0.601  0.0000  0.0960 ohb_1.432_phyllo-vermiculite                      
+natrolite HS169.3B Zeolite =b           14   439    0.000  0.0000  0.0000 ohb_1.455_zeolite-natrolite                       
+gibbsite HS423.3B =b                    14   440    0.594  0.0000  0.0943 ohb_1.451_hydroxide-gibbsite                      
+gibbsite HS423.3B =b                    15   441    0.594  0.0000  0.0943 ohc_1.451_hydroxide-gibbsite                      
+natrolite HS169.3B Zeolite =b           15   442    0.000  0.0000  0.0000 ohc_1.455_zeolite-natrolite                       
+bloedite GDS147 =a                      15   443    0.000  0.0000  0.0000 
+jarosite GDS99 K 200C Syn =a            15   444    0.000  0.0000  0.0000 ohc_1.469_sulfate-jarosite-k                      
+jarosite GDS98 K 90C Syn =a             15   445    0.000  0.0000  0.0000 ohc_1.471_sulfate-jarosite-k                      
+datolite HS442.3B =b                    15   446    0.000  0.0000  0.0000 
+jarosite GDS100 Na,Sy 90C =a            15   447    0.000  0.0000  0.0000 ohc_1.478_sulfate-jarosite-na90c                  
+jarosite GDS101 Na,Sy 200C =a           15   448    0.000  0.0000  0.0000 ohc_1.479_sulfate-jarosite-na200c                 
+prehnite GDS613.a <60um =aa_            15   449    0.000  0.0000  0.0000 ohc_1.480_phyllo-prehnite                         
+beryl GDS9 <150um gs s06crj3a=bb        19   450    0.000  0.0000  0.0000 
+opal TM8896 (hyalite) s06crj3a=a        19   451    0.000  0.0000  0.0000 
+saponite SapCa-1.AcB s06crj3a=bb        19   452    0.000  0.0000  0.0000 
+montmorillonite SWy-1 1.9um wate        19   453    0.000  0.0000  0.0000 
+nontronite NG-1.a s06crj3a=cd           19   454    0.000  0.0000  0.0000 
+beidellite GDS123 =___                  19   455    0.000  0.0000  0.0000 
+illite GDS4 (Marblehead)                19   456    0.000  0.0000  0.0000 
+montmorillonite SAz-1 s06crj3a=b        19   457    0.000  0.0000  0.0000 
+halloysite CU91-242D 1.9um water        19   458    0.000  0.0000  0.0000 
+clinoptilolite GDS152 Zeol =bbb         19   459    0.000  0.0000  0.0000 
+stonewall_Playa_Dry_Mud  1.91um         19   460    0.000  0.0000  0.0000 
+mordenite GDS18 =bb_                    19   461    0.000  0.0000  0.0000 
+analcime GDS1 Zeolite =aaa              19   462    0.000  0.0000  0.0000 
+sillimanite HS186.3B =cc_               19   463    0.000  0.0000  0.0000 
+heulandite NMNH84534 =a                 19   464    0.000  0.0000  0.0000 
+bassanite GDS145 (syn) =aa_             19   465    0.000  0.0000  0.0000 
+perchlorate_Mg GDS851.2 220K            19   466    0.000  0.0000  0.0000 
+chert ANP90-6D (White) =?               19   467    0.000  0.0000  0.0000 
+perchlorate_Na GDS857 230C =_           19   468    0.000  0.0000  0.0000 
+aspen Aspen-1 Green-Top 1.93um w        19   469    0.000  0.0000  0.0000 
+epsomite GDS149 =cc_                    19   470    0.000  0.0000  0.0000 
+cheatgrass ANP92-11A narrow 1.93        19   471    0.000  0.0000  0.0000 
+eugsterite GDS140 Syn =bb_              19   472    0.000  0.0000  0.0000 
+natrolite HS169.3B Zeolite =bbb         19   473    0.000  0.0000  0.0000 
+natrolite HS169.3B Zeolite =b           19   474    0.000  0.0000  0.0000 
+scolecite GDS7 zeolite =bb_             19   475    0.000  0.0000  0.0000 
+schwertmannite BZ93-1 =b                19   476    0.000  0.0000  0.0000 
+gypsum HS333.3B (Selenite) =aaa         19   477    0.000  0.0000  0.0000 
+brick GDS347 1.94um water =a            19   478    0.000  0.0000  0.0000 
+polyhalite NMNH92669-4 =aa_             19   479    0.000  0.0000  0.0000 
+copiapite GDS21 =bc_                    19   480    0.000  0.0000  0.0000 
+bloedite GDS147 =aa_                    19   481    0.000  0.0000  0.0000 
+butlerite GDS25 =a                      19   482    0.000  0.0000  0.0000 
+ZFeSO4*7H20 GDS873 SynChemReg           19   483    0.000  0.0000  0.0000 
+kainite NMNH83904 =aa_                  19   484    0.000  0.0000  0.0000 
+carnallite NMNH98011 =bb_               19   485    0.000  0.0000  0.0000 
+coquimbite GDS22 =c                     19   486    0.000  0.0000  0.0000 
+syngenite GDS139 =aa_                   19   487    0.000  0.0000  0.0000 
+H2O-ice GDS136 77K                      19   488    0.000  0.0000  0.0000 
+kieserite batch4 GDS671                 19   489    0.000  0.0000  0.0000 
+szomolnokite GDS874 heat275C =          19   490    0.000  0.0000  0.0000 water_2.060_sulfate_szomoln                       
+szomolnokite NMNH104303 UT =            19   491    0.000  0.0000  0.0000 
+buddingtonite NHB2301 =b                19   492    0.000  0.0000  0.0000 
+kieserite KIEDE1.a crse gr =cc_         19   493    0.000  0.0000  0.0000 
+mascagnite GDS65.b (fr) =aa_            19   494    0.000  0.0000  0.0000 
+REE neodymium_oxide GDS34               20   495    0.000  0.0000  0.0000 neodymium_oxide_compete                           
+REE samarium_oxide GDS36                20   496    0.000  0.0000  0.0000 samarium_oxide_compete                            
+REE neodymium_oxide GDS34               21   497    0.000  0.0000  0.0000 neodymium_oxide1                                  
+REE samarium_oxide GDS36                22   498    0.000  0.0000  0.0000 samarium_oxide1                                   
+  
+  
+The spectrum: s06av95a    372   Ammonio-Illite/Smectit GDS87 s06av95a=b 
+
+is best matched by              inosilicate pectolite NMNH94865.
+                                ========================================
+
+ Material  Fit      Depth        F*D
+   112  0.6015     0.2537    0.1581 inosilicate_pectolite                             
+
+The spectrum: s06av95a    372   Ammonio-Illite/Smectit GDS87 s06av95a=b 
+
+is best matched by              smectite beidellite + montmorill
+                                ========================================
+
+ Material  Fit      Depth        F*D
+   167  0.9437     0.2323    0.2192 smectite_beidellite_gds123                        
+
+ s06av95a   372 Ammonio-Illite/Smectit GDS87 s06av95a=b      grp 3
+The spectrum: s06av95a    372   Ammonio-Illite/Smectit GDS87 s06av95a=b 
+
+is best matched by              sulfide sphalerite S26-34       
+                                ========================================
+
+ Material  Fit      Depth        F*D
+   314  0.6895     0.1145    0.0999 sphalerite_s26-341_1.5um                          
+
+The spectrum: s06av95a    372   Ammonio-Illite/Smectit GDS87 s06av95a=b 
+
+is best matched by              pyroxene augite NMNH120049      
+                                ========================================
+
+ Material  Fit      Depth        F*D
+   326  0.5685     0.0000    0.0997 pyroxene.augite                                   
+
+The spectrum: s06av95a    372   Ammonio-Illite/Smectit GDS87 s06av95a=b 
+
+is best matched by              lepidolite NMNH105538 =b        
+                                ========================================
+
+ Material  Fit      Depth        F*D
+   392  0.9968     0.2986    0.2977 oh_1.409_mica-lepidolite                          
+
+The spectrum: s06av95a    372   Ammonio-Illite/Smectit GDS87 s06av95a=b 
+
+is best matched by              lepidolite NMNH105538 =b        
+                                ========================================
+
+ Material  Fit      Depth        F*D
+   402  0.9968     0.2986    0.2977 ohb_1.409_phyllo-lepidolite                       
+
+The spectrum: s06av95a    372   Ammonio-Illite/Smectit GDS87 s06av95a=b 
+
+is best matched by              gibbsite HS423.3B =b            
+                                ========================================
+
+ Material  Fit      Depth        F*D
+   441  0.5935     0.0000    0.0943 ohc_1.451_hydroxide-gibbsite                      
+
+ s06av95a   372 Ammonio-Illite/Smectit GDS87 s06av95a=b      grp19
+ s06av95a   372 Ammonio-Illite/Smectit GDS87 s06av95a=b      grp20
+ s06av95a   372 Ammonio-Illite/Smectit GDS87 s06av95a=b      grp21
+ s06av95a   372 Ammonio-Illite/Smectit GDS87 s06av95a=b      grp22
+  
+  
+ Analysis Complete.  Press return to continue
+>
+
+

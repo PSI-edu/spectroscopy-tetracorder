@@ -1,0 +1,10 @@
+
+y1176Y6   Clinochlore GDS158 Flagst    W1R1Bb
+tf1= Clinochlore   f1a DLw 2.189   2.218   2.404   2.432  ct [CTHRESH4] r*bd> [RBD23]
+tf2= Clinochlore   f2a DLw 2.189   2.218   2.267   2.287  ct [CTHRESH4] r*bd> [RBD22]
+tf3= Clinochlore   f3a WLw 0.512   0.542   1.696   1.726  ct [CTHRESH4] r*bd> [RBD1b]
+
+
+tf3= Clinochlore   f3a WLw 0.512   0.542   1.696   1.726  ct [CTHRESH4] r*bd> [RBD1b]
+   n1a NOT [NOTCH1]  1  0.25r1 0.5   \# NOT organics 1, feat 1, depth .25rel, fit .5
+

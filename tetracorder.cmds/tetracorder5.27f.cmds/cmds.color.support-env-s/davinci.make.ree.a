@@ -1,0 +1,290 @@
+#!/usr/bin/env -S davinci -q -f  
+####!/usr/local/bin/davinci -q -f
+
+###########################  was:  #!/usr/local/bin/davinci -q -f
+
+
+
+# A master color set.  Just read in the files, assign the colors
+# and write the results.    R. Clark 4/16/2015 - 11/16/2015
+
+# command line:
+# prog    color_base_image  prefix-file-name   [dual|nodual] 
+# prog    color_base_image  prefix-file-name   gray_base_image  output-bw-prefix-file-name
+
+prog="davinci.make.ree.a"     # CHANGE THIS if program name changes
+
+####################  Begin static: no need to change inything in this section ################
+
+if ($argc < 2) {
+
+	printf("Insufficient input\n")
+	printf("%s input_color_image  outputcolorimage\n", prog)
+	printf("exit 1\n")
+	exit(1)
+}
+
+
+dual    = 1     # default color + gray image 
+dualmax = 2000  # no dual if width is greater than this
+
+if ($argc >= 3) {
+
+	if ( "$3" == "nodual" ) {
+		dual = 0
+	}
+	if ( "$3" == "dual" ) {
+		dual = 1
+		dualmax = 999999 
+	}
+}
+
+# read base gray image
+
+gbase=read(filename=$1)
+if (HasValue(gbase) ==0) {                   # check that read worked
+      printf ("read ERROR on file: %s\n",$1)
+      printf ("^GEXIT 1\n")
+      exit(1)
+}
+
+maklcoloroonbw = 0
+if ($argc >= 4) {
+
+	bwname = $3
+	foutbw = $4
+
+	basebw = read(filename=bwname)
+	if (HasValue(basebw) ==0) {                   # check that read worked
+      		printf ("read ERROR on file: %s\n",$1)
+      		printf ("^GEXIT 1\n")
+      		exit(1)
+	}
+	maklcoloroonbw = 1
+	printf ("will include the color results on a gray scale background\n")
+}
+
+# execute this program in the same directory asthe source code below
+source ("cmds.color.support/davinci.master.colors")
+
+# available colors:
+# c_red     c_green          c_blue       c_yellow        c_magenta       c_cyan          c_armygreen  
+# c_salmon  c_flesh          c_orange     c_deeppink      c_yellowgreen   c_lavender  
+# c_skyblue c_paleseagreen   c_white      c_redpink       c_gold          c_mudyellow     c_lightpink
+
+# a = first input image, 3-band color, xcolor = the color output image, RGB float
+# colorout = the color output image, 3-byte RGB
+
+
+define read_an_image(1,1) {
+
+	# read a gray-scale image and convert to 3-bands
+
+	afile = $1   # file to read
+	printf ("reading file %s\n", afile)
+	aaa=read(filename=afile)
+	if (HasValue(aaa) ==0) {  # check that read worked
+		printf ("read ERROR on file: %s\n",afile)
+		printf ("setting to zero\n")
+		aaa=0
+	}
+	qqq = cat(aaa,aaa,axis=z)  # make into 2-band image
+	aaa = cat(aaa,qqq,axis=z)  # make into 3-band image
+
+	return (aaa)
+
+}  # end define
+
+
+
+###################   begin custom section ##########################################
+
+# in this directory but not used, group 0  (orderr below is by pixels mapped in emit china scene)
+
+# group.ree/ree_nd_neodymium_oxide-0.6um.fd.gif   c_red
+# group.ree/ree_nd_neodymium_oxide.fd.gif         c_yellow
+# group.ree/ree_nd_bastnaesite.fd.gif             c_yellowgreen
+# group.ree/ree_nd_xenotime+monazite.fd.gif       c_cyan
+# group.ree/ree_samarium_oxide.fd.gif             c_green
+
+# group.ree/ree_nd_ancylite.fd.gif                
+# group.ree/ree_nd_chlorapatite.fd.gif
+# group.ree/ree_nd_fluorapatite.fd.gif
+# group.ree/ree_nd_monazite_gds947.fd.gif
+# group.ree/ree_nd_monazite_gds957.fd.gif
+# group.ree/ree_nd_parisite.fd.gif
+# group.ree/ree_nd_pyromorphite.fd.gif
+# group.ree/ree_nd_xenotime.fd.gif
+
+
+# 21 available colors:
+# c_red     c_green          c_blue       c_yellow        c_magenta       c_cyan          c_armygreen  
+# c_salmon  c_flesh          c_orange     c_deeppink      c_yellowgreen   c_lavender  
+# c_skyblue c_paleseagreen   c_white      c_redpink       c_gold          c_mudyellow     c_lightpink
+
+# first image:
+
+a = read_an_image("group.ree/ree_samarium_oxide.fd.gif")
+
+	# set up output image xcolor:
+	xcolor=float(a*0)
+	xdim=dim(a)
+
+	# now add the colors
+
+
+# group.ree/ree_nd_neodymium_oxide-0.6um.fd.gif   c_red
+# group.ree/ree_nd_neodymium_oxide.fd.gif         c_yellow
+# group.ree/ree_nd_bastnaesite.fd.gif             c_gold
+# group.ree/ree_nd_xenotime+monazite.fd.gif       c_cyan
+# group.ree/ree_samarium_oxide.fd.gif             c_green
+
+c=c_red
+
+a = read_an_image("group.ree/ree_nd_neodymium_oxide-0.6um.fd.gif")
+xcolor= xcolor + a*( c /255.)
+
+c=c_yellow
+
+a = read_an_image("group.ree/ree_nd_neodymium_oxide.fd.gif")
+xcolor= xcolor + a*( c /255.)
+
+c=c_gold
+
+a = read_an_image("group.ree/ree_nd_bastnaesite.fd.gif")
+xcolor= xcolor + a*( c /255.)
+
+c=c_cyan
+
+a = read_an_image("group.ree/ree_nd_xenotime+monazite.fd.gif")
+xcolor= xcolor + a*( c /255.)
+
+c=c_green
+
+a = read_an_image("group.ree/ree_samarium_oxide.fd.gif")
+xcolor= xcolor + a*( c /255.)
+
+
+###############
+# group.ree/ree_nd_ancylite.fd.gif           c_lavender
+# group.ree/ree_nd_chlorapatite.fd.gif       c_blue
+# group.ree/ree_nd_fluorapatite.fd.gif       c_magenta
+# group.ree/ree_nd_monazite_gds947.fd.gif    c_skyblue
+# group.ree/ree_nd_monazite_gds957.fd.gif    c_mudyellow
+
+
+c=c_lavender
+
+a = read_an_image("group.ree/ree_nd_ancylite.fd.gif")
+xcolor= xcolor + a*( c /255.)
+
+c=c_blue
+
+a = read_an_image("group.ree/ree_nd_chlorapatite.fd.gif")
+xcolor= xcolor + a*( c /255.)
+
+
+c=c_magenta
+
+a = read_an_image("group.ree/ree_nd_fluorapatite.fd.gif")
+xcolor= xcolor + a*( c /255.)
+
+c=c_skyblue
+
+a = read_an_image("group.ree/ree_nd_monazite_gds947.fd.gif")
+xcolor= xcolor + a*( c /255.)
+
+c=c_mudyellow
+
+a = read_an_image("group.ree/ree_nd_monazite_gds957.fd.gif")
+xcolor= xcolor + a*( c /255.)
+
+# * = used
+# c_red*     c_green*         c_blue*      c_yellow*       c_magenta*      c_cyan*         c_armygreen*
+# c_salmon   c_flesh          c_orange*    c_deeppink      c_yellowgreen   c_lavender* 
+# c_skyblue* c_paleseagreen   c_white*     c_redpink*      c_gold*         c_mudyellow*    c_lightpink
+
+# group.ree/ree_nd_parisite.fd.gif       c_orange
+# group.ree/ree_nd_pyromorphite.fd.gif   c_flesh
+# group.ree/ree_nd_xenotime.fd.gif       c_redpink
+
+c=c_orange
+
+a = read_an_image("group.ree/ree_nd_parisite.fd.gif")
+xcolor= xcolor + a*( c /255.)
+
+c=c_flesh
+
+a = read_an_image("group.ree/ree_nd_pyromorphite.fd.gif")
+xcolor= xcolor + a*( c /255.)
+
+c=c_redpink
+
+a = read_an_image("group.ree/ree_nd_xenotime.fd.gif")
+xcolor= xcolor + a*( c /255.)
+
+########### end custom, no need to change anything below this line ###############################
+
+xout = byte(xcolor+0.5)   # output color image, byte
+xout = bip(xout)
+xdim = dim(xout)
+xdimx= xdim[1,,]      # color image width
+
+gbasedim=dim(gbase)
+x=gbasedim[1,,]      # base image width
+y=gbasedim[2,,]      # base image height
+
+if (maklcoloroonbw == 1) {
+
+	printf ("Putting color results on gray scale background\n")
+
+	xoutbw = basebw[,,1]   # start of color on BW base
+	xoutbw = cat(xoutbw, basebw[,,1], axis=z)
+	xoutbw = cat(xoutbw, basebw[,,1], axis=z)   # now a 3-band image
+	xoutbw = byte(xoutbw)
+	xoutbw = bip(xoutbw)
+
+	xout3 = byte(xout[,,1] + xout[,,2] + xout[,,3])
+
+	xoutb = basebw   # 1 band
+	xoutb[ where( xout3 > 1) ] = xout[,,1]
+	xoutbw[,,1] = xoutb
+
+	xoutb = basebw   # 1 band
+	xoutb[ where( xout3 > 1) ] = xout[,,2]
+	xoutbw[,,2] = xoutb
+
+	xoutb = basebw   # 1 band
+	xoutb[ where( xout3 > 1) ] = xout[,,3]
+	xoutbw[,,3] = xoutb
+
+}
+
+bwdim = dim(xoutbw)
+printf("xoutbw dimensions x,y,z = %d  %d  %d\n", bwdim[1,,], bwdim[2,,], bwdim[3,,])
+
+if (x > dualmax) {
+	dual = 0
+}
+
+if ( dual == 1 ) {
+	
+	gbase = bip(gbase)
+	xout = cat (xout, gbase, axis=x)
+}
+
+
+fout=$2
+
+
+adim=dim(xout)
+if ( adim[1,,] > 5 || adim[2,,] > 5 ) {
+	printf ("writing %s\n", fout)
+	write (xout, filename=fout, type=png)
+
+	printf ("writing %s\n", foutbw)
+	write (xoutbw, filename=foutbw, type=png)
+} else {
+	printf ("not writing %s\n", fout)
+	printf ("    image size < 6 pixels\n")
+}

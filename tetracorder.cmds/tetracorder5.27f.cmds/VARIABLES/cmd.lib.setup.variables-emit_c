@@ -1,0 +1,206 @@
+\# Variable definitions
+
+\#  the GLBLFITALL variable sets the default fit thresholding
+\#      if the fit is below this value, then that material is not
+\#      identified.  All fits, depthd, and f*d values are zeroed.
+\#      Similarly for GLBLFDFIT and GLBLDPFIT.
+\#      GLBLDPFITg2 is for group 2 but can be used for others too.   - RNC
+\#      added GLBLFITVEG, GLBLFITVEG, GLBLFITVEG2, FDFITveg3  2023-05-01 - RNC
+\#
+==[GLBLFITALL]0.2 0.3
+==[GLBLFDFIT]0.3 0.4
+==[GLBLDPFIT]0.5 0.6
+==[GLBLDPFITg2]0.65 0.7
+==[GLBLFITVEG]0.4 0.6
+==[GLBLFITVEG1]0.2 0.3
+==[GLBLFITVEG2]0.5 0.7
+==[FDFITveg3]0.3 0.5
+\#                       GLBLFITVEGR is for vegetation red-edge detection, case 1
+==[GLBLFITVEGR]0.3 0.40
+\#                       GLBLFITVEGT is for vegetation type detection, case 2
+==[GLBLFITVEGT]0.2 0.30
+\#                       GLBLFITVEGT is for vegetation water detection, case 3, 4, 5
+==[GLBLFITVEGW]0.4 0.55
+\#                       GLBLDPFITREE is set high to reduce false positives
+==[GLBLDPFITREE]0.65 0.80
+==[GLBLFITREE]0.5 0.6 
+\#
+\# FD-FIT>[GLBLFDFIT] DEPTH-FIT>[GLBLDPFIT] FITALL>[GLBLFITALL]
+\#
+\#
+\#################################################################################
+\#
+\#  Continuum thresholds
+\#
+\#                NOTE: ct, rct, lct do not use fuzzy logic
+==[CTHRESH1] 0.01          \# ct threshold value (continuum threshold)
+==[CTHRESH2] 0.02          \# ct threshold value (continuum threshold)
+==[CTHRESH4] 0.04          \# ct threshold value (continuum threshold)
+==[CTHRESH5] 0.05          \# ct threshold value (continuum threshold)
+==[CTHRESH8] 0.08          \# ct threshold value (continuum threshold)
+\#
+\#
+\#################################################################################
+\#
+\# Output DN scaling, e.g. 8 DN 255 = 0.5000 for 8-bit scaled 0.5 band depth = 255
+\#
+==[O8DN50]   0.5000
+==[O8DN100]  1.0000
+==[O8DN14um] 0.5000
+==[O8DN19um] 0.5000
+==[O8DN27um] 0.5000
+==[O8DNree]  0.1000
+\#
+\#################################################################################
+\#
+\# DEFINITIONS used in one group/case entry:
+\#
+\#  LEFT and RIGHT CONTINUUM INTERVALS for material _ feature _
+\#         Enter the feature importance:
+\#              D  =  Diagnostic feature (must be present)
+\#                     fit, depth, fit*depth must be above thresholds.
+\#                    If a feature is diagnostic but disabled due to
+\#                    spectral coverage, its weight is set to zero,
+\#                    and if there are additional features, the material
+\#                    may still be identified from the other spectral features.
+\#
+\#              M  =  Must have diagnostic unconditinionally.
+\#                                         added 6/17/2022 in 5.27a1 - RNC
+\#                    example: see group 1 azurite
+\#                    Details below
+\#                    If a must have feature is disabled, that material
+\#                    can not be identified.
+\#
+\#              O  =  Optionally present feature
+\#                     If an optional feature is not detected, its fit and depth
+\#                     are set to zero and the material might still be
+\#                     identified by the presence of other absorption features
+\#
+\#              W  =  Weak feature
+\#                     Weak feature must be present, but area is set to zero.
+\#                     Noise can mask weak band peresence reducing detection
+\#                     even when a strong diagnostic band is present,
+\#                     so use only when necessary.
+\#                    (There is a speed advantage to listing
+\#                     diagnostic features first.)
+\#
+\#              D vs M details:
+\#                     The D is a diagnostic feature.  When there are multiple
+\#                     diagnostic features defined, only one is needed to be enabled.
+\#                     In the case of azurite, both are needed, but the band
+\#                     between 0.45 and 1.3 microns is more important. 
+\#
+\#                     If a calibration results in one D feature being disabled,
+\#                     the second (or third) D will still allow detection.
+\#                     This is different than if all disgnostic features are
+\#                     enabled, and if one is not present (feature strength
+\#                     is zero or fit too low) then the material will not
+\#                     found.
+\#
+\#                     The M solves the problem of a disabled D feature, 
+\#                     requiring all M-declared features to be enabked and present.
+\#                     If one M feature is disabled, the material ID is disabled.
+\#                     This was required for group 1 azurite, for example.
+\#
+\#                     Starting with 5.27a1 many D entries were changed to M.
+\#
+\#
+\#              NEXT Enter two channel numbers to describe the continuum
+\#                       interval on the 
+\#                      LEFT side of the absorption, and
+\#              NEXT Enter two channel numbers to describe 
+\#                      the continuum interval on the 
+\#                      RIGHT side of the absorption 
+\#               (enter imortance and 4 channel numbers total), then OPTIONS:
+\#
+\#         Options:
+\#               ct n m  where  ct means continuum threshold, min and max
+\#                       NOTE: ct does not use fuzzy logic
+\#              lct n m  where lct means left  continuum threshold, min and max
+\#                       NOTE: lct does not use fuzzy logic
+\#              rct n m  where rct means right continuum threshold, min and max
+\#                       NOTE: rct does not use fuzzy logic
+\#
+\#
+\#           These use fuzzy logic:
+\#              lcbbrc = (lc-bb)/(rc-bb), bb= band bottom
+\#              rcbblc = (rc-bb)/(lc-bb), bb= band bottom
+\#              rcbblc, lcbbrc = left contin, band bottom, 
+\#                              right continuum shape
+\#              n is lower, and (optional) m is upper.
+\#              NOTE: n and m are each 2 numbers with FUZZY LOGIC
+\#              Values exceeding this range will reject that material
+\#                     default = 0.1e-6 to 0.2e+20
+\#
+\#
+\#      Fuzzy Logic:  
+\#                       X= n2    X= m1
+\#      F= 1.0               _________
+\#                          .         .
+\#                         .           .
+\#                        .             .
+\#                       .               .
+\#      F= 0.0  ________.                 .___________
+\#                  X= n1              X= m2
+\#
+\#              --------- increasing intensity ------>
+\#
+\#
+\#         The fuzzy logic function F multiplies the result of a given
+\#         output value X by F:
+\#
+\#                 F = 0 when X < n1 or X > m2
+\#                 F = 1 when n2 <= X <= m1
+\#                 interpolate F 0 to 1 in the intervals n1 to n2 and m1 to m2
+\#
+\#
+\#           These use fuzzy logic:
+\#              lct/rct> n1 n2 where n1 n2 are positive real numbers
+\#              rct/lct> n1 n2 where n1 n2 are positive real numbers
+\#              rcbblc> n1 n2  where n1 n2 are positive real numbers
+\#              rcbblc< n1 n2  where n1 n2 are positive real numbers
+\#              lcbbrc> n1 n2  where n1 n2 are positive real numbers
+\#              lcbbrc< n1 n2  where n1 n2 are positive real numbers
+\#              r*bd>   n1 n2  where n1 n2 are positive real numbers
+\#                             note: bd is abs(bd) for positive features
+\#              NOTE: n1 and n2 are each 2 numbers with FUZZY LOGIC
+\#      Values < (or >) these ranges will reject that material
+\#             default = 0 (no lct/rct of rct/lct checking
+\#
+\#       Options: enter:  Default = 1.0
+\#      constraint: FIT>       fit   threshold, apply to fit   image
+\#      constraint: FITALL>    fit   threshold, apply to all   images
+\#      constraint: DEPTH>     depth threshold, apply to depth image
+\#      constraint: DEPTHALL>  depth threshold, apply to all   images
+\#      constraint: DEPTH-FIT> fit   threshold, apply to depth image
+\#      constraint: FD>        f*d   threshold, apply to f*d   image
+\#      constraint: FDALL>     f*d   threshold, apply to all   images
+\#      constraint: FD-FIT>    fit   threshold, apply to f*d   image
+\#      constraint: FD-DEPTH>  depth threshold, apply to f*d   image
+\#
+\#      constraint: fratio: a / b = r1 r2 r3 r4  where a, b = feature number
+\#                                  r1, r2=min, r3, r4=max with FUZZY LOGIC
+\#
+\############################################################################
+\#
+\#  r*bd fuzzy logic defined variables  (started 03/25/2020, RNC)
+\#
+\# for 1% feature and 20% reflectance, r*bd = 0.2*0.01 = 0.002
+\#    so thresholds below this would be rejected.
+\#    pre 3/2020, r*bd was typically r*bd> 0.002 0.004
+\#    (Future: maybe move this to cmds.start file so it may be tuned with S/N)
+\#
+\#   Note: some RREs were 0.0002 0.0004, others 0.002 0.004  pre 3/2020.
+\#
+==[RBD1b] 0.002  0.004     \# r*bd for 1-2 micron region broad bands
+==[RBDree] 0.0001  0.0002    \# r*bd for Vis-NIR region REE bands
+==[RBDvrs] 0.002  0.004    \# r*bd for Veg red-edge shift
+==[RBD10] 0.001  0.002     \# r*bd for 1-      micron region
+==[RBD14] 0.0008 0.002     \# r*bd for 1.3-1.5 micron region
+==[RBD22] 0.0007 0.0011    \# r*bd for 2.2-    micron region
+==[RBD23] 0.0007 0.0011    \# r*bd for 2.3-    micron region
+==[RBD25] 0.001  0.002     \# r*bd for 2.5     micron region
+==[RBD25] 0.0007 0.0011    \# r*bd for 2.5-    micron region
+==[RBD30] 0.0005 0.001     \# r*bd for 3-      micron region
+==[RBD35] 0.0005 0.001     \# r*bd for 3.5-    micron region
+\#

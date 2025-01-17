@@ -1,0 +1,53 @@
+#!/usr/bin/env -S davinci -f
+###################################################
+# User:   rclark    Date:  Thu Apr  8 08:15:53 2021
+###################################################
+
+verbose=0
+
+if ( $argc < 1 ) {
+
+	printf ("Usage\n")
+	printf ("        cmds.abundances/davinci.image.moments imagename\n")
+	printf (" \n")
+	printf ("Example:\n")
+	printf ("        cmds.abundances/davinci.image.moments calcite.v.gz\n")
+}
+
+image=$1
+
+if ( image != "quartz-feldspar.v.gz") {    # quartz-feldspar.v.gz is only in model4
+
+	m1file="model1/" + image
+	afile = "results.abundances/" + m1file 
+	m1= read (filename=afile)
+	mom1 = moment(m1)
+
+	m2file="model2/" + image
+	afile = "results.abundances/" + m2file 
+	m2= read (filename=afile)
+	mom2 = moment(m2)
+
+	m3file="model3/" + image
+	afile = "results.abundances/" + m3file 
+	m3= read (filename=afile)
+	mom3 = moment(m3)
+
+}
+
+m4file="model4/" + image
+afile = "results.abundances/" + m4file 
+m4= read (filename=afile)
+mom4 = moment(m4)
+
+printf ("\n")
+printf ("              File                  min             max             mean       standard deviation\n")
+
+if ( image != "quartz-feldspar.v.gz") {    # quartz-feldspar.v.gz is only in model4
+	printf ("%26s    %12.6f    %12.6f    %12.6f    %12.6f  Relative Abundances\n",               m1file, mom1[1,1,1], mom1[2,1,1], mom1[3,1,1], mom1[5,1,1])
+	printf ("%26s    %12.6f    %12.6f    %12.6f    %12.6f  Mass in Optical Layer gm/sq meter\n", m2file, mom2[1,1,1], mom2[2,1,1], mom2[3,1,1], mom2[5,1,1])
+	printf ("%26s    %12.6f    %12.6f    %12.6f    %12.6f  Mass in Optical Layer gm/sq meter\n", m3file, mom3[1,1,1], mom3[2,1,1], mom3[3,1,1], mom3[5,1,1])
+}
+
+printf ("%26s    %12.6f    %12.6f    %12.6f    %12.6f  Relative Abundances\n", m4file, mom4[1,1,1], mom4[2,1,1], mom4[3,1,1], mom4[5,1,1])
+

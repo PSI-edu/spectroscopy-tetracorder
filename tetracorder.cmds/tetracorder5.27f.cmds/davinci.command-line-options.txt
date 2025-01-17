@@ -1,0 +1,13 @@
+
+
+https://davinci.mars.asu.edu/images/5/5a/Davinci_cheats.pdf
+
+-w # Don’t use X windows
+-f filename # Read commands from file
+-l filename # Redirect log file
+-e ‘cmd’ # Execute given string
+-vN # Set verbose level
+-q # Quick start, don’t read history or .dvrc
+-H # Force loading of history
+-V # Show version information
+-- # Last option (everything else is passed to script)

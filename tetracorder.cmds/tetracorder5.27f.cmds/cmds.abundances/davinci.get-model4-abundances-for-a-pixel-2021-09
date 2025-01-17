@@ -1,0 +1,139 @@
+#!/usr/bin/env -S davinci -f  
+
+###########################  was:  #!/usr/local/bin/davinci -f
+# So with the old method the first line would need to be:
+# On linux and windows the above line should be:
+#
+#  #!/usr/local/bin/davinci -f
+#
+# on macs, change the above to:
+#
+#  #!/Applications/davinci.app/Contents/Resources/bin/davinci -f
+#
+# with the new 1st line method, it should work on linux, macs and windows with no changes.
+
+
+verbose=0
+
+#  156506 Sep 16 21:42 calcite.v.gz
+#   45355 Sep 16 21:42 chlorite.v.gz
+#  207604 Sep 16 21:42 dolomite.v.gz
+# 2080926 Sep 16 21:42 goethite-fine.v.gz
+#   28035 Sep 16 21:42 goethite-large.v.gz
+#  412505 Sep 16 21:42 goethite-med.v.gz
+#   28017 Sep 16 21:42 gypsum.v.gz
+#  272498 Sep 16 21:42 hematite-fine.v.gz
+#   28033 Sep 16 21:42 hematite-large.v.gz
+#   27572 Sep 16 21:42 hematite-med.v.gz
+# 2092643 Sep 16 21:42 hematite-nano.v.gz
+#  517164 Sep 16 21:42 illite+muscovite.v.gz
+#  101011 Sep 16 21:42 kaolinite.v.gz
+# 4491524 Sep 16 21:42 montmorillonite.v.gz
+# 5029449 Sep 16 21:42 quartz-feldspar.v.gz
+
+if ( $argc < 2 ) {
+	printf ("insufficient parameters\n")
+	printf ("form:\n")
+	printf ("davinci.get-model4-abundances-for-a-pixel xpixel ypixel\n")
+	exit(1)
+}
+
+xpixel = atoi($1)
+ypixel = atoi($2)
+
+asum = 0.0
+
+printf ("Tetracorder Model 4 Abundances at pixel %d %d:\n\n", xpixel, ypixel)
+
+a = read (filename="calcite.v.gz")
+#moment(a)
+a=a[xpixel, ypixel, 1]
+asum = asum + a
+printf ("calcite            %6.4f\n", a)
+
+a = read (filename="chlorite.v.gz")
+#moment(a)
+a=a[xpixel, ypixel, 1]
+asum = asum + a
+printf ("chlorite           %6.4f\n", a)
+
+a = read (filename="dolomite.v.gz")
+#moment(a)
+a=a[xpixel, ypixel, 1]
+asum = asum + a
+printf ("dolomite           %6.4f\n", a)
+
+a = read (filename="goethite-fine.v.gz")
+#moment(a)
+a=a[xpixel, ypixel, 1]
+asum = asum + a
+printf ("goethite-fine      %6.4f\n", a)
+
+a = read (filename="goethite-med.v.gz")
+#moment(a)
+a=a[xpixel, ypixel, 1]
+asum = asum + a
+printf ("goethite-medium    %6.4f\n", a)
+
+a = read (filename="goethite-large.v.gz")
+#moment(a)
+a=a[xpixel, ypixel, 1]
+asum = asum + a
+printf ("goethite-large     %6.4f\n", a)
+
+a = read (filename="gypsum.v.gz")
+#moment(a)
+a=a[xpixel, ypixel, 1]
+asum = asum + a
+printf ("gypsum             %6.4f\n", a)
+
+a = read (filename="hematite-nano.v.gz")
+#moment(a)
+a=a[xpixel, ypixel, 1]
+asum = asum + a
+printf ("hematite-nano      %6.4f\n", a)
+
+a = read (filename="hematite-fine.v.gz")
+#moment(a)
+a=a[xpixel, ypixel, 1]
+asum = asum + a
+printf ("hematite-fine      %6.4f\n", a)
+
+a = read (filename="hematite-med.v.gz")
+#moment(a)
+a=a[xpixel, ypixel, 1]
+asum = asum + a
+printf ("hematite-medium    %6.4f\n", a)
+
+a = read (filename="hematite-large.v.gz")
+#moment(a)
+a=a[xpixel, ypixel, 1]
+asum = asum + a
+printf ("hematite-large     %6.4f\n", a)
+
+a = read (filename="illite+muscovite.v.gz")
+#moment(a)
+a=a[xpixel, ypixel, 1]
+asum = asum + a
+printf ("illite+muscovite   %6.4f\n", a)
+
+a = read (filename="kaolinite.v.gz")
+#moment(a)
+a=a[xpixel, ypixel, 1]
+asum = asum + a
+printf ("kaolinite          %6.4f\n", a)
+
+a = read (filename="montmorillonite.v.gz")
+#moment(a)
+a=a[xpixel, ypixel, 1]
+asum = asum + a
+printf ("montmorillonite    %6.4f\n", a)
+
+a = read (filename="quartz-feldspar.v.gz")
+#moment(a)
+a=a[xpixel, ypixel, 1]
+asum = asum + a
+printf ("quartz-feldspar    %6.4f\n", a)
+
+printf ("===========================\n")
+printf ("            total: %6.4f\n", asum)

@@ -1,0 +1,18 @@
+# extract the features
+
+grep ' f[1-9]a [DMOW]' cmd.lib.setup.t5.27f1 | grep -v '^\\#' >  cmd.lib.setup.t5.27f1-features-list.txt
+
+grep ' n[1-9]a NOT' cmd.lib.setup.t5.27f1 | grep -v '^\\#' > cmd.lib.setup.t5.27f1-not-features-list.txt
+
+# edit each and delete the few remaining commented lines.
+
+vi cmd.lib.setup.t5.27f1-features-list.txt
+
+vi cmd.lib.setup.t5.27f1-not-features-list.txt
+
+
+# count the lines:
+
+wc -l cmd.lib.setup.t5.27f1-features-list.txt
+
+wc -l cmd.lib.setup.t5.27f1-not-features-list.txt

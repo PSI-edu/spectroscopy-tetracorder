@@ -1,0 +1,18 @@
+# Hematite    based on cmd.lib.setup.t5.27d1+
+#
+#  DN scale = what band depth = 255 in the tetracorder output image (from 5.2a2 expert system)
+#  BD factor = band depth =1 for pure, fraction in mixture
+#  splib06conv1, sprlb06conv1 = convolved spectrum ID, valid for spectra for 1 - 2171 channels.
+#
+#                                                                 DN     BD    Band                                   convolved
+#              file                                             scale  factor  depth      title                       reference spectrum
+group.1um/fe3+_hematite.nano.BR34b2.depth.gz                      0.5   0.10  0.2727  Nanohematite BR93-34B2          splib06conv1 3468
+group.1um/fe3+_hematite.nano.BR34b2b.depth.gz                     0.5   0.10  0.2727  Nanohematite BR93-34B2          sprlb06conv1  918
+group.1um/fe3+_hematite-nano+goethite-fg-amix.depth.gz            0.5   0.10  0.2451  nHematit+fg-Goethit 34B2+MPC    sprlb06conv1 1026
+group.1um/fe3+_hematite.nano.KP58610.depth.gz                     0.5   0.992 0.5702  Hematite-nano_KP58610 400nm     sprlb06conv1 1170
+group.1um/fe3+_hematite.nano-0.3+qtz.depth.gz                     0.5   0.694 0.1372  Hematite-n0.03_KP58610+Qtz      sprlb06conv1 1182
+group.1um/fe3+_hematite.1+goethite.9hg1.depth.gz                  0.5   0.10  0.3553  Hematite.10+Goethite.90 hg1     sprlb06conv1 1224
+group.1um/fe3+_hematite.2+goethite.8hg2.depth.gz                  0.5   0.20  0.3446  Hematite.20 Goethite.80 hg2     sprlb06conv1 1230
+group.1um/fe3+_hematite.3+goethite.7hg3.depth.gz                  0.5   0.30  0.3489  Hematite.30 Goethite.70 hg3     sprlb06conv1 1236
+group.1um/fe3+_hematite.1+goeth.4+qtz.depth.gz                    0.5   0.10  0.2899  Hematite0.1+Goeth0.4+Qtz.5      sprlb06conv1 1332
+group.1um/fe3+_hematite.4+goeth.1+qtz.depth.gz                    0.5   0.40  0.3662  Hematite0.4+Goeth0.1+Qtz.5      sprlb06conv1 1338

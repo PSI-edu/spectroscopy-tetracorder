@@ -1,0 +1,28 @@
+#!/usr/bin/env -S davinci -f  
+
+###########################  was:  #!/usr/local/bin/davinci -f
+
+
+
+# davinci script to extract a segment of a larger spectrum
+# roger clark 3/3/95
+
+# input on command line:
+#
+#     specpr input file name     $1
+#     specpr input record number $2  This is the input spectrum
+#     first channel              $3
+#     last channel               $4
+#     specpr output file name    $5
+#     title                      $6
+
+a=load (filename=$1, record=$2)
+
+c1=int(atof($3))
+c2=int(atof($4))
+
+c=a[,,c1:c2]
+
+write (c,filename=$5, type=specpr, title=$6)
+exit
+

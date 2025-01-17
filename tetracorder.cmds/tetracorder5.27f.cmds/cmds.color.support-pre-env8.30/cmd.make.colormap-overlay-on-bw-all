@@ -1,0 +1,28 @@
+#!/bin/sh
+
+
+p=cmds.color.support/davinci.mineral-map-overlay-on-gray-image
+
+baseimage='base-image/base-image.png'
+
+if [ ! -d color.results.overlays ]
+then
+	mkdir color.results.overlays
+fi
+
+if [ ! -f "$baseimage" ]
+then
+	echo "$baseimage not found, exiting."
+	exit 1
+fi
+
+for i in `ls color.results/*.png`
+do
+	basnam=`basename $i .png`
+
+	outimage="color.results.overlays/${basnam}-overlay-on-bw.png"
+
+	echo "$p $baseimage $i $outimage"
+	$p $baseimage $i $outimage
+
+done

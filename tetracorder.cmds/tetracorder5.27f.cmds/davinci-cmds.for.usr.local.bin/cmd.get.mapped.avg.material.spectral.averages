@@ -1,0 +1,373 @@
+#!/bin/sh
+
+# Roger N. Clark
+# Original code 2015, updates 2019
+
+#set -x
+
+#                                                      1         2          3           4        5       6
+#   cmd.get.mapped.avg.material.spectral.averages shortcubeID  cube  specproutputfile waves specprfile record
+
+
+erropts=0
+
+if [ -z "$6" ]
+then
+	echo "ERROR: insufficient variables"
+	erropts=1
+fi
+
+if [ "$erropts" = 0 ]      # should have 6 variables, check them
+then
+	id=$1    # shortcubeID
+
+	if [ "$4" != "waves" ]
+	then
+		echo "ERROR: command line option 4 must be: waves"
+		erropts=1
+	fi
+
+	acube=$2
+	if [ ! -f "$acube" ]
+	then
+		echo "ERROR: cube not found: $acube"
+		erropts=1
+	fi
+
+	spout=$3
+	if [ ! -f "$spout" ]
+	then
+		echo "ERROR: specpr file not found: $spout"
+		erropts=1
+	fi
+
+	spwavesf=$5
+	if [ ! -f "$spwavesf" ]
+	then
+		echo "ERROR: specpr file for wavelengths not found: $spwavesf"
+		erropts=1
+	fi
+
+	waverec=$6
+	if [ "$waverec" -le 0 ]
+	then
+		echo "ERROR: wavelength record number is < 1: $waverec"
+		erropts=1
+	fi
+fi
+
+if [ "$erropts" = 1 ] 
+then
+
+	echo " "
+	echo "    form:"
+	echo "cmd.get.mapped.avg.material.spectral.averages shortcubeID  cube  specproutputfile waves specprfile record"
+        echo "exit 1"
+        exit 1
+
+fi
+
+
+if [ ! -d "maskimages" ]   # make the mask image directory
+then
+	mkdir maskimages
+fi
+
+# davinci.get.avg.material.spectrum.from.tet+cube FRT000035BD_07_IF164J_MTR3.v organic.3.41um.nonyne_curvc.fd.gz -cluster 7 15  -waves /d1/rclark/data/crism_j/spd0523 6 -specpr sptest1 "FRT035BD organic.3.41um.nonyne" 
+
+# davinci.get.avg.material.spectrum.from.tet+cube cuve  maskimage 
+#                    -specpr specprfilenam title 
+#      optional:
+#                    -cluser radius threshold -out outputmaskimage 
+#                    -plot minmax -wave specprfile recordnumber
+#                    -bland  specprfilenam  recordnumber
+#                    -weighted
+#                    -bbox upperleftx upperlefty lowerrightx lowerrighty
+#                    
+#    If maskige = the string one, then make a mask all eqial 1.0
+#    weighted means weight average by band depth
+
+#results=results.cluster.sorted
+results=results.cluster.sorted.notzero
+if [ ! -f $results ]
+then
+	echo "ERROR can not find $results"
+	pwd
+	echo "exit 1"
+	exit 1
+fi
+
+
+results1=results1                               # results for 1 group
+resultsa=results-cluster-analyzed               # results for all groups
+
+results_materials_avg_spectra_list1=results.materials_avg-spectra-list1   # results for 1 group
+results_materials_avg_spectra_list=results.materials_avg-spectra-list     # results for all groups
+
+cp /dev/null  $resultsa
+cp /dev/null  $results_materials_avg_spectra_list
+
+
+gcycle=1   # which cycle for 3.5 region
+
+#for i in \
+#	group.1um/	\
+#	group.2um/	\
+#	group.1.5um-broad/	\
+#	group.2um-broad/	\
+#	group.1.3-1.4um/	\
+#	group.1.4um/	\
+#	group.1.5um/	\
+#	group.1.9um/	\
+#	group.2.5um/	\
+#	group.3um/	\
+#	group.3.5um_curve/	\
+#	group.3.5um_curve/
+
+# groups and cases 10/2021
+#
+#    group.1.3-1.4um
+#    group.1.4um
+#    group.1.5um
+#    group.1.5um-broad
+#    group.1.7um
+#    group.1.9um
+#    group.1um
+#    group.2.5um
+#    group.2um
+#    group.2um-broad
+#    group.2.8um
+#    group.3.5um
+#    group.3.5um_curve
+#    group.3um
+#    group.4um
+#    group.ree
+#    group.ree_neod
+#    group.ree_samar
+#    group.veg
+#    case.carbonate-2feat
+#    case.ep-cal-chl
+#    case.red-edge
+#    case.veg.type
+
+
+for i in group.* case.* 
+do
+	echo " "
+	echo '###################### ' $i ' ####################'
+
+	if [ $i = "group.1um" ]
+	then
+		ibland=" "
+		tg="g1"               # for specpr output titile
+	fi
+	if [ $i = "group.2um" ]
+	then
+		ibland=" "
+		tg="g2"               # for specpr output titile
+	fi
+	if [ $i = "group.1.5um-broad" ]
+	then
+		ibland=" "
+		tg="g1.5b"               # for specpr output titile
+	fi
+	if [ $i = "group.2um-broad" ]
+	then
+		ibland=" "
+		tg="g2b"               # for specpr output titile
+	fi
+	if [ $i = "group.1.3-1.4um" ]
+	then
+		ibland=" "
+		tg="g1.3"               # for specpr output titile
+	fi
+	if [ $i = "group.1.4um" ]
+	then
+		ibland=" "
+		tg="g1.4"               # for specpr output titile
+	fi
+	if [ $i = "group.1.5um" ]
+	then
+		ibland=" "
+		tg="g1.5"               # for specpr output titile
+	fi
+	if [ $i = "group.1.7um" ]
+	then
+		ibland=" "
+		tg="g1.7"               # for specpr output titile
+	fi
+	if [ $i = "group.1.9um" ]
+	then
+		ibland=" "
+		tg="g1.9"               # for specpr output titile
+	fi
+	if [ $i = "group.2.5um" ]
+	then
+		ibland=" "
+		tg="g2.5"               # for specpr output titile
+	fi
+	if [ $i = "group.3um" ]
+	then
+		ibland=" "
+		tg="g3"               # for specpr output titile
+	fi
+	if [ $i = "group.2.8um" ]
+	then
+		ibland=" "
+		tg="g2.8"             # for specpr output titile
+	fi
+	if [ $i = "group.3.5um_curve" -a $gcycle = 2 ]   # second time with bland" ]
+	then
+		ibland=" "   # add specpr file bland spectrum here
+		tg="g3.5"               # for specpr output titile
+	fi
+
+	if [ $i = "group.3.5um_curve" -a $gcycle = 1 ]
+	then
+		ibland=" -bland /d1/rclark/data/crism_j2/spd0588 11 "
+		tg="g3.5"               # for specpr output titile
+		gcycle=2  # next cycle will be 2
+	fi
+
+#    group.4um
+#    group.ree
+#    group.ree_neod
+#    group.ree_samar
+#    group.veg
+#    case.carbonate-2feat
+#    case.ep-cal-chl
+#    case.red-edge
+#    case.veg.type
+
+	if [ $i = "group.4um" ]
+	then
+		ibland=" "
+		tg="g4"               # for specpr output titile
+	fi
+	if [ $i = "group.ree" ]
+	then
+		ibland=" "
+		tg="gree"               # for specpr output titile
+	fi
+	if [ $i = "group.ree_neod" ]
+	then
+		ibland=" "
+		tg="grn "               # for specpr output titile
+	fi
+	if [ $i = "group.ree_samar" ]
+	then
+		ibland=" "
+		tg="grs "               # for specpr output titile
+	fi
+	if [ $i = "group.veg" ]
+	then
+		ibland=" "
+		tg="veg "               # for specpr output titile
+	fi
+	if [ $i = "case.carbonate-2feat" ]
+	then
+		ibland=" "
+		tg="c2f"               # for specpr output titile
+	fi
+	if [ $i = "case.ep-cal-chl" ]
+	then
+		ibland=" "
+		tg="cecc"               # for specpr output titile
+	fi
+	if [ $i = "case.red-edge" ]
+	then
+		ibland=" "
+		tg="cedg"              # for specpr output titile
+	fi
+	if [ $i = "case.veg.type" ]
+	then
+		ibland=" "
+		tg="cvty"               # for specpr output titile
+	fi
+
+	# now get specrtre
+
+	cp /dev/null results1                               # results for 1 group
+
+	cp /dev/null  $results_materials_avg_spectra_list1   # results for 1 group
+
+	grep ^$i $results  | grep WOW    >> $results1
+	grep ^$i $results  | grep Great  >> $results1
+	grep ^$i $results  | grep good   >> $results1
+	grep ^$i $results  | grep maybe  >> $results1
+
+	nresults1=`wc -l $results1`
+
+	echo "Number of results images to analyze= $nresults1"
+
+	alist=`cat $results1 | awk '{ print $1 }'`
+	for j in $alist
+	do
+		echo  '============ ' $j
+
+		bdepthfile=`echo $j | awk '{ print $1 }'`   # the tetracorder group*/*.fd.gz image output
+
+		echo $bdepthfile >> $results_materials_avg_spectra_list1
+
+		if [ ! -f "$bdepthfile" ]
+		then
+			echo "ERROR: mask image not found:  $bdepthfile"
+			echo "exit 1"
+			exit 1
+		fi
+
+		basen=`basename $bdepthfile .fd.gz`
+		b2=`echo $basen | sed -e 's/^organic./org/' | \
+				sed -e 's/generic/gn/' | \
+				sed -e 's/fe2+_/fe2+/' | \
+				sed -e 's/fe3+_/fe3+/' | \
+				sed -e 's/_smectite/sm/' | \
+				sed -e 's/smectite/sm/' | \
+				sed -e 's/water/h2o/' | \
+				sed -e 's/olivine_f/olivinef/' | \
+				sed -e 's/_sulfate/slf/' | \
+				sed -e 's/sulfate/slf/' | \
+				sed -e 's/trace/tr/' | \
+				sed -e 's/tr_/tr/' | \
+				sed -e 's/mica/mic/' | \
+				sed -e 's/phyllo/phy/' | \
+				sed -e 's/oh_/oh/' | \
+				sed -e 's/ohb_/ohb/' | \
+				sed -e 's/ohc_/ohc/' | \
+				sed -e 's/_zeolite/zeolt/' | \
+				sed -e 's/montmorillonite/montmorill/' | \
+				sed -e 's/carbonate/carbnt/'  `
+
+		d=`dirname $bdepthfile`
+
+		sptitl=`echo "$id $tg $b2                          "`
+		maskoutimage=maskimages/${d}.${basen}.fd.gif
+
+		echo " "
+		echo "davinci.get.avg.material.spectrum.from.tet+cube $acube $bdepthfile "
+		echo "		-out $maskoutimage"
+		# was echo "          -cluster 7 15 -weighted $ibland"
+		# was echo "          -cluster 5 12 -weighted $ibland"
+		echo "          -cluster 5 15 -weighted $ibland"
+		echo "          -waves $spwavesf $waverec "
+		echo "		-specpr  $spout  $sptitl  ENDTITLE  "
+		echo " "
+		#set -x
+		davinci.get.avg.material.spectrum.from.tet+cube $acube $bdepthfile \
+			-out $maskoutimage  \
+			-cluster 5 12 -weighted $ibland \
+			-waves $spwavesf $waverec  \
+			-specpr  $spout  $sptitl ENDTITLE
+
+			# -plot 0 1
+
+		#echo "press return to continue"
+		#read abc
+	done
+
+	cat $results1 >> $resultsa
+	cat $results_materials_avg_spectra_list1 >> $results_materials_avg_spectra_list
+done
+
+rm $results1
+rm $results_materials_avg_spectra_list1

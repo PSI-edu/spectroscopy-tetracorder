@@ -1,0 +1,28 @@
+#!/bin/sh
+
+if [ -z "$1" ]
+then
+	echo "usage: $0 newdirectoryname"
+	echo "exit 1"
+	exit 1
+fi
+
+if [ -d "$1" ]
+then
+	echo "ERROR: $1 exists, it should not"
+	echo "exit 1"
+	exit 1
+fi
+if [ -f "$1" ]
+then
+	echo "ERROR: $1 is a file and exists, it should not; it needs to be a new directory"
+	echo "exit 1"
+	exit 1
+fi
+
+dir=$1
+
+#    temperature 0 80 C  pressure  0.9 1.1 bar
+echo "/t1/tetracorder.cmds/tetracorder5.27c.cmds/cmd-setup-tetrun   $dir  ASDFS singlespectrum follow 0 80 C 0.9 1.1 bar autostart"
+
+/t1/tetracorder.cmds/tetracorder5.27c.cmds/cmd-setup-tetrun   $dir  ASDFS singlespectrum follow 0 80 c 0.9 1.1 bar autostart

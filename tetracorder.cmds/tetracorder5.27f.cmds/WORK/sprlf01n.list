@@ -1,0 +1,248 @@
+     1  USGS Digital Spectral Library: sprlf01n    410 Characters of TEXT
+     2  Cv ASD Fieldspec Res Lib AVIRIS95.1 224c   147 Characters of TEXT
+     3  ****************************************    41 Characters of TEXT
+     4  ****************************************    41 Characters of TEXT
+     5  ..                                          41 Characters of TEXT
+     6  Wavelengths in microns 224ch AVIRIS95.1    224  00:00:00.00  06/23/1995
+     7  Resolution  in microns 224ch AVIRIS95.1    224  00:00:00.00  06/23/1995
+     8  Data Channels for AVIRIS95.1 224ch         224  00:00:00.00  11/24/****
+     9  Acid Mine Dr Min Assemb 1 AVIRIS95.1       224  21:07:56.00  10/11/1995
+    10  Acid Mine Dr Assemb2 Hemat? AVIRIS95.1     224  20:05:02.00  08/23/1995
+    11  White Crust (Epsomite?)LV30 AVIRIS95.1     224  23:21:40.00  10/14/1995
+    12  Red Coated Algea Water AVIRIS95.1          224  21:17:51.00  10/11/1995
+    13  Red Coated Algae Water 2 AVIRIS95.1        224  21:17:51.00  10/11/1995
+    14  melting snow 1a AVIRIS95.1                 224  17:30:02.00  01/12/1996
+    15  melting snow 3 AVIRIS95.1                  224  17:44:15.00  01/12/1996
+    16  melting snow 4 AVIRIS95.1                  224  17:56:06.00  01/12/1996
+    17  melting snow 5 AVIRIS95.1                  224  17:58:27.00  01/12/1996
+    18  melting snow 8 AVIRIS95.1                  224  18:31:43.00  01/12/1996
+    19  melting snow (slush) 9 AVIRIS95.1          224  18:36:32.00  01/12/1996
+    20  melting snow (slush) 12 AVIRIS95.1         224  18:42:07.00  01/12/1996
+    21  melting snow (slush) 14 AVIRIS95.1         224  18:45:45.00  01/12/1996
+    22  melting snow (slush) 15 AVIRIS95.1         224  18:56:47.00  01/12/1996
+    23  melting snow (slush) 16 AVIRIS95.1         224  19:04:42.00  01/12/1996
+    24  Pinon_Pine ANP92-14A cspl AVIRIS95.1       224  14:18:41.00  05/13/1992
+    25  melting snow 1a + 0.5 veg AVIRIS95.1       224  14:18:41.00  05/13/1992
+    26  melting snow 3 + 0.5 veg AVIRIS95.1        224  14:18:41.00  05/13/1992
+    27  melting snow 8 + 0.5 veg AVIRIS95.1        224  14:18:41.00  05/13/1992
+    28  melting snow 9 + 0.5 veg AVIRIS95.1        224  14:18:41.00  05/13/1992
+    29  melting snow 16 + 0.5 veg AVIRIS95.1       224  14:18:41.00  05/13/1992
+    30  melting snow 16 + 0.25 veg AVIRIS95.1      224  14:18:41.00  05/13/1992
+    31  Soil Fluv. Tail Site A AVIRIS95.1          224  00:00:00.00  11/24/****
+    32  Dead Willow Fluv Tail Site A AVIRIS95.1    224  00:00:00.00  11/24/****
+    33  Schwertmannite+10%goejar Nb-1 AVIRIS95.1   224  00:00:00.00  11/24/****
+    34  Ferrihydrite >90% +goet Bt-3 AVIRIS95.1    224  00:00:00.00  11/24/****
+    35  Soil40%+Salt30%+DdWillow Amix AVIRIS95.1   224  00:00:00.00  11/24/****
+    36  Soil FluvTail50% + DeadWillow AVIRIS95.1   224  00:00:00.00  11/24/****
+    37  Soil FluvTail50% + Salt LV30 AVIRIS95.1    224  23:21:40.00  10/14/1995
+    38  Salt LV30 50% + Dead Willow AVIRIS95.1     224  00:00:00.00  11/24/****
+    39  Hydr Jarosite CtQtz LV95-27A AVIRIS95.1    224  00:00:00.00  11/24/****
+    40  Goethite +JarosCtQtz LV95-27B AVIRIS95.1   224  00:00:00.00  11/24/****
+    41  Epid-Chlor lava Burns Fm. AVIRIS95.1       224  05:50:52.00  12/19/1997
+    42  GDS 301 Epidote 75-150um AVIRIS95.1        224  14:26:38.00  07/28/1999
+    43  GDS304 Calcite 75-150um AVIRIS95.1         224  14:17:33.00  07/28/1999
+    44  GDS307 Chlorite 75-150u AVIRIS95.1         224  14:40:50.00  07/28/1999
+    45  GDS308 CEC-B 80Ch10Ep10Ca AVIRIS95.1       224  16:37:27.00  07/28/1999
+    46  GDS309 CEC-C 10Ch10Ep80Ca AVIRIS95.1       224  16:44:16.00  07/28/1999
+    47  GDS310 CEC-D 33Ep66Ca     AVIRIS95.1       224  16:54:47.00  07/28/1999
+    48  GDS311 CEC-E 66Ep33Ca     AVIRIS95.1       224  16:59:47.00  07/28/1999
+    49  GDS312 CEC-G 20Ch60Ep20Ca AVIRIS95.1       224  17:06:10.00  07/28/1999
+    50  GDS313 CEC-H 60Ch20Ep20Ca AVIRIS95.1       224  17:11:16.00  07/28/1999
+    51  GDS314 CEC-I 20Ch20Ep60Ca AVIRIS95.1       224  17:17:26.00  07/28/1999
+    52  GDS315 CEC-J 33Ch66Ca     AVIRIS95.1       224  17:23:23.00  07/28/1999
+    53  GDS316 CEC-K 66Ch33Ca     AVIRIS95.1       224  05:23:38.00  07/31/1999
+    54  GDS317 CEC-L 66Ch33Ep     AVIRIS95.1       224  05:31:24.00  07/31/1999
+    55  GDS318 CEC-M 33Ch66Ep     AVIRIS95.1       224  05:38:00.00  07/31/1999
+    56  GDS319 CEC-N 33Ch33Ep33Ca AVIRIS95.1       224  05:45:27.00  07/31/1999
+    57  SJ98-120 CEC cement creek AVIRIS95.1       224  18:19:57.00  08/04/1999
+    58  SJ98-122 CEC Cement Creek AVIRIS95.1       224  20:36:35.00  08/04/1999
+    59  SJ98-128A CEC CmntCrk Red AVIRIS95.1       224  20:45:18.00  08/04/1999
+    60  SJ98-128B CEC CmntCrkBare AVIRIS95.1       224  20:54:26.00  08/04/1999
+    61  SJ98-128C CEC w Lichen    AVIRIS95.1       224  21:00:17.00  08/04/1999
+    62  SJ98-128D CEC w Lichen    AVIRIS95.1       224  21:50:27.00  08/04/1999
+    63  CEC IDB7297          AVIRIS95.1            224  04:32:48.00  07/03/1999
+    64  CEC IDB6597          AVIRIS95.1            224  04:41:34.00  07/03/1999
+    65  CEC SDY9767          AVIRIS95.1            224  03:51:55.00  07/03/1999
+    66  CEC SDY9752          AVIRIS95.1            224  03:34:20.00  07/03/1999
+    67  CEC SJ98-101C        AVIRIS95.1            224  01:40:20.00  07/07/1999
+    68  CEC SJ98-113 Chlorite AVIRIS95.1           224  01:17:36.00  07/07/1999
+    69  CEC SJ98-114 Epidote  AVIRIS95.1           224  02:08:41.00  07/07/1999
+    70  CEC SJ98-92A Calcite  AVIRIS95.1           224  13:36:57.00  07/28/1999
+    71  JH-PYRM1 pyroph+musc fsp AVIRIS95.1        224  18:44:07.00  09/24/2002
+    72  JH_PYRP1 musc+pyroph AVIRIS95.1            224  18:47:53.00  08/27/1999
+    73  Ferroan Dolomite ML97-3 AVIRIS95.1         224  23:48:21.00  04/15/1998
+    74  Water + SWy-2 (.5g/l) AVIRIS95.1           224  00:00:00.00  11/24/****
+    75  Water + SWy-2 (5.01g/l) AVIRIS95.1         224  00:00:00.00  11/24/****
+    76  Water + SWy-2 (1.67g/l) AVIRIS95.1         224  00:00:00.00  11/24/****
+    77  Water + SWy-2 (16.5g/l) AVIRIS95.1         224  00:00:00.00  11/24/****
+    78  Lichen, green (Xanthoparm.)#1 AVIRIS95.1   224  20:48:43.00  10/08/1996
+    79  Lichen, green (Xanthoparm.)#2 AVIRIS95.1   224  21:00:12.00  10/08/1996
+    80  Lichen, grey-black(Licedea)#1 AVIRIS95.1   224  21:10:10.00  10/08/1996
+    81  Lichen, grey-black(Licedea)#2 AVIRIS95.1   224  21:58:33.00  10/08/1996
+    82  Lichen,yellow-grn(Acarospora) AVIRIS95.1   224  21:31:56.00  10/08/1996
+    83  Lichen, orange (Xanthoria) AVIRIS95.1      224  21:24:13.00  10/08/1996
+    84  Cactus,purple pad(Opuntia v.) AVIRIS95.1   224  23:32:56.00  06/17/1997
+    85  Paper, 100% Cotton Bond AVIRIS95.1         224  22:40:40.00  09/25/1997
+    86  Leafy Spurge, green 25sep97 AVIRIS95.1     224  20:04:07.00  09/25/1997
+    87  Leafy Spurge, orange 22oct97 AVIRIS95.1    224  20:22:49.00  10/22/1997
+    88  Leafy Spurge, red 22oct97 AVIRIS95.1       224  20:31:40.00  10/22/1997
+    89  Aspen, yellow leaf (top) AVIRIS95.1        224  19:06:20.00  10/04/1996
+    90  Aspen,yellow-green leaf(top) AVIRIS95.1    224  19:17:29.00  10/04/1996
+    91  Aspen, green leaf (top) AVIRIS95.1         224  18:52:43.00  10/04/1996
+    92  Aspen, green leaf (bottom) AVIRIS95.1      224  18:54:52.00  10/04/1996
+    93  Oak, fresh green leaf (top) AVIRIS95.1     224  18:17:24.00  07/23/1997
+    94  Oak, dried green leaf (top) AVIRIS95.1     224  23:17:44.00  07/28/1997
+    95  Petunia, flower (deep pink) AVIRIS95.1     224  18:35:47.00  07/22/1997
+    96  Platycodon, flower (blue) AVIRIS95.1       224  18:58:35.00  07/22/1997
+    97  Geranium, flower (red-orange) AVIRIS95.1   224  18:50:05.00  07/22/1997
+    98  Pansy, flower (yellow) AVIRIS95.1          224  19:05:53.00  07/22/1997
+    99  Lodgepole Pine,needles(green) AVIRIS95.1   224  22:26:19.00  09/19/1997
+   100  Lodgepole Pine,nedls(dry&brn) AVIRIS95.1   224  22:36:13.00  09/19/1997
+   101  Engelmann Spruce,ndls(blugrn) AVIRIS95.1   224  22:18:05.00  09/19/1997
+   102  Sagebrush,leaves(blue-green) AVIRIS95.1    224  21:13:23.00  09/19/1997
+   103  Willow, leaves (dry & green) AVIRIS95.1    224  23:04:17.00  09/19/1997
+   104  Lodgepole Pine,ndls(dry&grn) AVIRIS95.1    224  21:05:18.00  09/22/1997
+   105  Cheatgrass, field (ANP Calib) AVIRIS95.1   224  17:57:33.00  06/19/1995
+   106  Lechatelierite MC99-11C AVIRIS95.1         224  00:31:21.00  02/10/2000
+   107  Shocked Kiabab Ls MC99-11B AVIRIS95.1      224  15:55:27.00  02/10/2000
+   108  Dolomitic SS Kiabab MC99-6 AVIRIS95.1      224  16:01:05.00  02/10/2000
+   109  Impact Melt Rock MC00-1D AVIRIS95.1        224  16:04:57.00  02/10/2000
+   110  Impact Melt Rock MC00-1C AVIRIS95.1        224  16:08:48.00  02/10/2000
+   111  Impact Melt Rock MC00-1A AVIRIS95.1        224  16:12:11.00  02/10/2000
+   112  Impact Melt Rock MC00-1B AVIRIS95.1        224  16:16:34.00  02/10/2000
+   113  Powdered Coconi SS MC99-10 AVIRIS95.1      224  17:22:49.00  02/10/2000
+   114  Brucite Kiab MC99-11D AVIRIS95.1           224  17:25:34.00  02/10/2000
+   115  Hydromagnesite MC99-11D AVIRIS95.1         224  17:29:09.00  02/10/2000
+   116  Hydromagnesite MC99-11D AVIRIS95.1         224  17:33:53.00  02/10/2000
+   117  Kaol+Hydromag MC99-12A AVIRIS95.1          224  17:37:31.00  02/10/2000
+   118  Kaolinite+Talc MC99-12A AVIRIS95.1         224  17:40:33.00  02/10/2000
+   119  Sandstone Cocon MC99-9 AVIRIS95.1          224  17:47:59.00  02/10/2000
+   120  Sandstone Co/Tor MC99-9 AVIRIS95.1         224  17:50:51.00  02/10/2000
+   121  Sandstone Co/Tor MC99-12A AVIRIS95.1       224  17:53:24.00  02/10/2000
+   122  Sandstone Kiab MC99-4 AVIRIS95.1           224  17:56:35.00  02/10/2000
+   123  Dolomite Kiab MC99-7 AVIRIS95.1            224  17:58:51.00  02/10/2000
+   124  AVG White PVC Pipe GDS338*Sp AVIRIS95.1    224  20:40:51.00  01/20/2000
+   125  AVG Green Plastic Tarp GDS339 AVIRIS95.1   224  22:59:18.00  01/19/2000
+   126  MV99-6-26b YJ Na-alun+dickite AVIRIS95.1   224  00:00:00.00  11/24/****
+   127  Marysvale BRCM1 Gyp+Jar+Ill AVIRIS95.1     224  00:04:39.00  12/15/1999
+   128  Chrysotile Shcist ML99-12 AVIRIS95.1       224  16:31:02.00  04/05/2000
+   129  PC99-1G TALC talc1g AVIRIS95.1             224  21:38:53.00  09/24/2002
+   130  PC99-1E EMPIRE CANYON talc1h AVIRIS95.1    224  01:00:39.00  07/28/1999
+   131  Chlorite Phyllite ML99-8 AVIRIS95.1        224  15:52:09.00  07/14/2000
+   132  Green Schist ML99-6 Epchactcc AVIRIS95.1   224  23:48:44.00  07/13/2000
+   133  Maraposite+Fedolo ML99-11A AVIRIS95.1      224  16:29:10.00  07/14/2000
+   134  Mas Chrysotile? GneissML99-1B AVIRIS95.1   224  17:37:08.00  07/14/2000
+   135  Fine Fib Chrysotile ML99-12C AVIRIS95.1    224  16:55:43.00  07/14/2000
+   136  Coar Fib Chrysotile ML99-12A AVIRIS95.1    224  16:42:26.00  07/14/2000
+   137  Tremol?+Chrysotile? ML99-1A AVIRIS95.1     224  17:36:01.00  07/14/2000
+   138  Golden Dry Grass GDS480 AVIRIS95.1         224  22:08:19.00  07/16/2000
+   139  Chrysotile +20%DryGrass Amix AVIRIS95.1    224  22:08:19.00  07/16/2000
+   140  Chrysotile + 33%DryGrass Amix AVIRIS95.1   224  22:08:19.00  07/16/2000
+   141  MV2-AR3 Kalun-kaol-goe fspED AVIRIS95.1    224  00:00:00.00  11/24/****
+   142  MV00-11a Naalun + kaol rk fsp AVIRIS95.1   224  20:48:51.00  09/24/2002
+   143  LgGray Paint Aluminum GDS333 AVIRIS95.1    224  00:07:06.00  11/17/2000
+   144  White Opal CU00-15E AVIRIS95.1             224  21:17:07.00  11/21/2000
+   145  Clear Chalcedony CU00-15D AVIRIS95.1       224  21:14:16.00  11/21/2000
+   146  Alunite HS295.1B <5um AVIRIS95.1           224  23:25:16.00  06/01/2001
+   147  Alunite HS295.2B <74um AVIRIS95.1          224  23:25:17.00  06/01/2001
+   148  Alunite HS295.3B 74-250um AVIRIS95.1       224  23:25:18.00  06/01/2001
+   149  Alunite HS295.4B 250-1200um AVIRIS95.1     224  23:27:51.00  06/01/2001
+   150  GF00-10 Kalu+mu+pyro+jar fsp AVIRIS95.1    224  21:05:40.00  09/24/2002
+   151  Chalcedony CU00-15D <250um AVIRIS95.1      224  22:07:34.00  07/13/2001
+   152  Hydrat Volcanic Tuff CU01-4A AVIRIS95.1    224  20:09:04.00  07/11/2001
+   153  Fresh Cedar Shake GDS357 AVIRIS95.1        224  20:37:26.00  09/12/2001
+   154  Slg Weather Cedar ShakeGDS358 AVIRIS95.1   224  20:37:26.00  09/12/2001
+   155  Med Weathd Cedar Shake GDS359 AVIRIS95.1   224  20:37:24.00  09/12/2001
+   156  H Wea Cedr ShakeGDS360 w/moss AVIRIS95.1   224  20:37:25.00  09/12/2001
+   157  H Weather Cedar Shake GDS361 AVIRIS95.1    224  20:37:24.00  09/12/2001
+   158  Galvanized Sheet Metal GDS334 AVIRIS95.1   224  20:37:18.00  09/12/2001
+   159  Blu  Wovn Plastic Tarp GDS340 AVIRIS95.1   224  20:37:19.00  09/12/2001
+   160  Grn Woven Plastic Tarp GDS339 AVIRIS95.1   224  20:37:19.00  09/12/2001
+   161  Clear Visqueen Plastic GDS370 AVIRIS95.1   224  20:37:19.00  09/12/2001
+   162  Clear Plastic ZiplkBag GDS343 AVIRIS95.1   224  21:12:10.00  09/12/2001
+   163  Wht Vinyl Plastic SheetGDS372 AVIRIS95.1   224  20:37:20.00  09/12/2001
+   164  Grey HDPE Plastic GDS373 Bag AVIRIS95.1    224  20:37:20.00  09/12/2001
+   165  White Tyvek Plastic GDS369 AVIRIS95.1      224  20:37:20.00  09/12/2001
+   166  Grn Fiberglass Roofing GDS337 AVIRIS95.1   224  20:37:21.00  09/12/2001
+   167  Grn Fiberglass Roofing GDS336 AVIRIS95.1   224  20:37:21.00  09/12/2001
+   168  Wht Fiberglass Roofing GDS335 AVIRIS95.1   224  20:37:21.00  09/12/2001
+   169  Blk HDPE Plastic Sheet GDS351 AVIRIS95.1   224  20:37:21.00  09/12/2001
+   170  Lt Gray Paint Al Roof GDS3333 AVIRIS95.1   224  20:37:22.00  09/12/2001
+   171  Black Roof Asphalt Tar GDS346 AVIRIS95.1   224  20:37:22.00  09/12/2001
+   172  Lgray Asphalt Shingle GDS368 AVIRIS95.1    224  20:37:22.00  09/12/2001
+   173  Dk Grey Asphalt ShingleGDS367 AVIRIS95.1   224  20:37:23.00  09/12/2001
+   174  Tan Asphalt Shingle GDS366 AVIRIS95.1      224  20:37:23.00  09/12/2001
+   175  Brn Corrugated Cardbrd GDS371 AVIRIS95.1   224  20:37:23.00  09/12/2001
+   176  Black Roofing Felt GDS377 AVIRIS95.1       224  20:37:24.00  09/12/2001
+   177  New Black Tar Paper GDS285A AVIRIS95.1     224  20:37:24.00  09/12/2001
+   178  Weather Blk TarPaper GDS285B AVIRIS95.1    224  20:37:25.00  09/12/2001
+   179  Fresh Pine Plywood GDS365 AVIRIS95.1       224  20:37:25.00  09/12/2001
+   180  fn gr Particle Board GDS364 AVIRIS95.1     224  20:37:25.00  09/12/2001
+   181  Oriented Strand Board GDS362 AVIRIS95.1    224  20:37:26.00  09/12/2001
+   182  Blu Polystyrene InsulatGDS345 AVIRIS95.1   224  20:37:26.00  09/12/2001
+   183  Lg Grey Cinder Block GDS356 AVIRIS95.1     224  20:37:27.00  09/12/2001
+   184  New Pine 2X4 Wood Beam GDS363 AVIRIS95.1   224  20:37:27.00  09/12/2001
+   185  Pink Fiberglas Insulat GDS374 AVIRIS95.1   224  20:37:27.00  09/12/2001
+   186  Blu Plst Watermain PipeGDS344 AVIRIS95.1   224  20:37:28.00  09/12/2001
+   187  Black Road Asphalt GDS376 old AVIRIS95.1   224  20:37:28.00  09/12/2001
+   188  Lt Grey Road Concrete GDS375 AVIRIS95.1    224  20:55:42.00  09/12/2001
+   189  Black ABS Pipe GDS341 AVIRIS95.1           224  20:37:29.00  09/12/2001
+   190  White PVC Pipe GDS338 AVIRIS95.1           224  20:37:29.00  09/12/2001
+   191  Blk Corrugd Drain Pipe GDS342 AVIRIS95.1   224  20:37:29.00  09/12/2001
+   192  Rusted TinCanGDS378 MV99-6-15 AVIRIS95.1   224  20:37:29.00  09/12/2001
+   193  Dk Red Building Brick GDS350 AVIRIS95.1    224  20:37:30.00  09/12/2001
+   194  Med Red Building Brick GDS353 AVIRIS95.1   224  20:55:43.00  09/12/2001
+   195  Lt Grey Building Brick GDS354 AVIRIS95.1   224  20:55:43.00  09/12/2001
+   196  Dk Grey Building Brick GDS355 AVIRIS95.1   224  20:55:43.00  09/12/2001
+   197  Tan Paving Brick GDS347 AVIRIS95.1         224  20:55:44.00  09/12/2001
+   198  Dk Brn Gray Pave Brick GDS348 AVIRIS95.1   224  20:55:44.00  09/12/2001
+   199  Red Paving Brick GDS349 AVIRIS95.1         224  20:55:44.00  09/12/2001
+   200  Wh Transluc HDPE Plast GDS400 AVIRIS95.1   224  20:55:45.00  09/12/2001
+   201  Clear Fiberglass Roof GDS399 AVIRIS95.1    224  20:55:45.00  09/12/2001
+   202  Clear LDPE Plastic filmGDS402 AVIRIS95.1   224  20:55:45.00  09/12/2001
+   203  Wh Transluc LDPE Plast GDS404 AVIRIS95.1   224  20:55:46.00  09/12/2001
+   204  Black LDPE Plastic GDS405 AVIRIS95.1       224  20:55:46.00  09/12/2001
+   205  Wht Transluc LDPE PlastGDS406 AVIRIS95.1   224  20:55:46.00  09/12/2001
+   206  Clr-purpl PETE Plastic GDS381 AVIRIS95.1   224  20:37:30.00  09/12/2001
+   207  Clr-bluish PETE Plastc GDS383 AVIRIS95.1   224  20:37:30.00  09/12/2001
+   208  Clear PETE Plast GDS380 .04mm AVIRIS95.1   224  20:37:31.00  09/12/2001
+   209  Blk PETE Plastic GDS382 .04mm AVIRIS95.1   224  20:37:31.00  09/12/2001
+   210  Transluc Brn PETE PlastGDS379 AVIRIS95.1   224  20:37:31.00  09/12/2001
+   211  Wh Transluc HDPE Plast GDS385 AVIRIS95.1   224  20:37:31.00  09/12/2001
+   212  Yel opaque HDPE PlasticGDS386 AVIRIS95.1   224  20:37:32.00  09/12/2001
+   213  Wh Transluc HDPE Plast GDS387 AVIRIS95.1   224  20:37:32.00  09/12/2001
+   214  Wht Opaque HDPE PlasticGDS384 AVIRIS95.1   224  20:37:32.00  09/12/2001
+   215  Wh Transluc HDPE Plast GDS389 AVIRIS95.1   224  20:37:32.00  09/12/2001
+   216  Blu-Grn HDPE Plastic GDS391 AVIRIS95.1     224  20:37:33.00  09/12/2001
+   217  Wh Transluc HDPE Plast GDS392 AVIRIS95.1   224  20:37:33.00  09/12/2001
+   218  Glos WhTrans HDPE GDS393Plast AVIRIS95.1   224  20:37:33.00  09/12/2001
+   219  Transparent HDPE Plast GDS390 AVIRIS95.1   224  20:37:33.00  09/12/2001
+   220  LgreyTranslu HDPE GDS394Plast AVIRIS95.1   224  20:37:34.00  09/12/2001
+   221  RedVinyl? Plastic GDS398 Toy AVIRIS95.1    224  20:37:34.00  09/12/2001
+   222  Clear Vinyl PlastGDS395 1.0mm AVIRIS95.1   224  20:37:34.00  09/12/2001
+   223  Cement WTC01-37A AVIRIS95.1                224  02:16:18.00  09/25/2001
+   224  Portlandite GDS525 Ca(OH)2 AVIRIS95.1      224  17:48:53.00  10/02/2001
+   225  Dust & Debris WTC01-28 AVIRIS95.1          224  19:57:25.00  09/21/2001
+   226  Dust & Debris WTC01-2 AVIRIS95.1           224  19:57:24.00  09/21/2001
+   227  WTC01-15+5% Chrysotile GDS526 AVIRIS95.1   224  19:32:55.00  10/02/2001
+   228  Alunogen WS362 Italy AVG AVIRIS95.1        224  22:57:53.00  10/12/2001
+   229  Monocoat Steel Girder WTC01-8 AVIRIS95.1   224  21:36:46.00  09/21/2001
+   230  Dust & Debris WTC01-15 AVIRIS95.1          224  19:54:21.00  09/21/2001
+   231  Dust in Apartment WTC01-36 AVIRIS95.1      224  02:16:19.00  09/25/2001
+   232  Wall Board Powder GDS524 AVIRIS95.1        224  02:16:18.00  09/25/2001
+   233  Cement from WTC01-37Ac ext AVIRIS95.1      224  02:16:18.00  09/25/2001
+   234  Concrete matix WTC01-37Am AVIRIS95.1       224  02:17:49.00  09/25/2001
+   235  Concrete matrix WTC01-37B AVIRIS95.1       224  02:16:19.00  09/25/2001
+   236  Top Black Surface Ash AVG AVIRIS95.1       224  18:52:11.00  02/07/2002
+   237  Burn Area Traverse AVG AVIRIS95.1          224  18:50:09.00  02/07/2002
+   238  Montmorillonite RX2-1 Swelcly AVIRIS95.1   224  21:27:05.00  08/23/2002
+   239  Claystone RX2-2 Nonswellclay AVIRIS95.1    224  21:27:05.00  08/23/2002
+   240  White Crust (Epsomite?)LV30 AVIRIS95.1     224  00:00:00.00  11/24/****
+   241  Dead Willow Fluv Tail Site A AVIRIS95.1    224  00:00:00.00  11/24/****
+   242  GDS316 CEC-K 66Ch33Ca AVIRIS95.1           224  05:23:38.00  07/31/1999
+   243  GDS317 CEC-L 66Ch33Ep AVIRIS95.1           224  05:31:24.00  07/31/1999
+   244  GDS318 CEC-M 33Ch66Ep AVIRIS95.1           224  05:38:00.00  07/31/1999
+   245  GDS319 CEC-N 33Ch33Ep33Ca AVIRIS95.1       224  05:45:27.00  07/31/1999
+   246  JH_PYRP1 musc+pyroph AVIRIS95.1            224  18:47:53.00  08/27/1999
+   247  Willow, leaves (dry&green) AVIRIS95.1      224  23:04:17.00  09/19/1997
+ done

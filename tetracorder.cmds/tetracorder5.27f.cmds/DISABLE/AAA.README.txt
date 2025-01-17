@@ -1,0 +1,10 @@
+
+Edit if you want to force disbaling a group or case.
+
+default  = all enabled
+
+force-disable-default-vnir.txt  = disable groups outside of 0.35 - 2.5 microns
+                                           and the 1.4 and 1.9 micron terrestrial
+                                           wate rbane absorptions.
+
+

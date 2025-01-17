@@ -1,0 +1,50 @@
+ENABLE  grp  1 \# group 1:  electronic absorptions UV to 1-micron region
+ENABLE  grp  2 \# group 2:  2 to 2.5-micron region narrow
+ENABLE  grp  3 \# group 3:  vegetation detection
+ENABLE  grp  4 \# group 4:  broad absorptions in the 1.5-micron region
+ENABLE  grp  5 \# group 5:  broad absorptions in the 2-micron region
+ENABLE  grp  6 \# group 6:  2.5-micron region
+ENABLE  grp  7 \# group 7:  2.7 to 3-micron OH region
+ENABLE  grp  8 \# group 8:  2.7 - 2.8-micron OH region narrow bands
+DISABLE grp  9 \# group 9:  UV (0.1 - 0.3 microns)
+ENABLE  grp 10 \# group 10: testing 3.5 um curved continua
+ENABLE  grp 11 \# group 11: 3.5-micron region linear continua
+ENABLE  grp 12 \# group 12:
+ENABLE  grp 13 \# group 13: 1.3-1.4 micron OH narrow
+ENABLE  grp 14 \# group 14: 1.4-1.5 micron OH narrow
+ENABLE  grp 15 \# group 15: 1.5 micron OH     narrow
+ENABLE  grp 16 \# group 16: 1.5-1.6 micron OH narrow
+ENABLE  grp 17 \# group 17: 1.7 microns CH and water    Future
+ENABLE  grp 18 \# group 18: 1.8 micron region
+ENABLE  grp 19 \# group 19: 1.9-2 micron water and ice
+ENABLE  grp 20 \# group 20: the search for rare-earth oxides
+ENABLE  grp 21 \# group 21: the search for rare-earth oxide Neodymium
+ENABLE  grp 22 \# group 22: the search for rare-earth oxide Samarium
+
+ENABLE  grp 23 \# group 23: 3.8 micron region includes OD stretches
+ENABLE  grp 24 \# group 24: 4-micron region
+ENABLE  grp 25 \# group 25: 4.1-micron region
+ENABLE  grp 26 \# group 26: 4.25 micron CO2 trapped, ice
+ENABLE  grp 27 \# group 27: 4.5-micron region includes sulfates
+ENABLE  grp 28 \# group 28: 5-micron region includes silicate overtones
+DISABLE grp 29 \# group 29: 6-micron region, includes H-O-H bends
+DISABLE grp 30 \# group 30: 7-8-micron region
+DISABLE grp 31 \# group 31: 8-10-micron region
+DISABLE grp 32 \# group 32: 10-12-micron region
+DISABLE grp 33 \# group 33: 12-14-micron region
+DISABLE grp 34 \# group 34: 14-16-micron region
+DISABLE grp 35 \# group 35: 16-19-micron region
+DISABLE grp 36 \# group 36: 19-22-micron region
+
+ENABLE  grp 37 \# group 37: search for methane plume 2.3 micron
+ENABLE  grp 38 \# group 38: search for CO2 gas, 2 microns
+ENABLE  grp 39 \# group 39:
+ENABLE  grp 40 \# group 40:
+
+ENABLE  cse  1 \# case 1:   Vegetation red edge shift
+ENABLE  cse  2 \# case 2:   Vegetation spectral type
+ENABLE  cse  3 \# case 3:   Vegetation 0.9um-band depth
+ENABLE  cse  4 \# case 4:   Vegetation 1.2um-band depth
+ENABLE  cse  5 \# case 5:   Vegetation 1.4um-band depth
+ENABLE  cse  6 \# case 6:   Epidote-Chlorite-Calcite mixture series
+ENABLE  cse  7 \# case 7:   Carbonate 2.3 + 2.5 micron feature detection
