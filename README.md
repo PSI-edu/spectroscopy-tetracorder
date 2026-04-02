@@ -288,3 +288,36 @@ of specpr text records.
 If you want a python specpr file reading routine, check here:
 
 specpr/src.opal-py-python-specpr-reader-plots
+
+# April 2, 2026
+
+Spectral libraries for several instruments added, including AVIRIS classic 2019 thru 2024.
+
+Tetracorder source code expanded to handle the increased size of Tetracorder
+the expert system 5.27g series.
+
+Added Tetracorder expert system 5.27g.  This expert system is the starting candidate
+for EMIT recalculations that will use an updated reflectance model.  Expert system
+5.27g2 includes fixes to improve identification and mapping accuracy from our experience
+mapping the world with EMIT data, and further verifications with AVIRIS data.
+Expert system 5.27g2 is the starting point for Tetracorder 6.00 that will be
+used for the EMIT recalculations with new capabilities based on
+Noe Dobrea et al., 2025.  REE Group 20 in 5.27g2 will be removed in
+6.00a3 and used for something else in the future, and REE group 21 will
+remain as the main REE detection group.
+
+AS ALWAYS, all Tetracorder results should be verified for accuracy, and the 
+AAAAA.KNOWN-ISSUES.txt file read in full to understand limitations.
+Small errors in reflectance model accuracy can affect identifications.
+
+Noe Dobrea, Eldar Z., Maria E. Banks, Roger N. Clark, David
+Wettergreen, Amanda Hendrix, Caitlin Ahrens, Ernie Bell,
+Abigail Breitfeld, Thomas F. Bristow, Sanlyn Buxner, Alberto
+Candela, Margaret Hansen, Greg Holsclaw, Paul Knightly, Georgiana
+Kramer, Nandita Kumari, Melissa D. Lane, Audrey Martin, McKayla
+Meier, Ruby Patterson, Neil Pearson, Thomas Prettyman, Greg
+A. Swayze, David Vaniman, Srinivasan Vijayarangan, Faith Vilas,
+Shawn P. Wright, 2025, Rover Science Autonomy in Planetary
+Exploration: Field Analog Tests, Planetary Science Journal
+6:51. https://iopscience.iop.org/article/10.3847/PSJ/adaa78
+
