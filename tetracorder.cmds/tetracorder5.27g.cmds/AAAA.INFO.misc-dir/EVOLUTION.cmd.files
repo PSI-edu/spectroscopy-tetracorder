@@ -1,0 +1,15 @@
+3.4a9 = 3.5a9 (added sound capability)
+
+        3.5a10 = 3.4a9 + dry long grass
+
+3.6: add weak features
+
+        3.6a1 = 3.5a10 + water-clay mixes, siderite,
+                         more alunites, pyrophyllite+muscovites,
+                         calcite-kaolinite mixes, Chrysocolla,
+                         Azurite, Malachite, Zunyite, Topaz
+                         Calcite-epidote-chlorite mixtures
+
+3.7: add fuzzy logic
+
+     3.6a8 = 3.7a1 modified for fuzzy logic

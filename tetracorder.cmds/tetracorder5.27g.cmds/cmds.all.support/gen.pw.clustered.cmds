@@ -1,0 +1,110 @@
+#!/bin/sh
+#set -x
+
+# Roger N. Clark, August 22, 1995
+
+out=results.cluster
+out2=${out}.sorted
+tmp=${out}$$
+
+# make pw commands from the sorted list so the images with
+# most clustering can be displayed first.
+# Because pw currently can view 16 images at a time,
+# make pw commands to display groups of 16 images.
+
+for i in \
+        group.1um \
+        group.2um \
+	group.2um-broad \
+	group.2.5um \
+        group.veg \
+        case.veg.type \
+        case.red-edge
+do
+	echo "making $i pw commands"
+
+	grep "^$i\/" $out2 | grep -v none | \
+		grep -v zero | \
+		grep -v "group.2um/kaolinite.3+.5+smectite.5+.7." | \
+		grep -v "group.2um/alunite+kaolinite.muscovite" | \
+		awk '{ print $1 }' > $tmp
+
+	a=`head -16 $tmp`
+	x=`head -16 $tmp | wc -l | awk '{ print $1 }'`
+	echo "pw -c 13 -s 3 $a" > pw.$i.top$x
+
+	ex - pw.$i.top$x <<EOI
+		g/\$/ s// \\\\/
+		\$s/ \\\\\$/ \\&/
+		w
+		q
+
+EOI
+	chmod 775 pw.$i.top$x
+
+	lines=`cat $tmp | wc -l | awk '{ print $1 }'`
+	#echo "DEBUG: lines= $lines"
+	if [ "$lines" -gt 16 ]
+	then
+
+		b=`sed -e '1,16d' $tmp | head -16`
+		x=`sed -e '1,16d' $tmp | head -16 | wc -l | awk '{ print $1 }'`
+		if [ "$b" != "" ]
+		then
+			echo "pw -c 13 -s 3 $b" > pw.$i.2nd$x
+		fi
+
+		ex - pw.$i.2nd$x <<EOI
+			g/\$/ s// \\\\/
+			\$s/ \\\\\$/ \\&/
+			w
+			q
+
+EOI
+		chmod 775 pw.$i.2nd$x
+
+	fi
+
+	if [ "$lines" -gt 32 ]
+	then
+
+		c=`sed -e '1,32d' $tmp | head -16`
+		x=`sed -e '1,32d' $tmp | head -16 | wc -l | awk '{ print $1 }'`
+		if [ "$c" != "" ]
+		then
+			echo "pw -c 13 -s 3 $c" > pw.$i.3rd$x
+		fi
+
+		ex - pw.$i.3rd$x <<EOI
+			g/\$/ s// \\\\/
+			\$s/ \\\\\$/ \\&/
+			w
+			q
+
+EOI
+		chmod 775 pw.$i.3rd$x
+
+	fi
+
+
+done
+
+echo "making pw commands for combined images"
+
+cat > pw.group.2um.combined <<EOI
+pw -c 13 -s 3 group.2um/kaolinite.3+.5+smectite.5+.7.fd.gz \
+		group.2um/alunite+kaolinite.muscovite.fd.gz &
+
+# note group.2um/kaolinite.3+.5+smectite.5+.7.fd.gz is a combination of:
+#     group.2um/kaolin.3+smect.7.fd.gz
+#     group.2um/kaolin.5+smect.5.fd.gz
+#
+# note group.2um/alunite+kaolinite.muscovite.fd.gz is a combination of:
+#     group.2um/alunite.33+kaol.33+musc.33.fd.gz
+#     group.2um/alunite.5+musc.5.fd.gz
+#     group.2um/alunite.5+kaol.5.fd.gz
+EOI
+chmod 775 pw.group.2um.combined
+
+echo "making pw commands complete"
+rm $tmp

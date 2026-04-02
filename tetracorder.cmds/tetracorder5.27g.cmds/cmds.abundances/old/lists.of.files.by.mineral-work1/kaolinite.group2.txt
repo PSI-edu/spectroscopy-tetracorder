@@ -1,0 +1,19 @@
+Kaolinite CM9			    kaolgrp_kaolinite_wxl
+Kaolinite KGa-2 (pxl)		    kaolgrp_kaolinite_pxl
+Halloysite NMNH106237		    kaolgrp_halloysite
+Dickite NMNH106242		    kaolgrp_dickite
+
+Kaolin_Smect H89-FR-2 .5Kaol	    kaolin.5+smect.5
+Kaolin_Smect H89-FR-5 .3Kaol	    kaolin.3+smect.7
+Kaolwxl.75+Alun_HS295 AMX14	    kaol.75+pyroph.25
+Alunite0.5+Kaol_KGa-1 AMX3	    alunite.5+kaol.5
+Kaolwxl.75+Alun_HS295 AMX14	    kaol.75+alun.25
+Kalun+kaol+gth mv2-ar3		    Kalun+kaol.intmx
+Alun_Na+Kaol+Hemat  MV00-11a	    Na-alun+kaol.intmx
+Kaol.5+MuscCU91-250A AMX13	    kaolin.5+muscov.medAl
+Kaol_Wxl+0.5Musc_Ruby AMX12	    kaolin.5+muscov.medhighAl
+Kaol+Musc_intimate CU93-5C	    kaolin+musc.intimat
+Alun.33+Kaol.33+Musc.33 AMX2	    alunite.33+kaol.33+musc.33
+Calcite.80wt+Kaol_CM9 GDS213	    carbonate_calcite+0.2kaolwxl
+Calcite.7+Kaolwxl.3 AMX9	    carbonate_calcite0.7+kaol0.3
+Alunite+Dickite MV99-6-26b	    sulfate+kaolingrp_natroalun+dickite

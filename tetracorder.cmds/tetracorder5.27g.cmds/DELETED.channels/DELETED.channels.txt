@@ -1,0 +1,121 @@
+# AVIRIS channels to delete for tricorder analysis
+
+1 2 32t34 96t98 105t114 153t165 223 224 c # AVIRIS bodie_1992
+
+1 2 32t34 78t80 95t97 108t111 153t167 223 224 c # AVIRIS 1992_no_shift
+
+1 79 80 141 142 143 c    # AVIRIS May_1993, 198 ch data (Cuprite, Barstow)
+
+1 2 32t34 58t64 79t84 96t98 105t114 152t167 223 224 c # AVIRIS Sept_1993
+                                                      # Summitville 224 ch
+
+1t4 108t111 155t165c     # AVIRIS 1994 data (Rob Green Corrected)
+
+1 2 13 31t33 81t83 95t97 108t111 153t167 172t175 224 c # aviris_1995
+                                                     # 31t33 = overlap
+                                                     # 81t83 = water band
+                                                     # 95t97 = overlap
+                                                     # 108t111 = 1.4 band
+                                                     # 153t167 = 1.9 band
+                                                     # 172t175 = CO2 band
+
+256 c                               # VIMSIR1p1  (no deleted channelsAVIRIS 1995
+
+74t96 143 224 277 331 352 c         # VIMS2007
+
+93t109 168t179 241t268 354t358 c # FS358 Field Spectrometer 358 ch
+
+1t2 43 81t84 106t113 151t167 173t175 223  224 c # AVIRIS 19 96 first try
+
+1t2 43 81t84 106t113 154t167 173t175 223  224 c # AVIRIS 19 96 try 2
+
+1t2 32 33 43 81t84 95t97 106t113 154t167 173t175 223  224 c # aviris_1996
+
+1t3 32 33 81t83 106t112 152t170 173t174 222t224 c     # AVIRIS 19 97 (Ray Mine, R. Green calib)
+
+1t3 32 33 81t83 95t97 106t112 152t170 173t174 222t224 c     # AVIRIS 19 97 (REVISED 9/3/98)
+
+1t3 32 33 81t83 95t97 106t112 152t168 173t174 222t224 c     # aviris_1997 (COAST REVISED 9/3/98)
+
+
+#        11111111112222222222333333333344444444445555555555666666666677777777778
+#2345678901234567890123456789012345678901234567890123456789012345678901234567890
+
+1t3 32 33 43 44 60t64 81t83 95t97 106t113 152t167 173t175 179t180 220t224 c # AVIRIS 19 98
+
+          # note: above is too long (#characters) so use below
+                                                  # large elevation differences
+                                                  # mean more deleted channels
+                                                  # delete 114t117 ????
+                                                  # 32 33   = overlap
+                                                  # 43 44   = O2
+                                                  # 60t64   = H2O 0.94 um
+                                                  # 81t83   = H2O 1.13 um
+                                                  # 95t97   = overlap
+                                                  # 106t113 = H2O 1.4 um
+                                                  # 152t167 = H2O 1.9 um
+                                                  # 173t175 = CO2
+                                                  # 179t180 = CO2
+                                   # Barnaby Rockwell and Roger Clark 11/18/98
+
+32 33 43 60t64 81t83 95t97 106t113 152t167 173t175 179t180c # aviris_1998
+
+1t3 31t33 63t64 82t83 97 108t111 154t164 173t174 222t224c #AVIRIS 1999
+                                   # Gregg for low altitude
+                                   # changed from 30t32 4/7/00 BWR
+
+
+1t2 31t33 44 77 96t98 109t112 154t163 173t175 224c #AVIRIS 2000   aviris_2000
+                                   # Gregg for 14000' - 7000' Mauna Kea
+
+1t2 31t33 61 77 81t83 97 107t112 154t165 173t175 224c #AVIRIS 2001 aviris_2001
+
+1 2 31t33 81t85 96 97 107t113 154t165 173t175 224 c  #AVIRIS 2005 aviris_2005
+
+# 1 2 31t33 81t85 96 97 107t113 154t165 173t175 224 c  # aviris_20 06 (try 1)
+# 1 2 31t33 44 81t85 95 96 98 99 106t113 150t171 174t176 179t181 224 c  # aviris_20 06 (Gregg's try)
+#1 2 31t33 44 81t85 96 97 106t113 150t171 174t176 179t181 224 c  # aviris_20 06 (Gregg's try)
+1 2 31t33 44 81t85 96 97 106t113 152t168 174t176 224 c  # aviris_2006 (try4 for mtn pass)
+
+#  
+# Wavelength          1.121-1.159     1.353-1.413    1.811-1.927  # aviris gulf oil channels
+# Wavelength           81t85         107t113         153t167    
+#
+#1t2 31t33 61t62 81t85 96 107t113 153t167 173t175 223t224c  
+1t2 31t33 62 63 81t85 96 107t113 153t167 173t175 223t224c  # aviris_2010oil_highsunangles
+1t2 31t33 62t63 80t86 96 105t116 152t170 173t175 223t224c  # aviris_2010oil_lowsunangles
+
+1     61t66 81t84 102t117 150t170 175 176 179 181       c  # aviris_2011
+
+1 2 3             107t112 156t164 168t170 174        c  # aviris_2012
+
+1 50  62t64 80t84 104t116 152t170 175 176 179 180    224c  # aviris_2013
+
+1     61t66 81t84 102t117 150t170 175 176 179 181       c  # aviris_2017
+
+1     61t66 81t84 102t117 150t170 175 176 179 181       c  # aviris_2018
+#        11111111112222222222333333333344444444445555555555666666666677777777778
+#2345678901234567890123456789012345678901234567890123456789012345678901234567890
+
+196t208 289t313 c        # avirisng_2014a     AVIRIS-NG
+196t208 289t313 c        # avirisng_2014b     AVIRIS-NG
+196t208 289t313 c        # avirisng_2021a     AVIRIS-NG
+
+
+       c       # CRISM_438a
+72t79  c       # CRISM_j3a  (CRISM merged V+IR J_MTR3  489 channels
+       c       # CRISM_72b  (ch 20 63 bad in some cubes)
+
+c                    # MMM_07a
+c                    # MMM_07c
+c                    # MMM_07s
+c                    # MMM_09c      # M3 85 channel global mode 2009
+
+43 44 59 66t70 85 86 107t119 150t175 179 180 213 231  c  # prisma01a
+
+
+30 44t48 60t64 90t96 124 c                        # Hymap_2007
+
+c  # ASDFS  ASD field spectrometer, standard waves and resol
+
+c  # AgilentFTIR_21   Agilent FTIR contact instrument 2021 900ch

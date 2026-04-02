@@ -1,0 +1,24 @@
+Montmorillonite SWy-1		    smectite_montmorillonite_na_highswe
+Montmorillonite_Fe GDS759A	    smectite_montmorillonite_fe_swellin
+Montmorillonite SAz-1		    smectite_montmorillonite_ca_swellin
+
+Beidellite+Montmor GDS123 s06	    smectite_beidellite_gds123
+Beidellite+Montmor GDS124 s06	    smectite_beidellite_gds124
+Pyrophyl.50+Ca-Mont.50 AMX16	    pyroph.5+mont0.5
+Buddingtnt+Na-Mont CU93-260B	    feldspar_buddington.namont
+Buddingtnt+Na-Mont CU93-260B	    feldspar_buddington.namont2
+Calcite.8+Ca-Montmor.2 AMX15	    carbonate_calcite+0.2Ca-mont
+Dolomite.50+Ca-Montmor AMX10	    carbonate_dolo+.5ca-mont
+Calc.25+dolo.25+mont.5 AMX18	    calcite.25+dolom.25+Na-mont.5
+Calcite.80+Mont_Swy-1 GDS212	    calcite+0.2Na-mont
+Calcite+.50Ca-Mont AMX6		    calcite+0.5Ca-mont
+Grass_dry+0.17%Na-Mont AMX35	    organic_drygrass+.17Na-mont
+Dolomite.5+Na-mont.5 AMX21	    carbonate_dolomite.5+Na-mont.5
+Calcite.33+Ca-mont.67 AMX19	    carbonate_smectite_calcite.33+Ca-mo
+Calc.25+Dolo.25+Ca-Mon AMX7         carbonate_calcite.25+dolom.25+Ca-mo
+
+Montmorill+Benzene SWy 1ml	    organic_benzene+montswy
+Montmorill+Trichlor SWy 1ml	    organic_trichlor+montswy
+Montmorill+Toluene SWy .5ml	    organic_toluene+montswy
+Montmorill+Unleaded_Gas SWy	    organic_unleaded.gas+montswy
+Montmorill+TCE SWy saturated	    organic_tce+montswy

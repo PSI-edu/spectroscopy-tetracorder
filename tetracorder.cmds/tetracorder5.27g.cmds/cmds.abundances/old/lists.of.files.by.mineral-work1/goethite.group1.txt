@@ -1,0 +1,15 @@
+Goethite MPCMA2-B FineGr adj	    fe3+_goethite.fingr
+
+Goethite WS222 Medium Gr.	    fe3+_goethite.medgr.ws222
+Goethite MPCMA2-C M-Crsgrad2	    fe3+_goethite.medcoarsegr.mpc.trjar
+
+Goethite WS222 Coarse Gr.	    fe3+_goethite.coarsegr
+
+Goethite_Thin_Film WS222	    fe3+_goethite.thincoat
+
+Lepidocrosite GDS80 (Syn)	    fe3+_goethite.lepidocrosite
+
+Goeth+qtz.5+Jarosite.5 AMX11	    fe3+_goeth+jarosite
+Muscovite-medhi-Al CU91-252D	    fe2+_goeth+musc
+Chlor+Goethite CU93-4B Phyl	    fe2+fe3+_chlor+goeth.propylzone
+Goethite0.02+Quartz GDS240	    fe3+_goethite+qtz.medgr.gds240

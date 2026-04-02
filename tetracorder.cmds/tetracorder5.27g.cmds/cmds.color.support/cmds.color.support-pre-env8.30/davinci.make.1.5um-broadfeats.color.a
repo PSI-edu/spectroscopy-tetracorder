@@ -1,0 +1,265 @@
+#!/usr/local/bin/davinci -f
+####!/usr/bin/env -S davinci -f  
+
+###########################  was:  #!/usr/local/bin/davinci -f
+
+
+
+# command line:
+# prog    gray_base_image  prefix-file-name   [dual|nodual]
+
+prog="davinci.make.1.5um-broadfeats.color.a"           # CHANGE THIS if program name changes
+
+####################  Begin static: no need to change inything in this section ################
+
+if ($argc < 2) {
+
+	printf("Insufficient input\n")
+	printf("%s input_gray_image  outputcolorimage\n", prog)
+	printf("exit 1\n")
+	exit(1)
+}
+
+dual    = 1     # default color + gray image 
+dualmax = 2000  # no dual if width is greater than this
+
+if ($argc >= 3) {
+
+	if ( "$3" == "nodual" ) {
+		dual = 0
+	}
+	if ( "$3" == "dual" ) {
+		dual = 1
+		dualmax = 999999 
+	}
+}
+
+# read base gray image
+
+gbase=read(filename=$1)
+if (HasValue(gbase) == 0) {                   # check that read worked
+      printf ("read ERROR on file: %s\n",$1)
+      printf ("^GEXIT 1\n")
+      exit(1)
+}
+
+# A master color set.  Just read in the files, assign the colors
+# and write the results.    R. Clark 4/16/2015 - 11/16/2015
+# execute this program in the same directory asthe source code below
+source ("cmds.color.support/davinci.master.colors")
+
+# available colors:
+# c_red     c_green          c_blue       c_yellow        c_magenta       c_cyan          c_armygreen  
+# c_salmon  c_flesh          c_orange     c_deeppink      c_yellowgreen   c_lavender      c_bluegreen
+# c_skyblue c_paleseagreen   c_white      c_redpink       c_gold          c_mudyellow     c_lightpink
+# c_purple
+
+# a blue to red 12 spectral color sequence:
+#
+# c_purple c_blue c_skyblue c_cyan c_bluegreen c_green c_paleseagreen c_yellowgreen c_yellow c_gold  c_orange c_red
+
+# a = first input image, 3-band color, xcolor = the color output image, RGB float
+# colorout = the color output image, 3-byte RGB
+
+
+define read_an_image(1,1) {
+
+	# read a gray-scale image and convert to 3-bands
+
+	afile = $1   # file to read
+	printf ("reading file %s\n", afile)
+	aaa=read(filename=afile)
+	if (HasValue(aaa) ==0) {  # check that read worked
+		printf ("read ERROR on file: %s\n",afile)
+		printf ("setting to zero\n")
+		aaa=0
+	}
+	qqq = cat(aaa,aaa,axis=z)  # make into 2-band image
+	aaa = cat(aaa,qqq,axis=z)  # make into 3-band image
+
+	return (aaa)
+
+}  # end define
+
+
+
+###################   begin custom section ##########################################
+
+#                                                  center (um)     width (um)
+# A y 558  Anorthite HS201.3B Plagio s06crj3a=a       1.283            0.5251
+# A y 882  Bytownite HS106.3B Plagio s06crj3a=c       1.286            0.6064
+# A y3042  Microcline HS103.3B Feldspar s06crj3a=c    1.294            0.5343
+# A y2940  Magnetite HS195.3B s06crj3a=b              1.056            0.6302
+# A y4692  Sphalerite S26-34 s06crj3a=b               1.487            0.4157
+# A y4386  Rutile HS126.3B s06crj3a=c                 1.35             0.560
+# A y5280  Wollastonite HS348.3B s06crj3a=b           1.40             0.64
+
+# A y3618  Olivine GDS70.a Fo89 165um s06av11a=b     
+# A y3642  Olivine GDS70.c Fo89 70um s06av11a=b      
+# A y3654  Olivine GDS70.d Fo89 <60um s06av11a=b     
+# A y3684  Olivine GDS71.b Fo91 <60um s06crj3a=b      1.047            0.460
+#            olivine_fo89_gds70.a.fd.gif
+#            olivine_fo89_gds70.c.fd.gif
+#            olivine_fo89_gds70.d.fd.gif
+#            olivine_fo91_gds71.b.fd.gif
+
+# A y3696  Olivine HS285.4B Fo80 s06crj3a=b           1.061            0.813          very saturated
+#            olivine_fo80_hs285.fd.gif
+
+# A y3732  Olivine KI3054 Fo66 <60um s06av11a=b      
+# A y3756  Olivine KI3189 Fo60 <60um s06av11a=b      
+#            olivine_fo60_ki3189.fd.gif
+#            olivine_fo66_ki3054.fd.gif
+
+# A y3780  Olivine KI3377 Fo18 <60um s06crj3a=b       1.073            0.760
+#            olivine_fo18_ki3377.fd.gif
+
+
+
+
+# 22 available colors:
+# c_red     c_green          c_blue       c_yellow        c_magenta       c_cyan          c_armygreen  
+# c_salmon  c_flesh          c_orange     c_deeppink      c_yellowgreen   c_lavender      c_bluegreen
+# c_skyblue c_paleseagreen   c_white      c_redpink       c_gold          c_mudyellow     c_lightpink
+# c_purple
+
+# first image:
+
+a = read_an_image("group.1.5um-broad/anorthite_hs201.3b.fd.gif")
+
+	# set up output image xcolor:
+	xcolor=float(a*0)
+	xdim=dim(a)
+
+	# now add the colors
+
+c= c_purple
+xcolor= xcolor + a*( c /255.)   # anorthite
+
+# c_purple c_cyan c_skyblue c_blue c_flesh c_lavender c_magenta c_green c_yellowgreen c_yellow c_orange c_red
+
+c= c_cyan
+
+a = read_an_image("group.1.5um-broad/bytownite_hs106.3b.fd.gif")
+xcolor= xcolor + a*( c /255.)
+
+
+c= c_skyblue
+
+a = read_an_image("group.1.5um-broad/microcline_hs103.3b.fd.gif")
+xcolor= xcolor + a*( c /255.)
+
+
+c= c_blue
+
+a = read_an_image("group.1.5um-broad/fe2+_wollastonite_hs348.3b.fd.gif")
+xcolor= xcolor + a*( c /255.)
+
+
+c= c_blue
+
+a = read_an_image("group.1.5um-broad/rutile_hs126.3b.fd.gif")
+xcolor= xcolor + a*( c /255.)
+
+
+c= c_blue
+
+a = read_an_image("group.1.5um-broad/sphalerite_s26-341_1.5um.fd.gif")
+xcolor= xcolor + a*( c /255.)
+
+##################################################################################
+# A y3780  Olivine KI3377 Fo18 <60um s06crj3a=b       1.073            0.760
+#            olivine_fo18_ki3377.fd.gif
+
+c= c_green
+
+a = read_an_image("group.1.5um-broad/olivine_fo18_ki3377.fd.gif")
+xcolor= xcolor + a*( c /255.)
+
+##################################################################################
+# A y3732  Olivine KI3054 Fo66 <60um s06av11a=b      
+# A y3756  Olivine KI3189 Fo60 <60um s06av11a=b      
+#            olivine_fo60_ki3189.fd.gif
+#            olivine_fo66_ki3054.fd.gif
+
+c= c_armygreen
+
+a = read_an_image("group.1.5um-broad/olivine_fo60_ki3189.fd.gif")
+a1= read_an_image("group.1.5um-broad/olivine_fo66_ki3054.fd.gif")
+a = a + a1
+xcolor= xcolor + a*( c /255.)
+
+##################################################################################
+# A y3696  Olivine HS285.4B Fo80 s06crj3a=b           1.061            0.813          very saturated
+#            olivine_fo80_hs285.fd.gif
+
+c= c_yellowgreen
+
+a = read_an_image("group.1.5um-broad/olivine_fo80_hs285.fd.gif")
+xcolor= xcolor + a*( c /255.)
+
+##################################################################################
+# A y3618  Olivine GDS70.a Fo89 165um s06av11a=b     
+# A y3642  Olivine GDS70.c Fo89 70um s06av11a=b      
+# A y3654  Olivine GDS70.d Fo89 <60um s06av11a=b     
+# A y3684  Olivine GDS71.b Fo91 <60um s06crj3a=b      1.047            0.460
+#            olivine_fo89_gds70.a.fd.gif
+#            olivine_fo89_gds70.c.fd.gif
+#            olivine_fo89_gds70.d.fd.gif
+#            olivine_fo91_gds71.b.fd.gif
+
+c= c_yellow
+
+a= read_an_image("group.1.5um-broad/olivine_fo89_gds70.d.fd.gif")
+a1= read_an_image("group.1.5um-broad/olivine_fo89_gds70.c.fd.gif")
+a = a + a1
+a1= read_an_image("group.1.5um-broad/olivine_fo89_gds70.a.fd.gif")
+a = a + a1
+xcolor= xcolor + a*( c /255.)
+
+c= c_orange
+
+a = read_an_image("group.1.5um-broad/olivine_fo91_gds71.b.fd.gif")
+xcolor= xcolor + a*( c /255.)
+
+
+##################################################################################
+
+c= c_red
+
+a = read_an_image("group.1.5um-broad/magnetite_hs195.3b.or.olivine.fd.gif")
+xcolor= xcolor + a*( c /255.)
+
+
+
+########### end custom, no need to change anything below this line ###############################
+
+xout=byte(xcolor+0.5)   # output color image, byte
+xout = bip(xout)
+xdim=dim(xout)
+xdimx=xdim[1,,]      # color image width
+
+gbasedim=dim(gbase)
+x=gbasedim[1,,]      # base image width
+
+if (x > dualmax) {
+	dual = 0
+}
+
+if ( dual == 1 ) {
+	
+	gbase = bip(gbase)
+	xout = cat (xout, gbase, axis=x)
+}
+
+
+fout=$2     # output file name
+
+adim=dim(xout)
+if ( adim[1,,] > 5 || adim[2,,] > 5 ) {
+	printf ("writing %s\n", fout)
+	write (xout, filename=fout, type=png)
+} else {
+	printf ("not writing %s\n", fout)
+	printf ("    image size < 6 pixels\n")
+}

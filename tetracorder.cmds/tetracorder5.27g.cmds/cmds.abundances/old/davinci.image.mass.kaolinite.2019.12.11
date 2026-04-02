@@ -1,0 +1,174 @@
+#!/usr/local/bin/davinci -f
+
+# compute the mass of the compound per square meter
+
+# Kaolinite    based on cmd.lib.setup.t5.2a2
+
+#  DN scale = what band depth = 255 in the tetracorder output image (from 5.2a2 expert system)
+#  BD factor = band depth =1 for pure, fraction in mixture
+#
+#                                                        DN     BD
+#                file                                  scale  factor     title
+# group.2um/kaolgrp_kaolinite_wxl.depth.gz               0.5   1.0  Kaolinite CM9
+# group.2um/kaolgrp_kaolinite_pxl.depth.gz               0.5   1.0  Kaolinite KGa-2 (pxl)
+# group.2um/kaolgrp_halloysite.depth.gz                  0.5   1.0  Halloysite NMNH106237
+# group.2um/kaolgrp_dickite.depth.gz                     0.5   1.0  Dickite NMNH106242
+# group.2um/kaolin.5+smect.5.depth.gz                    0.5   0.5  Kaolin_Smect H89-FR-2 .5Kaol
+# group.2um/kaolin.3+smect.7.depth.gz                    0.5   0.3  Kaolin_Smect H89-FR-5 .3Kaol
+# group.2um/kaol.75+pyroph.25.depth.gz                   0.5   0.75 Kaolwxl.75+Alun_HS295 AMX14
+# group.2um/alunite.5+kaol.5.depth.gz                    0.5   0.5  Alunite0.5+Kaol_KGa-1 AMX3
+# group.2um/kaol.75+alun.25.depth.gz                     0.5   0.75 Kaolwxl.75+Alun_HS295 AMX14
+# group.2um/Kalun+kaol.intmx.depth.gz                    0.5   0.5  Kalun+kaol+gth mv2-ar3
+# group.2um/Na-alun+kaol.intmx.depth.gz                  0.5   0.5  Alun_Na+Kaol+Hemat  MV00-11a
+# group.2um/kaolin.5+muscov.medAl.depth.gz               0.5   0.5  Kaol.5+MuscCU91-250A AMX13
+# group.2um/kaolin.5+muscov.medhighAl.depth.gz           0.5   0.5  Kaol_Wxl+0.5Musc_Ruby AMX12
+# group.2um/kaolin+musc.intimat.depth.gz                 0.5   0.5  Kaol+Musc_intimate CU93-5C
+# group.2um/alunite.33+kaol.33+musc.33.depth.gz          0.5   0.33 Alun.33+Kaol.33+Musc.33 AMX2
+# group.2um/carbonate_calcite+0.2kaolwxl.depth.gz        0.5   0.8  Calcite.80wt+Kaol_CM9 GDS213
+# group.2um/carbonate_calcite0.7+kaol0.3.depth.gz        0.5   0.3  Calcite.7+Kaolwxl.3 AMX9
+# group.2um/sulfate+kaolingrp_natroalun+dickite.depth.gz 0.5   0.5  Alunite+Dickite MV99-6-26b
+ 
+ 
+#                   group.2um/kaolgrp_kaolinite_wxl.depth.gz               0.5   1.0  Kaolinite CM9
+a = read (filename="group.2um/kaolgrp_kaolinite_wxl.depth.gz")
+b = (float (a) / (255.0 / 0.5)) * 1.0
+bdepth = b
+
+#                   group.2um/kaolgrp_kaolinite_pxl.depth.gz               0.5   1.0  Kaolinite KGa-2 (pxl)
+a = read (filename="group.2um/kaolgrp_kaolinite_pxl.depth.gz")
+b = (float (a) / (255.0 / 0.5))  * 1.0
+bdepth = bdepth + b
+
+#                   group.2um/kaolgrp_halloysite.depth.gz                  0.5   1.0  Halloysite NMNH106237
+a = read (filename="group.2um/kaolgrp_halloysite.depth.gz")
+b = (float (a) / (255.0 / 0.5))  * 1.0
+bdepth = bdepth + b
+
+#                   group.2um/kaolgrp_dickite.depth.gz                     0.5   1.0  Dickite NMNH106242
+a = read (filename="group.2um/kaolgrp_dickite.depth.gz")
+b = (float (a) / (255.0 / 0.5))  * 1.0
+bdepth = bdepth + b
+
+#                   group.2um/kaolin.5+smect.5.depth.gz                    0.5   0.5  Kaolin_Smect H89-FR-2 .5Kaol
+a = read (filename="group.2um/kaolin.5+smect.5.depth.gz")
+b = (float (a) / (255.0 / 0.5))  * 0.3
+bdepth = bdepth + b
+
+#                   group.2um/kaolin.3+smect.7.depth.gz                    0.5   0.3  Kaolin_Smect H89-FR-5 .3Kaol
+a = read (filename="group.2um/kaolin.3+smect.7.depth.gz")
+b = (float (a) / (255.0 / 0.5))  * 0.3
+bdepth = bdepth + b
+
+#                   group.2um/kaol.75+pyroph.25.depth.gz                   0.5   0.75 Kaolwxl.75+Alun_HS295 AMX14
+a = read (filename="group.2um/kaol.75+pyroph.25.depth.gz")
+b = (float (a) / (255.0 / 0.5))  * 0.75
+bdepth = bdepth + b
+
+#                   group.2um/alunite.5+kaol.5.depth.gz                    0.5   0.5  Alunite0.5+Kaol_KGa-1 AMX3
+a = read (filename="group.2um/alunite.5+kaol.5.depth.gz")
+b = (float (a) / (255.0 / 0.5))  * 0.5
+bdepth = bdepth + b
+
+#                   group.2um/kaol.75+alun.25.depth.gz                     0.5   0.75 Kaolwxl.75+Alun_HS295 AMX14
+a = read (filename="group.2um/kaol.75+alun.25.depth.gz")
+b = (float (a) / (255.0 / 0.5))  * 0.75
+bdepth = bdepth + b
+
+#                   group.2um/Kalun+kaol.intmx.depth.gz                    0.5   0.5  Kalun+kaol+gth mv2-ar3
+a = read (filename="group.2um/Kalun+kaol.intmx.depth.gz")
+b = (float (a) / (255.0 / 0.5))  * 0.5
+bdepth = bdepth + b
+
+#                   group.2um/Na-alun+kaol.intmx.depth.gz                  0.5   0.5  Alun_Na+Kaol+Hemat  MV00-11a
+a = read (filename="group.2um/Na-alun+kaol.intmx.depth.gz")
+b = (float (a) / (255.0 / 0.5))  * 0.5
+bdepth = bdepth + b
+
+#                   group.2um/kaolin.5+muscov.medAl.depth.gz               0.5   0.5  Kaol.5+MuscCU91-250A AMX13
+a = read (filename="group.2um/kaolin.5+muscov.medAl.depth.gz")
+b = (float (a) / (255.0 / 0.5))  * 0.5
+bdepth = bdepth + b
+
+#                   group.2um/kaolin.5+muscov.medhighAl.depth.gz           0.5   0.5  Kaol_Wxl+0.5Musc_Ruby AMX12
+a = read (filename="group.2um/kaolin.5+muscov.medhighAl.depth.gz")
+b = (float (a) / (255.0 / 0.5))  * 0.5
+bdepth = bdepth + b
+
+#                   group.2um/kaolin+musc.intimat.depth.gz                 0.5   0.5  Kaol+Musc_intimate CU93-5C
+a = read (filename="group.2um/kaolin+musc.intimat.depth.gz")
+b = (float (a) / (255.0 / 0.5))  * 0.5
+bdepth = bdepth + b
+
+#                   group.2um/alunite.33+kaol.33+musc.33.depth.gz          0.5   0.33 Alun.33+Kaol.33+Musc.33 AMX2
+a = read (filename="group.2um/alunite.33+kaol.33+musc.33.depth.gz")
+b = (float (a) / (255.0 / 0.5))  * 0.33
+bdepth = bdepth + b
+
+#                   group.2um/carbonate_calcite+0.2kaolwxl.depth.gz        0.5   0.8  Calcite.80wt+Kaol_CM9 GDS213
+a = read (filename="group.2um/carbonate_calcite+0.2kaolwxl.depth.gz")
+b = (float (a) / (255.0 / 0.5))  * 0.8
+bdepth = bdepth + b
+
+#                   group.2um/carbonate_calcite0.7+kaol0.3.depth.gz        0.5   0.3  Calcite.7+Kaolwxl.3 AMX9
+a = read (filename="group.2um/carbonate_calcite0.7+kaol0.3.depth.gz")
+b = (float (a) / (255.0 / 0.5))  * 0.3
+bdepth = bdepth + b
+
+#                   group.2um/sulfate+kaolingrp_natroalun+dickite.depth.gz 0.5   0.5  Alunite+Dickite MV99-6-26b
+a = read (filename="group.2um/sulfate+kaolingrp_natroalun+dickite.depth.gz")
+b = (float (a) / (255.0 / 0.5))  * 0.5
+bdepth = bdepth + b
+
+bdepth[ where (bdepth > 0.99999) ] = 0.99999
+bdepth[ where (bdepth < 0.000000000001) ] = 0.000000000001
+
+write (bdepth, filename="kaolinite-all-bdepth-float.v", type=vicar)
+
+abdepth = moment(bdepth)
+printf ("\n   bdepth min, max mean: %f %f %f\n\n", abdepth[1,,], abdepth[2,,], abdepth[3,,])
+
+# reference kaolinite, Kaolinite KGa-1 (wxl), splib06a r 12132
+# has a band depth of 0.355.
+
+relbdepth = bdepth / 0.355
+
+write (relbdepth, filename="kaolinite-all-relbdepth-float.v", type=vicar)
+
+relbdepth8 = byte(relbdepth * 255.)
+write (relbdepth8, filename="kaolinite-all-relbdepth-8bit.png", type=png)
+
+
+# absorption coefficient for Kaolinite KGa-1 (wxl), splib06a r 12132
+# 2.2-micron band: continuum = 57.3 cm^-1, band center: 234 cm^-1
+# delk = 234 - 57.3 = 177 cm^-1
+
+delk = 177.0
+
+mopl = log (1.0 - bdepth) / (-1.0 * delk)    # mopl in cm
+
+moplmicrons = mopl * 10000.    # mopl in microns
+
+amopl = moment(moplmicrons)
+printf ("\n   mopl (microns) min, max mean: %f %f %f\n\n   ", amopl[1,,], amopl[2,,], amopl[3,,])
+
+gd = 0.0002  # grain diameter in cm
+
+m = mopl / gd  # mean number of scaters
+
+pi=3.14159265
+
+t = (pi / 4.) * gd * sqrt(m/2.)   # 1/e depth for pure surface
+
+density = 3.1  # gm / cm^3
+
+ttt = t * 3.0   # 3 optical depths
+
+mass = 100.0 * 100.0 * ttt * density   # grams in one square meter  (100 cm square).
+
+write (mass, filename="kaolinite-all-mass-gm-per-sq-cm-float.v", type=vicar)
+
+amass = moment(mass)
+printf ("\n   mass (gm/sq cm) min, max mean: %f %f %f\n\n   ", amass[1,,], amass[2,,], amass[3,,])
+
+nrmmass8 = byte(255.0 * mass / amass[2,,])
+write (nrmmass8, filename="kaolinite-all-mass-gm-per-sq-cm-8bit.png", type=png)

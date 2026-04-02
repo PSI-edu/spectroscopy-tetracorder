@@ -1,0 +1,1094 @@
+
+March, 2022: notes and changes totetracorder entries for expert system 5.2e1
+
+TO BE DONE: evaluate spectral purities
+
+/sl1/usgs/rlib06  r1: 
+v= r06av18a or r06fs00a   w= sprlb06a   d= spd0673 or s06av18a or s06fs00a u= splib06a   y= sprlb06b
+
+splib06a:  14688  Montmorillonite SWy-1        W1R1Bb AREF   480  10:02:41.00  01/30/1986      6
+spd0673:      25  Na-Montmorillonite SWy-1 avg38 18683-2AR  2151  13:58:16.90  03/26/2021      6     12
+s06av95a:   3270  Montmorillonite SWy-1 s06av95a=b           224 
+sprlb06a:   1065  Montmorillonite SWy-1        W1R1Hb AREF  4301                              80     92
+r06av18a:    588  Montmorillonite SWy-1 r06av18a=b           224  17:34:23.78  03/26/2021      6     12
+                  u14688U6   w1065W80 d3270D6  v588V6  USE r06av18a: 588    groups 2, 14, 19     DONE 5.2e1
+
+     checks with cmd.lib.setup.t5.2e1:
+           s06av95a   3270  Montmorillonite SWy-1 s06av95a=b
+    Grp/Cse              Material                                                               Fit     Depth    F*D
+     grp 1   1um region     41  MATCHES:  fe2+generic_nrw.cummingtonite                       0.8097   0.0133   0.0108
+     grp 2   2-2.5um       158  MATCHES:  smectite_montmorillonite_na_highswelling            0.9979   0.1995   0.1991
+
+           r06av95a    588  Montmorillonite SWy-1 r06av95a=b 
+    Grp/Cse              Material                                                               Fit     Depth    F*D
+     grp 1   1um region     39  MATCHES:  fe2+_goeth+musc                                     0.7250   0.0417   0.0363
+     grp 2   2-2.5um       158  MATCHES:  smectite_montmorillonite_na_highswelling            1.0000   0.2017   0.2017
+
+     CORRECT
+
+
+
+
+splib06a:  12117  Kaolinite KGa-1 (wxl)        W1R1Bb AREF   480                               8
+spd0673:      43  Kaolinite (wxl) KGa-1 avg40 18683-2AR     2151  15:33:59.70  03/26/2021      6     12
+s06av95a:   2706  Kaolinite KGa-1 (wxl) NOT USED IN tetracorder as pure mineral, but is used in mixtures
+sprlb06a:   1077  Kaolinite KGa-1 (wxl)        W1R1Hb AREF  4301                              80     92
+r06av18a:    594  Kaolinite KGa-1 (wxl) r06av18a=b           224  15:33:59.70  03/26/2021      6     12
+                   u12117U6  w1077W80a   USE r06av18a: 594    group  13, 14                       DONE 5.2e1
+                     NOTE: KGa-1 is not used in tetracordfer before 5.2e1 as
+                                 just kaolinite, only in mixtures
+
+     checks with cmd.lib.setup.t5.2e1:
+           s06av95a   2706  Kaolinite KGa-1 (wxl) s06av95a=b
+    Grp/Cse              Material                                                               Fit     Depth    F*D
+     grp 1   1um region    none        
+     grp 2   2-2.5um       151  MATCHES:  kaolgrp_kaolinite_wxl                               0.9924   0.3089   0.3066
+
+           r06av95a    594  Kaolinite KGa-1 (wxl) r06av95a=b
+    Grp/Cse              Material                                                               Fit     Depth    F*D
+     grp 1   1um region    none        
+     grp 2   2-2.5um       151  MATCHES:  kaolgrp_kaolinite_wxl                               0.9955   0.3080   0.3066
+
+
+
+
+splib06a:  14498  Montmorillonite SAz-1        W1R1Bb AREF   480                               6
+spd0673:      61  Montmorillonite SAz-1 18683-2AR           2151  17:34:23.78  03/26/2021      6     12
+s06av95a:   3228  Montmorillonite SAz-1 s06av95a=b           224
+sprlb06a:   1089  Montmorillonite SAz-1        W1R1Hb AREF  4301                              80     92
+r06av18a:    600  Montmorillonite SAz-1 r06av18a=b           224  17:34:23.78  03/26/2021      6     12
+                    u14498U6    w1089W80  d3228D6   v600V6    USE r06av18a: 600   groups 2, 14, 19     DONE  5.2e1
+
+     checks with cmd.lib.setup.t5.2e1:
+           s06av95a   3228  Montmorillonite SAz-1 s06av95a=b
+    Grp/Cse              Material                                                               Fit     Depth    F*D
+     grp 1   1um region    none        
+     grp 2   2-2.5um       160  MATCHES:  smectite_montmorillonite_ca_swelling                0.9992   0.2002   0.2000
+
+           r06av95a    600  Montmorillonite SAz-1 r06av95a=b
+    Grp/Cse              Material                                                               Fit     Depth    F*D
+     grp 1   1um region    none        
+     grp 2   2-2.5um       160  MATCHES:  smectite_montmorillonite_ca_swelling                1.0000   0.2169   0.2169
+
+
+
+splib06a:  11962  Kaolinite CM9                W1R1Bb AREF   480                               6
+spd0673:      79  Well ordered kaolinite CM9 av40 18683-2   2151  13:54:25.55  03/29/2021      6     12
+s06av95a:   2676  Kaolinite CM9 s06av95a=b                   224 
+sprlb06a:   1101  Kaolinite CM9 (wxl)          W1R1Hb AREF  4301                              80     92    CHANGE name to (wxl)   done
+r06av18a:    606  Kaolinite CM9 (wxl) r06av18a=b             224  13:54:25.55  03/29/2021      6     12
+                     u11962U6    w1101W80  d2676D6  v606V6    USE r06av18a: 606   group 2        DONE  5.2e1
+
+     checks with cmd.lib.setup.t5.2e1:
+           s06av95a   3228  Montmorillonite SAz-1 s06av95a=b
+    Grp/Cse              Material                                                               Fit     Depth    F*D
+     grp 1   1um region    none        
+     grp 2   2-2.5um       160  MATCHES:  smectite_montmorillonite_ca_swelling                0.9992   0.2002   0.2000
+
+          r06av95a    606  Kaolinite CM9 r06av95a=b
+    Grp/Cse              Material                                                               Fit     Depth    F*D
+     grp 1   1um region    none        
+     grp 2   2-2.5um       151  MATCHES:  kaolgrp_kaolinite_wxl                               1.0000   0.4444   0.4444
+
+
+
+splib06a:   7116  Dolomite HS102.3B            W1R1Bb AREF   480                               6
+spd0673:      97  Dolomite HS102.3B avg40 18683-2AR         2151  15:22:57.63  03/29/2021      6     12
+s06av95a:   1572  Dolomite HS102.3B s06av95a=b               224
+sprlb06a:   1113  Dolomite HS102.3B            W1R1Hb AREF  4301                              80     92
+r06av18a:    612  Dolomite HS102.3B r06av18a=b               224  15:22:57.63  03/29/2021      6     12
+                      u7116U6   w1113W80     USE r06av18a:  612    group 2                        DONE 5.2e1
+
+     checks with cmd.lib.setup.t5.2e1:
+           s06av95a   1572  Dolomite HS102.3B s06av95a=b
+     grp 1   1um region     42  MATCHES:  fe2+generic_nrw.actinolite                          0.9446   0.0261   0.0247
+     grp 2   2-2.5um       201  MATCHES:  carbonate_dolomite                                  0.9995   0.3236   0.3234
+
+           r06av95a    612  Dolomite HS102.3B r06av95a=b 
+    Grp/Cse              Material                                                               Fit     Depth    F*D
+     grp 1   1um region     42  MATCHES:  fe2+generic_nrw.actinolite                          0.9930   0.0193   0.0192
+     grp 2   2-2.5um       201  MATCHES:  carbonate_dolomite                                  1.0000   0.2903   0.2903
+
+
+
+splib06a:   8796  Gypsum HS333.3B (Selenite)   W1R1Ba AREF   480                               6
+spd0673:     115  Gypsum HS333.3B avg=40 Reft  18683-2AR    2151  17:50:23.27  03/29/2021      6     12  note: change HS333,3B to HS333.3B
+s06av95a:   1986  Gypsum HS333.3B (Selenite) s06av95a=a      224
+sprlb06a:   1125  Gypsum HS333.3B (Selenite)   W1R1Ha AREF  4301                              80     92
+r06av18a:    618  Gypsum HS333.3B (Selenite) r06av18a=a      224  17:50:23.27  03/29/2021      6     12
+                      u8796U6    w1125W80     USE r06av18a:   618    group 2, 19                 DONE 5.2e1
+                        NOTES:  (looks like need to add a group 14 too)
+
+     checks with cmd.lib.setup.t5.2e1:
+           s06av95a   1986  Gypsum HS333.3B (Selenite) s06av95a=a
+    Grp/Cse              Material                                                               Fit     Depth    F*D
+     grp 1   1um region    none        
+     grp 2   2-2.5um       155  MATCHES:  sulfate_gypsum                                      0.9965   0.1858   0.1853
+
+           r06av95a    618  Gypsum HS333.3B (Selenite) r06av95a=a
+    Grp/Cse              Material                                                               Fit     Depth    F*D
+     grp 1   1um region    none        
+     grp 2   2-2.5um       155  MATCHES:  sulfate_gypsum                                      1.0000   0.1745   0.1745
+
+
+
+splib06a:         NONE, new
+spd0673:     133  Vermiculite GDS458 avg=80 Reft 18683-2AR  2151  08:17:05.91  04/06/2021      6     12
+s06av95a:         NONE, new
+sprlb06a:   1137  Vermiculite GDS458           W1R1Hc AREF  4301                              80     92  sp pur=c for all verm
+r06av18a:    624  Vermiculite GDS458 r06av18a=c              224  08:17:05.91  04/06/2021      6     12
+                                               USE r06av18a: 624                                   DONE 5.2e1
+
+     checks with cmd.lib.setup.t5.2e1:
+           r06av95a    624  Vermiculite GDS458 r06av95a=_
+    Grp/Cse              Material                                                               Fit     Depth    F*D
+     grp 1   1um region     83  MATCHES:  fe2+generic_carbonate_siderite1                     0.8476   0.2392   0.2027
+     grp 2   2-2.5um       306  MATCHES:  micagrp_vermiculite_GDS458                          1.0000   0.2412   0.2412
+
+
+
+
+splib06a:         NONE, new
+spd0673:     151  Vermiculite ALB4SA00 avg=40 18683-2AR     2151  16:16:37.73  04/07/2021      6     12
+s06av95a:         NONE, new
+sprlb06a:   1149  Vermiculite ALB4SA00         W1R1H_ AREF  4301                              80     92
+r06av18a:    630  Vermiculite ALB4SA00 r06av18a=_            224  16:16:37.73  04/07/2021      6     12
+                                               USE r06av18a: 630                                   DONE 5.2e1
+
+     checks with cmd.lib.setup.t5.2e1:
+           06av95a    630  Vermiculite ALB4SA00 r06av95a=_         
+    Grp/Cse              Material                                                               Fit     Depth    F*D
+     grp 1   1um region     46  MATCHES:  fe2+generic_med.jadeite                             0.8870   0.0339   0.0300
+     grp 2   2-2.5um       307  MATCHES:  micagrp_vermiculite_ALB4SA00                        1.0000   0.2909   0.2909
+
+
+
+splib06a:         NONE, new
+spd0673:     169  Vermiculite WS682 avg=40 18683-2AR        2151  17:01:41.00  04/09/2021      6     12
+s06av95a:         NONE, new
+sprlb06a:   1161  Vermiculite WS682            W1R1H_ AREF  4301                              80     92
+r06av18a:    636  Vermiculite WS682 r06av18a=_               224  17:01:41.00  04/09/2021      6     12
+                                               USE r06av18a: 636                                   DONE 5.2e1
+
+     checks with cmd.lib.setup.t5.2e1:
+           r06av95a    636  Vermiculite WS682 r06av95a=_            
+    Grp/Cse              Material                                                               Fit     Depth    F*D
+     grp 1   1um region     58  MATCHES:  fe2+generic_brd.br22c_actinolite                    0.9854   0.2641   0.2603
+     grp 2   2-2.5um       308  MATCHES:  micagrp_vermiculite_WS682                           1.0000   0.1720   0.1720
+
+
+
+splib06a:  23472  Vermiculite WS681            W1R1Bc AREF   480      NOT IN TETRACORDER       6
+spd0673:     187  Vermiculite WS681 avg = 80 18683-2AR      2151  04:36:05.80  04/13/2021      6     12
+s06av95a:   5244  Vermiculite WS681 s06av95a=c               224
+sprlb06a:   1173  Vermiculite WS681            W1R1Hc AREF  4301                              80     92
+r06av18a:    642  Vermiculite WS681 r06av18a=c               224  04:36:05.80  04/13/2021      6     12
+                    u23472U6   w1173W80        USE r06av18a: 642                                  DONE 5.2e1
+
+     checks with cmd.lib.setup.t5.2e1:
+           r06av95a    642  Vermiculite WS681 r06av95a=c            
+    Grp/Cse              Material                                                               Fit     Depth    F*D
+     grp 1   1um region     60  MATCHES:  fe2+generic_brd.br36a_chlorite                      0.9522   0.1425   0.1356
+     grp 2   2-2.5um       309  MATCHES:  micagrp_vermiculite_WS681                           1.0000   0.2062   0.2062
+
+
+
+splib06a:   5556  Clinochlore_Fe GDS157.b      W1R1Fa AREF  2151                              10
+Tetracorder t5.2d5 and earlier use in group 2:
+splib06a:   5580  Clinochlore_Fe GDS157 NIR    W2R4Na RREF  3325  16:58:36.00  08/13/1993     22     32 nicolet
+s06av18a:   1230  Clinochlore_Fe GDS157 NIR s06av18a=a       224  16:58:36.00  08/13/1993      6        Tetracorder 
+spd0673:     205  Clinochlore GDS157 Flagstaff H 18683-2AR  2151  14:36:11.82  06/02/2021      6     12
+s06av95a:   1224  Clinochlore_Fe GDS157.b s06av95a=a         224
+sprlb06a:   1185  Clinochlore_Fe GDS157.b      W1R1Ha AREF  4301                              80     92
+r06av18a:    648  Clinochlore_Fe GDS157.b r06av18a=a         224  14:36:11.82  06/02/2021      6     12
+                    u5580U22    w1185W80    USE r06av18a:  648   group 2, case 6                 DONE 5.2e1
+                     Note: We currently use GDS157 in group 2 and GDS157.b in group 6
+
+     checks with cmd.lib.setup.t5.2e1:
+           s06av95a   1230  Clinochlore_Fe GDS157 NIR s06av95a=a
+    Grp/Cse              Material                                                               Fit     Depth    F*D
+     grp 1   1um region    none        
+     grp 2   2-2.5um       214  MATCHES:  chlorite_clinochlore.fe.sc-cca-1                    0.9975   0.1591   0.1587
+
+           r06av95a    648  Clinochlore_Fe GDS157.b r06av95a=a
+    Grp/Cse              Material                                                               Fit     Depth    F*D
+     grp 1   1um region     72  MATCHES:  fe2+_chlorite.clinochlor                            0.9865   0.3626   0.3579
+     grp 2   2-2.5um       213  MATCHES:  chlorite_clinochlore.fe.gds157                      1.0000   0.2204   0.2204
+
+
+
+splib06a:  15059  Muscovite GDS113 Ruby        W1R1Bb AREF   480                               6
+spd0673:     243  Muscovite GDS113  >37um Ruby B 18388-7AR  2151  01:31:43.12  07/09/2021    224    230
+s06av95a:   3348  Muscovite GDS113 Ruby s06av95a=b           224
+sprlb06a:   1197  Muscovite GDS113 Ruby >37um  W1R1Hb AREF  4301                              80     92
+r06av18a:    654  Muscovite GDS113 Ruby >37um r06av18a=b     224  01:31:43.12  07/09/2021      6     12
+                    u15059U6   w1197W90     USE r06av18a:  654    group 2, 14                     DONE 5.2e1
+
+     checks with cmd.lib.setup.t5.2e1:
+           s06av95a   3348  Muscovite GDS113 Ruby s06av95a=b
+    Grp/Cse              Material                                                               Fit     Depth    F*D
+     grp 1   1um region     39  MATCHES:  fe2+_goeth+musc                                     0.9616   0.0918   0.0899
+     grp 2   2-2.5um       145  MATCHES:  micagrp_muscovite-medhigh-Al                        0.9984   0.2919   0.2915
+
+           r06av95a    654  Muscovite GDS113 Ruby >37um r06av95a=b
+    Grp/Cse              Material                                                               Fit     Depth    F*D
+     grp 1   1um region     39  MATCHES:  fe2+_goeth+musc                                     0.9271   0.0874   0.0844
+     grp 2   2-2.5um       145  MATCHES:  micagrp_muscovite-medhigh-Al                        1.0000   0.2769   0.2769
+
+
+splib06a:   5327  Clinochlore GDS158 Flagst    W1R1Bb AREF   480                               6
+spd0673:     261  Clinochlore GDS158 Flagstaff H 18388-7AR  2151  14:47:59.73  07/09/2021    224    230
+s06av95a:   1176  Clinochlore GDS158 Flagst s06av95a=b       224
+sprlb06a:   1209  Clinochlore GDS158 Flagst    W1R1Hb AREF  4301                              80     92
+r06av18a:    660  Clinochlore GDS158 Flagst r06av18a=b       224  14:47:59.73  07/09/2021      6     12
+                    u5327U6   w1209W80     USE  r06av18a: 660    group 1, 2, 13                   DONE 5.2e1
+
+     checks with cmd.lib.setup.t5.2e1:
+           s06av95a   1176  Clinochlore GDS158 Flagst s06av95a=b
+    Grp/Cse              Material                                                               Fit     Depth    F*D
+     grp 1   1um region     72  MATCHES:  fe2+_chlorite.clinochlor                            0.9979   0.2664   0.2658
+     grp 2   2-2.5um       211  MATCHES:  chlorite_clinochlore                                0.9991   0.2948   0.2946
+
+           r06av95a    660  Clinochlore GDS158 Flagst r06av95a=b
+    Grp/Cse              Material                                                               Fit     Depth    F*D
+     grp 1   1um region     72  MATCHES:  fe2+_chlorite.clinochlor                            1.0000   0.2511   0.2511
+     grp 2   2-2.5um       211  MATCHES:  chlorite_clinochlore                                1.0000   0.2887   0.2887
+
+
+splib06a:   4159  Calcite WS272                W1R1Ba AREF   480                               6
+spd0673:     279  Calcite WS272 Icelandic Spar R 18388-7AR  2151  20:28:13.90  07/11/2021    224    230
+s06av95a:    912  Calcite WS272 s06av95a=a                   224
+sprlb06a:   1221  Calcite WS272                W1R1Ha AREF  4301                              80     92
+r06av18a:    666  Calcite WS272 r06av18a=a                   224  20:28:13.90  07/11/2021      6     12
+                     u4159U6    w1221W80   USE   r06av18a:  666     group 2, case 6               DONE 5.2e1
+
+     checks with cmd.lib.setup.t5.2e1:
+           s06av95a    912  Calcite WS272 s06av95a=a
+    Grp/Cse              Material                                                               Fit     Depth    F*D
+     grp 1   1um region    none        
+     grp 2   2-2.5um       231  MATCHES:  carbonate_calcite                                   0.9987   0.3352   0.3348
+           r06av95a    666  Calcite WS272 r06av95a=a
+    Grp/Cse              Material                                                               Fit     Depth    F*D
+     grp 1   1um region    none        
+     grp 2   2-2.5um       231  MATCHES:  carbonate_calcite                                   1.0000   0.2112   0.2112
+                                                       NOTE: NEW is smaller depth!
+
+
+
+
+splib06a:  12176  Kaolinite KGa-2 (pxl)        W1R1Bb AREF   480                                6
+spd0673:     297  Kaolinite pxl KGa-2 Warren Co  18388-7AR  2151  14:09:39.82  07/16/2021    224    230
+s06av95a:   2718  Kaolinite KGa-2 (pxl) s06av95a=b           224
+sprlb06a:   1233  Kaolinite KGa-2 (pxl)        W1R1Hb AREF  4301                              80     92
+r06av18a:    672  Kaolinite KGa-2 (pxl) r06av18a=b           224  14:09:39.82  07/16/2021      6     12
+                     u12176U6   w1233W80     USE r06av18a: 672   group 2, 13, 14                  DONE 5.2e1
+
+     checks with cmd.lib.setup.t5.2e1:
+           s06av95a   2718  Kaolinite KGa-2 (pxl) s06av95a=b
+    Grp/Cse              Material                                                               Fit     Depth    F*D
+     grp 1   1um region    none        
+     grp 2   2-2.5um       152  MATCHES:  kaolgrp_kaolinite_pxl                               0.9908   0.3477   0.3445
+           r06av95a    672  Kaolinite KGa-2 (pxl) r06av95a=b
+    Grp/Cse              Material                                                               Fit     Depth    F*D
+     grp 1   1um region     61  MATCHES:  fe2+fe3+_hematite_weathering                        0.6681   0.0097   0.0065
+     grp 2   2-2.5um       152  MATCHES:  kaolgrp_kaolinite_pxl                               1.0000   0.3536   0.3536
+
+
+
+splib06a:         not in splib06a
+spd0673:     315  Synthetic Hectorite SYnH-1 Ref 18388-7AR  2151  15:53:02.35  07/16/2021    224    230
+s06av95a:         n/a
+sprlb06a:   1245  Hectorite SYnH-1             W1R1H_ AREF  4301                              80     92
+r06av18a:    678  Hectorite SYnH-1 r06av18a=_                224  15:53:02.35  07/16/2021      6     12
+                         w1245W80  2.31 band is shiftes +3nm rom SHCa-1.Ac-B    Maybe add as new?  ZZZZZZZZZZ ???
+
+     checks with cmd.lib.setup.t5.2e1:
+     TBD
+
+splib06a:   8999  Halloysite NMNH106237        W1R1Ba AREF   480                               6
+spd0673:     333  Halloysite NMNH106237 Indiana  18388-7AR  2151  13:42:43.57  07/19/2021    224    230
+s06av95a:   2040  Halloysite NMNH106237 s06av95a=a           224
+sprlb06a:   1257  Halloysite NMNH106237        W1R1Ha AREF  4301                              80     92
+r06av18a:    684  Halloysite NMNH106237 r06av18a=a           224  13:42:43.57  07/19/2021      6     12
+                    u8999U6    w1257W80      USE r06av18a:  684     group 2, 14                   DONE 5.2e1
+
+     checks with cmd.lib.setup.t5.2e1:
+           s06av95a   2040  Halloysite NMNH106237 s06av95a=a
+    Grp/Cse              Material                                                               Fit     Depth    F*D
+     grp 1   1um region    none        
+     grp 2   2-2.5um       153  MATCHES:  kaolgrp_halloysite                                  0.9975   0.3993   0.3983
+           r06av95a    684  Halloysite NMNH106237 r06av95a=a
+    Grp/Cse              Material                                                               Fit     Depth    F*D
+     grp 1   1um region    none        
+     grp 2   2-2.5um       153  MATCHES:  kaolgrp_halloysite                                  1.0000   0.6090   0.6090
+
+
+
+
+splib06a:  20225  Sepiolite SepNev-1.AcB       W1R1Ba AREF   480                               6
+spd0673:     351  Sepiolite SepNev-1 Acetate Buf 18388-7AR  2151  16:44:28.20  07/19/2021    224    230
+s06av95a:   4506  Sepiolite SepNev-1.AcB s06av95a=a          224
+sprlb06a:   1269  Sepiolite SepNev-1.AcB       W1R1Ha AREF  4301                              80     92
+r06av18a:    690  Sepiolite SepNev-1.AcB r06av18a=a          224  16:44:28.20  07/19/2021      6     12
+                     u20225U6    w1269W80      USE r06av18a:  690     group 2, 14,                DONE 5.2e1
+                        NOTE:  on the list to add to group 19 but not done
+
+     checks with cmd.lib.setup.t5.2e1:
+           s06av95a   4506  Sepiolite SepNev-1.AcB s06av95a=a
+    Grp/Cse              Material                                                               Fit     Depth    F*D
+     grp 1   1um region    none        
+     grp 2   2-2.5um       240  MATCHES:  sepiolite                                           0.9919   0.1624   0.1613
+           r06av95a    690  Sepiolite SepNev-1.AcB r06av95a=a 
+   Grp/Cse              Material                                                               Fit     Depth    F*D
+     grp 1   1um region    none        
+     grp 2   2-2.5um       240  MATCHES:  sepiolite                                           1.0000   0.1513   0.1513
+
+
+
+splib06a:   9107  Hectorite SHCa-1.Ac-B        W1R1Bb AREF   480                               6
+spd0673:     369  Hectorite SHCa-1.Ac-B 18388-7AR           2151  15:34:23.13  07/21/2021    224    230
+s06av95a:   2064  Hectorite SHCa-1.Ac-B s06av95a=b           224
+sprlb06a:   1281  Hectorite SHCa-1.Ac-B        W1R1Hb AREF  4301                              80     92
+r06av18a:    696  Hectorite SHCa-1.Ac-B r06av18a=b           224  15:34:23.13  07/21/2021      6     12
+                    u9107U6  w1281W80   USE r06av18a: 696    group 2, 14,                         DONE 5.2e1
+                        NOTES:  probably should add to group 19
+
+     checks with cmd.lib.setup.t5.2e1:
+           s06av95a   2064  Hectorite SHCa-1.Ac-B s06av95a=b
+    Grp/Cse              Material                                                               Fit     Depth    F*D
+     grp 1   1um region     66  MATCHES:  fe3+_hematite.nano.BR34b2                           0.5177   0.0026   0.0111
+     grp 2   2-2.5um       238  MATCHES:  clay_hectorite                                      0.9904   0.2382   0.2359
+           r06av95a    696  Hectorite SHCa-1.Ac-B r06av95a=b
+    Grp/Cse              Material                                                               Fit     Depth    F*D
+     grp 1   1um region     66  MATCHES:  fe3+_hematite.nano.BR34b2                           0.5571   0.0080   0.0092
+     grp 2   2-2.5um       238  MATCHES:  clay_hectorite                                      1.0000   0.2379   0.2379
+
+
+
+splib06a:  19990  Saponite SapCa-1.AcB         W1R1Bb AREF   480                               6
+spd0673:     387  Saponite SapCa-1 Acetate Buff 18388-7AR   2151  17:16:42.35  07/21/2021    224    230
+s06av95a:   4452  Saponite SapCa-1.AcB s06av95a=b            224
+sprlb06a:   1293  Saponite SapCa-1.AcB         W1R1Hb AREF  4301                              80     92
+r06av18a:    702  Saponite SapCa-1.AcB r06av18a=b            224  17:16:42.35  07/21/2021      6     12
+                      u19990U6   w1293W80      USE  r06av18a: 702   group 2, 13, 19               DONE 5.2e1
+
+     checks with cmd.lib.setup.t5.2e1:
+           s06av95a   4452  Saponite SapCa-1.AcB s06av95a=b
+    Grp/Cse              Material                                                               Fit     Depth    F*D
+     grp 1   1um region     46  MATCHES:  fe2+generic_med.jadeite                             0.8975   0.0344   0.0308
+     grp 2   2-2.5um       202  MATCHES:  actinolite                                          0.9954   0.3721   0.3704
+           r06av95a    702  Saponite SapCa-1.AcB r06av95a=b
+    Grp/Cse              Material                                                               Fit     Depth    F*D
+     grp 1   1um region     57  MATCHES:  fe2+fe3+mix_with_hematite_br5b                      0.8876   0.0403   0.0358
+     grp 2   2-2.5um       239  MATCHES:  saponite.or.talc                                    1.0000   0.3139   0.3139
+
+
+
+ZZZZZZZZZZZZZ TO DO ZZZZZZZZZZZZZZZZZZZZZZZ
+
+splib06a:   6820  Dickite NMNH106242           W1R1Bb AREF   480                               6
+spd0673:     405  Dickite NMNH106242 Red Mt CO R 18388-7AR  2151  15:24:06.05  07/23/2021    224    230
+s06av95a:   1500  Dickite NMNH106242 s06av95a=b              224
+sprlb06a:   1305  Dickite NMNH106242           W1R1Hb AREF  4301                              80     92
+r06av18a:    708  Dickite NMNH106242 r06av18a=b              224  15:24:06.05  07/23/2021      6     12
+                                                TO EVALUATE    ZZZZZZZ                             ZZZZZZZZZZZZ
+
+     checks with cmd.lib.setup.t5.2e1:
+
+     before adding the new dickite, here is what the new dickite is ID'd as:
+           r06av95a    708  Dickite NMNH106242 r06av95a=b           
+    Grp/Cse              Material                                                               Fit     Depth    F*D
+     grp 1   1um region    none        
+     grp 2   2-2.5um       154  MATCHES:  kaolgrp_dickite                                     0.9976   0.5132   0.5120
+
+
+
+splib06a:  11041  Illite IMt-1.b <2um          W1R1Ba AREF   480                                6
+spd0673:     423  Illite IMt-1.b <2um separate 18388-7AR    2151  17:37:21.32  07/23/2021    224    230
+s06av95a:   2478  Illite IMt-1.b <2um s06av95a=a             224
+sprlb06a:   1317  Illite IMt-1.b <2um          W1R1Ha AREF  4301                              80     92
+r06av18a:    714  Illite IMt-1.b <2um r06av18a=a             224  17:37:21.32  07/23/2021      6     12
+                     u11041U6   w1317W80     USE r06av18a:  714                                   DONE 5.2e1
+                         NOTES:  group 2   need to add to 13 or 14 and 19
+
+     checks with cmd.lib.setup.t5.2e1:
+           s06av95a   2478  Illite IMt-1.b <2um s06av95a=a 
+    Grp/Cse              Material                                                               Fit     Depth    F*D
+     grp 1   1um region     70  MATCHES:  fe2+generic_vbroad_br20                             0.9798   0.2223   0.2178
+     grp 2   2-2.5um       147  MATCHES:  micagrp_illite                                      0.9936   0.1174   0.1168
+           r06av95a    714  Illite IMt-1.b <2um r06av95a=a
+    Grp/Cse              Material                                                               Fit     Depth    F*D
+     grp 1   1um region     70  MATCHES:  fe2+generic_vbroad_br20                             0.9816   0.2216   0.2176
+     grp 2   2-2.5um       147  MATCHES:  micagrp_illite                                      1.0000   0.1127   0.1127
+
+
+
+splib06a:  10903  Illite GDS4 (Marblehead)     W1R1Bb AREF   480  13:21:42.00  06/30/1986      6
+spd0673:     459  Illite GDS4.2 Marblehead WI Re 18388-7AR  2151  13:28:03.07  07/26/2021    224    230
+s06av95a:   2442  Illite GDS4 (Marblehead) s06av18a=b 
+sprlb06a:   1341  Illite GDS4.2 Marblehead_WI  W1R1H_ AREF  4301                              80     92
+r06av18a:    726  Illite GDS4.2 Marblehead_WI r06av18a=_     224  13:28:03.07  07/26/2021      6     12
+                    u10903U6    w1341W80     USE r06av18a:  726   group 2, 19                    DONE 5.2e1
+
+     checks with cmd.lib.setup.t5.2e1:
+           s06av95a   2442  Illite GDS4 (Marblehead) s06av95a=b
+    Grp/Cse              Material                                                               Fit     Depth    F*D
+     grp 1   1um region     46  MATCHES:  fe2+generic_med.jadeite                             0.7571   0.0162   0.0122
+     grp 2   2-2.5um       148  MATCHES:  micagrp_illite.gds4                                 0.9954   0.2900   0.2889
+           r06av95a    726  Illite GDS4.2 Marblehead_WI r06av95a=_
+    Grp/Cse              Material                                                               Fit     Depth    F*D
+     grp 1   1um region    none        
+     grp 2   2-2.5um       148  MATCHES:  micagrp_illite.gds4                                 1.0000   0.2103   0.2103
+
+           
+
+
+splib06a:  12600  Lepidocrosite GDS80 (Syn)    W1R1Bb AREF   480                               6
+spd0673:     477  Lepidocrocite GDS80 Synthetic 18388-7AR   2151  17:07:10.68  07/26/2021    224    230
+s06av95a:   2808  Lepidocrosite GDS80 (Syn) s06av95a=b       224
+sprlb06a:   1353  Lepidocrosite GDS80 (Syn)    W1R1Hb AREF  4301                              80     92
+r06av18a:    732  Lepidocrosite GDS80 (Syn) r06av18a=b       224  17:07:10.68  07/26/2021      6     12
+                     u12600U6   w1353W80       USE  r06av18a:  732    group 1                     DONE 5.2e1
+
+     checks with cmd.lib.setup.t5.2e1:
+           s06av95a   2808  Lepidocrosite GDS80 (Syn) s06av95a=b
+    Grp/Cse              Material                                                               Fit     Depth    F*D
+     grp 1   1um region     37  MATCHES:  fe3+_goethite.lepidocrosite                         0.9990   0.5263   0.5258
+     grp 2   2-2.5um       163  MATCHES:  sulfate_szomolnokite                                0.9444   0.0163   0.0154
+           r06av95a    732  Lepidocrosite GDS80 (Syn) r06av95a=b
+    Grp/Cse              Material                                                               Fit     Depth    F*D
+     grp 1   1um region     37  MATCHES:  fe3+_goethite.lepidocrosite                         1.0000   0.5526   0.5526
+     grp 2   2-2.5um       303  MATCHES:  portlandite                                         0.9609   0.0183   0.0176
+
+
+
+
+splib06a:   9282  Hematite GDS27               W1R1Ba AREF   480                               6
+spd0673:     495  Hematite GDS27 Baker reagent R 18388-7AR  2151  15:02:31.27  07/28/2021    224    230
+s06av95a:   2106  Hematite GDS27 s06av95a=a                  224
+sprlb06a:   1365  Hematite GDS27               W1R1Ha AREF  4301                              80     92
+r06av18a:    738  Hematite GDS27 r06av18a=a                  224  15:02:31.27  07/28/2021      6     12
+                     u9282U6   w1365W80   d2106D6      USE r06av18a:  738   group 1               DONE 5.2e1
+
+     checks with cmd.lib.setup.t5.2e1:
+           s06av95a   2106  Hematite GDS27 s06av95a=a
+    Grp/Cse              Material                                                               Fit     Depth    F*D
+     grp 1   1um region     51  MATCHES:  fe3+_hematite.med.gr.gds27                          0.9984   0.5916   0.5906
+     grp 2   2-2.5um       none        
+           r06av95a    738  Hematite GDS27 r06av95a=a
+    Grp/Cse              Material                                                               Fit     Depth    F*D
+     grp 1   1um region     51  MATCHES:  fe3+_hematite.med.gr.gds27                          1.0000   0.5523   0.5523
+     grp 2   2-2.5um       303  MATCHES:  portlandite                                         0.9060   0.0018   0.0016
+
+      Medium gr hematite is correct.
+
+
+splib06a:  25384  Hematite.02+Quartz.98 GDS76  W1R1Ba AREF   480                               6
+spd0673:     513  Hematite 2wt% + Qtz GDS76 imix 18388-7AR  2151  17:30:40.80  07/28/2021    224    230
+s06av95a:   5790  Hematite.02+Quartz.98 GDS76 s06av95a=a     224
+sprlb06a:   1377  Hematite.02+Quartz.98 GDS76  W1R1Ha AREF  4301                              80     92
+r06av18a:    744  Hematite.02+Quartz.98 GDS76 r06av18a=a     224  17:30:40.80  07/28/2021      6     12
+                     u25384U6   w1377W80  d5790D6  v744V6    USE   744     group 1                DONE 5.2e1
+                         NOTE new spectrum has badn center at 0.8751 vs old at 0.8862, so 11 nm.
+
+     checks with cmd.lib.setup.t5.2e1:
+           s06av95a   5790  Hematite.02+Quartz.98 GDS76 s06av95a=a
+    Grp/Cse              Material                                                               Fit     Depth    F*D
+     grp 1   1um region     23  MATCHES:  fe3+_hematite.fine.gr.gds76                         0.9976   0.2898   0.2895
+     grp 2   2-2.5um       169  MATCHES:  sioh_chalcedony                                     0.9545   0.0142   0.0135
+           r06av95a    744  Hematite.02+Quartz.98 GDS76 r06av95a=a
+    Grp/Cse              Material                                                               Fit     Depth    F*D
+     grp 1   1um region     23  MATCHES:  fe3+_hematite.fine.gr.gds76                         1.0000   0.3144   0.3144
+     grp 2   2-2.5um       169  MATCHES:  sioh_chalcedony                                     0.9851   0.0111   0.0109
+
+
+
+splib06a:  18096  Prehnite GDS613.a <60um    W5R4Naa_ RREF  4280                              42
+spd0673:     531  Prehnite GDS613A <250um Austra 18388-7AR  2151  13:28:13.23  08/04/2021    224    230
+s06av95a:   4026  Prehnite GDS613.a <60um s06av95a=aa_       224    TETRACORDER using nicolet spectrum, so no change???????
+sprlb06a:   1389  Prehnite GDS613.a <60um      W1R1Ha AREF  4301                              80     92
+r06av18a:    750  Prehnite GDS613.a <60um r06av18a=a         224  13:28:13.23  08/04/2021      6     12
+                      u18096U42    w1389W80   d4026D6  v750V6   USE OLD,                          USE OLD
+                      NOTES:  maybe add as new in future?  group 2, 15
+                      in new spectrum, 2.35 band is different (borader, longer, 1.47 band shorter, broader
+
+     checks with cmd.lib.setup.t5.2e1:
+           s06av95a   4026  Prehnite GDS613.a <60um s06av95a=aa_
+    Grp/Cse              Material                                                               Fit     Depth    F*D
+     grp 1   1um region     80  MATCHES:  fe2+_olivine-lrg-gr                                 0.6036   0.0253   0.0153
+     grp 2   2-2.5um       258  MATCHES:  prehnite                                            1.0000   0.2618   0.2618
+           r06av95a    750  Prehnite GDS613.a <60um r06av95a=a
+    Grp/Cse              Material                                                               Fit     Depth    F*D
+     grp 1   1um region     61  MATCHES:  fe2+fe3+_hematite_weathering                        0.8683   0.0340   0.0296
+     grp 2   2-2.5um       258  MATCHES:  prehnite                                            0.9865   0.4349   0.4289
+
+
+
+splib06a:  26022  Muscovite CU91-250A med Al   W2R4Nb RREF  3325                              22
+spd0673:     549  Muscovite Med Low Al CU91-250A 18388-7AR  2151  15:16:38.65  08/04/2021    224    230
+s06av95a:   5976  Muscovite CU91-250A med Al s06av95a=b      224     TETRACORDER using nicolet spectrum, so no change???????
+sprlb06a:   1401  Muscovite CU91-250A med Al   W1R1Hb AREF  4301                              80     92
+r06av18a:    756  Muscovite CU91-250A med Al r06av18a=b      224  15:16:38.65  08/04/2021      6     12
+                      u26022U22   w1401W80   d5976D6  v756V6  USE OLD    Group 2                  USE OLD
+                       NOTES:  need to add 1.4 region group
+                         Spectra are extremely close.  No need to change
+
+     checks with cmd.lib.setup.t5.2e1:
+           s06av95a   5976  Muscovite CU91-250A med Al s06av95a=b
+    Grp/Cse              Material                                                               Fit     Depth    F*D
+     grp 1   1um region    none        
+     grp 2   2-2.5um       144  MATCHES:  micagrp_muscovite-med-Al                            1.0000   0.1989   0.1989
+           r06av95a    756  Muscovite CU91-250A med Al r06av95a=b
+    Grp/Cse              Material                                                               Fit     Depth    F*D
+     grp 1   1um region     39  MATCHES:  fe2+_goeth+musc                                     0.9404   0.0550   0.0528
+     grp 2   2-2.5um       144  MATCHES:  micagrp_muscovite-med-Al                            0.9992   0.2052   0.2050
+
+
+
+splib06a:  26143  Muscovite-medhi-Al CU91-252D W1R1Fc AREF  2151                              10
+spd0673:     567  Muscovite Med HighAl CU91-252D 18388-7AR  2151  17:06:24.50  08/04/2021    224    230
+s06av95a:   6000  Muscovite-medhi-Al CU91-252D s06av95a=c    224 
+sprlb06a:   1413  Muscovite-medhi-Al CU91-252D W1R1Hc AREF  4301                              80     92
+r06av18a:    762  Muscovite-medhi-Al CU91-252D r06av18a=c    224  17:06:24.50  08/04/2021      6     12
+                    u26143U10   w1413W80   d6000D6  v762V6    USE OLD 6000                        USE OLD
+                    NOTES: 2.2 bands close, new spectrum a little more structure, higher reflectance
+                            but 1-micron band is major shift short and shape change, weaker.
+
+     checks with cmd.lib.setup.t5.2e1:
+           s06av95a   6000  Muscovite-medhi-Al CU91-252D s06av95a=c
+    Grp/Cse              Material                                                               Fit     Depth    F*D
+     grp 1   1um region     39  MATCHES:  fe2+_goeth+musc                                     0.9961   0.1954   0.1946
+     grp 2   2-2.5um       145  MATCHES:  micagrp_muscovite-medhigh-Al                        0.9947   0.2651   0.2639
+           r06av95a    762  Muscovite-medhi-Al CU91-252D r06av95a=c
+    Grp/Cse              Material                                                               Fit     Depth    F*D
+     grp 1   1um region     39  MATCHES:  fe2+_goeth+musc                                     0.9926   0.0925   0.0918
+     grp 2   2-2.5um       145  MATCHES:  micagrp_muscovite-medhigh-Al                        0.9897   0.1139   0.1130
+
+     NOTE: the reference spectrum does not match itself!  micagrp_muscovite-medhigh-Al = Muscovite GDS113 Ruby
+
+
+splib06a:  13124  Maghemite GDS81 Syn (M-3)    W1R1Bb AREF   480                               6
+spd0673:     585  Synthetic Maghemite GDS81 D. S 18388-7AR  2151  14:01:02.15  08/06/2021    224    230
+s06av95a:   2928  Maghemite GDS81 Syn (M-3) s06av95a=b       224
+sprlb06a:   1425  Maghemite GDS81 Syn (M-3)    W1R1Hb AREF  4301                              80     92
+r06av18a:    768  Maghemite GDS81 Syn (M-3) r06av18a=b       224  14:01:02.15  08/06/2021      6     12
+                    u13124U6  w1425W80  d2928D6  v768V6    USE: OLD,                              USE OLD
+                        NOTES but add this one as a new entry, group 1
+                        NOTES: new spectrum is brighter, and has no broad 1.5 band.
+                               0.977 band is the same in old and new, better defined in new.
+
+     checks with cmd.lib.setup.t5.2e1:
+           s06av95a   2928  Maghemite GDS81 Syn (M-3) s06av95a=b
+    Grp/Cse              Material                                                               Fit     Depth    F*D
+     grp 1   1um region    106  MATCHES:  fe3+_maghemite                                      1.0000   0.7649   0.7649
+     grp 2   2-2.5um       305  MATCHES:  nitrate_sodium                                      0.8616   0.0083   0.0071
+           r06av95a    768  Maghemite GDS81 Syn (M-3) r06av95a=b
+    Grp/Cse              Material                                                               Fit     Depth    F*D
+     grp 1   1um region    106  MATCHES:  fe3+_maghemite                                      0.9965   0.6648   0.6626
+     grp 2   2-2.5um       166  MATCHES:  perchlorate_na                                      0.9441   0.0092   0.0087
+
+
+
+splib06a:          in rlib
+spd0673:     603  Ferrimontmorillonite GDS759B F 18388-7AR  2151  15:36:24.73  08/06/2021    224    230
+sprlb06a     152  Montmorillonite_Fe GDS759A W5R4N___ AREF  3325  23:56:31.00  04/15/2008     22
+r06av18a:     54  Montmorillonite_Fe GDS759A r06av18a=___    224  23:56:31.00  04/15/2008      6    
+sprlb06a:   1437  Montmorillonite_Fe GDS759B   W1R1H_ AREF  4301                              80     92
+r06av18a:    774  Montmorillonite_Fe GDS759B r06av18a=_      224  15:36:24.73  08/06/2021      6     12
+                   w152W22  w1437W80   v54V6   v774V6    USE OLD nicolet spectrum for group 2    USE OLD
+                                                      IF ADD group1, then use new spectrum
+                                                      Need to add to 1.4 and 1.9 groups.
+                    NOTES: old and new are pretty much the same from 1.2 to 2.5.
+
+     checks with cmd.lib.setup.t5.2e1:
+           r06av95a    774  Montmorillonite_Fe GDS759B r06av95a=_ 
+    Grp/Cse              Material                                                               Fit     Depth    F*D
+     grp 1   1um region     26  MATCHES:  fe3+_goethite.fingr                                 0.9948   0.2653   0.2638
+     grp 2   2-2.5um       159  MATCHES:  smectite_montmorillonite_fe_swelling                0.9957   0.0705   0.0702
+
+
+\#  the Cookeite CAr-1 series:
+\#   s06crj3a d1332D6A Cookeite CAr-1.a 104-150um s06crj3a=b
+\# * s06crj3a d1338D6A Cookeite CAr-1.a 104-150um s06crj3a=bb_  added in g2 5.2b2 3/31/2020
+\#   r06av18a v780V6   Cookeite CAr-1.d 90-150um r06av18a=b      new in sprlib 3/2022
+\#   s06crj3a d1344D6A Cookeite CAr-1.b 60-104um s06crj3a=b  
+\#   s06crj3a d1350D6A Cookeite CAr-1.b 60-104um s06crj3a=b 
+\#   s06crj3a d1356D6A Cookeite CAr-1.b 60-104um s06crj3a=bb_
+\#   s06crj3a d1362D6A Cookeite CAr-1.c <30um s06crj3a=b
+\# * s06crj3a d1368D6A Cookeite CAr-1.c <30um s06crj3a=cc_     added in g2 5.2b2 3/31/2020
+
+splib06a:    not in splib06a
+spd0673:     621  Cookeite CAr-1.d 90-150um 18388-7AR       2151  17:20:31.15  08/06/2021    224    230
+s06av95a:
+sprlb06a:   1449  Cookeite CAr-1.d 90-150um    W1R1H_ AREF  4301                              80     92
+r06av18a:    780  Cookeite CAr-1.d 90-150um r06av18a=b       224  17:20:31.15  08/06/2021      6     12
+r06av18a:    792  Cookeite CAr-1.c <30um r06av18a=c          224  15:28:58.05  08/09/2021      6    108
+                                         v780V6            USE OLD (Nicolet data) for group 2     USE OLD
+                             Add 780  Cookeite CAr-1.d 90-150um to group 2                                ZZZZZZZ`
+                                  because the shape is in between the <30 and 90-150
+                                  USE 780 for group 13, 14                                        DONE 5.2e1
+                    NOTES: currently, 104-150um, <30um spectra from Nicolet are used in group 2.
+     checks with cmd.lib.setup.t5.2e1:
+           
+              
+splib06a:   6241  Cookeite CAr-1.c <30um     W5R4Ncc_ RREF  4280
+spd0673:     657  Cookeite CAr-1.c < 30 microns 18388-7AR   2151  15:28:58.05  08/09/2021    224    230
+s06av95a:   1368  Cookeite CAr-1.c <30um s06av95a=cc_                 TETRACORDER using nicolet spectrum, so no change???????
+sprlb06a:   1473  Cookeite CAr-1.c <30um       W1R1Hc AREF  4301                              80     92
+r06av18a:    792  Cookeite CAr-1.c <30um r06av18a=c          224  15:28:58.05  08/09/2021      6     12
+                                                             USE OLD (Nicolet data) for group 2    USE OLD
+                    NOTES: currently, 104-150um, <30um spectra from Nicolet are used in group 2.
+
+     checks with cmd.lib.setup.t5.2e1:
+           r06av95a    792  Cookeite CAr-1.c <30um r06av95a=c   NOTE FIT of new to old =1.0000:
+    Grp/Cse              Material                                                               Fit     Depth    F*D
+     grp 1   1um region     61  MATCHES:  fe2+fe3+_hematite_weathering                        0.9605   0.0089   0.0086
+     grp 2   2-2.5um       195  MATCHES:  smectite_ammonillsmec                               1.0000   0.0834   0.0834
+
+
+
+
+splib06a:   1757  Ammonio-Illite/Smectit GDS87 W1R1Bb AREF   480                               6
+spd0673:     639  Synthetic NH4-smectite GDS87 R 18388-7AR  2151  13:24:31.32  08/09/2021    224    230
+s06av95a:    372  Ammonio-Illite/Smectit GDS87 s06av95a=b    224
+sprlb06a:   1461  Ammonio-Illite/Smectit GDS87 W1R1Hb AREF  4301                              80     92
+r06av18a:    786  Ammonio-Illite/Smectit GDS87 r06av18a=b    224  13:24:31.32  08/09/2021      6     12
+                     u1757U6   w1461W80   v786V6  d372D6        USE   r06av18a: 786  group 2       DONE 5.2e1
+                        need to add to 1.4 and 1.9 groups
+
+     checks with cmd.lib.setup.t5.2e1:
+           s06av95a    372  Ammonio-Illite/Smectit GDS87 s06av95a=b
+    Grp/Cse              Material                                                               Fit     Depth    F*D
+     grp 1   1um region    112  MATCHES:  inosilicate_pectolite                               0.6015   0.2537   0.1581
+     grp 2   2-2.5um       167  MATCHES:  smectite_beidellite_gds123                          0.9437   0.2323   0.2192
+           r06av95a    786  Ammonio-Illite/Smectit GDS87 r06av95a=b 
+   Grp/Cse              Material                                                               Fit     Depth    F*D
+     grp 1   1um region    none        
+     grp 2   2-2.5um       168  MATCHES:  smectite_beidellite_gds124                          0.9469   0.2264   0.2144
+
+         ERROR!  reference does not map.  Why?????
+
+
+
+    NOTE: the following Swayze confirmed the sample ID is CU91-260B NOT CU93-260B (splib06 is incorrect)
+splib06a:  24428  Buddingtnt+Na-Mont CU93-260B W2R4Nb RREF  3325                              22
+spd0673:     675  Buddingtonite+Na-MontCU91-260B 18388-7AR  2151  17:42:27.57  08/09/2021    224    230
+s06av95a:   5502  Buddingtnt+Na-Mont CU93-260B s06av95a=b    224        TETRACORDER using nicolet spectrum, so no change???????
+sprlb06a:   1485  Buddingtnt+Na-Mont CU93-260B W1R1Hb AREF  4301                              80     92
+r06av18a:    798  Buddingtnt+Na-Mont CU93-260B r06av18a=b    224  17:42:27.57  08/09/2021      6     12
+                    u24428U22   w1485W80   d5502D6  v798V6     USE  OLD group 2                   USE OLD
+                    NOTES: new and old spectra are VERY different. 
+                           Perhaps add new as another entry.
+
+     checks with cmd.lib.setup.t5.2e1:
+           s06av95a   5502  Buddingtnt+Na-Mont CU93-260B s06av95a=b 
+    Grp/Cse              Material                                                               Fit     Depth    F*D
+     grp 1   1um region    none        
+     grp 2   2-2.5um       197  MATCHES:  feldspar_buddington.namont                          1.0000   0.0502   0.0502
+           r06av95a    798  Buddingtnt+Na-Mont CU93-260B r06av95a=b 
+    Grp/Cse              Material                                                               Fit     Depth    F*D
+     grp 1   1um region    none        
+     grp 2   2-2.5um       198  MATCHES:  feldspar_buddington.namont2                         0.9722   0.1646   0.1600
+
+
+splib06a:  26061  Muscovite+Chlorite CU91-253D W2R4Na RREF  3325                              22
+spd0673:     693  Chlorite + muscovite CU91-253D 18388-7AR  2151  14:00:08.68  08/11/2021    224    230
+s06av95a:   5982  Muscovite+Chlorite CU91-253D s06av95a=a    224        TETRACORDER using nicolet spectrum, so no change???????
+sprlb06a:   1497  Muscovite+Chlorite CU91-253D W1R1Ha AREF  4301                              80     92
+r06av18a:    804  Muscovite+Chlorite CU91-253D r06av18a=a    224  14:00:08.68  08/11/2021      6     12
+                     u26061U22   w1497W80   d5982D6  v804V6   USE  OLD                             USE OLD
+                     NOTES: old and new spectra very close 2-2.5 microns
+                            If add 1.4 microns feature, USE new.
+
+     checks with cmd.lib.setup.t5.2e1:
+            s06av95a   5982  Muscovite+Chlorite CU91-253D s06av95a=a 
+    Grp/Cse              Material                                                               Fit     Depth    F*D
+     grp 1   1um region    none        
+     grp 2   2-2.5um       194  MATCHES:  muscovite+chlorite                                  1.0000   0.1594   0.1594
+           r06av95a    804  Muscovite+Chlorite CU91-253D r06av95a=a 
+    Grp/Cse              Material                                                               Fit     Depth    F*D
+     grp 1   1um region     65  MATCHES:  fe3+_hematite.lg.gr.br25c                           1.0000   0.1369   0.1369
+     grp 2   2-2.5um       194  MATCHES:  muscovite+chlorite                                  0.9994   0.2817   0.2815
+
+           ERROR: redo, BR93-25C entry had wrong record number, was 804, now 816
+
+
+
+
+splib06a:   ???????????????????   not in splib06aa or sprlb06
+spd0673:     711  Chlorite Serpentine B93-22B ro 18388-7AR  2151  16:25:13.57  08/11/2021    224    230
+s06av95a:
+sprlb06a:   1509  Chlorite B93-22B Serpentine  W1R1H_ AREF  4301                              80     92
+r06av18a:    810  Chlorite B93-22B Serpentine r06av18a=_     224  16:25:13.57  08/11/2021      6     12
+                                      v810V6
+                    NOTES: this is not in tetracorder 5.2d5, not in splib06a, sprlb06a            ZZZZZZZZZZZZZ ???
+                           should we add this one (great looking spectrum)
+
+     checks with cmd.lib.setup.t5.2e1:
+           r06av95a    810  Chlorite B93-22B Serpentine r06av95a=_  
+    Grp/Cse              Material                                                               Fit     Depth    F*D
+     grp 1   1um region     59  MATCHES:  fe2+generic_br33a_bioqtzmonz_epidote                0.9595   0.0938   0.0927
+     grp 2   2-2.5um       279  MATCHES:  serpentine_chrysotile.med-fine-fibrous              0.9454   0.3538   0.3345
+
+
+
+splib06a:  26789  Hematite_Coatd_Qtzt BR93-25C W1R1Bb AREF   480                               6
+spd0673:     729  Hematite coat qtzite BR93-25C 18388-7AR   2151  15:31:59.70  08/23/2021    224    230
+s06av95a:   6192  Hematite_Coatd_Qtzt BR93-25C s06av95a=b    224 
+sprlb06a:   1521  Hematite_Coatd_Qtzt BR93-25C W1R1Hb AREF  4301                              80     92
+r06av18a:    816  Hematite_Coatd_Qtzt BR93-25C r06av18a=b    224  15:31:59.70  08/23/2021      6     12
+                    u26789U6  w1521W80  d6192D6  v816V6   USE    r06av18a: 816   group 1          DONE 5.2e1
+                    NOTES: spectra are very very close; newer spectrum less noisey.
+                            Tetracorder syas this is large grains
+
+     checks with cmd.lib.setup.t5.2e1:
+           s06av95a   6192  Hematite_Coatd_Qtzt BR93-25C s06av95a=b 
+    Grp/Cse              Material                                                               Fit     Depth    F*D
+     grp 1   1um region     63  MATCHES:  fe3+_hematite.lg.gr.br25a                           0.9843   0.5416   0.5327
+     grp 2   2-2.5um       183  MATCHES:  kaolin.5+muscov.medAl                               0.9521   0.0634   0.0604
+           r06av95a    816  Hematite_Coatd_Qtzt BR93-25C r06av95a=b 
+    Grp/Cse              Material                                                               Fit     Depth    F*D
+     grp 1   1um region     63  MATCHES:  fe3+_hematite.lg.gr.br25a                           0.9831   0.5286   0.5194
+     grp 2   2-2.5um       219  MATCHES:  hornblende                                          0.9310   0.0145   0.0135
+
+
+
+splib06a:  26767  Hematite_Coatd_Qtz BR93-34C  W1R1Ba AREF   480                               6
+spd0673:     747  Hematite coat qtzite BR93-34C 18388-7AR   2151  17:09:55.00  08/23/2021    224    230
+s06av95a:   6180  Hematite_Coatd_Qtz BR93-34C s06av95a=a     224
+sprlb06a:   1533  Hematite_Coatd_Qtz BR93-34C  W1R1Ha AREF  4301                              80     92
+r06av18a:    822  Hematite_Coatd_Qtz BR93-34C r06av18a=a     224  17:09:55.00  08/23/2021      6     12
+                       u26767U6   w1533W80  d6180D6   v822V6    USE r06av18a: 822   group 1        DONE in 5.2e1
+
+     checks with cmd.lib.setup.t5.2e1:
+           s06av95a   6180  Hematite_Coatd_Qtz BR93-34C s06av95a=a  
+    Grp/Cse              Material                                                               Fit     Depth    F*D
+     grp 1   1um region     67  MATCHES:  fe3+_hematite.lg.gr.br34c                           0.9944   0.4865   0.4845
+     grp 2   2-2.5um       281  MATCHES:  serpentine_cronstedtite                             0.8250   0.0376   0.0326
+           r06av95a    822  Hematite_Coatd_Qtz BR93-34C r06av95a=a  
+    Grp/Cse              Material                                                               Fit     Depth    F*D
+     grp 1   1um region     67  MATCHES:  fe3+_hematite.lg.gr.br34c                           1.0000   0.4616   0.4616
+     grp 2   2-2.5um       245  MATCHES:  carbonate_dolomite.5+Na-mont.5                      0.9038   0.0305   0.0285
+
+
+
+splib06a:  15589  Nanohematite BR93-34B2       W1R1Bb AREF   480                               6
+spd0673:     765  Nanohematite onqtziteBR93-34B2 18388-7A   2151  13:45:33.90  08/25/2021    224    230
+s06av95a:   3468  Nanohematite BR93-34B2 s06av95a=b          224
+sprlb06a:   1545  Nanohematite BR93-34B2       W1R1Hb AREF  4301                              80     92
+r06av18a:    828  Nanohematite BR93-34B2 r06av18a=b          224  13:45:33.90  08/25/2021      6     12
+                    u15589U6   w1545W80   d3468D6   v828V6    USE  OLD   group 1                   USE OLD
+                      Notes: significant band shift: new= 0.894 um and shape different  old= 0.909
+                             new also has 0.964 um band = 3rd overtone of OH stretch, not in old
+                                    new: phyllosilicate bands are slightly deeper
+                             Old spectrum has high S/N
+
+     checks with cmd.lib.setup.t5.2e1:
+           s06av95a   3468  Nanohematite BR93-34B2 s06av95a=b       
+    Grp/Cse              Material                                                               Fit     Depth    F*D
+     grp 1   1um region     66  MATCHES:  fe3+_hematite.nano.BR34b2                           1.0000   0.2727   0.2727
+     grp 2   2-2.5um       183  MATCHES:  kaolin.5+muscov.medAl                               0.9945   0.4019   0.3997
+           r06av95a    828  Nanohematite BR93-34B2 r06av95a=b       
+    Grp/Cse              Material                                                               Fit     Depth    F*D
+     grp 1   1um region     66  MATCHES:  fe3+_hematite.nano.BR34b2                           0.9926   0.2886   0.2880
+     grp 2   2-2.5um       183  MATCHES:  kaolin.5+muscov.medAl                               0.9942   0.4171   0.4147
+
+
+
+
+splib06a:  26756  Hematite_Coatd_Qtz BR93-25B  W1R1Bb AREF   480                               6
+spd0673:     783  Hematite coat qtzite BR93-25B  18388-7AR  2151  15:48:31.50  08/25/2021    224    230
+s06av95a:   6174  Hematite_Coatd_Qtz BR93-25B s06av95a=b     224
+sprlb06a:   1557  Hematite_Coatd_Qtz BR93-25B  W1R1Hb AREF  4301                              80     92
+r06av18a:    834  Hematite_Coatd_Qtz BR93-25B r06av18a=b     224  15:48:31.50  08/25/2021      6     12
+                    u26756U6   w1557W80   d6174D6   v834V6   USE  OLD   group 1                   USE OLD
+                      NOTES: new is shorter wavelength: 0.8895 um, old= 0.9011, 12 nm shift
+                            Pretty close, but keep old.
+
+     checks with cmd.lib.setup.t5.2e1:
+           s06av95a   6174  Hematite_Coatd_Qtz BR93-25B s06av95a=b  
+    Grp/Cse              Material                                                               Fit     Depth    F*D
+     grp 1   1um region     64  MATCHES:  fe3+_hematite.med.gr.br25b                          1.0000   0.4408   0.4408
+     grp 2   2-2.5um       185  MATCHES:  kaolin+musc.intimat                                 0.9942   0.1523   0.1514
+           r06av95a    834  Hematite_Coatd_Qtz BR93-25B r06av95a=b  
+    Grp/Cse              Material                                                               Fit     Depth    F*D
+     grp 1   1um region     64  MATCHES:  fe3+_hematite.med.gr.br25b                          0.9981   0.3857   0.3849
+     grp 2   2-2.5um       185  MATCHES:  kaolin+musc.intimat                                 0.9951   0.1527   0.1520
+
+
+
+splib06a:  26778  Hematite_Coatd_Qtzt BR93-25A W1R1Bb AREF   480                               6
+spd0673:     801  Hematite on qtzite BR93-25A go 18388-7AR  2151  17:32:10.73  08/27/2021    224    230
+s06av95a:   6186  Hematite_Coatd_Qtzt BR93-25A s06av95a=b    224
+sprlb06a:   1569  Hematite_Coatd_Qtzt BR93-25A W1R1Hb AREF  4301                              80     92
+r06av18a:    840  Hematite_Coatd_Qtzt BR93-25A r06av18a=b    224  17:32:10.73  08/27/2021      6     12
+                     u26778U6   w1569W80   d6186D6   v840V6    USE r06av18a: 840  group 1          DONE 5.2e1
+                        NOTES: new = 0.9087 um  old= 0.9178 a 9 nm shift, but shape= same
+                              noise in bottom of old spectrum, 0.9 featuere says use new.
+
+     checks with cmd.lib.setup.t5.2e1:
+           s06av95a   6186  Hematite_Coatd_Qtzt BR93-25A s06av95a=b 
+    Grp/Cse              Material                                                               Fit     Depth    F*D
+     grp 1   1um region     63  MATCHES:  fe3+_hematite.lg.gr.br25a                           0.9994   0.4437   0.4434
+     grp 2   2-2.5um       183  MATCHES:  kaolin.5+muscov.medAl                               0.9863   0.1595   0.1573
+           r06av95a    840  Hematite_Coatd_Qtzt BR93-25A r06av95a=b 
+    Grp/Cse              Material                                                               Fit     Depth    F*D
+     grp 1   1um region     63  MATCHES:  fe3+_hematite.lg.gr.br25a                           1.0000   0.4218   0.4218
+     grp 2   2-2.5um       183  MATCHES:  kaolin.5+muscov.medAl                               0.9668   0.1393   0.1347
+
+
+
+splib06a:  25904  Magnetite_skarn BR93-5B      W1R1Bb AREF   480                               6
+spd0673:     819  Magnetite scarn BR93-5B Reft   18388-7AR  2151  14:54:31.23  08/27/2021    224    230  NOTE:should be skarn
+s06av95a:   5934  Magnetite_skarn BR93-5B s06av95a=b         224
+sprlb06a:   1581  Magnetite_skarn BR93-5B      W1R1Hb AREF  4301                              80     92
+r06av18a:    846  Magnetite_skarn BR93-5B r06av18a=b         224  14:54:31.23  08/27/2021      6     12
+                     u25904U6   w1581W80   d5934D6   v846V6    USE  r06av18a: 846   group 1        DONE 5.2e1
+                      NOTES: new: very very interesting 2.2-2.5 features.  What are they?
+                             old and new borad 1.05-um feature  is very close.
+                             new much less noisey.  Use new
+                      NOTE: search output scripts for scarn and change to skarn
+
+     checks with cmd.lib.setup.t5.2e1:
+           s06av95a   5934  Magnetite_skarn BR93-5B s06av95a=b      
+    Grp/Cse              Material                                                               Fit     Depth    F*D
+     grp 1   1um region     57  MATCHES:  fe2+fe3+mix_with_hematite_br5b                      0.9973   0.1589   0.1585
+     grp 2   2-2.5um       none        
+           r06av95a    846  Magnetite_skarn BR93-5B r06av95a=b      
+    Grp/Cse              Material                                                               Fit     Depth    F*D
+     grp 1   1um region     57  MATCHES:  fe2+fe3+mix_with_hematite_br5b                      1.0000   0.1475   0.1475
+     grp 2   2-2.5um       223  MATCHES:  phlogopite                                          0.7930   0.0685   0.0605
+
+
+
+splib06a:  24263  Basalt_weathered BR93-43     W1R1Bb AREF   480                               6
+spd0673:     855  Weathered Basalt BR93-43 Reft  18388-7AR  2151  15:41:51.42  09/03/2021    224    230
+s06av95a:   5460  Basalt_weathered BR93-43 s06av95a=b        224
+sprlb06a:   1605  Basalt_weathered BR93-43     W1R1Hb AREF  4301                              80     92
+r06av18a:    858  Basalt_weathered BR93-43 r06av18a=b        224  15:41:51.42  09/03/2021      6     12
+                     u24263U6   w1605W80   d5460D6   v858V6     USE OLD group 1,                  USE OLD
+                        NOTES:   but add the new one in another entry
+                        NOTES: spectral are quite different: less 0.9 band, more hematite
+
+     checks with cmd.lib.setup.t5.2e1:
+           s06av95a   5460  Basalt_weathered BR93-43 s06av95a=b     
+    Grp/Cse              Material                                                               Fit     Depth    F*D
+     grp 1   1um region     61  MATCHES:  fe2+fe3+_hematite_weathering                        1.0000   0.1239   0.1239
+     grp 2   2-2.5um       237  MATCHES:  smectite_nontronite_swelling                        0.7891   0.0877   0.0817
+           r06av95a    858  Basalt_weathered BR93-43 r06av95a=b     
+    Grp/Cse              Material                                                               Fit     Depth    F*D
+     grp 1   1um region     66  MATCHES:  fe3+_hematite.nano.BR34b2                           0.9702   0.0543   0.0527
+     grp 2   2-2.5um       237  MATCHES:  smectite_nontronite_swelling                        0.7012   0.0328   0.0252
+
+
+
+splib06a:  25494  Kaol+Musc_intimate CU93-5C   W1R1Ba AREF   480                               6
+spd0673:     891  Kaolinite+Musc imix CU93-5C 18388-7AR     2151  15:12:49.10  09/08/2021    224    230
+s06av95a:   5826  Kaol+Musc_intimate CU93-5C s06av95a=a      224
+sprlb06a:   1629  Kaol+Musc_intimate CU93-5C   W1R1Ha AREF  4301                              80     92
+r06av18a:    870  Kaol+Musc_intimate CU93-5C r06av18a=a      224  15:12:49.10  09/08/2021      6     12
+                     u25494U6   w1629W80   d5826D6   v870V6    USE r06av18a: 870    group 2        DONE 5.2e1
+                      NOTES:  Spectral features very very close, just new is a little brighter
+
+     checks with cmd.lib.setup.t5.2e1:
+           s06av95a   5826  Kaol+Musc_intimate CU93-5C s06av95a=a   
+    Grp/Cse              Material                                                               Fit     Depth    F*D
+     grp 1   1um region     41  MATCHES:  fe2+generic_nrw.cummingtonite                       0.8117   0.0175   0.0142
+     grp 2   2-2.5um       185  MATCHES:  kaolin+musc.intimat                                 0.9986   0.2261   0.2258
+           r06av95a    870  Kaol+Musc_intimate CU93-5C r06av95a=a   
+    Grp/Cse              Material                                                               Fit     Depth    F*D
+     grp 1   1um region    none        
+     grp 2   2-2.5um       185  MATCHES:  kaolin+musc.intimat                                 1.0000   0.2215   0.2215
+
+
+
+splib06a:  26008  Muscov+Jaros CU93-314 coatng W1R1Bb AREF   480                               6
+spd0673:     909  Muscovite+jarositCoat CU93-314 18388-7AR  2151  16:45:09.65  09/08/2021    224    230
+s06av95a:   5970  Muscov+Jaros CU93-314 coatng s06av95a=b    224
+sprlb06a:   1641  Muscov+Jaros CU93-314 coatng W1R1Hb AREF  4301                              80     92
+r06av18a:    876  Muscov+Jaros CU93-314 coatng r06av18a=b    224  16:45:09.65  09/08/2021      6     12
+                    u26008U6   w1641W80   d5970D6   v876V6    USE new  group 2                     DONE 5.2e1
+                      NOTES: spectral features are very close.
+                             0.9 band is a little shorter in new, but better defined.
+                             2.26 band in new is a little deeper, so this spectrum indicates more jarosite
+
+     checks with cmd.lib.setup.t5.2e1:
+           s06av95a   5970  Muscov+Jaros CU93-314 coatng s06av95a=b 
+    Grp/Cse              Material                                                               Fit     Depth    F*D
+     grp 1   1um region     36  MATCHES:  fe3+_sulfate_kjarosite200                           0.9814   0.2033   0.1995
+     grp 2   2-2.5um       186  MATCHES:  musc+jarosite.intimat                               0.9980   0.2239   0.2235
+           r06av95a    876  Muscov+Jaros CU93-314 coatng r06av95a=b 
+    Grp/Cse              Material                                                               Fit     Depth    F*D
+     grp 1   1um region     36  MATCHES:  fe3+_sulfate_kjarosite200                           0.9935   0.2258   0.2243
+     grp 2   2-2.5um       186  MATCHES:  musc+jarosite.intimat                               1.0000   0.2172   0.2172
+
+ 
+
+
+splib06a:  24750  Chlor+Goethite CU93-4B Phyl  W1R1Ba AREF   480                               6
+spd0673:     873  Chlorite + goethite CU93-4B co 18388-7AR  2151  13:29:49.17  09/08/2021    224    230
+s06av95a:   5604  Chlor+Goethite CU93-4B Phyl s06av95a=a     224 
+sprlb06a:   1617  Chlor+Goethite CU93-4B Phyl  W1R1Ha AREF  4301                              80     92
+r06av18a:    864  Chlor+Goethite CU93-4B Phyl r06av18a=a     224  13:29:49.17  09/08/2021      6     12
+                      u24750U6   w1617W80   d5604D6   v864V6     USE   OLD group 1,               USE OLD
+                       NOTES:  but add the new one in another entry
+                        NOTES: spectral are quite different
+
+     checks with cmd.lib.setup.t5.2e1:
+           s06av95a   5604  Chlor+Goethite CU93-4B Phyl s06av95a=a  
+    Grp/Cse              Material                                                               Fit     Depth    F*D
+     grp 1   1um region     40  MATCHES:  fe2+fe3+_chlor+goeth.propylzone                     1.0000   0.1430   0.1430
+     grp 2   2-2.5um       214  MATCHES:  chlorite_clinochlore.fe.sc-cca-1                    0.8842   0.1185   0.1048
+           r06av95a    864  Chlor+Goethite CU93-4B Phyl r06av95a=a  
+    Grp/Cse              Material                                                               Fit     Depth    F*D
+     grp 1   1um region     65  MATCHES:  fe3+_hematite.lg.gr.br25c                           0.9855   0.0821   0.0810
+     grp 2   2-2.5um       147  MATCHES:  micagrp_illite                                      0.9033   0.0885   0.0802
+
+
+
+splib06a:   8365  Goethite MPCMA2-C M-Crsgrad2 W1R1Bb AREF   480                               6
+spd0673:     837  Med-Crsg Goethite MPCMA2-C Coa 18388-7AR  2151  15:30:46.68  09/01/2021    224    230
+s06av95a:   1884  Goethite MPCMA2-C M-Crsgrad2 s06av95a=b    224          # tetracorder: goethite.medcoarsegr
+sprlb06a:   1593  Goethite MPCMA2-C M-Crsgrad2 W1R1Hb AREF  4301                              80     92
+r06av18a:    852  Goethite MPCMA2-C M-Crsgrad2 r06av18a=b    224  15:30:46.68  09/01/2021      6     12
+                    u8365U6   w1593W80   d1884D6   v852V6     USE r06av18a: 852   group 1          DONE 5.2e1
+                         Notes: new and ole 0.96 um band are close old and new, new=less noise
+
+     checks with cmd.lib.setup.t5.2e1:
+           s06av95a   1884  Goethite MPCMA2-C M-Crsgrad2 s06av95a=b 
+    Grp/Cse              Material                                                               Fit     Depth    F*D
+     grp 1   1um region     27  MATCHES:  fe3+_goethite.medcoarsegr.mpc.trjar                 0.9994   0.3111   0.3110
+     grp 2   2-2.5um       144  MATCHES:  micagrp_muscovite-med-Al                            0.9605   0.1077   0.1049
+          r06av95a    852  Goethite MPCMA2-C M-Crsgrad2 r06av95a=b 
+    Grp/Cse              Material                                                               Fit     Depth    F*D
+     grp 1   1um region     27  MATCHES:  fe3+_goethite.medcoarsegr.mpc.trjar                 1.0000   0.2699   0.2699
+     grp 2   2-2.5um       149  MATCHES:  micagrp_muscovite-low-Al                            0.9854   0.1302   0.1282
+
+
+
+splib06a:   8447  Goethite WS222 Medium Gr.    W1R1Ba AREF   480 09:04:31.00  08/21/1986      6      8
+spd0673:     441  Goethite WS222 Marquette MI Re 18388-7AR  2151  15:22:35.95  07/26/2021    224    230
+s06av95a:   1908  Goethite WS222 Medium Gr. s06av18a=a       224  09:04:31.00  08/21/1986      6 
+sprlb06a:   1329  Goethite WS222 MediumGr Marq W1R1H_ AREF  4301                              80     92   NAME CHANGE
+r06av18a:    720  Goethite WS222 MediumGr Marq r06av18a=_    224  15:22:35.95  07/26/2021      6     12   NAME CHANGE
+                     u8447U6   w1329W80    d1908D6  v720V6   USE ?????    Mayne add in the future ???  ZZZZZZ
+                     MediumGr Marq is slightly coarser than splib06a 8447, wider 
+                              on long wave side by ~0.015 micron
+
+     checks with cmd.lib.setup.t5.2e1:
+           s06av95a   1908  Goethite WS222 Medium Gr. s06av95a=a    
+    Grp/Cse              Material                                                               Fit     Depth    F*D
+     grp 1   1um region     24  MATCHES:  fe3+_goethite.medgr.ws222                           0.9940   0.4511   0.4484
+     grp 2   2-2.5um       305  MATCHES:  nitrate_sodium                                      0.9815   0.0604   0.0592
+           r06av95a    720  Goethite WS222 Marquette_MI r06av95a=_  
+    Grp/Cse              Material                                                               Fit     Depth    F*D
+     grp 1   1um region     24  MATCHES:  fe3+_goethite.medgr.ws222                           0.9993   0.4359   0.4356
+     grp 2   2-2.5um       166  MATCHES:  perchlorate_na                                      0.9662   0.0597   0.0576
+
+
+
+splib06a:   8447  Goethite WS222 Medium Gr.    W1R1Ba AREF   480  09:04:31.00  08/21/1986      6      8
+spd0673:     927  Goethite WS222 <250um 18388-7AR           2151  17:05:22.80  09/09/2021    224    230
+s06av95a:   1908  Goethite WS222 Medium Gr. s06av18a=a       224  09:04:31.00  08/21/1986      6     17
+sprlb06a:   1653  Goethite WS222 <250um MedGrn W1R1H_ AREF  4301                              80     92 NAME CHANGE
+r06av18a:    882  Goethite WS222 <250um MedGrn r06av18a=_    224  17:05:22.80  09/09/2021      6     12
+                    u8447U6  u8459U6   w1653W6  d1908D6    v882V6    USE  r06av18a: 882   group 1   DONE 5.2e1
+                       NOTES: 8447  Goethite WS222 Medium Gr. is closest to new.
+                              new = 0.9749 micron   old= 0.9474  FHWM= 0.3068
+                                    but old pos artificially short due to noise
+
+     checks with cmd.lib.setup.t5.2e1:
+           s06av95a   1908  Goethite WS222 Medium Gr. s06av95a=a    
+    Grp/Cse              Material                                                               Fit     Depth    F*D
+     grp 1   1um region     24  MATCHES:  fe3+_goethite.medgr.ws222                           0.9940   0.4511   0.4484
+     grp 2   2-2.5um       305  MATCHES:  nitrate_sodium                                      0.9815   0.0604   0.0592
+           r06av95a    882  Goethite WS222 <250um foo old r06av95a=_
+    Grp/Cse              Material                                                               Fit     Depth    F*D
+     grp 1   1um region     24  MATCHES:  fe3+_goethite.medgr.ws222                           1.0000   0.4443   0.4443
+     grp 2   2-2.5um       166  MATCHES:  perchlorate_na                                      0.9663   0.0598   0.0578
+
+
+
+splib06a:   8459  Goethite WS222 Coarse Gr.    W1R1Ba AREF   480 14:24:20.00  01/31/1996      6      8
+spd0673:     964  Goethite WS222 orgin samp surf 18388-7AR  2151  13:51:50.07  10/28/2021    224    230
+s06av95a:   1914  Goethite WS222 Coarse Gr. s06av18a=a       224  14:24:20.00  01/31/1996      6     17
+sprlb06a:   1329  Goethite WS222 Marquette_MI  W1R1H_ AREF  4301  15:22:35.95  07/26/2021     80     92
+sprlb06a:   1677  Goethite WS222 coarse grain  W1R1H_ AREF  4301                              80     92 NAME CHANGE
+r06av18a:    894  Goethite WS222 coarse grain  r06av18a=_    224  13:51:50.07  10/28/2021      6     12
+                     u8459U6   w1677W80  w1329W80  d1914D6  v894V6  USE r06av18a: 894   group 1   DONE 5.2e1
+                         NOTES: spectral features are very close.
+
+     checks with cmd.lib.setup.t5.2e1:
+           s06av95a   1914  Goethite WS222 Coarse Gr. s06av95a=a    
+    Grp/Cse              Material                                                               Fit     Depth    F*D
+     grp 1   1um region     28  MATCHES:  fe3+_goethite.coarsegr                              0.9995   0.4945   0.4943
+     grp 2   2-2.5um       305  MATCHES:  nitrate_sodium                                      0.9686   0.1121   0.1086
+           r06av95a    894  Goethite WS222 orgsampsurf?? r06av95a=_ 
+    Grp/Cse              Material                                                               Fit     Depth    F*D
+     grp 1   1um region     28  MATCHES:  fe3+_goethite.coarsegr                              1.0000   0.4869   0.4869
+     grp 2   2-2.5um       305  MATCHES:  nitrate_sodium                                      0.9675   0.1078   0.1043
+
+
+
+splib06a:  26143  Muscovite-medhi-Al CU91-252D W1R1Fc AREF  2151  23:41:21.00  01/12/2001     10  
+spd0673:     983  Goethite coat CU91-252 chip avg18388-7AR  2151  14:41:24.07  11/01/2021    224    230
+s06av95a:   6000  Muscovite-medhi-Al CU91-252D s06av18a=c    224  23:41:21.00  01/12/2001      6 
+sprlb06a:   1689  Goethite CU91-252 coatedchip W1R1H_ AREF  4301                              80     92 NAME CHANGE
+r06av18a:    900  Goethite CU91-252 coatcedhip r06av18a=_    224  14:41:24.07  11/01/2021      6     12
+                      u26143U10   w1689W80   d6000D6   v900V6   USE  r06av18a: 900  group 1       DONE 5.2e1
+                       NOTE: Muscovite-medhi-Al CU91-252D
+                              is Fe2+ goethite + muscovite CU91-252D in tetracorder
+                          broad 1-um feature shape, pos very close.
+                          2-micron features are very close.
+
+     checks with cmd.lib.setup.t5.2e1:
+           s06av95a   6000  Muscovite-medhi-Al CU91-252D s06av95a=c 
+    Grp/Cse              Material                                                               Fit     Depth    F*D
+     grp 1   1um region     39  MATCHES:  fe2+_goeth+musc                                     0.9961   0.1954   0.1946
+     grp 2   2-2.5um       145  MATCHES:  micagrp_muscovite-medhigh-Al                        0.9947   0.2651   0.2639
+           r06av95a    900  Goethite CU91-252 coatchip?? r06av95a=_ 
+    Grp/Cse              Material                                                               Fit     Depth    F*D
+     grp 1   1um region     39  MATCHES:  fe2+_goeth+musc                                     1.0000   0.2576   0.2576
+     grp 2   2-2.5um       145  MATCHES:  micagrp_muscovite-medhigh-Al                        0.9905   0.2776   0.2751
+
+
+
+splib06a:  14848  Muscovite CU93-1 low-Al Phyl W2R4Nb RREF  3325                              22
+spd0673:     945  Muscovite lowAl CU93-1 18388-7AR          2151  15:14:32.77  09/10/2021    224    230
+s06av95a:   3306  Muscovite CU93-1 low-Al Phyl s06av95a=b    224
+sprlb06a:   1665  Muscovite CU93-1 low-Al Phyl W1R1Hb AREF  4301                              80     92
+r06av18a:    888  Muscovite CU93-1 low-Al Phyl r06av18a=b    224  15:14:32.77  09/10/2021      6     12
+                    u14848U22   w1665W80   d3306D6   v888V6    USE OLD (nicolet data) group 2      USE OLD
+                       NOTE: 2.2+ um spectral features very close.
+
+     checks with cmd.lib.setup.t5.2e1:
+           s06av95a   3306  Muscovite CU93-1 low-Al Phyl s06av95a=b 
+    Grp/Cse              Material                                                               Fit     Depth    F*D
+     grp 1   1um region    none        
+     grp 2   2-2.5um       149  MATCHES:  micagrp_muscovite-low-Al                            1.0000   0.1694   0.1694
+           r06av95a    888  Muscovite CU93-1 low-Al Phyl r06av95a=b 
+    Grp/Cse              Material                                                               Fit     Depth    F*D
+     grp 1   1um region     39  MATCHES:  fe2+_goeth+musc                                     0.9689   0.1302   0.1243
+     grp 2   2-2.5um       149  MATCHES:  micagrp_muscovite-low-Al                            0.9995   0.2009   0.2008
+
+
+
+splib06a:   9776  Hematite WS161               W1R1Bb AREF   480                               6
+spd0673:    1002  Hematite WS161.1 Cumberland 18388-7AR     2151  13:21:21.23  08/02/2021    224    230
+s06av95a:   2208  Hematite WS161 s06av95a=b                  224       # tetracorder: fe3+_hematite.fine.gr.ws161
+sprlb06a:   1701  Hematite WS161               W1R1Hb AREF  4301                              80     92
+r06av18a:    906  Hematite WS161 r06av18a=_                  224  13:21:21.23  08/02/2021      6     12
+                    u9776U6   w1701W80   d2208D6   v906V6    USE    r06av18a:  906   groupe 1     DONE  5.2e1
+                     NOTES:  old is shorter on long wavelength 0.88 um band, but noisy
+
+     checks with cmd.lib.setup.t5.2e1:
+           s06av95a   2208  Hematite WS161 s06av95a=b               
+    Grp/Cse              Material                                                               Fit     Depth    F*D
+     grp 1   1um region     52  MATCHES:  fe3+_hematite.thincoat                              0.9945   0.4988   0.4962
+     grp 2   2-2.5um       none        
+           r06av95a    906  Hematite WS161 r06av95a=_               
+    Grp/Cse              Material                                                               Fit     Depth    F*D
+     grp 1   1um region     54  MATCHES:  fe3+_hematite.fine.gr.ws161                         1.0000   0.4521   0.4521
+     grp 2   2-2.5um       169  MATCHES:  sioh_chalcedony                                     0.8830   0.0035   0.0031
+
+

@@ -1,0 +1,65 @@
+To add a new spectrometer to follow, copy a start file from
+the convolved spectral libraries firectory, and modify the titles.
+
+Trim the text records after the spectrum "Data value = channel number"
+
+Example for Agilent FTIR spectra:
+
+spprint /sl1/usgs/library06.conv/startfiles/s06ag21a.start
+     1  USGS Digital Spectral Library: s06ag21a    410 Characters of TEXT
+     2  Convolved s06ag21a    library              147 Characters of TEXT
+     3  ****************************************    41 Characters of TEXT
+     4  ****************************************    41 Characters of TEXT
+     5  ..                                          41 Characters of TEXT
+     6  Wavelengths in microns 900 ch s06ag21a     900  00:00:00.00  10/18/2021      6     12
+     9  ..                                          41 Characters of TEXT
+    10  ..                                          41 Characters of TEXT
+    11  ..                                          41 Characters of TEXT
+    12  Resolution  in microns 900 ch s06ag21a     900  00:00:00.00  10/18/2021      6     12
+    15  ..                                          41 Characters of TEXT
+    16  ..                                          41 Characters of TEXT
+    17  ..                                          41 Characters of TEXT
+    18  Data value = channel number (900 ch)       900  00:00:00.00  11/24/****      6      0
+    21  ..                                          41 Characters of TEXT
+    22  ..                                          41 Characters of TEXT
+    23  ..                                          41 Characters of TEXT
+    24  ..                                          41 Characters of TEXT
+    25  ..                                          41 Characters of TEXT
+    26  ..                                          41 Characters of TEXT
+    27  ..                                          41 Characters of TEXT
+    28  ..                                          41 Characters of TEXT
+    29  ..                                          41 Characters of TEXT
+
+There is a hidden record 0, so we need 21 records.  Specpr files have fixed length
+1536 byte records (3*256), so we need the first 21 records:
+
+dd if=/sl1/usgs/library06.conv/startfiles/s06ag21a.start ibs=1536 of=spag21a.start count=21
+
+Next change titles:
+
+spsettitle spag21a.start 1 "**** Agilent FTIR Spectrometer 900 ch **"
+spsettitle spag21a.start 2 "**** Agilent FTIR Spectrometer 900 ch **"
+
+spprint spag21a.start
+     1  **** Agilent FTIR Spectrometer 900 ch **   410 Characters of TEXT
+     2  **** Agilent FTIR Spectrometer 900 ch **   147 Characters of TEXT
+     3  ****************************************    41 Characters of TEXT
+     4  ****************************************    41 Characters of TEXT
+     5  ..                                          41 Characters of TEXT
+     6  Wavelengths in microns 900 ch s06ag21a     900  00:00:00.00  10/18/2021      6     12
+     9  ..                                          41 Characters of TEXT
+    10  ..                                          41 Characters of TEXT
+    11  ..                                          41 Characters of TEXT
+    12  Resolution  in microns 900 ch s06ag21a     900  00:00:00.00  10/18/2021      6     12
+    15  ..                                          41 Characters of TEXT
+    16  ..                                          41 Characters of TEXT
+    17  ..                                          41 Characters of TEXT
+    18  Data value = channel number (900 ch)       900  00:00:00.00  11/24/****      6      0
+
+cp spag21a.start spag21a
+
+in the DATASETS directory (up one from here), add a vfollow line to the relevane
+dataset.  In this example, it is AgilentFTIR_21, so add:
+vfollowfile= spag21a
+
+Done.

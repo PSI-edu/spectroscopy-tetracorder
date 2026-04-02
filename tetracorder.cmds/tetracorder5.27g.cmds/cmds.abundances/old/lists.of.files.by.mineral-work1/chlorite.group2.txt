@@ -1,0 +1,9 @@
+Chlorite_Serpentine BR93-22B	    chlorite-scarn
+Chlorite SMR-13.b 60-104um	    chlorite
+Clinochlore GDS158 Flagst	    chlorite_clinochlore
+Thuringite SMR-15.c  32um	    chlorite_thuringite
+Muscovite+Chlorite CU91-253D	    muscovite+chlorite
+
+Prehnite+.50Chlorite AMIX	    prehnite+.50chlorite
+Prehnite+.67Chlorite AMIX	    prehnite+.67chlorite
+Prehnite+.75Chlorite AMIX	    prehnite+.75chlorite

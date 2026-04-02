@@ -1,0 +1,6 @@
+
+
+#$ execute from one level above this cmds.abundances directory.
+
+./cmds.abundances/cmd.compute-model-abundances  model3 cube ../cube/emit20230206t101334_o03707_s000_l2a_rfl_b0106_v01-crop1.v 1.0 waves /sl1/usgs/library06.conv/s06emitc 6 model4 quartz 100.0 | tee cmds.abundances/cmd.compute-model-abundances.out-quartz=100microns-c
+

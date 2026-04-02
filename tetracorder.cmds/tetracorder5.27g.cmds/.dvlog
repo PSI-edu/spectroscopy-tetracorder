@@ -1,0 +1,13 @@
+###################################################
+# User:   rclark    Date:  Thu Jan 16 19:12:23 2025
+# Host: saturn9     Cwd: /titanhome/t1/tetracorder.cmds/tetracorder5.27f.cmds
+###################################################
+a="group.2um/gypsum.trace.dust+debris-WTC01-2"
+###################################################
+# User:   rclark    Date:  Thu Jan 16 19:12:57 2025
+# Host: saturn9     Cwd: /titanhome/t1/tetracorder.cmds/tetracorder5.27f.cmds
+###################################################
+help
+b=system ("grep `basename -s .depth.gz " a " AAA.info/enable-disable-materials.txt`")
+b=system ("grep `basename -s .depth.gz " + a + " AAA.info/enable-disable-materials.txt`")
+!pwd

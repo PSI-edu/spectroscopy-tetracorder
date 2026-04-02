@@ -1,0 +1,4 @@
+BASE     10 10 10  base-image.jpg    # base grayscale image
+COLOR1   50 20  2  color-visRGB.jpg  # visible color channels (but no vis in HYB2ryug)
+COLOR2   70 40  5  color-vir.jpg     # false color vis-IR
+MAXREFL  0.02                        # scale 255 DN to this reflectance level

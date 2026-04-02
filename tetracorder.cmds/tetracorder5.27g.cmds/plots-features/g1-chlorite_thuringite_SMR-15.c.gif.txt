@@ -1,0 +1,6 @@
+
+y4890   Thuringite SMR-15.c  32um    W1R1Ba
+ tf1= Thuringite   f1a  DLw  2.1880  2.2180  2.3960  2.4260   0.0000
+ tf2= Thuringite   f2a  DLw  2.1880  2.2180  2.2850  2.3150   0.0000
+ tf3= Thuringite   f3a  WLw  0.5120  0.5420  1.6960  1.7260   0.0000
+

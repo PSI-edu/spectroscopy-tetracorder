@@ -1,0 +1,11 @@
+Gypsum HS333.3B (Selenite)	    sulfate_gypsum
+
+Gyp+jar+ill BRCM1 Marysvale	    sulfate-mix_gypsum+jar+illite.intmi
+Gyp.5+Kjar.3+hAlmsc.2 AMX24	    sulfate-mix_gyp+jar+musc.amix
+Gyp.4+jr20+msc.2+dic.2 AMX23	    sulfate-mix_gyp+jar+musc+dick.amix
+Gyp.3+jr.1+msc.4+dic.2 AMX22	    musc+gyp+jar+dick.amix
+Dic.4+msc.3+gyp.2+jr.1 AMX20	    dick+musc+gyp+jar.amix
+
+WTC_Dust_Debris WTC01-2		    sulfate-mix_gypsum.trace.dust+debri
+WTC_Dust_Debris WTC01-28	    sulfate-mix_gypsum.trace.dust+debri
+Coated_Steel_Girder WTC01-8	    chrysotile.gypsum.wtc01-8

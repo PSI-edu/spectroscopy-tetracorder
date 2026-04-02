@@ -1,0 +1,12 @@
+The veganomaly run set a max of band depth 0.5 = 255.  Max response
+would be about a 7 nm shift in the red edge (dn=255).  A dn of ~107
+would be ~3nm shift
+
+shift     peak height    DN    Possible image stretch
+-----------------------------------------------------
+  0  nm       0           0
+  0.5         0.035      18     purple 0.5 to 1 nm
+  1           0.07       36     blue     1 to 2 nm
+  2           0.14       71     green    2 to 3 nm
+  3           0.21      107     red      3 to 4 nm
+  4           0.28      143     white    > 4 nm 

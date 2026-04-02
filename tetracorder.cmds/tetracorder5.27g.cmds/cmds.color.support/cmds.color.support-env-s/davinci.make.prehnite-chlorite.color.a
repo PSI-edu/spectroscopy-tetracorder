@@ -1,0 +1,172 @@
+#!/usr/bin/env -S davinci -f  
+####!/usr/local/bin/davinci -f
+
+###########################  was:  #!/usr/local/bin/davinci -f
+
+
+
+# command line:
+# prog    gray_base_image  prefix-file-name   [dual|nodual]
+
+
+dual    = 1     # default color + gray image 
+dualmax = 2000  # no dual if width is greater than this
+
+if ($argc >= 3) {
+
+	if ( "$3" == "nodual" ) {
+		dual = 0
+	}
+	if ( "$3" == "dual" ) {
+		dual = 1
+		dualmax = 999999 
+	}
+}
+
+
+gbase=read(filename=$1)
+if (HasValue(gbase) ==0) {                   # check that read worked
+      printf ("read ERROR on file: %s\n",$1)
+      printf ("^GEXIT 1\n")
+      exit(1)
+}
+
+
+define read_an_image(1,1) {
+
+	# read a gray-scale image and convert to 3-bands
+
+	afile = $1   # file to read
+	printf ("reading file %s\n", afile)
+	aaa=read(filename=afile)
+	if (HasValue(aaa) ==0) {  # check that read worked
+		printf ("read ERROR on file: %s\n",afile)
+		printf ("setting to zero\n")
+		aaa=0
+	}
+	qqq = cat(aaa,aaa,axis=z)  # make into 2-band image
+	aaa = cat(aaa,qqq,axis=z)  # make into 3-band image
+
+	return (aaa)
+
+}  # end define
+
+
+a = read_an_image("group.2um/prehnite.fd.gif")
+
+b = read_an_image("group.2um/prehnite+.50chlorite.fd.gif")
+
+c = read_an_image("group.2um/prehnite+.67chlorite.fd.gif")
+
+d = read_an_image("group.2um/prehnite+.75chlorite.fd.gif")
+
+e = read_an_image("group.2um/chlorite.fd.gif")
+
+f = read_an_image("group.2um/chlorite-skarn.fd.gif")
+
+g = read_an_image("group.2um/chlorite_thuringite.fd.gif")
+
+h = read_an_image("group.2um/chlorite_clinochlore.fd.gif")
+
+
+# /info/COLORS.screen.to.printers
+#
+#      "color"         r    g    b
+# a  1 red            255   60    0   (255   50    0 better)
+# b  2 green           60  255    0
+# c  3 blue             0  105  255
+#   
+# d  4 yellow         255  255    0
+# e  5 magenta        205   60  255
+# f  6 cyan             0  255  255
+#  
+# g  7 army green     150  165    0   (160  175    0 better?)
+# h  8 salmon         255  170  170
+# i  9 flesh          255  200  155
+#  
+# j 10 orange         255  110    0   (255  140    0 better?)
+# k 11 deep pink      235    0  180
+# l 12 yellow green   190  255    0
+#
+# m 13 lavender       185  120  255
+# n 14 sky blue       140  210  255
+# o 15 pale sea green 110  255  190
+#  
+# p 16 white          255  255  255
+# q 17 red-pink       255  125  125
+# s 18 gold           255  213    0
+#
+# t 19 mud yellow     186  165    0
+# u 20 light pink     255  211  255
+#
+
+#a group.2um/prehnite.fd.gif              # red
+#b group.2um/prehnite+.50chlorite.fd.gif  # orange
+#c group.2um/prehnite+.67chlorite.fd.gif  # yellow
+#d group.2um/prehnite+.75chlorite.fd.gif  # green
+#e group.2um/chlorite.fd.gif              # cyan
+#f group.2um/chlorite-skarn.fd.gif        # lavendar
+#g group.2um/chlorite.thuringite.fd.gif   # blue
+#h group.2um/clinochlore.fd.gif           # blue
+
+argb =  create(1,1,3, format=FLOAT, start=0.0, step=0.0)
+brgb =  create(1,1,3, format=FLOAT, start=0.0, step=0.0)
+crgb =  create(1,1,3, format=FLOAT, start=0.0, step=0.0)
+drgb =  create(1,1,3, format=FLOAT, start=0.0, step=0.0)
+ergb =  create(1,1,3, format=FLOAT, start=0.0, step=0.0)
+frgb =  create(1,1,3, format=FLOAT, start=0.0, step=0.0)
+grgb =  create(1,1,3, format=FLOAT, start=0.0, step=0.0)
+hrgb =  create(1,1,3, format=FLOAT, start=0.0, step=0.0)
+
+# Colors:
+#              Red                  Green                Blue
+
+argb[1,1,1] =  255. ; argb[1,1,2]=     0. ;  argb[1,1,3]=   0.   # red
+brgb[1,1,1] =  255. ; brgb[1,1,2]=   110. ;  brgb[1,1,3]=   0.   # orange
+crgb[1,1,1] =  255. ; crgb[1,1,2]=   255. ;  crgb[1,1,3]=   0.   # yellow
+drgb[1,1,1] =   60. ; drgb[1,1,2]=   255. ;  drgb[1,1,3]=   0.   # green
+ergb[1,1,1] =    0. ; ergb[1,1,2]=   255. ;  ergb[1,1,3]= 255.   # cyan
+frgb[1,1,1] =  185. ; frgb[1,1,2]=   120. ;  frgb[1,1,3]= 255.   # lavendar
+grgb[1,1,1] =    0. ; grgb[1,1,2]=   105. ;  grgb[1,1,3]= 255.   # blue
+hrgb[1,1,1] =    0. ; hrgb[1,1,2]=    60. ;  hrgb[1,1,3]= 255.   # blue
+
+
+xaz=float(a*0)
+
+xaz= xaz + a*(argb/255.)
+xaz= xaz + b*(brgb/255.)
+xaz= xaz + c*(crgb/255.)
+xaz= xaz + d*(drgb/255.)
+xaz= xaz + e*(ergb/255.)
+xaz= xaz + f*(frgb/255.)
+xaz= xaz + g*(grgb/255.)
+xaz= xaz + h*(hrgb/255.)
+
+xout=byte(xaz+0.5)
+xout = bip(xout)
+
+gbasedim=dim(gbase)
+x=gbasedim[1,,]
+
+if (x > dualmax) {
+	dual = 0
+}
+
+if ( dual == 1 ) {
+	
+	gbase = bip(gbase)
+	xout = cat (xout, gbase, axis=x)
+}
+
+
+
+fout=$2
+
+adim=dim(xout)
+if ( adim[1,,] > 5 || adim[2,,] > 5 ) {
+	printf ("writing %s\n", fout)
+	write (xout, filename=fout, type=png)
+} else {
+	printf ("not writing %s\n", fout)
+	printf ("    image size < 6 pixels\n")
+}

@@ -1,0 +1,39 @@
+#!/usr/bin/env -S davinci -f  
+####!/usr/local/bin/davinci -f
+
+###########################  was:  #!/usr/local/bin/davinci -f
+
+
+
+# assemble tetracorder mapping color results into one row.
+#
+# Roger N. Clark  March 12, 2014
+
+# assemble the following images:
+# FRT03BFB/FRT03BFB_color-results_2micron-minerals.jpg
+# FRT03BFB/FRT03BFB_color-results_1.9um.water.band.position.jpg
+# FRT03BFB/FRT03BFB_color-results_prehnite-chlorite-mix.jpg
+# FRT03BFB/FRT03BFB_color-results_pyroxene.2um.band.position.jpg
+
+
+a=read(filename=$1)
+b=read(filename=$2)
+c=read(filename=$3)
+d=read(filename=$4)
+
+xd=dim(a)
+
+x=xd[1,1,1]  # width of image
+
+x2 = x/2
+
+b=b[x2:x,,]   # right half: the colored materials map
+c=c[x2:x,,]   # right half: the colored materials map
+d=d[x2:x,,]   # right half: the colored materials map
+
+
+a=cat(a,b,axis=x)    # assemble row
+a=cat(a,c,axis=x)    # assemble row
+a=cat(a,d,axis=x)    # assemble row
+
+write (a,filename=$5,type=jpeg)

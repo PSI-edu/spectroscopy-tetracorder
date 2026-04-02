@@ -1,0 +1,34 @@
+#!/usr/local/bin/davinci -f
+
+#TM bands, approximate:
+#===============================
+#                  AVIRIS channels
+#CH  wavelength    (5/1993)  5/1993 198ch
+#1) 0.45 - 0.51     9-14      8-13
+#2) 0.53 - 0.605   17-23     16-22
+#3) 0.63 - 0.69    27-36     26-32
+#4) 0.79 - 0.89    47-56     42-52
+#5) 1.57 - 1.77   129-149   117-137
+#7) 2.12 - 2.33   186-207   162-183
+
+cube=$1
+fout=$2
+#############################################################
+########### TM 4 ############################################
+
+a=    float(load(filename=cube,record=42))
+a=a + float(load(filename=cube,record=43))
+a=a + float(load(filename=cube,record=44))
+a=a + float(load(filename=cube,record=45))
+a=a + float(load(filename=cube,record=46))
+a=a + float(load(filename=cube,record=47))
+a=a + float(load(filename=cube,record=48))
+a=a + float(load(filename=cube,record=49))
+a=a + float(load(filename=cube,record=50))
+a=a + float(load(filename=cube,record=51))
+a=a + float(load(filename=cube,record=52))
+
+b = short(a/11.0)
+
+write(b,filename=fout,type=vicar)
+exit

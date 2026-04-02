@@ -1,0 +1,6 @@
+#!/bin/sh
+
+echo "test1 $1 start"  `date`
+
+sleep 5
+echo "test1 $1 end"  `date`

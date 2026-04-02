@@ -1,0 +1,18 @@
+Nanohematite BR93-34B2		    fe3+_hematite.nano.BR34b2
+
+Hematite FE2602			    fe3+_hematite.fine.gr.fe2602
+Hematite WS161			    fe3+_hematite.fine.gr.ws161
+
+Hematite GDS27			    fe3+_hematite.med.gr.gds27
+Hematite_Coatd_Qtz BR93-25B	    fe3+_hematite.med.gr.br25b
+
+Hematite_Coatd_Qtzt BR93-25A	    fe3+_hematite.lg.gr.br25a
+Hematite_Coatd_Qtzt BR93-25C	    fe3+_hematite.lg.gr.br25c
+
+Hematite_Thin_Film GDS27	    fe3+_hematite.thincoat
+
+Hematite.02+Quartz.98 GDS76 W	    fe3+_hematite.fine.gr.gds76
+Magnetite_skarn BR93-5B		    fe2+fe3+mix_with_hematite_br5b
+Basalt_weathered BR93-43	    fe2+fe3+_hematite_weathering
+Hematite_Coatd_Qtz BR93-34C	    fe3+_hematite.lg.gr.br34c
+Maghemite GDS81 Syn (M-3)	    fe3+_maghemite

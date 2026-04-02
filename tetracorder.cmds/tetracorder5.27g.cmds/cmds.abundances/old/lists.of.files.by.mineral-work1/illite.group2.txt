@@ -1,0 +1,6 @@
+Illite IMt-1.b <2um		    micagrp_illite
+Illite GDS4 (Marblehead)	    micagrp_illite.gds4
+
+Gyp+jar+ill BRCM1 Marysvale	    sulfate-mix_gypsum+jar+illite.intmi
+Ammonio-Illite/Smectit GDS87	    smectite_ammonillsmec
+Roscoelite EN124		    micagrp_illite.roscoelite

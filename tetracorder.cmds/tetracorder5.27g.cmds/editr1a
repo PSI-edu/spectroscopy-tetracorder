@@ -1,0 +1,17 @@
+#!/bin/sh
+
+set -x
+
+vfollow=test123
+
+       ex - r1a <<EOI
+		/ivfl=.*$/ s//ivfl=$vfollow      /
+		/iprtv=             0/ s//iprtv=           -18/
+		/isavt=      .unasnd./  s//isavt=      $vfollow   /
+		w
+		q
+	EOI
+
+echo "done"
+
+

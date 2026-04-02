@@ -1,0 +1,14 @@
+Calcite WS272			    carbonate_calcite
+
+Calcite+Talc PC99-1G		    talc+calcite.parkcity
+Dolomit+Calcite+Talc PC99-1E	    talc+carbonate.parkcity
+Calcite.8+Ca-Montmor.2 AMX15	    carbonate_calcite+0.2Ca-mont
+Calcite+Dolomite.5 AMX8		    carbonate_calcite+dolomite.5
+Calc.25+dolo.25+mont.5 AMX18	    calcite.25+dolom.25+Na-mont.5
+Calc.25+Dolo.25+Ca-Mon AMX7	    carbonate_calcite.25+dolom.25+Ca-mo
+Calcite.80+Mont_Swy-1 GDS212	    calcite+0.2Na-mont
+Calcite+.50Ca-Mont AMX6		    calcite+0.5Ca-mont
+Calcite+.33Muscov AMX5 Ruby	    carbonate_calcite+0.3muscovite
+Calcite.33+Ca-mont.67 AMX19	    carbonate_smectite_calcite.33+Ca-mo
+Calcite.80wt+Kaol_CM9 GDS213	    carbonate_calcite+0.2kaolwxl
+Calcite.7+Kaolwxl.3 AMX9	    carbonate_calcite0.7+kaol0.3

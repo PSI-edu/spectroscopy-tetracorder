@@ -1,0 +1,47 @@
+#!/usr/local/bin/davinci -f
+
+# check difference between 2 files.  If the data are the same,
+# then difference will be zero.
+#                              Roger N. Clark, 10/27/1995
+
+verbose=0
+
+# load images
+
+fa=$1
+fb=$2
+a=load(fa)
+b=load(fb)
+
+# compute difference, then moment
+
+c=a-b
+d=moment(c)
+
+# test moment results min, max, mean, std dev
+# if all zero, then the same
+#  note courrently can't do if (a=b & c=d ...
+
+test=4
+if ( d[1] == 0.0 ) {
+	test = test -1
+}
+if ( d[2] == 0.0 ) {
+	test = test -1
+}
+if ( d[3] == 0.0 ) {
+	test = test -1
+}
+if ( d[5] == 0.0 ) {
+	test = test -1
+}
+
+if ( test == 0 ) {
+
+	echo (fa + " is IDENTICAL to " + fb )
+} else {
+
+	echo (fa + " is DIFFERENT: " + d[1] + "  " + d[2] + "  " + d[3])
+}
+
+exit

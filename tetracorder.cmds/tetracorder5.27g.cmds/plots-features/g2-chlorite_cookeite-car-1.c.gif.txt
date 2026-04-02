@@ -1,0 +1,7 @@
+y1368A Cookeite CAr-1.c <30um s06crj3a=cc_ 
+   f1a DLw 2.115   2.142   2.268   2.300  ct [CTHRESH4] r*bd> [RBD23]
+   f2a WLw 2.268   2.300   2.404   2.432  ct [CTHRESH4] r*bd> [RBD22]
+   n1a NOT [NOTCH1]  1  0.25r1 0.5   \# NOT organics 1, feat 1, depth .25rel, fit .5
+
+ tf1= Cookeite     f1a  DLw  2.1150  2.1420  2.2680  2.3000   0.0000
+ tf2= Cookeite     f2a  WLw  2.2680  2.3000  2.4040  2.4320   0.0000

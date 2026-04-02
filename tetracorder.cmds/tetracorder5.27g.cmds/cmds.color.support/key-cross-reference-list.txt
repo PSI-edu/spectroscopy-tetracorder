@@ -1,0 +1,62 @@
+
+
+		#   color.result name                                color.keys  key file
+
+		# _1.5um.broadfeats.png                               key_1.5um-broadfeats.a.png
+		# _1.9um.water.band.position.png                      key_1.9-water.a.png
+		# _1.9um.water.sulfates.band.position.png             key_1.9-water-sulfates.a.png
+		# _1.9um.water.wave.position.a.png                    key_water-map-1.9-2um_labels_b.png
+		# _1micron-minerals-a.png                             key_1um-map.fe2+,fe3+.a-1200w.png
+		# _2micron-minerals-b4.png                            key_2um-mins-b4-layout-1200w.png   
+		# _2micron-minerals.png                               key_2micron-mins_labels_a.png
+                # _2micron-minerals-muscovite-comp.png                key_2um-mins-muscovite-comp-layout-1200w.png
+                # _2micron-mins-emit8.png                             key_2um-mins-emit8-layout-1200w.png
+		# _hematite+goethite.grain.size-a.png                 key_hematite+goethite.grain.size.a-wide.png
+		# _prehnite-chlorite-mix+perchlorate.png              key_prehnite-chloriteserp-perchlorate_labels_a.png
+		# _pyroxene.2um.band.position.png                     key_pyroxene_labels_a.png
+		# _red-edge-shift-a.png                               key_red-edge-shift.a.png
+		# _vegetation-cover-a.png                             key_vegetation-cover.a.png
+                # _veg,water,snow.png                                 key_veg,water,snow.a.png
+		# _water-a.png                                        key_water.a.png
+		########################################################################################
+
+Example, before added labels in color.results:
+
+ em208143619_color-results_1.5um.broadfeats.png
+ em208143619_color-results_1.9um.water.band.position.png
+ em208143619_color-results_1.9um.water.sulfates.band.position.png
+ em208143619_color-results_1.9um.water.wave.position.a.png
+ em208143619_color-results_1micron-minerals-a.png
+ em208143619_color-results_2micron-minerals-b4.png
+ em208143619_color-results_2micron-minerals-muscovite-comp.png
+ em208143619_color-results_2micron-minerals.png
+ em208143619_color-results_2micron-mins-emit8.png
+ em208143619_color-results_hematite+goethite.grain.size-a.png
+ em208143619_color-results_prehnite-chlorite-mix+perchlorate.png
+ em208143619_color-results_pyroxene.2um.band.position.png
+ em208143619_color-results_red-edge-shift-a.png
+ em208143619_color-results_vegetation-cover-a.png
+ em208143619_color-results_veg,water,snow.png
+ em208143619_color-results_water-a.png
+
+
+
+Example, final assembled in color.results+labels:
+
+ em208143619_color-results_1.5um.broadfeats+labels.png
+ em208143619_color-results_1.9um.water.band.position+labels.png
+ em208143619_color-results_1.9um.water.sulfates.band.position+labels.png
+ em208143619_color-results_1.9um.water.wave.position.a+labels.png
+ em208143619_color-results_1micron-minerals-a+labels.png
+ em208143619_color-results_2micron-minerals-b4+labels.png
+ em208143619_color-results_2micron-minerals+labels.png
+ em208143619_color-results_2micron-mins-emit8+labels.png
+ em208143619_color-results_2micron-mins-muscovite-comp+labels.png
+ em208143619_color-results_hematite+goethite.grain.size-a+labels.png
+ em208143619_color-results_prehnite-chlorite-mix+perchlorate+labels.png
+ em208143619_color-results_pyroxene.2um.band.position+labels.png
+ em208143619_color-results_red-edge-shift-a+labels.png
+ em208143619_color-results_vegetation-cover-a+labels.png
+ em208143619_color-results_veg,water,snow.png
+ em208143619_color-results_water-a+labels.png
+

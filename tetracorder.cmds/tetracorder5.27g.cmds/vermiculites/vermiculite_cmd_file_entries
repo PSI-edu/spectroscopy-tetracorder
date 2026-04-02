@@ -1,0 +1,170 @@
+\#################################################################################
+group 2
+use= yes           \# yes or no,     if no,    skip this entry.
+udata: reflectance
+convolve: no
+preratio: none
+preprocess: none
+algorithm: tricorder-primary
+ID=biotite
+
+define library records
+   a SMALL:  [sprlb06]   624 d         \# file ID, rec no.    1 to 2171 channels
+   a MEDIUM: [sprlb06]  xxxx d         \# file ID, rec no. 2172 to 4852 channels
+   a LARGE:  [sprlb06]  xxxx d         \# file ID, rec no. larger_chans_future
+endlibraryrecords
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Vermiculite GDS458           W1R1Hc
+[DELETPTS]
+micagroup vermiculite GDS458               \# output title
+
+define features
+   f1a DLw 2.2460 2.2700 2.3500 2.3800 ct [CTHRESH4] r*bd> [RBD23]
+   f2a DLw 2.3400 2.3700 2.4050 2.4390 ct [CTHRESH4] r*bd> [RBD23]
+\# Notes:
+\#        Feat:  1  has a weight of
+endfeatures
+
+define constraints
+   constraint: FD-FIT>[GLBLFDFIT] DEPTH-FIT>[GLBLDPFITg2]
+   constraint: FITALL>[GLBLFITALL]
+endconstraint
+
+define output
+   output=fit depth fd
+   micagrp_vermiculite_GDS458                     \# Output base file name 
+   8 DN 255 = 0.5000
+   compress= zip
+endoutput
+
+define actions
+   action: sound1
+   action: none
+endaction
+\#################################################################################
+group 2
+use= yes           \# yes or no,     if no,    skip this entry.
+udata: reflectance
+convolve: no
+preratio: none
+preprocess: none
+algorithm: tricorder-primary
+ID=biotite
+
+define library records
+   a SMALL:  [sprlb06]   630 d         \# file ID, rec no.    1 to 2171 channels
+   a MEDIUM: [sprlb06]  xxxx d         \# file ID, rec no. 2172 to 4852 channels
+   a LARGE:  [sprlb06]  xxxx d         \# file ID, rec no. larger_chans_future
+endlibraryrecords
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Vermiculite ALB4SA00         W1R1Hc
+[DELETPTS]
+micagroup vermiculite ALB4SA00             \# output title
+
+define features
+   f1a DLw 2.2460 2.2700 2.3500 2.3800 ct [CTHRESH4] r*bd> [RBD23]
+   f2a DLw 2.3400 2.3700 2.4050 2.4390 ct [CTHRESH4] r*bd> [RBD23]
+\# Notes:
+\#        Feat:  1  has a weight of
+endfeatures
+
+define constraints
+   constraint: FD-FIT>[GLBLFDFIT] DEPTH-FIT>[GLBLDPFITg2]
+   constraint: FITALL>[GLBLFITALL]
+endconstraint
+
+define output
+   output=fit depth fd
+   micagrp_vermiculite_ALB4SA00                   \# Output base file name
+   8 DN 255 = 0.5000
+   compress= zip
+endoutput
+
+define actions
+   action: sound1
+   action: none
+endaction
+\#################################################################################
+group 2
+use= yes           \# yes or no,     if no,    skip this entry.
+udata: reflectance
+convolve: no
+preratio: none
+preprocess: none
+algorithm: tricorder-primary
+ID=biotite
+
+define library records
+   a SMALL:  [sprlb06]   636 d         \# file ID, rec no.    1 to 2171 channels
+   a MEDIUM: [sprlb06]  xxxx d         \# file ID, rec no. 2172 to 4852 channels
+   a LARGE:  [sprlb06]  xxxx d         \# file ID, rec no. larger_chans_future
+endlibraryrecords
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Vermiculite WS682           W1R1Hc
+[DELETPTS]
+micagroup vermiculite WS682               \# output title
+
+define features
+   f1a DLw 2.2030 2.2330 2.2590 2.2890 ct [CTHRESH4] r*bd> [RBD23]
+   f2a DLw 2.2540 2.2840 2.3500 2.3800 ct [CTHRESH4] r*bd> [RBD23]
+   f3a DLw 2.3400 2.3700 2.4050 2.4390 ct [CTHRESH4] r*bd> [RBD23]
+\# Notes:
+\#        Feat:  1  has a weight of
+endfeatures
+
+define constraints
+   constraint: FD-FIT>[GLBLFDFIT] DEPTH-FIT>[GLBLDPFITg2]
+   constraint: FITALL>[GLBLFITALL]
+endconstraint
+
+define output
+   output=fit depth fd
+   micagrp_vermiculite_WS682                     \# Output base file name
+   8 DN 255 = 0.5000
+   compress= zip
+endoutput
+
+define actions
+   action: sound1
+   action: none
+endaction
+\#################################################################################
+group 2
+use= yes           \# yes or no,     if no,    skip this entry.
+udata: reflectance
+convolve: no
+preratio: none
+preprocess: none
+algorithm: tricorder-primary
+ID=biotite
+
+define library records
+   a SMALL:  [sprlb06]   642 d         \# file ID, rec no.    1 to 2171 channels
+   a MEDIUM: [sprlb06]  xxxx d         \# file ID, rec no. 2172 to 4852 channels
+   a LARGE:  [sprlb06]  xxxx d         \# file ID, rec no. larger_chans_future
+endlibraryrecords
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Vermiculite WS681           W1R1Hc
+[DELETPTS]
+micagroup vermiculite WS681               \# output title
+
+define features
+   f1a DLw 2.2460 2.2700 2.3500 2.3800 ct [CTHRESH4] r*bd> [RBD23]
+   f2a DLw 2.3400 2.3700 2.4050 2.4390 ct [CTHRESH4] r*bd> [RBD23]
+\# Notes:
+\#        Feat:  1  has a weight of
+endfeatures
+
+define constraints
+   constraint: FD-FIT>[GLBLFDFIT] DEPTH-FIT>[GLBLDPFITg2]
+   constraint: FITALL>[GLBLFITALL]
+endconstraint
+
+define output
+   output=fit depth fd
+   micagrp_vermiculite_WS681                     \# Output base file name
+   8 DN 255 = 0.5000
+   compress= zip
+endoutput
+
+define actions
+   action: sound1
+   action: none
+endaction
+\#################################################################################

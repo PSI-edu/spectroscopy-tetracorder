@@ -1,0 +1,3 @@
+y1212A   Clinochlore NMNH83369 s06crj3a=bbb
+ tf1= clinochlore  f1a  DLw  2.1890  2.2180  2.4040  2.4320   0.0000
+ tf2= clinochlore  f2a  DLw  2.1890  2.2180  2.2670  2.2870   0.0000

@@ -1,0 +1,22 @@
+#!/bin/sh
+
+j=$1
+
+echo " "
+f=`basename $j .gz`
+echo "converting $j to ${f}.gif"
+
+# Note: if scalefactor < -0.000001, autoscale, so -25 is autoscale with limits
+# max scale factor = 255/25 = 10.2, but only scale if image maximum is < 25.
+
+davinci.image.to.gif  $j -25 ${f}.gif -gamma
+
+chmod g+r,o+r ${f}.gif
+
+#### was, pre 2020-09:
+#davinci.image.to.pgm  $j -25 ${f}.pgm -gamma
+##ls -ld ${f}.pgm
+#
+#ppmtogif ${f}.pgm > ${f}.gif
+#
+#rm ${f}.pgm

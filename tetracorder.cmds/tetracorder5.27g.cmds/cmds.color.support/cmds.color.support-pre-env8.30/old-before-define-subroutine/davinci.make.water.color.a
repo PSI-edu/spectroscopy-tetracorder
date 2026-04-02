@@ -1,0 +1,193 @@
+#!/usr/local/bin/davinci -f
+
+# command line:
+# prog    gray_base_image  prefix-file-name   [dual|nodual]
+
+dual=0  # no dual
+
+prog="davinci.make.water.color.a"           # CHANGE THIS if program name changes
+
+
+####################  Begin static: no need to change inything in this section ################
+
+if ($argc < 2) {
+
+        printf("Insufficient input\n")
+        printf("%s input_gray_image  outputcolorimage\n", prog)
+        printf("exit 1\n")
+        exit(1)
+}
+
+# read base gray image
+
+gbase=read(filename=$1)
+if (HasValue(gbase) ==0) {                   # check that read worked
+      printf ("read ERROR on file: %s\n",$1)
+      printf ("^GEXIT 1\n")
+      exit(1)
+}
+
+# A master color set.  Just read in the files, assign the colors
+# and write the results.    R. Clark 4/16/2015 - 11/16/2015
+# execute this program in the same directory asthe source code below
+source ("cmds.color.support/davinci.master.colors")
+
+# available colors:
+# c_red     c_green          c_blue       c_yellow        c_magenta       c_cyan          c_armygreen  
+# c_salmon  c_flesh          c_orange     c_deeppink      c_yellowgreen   c_lavender      c_bluegreen
+# c_skyblue c_paleseagreen   c_white      c_redpink       c_gold          c_mudyellow     c_lightpink
+# c_purple
+
+# a blue to red 12 spectral color sequence:
+#
+# c_purple c_blue c_skyblue c_cyan c_bluegreen c_green c_paleseagreen c_yellowgreen c_yellow c_gold  c_orange c_red
+
+# a = first input image, 3-band color, xcolor = the color output image, RGB float
+# colorout = the color output image, 3-byte RGB
+
+
+
+###################   begin custom section ##########################################
+
+
+
+# 22 available colors:
+# c_red     c_green          c_blue       c_yellow        c_magenta       c_cyan          c_armygreen  
+# c_salmon  c_flesh          c_orange     c_deeppink      c_yellowgreen   c_lavender      c_bluegreen
+# c_skyblue c_paleseagreen   c_white      c_redpink       c_gold          c_mudyellow     c_lightpink
+# c_purple
+
+# first image:
+
+#a=read(filename="group.1um/water.low.chlorophyll.fd.gif")   #  blue
+f1="group.1um/water.low.chlorophyll.fd.gif"
+a=read(filename=f1)
+
+        if (HasValue(a) ==0) {  # check that read worked
+              printf ("read ERROR on file: %s\n",f1)
+              printf ("setting to zero\n")
+              a=0
+        }
+	q=cat(a,a,axis=z)  # make into 3-band image
+	a=cat(a,q,axis=z)  # make into 3-band image
+        # set up output image xcolor:
+        xcolor=float(a*0)
+        xdim=dim(a)
+
+        # now add the colors
+
+c= c_blue
+xcolor= xcolor + a*( c /255.)   # anorthite
+
+# c_purple c_cyan c_skyblue c_blue c_flesh c_lavender c_magenta c_green c_yellowgreen c_yellow c_orange c_red
+
+c= c_green
+
+a=read(filename="group.1um/water.high.chlorophyll.fd.gif")  #  green
+        if (HasValue(a) ==0) {  # check that read worked
+              printf ("read ERROR on results file\n")
+              printf ("setting to zero\n")
+              a=0
+        }
+	q=cat(a,a,axis=z)  # make into 3-band image
+	a=cat(a,q,axis=z)  # make into 3-band image
+xcolor= xcolor + a*( c /255.)   # water.high.chlorophyll
+
+c= c_cyan
+
+a=read(filename="group.1um/water+mont0.5gpl.fd.gif")        #  cyan
+        if (HasValue(a) ==0) {  # check that read worked
+              printf ("read ERROR on results file\n")
+              printf ("setting to zero\n")
+              a=0
+        }
+	q=cat(a,a,axis=z)  # make into 3-band image
+	a=cat(a,q,axis=z)  # make into 3-band image
+xcolor= xcolor + a*( c /255.)   # water+mont0.5gpl
+
+c= c_yellow
+
+a=read(filename="group.1um/water+mont1.67gpl.fd.gif")       #  yellow
+        if (HasValue(a) ==0) {  # check that read worked
+              printf ("read ERROR on results file\n")
+              printf ("setting to zero\n")
+              a=0
+        }
+	q=cat(a,a,axis=z)  # make into 3-band image
+	a=cat(a,q,axis=z)  # make into 3-band image
+xcolor= xcolor + a*( c /255.)   # water+mont1.67gpl
+
+c= c_magenta
+
+a=read(filename="group.1um/water+mont5.01gpl.fd.gif")       #  magenta
+        if (HasValue(a) ==0) {  # check that read worked
+              printf ("read ERROR on results file\n")
+              printf ("setting to zero\n")
+              a=0
+        }
+	q=cat(a,a,axis=z)  # make into 3-band image
+	a=cat(a,q,axis=z)  # make into 3-band image
+xcolor= xcolor + a*( c /255.)   # water+mont5.01gpl
+
+c= c_orange
+
+a=read(filename="group.1um/water+mont16.5gpl.fd.gif")       #  orange
+        if (HasValue(a) ==0) {  # check that read worked
+              printf ("read ERROR on results file\n")
+              printf ("setting to zero\n")
+              a=0
+        }
+	q=cat(a,a,axis=z)  # make into 3-band image
+	a=cat(a,q,axis=z)  # make into 3-band image
+xcolor= xcolor + a*( c /255.)   # water+mont16.5gpl
+
+c= c_red
+
+a=read(filename="group.1um/water.red.algae.fd.gif")         #  red
+        if (HasValue(a) ==0) {  # check that read worked
+              printf ("read ERROR on results file\n")
+              printf ("setting to zero\n")
+              a=0
+        }
+	q=cat(a,a,axis=z)  # make into 3-band image
+	a=cat(a,q,axis=z)  # make into 3-band image
+xcolor= xcolor + a*( c /255.)   # water.red.algae
+
+if (HasValue(xcolor) ==0) {
+
+	printf ("davinci.make.water.color.a: xcolor has no value\n")
+	printf ("EXIT 1\n")
+	exit(1)
+}
+
+# OLD:   fout=$2 + "_color-results_water-a.jpg"
+
+########### end custom, no need to change anything below this line ###############################
+
+xout=byte(xcolor+0.5)   # output color image, byte
+xdim=dim(xout)
+xdimx=xdim[1,,]      # color image width
+
+gbasedim=dim(gbase)
+x=gbasedim[1,,]      # base image width
+
+if (x > 6000) {
+	dual = 0
+}
+if ( dual == 1 ) {
+	
+	xout = cat (xout, gbase, axis=x)
+}
+
+if (HasValue(xout) ==0) {
+
+	printf ("davinci.make.water.color.a: xout has no value\n")
+	printf ("EXIT 1\n")
+	exit(1)
+}
+
+fout=$2
+
+printf ("writing %s\n", fout)
+write (xout, filename=fout, type=png)
+

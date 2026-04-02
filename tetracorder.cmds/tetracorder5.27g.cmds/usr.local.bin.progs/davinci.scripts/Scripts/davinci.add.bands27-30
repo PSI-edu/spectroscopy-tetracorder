@@ -1,0 +1,15 @@
+#!/usr/local/bin/davinci -f
+
+cube=$1
+fout=$2
+#############################################################
+
+a=read(filename=cube,record=27)
+b=read(filename=cube,record=28)
+c=read(filename=cube,record=29)
+d=read(filename=cube,record=30)
+
+e = short((float(a) + float(b) + float(c) + float(d))/4)
+
+write(e,filename=fout,type=vicar)
+exit

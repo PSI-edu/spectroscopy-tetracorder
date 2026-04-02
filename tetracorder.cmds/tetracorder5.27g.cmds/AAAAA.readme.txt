@@ -1,0 +1,211 @@
+This directory contains the Tetracorder expert system and support programs.
+
+Journal paper on Tetracorder:
+
+Clark, R. N., G. A. Swayze, K. E. Livo, P. Brodrick, E. Noe
+Dobrea, S. Vijayarangan, R. O. Green, D. Wettergreen,
+A. Candela, A. Hendrix, C. P. Garcia-Pando, N. Pearson,
+M. D. Lane, A. Gonzalez-Romero, X. Querol, and the EMIT and
+TREX teams, 2024, Imaging spectroscopy: Earth and planetary
+remote sensing with the PSI Tetracorder and expert systems
+from Rovers to EMIT and Beyond Planetary Science Journal 5:276, 48pp.
+https://iopscience.iop.org/article/10.3847/PSJ/ad6c3a
+
+Watch the training videos at:
+
+      https://www.youtube.com/user/PSITucson/featured
+
+   Go to: Spectroscopy and Tetracorder Training
+
+      The youtube left-right scroll shows only the first 12 videos.  To see all videos,
+      click on the PLAY ALL button and the full list of videos is on the right.
+
+
+#########################################
+
+First complete the configuration for your system:
+
+Davinci programs start with the line:  #!/usr/bin/env -S davinci -f
+
+If you system is running a very old version of the env command, prior to
+version 8.30, the -S flag will not work.  You'll need to change every
+davinci script so that the first line is:
+#!/usr/local/bin/davinci -f
+
+Because no system in 2026+ should be running such an old version
+of the env command, we no longer supoport 2 versions of davinci scripts
+with the first line changed.    Directories with davinci scripts are:
+
+	cmds.all.support
+        cmds.color.support
+        davinci-cmds.for.usr.local.bin
+        usr.local.bin.progs
+
+Check you system with: env --version
+If you env command is old, please upgrade.  If youi can't do that,
+you'll need to change to first line of all davinci scripts.
+
+The "#!/usr/bin/env -S davinci -f" is needed on cluster machines
+laike that being used to process EMIT and AVIRIS data at JPL.
+
+############################
+
+The abundance models are described in more detail in:
+
+Clark, R. N., G. A. Swayze, K. E. Livo, P. Brodrick, E. Noe
+Dobrea, S. Vijayarangan, R. O. Green, D. Wettergreen,
+A. Candela, A. Hendrix, C. P. Garcia-Pando, N. Pearson,
+M. D. Lane, A. Gonzalez-Romero, X. Querol, and the EMIT and
+TREX teams, 2024, Imaging spectroscopy: Earth and planetary
+remote sensing with the PSI Tetracorder and expert systems
+from Rovers to EMIT and Beyond Planetary Science Journal 5:276,
+48pp. https://iopscience.iop.org/article/10.3847/PSJ/ad6c3a
+
+
+
+
+
+##########################################
+
+Tetracorder commands: what to edit for version changes
+For example, from tetracorder5.2 to tetracorder5.26, change 5.2 to 5.26 in:
+
+cmd-setup-tetrun
+cmd.tetracorder.rover.ASD.setup.and.autostart
+cmd.runtet
+
+e.g.:
+
+vi cmd-setup-tetrun  cmd.tetracorder.rover.ASD.setup.and.autostart  cmd.runtet
+
+
+##########################################
+
+To add a new instrument:
+
+1) convolve the spectral libraries in the /sl1 directory.
+
+Next you will need to add entries to the following directories:
+
+    DATASETS,  DELETED.channels,  restart_files,  COLOR.channels,
+    VARIABLES, and  DISABLE  directories.
+
+2) cd DATASETS
+   copy an existing entry to the new name.
+   edit the new file
+   example:  cp aviris_2018 emit-c
+             vi emit_c     # result:
+             data=    EMITc  
+             restart= r1-emitc
+     optional, include (values depend on how the data are created):
+             deletedpoint=  -99999.0
+             threshholdmin= -0.009
+             threshholdmax= 99999.0
+
+   
+3) add an entry for the new instrument in DELETED.channels
+   cd DELETED.channels
+   add new file or edit DELETED.channels.txt.
+   Example new file:
+   delete_emit_c
+    c   # emit_c   (no deleted points at this time)
+
+4) copy a restart file to the new instrument name and edit the spectral library names.
+     example, for  restart_files/r1-emita, change the lines:
+                   (get the number of channels from the target spectrometer)
+
+	cd restart_files
+        cp restart_files/r1-av18a  restart_files/r1_emitc   # name should be the same as set in the DATASETS
+        edit  restart_files/r1_emitc   and change the follor to:
+        iwfl=/sl1/usgs/rlib06/r06emitc                                                       
+        iyfl=/sl1/usgs/library06.conv/s06emitc                                             
+        irfl=r1-emitc
+        #
+        iwdgt=      r06emitc  # file device letter w
+        inmy=       s06emitc  # file device letter y
+        nchans=          285  # num wave chans
+
+5) Look in the COLOR.channels directory and read one of the files.
+
+      cd COLOR.channels
+   For example, color-aviris_1995:
+      BASE     20 20 20  base-image.jpg    # base grayscale image
+      COLOR1   30 20 10  color-visRGB.jpg  # visible color channels
+      COLOR2  195 70 15  color-vir.jpg     # false color vis-IR
+
+    These are the channel numbers to use for making 3 different grey
+    scale and color images of the scene.  Simply copy one of those files
+    and modify which channels to use for your instrument.
+
+6)  Variables can be customized in the VARIABLES directory.
+    Note, however, if you change these, the abundances scripts still use
+    hardcoded image scaling values, thus if you need to use the abundace
+    calculations, do not change image output scaling variables.
+    This will be fixed in a future version of the tetracorder source code
+    plus the abundance code.
+
+7)  Go to the DISABLE directory: cd DISABLE
+    If you want to do something different for the new instrument than the "default" file,
+    then copy one of the files to your new name, then edit the entries,
+    only changing the first word to ENABLE or DISABLE.
+    Make sure the other entries on the line remain in the same position.
+
+
+##########################################
+
+Example runs
+
+to set up a tetracorder run, cd to the directory where you want to create
+a tetracorder directory for a run.  For example, if you want to do a 
+tetracorder run in /data1/project3/mapping/arches-np
+first cd to:
+    /data1/project3/mapping/
+
+The run the command:
+/t1/tetracorder.cmds/tetracorder5.26e.cmds/cmd-setup-tetrun
+
+With no arguments, cmd-setup-tetrun will tell you all the options.
+The first option is the sub-directory where all results would be placed.
+
+Example:
+
+/t1/tetracorder.cmds/tetracorder5.27g.cmds/cmd-setup-tetrun   arches-np    aviris_1995 \
+              cube ../cube/cuprite.95.cal.rtgc.v  0.0005 -T 0 80 C     -P 0.9 1.1 bar  \
+              shortcubeid archs95a
+
+/t1/tetracorder.cmds/tetracorder5.27g.cmds/cmd-setup-tetrun   map-schrod1   MMM_09c \
+              cube ../cubes/Schrodinger_UARFLRC  1.0  -T -100 140 C -P 0.00000001 0.0001 bar \
+              shortcubeid m3schrod1   
+
+
+Note the full path + filename to the cube must be less than 73 characters.
+(Set up symbolic links to shorten path+filename.)
+
+
+#################  Auto-Extracting Spectra of Pixel Averages  #################
+
+See:
+     AAA.cmds.to.get.average.spectra.of.mapped.materials
+
+
+###############  Red Edge Shift  ################################################
+
+The veg anomaly run set a max of band depth 0.5 = 255.  Max response
+would be about a 7 nm shift in the red edge (dn=255).  A dn of ~107
+would be ~3nm shift
+
+shift     peak height    DN    Possible image stretch
+-----------------------------------------------------
+  0  nm       0           0
+  0.5         0.035      18     purple 0.5 to 1 nm
+  1           0.07       36     blue     1 to 2 nm
+  2           0.14       71     green    2 to 3 nm
+  3           0.21      107     red      3 to 4 nm
+  4           0.28      143     white    > 4 nm 
+
+
+
+##############   KNOWN ISSUES   ################################################
+
+Read: AAAAA.KNOWN-ISSUES.txt
+

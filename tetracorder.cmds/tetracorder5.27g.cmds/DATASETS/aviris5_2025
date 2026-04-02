@@ -1,0 +1,6 @@
+data=    aviris5_2025
+restart= r1-aviris5_2025
+deletedpoint=  -99999.0
+threshholdmin= -0.009
+threshholdmax= 99999.0
+

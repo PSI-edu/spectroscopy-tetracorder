@@ -1,0 +1,16 @@
+#!/bin/sh
+
+echo " "
+
+expsys=`head -900 tetracorder.out | grep '<cmd.lib.setup' | head -1 | sed -e 's/<//'`
+
+echo "Tetracorder expert system $expsys"
+
+echo " "
+
+ftotal=`grep feature AAA.info/enable-disable-features.txt | wc -l`
+fenabl=`grep ENABLED AAA.info/enable-disable-features.txt | grep -v ENABLED: | wc -l`
+echo "Total number of group spectral features defined: $ftotal   enabled: $fenabl"
+
+echo " "
+

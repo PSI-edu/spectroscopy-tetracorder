@@ -1,0 +1,267 @@
+#!/usr/local/bin/davinci -f
+
+# verbose = 0.0
+
+# compute the mass of the compound per square meter
+
+# Kaolinite    based on cmd.lib.setup.t5.2a2
+
+#  DN scale = what band depth = 255 in the tetracorder output image (from 5.2a2 expert system)
+#  BD factor = band depth =1 for pure, fraction in mixture
+#
+#                                                        DN     BD
+#                file                                  scale  factor     title
+# group.2um/kaolgrp_kaolinite_wxl.depth.gz               0.5   1.0  Kaolinite CM9
+# group.2um/kaolgrp_kaolinite_pxl.depth.gz               0.5   1.0  Kaolinite KGa-2 (pxl)
+# group.2um/kaolgrp_halloysite.depth.gz                  0.5   1.0  Halloysite NMNH106237
+# group.2um/kaolgrp_dickite.depth.gz                     0.5   1.0  Dickite NMNH106242
+# group.2um/kaolin.5+smect.5.depth.gz                    0.5   0.5  Kaolin_Smect H89-FR-2 .5Kaol
+# group.2um/kaolin.3+smect.7.depth.gz                    0.5   0.3  Kaolin_Smect H89-FR-5 .3Kaol
+# group.2um/kaol.75+pyroph.25.depth.gz                   0.5   0.75 Kaolwxl.75+Alun_HS295 AMX14
+# group.2um/alunite.5+kaol.5.depth.gz                    0.5   0.5  Alunite0.5+Kaol_KGa-1 AMX3
+# group.2um/kaol.75+alun.25.depth.gz                     0.5   0.75 Kaolwxl.75+Alun_HS295 AMX14
+# group.2um/Kalun+kaol.intmx.depth.gz                    0.5   0.5  Kalun+kaol+gth mv2-ar3
+# group.2um/Na-alun+kaol.intmx.depth.gz                  0.5   0.5  Alun_Na+Kaol+Hemat  MV00-11a
+# group.2um/kaolin.5+muscov.medAl.depth.gz               0.5   0.5  Kaol.5+MuscCU91-250A AMX13
+# group.2um/kaolin.5+muscov.medhighAl.depth.gz           0.5   0.5  Kaol_Wxl+0.5Musc_Ruby AMX12
+# group.2um/kaolin+musc.intimat.depth.gz                 0.5   0.5  Kaol+Musc_intimate CU93-5C
+# group.2um/alunite.33+kaol.33+musc.33.depth.gz          0.5   0.33 Alun.33+Kaol.33+Musc.33 AMX2
+# group.2um/carbonate_calcite+0.2kaolwxl.depth.gz        0.5   0.8  Calcite.80wt+Kaol_CM9 GDS213
+# group.2um/carbonate_calcite0.7+kaol0.3.depth.gz        0.5   0.3  Calcite.7+Kaolwxl.3 AMX9
+# group.2um/sulfate+kaolingrp_natroalun+dickite.depth.gz 0.5   0.5  Alunite+Dickite MV99-6-26b
+
+define read_a_depth_image(3,3) {
+
+	# read a band-depth image from tetracorder output
+
+	afile    = $1   # file to read
+	dnscake  = $2   # what band depth = 255 in the tetracorder output image
+	bdfactor = $3   # band depth =1 for pure, fraction in mixture
+
+	printf ("reading file %s\n", afile)
+	aaa=read(filename=afile)
+	if (HasValue(aaa) ==0) {  # check that read worked
+		printf ("read ERROR on file: %s\n",afile)
+		printf ("setting to zero\n")
+		aaa = 0
+		banddepth1 = 0
+	}
+	banddepth1 = (float (aaa) / (255.0 / dnscake)) * bdfactor
+	return (banddepth1)
+
+}  # end define
+
+ 
+ 
+#                   group.2um/kaolgrp_kaolinite_wxl.depth.gz          0.5   1.0  Kaolinite CM9
+b = read_a_depth_image ("group.2um/kaolgrp_kaolinite_wxl.depth.gz",   0.5,  1.0)
+b = (float (a) / (255.0 / 0.5)) * 1.0
+bdepth = b
+
+#                   group.2um/kaolgrp_kaolinite_pxl.depth.gz          0.5   1.0  Kaolinite KGa-2 (pxl)
+b = read_a_depth_image ("group.2um/kaolgrp_kaolinite_pxl.depth.gz",   0.5,  1.0)
+bdepth = bdepth + b
+
+#                   group.2um/kaolgrp_halloysite.depth.gz             0.5   1.0  Halloysite NMNH106237
+b = read_a_depth_image ("group.2um/kaolgrp_halloysite.depth.gz",      0.5,  1.0)
+bdepth = bdepth + b
+
+#                   group.2um/kaolgrp_dickite.depth.gz                0.5   1.0  Dickite NMNH106242
+b = read_a_depth_image ("group.2um/kaolgrp_dickite.depth.gz",         0.5,  1.0)
+bdepth = bdepth + b
+
+#                   group.2um/kaolin.5+smect.5.depth.gz               0.5   0.5  Kaolin_Smect H89-FR-2 .5Kaol
+b = read_a_depth_image ("group.2um/kaolin.5+smect.5.depth.gz",        0.5,  0.5)
+bdepth = bdepth + b
+
+#                   group.2um/kaolin.3+smect.7.depth.gz               0.5   0.3  Kaolin_Smect H89-FR-5 .3Kaol
+b = read_a_depth_image ("group.2um/kaolin.3+smect.7.depth.gz",        0.5,  0.3)
+bdepth = bdepth + b
+
+#                   group.2um/kaol.75+pyroph.25.depth.gz              0.5   0.75 Kaolwxl.75+Alun_HS295 AMX14
+b = read_a_depth_image ("group.2um/kaol.75+pyroph.25.depth.gz",       0.5,  0.75)
+bdepth = bdepth + b
+
+#                   group.2um/alunite.5+kaol.5.depth.gz               0.5   0.5  Alunite0.5+Kaol_KGa-1 AMX3
+b = read_a_depth_image ("group.2um/alunite.5+kaol.5.depth.gz",        0.5,  0.5)
+bdepth = bdepth + b
+
+#                   group.2um/kaol.75+alun.25.depth.gz                0.5   0.75 Kaolwxl.75+Alun_HS295 AMX14
+b = read_a_depth_image ("group.2um/kaol.75+alun.25.depth.gz",         0.5,  0.75)
+bdepth = bdepth + b
+
+#                   group.2um/Kalun+kaol.intmx.depth.gz               0.5   0.5  Kalun+kaol+gth mv2-ar3
+b = read_a_depth_image ("group.2um/Kalun+kaol.intmx.depth.gz",        0.5,  0.5)
+bdepth = bdepth + b
+
+#                   group.2um/Na-alun+kaol.intmx.depth.gz             0.5   0.5  Alun_Na+Kaol+Hemat  MV00-11a
+b = read_a_depth_image ("group.2um/Na-alun+kaol.intmx.depth.gz",      0.5,  0.5)
+bdepth = bdepth + b
+
+#                   group.2um/kaolin.5+muscov.medAl.depth.gz          0.5   0.5  Kaol.5+MuscCU91-250A AMX13
+b = read_a_depth_image ("group.2um/kaolin.5+muscov.medAl.depth.gz",   0.5,  0.5)
+bdepth = bdepth + b
+
+#                   group.2um/kaolin.5+muscov.medhighAl.depth.gz           0.5   0.5  Kaol_Wxl+0.5Musc_Ruby AMX12
+b = read_a_depth_image ("group.2um/kaolin.5+muscov.medhighAl.depth.gz",    0.5,  0.5)
+bdepth = bdepth + b
+
+#                   group.2um/kaolin+musc.intimat.depth.gz                 0.5   0.5  Kaol+Musc_intimate CU93-5C
+b = read_a_depth_image ("group.2um/kaolin+musc.intimat.depth.gz",          0.5,  0.5)
+bdepth = bdepth + b
+
+#                   group.2um/alunite.33+kaol.33+musc.33.depth.gz          0.5   0.33 Alun.33+Kaol.33+Musc.33 AMX2
+b = read_a_depth_image ("group.2um/alunite.33+kaol.33+musc.33.depth.gz",   0.5,  0.33)
+b = (float (a) / (255.0 / 0.5))  * 0.33
+bdepth = bdepth + b
+
+#                   group.2um/carbonate_calcite+0.2kaolwxl.depth.gz        0.5   0.8  Calcite.80wt+Kaol_CM9 GDS213
+b = read_a_depth_image ("group.2um/carbonate_calcite+0.2kaolwxl.depth.gz", 0.5,  0.8)
+bdepth = bdepth + b
+
+#                   group.2um/carbonate_calcite0.7+kaol0.3.depth.gz        0.5   0.3  Calcite.7+Kaolwxl.3 AMX9
+b = read_a_depth_image ("group.2um/carbonate_calcite0.7+kaol0.3.depth.gz", 0.5,  0.3)
+bdepth = bdepth + b
+
+#                   group.2um/sulfate+kaolingrp_natroalun+dickite.depth.gz        0.5    0.5  Alunite+Dickite MV99-6-26b
+b = read_a_depth_image ("group.2um/sulfate+kaolingrp_natroalun+dickite.depth.gz", 0.5,   0.5)
+bdepth = bdepth + b
+
+# cap band depth range
+bdepth[ where (bdepth > 0.99999) ] = 0.99999
+bdepth[ where (bdepth < 0.000000000001) ] = 0.000000000001
+
+write (bdepth, filename="kaolinite-all-bdepth-float.v", type=vicar)
+
+abdepth = moment(bdepth)
+printf ("\n   bdepth min, max mean: %f %f %f\n\n", abdepth[1,,], abdepth[2,,], abdepth[3,,])
+
+# reference kaolinite, Kaolinite KGa-1 (wxl), splib06a r 12132
+# has a band depth of 0.355.
+
+relbdepth = bdepth / 0.355   # relative band depth
+
+write (relbdepth, filename="kaolinite-all-relbdepth-float.v", type=vicar)
+
+relbdepth8 = byte(relbdepth * 255.)
+write (relbdepth8, filename="kaolinite-all-relbdepth-8bit.png", type=png)
+
+
+# absorption coefficient for Kaolinite KGa-1 (wxl),
+#           reflectance: splib06a r 12132
+# sps0000:
+#   197  Kaolinite KGa-1 .2-3um estimate ABSCOEF   3800
+# 2.2-micron band: continuum = 57.3 cm^-1, band center: 234 cm^-1
+# delk = 234 - 57.3 = 177 cm^-1
+
+# from Clark and Roush (1984) = C&R, and Clark and Swayze (AGU, 2018) = C&S
+#
+# R     = reflectance at a given wavelength
+# Rc    = reflectance at a continuum wavelength
+# Rb    = reflectance at a band center wavelength
+# t     = 1/e depth into the surface
+# k     = absotprion coefficient
+# kc    = absotprion coefficient at the continuum
+# kb    = absotprion coefficient at the band center
+# delk  = kb - kc
+# lbar' = mean optical path in a single grain
+# lbar  = mopl = mean optical path length in the material
+# xc    = lbar at the continuum
+# xb    = lbar at the band center
+# x     = lbar = mopl of the material (for weak bands xc ~ xb = x)
+# gd    = grain diameter
+# BD    = band depth
+# m     = mean number of scatterings
+# w     = single_scattering_albedo
+#
+# single_scattering_albedo = w = 1/(1+2*k*gd)     C&R eqn 16
+# lbar' = (-1/k) * ln(single_scattering_albedo)   C&R eqn 18
+#    question: where did eqb 18 come from?
+#
+# m = ln(R) / ln(w)                               C&R eqn 19
+# R = w^m
+#
+# combine C&R 16 + 18:
+# lbar' = (-1/k) * ln(1/(1+2*k*gd))
+#       = (-1/k) * -1 * ln(1+2*k*gd)
+#                                    note ln(1 + x) ~ x
+#       ~ 1/k * 2*k*gd
+#       ~ 2 * gd                                  C&R eqn 21
+#
+# R = exp(-k * lbar)                              C&R eqn 11
+# -ln(R) = k1*lbar1 + k2*lbar2 + ...              C&r eqn 30
+#
+# BD =  1 - Rb / Rc = 1 - exp(-kb*xb) / exp(-kc*xc)
+# weak bands: xc ~ xb = x
+#
+# ln(1-BD) = (-kb*xb) - (-kc*xc) ~ -1 * (kb - kc) * x
+#          = -1 * delk * x
+# x = lbar = -1 * ln(1-BD) / delk
+#  
+# lbar' = -1 * ln(w) / k                          C&R eqn 18
+# ln(w) = -1 * k * lbar'
+#
+# mopl = m * lbar'                                C&R eqn 20
+# lbar' = 2 * gd                                  C&R eqn 21
+# mopl  = m * 2 * gd  or
+# m     = mopl / (2 * gd)
+#  
+# t = (pi / 4.) * gd * sqrt(m/2.)                 C&R eqn 24
+#   = (pi / 4.) * gd * sqrt(mopl / 2*gd))
+#   = (pi / 4.) * sqrt(gd) * sqrt(mopl / 2)
+#      units = length (cm)
+
+# Simpler without gd:
+# for a slab, mopl is a 2-way path.
+#    If i=e=0, penetration = mopl /2
+#    effective depth of penetration = mopl * cos(i)/2 + mopl * cos(e)/2
+
+delk = 177.0   # inverse cm
+
+cosi = 1.0     # cosine incidence
+cose = 1.0     # cosine emission
+
+mopl = log (1.0 - bdepth) / (-1.0 * delk)    # mopl in cm, note: log = natural log
+
+moplmicrons = mopl * 10000.    # mopl in microns
+
+amopl = moment(moplmicrons)   # min, max, mean, ...
+printf ("\n   mopl (microns) min, max mean: %f %f %f\n\n   ", amopl[1,,], amopl[2,,], amopl[3,,])
+
+gd = 0.0002  # grain diameter in cm
+
+m = mopl / gd  # mean number of scaters if grain diameter = gd
+
+pi  = 3.14159265
+pi4 = 3.14159265 / 4.0
+
+t = pi4 * gd * sqrt(m/2.)   # 1/e depth in cm for pure surface
+
+density = 3.1  # gm / cm^3
+
+##### particulate model  ####
+
+ttt = t * 3.0   # 3 optical depth thicknesses
+
+mass = (100.0 * 100.0 * density) * ttt   # grams per square meter  (100 cm square).
+
+write (mass, filename="kaolinite-all-mass-gm-per-sq-meter-float.v", type=vicar)
+
+amass = moment(mass)
+printf ("\n   mass (gm/sq cm) min, max mean: %f %f %f\n\n   ", amass[1,,], amass[2,,], amass[3,,])
+
+nrmmass8 = byte(255.0 * mass / amass[2,,])
+write (nrmmass8, filename="kaolinite-all-mass-gm-per-sq-meter-8bit.png", type=png)
+
+####  slab model #######
+
+massslab = mopl * (100.0 * 100.0 * density * cosi * cose /2.0)   # slab model
+
+write (massslab, filename="kaolinite-all-massslab-gm-per-sq-meter-float.v", type=vicar)
+
+amass = moment(massslab)
+printf ("\n   mass (gm/sq cm) min, max mean: %f %f %f\n\n   ", amass[1,,], amass[2,,], amass[3,,])
+
+nrmmass8 = byte(255.0 * massslab / amass[2,,])
+write (nrmmass8, filename="kaolinite-all-massslab-gm-per-sq-meter-8bit.png", type=png)
+

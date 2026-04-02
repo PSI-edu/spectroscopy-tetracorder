@@ -1,0 +1,421 @@
+#!/usr/local/bin/davinci -f
+
+# command line:
+# prog    gray_base_image  prefix-file-name   [dual|nodual]
+
+dual=0  # no dual
+
+
+# goal: to show the following minerals
+#       for global dust radiative forcing
+# calcite (VNIR does this well, along with other carbonaies)
+# gypsum (VNIR does this well)
+# illite      (VNIR does this well, although includes muscovite)
+# kaolinite  (VNIR does this well)
+# smectite (Montmorillonite) (VNIR does this well)
+# other (unspecified mineralogy) ((VNIR does many minerals well)
+#       on 1-um maps:
+# hematite  (VNIR does this well, including separating goethite from hematite). 
+
+
+###### calcite aragonite
+a=read(filename="group.2um/carbonate_aragonite.fd.gif")
+        if (HasValue(a) ==0) {  # check that read worked
+                a = 0
+        }
+	q=cat(a,a,axis=z)  # make into 3-band image
+	a=cat(a,q,axis=z)  # make into 3-band image
+b=read(filename="group.2um/carbonate_calcite.fd.gif")
+        if (HasValue(b) ==0) {  # check that read worked
+                b = 0
+        }
+	q=cat(b,b,axis=z)  # make into 3-band image
+	b=cat(b,q,axis=z)  # make into 3-band image
+c1carbonate = a+b    # calcite   yellow
+if (HasValue(c1carbonate) == 0)   {
+	printf ("davinci.make.2micron-mins.color.b3: c1carbonate NOT FOUND\n")
+	c1carbonate = 0
+}
+
+
+# calcite mixtures     
+a=read(filename="group.2um/carbonate_calcite+0.2Ca-mont.fd.gif")
+        if (HasValue(a) ==0) {  # check that read worked
+                a = 0
+        }
+b=read(filename="group.2um/carbonate_calcite+0.2kaolwxl.fd.gif")
+c=read(filename="group.2um/calcite+0.2Na-mont.fd.gif")
+d=read(filename="group.2um/carbonate_calcite+0.3muscovite.fd.gif")
+e=read(filename="group.2um/calcite+0.5Ca-mont.fd.gif")
+f=read(filename="group.2um/carbonate_calcite0.7+kaol0.3.fd.gif")
+g=read(filename="group.2um/carbonate_calcite.25+dolom.25+Ca-mont.5.fd.gif")
+h=read(filename="group.2um/calcite.25+dolom.25+Na-mont.5.fd.gif")
+i=read(filename="group.2um/carbonate_smectite_calcite.33+Ca-mont.67.fd.gif")
+j=read(filename="group.2um/carbonate_calcite+dolomite.5.fd.gif")
+c2carbmix = a+b+c+d+e+f+g+h+i+j    # gold
+if (HasValue(c2carbmix) == 0)   {
+	printf ("davinci.make.2micron-mins.color.b3: c2carbmix NOT FOUND\n")
+	c2carbmix = 0
+}
+	q2carbmix=cat(c2carbmix,c2carbmix,axis=z)  # make into 3-band image
+	c2carbmix=cat(c2carbmix,q2carbmix,axis=z)  # make into 3-band image
+
+
+# other carbnonates   
+a=read(filename="group.2um/carbonate_dolo+.5ca-mont.fd.gif")
+        if (HasValue(a) ==0) {  # check that read worked
+                a = 0
+        }
+b=read(filename="group.2um/carbonate_dolomite.5+Na-mont.5.fd.gif")
+c=read(filename="group.2um/carbonate_dolomite.fd.gif")
+d=read(filename="group.2um/carbonate_magnesite.fd.gif")
+e=read(filename="group.2um/carbonate_malachite.fd.gif")
+f=read(filename="group.2um/carbonate_rhodochrosite.fd.gif")
+g=read(filename="group.2um/carbonate_siderite.fd.gif")
+h=read(filename="group.2um/carbonate_strontianite.fd.gif")
+i=read(filename="group.2um/carbonate_azurite.fd.gif")
+c3carother = a+b+c+d+e+f+g+h+i  # orange
+if (HasValue(c3carother) == 0)   {
+	printf ("davinci.make.2micron-mins.color.b3: c3carother NOT FOUND\n")
+	c3carother = 0
+}
+	q3carother =cat(c3carother ,c3carother ,axis=z)  # make into 3-band image
+	c3carother =cat(c3carother ,q3carother ,axis=z)  # make into 3-band image
+
+
+###### gypsuum       
+a=read(filename="group.2um/sulfate_gypsum.fd.gif")
+g1gypsum = a    # green
+if (HasValue(g1gypsum) == 0)   {
+	printf ("davinci.make.2micron-mins.color.b3: g1gypsum NOT FOUND\n")
+	g1gypsum = 0
+}
+	q1gypsum =cat(g1gypsum ,g1gypsum ,axis=z)  # make into 3-band image
+	g1gypsum =cat(g1gypsum ,q1gypsum ,axis=z)  # make into 3-band image
+
+
+# gypsum mixtures   
+a=read(filename="group.2um/sulfate-mix_gyp+jar+musc.amix.fd.gif")
+        if (HasValue(a) ==0) {  # check that read worked
+                a = 0
+        }
+b=read(filename="group.2um/sulfate-mix_gyp+jar+musc+dick.amix.fd.gif")
+c=read(filename="group.2um/sulfate-mix_gypsum+jar+illite.intmix.fd.gif")
+d=read(filename="group.2um/sulfate-mix_gypsum.trace.dust+debris-WTC01-28.fd.gif")
+e=read(filename="group.2um/sulfate-mix_gypsum.trace.dust+debris-WTC01-2.fd.gif")
+g2gypmix = a+b+c+d+e   # army green
+if (HasValue(g2gypmix) == 0)   {
+	printf ("davinci.make.2micron-mins.color.b3: g2gypmix NOT FOUND\n")
+	g2gypmix = 0
+}
+	q2gypmix =cat( g2gypmix, g2gypmix,axis=z)  # make into 3-band image
+	g2gypmix =cat( g2gypmix, q2gypmix,axis=z)  # make into 3-band image
+
+
+##### illite/muscovite        
+a=read(filename="group.2um/micagrp_illite.fd.gif")
+        if (HasValue(a) ==0) {  # check that read worked
+                a = 0
+        }
+b=read(filename="group.2um/micagrp_illite.gds4.fd.gif")
+c=read(filename="group.2um/micagrp_illite.roscoelite.fd.gif")
+d=read(filename="group.2um/smectite_ammonillsmec.fd.gif")
+i1illmusc = a+b+c+d   # cyan
+if (HasValue(i1illmusc) == 0)   {
+	printf ("davinci.make.2micron-mins.color.b3: i1illmusc NOT FOUND\n")
+	i1illmusc = 0
+}
+	q1illmusc =cat( i1illmusc, i1illmusc,axis=z)  # make into 3-band image
+	i1illmusc =cat( i1illmusc, q1illmusc,axis=z)  # make into 3-band image
+
+
+# illitte/muscovite mixtures         
+a=read(filename="group.2um/micagrp_muscovite-low-Al.fd.gif")
+        if (HasValue(a) ==0) {  # check that read worked
+                a = 0
+        }
+b=read(filename="group.2um/micagrp_muscovite-med-Al.fd.gif")
+c=read(filename="group.2um/micagrp_muscovite-medhigh-Al.fd.gif")
+d=read(filename="group.2um/musc+gyp+jar+dick.amix.fd.gif")
+e=read(filename="group.2um/musc+jarosite.intimat.fd.gif")
+f=read(filename="group.2um/muscovite+chlorite.fd.gif")
+g=read(filename="group.2um/micagrp_muscoviteFerich.fd.gif")
+h=read(filename="group.2um/musc+pyroph.fd.gif")
+i2illmuscmix = a+b+c+d+e+f+g+h    # blue
+if (HasValue(i2illmuscmix) == 0)   {
+	printf ("davinci.make.2micron-mins.color.b3: i2illmuscmix NOT FOUND\n")
+	i2illmuscmix = 0
+}
+	q2illmuscmix =cat( i2illmuscmix, i2illmuscmix,axis=z)  # make into 3-band image
+	i2illmuscmix =cat( i2illmuscmix, q2illmuscmix,axis=z)  # make into 3-band image
+
+
+###### Kaolinit group               
+a=read(filename="group.2um/kaolgrp_kaolinite_pxl.fd.gif")
+        if (HasValue(a) ==0) {  # check that read worked
+                a = 0
+        }
+b=read(filename="group.2um/kaolgrp_kaolinite_wxl.fd.gif")
+c=read(filename="group.2um/kaolgrp_dickite.fd.gif")
+d=read(filename="group.2um/kaolgrp_halloysite.fd.gif")
+k1kaolgrp = a+b+c+d    # lavendar
+if (HasValue(k1kaolgrp) == 0)   {
+	printf ("davinci.make.2micron-mins.color.b3: k1kaolgrp NOT FOUND\n")
+	k1kaolgrp = 0
+}
+	q1kaolgrp =cat( k1kaolgrp, k1kaolgrp,axis=z)  # make into 3-band image
+	k1kaolgrp =cat( k1kaolgrp, q1kaolgrp,axis=z)  # make into 3-band image
+
+
+# kaolinite mixtures               
+a=read(filename="group.2um/kaol.75+alun.25.fd.gif")
+        if (HasValue(a) ==0) {  # check that read worked
+                a = 0
+        }
+b=read(filename="group.2um/kaol.75+pyroph.25.fd.gif")
+c=read(filename="group.2um/kaolin.3+smect.7.fd.gif")
+d=read(filename="group.2um/kaolin.5+muscov.medAl.fd.gif")
+e=read(filename="group.2um/kaolin.5+muscov.medhighAl.fd.gif")
+f=read(filename="group.2um/kaolin.5+smect.5.fd.gif")
+g=read(filename="group.2um/kaolinite.3+.5+smectite.5+.7.added.fd.gif")
+h=read(filename="group.2um/kaolinite+muscovite.added.fd.gif")
+i=read(filename="group.2um/kaolin+musc.intimat.fd.gif")
+k2kaolmix = a+b+c+d+e+f+g+h+i    # magenta
+if (HasValue(k2kaolmix) == 0)   {
+	printf ("davinci.make.2micron-mins.color.b3: k2kaolmix NOT FOUND\n")
+	k2kaolmix = 0
+}
+	q2kaolmix =cat( k2kaolmix, k2kaolmix,axis=z)  # make into 3-band image
+	k2kaolmix =cat( k2kaolmix, q2kaolmix,axis=z)  # make into 3-band image
+
+
+###### smectites      
+a=read(filename="group.2um/smectite_beidellite_gds123.fd.gif")
+        if (HasValue(a) ==0) {  # check that read worked
+                a = 0
+        }
+b=read(filename="group.2um/smectite_beidellite_gds124.fd.gif")
+c=read(filename="group.2um/smectite_montmorillonite_ca_swelling.fd.gif")
+d=read(filename="group.2um/smectite_montmorillonite_fe_swelling.fd.gif")
+# was e=read(filename="group.2um/smectite_montna.fd.gif")
+e=read(filename="group.2um/smectite_montmorillonite_na_highswelling.fd.gif")
+f=read(filename="group.2um/smectite_nontronite_swelling.fd.gif")
+s1smect = a+b+c+d+e+f  # red
+if (HasValue(s1smect) == 0)   {
+	printf ("davinci.make.2micron-mins.color.b3: s1smect NOT FOUND\n")
+	s1smect = 0
+}
+	q1smect =cat( s1smect, s1smect,axis=z)  # make into 3-band image
+	s1smect =cat( s1smect, q1smect,axis=z)  # make into 3-band image
+
+
+# smectite mixtures  
+a=read(filename="group.2um/organic_benzene+montswy.fd.gif")
+        if (HasValue(a) ==0) {  # check that read worked
+                a = 0
+        }
+b=read(filename="group.2um/organic_drygrass+.17Na-mont.fd.gif")
+s2smoectmix = a+b  #red pink
+if (HasValue(s2smoectmix) == 0)   {
+	printf ("davinci.make.2micron-mins.color.b3: s2smoectmix NOT FOUND\n")
+	s2smoectmix = 0
+}
+	q2smoectmix =cat( s2smoectmix, s2smoectmix,axis=z)  # make into 3-band image
+	s2smoectmix =cat( s2smoectmix, q2smoectmix,axis=z)  # make into 3-band image
+
+
+
+############### other ####################
+
+##### chlorites, amphiboles, serpentines, talc 
+a=read(filename="group.2um/chlorite.fd.gif")
+        if (HasValue(a) ==0) {  # check that read worked
+                a = 0
+        }
+b=read(filename="group.2um/chlorite-scarn.fd.gif")
+c=read(filename="group.2um/chlorite_thuringite.fd.gif")
+d=read(filename="group.2um/chlorite_clinochlore.fd.gif")
+e=read(filename="group.2um/amphibole.fd.gif")
+f=read(filename="group.2um/serpentine_chrysotile.coarse-fibrous.fd.gif")
+g=read(filename="group.2um/serpentine_chrysotile.fine-fibrous.fd.gif")
+h=read(filename="group.2um/chrysotile.gypsum.wtc01-8.fd.gif")
+i=read(filename="group.2um/serpentine_chrysotile.med-fine-fibrous.fd.gif")
+i2=read(filename="group.2um/serpentine_cronstedtite.fd.gif")
+j=read(filename="group.2um/richterite.fd.gif")
+k=read(filename="group.2um/tremolite.or.talc.fd.gif")
+l=read(filename="group.2um/talc+calcite.parkcity.fd.gif")
+m=read(filename="group.2um/talc+carbonate.parkcity.fd.gif")
+n=read(filename="group.2um/talc.crsgrnd.fd.gif")
+o=read(filename="group.2um/talc.fngrnd.fd.gif")
+o1other = a+b+c+d+e+f+g+h+i+i2+j+k+l+m+n+o    # white
+if (HasValue(o1other) == 0)   {
+	printf ("davinci.make.2micron-mins.color.b3: o1other NOT FOUND\n")
+	o1other = 0
+}
+	q1other =cat( o1other, o1other,axis=z)  # make into 3-band image
+	o1other =cat( o1other, q1other,axis=z)  # make into 3-band image
+
+
+##### zeolites                                
+a=read(filename="group.2um/zeolite_natrolite.fd.gif")
+        if (HasValue(a) ==0) {  # check that read worked
+                a = 0
+        }
+b=read(filename="group.2um/zeolite_analcime.fd.gif")
+z1zeolit = a+b    # flesh
+if (HasValue(z1zeolit) == 0)   {
+	printf ("davinci.make.2micron-mins.color.b3: z1zeolit NOT FOUND\n")
+	z1zeolit = 0
+}
+	q1zeolit =cat( z1zeolit, z1zeolit,axis=z)  # make into 3-band image
+	z1zeolit =cat( z1zeolit, q1zeolit,axis=z)  # make into 3-band image
+
+
+# other sulfates                             
+a=read(filename="group.2um/alunite.33+kaol.33+musc.33.fd.gif")
+        if (HasValue(a) ==0) {  # check that read worked
+                a = 0
+        }
+b=read(filename="group.2um/alunite.5+kaol.5.fd.gif")
+c=read(filename="group.2um/alunite.5+musc.5.fd.gif")
+d=read(filename="group.2um/sulfate_alunite_k.all.fd.gif")
+e=read(filename="group.2um/sulfate_alunite_na.all.fd.gif")
+f=read(filename="group.2um/alunite+kaolinite.muscovite.added.fd.gif")
+g=read(filename="group.2um/alunite+musc+pyroph.fd.gif")
+o2sulf = a+b+c+d+e+f+g  # deep pink
+if (HasValue(o2sulf) == 0)   {
+	printf ("davinci.make.2micron-mins.color.b3: o2sulf NOT FOUND\n")
+	o2sulf = 0
+}
+	q2sulf =cat( o2sulf, o2sulf,axis=z)  # make into 3-band image
+	o2sulf =cat( o2sulf, q2sulf,axis=z)  # make into 3-band image
+
+
+
+gbase = read(filename=$1)
+if (HasValue(gbase) == 0)   {
+	printf ("davinci.make.2micron-mins.color.b3: gbase NOT FOUND\n")
+	gbase = 0
+}
+
+
+
+# first define RGB colors as 3 band floating point arrays
+
+# create RGB color multiplier variables
+argb =  create(1,1,3, format=FLOAT, start=0.0, step=0.0)
+
+# adapted from /info/COLORS.screen.to.printers
+#
+#      "color"         r    g    b
+#    1 red            255   40    0
+#    2 green           50  255    0
+#    3 blue             0  105  255
+
+#    4 yellow         255  255    0
+#    5 magenta        205   40  255
+#    6 cyan             0  255  255
+
+#    7 army green     160  175    0
+#    8 salmon         255  170  170
+#    9 flesh          255  200  155
+
+#   10 orange         255  120    0
+#   11 deep pink      235    0  180
+#   12 yellow green   190  255    0
+
+#   13 lavender       185  120  255
+#   14 sky blue       140  210  255
+#   15 pale sea green 110  255  190
+
+#   16 white          255  255  255
+#   17 red-pink       255  125  125
+#   18 gold           255  213    0
+
+#   19 mud yellow     186  165    0
+#   20 light pink     255  211  255
+
+
+# Colors:
+#              Red                  Green                Blue    color variable name
+
+argb[1,1,1] =  255. ; argb[1,1,2]=    40. ;  argb[1,1,3]=   0. ; c_red          = argb  # red
+argb[1,1,1] =   50. ; argb[1,1,2]=   255. ;  argb[1,1,3]=   0. ; c_green        = argb  # green
+argb[1,1,1] =    0. ; argb[1,1,2]=   105. ;  argb[1,1,3]= 255. ; c_blue         = argb  # blue
+
+argb[1,1,1] =  255. ; argb[1,1,2]=   255. ;  argb[1,1,3]=   0. ; c_yellow       = argb  # yellow
+argb[1,1,1] =  255. ; argb[1,1,2]=    40. ;  argb[1,1,3]= 255. ; c_magenta      = argb  # magenta
+argb[1,1,1] =    0. ; argb[1,1,2]=   255. ;  argb[1,1,3]= 255. ; c_cyan         = argb  # cyan
+
+argb[1,1,1] =  160. ; argb[1,1,2]=   175. ;  argb[1,1,3]=   0. ; c_armygreen    = argb  # army green
+argb[1,1,1] =  255. ; argb[1,1,2]=   170. ;  argb[1,1,3]= 170. ; c_salmon       = argb  # salmon
+argb[1,1,1] =  255. ; argb[1,1,2]=   200. ;  argb[1,1,3]= 155. ; c_flesh        = argb  # flesh
+
+argb[1,1,1] =  255. ; argb[1,1,2]=   120. ;  argb[1,1,3]=   0. ; c_orange       = argb  # orange
+argb[1,1,1] =  235. ; argb[1,1,2]=     0. ;  argb[1,1,3]= 180. ; c_deeppink     = argb  # deep pink
+argb[1,1,1] =  190. ; argb[1,1,2]=   255. ;  argb[1,1,3]=   0. ; c_yellowgreen  = argb  # yellow green
+
+argb[1,1,1] =  185. ; argb[1,1,2]=   120. ;  argb[1,1,3]= 255. ; c_lavender     = argb  # lavender
+argb[1,1,1] =  140. ; argb[1,1,2]=   210. ;  argb[1,1,3]= 255. ; c_skyblue      = argb  # sky blue
+argb[1,1,1] =  110. ; argb[1,1,2]=   255. ;  argb[1,1,3]= 190. ; c_paleseagreen = argb  # pale sea green
+
+argb[1,1,1] =  255. ; argb[1,1,2]=   255. ;  argb[1,1,3]= 255. ; c_white        = argb  # white
+argb[1,1,1] =  255. ; argb[1,1,2]=   125. ;  argb[1,1,3]= 125. ; c_redpink      = argb  # red-pink
+argb[1,1,1] =  255. ; argb[1,1,2]=   213. ;  argb[1,1,3]=   0. ; c_gold         = argb  # gold
+
+argb[1,1,1] =  186. ; argb[1,1,2]=   165. ;  argb[1,1,3]=   0. ; c_mudyellow    = argb  # mud yellow
+argb[1,1,1] =  255. ; argb[1,1,2]=   211. ;  argb[1,1,3]= 255. ; c_lightpink    = argb  # light pink
+
+
+# a = first input image, 3-band color, xcolor = the color output image, RGB float
+# colorout = the color output image, 3-byte RGB
+
+# below here is custom
+
+# read the input images, a, b, c, c1, c2, etc
+# a=read(filename=______)
+
+# PUT the custom read materials maps here
+
+xcolor = float(a*0)    # color output image
+
+xcolor= xcolor + c1carbonate  *(c_yellow    /255.)       # yellow
+xcolor= xcolor + c2carbmix    *(c_gold      /255.)       # gold
+xcolor= xcolor + c3carother   *(c_orange    /255.)       # orange
+xcolor= xcolor + g1gypsum     *(c_green     /255.)       # green
+xcolor= xcolor + g2gypmix     *(c_armygreen /255.)       # army green
+xcolor= xcolor + i1illmusc    *(c_cyan      /255.)       # cyan
+xcolor= xcolor + i2illmuscmix *(c_blue      /255.)       # blue
+xcolor= xcolor + k1kaolgrp    *(c_lavender  /255.)       # lavendar
+xcolor= xcolor + k2kaolmix    *(c_magenta   /255.)       # magenta
+xcolor= xcolor + s1smect      *(c_red       /255.)       # red
+xcolor= xcolor + o1other      *(c_white     /255.)       # white
+xcolor= xcolor + z1zeolit     *(c_flesh     /255.)       # flesh
+xcolor= xcolor + o2sulf       *(c_deeppink  /255.)       # deep pink
+
+colorout=byte(xcolor+0.5)
+if (HasValue(colorout) == 0)   {
+	printf ("davinci.make.2micron-mins.color.b3: colorout NOT FOUND\n")
+	colorout = 0
+}
+
+
+gbasedim=dim(gbase)
+x=gbasedim[1,,]
+
+if (x > 6000) {
+	dual = 0
+}
+if ( dual == 1 ) {
+	
+	xout = cat (xout, gbase, axis=x)
+}
+
+
+
+fout=$2
+
+printf ("writing %s\n", fout)
+write (colorout, filename=fout, type=png)
+
+

@@ -1,0 +1,10 @@
+#!/bin/sh
+
+
+a=`basename $1 .gz`
+
+d=`dirname $1`
+
+echo "vicargztogif $1  ${d}/${a}.gif"
+
+vicargztogif $1  ${d}/${a}.gif

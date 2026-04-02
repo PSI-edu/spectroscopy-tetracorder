@@ -1,0 +1,5 @@
+
+tf1= Gypsum  f1a DLw 2.11    2.145   2.288   2.318
+tf2= Gypsum  f2a DLw 1.497   1.518   1.566   1.596
+tf3= Gypsum  f3a DLw 1.665   1.695   1.765   1.785
+tf4= Gypsum  f4a DLw 2.225   2.255   2.288   2.318

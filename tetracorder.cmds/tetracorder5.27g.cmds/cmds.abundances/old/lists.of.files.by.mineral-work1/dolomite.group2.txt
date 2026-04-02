@@ -1,0 +1,8 @@
+Dolomite HS102.3B		    carbonate_dolomite
+
+Dolomit+Calcite+Talc PC99-1E	    talc+carbonate.parkcity
+Calcite+Dolomite.5 AMX8		    carbonate_calcite+dolomite.5
+Dolomite.50+Ca-Montmor AMX10	    carbonate_dolo+.5ca-mont
+Calc.25+dolo.25+mont.5 AMX18	    calcite.25+dolom.25+Na-mont.5
+Calc.25+Dolo.25+Ca-Mon AMX7	    carbonate_calcite.25+dolom.25+Ca-mo
+Dolomite.5+Na-mont.5 AMX21	    carbonate_dolomite.5+Na-mont.5

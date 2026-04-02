@@ -1,0 +1,32 @@
+
+Imaging spectroscopy through the Earth's atmosphere (e.g. AVIRIS) 
+has some wavelngth resions with no or poor signal due to
+strong telluric absorptions.
+
+Avoid placing continuum endpoints in the following regions.
+
+ aviris channels near: 107t112 156t164 168t170 174 
+
+1.353  1.403     # water
+1.841  1.897     # water
+1.937  1.957     # CO2
+1.9974 1.9975    # CO2
+
+specpr wavelength markers:
+
+wm1= 1.353  1.403 
+wm2= 1.841  1.897
+wm3= 1.937  1.957 
+wm4= 1.9974 1.9975  
+
+
+CRISM specvtrometer order sorting filter gap:
+CRISM_j3a   channels 72 - 79
+
+0.9709 1.0472
+0.632  0.705    Crism order sorting filter gap, no data.
+
+specpr wavelength markers:
+wm5= 0.9709 1.0472
+wm6= 0.632  0.705
+

@@ -1,0 +1,201 @@
+#!/usr/bin/env -S davinci -f  
+
+###########################  was:  #!/usr/local/bin/davinci -f
+
+
+
+if ( $argc < 3 ) {
+
+	printf ("form:\n")
+        printf ("davinci.display.band.from.v.or.envi   filename   band bandnumber  [max value] [pngout file]\n")
+        printf ("davinci.display.band.from.v.or.envi   filename   rgb  rband gband bband  [rmax value] [gmax value] [bmax value] [pngout file]\n")
+	exit (1)
+}
+
+afile = $1    # inout file
+
+k = fexists(filename=afile)
+if (k != 1) {
+
+	printf ("ERROR: file=%s DOES NOT EXIST\n", afile)
+	exit (1)
+}
+
+amax  = 0.0
+aband = 0   # which B&W band to extract
+bands = 1   # number of bands (1, or 3)
+
+rband   = 0     # red
+gband   = 0     # green
+bband   = 0     # blue
+
+rmax = 0.0
+gmax = 0.0
+bmax = 0.0
+
+pngout = 0   # no output, =1 write out file
+
+if ( $argc > 2 ) {
+	for (j=2; j<=$argc; j++) {
+
+		if ( $argv[j] == "band" ) {
+
+			aband = atoi($argv[j+1])
+
+			bands = 1
+
+			if (aband < 1) {
+
+				printf ("ERROR: band < 1\n")
+				printf ("band= %d   file=%s\n", aband, afile)
+				exit (1)
+			}
+			j = j +1
+
+		} else if ( $argv[j] == "pngout" ) {
+
+			fileout = $argv[j+1]
+
+			printf ("Output png file= %s\n", fileout)
+
+			pngout = 1
+
+			j = j +1
+
+		} else if ($argv[j] == "max" ) {
+
+			amax = atoi($argv[j+1])
+			if (amax < 0.000001) {
+
+				printf ("ERROR: max too small: %f\n", amax)
+				exit (1)
+			}
+			j = j +1
+
+		} else if ($argv[j] == "rgb" ) {
+
+			rband = atoi($argv[j+1])
+			gband = atoi($argv[j+2])
+			bband = atoi($argv[j+3])
+			if (rband < 1 || gband < 1 || bband < 1) {
+
+				printf ("ERROR: RGB bands too small: %d %d %d\n", rband, gband, bband)
+				exit (1)
+			}
+			j = j +3
+			bands = 3
+
+
+		} else if ($argv[j] == "rmax" ) {
+
+			rmax = atoi($argv[j+1])
+			if (rmax < 0.000001) {
+
+				printf ("ERROR: rmax too small: %f\n", amax)
+				exit (1)
+			}
+			j = j +1
+
+		} else if ($argv[j] == "gmax" ) {
+
+			gmax = atoi($argv[j+1])
+			if (gmax < 0.000001) {
+
+				printf ("ERROR: gmax too small: %f\n", amax)
+				exit (1)
+			}
+			j = j +1
+
+		} else if ($argv[j] == "bmax" ) {
+
+			bmax = atoi($argv[j+1])
+			if (rmax < 0.000001) {
+
+				printf ("ERROR: bmax too small: %f\n", amax)
+				exit (1)
+			}
+			j = j +1
+
+		} else {
+
+			printf ("Option not recognized %s\n", $argv[j])
+			exit(2)
+		}
+	}
+}
+
+
+if (bands == 1) {    # grey scale image
+
+	a = read(filename=afile, record=aband)
+
+	adim = dim(a)
+	m=moment(a)
+
+	if (amax > 0.000001) {
+
+		xnorm = amax
+	} else {
+		xnorm = m[2,,]  # max
+	}
+
+	b=byte(255.0 * float(a)/xnorm)
+
+	display(b)
+
+	if (pngout == 1) {
+
+		write (b, filename=fileout, type=png)
+	}
+
+} else {             # RGB image
+
+	r = read(filename=afile, record=rband)
+	g = read(filename=afile, record=gband)
+	b = read(filename=afile, record=bband)
+
+	rm = moment(r)
+	gm = moment(g)
+	bm = moment(b)
+
+	printf ("image red   min max mean= %f %f %f\n", rm[1,,], rm[2,,], rm[3,,])
+	printf ("image green min max mean= %f %f %f\n", gm[1,,], gm[2,,], gm[3,,])
+	printf ("image blue  min max mean= %f %f %f\n", bm[1,,], bm[2,,], bm[3,,])
+
+	if (rmax > 0.000001) {
+
+		rxnorm = rmax
+	} else {
+		rxnorm = rm[2,,]  # max
+	}
+	rb=byte(255.0 * float(r)/rxnorm)
+
+	if (gmax > 0.000001) {
+
+		gxnorm = gmax
+	} else {
+		gxnorm = gm[2,,]  # max
+	}
+	gb=byte(255.0 * float(g)/gxnorm)
+
+	if (bmax > 0.000001) {
+
+		bxnorm = bmax
+	} else {
+		bxnorm = bm[2,,]  # max
+	}
+	bb=byte(255.0 * float(b)/bxnorm)
+
+	rgb = cat(rb,  gb, axis=Z)
+	rgb = cat(rgb, bb, axis=Z)
+
+	display(rgb)
+
+	if (pngout == 1) {
+
+		write (rgb, filename=fileout, type=png)
+	}
+
+}
+system("sleep 9")
+

@@ -1,0 +1,3 @@
+restart= r1-av10oila
+start=   cmds.start.t4.4oila           # note: e4.4* is incompatible with tetracorder 5.n+
+lib=     cmd.lib.setup.t4.4a4_oil10a
