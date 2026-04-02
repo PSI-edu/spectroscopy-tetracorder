@@ -29,22 +29,23 @@
 	integer*4	lunenblgrp
 
 
-	parameter       (maxmat=690)     # maximum materials
-	parameter       (maxmat1=300)    # maximum materials in one group/case
-        parameter       (maxfeat=16)     # maximum features per material
-        parameter       (maxnotfeat=8)   # maximum NOT features per material
-        parameter       (maxfeatratio=8) # maximum feature ratios per material
-	parameter	(maxmodes=30)    # maximum number of material modes
+	parameter	(maxmat=750)	 # maximum materials
+	parameter	(maxmat1=300)	 # maximum materials in one group/case
+	parameter       (maxfeat=16) 	# maximum features per material
+	parameter       (maxnotfeat=8)   # maximum NOT features per material
+	parameter       (maxfeatratio=8) # maximum feature ratios per material
+	parameter	(maxmodes=30)	 # maximum number of material modes
 
 ### WARNING: the above maxfeat, maxmat creates a lot of static memory as there
 ###          are MANY variables with these two variables declaring array sizes.
 ###          The default gfortran memory model has a 2GByte limit for all static
 ###          arrays, and with all the 2 and 3 dimensional arras declared, the above
 ###          is very near the limit.  If maxmat needs to go above 670,
-###          then need to explore other memory models.  See:
+###          then need to use other memory models.  See:
 ###          https://stackoverflow.com/questions/12916176/gfortran-for-dummies-what-does-mcmodel-medium-do-exactly
-###          and probably add the fortran flag -mcmodel=medium to the compile, but
-###          this may impact speed, so we are holding off making it the default.
+###          and add the fortran flag -mcmodel=medium to the compile.
+###          This limit was hit in 2024 and it was found that -mcmodel=medium
+###          did not impact speed, so -mcmodel=medium is now the default.
 ###          Another way to reduce memory some is to lower maxpix (below)
 ###          if you don't need to run on huge cubes.  But that has less impact
 ###          on total memory used.

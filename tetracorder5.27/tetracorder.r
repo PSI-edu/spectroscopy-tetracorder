@@ -294,7 +294,7 @@
 	include "obuffers.h"
 
 	integer*4 cmdverbose   # function cmdverbose
-	integer*4 i, il
+	integer*4 i, il, itotlf, itotlfcase
 	real*4    x
 
 	integer system
@@ -562,7 +562,7 @@
 		10x, 'Type  e  or  x  to exit program.',/)
 
 	if (cmdverbose(-1) <= 4) {
-		write (ttyout,*) '     Number of materials being mapped=',nmats
+		write (ttyout,*) '     Number of materials being mapped=',nmats,' out of current max=',maxmat,' groups+cases'
 		write (ttyout,*) '     Total spectral features =',itotlf
 		call wrtgcsetup (0)
 	}
@@ -612,7 +612,7 @@
 			}
 		}
 		call gcsetup  # build cross reference lists for groups, cases
-		write (lunresult,*) 'Number of materials being mapped=',nmats
+		write (lunresult,*) 'Number of materials being mapped=',nmats,' out of current max=',maxmat
 		write (lunresult,*) 'Total spectral features =',itotlf
 		call wrtgcsetup (1)
 		go to 50

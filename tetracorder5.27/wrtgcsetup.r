@@ -24,7 +24,7 @@
 #ccc  update information: see below
 #ccc  NOTES:
 #ccc        iflag1 = 1 write lunresult
-#ccc        iflag1 = 1 write ttyout
+#ccc        iflag1 = 0 write ttyout
 #ccc
 #ccc---------------------------------------------------------------------
 
@@ -85,40 +85,115 @@
 			ignums(ii) = ii
 		}
 		if (iflag1 == 0) {
-			write (ttyout,10) (ignums(ii),ii=0,maxgrp),
-				(nmatgrp(j),j=0,maxgrp),
-				(incgrp0(k), k=1, maxgrp)
+
+		    write (ttyout,9) ignums(0), nmatgrp(0)
+
+		    if (maxgrp >= 10) {
+			write (ttyout,10) (ignums(ii),ii=1,10),
+				(nmatgrp(j),j=1,10),
+				(incgrp0(k), k=1,10)
+		    }
+		    if (maxgrp >= 20) {
+			write (ttyout,10) (ignums(ii),ii=11,20),
+				(nmatgrp(j),j=11,20),
+				(incgrp0(k), k=11, 20)
+		    }
+		    if (maxgrp >= 30) {
+			write (ttyout,10) (ignums(ii),ii=21,30),
+				(nmatgrp(j),j=21,30),
+				(incgrp0(k), k=21, 30)
+		    }
+		    if (maxgrp >= 40) {
+			write (ttyout,10) (ignums(ii),ii=31,40),
+				(nmatgrp(j),j=31,40),
+				(incgrp0(k), k=31, 40)
+		    }
+		    if (maxgrp >= 50) {
+			write (ttyout,10) (ignums(ii),ii=41,50),
+				(nmatgrp(j),j=41,50),
+				(incgrp0(k), k=41, 50)
+		    }
+		
 		}
 
 		if (iflag1 == 1) {
-			write (lunresult,10) (ignums(ii),ii=0,maxgrp),
-				(nmatgrp(j),j=0,maxgrp),
-				(incgrp0(k), k=1, maxgrp)
+
+		    write (lunresult,9) ignums(0), nmatgrp(0)
+
+		    if (maxgrp >= 10) {
+			write (lunresult,10) (ignums(ii),ii=1,10),
+				(nmatgrp(j),j=1,10),
+				(incgrp0(k), k=1,10)
+		    }
+		    if (maxgrp >= 20) {
+			write (lunresult,10) (ignums(ii),ii=11,20),
+				(nmatgrp(j),j=11,20),
+				(incgrp0(k), k=11, 20)
+		    }
+		    if (maxgrp >= 30) {
+			write (lunresult,10) (ignums(ii),ii=21,30),
+				(nmatgrp(j),j=21,30),
+				(incgrp0(k), k=21, 30)
+		    }
+		    if (maxgrp >= 40) {
+			write (lunresult,10) (ignums(ii),ii=31,40),
+				(nmatgrp(j),j=31,40),
+				(incgrp0(k), k=31, 40)
+		    }
+		    if (maxgrp >= 50) {
+			write (lunresult,10) (ignums(ii),ii=41,50),
+				(nmatgrp(j),j=41,50),
+				(incgrp0(k), k=41, 50)
+		    }
+		
 		}
 
+9 		format (/,'Number of materials in group:',/,
+			'      group #:',i5,/,
+			'   # in group:',i5,/)
 10		format (/,'Number of materials in each group:',/,
-			'      group #:',11(i5),/,
-			'   # in group:',11(i5),/,
-			'no grp 0 (=0):',5x,10(i5),/)
+			'       group #:',10(i5),/,
+			'    # in group:',10(i5),/,
+			' no grp 0 (=0):',10(i5),/)
 
 	} else {
 		write (ttyout,*) 'zero groups!'
 	}
 
-	# no do cases
+	# now do cases
 	if (nzcase > 0) {
 		do ii = 1, maxcse {
 
 			icnums(ii) = ii
 		}
 		if (iflag1 == 0) {
-			write (ttyout,30)    (icnums(ii),ii=1,maxcse),
-				     (nmatcse(j),j=1,maxcse)
+		    if (maxcse >= 10) {
+			write (ttyout,30) (icnums(ii),ii=1,10),
+				     (nmatcse(j),j=1,10)
+		    }
+		    if (maxcse >= 20) {
+			write (ttyout,30) (icnums(ii),ii=11,20),
+				     (nmatcse(j),j=11,20)
+		    }
+		    if (maxcse >= 30) {
+			write (ttyout,30) (icnums(ii),ii=21,30),
+				     (nmatcse(j),j=21,30)
+		    }
 		}
 
 		if (iflag1 == 1) {
-			write (lunresult,30) (icnums(ii),ii=1,maxcse),
-				     (nmatcse(j),j=1,maxcse)
+		    if (maxcse >= 10) {
+			write (lunresult,30) (icnums(ii),ii=1,10),
+				     (nmatcse(j),j=1,10)
+		    }
+		    if (maxcse >= 20) {
+			write (lunresult,30) (icnums(ii),ii=11,20),
+				     (nmatcse(j),j=11,20)
+		    }
+		    if (maxcse >= 30) {
+			write (lunresult,30) (icnums(ii),ii=21,30),
+				     (nmatcse(j),j=21,30)
+		    }
 		}
 
 30		format ('Number of materials in each case:',/,
