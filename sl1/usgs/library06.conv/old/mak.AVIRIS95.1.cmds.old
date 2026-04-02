@@ -1,0 +1,26 @@
+#!/bin/sh
+
+# Make AVIRIS 1995 224 ch convolved library for 
+#                                        6/1995 AVIRIS data.
+
+cmdfil=aviris95.1.cmds
+
+echo "==[FILEID]v"    > $cmdfil   # v=splib04a file
+echo "==[Fout]w"     >> $cmdfil   # w=splib04b output
+echo "==[inwave]V6"  >> $cmdfil   # input wavelengths
+echo "==[outwave]W6" >> $cmdfil   # output wavelengths
+echo "==[inres]v9"   >> $cmdfil   # input resolution
+echo "==[outres]w7 s"  >> $cmdfil   # output resolution
+echo "m"             >> $cmdfil   # go to math
+
+spprint splib04b | grep ABSREF950 | \
+sed -e 's/ABSREF950.*$/AVIRIS95.1/'    \
+    -e 's/^......  /&:/'          | \
+
+    awk -F: '{ print "==[Recnum]" $1 } \
+             { print "==[Title]" $2 } \
+             { print "<convolve.cmds.work" }' \
+		>> $cmdfil
+
+echo 'e;EX' >> $cmdfil
+

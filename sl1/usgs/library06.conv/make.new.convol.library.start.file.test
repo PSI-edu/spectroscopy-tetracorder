@@ -1,0 +1,9 @@
+#!/bin/sh
+
+
+dspecpr restartfiles/r.$1 -gxterm - <<EOI
+==[TITLE1]USGS Digital Spectral Library: $1
+==[TITLE2]$2
+==[WTITLE]$3
+==[RTITLE]$4
+<ctest

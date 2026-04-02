@@ -1,0 +1,8 @@
+This file contains VIMS 2007, 352 channel wavelengths and resolution. 
+This resolution was in effect at the time of the RC12 VIMS calibration,
+3+ years into the primary mission, and still effective as of
+January, 2008. (Note: some chanels around the 4.3 micron CO2 absorption
+are off up to 1/2 channel.)  Other wavelengths are beleived accurate
+to within 2 nm.
+
+R. Clark, VIMS spectral calibration chair, February 7, 2008.

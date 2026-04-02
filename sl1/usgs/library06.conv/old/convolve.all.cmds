@@ -1,0 +1,29 @@
+#!/bin/sh
+
+# command file to covolve spectral libraries to an instrument
+#
+# in specpr:
+#      v = the library to be convolved, e.g. s06av95a for aviris 95
+#      y = splib06b
+
+##########################################
+# Cuprite 1995:
+
+mak.convolve.1.cmds AVIRIS95 s06av95a 224
+cp startfiles06/s06av95a.start s06av95a
+dspecpr r1.s06av95a -gxhp - <<EOI
+<s06av95a.convolv.cmds
+EOI
+
+
+##########################################
+# Cassini VIMS Criuse wavelengths 2004 (thermal vac + 0.3 ch in IR)
+# This takes: 252.4u 11.6s 1:06:34 6% on speclab itanium 2 8/2005
+
+mak.convolve.1.cmds VIMS04a s06vm04a 352
+cp startfiles06/s06vm04a.start s06vm04a
+dspecpr r1.s06vm04a -gxhp - <<EOI
+<s06vm04a.convolv.cmds
+EOI
+
+##########################################

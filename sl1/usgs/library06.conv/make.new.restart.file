@@ -1,0 +1,35 @@
+#!/bin/sh
+
+# make a new restart file
+
+# make.new.restart.file  spectral_library_name
+
+if [ -z "$1" ]
+then
+	echo "ERROR: no restart file name"
+	echo "          ./make.new.restart.file  spectral_library_name"
+	echo "example:"
+	echo "          ./make.new.restart.file  s06hy09a"
+	echo " "
+	echo "exit 1"
+	exit 1
+fi
+
+rdir=restartfiles
+
+rbase=restartfiles/r.s06NNNNN
+
+rtarget=${rdir}/r.${1}
+
+echo "target = $rtarget"
+
+if [ -f "$rtarget" ]
+then
+	echo "ERROR: restart file $rtarget  already exists"
+	echo "exit 1"
+	exit 1
+fi
+
+cat $rbase | sed -e "s/s06NNNNN/$1/" | sed -e "s/ZZZZ/ $2/" > $rtarget
+
+echo "Done making restart file.  Created $rtarget"

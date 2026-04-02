@@ -1,0 +1,64 @@
+
+
+
+./AAA.make.new.instrument.convolved.spectral.library.sh  s06hyb2 a   76   HYB2ryug 12 \
+       'Convolved Hayabusa2 Ryugu 76ch library  '  \
+       'Wavelengths in microns  76 ch HYB2ryug  ' \
+       'Resolution  in microns  76 ch HYB2ryug  ' \
+       -waves waves.ascii.files/waves-ryugu-microns-ch76.txt \
+       -fwhm  waves.ascii.files/resol-ryugu-microns-ch76.txt
+
+
+# AVIRIS 3 2025:
+
+./AAA.make.new.instrument.convolved.spectral.library.sh  s06a325 a  284 AVIRIS3-25 12 \
+       'Convolved AVIRIS3 2025   284ch library  '  \
+       'Wavelengths in microns 284 ch AVIRIS3-25' \
+       'Resolution  in microns 284 ch AVIRIS3-25' \
+       -waves waves.ascii.files/waves-aviris3_2025a.txt \
+       -fwhm  waves.ascii.files/resol-aviris3_2025a_fwhm.txt
+
+# AVIRIS classic:
+
+./AAA.make.new.instrument.convolved.spectral.library.sh   s06av19 a 224 AVIRIS19  12 \
+	'Convolved AVIRIS3 2019   224ch library  '  \
+       'Wavelengths in microns 224 ch AVIRIS19' \
+       'Resolution  in microns 224 ch AVIRIS19' \
+       -waves waves.ascii.files/aviris-classic-2019-waves.txt \
+       -fwhm  waves.ascii.files/aviris-classic-2019-fwhm.txt
+
+./AAA.make.new.instrument.convolved.spectral.library.sh   s06av20 a 224 AVIRIS20  12 \
+	'Convolved AVIRIS3 2020   224ch library  '  \
+       'Wavelengths in microns 224 ch AVIRIS20' \
+       'Resolution  in microns 224 ch AVIRIS20' \
+       -waves waves.ascii.files/aviris-classic-2020-waves.txt \
+       -fwhm  waves.ascii.files/aviris-classic-2020-fwhm.txt
+
+./AAA.make.new.instrument.convolved.spectral.library.sh   s06av21 a 224 AVIRIS21  12 \
+	'Convolved AVIRIS3 2021   224ch library  '  \
+       'Wavelengths in microns 224 ch AVIRIS21' \
+       'Resolution  in microns 224 ch AVIRIS21' \
+       -waves waves.ascii.files/aviris-classic-2021-waves.txt \
+       -fwhm  waves.ascii.files/aviris-classic-2021-fwhm.txt
+
+./AAA.make.new.instrument.convolved.spectral.library.sh   s06av22 a 224 AVIRIS22  12 \
+	'Convolved AVIRIS3 2022   224ch library  '  \
+       'Wavelengths in microns 224 ch AVIRIS22' \
+       'Resolution  in microns 224 ch AVIRIS22' \
+       -waves waves.ascii.files/aviris-classic-2022-waves.txt \
+       -fwhm  waves.ascii.files/aviris-classic-2022-fwhm.txt
+
+./AAA.make.new.instrument.convolved.spectral.library.sh   s06av23 a 224 AVIRIS23  12 \
+	'Convolved AVIRIS3 2023   224ch library  '  \
+       'Wavelengths in microns 224 ch AVIRIS23' \
+       'Resolution  in microns 224 ch AVIRIS23' \
+       -waves waves.ascii.files/aviris-classic-2023-waves.txt \
+       -fwhm  waves.ascii.files/aviris-classic-2023-fwhm.txt
+
+./AAA.make.new.instrument.convolved.spectral.library.sh   s06av24 a 224 AVIRIS24  12 \
+	'Convolved AVIRIS3 2024   224ch library  '  \
+       'Wavelengths in microns 224 ch AVIRIS24' \
+       'Resolution  in microns 224 ch AVIRIS24' \
+       -waves waves.ascii.files/aviris-classic-2024-waves.txt \
+       -fwhm  waves.ascii.files/aviris-classic-2024-fwhm.txt
+

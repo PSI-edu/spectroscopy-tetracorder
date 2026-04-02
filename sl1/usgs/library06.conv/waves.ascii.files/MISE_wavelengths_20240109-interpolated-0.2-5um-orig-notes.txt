@@ -1,0 +1,6 @@
+
+we just have extrapolated the wavelength and FWHM to all 480 rows
+of the FPA for convenience. The illuminated spectral range is row
+1 through 425 inclusive, which is 5123 nm through 789 nm (maximum
+possible range). Also note that there is a gap in signal at the
+bonded gap from row 360 through 364 inclusive (1467.5 nm to 1426 nm).

@@ -1,0 +1,145 @@
+#!/bin/sh
+
+# Roger N. Clark 05/17/2012
+
+# makes the restart and and startup file for a convolution.
+
+#  waves and resolution MUST be in waves.txt  and resol.txt
+
+if [ -z "$5" ]
+then
+	echo "ERROR: not enought parameters"
+#                                                    1       2        3       4           5           6          7
+	echo "make.new.convol.library.start.file  library numchans  title2 wave_title  resol_title [force]"
+	echo "exit 1"
+	exit 1
+fi
+
+if [ ! -f "waves.txt" ]
+then
+	echo "ERROR:  waves.txt  file not found"
+	echo "exit 1"
+	exit 1
+fi
+if [ ! -f "resol.txt" ]
+then
+	echo "ERROR:  resol.txt  file not found"
+	echo "exit 1"
+	exit 1
+fi
+
+### check if text files are OK
+
+w1=`od -c waves.txt | grep '\t'`
+if [ ! -z "$w1" ]
+then
+	echo "ERROR: waves.txt has tabs"
+	echo "exit 1"
+	exit 1
+fi
+
+r1=`od -c resol.txt | grep '\t'`
+if [ ! -z "$r1" ]
+then
+	echo "ERROR: resol.txt has tabs"
+	echo "exit 1"
+	exit 1
+fi
+
+wn=`wc -l waves.txt | awk '{ print $1 }' `
+rn=`wc -l resol.txt | awk '{ print $1 }' `
+
+if [ "$wn" != "$rn" ]
+then
+	echo "ERROR: waves.txt and resol.txt do not have equal lengths"
+	echo "waves.txt  = $wn lines"
+	echo "resol.txt  = $rn lines"
+	echo "exit 1"
+	exit 1
+fi
+
+if [ "$wn" != "$2" ]
+then
+	echo "ERROR: waves.txt not equal to the number of channels on the command line:"
+	echo "waves.txt  = $wn lines,  command line variable 2 = $2"
+	echo "exit 1"
+	exit 1
+fi
+
+if [ -f "$1" ]
+then
+	echo "warning: $1 already exists, type  y  to conrinue "
+	read a
+	if [ "$a" != "y" ]
+	then
+		echo "exit 1"
+		exit 1
+	fi
+fi
+
+if [ -f "restartfiles/r.$1" ]
+then
+	echo "ERROR: restartfiles/r.$1 already exists"
+	echo "exit 1"
+	exit 1
+fi
+
+echo "command line variables:"
+echo "           library to be made: $1"
+echo "                     channels: $2"
+echo "        specpr record 2 title: $3"
+echo "  wavelengths record  6 title: $4"
+echo "  resolution  record 12 title: $5"
+echo " "
+
+if [ "$6" != "force" ]
+then
+    echo "OK to proceed?  (type y and a return for yes)"
+    read a
+	if [ "$a" != "y" ]
+	then
+		echo "exit 1"
+		exit 1
+	fi
+fi
+
+echo "./make.new.restart.file $1 $2"
+./make.new.restart.file $1 $2
+
+sleep 1
+
+echo "cp startfiles/s06av95a.start   $1"
+cp startfiles/s06av95a.start   $1
+
+sleep 1
+
+echo "dspecpr restartfiles/r.$1 -gxterm -"
+
+# original, pre Dec 2021, with X-window
+#dspecpr restartfiles/r.$1 -gxterm - <<EOI
+#==[TITLE1]USGS Digital Spectral Library: $1
+#==[NUMCHAN]$2
+#==[TITLE2]$3
+#==[WTITLE]$4
+#==[RTITLE]$5
+#<cmd.specpr.add.waves.resol.to.lib
+#EOI
+
+# new 2021, with no X-window   (X plot is not needed here)
+dspecpr restartfiles/r.$1 -g99 - <<EOI
+==[TITLE1]USGS Digital Spectral Library: $1
+==[NUMCHAN]$2
+==[TITLE2]$3
+==[WTITLE]$4
+==[RTITLE]$5
+<cmd.specpr.add.waves.resol.to.lib.noX
+EOI
+
+
+echo "cp $1 startfiles/$1.start"
+cp $1 startfiles/${1}.start
+
+spprint $1
+
+echo "Done.  Run specpr and check that the wavelengths and resolution data are correct"
+echo `date`

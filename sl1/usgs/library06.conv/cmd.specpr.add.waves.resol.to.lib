@@ -1,0 +1,54 @@
+\# specpr: add wavelengths and resolution to a library start file
+==list
+!sleep 3
+b
+cp
+v-1
+e
+t
+v1citv1
+t
+[TITLE1]
+e
+v2citv2
+t
+[TITLE2]
+e
+e
+m          \# go to math
+read       \# read ascii data routing (function f20)
+r
+waves.txt
+           \# press return
+           \# press return
+           \# press return
+v6
+[WTITLE]
+C [NUMCHAN]
+e
+read       \# read ascii data routing (function f20)
+r
+resol.txt
+           \# press return
+           \# press return
+           \# press return
+v12
+[RTITLE]
+V6         \# set waves pointer
+e
+line
+C [NUMCHAN]
+1 1
+[NUMCHAN] [NUMCHAN]
+b
+v18
+Data value = channel number ([NUMCHAN] ch)
+V6         \# set waves pointer
+e
+e           \# you should now be at the main menu:
+\#             Program Operations Control
+b
+cp
+v29
+e
+EX

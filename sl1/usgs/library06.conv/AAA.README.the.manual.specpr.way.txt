@@ -1,0 +1,318 @@
+This file describes how to create the splib06* convolved spectral libraries.
+
+Convolved spectral library names can be at most 8-characters long,
+because of a name size limit in specpr, which manages libraries,
+so the following abbreviations are used.
+
+Step 1)  Make any needed symbolic links (see STEP 1 below).
+
+Step 2)  Make sure splib06b exists and contains the spectral library.
+         Run:  spprint splib06b  and you should see hundreds of spectra
+         listed.  If not, follow instructions in:
+
+                  AAA.README.splib06b.txt
+
+Step 3)  Choose a new convolved library 8-character name (see STEP 3 below)
+   
+Step 4)  Create a restart file for the library (see STEP 4 below)
+
+Step 5)  Copy an existing library startup file to the new file name.
+         (see STEP 5 below)
+
+Step 6)  Create a specpr file containing the wavelengths and resolution of the
+         target data set to convolve the spectral library to.
+         The wavelengths and resoltuion entries MUST be at specific locations.
+         See STEP 6 below.
+
+Step 7)  Run the  mak.convol.library  command to make the new convolved library
+         (see STEP 7 below)
+
+===============================================================================
+STEP 1 details:
+
+Note: on speclab1, speclab3, cassini, etc, make a link:
+
+     ln -s /s0/d1/speclib/ /speclib
+
+     Customize for you own location by adding a symbolic link sp /speclib
+     points to your libraries.
+
+===============================================================================
+STEP 2 details:
+
+NOTE: splib06b must be made before any convolutions are made.
+
+See:  AAA.README.splib06b.txt
+
+===============================================================================
+STEP 3 details:   Choose a new convolved library 8-character name
+
+annccyyd
+            a = s for spectral library
+            nn= library version number
+            cc= output convolved spectrometer model/type
+            yy= year or other code
+            d = output spectrometer version within year yy
+
+
+         as = aster,
+         av = aviris,  e.g. aviris 1995: av95a
+         cr = crism
+         hd = Hydice,
+         hy = HyMap
+         mi = MIVIS
+         mm = Moon Mineralogy Mapper (2008)
+         nm = nims,
+         pb = probe
+         pf = Mars pathfinder
+         tm = LandsatTM (followed by 04, 05, 07 for with TM)
+         vm = vims
+
+         ng = na test
+
+
+         nc = nicolet, followed by wavenumber resolution, e.g 4 cm^-1
+              would be nc04, 0.5 cm^1 would be nc.5
+
+         fs00 = ASD field spectrometer 2151
+         fs71 = ASD field spectrometer 717ch
+         fs35 = field spectrometer 358ch
+         bk1x = usgs beckman, 1x = standard resolution
+         gr = gregg's resolution study,
+
+    Examples:
+         s06av95a  # aviris 1995
+         s06vm07a  # Cassini VIMS 2007 wavelengths
+         s06mm09c  # Moon Mineralogy Mapper 2009 global wavelengths
+         s06crj3a  # CRISM 2012 J_MTR3 merged V+IR version
+
+
+===============================================================================
+STEP 4 details:   Create the restart file for the new convolution
+
+         run the  make.new.restart.file  command:
+
+         ./make.new.restart.file  the_new_library_name
+
+   example:
+
+         ./make.new.restart.file  s06av95a
+
+
+===============================================================================
+STEP 5 details: Copy an existing library startup file to the new file name.
+
+         The startup file contains 29 specpr records which must be
+         organized precisely.  See step 6 for that organization.
+
+         cp startfiles/s06av95a.start        newlibraryname.start
+
+         cp startfiles/newlibraryname.start  newlibraryname
+
+      Example:
+
+         cp startfiles/s06av95a.start         s06hy07a.start 
+         cp startfiles/s06hy07a               s06hy07a
+
+
+
+===============================================================================
+STEP 6 details:
+
+The convolved library startup file needs to have the new target wavelengths
+and resolution put in the file.
+
+Start specpr:   (this assumes on knoes how to run specpr)
+
+     specpr restartfiles/r.NNNNNNNN  -gxterm  -
+
+     example:
+     specpr restartfiles/r.s06hy07a  -gxterm  -
+
+     1) change the protection on "v" to -1
+            from the specpr main menu:
+                b
+                cp
+                v-1
+                e
+
+     2) change the titles in records 1 and to to reflect the
+         new library name.
+             from the specpr main menu:
+                t
+                v1citv1
+                    (change the title)
+                v2citv2
+                    (change the title)
+
+     3) Read in the wavelengths (e.g. from an ascii text file)
+        and place it in record 6.   Wavelengths MUST be in microns.
+        ASCII text files: no carriage returns, no tabs.
+        If the file names are: waves.txt, and resol.txt then:
+
+                 m          \# go to math
+                 read       \# read ascii data routing (function f20)
+                 waves.txt
+                            \# press return
+                            \# press return
+                 v6
+                 (enter the new title here)
+                 e
+
+     4) Read in the FWHM values (e.g. from an ascii text file)
+        and place it in record 12.  FWHM MUST be in microns.
+
+                 read       \# read ascii data routing (function f20)
+                 resol.txt
+                            \# press return
+                            \# press return
+                 v12
+                 (enter the new title here)
+                 e
+                 e           \# you should now be at the main menu: 
+                             \#     Program Operations Control
+
+     5) Change the protection to 29.
+            from the specpr main menu:
+                b
+                cp
+                v29
+                e
+
+     6) Exit specpr.
+                EX
+
+Now copy the new file bak to the startfiles directory:
+
+    cp newlibraryname   startfiles/newlibraryname.start
+
+  Example:
+
+    cp s06hy07a  startfiles/s06av95a.start
+
+
+Notes: Specpr record numbering:
+Padding is added to records so that spectra with 2171 channels or
+less all have the same record number in the convolved libraries.
+
+
+A specpr start file has the entries like this example for ABVIRIS 1995,
+which you must create by hand in specpr using the steps above:
+
+spprint startfiles/s06av95a.start
+     1  USGS Digital Spectral Library: s06av95a    410 Characters of TEXT
+     2  Convolved AVIRIS 1995.1 224 ch library     147 Characters of TEXT
+     3  ****************************************    41 Characters of TEXT
+     4  ****************************************    41 Characters of TEXT
+     5  ..                                          41 Characters of TEXT
+     6  Wavelengths in microns 224ch AVIRIS95.1    224  00:00:00.00  06/23/1995
+     7  ..                                          41 Characters of TEXT
+     8  ..                                          41 Characters of TEXT
+     9  ..                                          41 Characters of TEXT
+    10  ..                                          41 Characters of TEXT
+    11  ..                                          41 Characters of TEXT
+    12  Resolution  in microns 224ch AVIRIS95.1    224  00:00:00.00  06/23/1995
+    13  ..                                          41 Characters of TEXT
+    14  ..                                          41 Characters of TEXT
+    15  ..                                          41 Characters of TEXT
+    16  ..                                          41 Characters of TEXT
+    17  ..                                          41 Characters of TEXT
+    18  Data value = channel number (224 ch)       208  00:00:00.00  06/03/1992
+    19  ..                                          41 Characters of TEXT
+    20  ..                                          41 Characters of TEXT
+    21  ..                                          41 Characters of TEXT
+    22  ..                                          41 Characters of TEXT
+    23  ..                                          41 Characters of TEXT
+    24  ..                                          41 Characters of TEXT
+    25  ..                                          41 Characters of TEXT
+    26  ..                                          41 Characters of TEXT
+    27  ..                                          41 Characters of TEXT
+    28  ..                                          41 Characters of TEXT
+    29  ..                                          41 Characters of TEXT
+
+
+The file startfiles/s06av95a.start gets copied to this directory with the name s06av95a
+
+It is very important that the:
+
+           ".." file is in record 5,
+            wavelengths in record 6,
+            resolution  in record 12,
+
+and the file be padded to record 29 so that the first convolved spectrum goes into
+record 30.  This strategy ensures that spectra with channels 1 to 2171 will
+have the same record numbers.  Spectra greater than 2171 channels is not yet
+supported.
+
+The spepcr restart file:
+
+     v = the convolved instrument library (this is the output of the convolutions.
+     y = splib06b
+
+
+
+===============================================================================
+STEP 7 details:
+
+
+To convolve a library after the specpr restart and startup files are created,
+run the command:
+
+
+     mak.convol.library  library version channels name     resol_number
+
+
+example:
+
+     mak.convol.library  s06av95  a        224   AVIRIS95 12
+
+creates spectral library s06av95a
+This takes several minutes.
+
+***************************************************************
+***************************************************************
+***********                           *************************
+***********    convolution commands   *************************
+***********                           *************************
+***************************************************************
+***************************************************************
+
+Commands:
+
+#                prog              lib     n  chan  title    fwhm
+#                                                   keyword  rec number
+
+AVIRIS:
+            ./mak.convol.library  s06av95  a  224   AVIRIS95 12  # aviris 1995
+            ./mak.convol.library  s06av05  a  224   AVIRIS05 12  # aviris 2005
+            ./mak.convol.library  s06av06  a  224   AVIRIS06 12  # aviris 2006
+            ./mak.convol.library  s06av10  a  224   AVIRIS10 12  # aviris 2010
+
+VIMS:
+            ./mak.convol.library  s06vm07  a  352   VIMS07   12
+
+CRISM:
+            ./mak.convol.library  s06cr08  a  438   CRISM08a 12   # 2008 IR only
+            ./mak.convol.library  s06cr08  b   72   CRISM08b 12   # 2008 waves global tile mode
+            ./mak.convol.library  s06cr11  v  107   CRISM11v 12   # 2011 VIS only
+            ./mak.convol.library  s06crj3  a  489   CRISMj3a 12   # 2012 J_MTR3 merged V+IR version a
+                                                                  # note: this took 9 minutes running
+                                                                  # remote X over DSL (on cassini)
+
+Moon Mineralogy Mapper:
+
+            ./mak.convol.library  s06mm07  a  260   MMM      12  # 2007 targeted waves
+            ./mak.convol.library  s06mm07  c   86   MMM      12  # 2007 global waves
+            ./mak.convol.library  s06mm07  s  260   MMM      12  # 2007 synthetic test 1 waves
+
+            ./mak.convol.library  s06mm09  a  260   MMM      12  # 2009 targeted waves
+            ./mak.convol.library  s06mm09  c   85   MMM      12  # 2009 global waves
+
+
+ASD Field spectrometer, standard waves and resolution, 2151 channels:
+
+           ./mak.convol.library  s06fs00   a 2151  ASDfs00a  12  
+
+
+
+

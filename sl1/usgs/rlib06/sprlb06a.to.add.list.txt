@@ -1,0 +1,209 @@
+
+done:
+3094  H2O+CO2 frost on Al grnd 82K #14           352 
+    = spd0456 r 3739   H2O+CO2 frost on Al grnd 82K #14          4850   01/02/2008     25      0
+    scale by 0.10:
+    = spd0456 r 3863  waves 25  H2O+CO2 frost on Al grnd 82K #14 scl
+
+         r 1t1128  4539t4850c
+
+ H2O+CO2 frost grndAl 82K #14 W5R4N  RREF
+
+
+done:
+     /d1/rclark/data/ice.organic3/spd0450
+
+u 3180  CO2 frost on H2O ice 100K #2 VIMS          352 
+    = spd0450 r 18551  waves 18562 or 6058
+    18551  CO2 frost on H2O ice 100K #2              3812    waves=6058
+           CO2 frost on H2O ice 100K #2 W5R4N  RREF
+
+    18111  Fe <10um+CO2+H2 +pufsCO2, H2O 79k #3      3812
+           Fe<10um+CO2+H2+H2O 79k #3    W5R4N  RREF
+
+    18166  Fe <10um+CO2+H2 +pufsCO2, H2O 77k #8      3812
+           Fe<10um+CO2+H2+H2O 79k #8    W5R4N  RREF
+
+        D18562  W104
+
+      output:
+        r 1t930  4283t4595 c
+
+
+###########
+#       Aragonite GDS898 Moracco grd W1R2F_ AREF
+#                1111111111222222222233333333334
+#       1234567890123456789012345678901234567890
+
+spectra in /d1/gswayze/emit1/spd0673
+
+     6  ASD18683-02 Wavelengths Corrected         2151  15:01:24.00  06/20/2019      3     12
+
+    25  Na-Montmorillonite SWy-1 avg38 18683-2AR  2151  13:58:16.90  03/26/2021      6     12
+        Montmorillonite_Na SWy-1 a38 W1R2Fb AREF
+
+    43  Kaolinite (wxl) KGa-1 avg40 18683-2AR     2151  15:33:59.70  03/26/2021      6     12
+        Kaolinite KGa-1 (wxl) avg40  W1R2Fb AREF
+
+    61  Montmorillonite Az-1 avg=40  18683-2AR    2151  17:34:23.78  03/26/2021      6     12
+        Montmorillonite SAz-1 avg=40 W1R2Fb AREF
+
+    79  Well ordered kaolinite CM9 av40 18683-2   2151  13:54:25.55  03/29/2021      6     12
+        Kaolinite CM9 wxl av40       W1R2Fb AREF
+
+    97  Dolomite HS102.3B avg40 18683-2AR         2151  15:22:57.63  03/29/2021      6     12
+        Dolomite HS102.3B avg40      W1R2Fb AREF
+
+   115  Gypsum HS333,3B avg=40 Reft  18683-2AR    2151  17:50:23.27  03/29/2021      6     12
+        Gypsum HS333.3B (Selenite)   W1R2Fa AREF
+
+   133  Vermiculite GDS458 avg=80 Reft 18683-2AR  2151  08:17:05.91  04/06/2021      6     12
+???     Vermiculite GDS458 avg=80    W1R2F_ AREF
+
+   151  Vermiculite ALB4SA00 avg=40 18683-2AR     2151  16:16:37.73  04/07/2021      6     12
+???     Vermiculite ALB4SA00 avg=40  W1R2F_ AREF
+
+   169  Vermiculite WS682 avg=40 18683-2AR        2151  17:01:41.00  04/09/2021      6     12
+???     Vermiculite WS682 avg=40     W1R2F_ AREF
+
+   187  Vermiculite WS681 avg = 80 18683-2AR      2151  04:36:05.80  04/13/2021      6     12
+???     Vermiculite WS681 avg = 80   W1R2F_ AREF
+
+   205  Clinochlore GDS157 Flagstaff H 18683-2AR  2151  14:36:11.82  06/02/2021      6     12
+???     Clinochlore_Fe GDS157 Flasgt W1R2Fa AREF
+
+########
+
+   224  ASD18388-07 Wavelengths Corrected         2151  14:41:27.00  07/03/2021  14301      0
+
+   261  Clinochlore GDS158 Flagstaff H 18388-7AR  2151  14:47:59.73  07/09/2021    224    230
+        Clinochlore GDS158 Flagst    W1R2Fb AREF
+
+   279  Calcite WS272 Icelandic Spar R 18388-7AR  2151  20:28:13.90  07/11/2021    224    230
+        Calcite WS272 Icelandic Spar W1R2Fa AREF
+
+   297  Kaolinite pxl KGa-2 Warren Co  18388-7AR  2151  14:09:39.82  07/16/2021    224    230
+        Kaolinite KGa-2 pxl WarrenCo W1R2Fb AREF
+
+   315  Synthetic Hectorite SYnH-1 Ref 18388-7AR  2151  15:53:02.35  07/16/2021    224    230
+?????   Hectorite SYnH-1 Synthetic   W1R2F_ AREF
+          ???? Hectorite SHCa-1   or Hectorite SHCa-1.Ac-B    
+        Hectorite SHCa-1             W1R2Fc AREF
+
+   333  Halloysite NMNH106237 Indiana  18388-7AR  2151  13:42:43.57  07/19/2021    224    230
+        Halloysite NMNH106237 Indna  W1R2Fa AREF
+
+   351  Sepiolite SapNev-1 Acetate Buf 18388-7AR  2151  16:44:28.20  07/19/2021    224    230
+        Sepiolite SepNev-1.AcB       W1R2Fa AREF
+
+   369  Hectorite SHCa-1 Acetate Buffe 18388-7AR  2151  15:34:23.13  07/21/2021    224    230
+        Hectorite SHCa-1.Ac-B        W1R2Fb AREF
+
+   387  Saponite SapCa-1 Acetate Buff 18388-7AR   2151  17:16:42.35  07/21/2021    224    230
+        Saponite SapCa-1.AcB         W1R2Fb AREF
+
+   405  Dickite NMNH106242 Red Mt CO R 18388-7AR  2151  15:24:06.05  07/23/2021    224    230
+        Dickite NMNH106242 Red MtCo  W1R2Fb AREF
+
+   423  Illite IMt-1 <2um separate Mon 18388-7AR  2151  17:37:21.32  07/23/2021    224    230
+        Illite IMt-1.b <2um          W1R2Fa AREF
+
+   459  Illite GDS4.2 Marblehead WI Re 18388-7AR  2151  13:28:03.07  07/26/2021    224    230
+        Illite GDS4.2 Marblehead WI  W1R2Fb AREF
+???     Illite GDS4 (Marblehead)     W1R2Fb AREF from splib06s  ????
+
+   477  Lepidocrocite GDS80 Synthetic 18388-7AR   2151  17:07:10.68  07/26/2021    224    230
+        Lepidocrosite GDS80 (Syn)    W1R2Fb AREF
+
+   495  Hematite GDS27 Baker reagent R 18388-7AR  2151  15:02:31.27  07/28/2021    224    230
+        Hematite GDS27 Baker reagent W1R2Fa AREF
+
+   513  Hematite 2wt% + Qtz GDS76 imix 18388-7AR  2151  17:30:40.80  07/28/2021    224    230
+        Hematite.02+Quartz.98 GDS76  W1R2Fa AREF
+
+   729  Hematite coat qtzite BR93-25C 18388-7AR   2151  15:31:59.70  08/23/2021    224    230
+        Hematite_Coatd_Qtzt BR93-25C W1R2Fb AREF
+
+   747  Hematite coat qtzite BR93-34C 18388-7AR   2151  17:09:55.00  08/23/2021    224    230
+        Hematite_Coatd_Qtz BR93-34C  W1R2Fa AREF
+
+   765  Nanohematite onqtziteBR93-34B2 18388-7A   2151  13:45:33.90  08/25/2021    224    230
+        Nanohematite BR93-34B2 onqtz W1R2Fb AREF
+
+   783  Hematite coat qtzite BR93-25B  18388-7AR  2151  15:48:31.50  08/25/2021    224    230
+        Hematite_Coatd_Qtz BR93-25B  W1R2Fb AREF
+
+   801  Hematite on qtzite BR93-25A go 18388-7AR  2151  17:32:10.73  08/27/2021    224    230
+        Hematite_Coatd_Qtzt BR93-25A W1R2Fb AREF
+
+   585  Synthetic Maghemite GDS81 D. S 18388-7AR  2151  14:01:02.15  08/06/2021    224    230
+        Maghemite GDS81 Syn (M-3)    W1R2Fb AREF
+
+   603  Ferrimontmorillonite GDS759B F 18388-7AR  2151  15:36:24.73  08/06/2021    224    230
+???     Montmorillonite_Fe GDS759B   W1R2F_ AREF
+
+   621  Cookeite CAr-1 90-150 um Reft  18388-7AR  2151  17:20:31.15  08/06/2021    224    230
+???     Cookeite CAr-1 90-150um      W1R2F_ AREF
+
+   657  Cookeite CAr-1 < 30 microns Re 18388-7AR  2151  15:28:58.05  08/09/2021    224    230
+        Cookeite CAr-1.c <30um       W1R2Fb AREF
+
+   639  Synthetic NH4-smectite GDS87 R 18388-7AR  2151  13:24:31.32  08/09/2021    224    230
+        Ammonio-Illite/Smectit GDS87 W1R2Fb AREF
+
+   675  Buddingtonite+Na-MontCU91-260B 18388-7AR  2151  17:42:27.57  08/09/2021    224    230
+??????  Buddingtnt+Na-Mont CU93-260B W1R2Fb AREF    ??? CU91 or CU93
+
+   693  Chlorite + muscovite CU91-253D 18388-7AR  2151  14:00:08.68  08/11/2021    224    230
+        Muscovite+Chlorite CU91-253D W1R2Fa AREF
+
+   711  Chlorite Serpentine B93-22B ro 18388-7AR  2151  16:25:13.57  08/11/2021    224    230
+        Chlorite_Serpentine BR93-22B W1R2Fb AREF
+
+   819  Magnetite scarn BR93-5B Reft   18388-7AR  2151  14:54:31.23  08/27/2021    224    230
+        Magnetite_skarn BR93-5B      W1R2Fb AREF
+
+   855  Weathered Basalt BR93-43 Reft  18388-7AR  2151  15:41:51.42  09/03/2021    224    230
+        Basalt_weathered BR93-43     W1R2Fb AREF
+
+   873  Chlorite + goethite CU93-4B co 18388-7AR  2151  13:29:49.17  09/08/2021    224    230
+        Chlor+Goethite CU93-4B Phyl  W1R2Fa AREF
+
+   531  Prehnite GDS613A <250um Austra 18388-7AR  2151  13:28:13.23  08/04/2021    224    230
+???     Prehnite GDS613A <250um Aust W1R2F_ AREF
+
+   891  Kaolinite+Musc imix CU93-5C 18388-7AR     2151  15:12:49.10  09/08/2021    224    230
+        Kaol+Musc_intimate CU93-5C   W1R2Fa AREF
+
+   243  Muscovite GDS113  >37um Ruby B 18388-7AR  2151  01:31:43.12  07/09/2021    224    230
+        Muscovite GDS113 >37um Ruby  W1R2Fb AREF
+
+   549  Muscovite Med Low Al CU91-250A 18388-7AR  2151  15:16:38.65  08/04/2021    224    230
+        Muscovite-medlowAl CU91-250A W1R2Fb AREF
+
+   567  Muscovite Med HighAl CU91-252D 18388-7AR  2151  17:06:24.50  08/04/2021    224    230
+        Muscovite-medhi-Al CU91-252D W1R2Fc AREF
+
+   909  Muscovite + jarosite coat CU93 18388-7AR  2151  16:45:09.65  09/08/2021    224    230
+        Muscov+Jaros CU93-314 coatng W1R2Fb AREF       ??? CU93-314 correct?
+
+   945  Muscovite low Al CU93-118388-7AR          2151  15:14:32.77  09/10/2021    224    230
+        Muscovite CU93-1 low-Al Phyl W1R2Fb AREF    ??? CU93-1 correct?
+
+   837  Med-Crsg Goethite MPCMA2-C Coa 18388-7AR  2151  15:30:46.68  09/01/2021    224    230
+        Goethite MPCMA2-C M-Crsgrad2 W1R2Fb AREF
+
+   441  Goethite WS222 Marquette MI Re 18388-7AR  2151  15:22:35.95  07/26/2021    224    230
+???     Goethite WS222 Medium Gr.    W1R2F_ AREF
+
+   927  Goethite WS222 <250um 18388-7AR           2151  17:05:22.80  09/09/2021    224    230
+????
+
+   964  Goethite WS222 orgin samp surf 18388-7AR  2151  13:51:50.07  10/28/2021    224    230
+???     Goethite WS222 Coarse Gr.    W1R2F_ AREF
+
+   983  Goethite coat CU91-252 chip avg18388-7AR  2151  14:41:24.07  11/01/2021    224    230
+
+        is sort of similar to splib06a 26742  Goethite_Thin_Film WS222   but band shape is a little different.
+         What to do?
+

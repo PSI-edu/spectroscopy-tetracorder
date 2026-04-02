@@ -1,0 +1,30 @@
+#!/bin/sh
+
+afile=" "
+
+ahelp=1   # print help
+
+if [ -n "$1" ]
+then
+   if [ "$1" = "tty" ]
+   then
+	afile=" "
+	ahelp=0
+   else
+	if [ -f "$1" ]
+	then
+		afile=$1
+		ahelp=0
+	fi
+   fi
+fi
+
+if [ "$ahelp" = 1 ]
+then
+	echo "usage:"
+	echo "nanometers.to.microns filename_a_1_column_ascii_list|tty"
+	echo "exit"
+	exit
+fi
+
+cat $afile | awk '{ print $1/1000 }'
