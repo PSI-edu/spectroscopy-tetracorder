@@ -1,0 +1,38 @@
+
+sprlb06a:
+
+  2250  Water+050gm/L-Montmor-SWy-2  W1R1Fa AREF  2151  23:25:01.00  02/13/2009     10     16
+  2256  Water+100gm/L-Montmor-SWy-2  W1R1Fa AREF  2151  23:25:01.00  02/13/2009     10     16
+  2262  Water+300gm/L-Montmor-SWy-2  W1R1Fa AREF  2151  23:25:01.00  02/13/2009     10     16
+
+The above spectra were measured by Clark et al., 2010 to extend the earlier
+water + montmorillonite series to the higher end of montmorillonite.
+
+From Clark et al., 2010 Table 3:
+
+Water+0.50gm/L-Montmor-SWy-2  light cloudy
+Water+1.67gm/L-Montmor-SWy-2
+Water+ 5.0gm/L-Montmor-SWy-2
+Water+16.5gm/L-Montmor-SWy-2  cloudy; plastic stick falls over
+
+Water+050gm/L-Montmor-SWy-2   muddy; plastic stick stands in sample
+Water+100gm/L-Montmor-SWy-2   muddy; can form structures several cm in size
+Water+300gm/L-Montmor-SWy-2   thick pasty mud, difficult to make into structures due to hardness
+
+Clark, R. N., J. M. Curchin, J. W. Barnes, R. Jaumann, Larry
+Soderblom, D. P, Cruikshank, R. H. Brown, S. Rodriguez, J. Lunine,
+K. Stephan, T. M. Hoefen, S. Le Mouelic, C. Sotin, K. H. Baines,
+B. Buratti, and P. Nicholson, 2010, Detection and Mapping of
+Hydrocarbon Deposits on Titan, J. Geophys. Res., 115, E10005,
+doi:10.1029/2009JE003369. The Clark et al online PDF is here:
+https://agupubs.onlinelibrary.wiley.com/doi/pdf/10.1029/2009JE003369
+
+
+
+
+The above 3 spectra, each averaged with Pinon_Pine ANP92-14A
+
+  2268  Water+050gm/L-Mont+0.5veg    W1R1Fa AREF  2151  14:18:41.00  05/13/1992     10     16
+  2274  Water+100gm/L-Mont+0.5veg    W1R1Fa AREF  2151  14:18:41.00  05/13/1992     10     16
+  2280  Water+300gm/L-Mont+0.5veg    W1R1Fa AREF  2151  14:18:41.00  05/13/1992     10     16
+

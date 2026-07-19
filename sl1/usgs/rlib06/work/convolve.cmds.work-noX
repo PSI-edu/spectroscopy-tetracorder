@@ -1,0 +1,13 @@
+\# start spectra convolution
+[FILEID][Recnum]f17 [inwave]   \# input spectrum to be convolved
+[inwave]               \# input wavelength set
+n                      \# normalize convolution
+g                      \# gaussian bandpasses
+[outwave]              \# output wavelengths
+[outres]               \# output resolution
+[inres]                \# input resolution
+                       \# do not write center wavelengths
+[Fout]                 \# output file
+[Title]                \# output title
+                       \# return to do ascii plot with no X-windows
+e                      \# exit plot and write results
