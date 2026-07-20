@@ -1,0 +1,863 @@
+#!/usr/bin/env -S davinci -f
+#
+# was #!/usr/local/bin/davinci -f
+
+verbose=0
+
+# list looks like:
+#                                                         output                Del K                  Density    Reflectance        Grain Diameter
+##   pointer to material lsists                             name         absorption coefficient       grams / cc  Wavelength (microns)   (microns)
+#lists.of.files.by.mineral/calcite.group2.txt              calcite                    50                2.71         2.18                    10
+#lists.of.files.by.mineral/montmorillonite.group2.txt      montmorillonite           100                2.35         2.12                     2
+##                                                                                                  11111111111111111111111111111111111111111111111111
+##        11111111112222222222333333333344444444445555555555666666666677777777778888888888999999999900000000001111111111222222222233333333334444444444
+##2345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789
+
+#                                         1    2     3       4      5       6          7       8     9        10                  11    12
+# davinci.compute.model.abundances.v1  model3 cube cubename scale waves specprfile record#  model4 quartz grain_size_in_microns  [-n   value]
+
+navg = 5.0   # Model 4 average number of mineral grains (e.g. hematite) per quartz/feldspar grain, default
+
+if ( $argc < 1 ) {
+	printf ("This script resides in the cmds.abundances directory in the tetracorder working directory\n")
+	printf ("     It should be run from the tetracorder working directory, not from the cmds.abundances directory\n")
+	printf ("Usage\n")
+	printf ("      davinci.compute.model.abundances.v1  nomodel3  # does not compute models 3 or 4.\n")
+	printf ("      davinci.compute.model.abundances.v1  model3 cube cubename scale waves specprfile record#\n")
+	printf ("      davinci.compute.model.abundances.v1  model3 cube cubename scale waves specprfile record#  model4 quartz grain_size_in_microns\n")
+	printf ("                        NOTE: models 4 requires model 3\n")
+	printf ("                        NOTE: model  4 value of  n  defaults to %f\n", navg)
+	exit(1)
+}
+
+model1enable = 1   # default do model 1
+model2enable = 1   # default do model 2
+model3enable = 0   # default do not do model 3
+model4enable = 0   # default do not do model 4
+
+rscale = 1.0   # scale image cube data to reflectance
+
+if ( $argc >= 7 ) {
+	for (j = 1; j <= 7; j = j +1 ) {
+
+		if ($argv[j] == "nomodel3" ) {
+
+				model3enable = 0   # do not do model 3
+				model4enable = 0   # do not do model 4 (model 4 requires model 3)
+
+		} else if ($argv[j] == "model3" ) {
+
+			# sanity checks:
+			if ($argv[2] != "cube" && $argv[2] != "-cube") {
+				printf ("argument 2 shoube be: cube  but got %s\n", $argv[2])
+				printf ("incorrect  arguments for model 3; exit\n")
+				printf ("      davinci.compute.model.abundances.v1  model3 cube cubename scale -waves specprfile record#\n")
+			}
+			if ($argv[5] != "waves" && $argv[5] != "-waves") {
+				printf ("argument 5 shoube be: cube  but got %s\n", $argv[5])
+				printf ("incorrect  arguments for model 3; exit\n")
+				printf ("      davinci.compute.model.abundances.v1  model3 cube cubename scale -waves specprfile record#\n")
+			}
+
+			if ($argc < 6) {
+				printf ("insufficient  arguments for model 3; exit\n")
+				printf ("      davinci.compute.model.abundances.v1  model3 cube cubename scale -waves specprfile record#\n")
+				exit (1)
+			}
+			j = j+1
+			if ($argv[j] != "cube" && $argv[j] != "-cube") {
+
+				printf ("expecting  argument 2 = cube, found %s; exit\n", $argv[j])
+				printf ("      davinci.compute.model.abundances.v1  model3 cube cubename scale -waves specprfile record#\n")
+				exit (1)
+			}
+			j = j+1
+			cubefile = $argv[j]
+			cubefileexist = fexists(cubefile)
+			if (cubefileexist == 0) {
+				printf ("ERROR: can not find cube: %s\n", cubefile)
+				printf ("exit\n")
+				exit (1)
+			}
+
+			printf ("cube= %s\n", cubefile)
+			j = j+1
+			rscale = atof($argv[j])
+			if (rscale < 0.0000001 || rscale > 9999999) {
+				printf ("ERROR: cube scale factor out of range (0.0000001-9999999), got: %s\n", $argv[j])
+				printf ("      davinci.compute.model.abundances.v1  model3 cube cubename scale -waves specprfile record#\n")
+				exit (1)
+			}
+			j = j+1
+			if ($argv[j] != "waves" && $argv[j] != "-waves") {
+
+				printf ("expecting  argument 2 = waves (or -waves), found %s; exit\n", $argv[j])
+				printf ("      davinci.compute.model.abundances.v1  model3 cube cubename scale -waves specprfile record#\n")
+				exit (1)
+			}
+			j = j+1
+			wavefile = $argv[j]
+			wavefileexist = fexists(wavefile)
+			if (wavefileexist == 0) {
+				printf ("ERROR: can not find specpr file: %s\n", wavefile)
+				printf ("exit\n")
+				exit (1)
+			}
+			j = j+1   # j should now = 6
+			waverec = atoi($argv[j])
+			if (waverec < 1 || waverec > 9999999) {
+				printf ("ERROR: wavelength record number out of range (0-9999999), got: %s\n", $argv[j])
+				printf ("      davinci.compute.model.abundances.v1  model3 cube cubename scale -waves specprfile record#\n")
+				exit (1)
+			}
+			waves = read (filename=wavefile, record=waverec)
+			if ( hasvalue(waves) != 1 ) {
+				printf ("ERROR reading wavelengths\n")
+				printf ("      davinci.compute.model.abundances.v1  model3 cube cubename scale -waves specprfile record#\n")
+				exit (1)
+			}
+			printf ("wavelengths= %s %d\n", wavefile, waverec)
+
+			model3enable = 1   # do model 3
+
+			printf ("computing model1, model2, model3\n")
+
+		} else {
+
+			printf ("ERROR: expecting nomodel3 or model3.  Got %s\n", $argv[j])
+			printf ("Usage\n")
+			printf ("      davinci.compute.model.abundances.v1  nomodel3  # does not compute models 3 or 4.\n")
+			printf ("      davinci.compute.model.abundances.v1  model3 cube cubename scale -waves specprfile record#\n")
+			printf ("      davinci.compute.model.abundances.v1  model3 cube cubename scale -waves specprfile record#  model4 quartz grain_size_in_microns [-n   value]\n")
+			printf ("                        NOTE: models 4 requires model 3\n")
+			exit (1)
+		}
+		if ($argc > 9) {   # should be model4
+			if ($argv[8] == "model4" && $argv[8] == "-model4") {
+				printf ("argument 8 shoube be: model4  but got %s\n", $argv[8])
+				printf ("incorrect  arguments for model 3; exit\n")
+				printf ("      davinci.compute.model.abundances.v1  model3 cube cubename scale -waves specprfile record#  model4 quartz grain_size_in_microns [-n   value]\n")
+			}
+			j = j+1   # should be = 8
+			if ($argv[j] == "model4" || $argv[j] == "-model4") {
+
+				j = j+1
+				if ($argv[j] != "quartz" && $argv[j] != "-quartz") {
+
+					printf ("ERROR: expecting quartz, got %s\n", $argv[j])
+			        	printf ("      davinci.compute.model.abundances.v1  model3 cube cubename scale -waves specprfile record#  model4 quartz grain_size_in_microns [-n   value]\n")
+					exit (1)
+				}
+				j = j+1
+
+				# quartz   density = 2.65 gm / cc
+				# feldspar density = 2.55 - 2.76 gm / cc
+
+				qdens = 2.65   #density: quartz = 2.65, feldspar = 2.55-2.76 = avg 2.65 gm / cc
+
+				qtzgraindiam = atof($argv[j])
+				if (qtzgraindiam < 0.0001 || qtzgraindiam > 99999999.0) {
+					printf ("ERROR: quartz grain size out of range (0.0001 to 99999999.0 microns).  Got %s\n", $argv[j])
+			        	printf ("      davinci.compute.model.abundances.v1  model3 cube cubename scale -waves specprfile record#  model4 quartz grain_size_in_microns [-n   value]\n")
+					exit (1)
+				}
+			} else {
+
+				printf ("ERROR: expecting model4.  Got %s\n", $argv[j])
+				printf ("Usage\n")
+				printf ("      davinci.compute.model.abundances.v1  nomodel3  # does not compute models 3 or 4.\n")
+				printf ("      davinci.compute.model.abundances.v1  model3 cube cubename scale -waves specprfile record#\n")
+				printf ("      davinci.compute.model.abundances.v1  model3 cube cubename scale -waves specprfile record#  model4 quartz grain_size_in_microns [-n   value]\n")
+				printf ("                        NOTE: models 4 requires model 3\n")
+				exit (1)
+			}
+			if (model3enable < 1) {
+
+					printf ("ERROR: model3 is not enables.  Model 3 is required for model 4.\n")
+					printf ("      davinci.compute.model.abundances.v1  model3 cube cubename scale -waves specprfile record#  model4 qtzgrsize [-n   value]\n")
+					exit (1)
+			}
+			model4enable = 1
+
+			if ($argc > 11) {   # should -n and value for seeting n in model 4
+
+				if ($argv[11] == "n" || $argv[11] == "-n") {
+
+					navg = atof($argv[12])
+					if (navg < 0.01 || navg > 1000.) {
+
+						printf ("ERROR: Model 4 value of  n  is out of range: %f, shound be >= 0.01 to <= 1000.\n", navg)
+					}
+					printf ("Model 4 n = %f\n", navg)
+				}
+			}
+		}
+	}
+}
+
+
+
+###################################################################################
+
+pi = 3.14159265358979
+
+# Master list of materials to compute
+mlist = read_lines(filename="cmds.abundances/materials.to.compute.abundances.txt")
+
+#printf ("debug: reading cmds.abundances/materials.to.compute.abundances.txt\n")
+
+mlines = length(mlist)
+
+mlistmats = 0 # number of materials lists  
+              # for EMIT: calcite, chlorite, dolomite, goethite, gypsum, hematite,
+              #           illite+muscovite, kaolinite, montmorillonite, vermiculite
+
+# first count hte number of materials in mlist
+for (i=1; i<= mlines; i++) {
+
+	if (mlist [1,i,1] != '#' && mlist [1,i,1]!= '\0' ) {   # skip comments
+	    if (mlist [1:4,i,1] == 'list' ) {                  # should be lists.of.files.by.mineral
+
+		#printf("debug: %s\n", mlist [,i,1])
+		mlistmats = mlistmats +1
+	    }
+	}
+}
+#printf ("debug: found %d materials\n", mlistmats)
+
+# create an array of mlistmats lines, all blank
+# these are the file names, and names of the materials for the output
+amatline = '                                                         '
+amatfiles = amatline
+amatlineb = '                    '
+amatnames = amatlineb
+for (i=2; i<=mlistmats; i++) {
+        amatfiles = cat (amatfiles, amatline, axis=y)
+	amatnames = cat (amatnames, amatlineb, axis=y)
+}
+
+abscoef   = create(1,mlistmats,1,org=bsq,format=float,start=0.0, step=0.0)   # array of del absorption coefficients
+density   = create(1,mlistmats,1,org=bsq,format=float,start=0.0, step=0.0)   # array of densities
+refwave   = create(1,mlistmats,1,org=bsq,format=float,start=0.0, step=0.0)   # array of wavelengths for the reference materials
+refchan   = create(1,mlistmats,1,org=bsq,format=int,  start=0,   step=0)     # array of channels at refwave for the reference materials
+matdiam   = create(1,mlistmats,1,org=bsq,format=float,start=0.0, step=0.0)   # array of material diameters in microns
+
+# now parse the 4 columns in materials.to.compute.abundances.txt
+
+##                                                         output                Del K                  Density    Reflectance        Grain Diameter
+##   pointer to material lsists                             name         absorption coefficient       grams / cc  Wavelength (microns)   (microns)
+#lists.of.files.by.mineral/calcite.group2.txt              calcite                    50                2.71         2.18                    10     
+##                                                                                                  11111111111111111111111111111111111111111111111111
+##        11111111112222222222333333333344444444445555555555666666666677777777778888888888999999999900000000001111111111222222222233333333334444444444
+##2345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789
+
+m1infofile = "results.abundances/model1-info.txt"
+m2infofile = "results.abundances/model2-info.txt"
+m3infofile = "results.abundances/model3-info.txt"
+m4infofile = "results.abundances/model4-info.txt"
+
+nmatfile = 0  # number of material file
+
+system ("echo Model 1 results >> " + m1infofile)    # setup output info file for model 1
+system ("echo " + "_" + " >> " +     m1infofile)
+
+system ("echo Model 2 results: mass in the optical layer >> " + m2infofile)    # setup output info file for model 2
+system ("echo " + "_" + " >> " +     m2infofile)
+
+system ("echo Model 3 results: mass in the optical layer >> " + m3infofile)    # setup output info file for model 3
+system ("echo " + "_" + " >> " +     m3infofile)
+
+system ("echo Model 4 results >> " + m4infofile)    # setup output info file for model 4
+system ("echo " + "_" + " >> " +     m4infofile)
+
+aap= sprintf ("                       File Name                             Output Name                Del abs coef      Density        Ref Wave     Grain Diameter")
+      printf ("%s\n", aap)
+      system ("echo " + "'" + aap + "'" + " >> " + m4infofile)
+
+for (i=1; i<= mlines; i++) {
+	if (mlist [1,i,1] != '#' && mlist [1,i,1]!= '\0' ) {   # skip comments
+	    if (mlist [1:4,i,1] == 'list' ) {                  # should be lists.of.files.by.mineral
+
+			nmatfile = nmatfile + 1
+			amatfiles[1:57,nmatfile,]  = mlist[1:57,i,]    # file name containing list of tetracorder
+									# IDs to be included
+			amatnames[1:19,nmatfile,] = mlist[59:77,i,]   # names for output
+
+			abscoef[1,nmatfile,] = atof(mlist[79:99,i,])   # del absorptioon coefficients (inverse cm)
+
+			density[1,nmatfile,] = atof(mlist[101:113,i,])   # density in gm/cc
+
+			refwave[1,nmatfile,] = atof(mlist[115:124,i,])   # reference wavelength (micron).
+
+			matdiam[1,nmatfile,] = atof(mlist[130:149,i,])   # reference Grain Diameter in microns.
+
+			aap = sprintf ("%3d  %s %s %14.4f %14.4f %14.4f %14.4f", nmatfile, amatfiles[,nmatfile,], \
+					amatnames[,nmatfile,], abscoef[1,nmatfile,1], \
+					density[1,nmatfile,], refwave[1,nmatfile,], matdiam[1,nmatfile,])
+			printf ("%s\n", aap)
+			system ("echo " + "'" + aap + "'" + " >> " + m4infofile)
+	    }
+	}
+}
+if (model4enable > 0) {
+
+	aap= sprintf ("              -                                                quartz-feldspar              -      %14.4f           -    %14.4f", qdens, qtzgraindiam)
+        printf ("%s\n", aap)
+	system ("echo " + "'" + aap + "'" + " >> " + m4infofile)
+	system ("echo " + "_" + " >> " + m4infofile)
+}
+
+# if model3, get channel numbers for reference wavelengths
+if (model3enable > 0) {  # get channel numbers for reference wavelengths
+
+	#printf ("debug: get channel numbers for reference wavelengths\n")
+	wavedim = dim(waves)
+	chans   = wavedim[3,,]
+
+	for (ilistmats=1;  ilistmats<= mlistmats;  ilistmats++) {
+
+		wavediff = 99999999.
+		refchan[1,ilistmats,1] = 0
+		for (k=1; k<=chans; k++) {
+
+			xdiff = abs(waves[1,1,k] - refwave[1,ilistmats,1])
+			if (xdiff < wavediff) {
+
+				refchan[1,ilistmats,1] = k
+				wavediff = xdiff
+			}
+		}
+		if ( refchan[1,ilistmats,1] == 0 ) {
+
+			printf ("ERROR: channel not found for material %d %s\n", ilistmats, amatnames[1:19,ilistmats,])
+			printf ("      exit\n")
+			exit (1)
+		}
+		printf ("Material %3d  %s  Wavelength %9.6f: closest channel= %4d\n", ilistmats, amatnames[1:19,ilistmats,1], refwave[1,ilistmats,1], refchan[1,ilistmats,1])
+	}
+}
+
+
+for (ilistmats=1;  ilistmats<= mlistmats;  ilistmats++) {
+
+# list looks like ( from lists.of.files.by.mineral/calcite.group2.txt ):
+#
+##                                                                 DN     BD    Band                                   convolved
+##              file                                             scale  factor  depth      title                       reference spectrum
+#group.2um/carbonate_calcite+0.2kaolwxl.depth.gz                   0.5   0.8   0.1504  Calcite.80wt+Kaol_CM9 GDS213    splib06 5580
+#group.2um/carbonate_calcite0.7+kaol0.3.depth.gz                   0.5   0.7   0.2145  Calcite.7+Kaolwxl.3 AMX9        splib06 5562
+#         11111111112222222222333333333344444444445555555555666666666677777777778
+#12345678901234567890123456789012345678901234567890123456789012345678901234567890
+
+	endofname = strstr(amatfiles[,ilistmats,], pattern=' ') - 1
+	#printf("debug: endofname= %d\n", endofname)
+	materiallistfile = "cmds.abundances/" + amatfiles[1:endofname, ilistmats, 1]
+
+	printf ("Processing %s\n", materiallistfile)
+
+	alist = read_lines(filename=materiallistfile)
+
+	nlines = length(alist)
+
+	nmats = 0  # number of materials listed in alist
+
+	# first count the number of materials
+	for (i=1; i<= nlines; i++) {
+
+		if (alist [1,i,1] != '#' && alist [1,i,1]!= '\0' ) {                # skip comments
+		    if (alist [1:4,i,1] == 'grou' || alist [1:4,i,1] == 'case') {   # should be group or case
+
+			#printf("debug: %s\n", alist [,9,1])
+			nmats = nmats +1
+		    }
+		}
+
+	}
+	#printf ("debug: found %d materials\n", nmats)
+
+	# create an array of nmats lines, all blank
+	# these are the file names
+	aline = '                                                                            '
+	afiles = aline
+	for (i=2; i<=nmats; i++) {
+		afiles = cat (afiles, aline, axis=y)
+
+	}
+	# length(bline)
+
+	dnscale   = create(1,nmats,org=bsq,format=float,start=0.0, step=0.0)
+	bdfactor  = create(1,nmats,org=bsq,format=float,start=0.0, step=0.0)
+	refdbepth = create(1,nmats,org=bsq,format=float,start=0.0, step=0.0)
+
+	# now extract the file names, DNscales, BF factors, and Reference band depths
+	imat = 0
+	for (i=1; i<= nlines; i++) {
+		if (alist[1,i,1] != '#') {   # skip comments
+		    if (alist [1:4,i,1] == 'grou' || alist [1:4,i,1] == 'case') {   # should be group or case
+
+			imat = imat +1
+			afilelen = strstr(afiles[,imat,1], pattern=' ') - 1
+			afiles[1:65,imat,1] = alist[1:65,i,1]
+
+			dnscale[1,imat,1]   = atof(alist[66:71,i,1])
+			bdfactor[1,imat,1]  = atof(alist[72:77,i,1])
+			refdbepth[1,imat,1] = atof(alist[78:84,i,1])
+
+			printf ("%2d %s  %7.4f  %7.4f  %7.4f\n", imat, afiles[1:65,imat,1], dnscale[1,imat,1], bdfactor[1,imat,1], refdbepth[1,imat,1])
+		    }
+		}
+	}
+
+	# now read the files and apply the models
+
+	# read first file to get image dimensions
+	afilelen = strstr(afiles[,1,1], pattern=' ') - 1
+	matfile  = read (afiles[1:afilelen,1,1])
+	if ( hasvalue(matfile) != 1 ) {
+		printf ("ERROR reading image: %d\n", afiles[1:afilelen,1,1])
+		printf ("exiting\n")
+	}
+
+	matfiledim = dim(matfile)
+	printf ("image dimensions (x y)= %d  %d   x= %d\n", matfiledim[1,1,1], matfiledim[2,1,1], matfiledim[3,1,1])
+
+	if ( matfiledim[3,1,1] > 1 ) {
+
+		printf ("image bands > 1, which is not allowed.  Bands = %d   image: %s\n", matfiledim[3,1,1], afiles[1:afilelen,1,1])
+		printf ("exit 1\n")
+		exit(1)
+
+	}
+
+	matfile  = float(matfile*0)    # creates an image array of zeros
+
+	model1 = matfile
+	model2 = matfile
+	model3 = matfile
+	model4 = matfile
+
+	model3m = matfile   # model 3: m value
+
+	if ( ilistmats == 1 && model4enable > 0 ) {   # set up arrays for model4 calculations
+
+		# model4mats = model4 abundances in gm/cm^2 in 3 optical depths.
+
+		model4mats = create(matfiledim[1,1,1], matfiledim[2,1,1], mlistmats, org=bsq,format=float,start=0.0, step=0.0)
+		model4m    = model4mats    # value of m in model 3 for each material, pixel
+	}
+
+	if (model3enable > 0) {
+		R = read (filename=cubefile, record=refchan[1,ilistmats,1])
+			if ( hasvalue(R) != 1 ) {
+				printf ("ERROR reading cube at channel %d\n", refchan[1,ilistmats,1])
+				printf ("exiting\n")
+				exit (1)
+			}
+		R = R * rscale   # scale image cube data to reflectance
+		Rmom = moment(R)
+		printf ("Reflectance at channel %d (min max mean)=  %f   %f   %f\n", refchan[1,ilistmats,1], Rmom[1,1,1], Rmom[2,1,1], Rmom[3,1,1])
+	}
+
+	mscatmean = 0.0   # mean number of scatteres among all materials (excluding qtz/fldspar)
+	mscatmax  = 0.0   # max  number of scatteres among all materials (excluding qtz/fldspar)
+
+	for (imat=1; imat<= nmats; imat++) {    # this loops over the results for 1 material, 
+						#    e.g. all the tetraocrder outputs with calcite
+						#		there are several tetracorder calcite outputs
+						#    e.g. all the tetraocrder outputs with kaolinite
+						#		there are several tetracorder kaolinite outputs
+						#  etc.
+
+		afilelen = strstr(afiles[,imat,1], pattern=' ') - 1
+		bfile = read (afiles[1:afilelen,imat,1])             # 8-bit scaled inetgers
+		if ( hasvalue(bfile) != 1 ) {
+			printf ("ERROR reading image: %d\n", afiles[1:afilelen,1,1])
+			printf ("exiting\n")
+		}
+
+		bfile = float(bfile)
+
+		# model 1: band depth as proxy for abundance, relative to reference band depth
+		#printf ("debug: computing model 1\n")
+		model1 = model1 + bdfactor[1,imat,1] * (bfile / (255. / dnscale[1,imat,1])) / refdbepth[1,imat,1]
+		
+		#moment(model1)
+
+		# model 2: Absolute Abundance in a non-scattering 2-way slab model.
+
+		#printf ("debug: computing model 2\n")
+		delk =  abscoef[1,ilistmats,1]  # delta absorption coefficient
+		dens =  density[1,ilistmats,1]  # density
+		BD   =  bfile / (255. / dnscale[1,imat,1])   # band depth
+		Tslab   = (ln(1.0-BD) / (-1.0*delk))/2.0      # slab thickness
+		Mass = Tslab * (100.^2) * dens               #  grams per sq meter in optical layer
+		model2 = model2 + Mass
+
+		if (model3enable > 0 ) {
+
+			#printf ("debug: computing model 3\n")
+			# model 3) Mass in the optical layer assuming isotropic random walk by photons.
+			#          Need: reflectance at each pixel and material grain size
+
+			#	m from model 3 for each mineral.
+			#	d = grain sizes of quartz and feldspar
+			#	n = average number of mineral grains (e.g. hematite) per quartz/feldspar grain.
+			#		(for low abundances n~1  for higher abundances need to develop a model and
+			#		check against observations.)
+			#       m from model 3 for each mineral.
+
+			# T = (pi/4) * (dq/n) * (m/2)1/2,                              (Clark and Roush, 1984, eqn 24)
+
+			# Compute absolute masses of each mineral in the optical layer (from Model 3).
+
+			BD1 = 1.0-BD
+			BD1[ where ( BD1 < 0.0e-12 ) ] = 0.0e-12     # no negatives for the ln function
+
+			MOPL = ln(BD1) / (-1.0*delk)                # Mean Optical Path Length
+			MOPL[ where ( MOPL < 0.0e-12 ) ] = 0.0e-12  # no negatives in case of round-off
+
+			D = matdiam[1,ilistmats,1] /10000.0        # grain diameter in cm
+
+			m = MOPL / (2.0 * D)                      # m = number of scatters
+
+			momBD =   moment(BD)
+			momMOPL = moment(MOPL)
+			momm =    moment(m)
+			#printf ("debug: model3 BD   (min max mean) = %12.6f    %12.6f    %12.6f\n", momBD[1,1,1],   momBD[2,1,1],   momBD[3,1,1])
+			#printf ("debug: model3 MOPL (min max mean) = %12.6f    %12.6f    %12.6f\n", momMOPL[1,1,1], momMOPL[2,1,1], momMOPL[3,1,1])
+			#printf ("debug: model3 m    (min max mean) = %12.6f    %12.6f    %12.6f\n", momm[1,1,1],    momm[2,1,1],    momm[3,1,1])
+
+			T =  (pi/4.) * D * (m/2.)^0.5              # Light penetration depth  (1 optical depth)
+
+			model3 = model3 + 3.0 *T * (100.0^2.0) * dens     # = grams per sq meter in optical layer, 3 optical depths
+
+			model3m = model3m + m   # m value (number of scatterers) for model 3
+
+			# REMEMBER: in this loop, we are looping over one tetracorder output image for one material.
+			# but each material has multiple outputs, e.g. calcite1, calcite2, etc.
+			# and each mineral output image has pixels in different locations,
+			# so adding model3 = model3 + new_calculation is not adding mass in the same pixel,
+			#    it is adding different pixels.  Each pixel has only on entry from the set of minerals.
+			# Example: calcite1 at pixel 100,100 = 0.2 gm/cm^2  and pixel 100,101 = 0.0
+			#          calcite2 at pixel 100,100 = 0.0          and pixel 100,101 = 0.1 gm/cm^2
+			# so the sum model2 mass at calcite1 and calcite2 would have:
+			#                      pixel 100,100 = 0.2 gm/cm^2  and pixel 100,101 = 0.1 gm/cm^2
+
+		}
+
+		if (model4enable > 0 ) {
+
+			#printf ("debug: computing model 4\n")
+			# model 4) Relative Abundance in the optical layer assuming isotropic random
+			#          Need: reflectance at each pixel and material grain size
+			#                estimates quartz/feldspar grain size
+			#  = Model 3 with distance between scatters equal to the probable grain diameter 
+			#            of quartz and feldspar.
+
+			model4 = model3
+
+			model4mats[,,ilistmats] = model4
+
+			model4m[,,ilistmats] = model3m
+
+			# Relative Mass, RMi  of ith component (ilistmats)  absolute mass, Mi  = RMi = Mi / (Σij (Mi).
+			# done below
+
+		}
+	}
+
+	################  Model 1 output
+
+	endofname = strstr(amatnames[,ilistmats,1], pattern=' ') - 1
+	#printf ("debug: amatnames[,ilistmats,1]= |%s|, endofname= %d\n", amatnames[,ilistmats,1], endofname)
+	outfile = "results.abundances/model1/" + amatnames[1:endofname, ilistmats, 1] + ".v"
+	write (model1, file=outfile, type=vicar)
+	
+	# compress
+	outfilegz = outfile + ".gz"
+	system ("gzip -f " + outfile)
+
+	# make envi header
+	envihdr = sprintf ("davinci.make.envi.header.from.vicar %s > %s.hdr", outfilegz, outfilegz)
+	printf ("%s\n", envihdr)
+	system (envihdr)
+
+	model1g = byte (model1*255.0 + 0.5)
+	gifname = amatnames[1:endofname, ilistmats, 1] + ".gif"
+	outfile = "results.abundances/model1/" + gifname
+	write (model1g, file=outfile, type=gif)
+
+	# multiply otput by 5 to show lower level abundance
+	model1g5 = byte (model1*255.0 * 5.0 + 0.5)
+	gifname5 = amatnames[1:endofname, ilistmats, 1] + "-times5.gif"
+	outfile = "results.abundances/model1/" + gifname5
+	write (model1g5, file=outfile, type=gif)
+
+	# multiply otput by 25 to show lower level abundance
+	model1g25 = byte (model1*255.0 * 25.0 + 0.5)
+	gifname25 = amatnames[1:endofname, ilistmats, 1] + "-times25.gif"
+	outfile = "results.abundances/model1/" + gifname25
+	write (model1g25, file=outfile, type=gif)
+
+	printf ("\n###################################################\n\n")
+	aap1 = sprintf ("Model 1 gif images: DN 255 = ralative abundance = 1.0   %s",  gifname)
+	printf ("%s\n", aap1)
+	printf ("\n###################################################\n\n")
+	system ("echo " + "'" + aap1 + "'" + " >> " + m1infofile)
+
+
+	################  Model 2 output
+
+	endofname = strstr(amatnames[,ilistmats,1], pattern=' ') - 1
+	#printf ("debug: amatnames[,ilistmats,1]= |%s|, endofname= %d\n", amatnames[,ilistmats,1], endofname)
+	outfile = "results.abundances/model2/" + amatnames[1:endofname, ilistmats, 1] + ".v"
+	write (model2, file=outfile, type=vicar)
+	
+	# compress
+	outfilegz = outfile + ".gz"
+	system ("gzip -f " + outfile)
+
+	# make envi header
+	envihdr = sprintf ("davinci.make.envi.header.from.vicar %s > %s.hdr", outfilegz, outfilegz)
+	printf ("%s\n", envihdr)
+	system (envihdr)
+
+	modelmom =  moment(model2)    # try different scaling for quick visualization
+	modelmax =  modelmom[2,1,1]   # maximum
+	modelmean = modelmom[3,1,1]   # mean
+	modelsd   = modelmom[5,1,1]   # standard deviation
+	#modelscale= modelsd  *6.0
+	modelscale= modelmax
+	if ( modelscale > modelmax) modelscale= modelmax
+	model2g = byte ((model2/(modelscale))*255.0 + 0.5)
+	gifname = amatnames[1:endofname, ilistmats, 1] + ".gif"
+	outfile = "results.abundances/model2/" + amatnames[1:endofname, ilistmats, 1] + ".gif"
+	write (model2g, file=outfile, type=gif)
+
+	printf ("\n###################################################\n\n")
+	aap2 = sprintf ("Model 2 gif image, DN 255 = %12.6f gm / sq meter   %s", modelscale, gifname)
+	printf ("%s\n", aap2)
+	printf ("\n\n###################################################\n\n")
+	system ("echo " + "'" + aap2 + "'" + " >> " + m2infofile)
+
+	
+	################  Model 3 output
+
+	endofname = strstr(amatnames[,ilistmats,1], pattern=' ') - 1
+	#printf ("debug: amatnames[,ilistmats,1]= |%s|, endofname= %d\n", amatnames[,ilistmats,1], endofname)
+	outfile = "results.abundances/model3/" + amatnames[1:endofname, ilistmats, 1] + ".v"
+	write (model3, file=outfile, type=vicar)
+	
+	# compress
+	outfilegz = outfile + ".gz"
+	system ("gzip -f " + outfile)
+
+	# make envi header
+	envihdr = sprintf ("davinci.make.envi.header.from.vicar %s > %s.hdr", outfilegz, outfilegz)
+	printf ("%s\n", envihdr)
+	system (envihdr)
+
+	modelmom =  moment(model3)    # try different scaling for quick visualization
+	modelmax =  modelmom[2,1,1]   # maximum
+	modelmean = modelmom[3,1,1]   # mean
+	modelsd   = modelmom[5,1,1]   # standard deviation
+	#modelscale= modelsd  *6.0
+	modelscale= modelmax
+	if ( modelscale > modelmax) modelscale= modelmax
+	model3g = byte ((model3/(modelscale))*255.0 + 0.5)
+	gifname = amatnames[1:endofname, ilistmats, 1] + ".gif"
+	outfile = "results.abundances/model3/" + gifname
+	write (model3g, file=outfile, type=gif)
+
+	printf ("\n###################################################\n\n")
+	aap3 = sprintf ("Model 3 gif image, DN 255 = %12.6f gm / sq meter   %s", modelscale, gifname)
+	printf ("%s\n", aap3)
+	printf ("\n\n###################################################\n\n")
+	system ("echo " + "'" + aap3 + "'" + " >> " + m3infofile)
+
+}
+
+################  Model 4 output
+
+# model 4 is relative, so look at all
+
+if (model4enable > 0 ) {
+
+	printf ("Computing model 4\n")
+	model4relabund = model4mats * 0.0   # array for relative abundances
+
+	summats = model4mats[,,1] * 0.0     # sum of model 4 abundances, = 0.0 at this point
+	sum4m   = summats                   # sum of models 3 m values, = 0.0 at this point
+	max4m   = summats                   # maximum m for the materials 
+
+	for (ilistmats=1;  ilistmats<= mlistmats;  ilistmats++) {
+
+		#printf ("model4 loop1: ilistmats= %d\n", ilistmats)
+		summats = summats + model4mats[,,ilistmats] 
+		sum4m   = sum4m   + model4m[,,ilistmats]
+
+		model4mg = byte (model4m[,,ilistmats]*10.0+0.5)   # linear number of scatterers
+
+		endofname = strstr(amatnames[,ilistmats,1], pattern=' ') - 1
+		gifname = amatnames[1:endofname, ilistmats, 1] + ".gif"
+		outfile = "results.abundances/model4/number-of-scatters-times10_" + gifname
+		write (model4mg, file=outfile, type=gif)
+
+		mommodel4m = moment(model4m[,,ilistmats])
+		aap = sprintf ("Model 4  mean number of scatters for material %3d = %10.5f,   max= %10.5f   %s", ilistmats, mommodel4m[3,,], mommodel4m[2,,], amatnames[1:endofname, ilistmats, 1])
+			printf ("%s\n", aap)
+			#system ("echo " + aap + " >> " + m4infofile)
+			system ("echo " + "'" + aap + "'" + " >> " + m4infofile)
+
+	}
+	avg4m = sum4m / float(mlistmats)
+
+	max4m = max(model4m, axis=z)  # max for each pixel
+
+	momavg4m = moment(avg4m)
+	mommax4m = moment(max4m)
+
+	aap = sprintf ("Model 4, numbers of scatteres for quartz: use average: max= %f  mean=%f   use max: max= %f  mean=%f ", momavg4m[2,,], momavg4m[3,,], mommax4m[2,,], mommax4m[3,,])
+			printf ("%s\n", aap)
+			system ("echo " + "'" + aap + "'" + " >> " + m4infofile)
+
+	# now compute quartz abundance in gm/m^2
+
+	n = navg  # average number of mineral grains (e.g. hematite) per quartz/feldspar grain.
+                  # and also depends on the grain size ratios.
+                  # For nano particles, on quartz grains tens of microns in size, there is 
+                  # ceraintly more than 1 nano particle per large particle, except at vanishingly
+                  # low abundances.
+                  #  (for low abundances n~1 or ~2  for higher abundances need to develop a model and
+                  #  check against observations.)
+
+	m = avg4m  # use if we want the average number of scatters for all materials
+		   # but this biases low in low abundances.
+
+	# m = max4m  # use if want max number of scatters from the set of minerals.
+
+	dq =  qtzgraindiam / 10000.0     # grain diameter of quartz/feldspar in centimeters
+
+	T = (pi/4.0) * (dq/n) * (m/2.0)^0.5
+
+	qmass =  3.0 *T * (100.0^2.0) * qdens
+
+	momqmass = moment(qmass)
+
+	system ("echo " + "_"  + " >> " + m4infofile)
+
+	aap = sprintf ("Model 4 quartz mass in the optical layer:  min, max, mean = %9.4f  %9.4f   %9.4f gm per sq cm", momqmass[1,,], momqmass[2,,], momqmass[3,,])
+			printf ("%s\n", aap)
+			system ("echo " + "'" + aap + "'" + " >> " + m4infofile)
+			system ("echo " + "_"  + " >> " + m4infofile)
+
+	# now sum the masses including quartz
+
+	summats = summats + qmass
+
+	momsummats = moment(summats)
+
+	aap = sprintf ("Model 4 total mass, all materials (including quartz/feldspar): min, max, mean = %f  %f   %f gm / sq meter", momsummats[1,,], momsummats[2,,], momsummats[3,,])
+			printf ("%s\n", aap)
+			system ("echo " + "'" + aap + "'" + " >> " + m4infofile)
+			system ("echo " + "_"  + " >> " + m4infofile)
+
+	quartzrelabund = qmass / summats
+
+	for (ilistmats=1;  ilistmats<= mlistmats;  ilistmats++) {
+
+		#printf ("model4 loop2: ilistmats= %d\n", ilistmats)
+		model4relabund[,,ilistmats] = model4mats[,,ilistmats] / summats
+
+		# write results
+
+		endofname = strstr(amatnames[,ilistmats,1], pattern=' ') - 1
+		#printf ("debug: amatnames[,ilistmats,1]= |%s|, endofname= %d\n", amatnames[,ilistmats,1], endofname)
+		outfile = "results.abundances/model4/" + amatnames[1:endofname, ilistmats, 1] + ".v"
+		write (model4relabund[,,ilistmats], file=outfile, type=vicar)
+		
+		# compress
+		outfilegz = outfile + ".gz"
+		system ("gzip -f " + outfile)
+
+		# make envi header
+		envihdr = sprintf ("davinci.make.envi.header.from.vicar %s > %s.hdr", outfilegz, outfilegz)
+		printf ("%s\n", envihdr)
+		system (envihdr)
+
+		model4g = byte (model4relabund[,,ilistmats] *255.0 + 0.5)
+		gifname = amatnames[1:endofname, ilistmats, 1] + ".gif"
+		outfile = "results.abundances/model4/" + gifname
+		write (model4g, file=outfile, type=gif)
+
+		# multiply otput by 5 to show lower level abundance
+		model4g5 = byte (model4relabund[,,ilistmats] *255.0 *5.0 + 0.5)
+		gifname5 = amatnames[1:endofname, ilistmats, 1] + "-times5.gif"
+		outfile = "results.abundances/model4/" + gifname5
+		write (model4g5, file=outfile, type=gif)
+
+		# multiply otput by 25 to show lower level abundance
+		model4g25 = byte (model4relabund[,,ilistmats] *255.0 *25.0 + 0.5)
+		gifname25 = amatnames[1:endofname, ilistmats, 1] + "-times25.gif"
+		outfile = "results.abundances/model4/" + gifname25
+		write (model4g25, file=outfile, type=gif)
+
+
+		aap = sprintf ("\n###################################################")
+			printf ("%s\n\n", aap)
+			#system ("echo " + "'" + aap + "'" + " >> " + m4infofile)
+
+		aap = sprintf ("Model 4 gif images: DN 255 = ralative abundance = 1.0   %s", gifname)
+			printf ("%s\n\n", aap)
+			system ("echo " + "'" + aap + "'" + " >> " + m4infofile)
+
+	}
+
+	aap = sprintf ("\n###################################################")
+			printf ("%s\n\n", aap)
+			system ("echo " + "'" + aap + "'" + " >> " + m4infofile)
+
+			system ("echo " + "_"  + " >> " + m4infofile)
+
+	aap = sprintf ("Model 4 relative abundances, quartz diameter = %f microns,  n= %f:", qtzgraindiam, navg)
+			printf ("%s\n\n", aap)
+			system ("echo " + "'" + aap + "'" + " >> " + m4infofile)
+
+	aap = sprintf ("       File                  min             max             mean       standard deviation")
+			printf ("%s\n\n", aap)
+			system ("echo " + "'" + aap + "'" + " >> " + m4infofile)
+
+	for (ilistmats=1;  ilistmats<= mlistmats;  ilistmats++) {
+
+		mom4 = moment(model4relabund[,,ilistmats])
+
+		aap = sprintf ("%19s    %12.6f    %12.6f    %12.6f    %12.6f", amatnames[,ilistmats,1], mom4[1,1,1], mom4[2,1,1], mom4[3,1,1], mom4[5,1,1])
+			printf ("%s\n", aap)
+			system ("echo " + "'" + aap + "'" + " >> " + m4infofile)
+	}
+	momq = moment(quartzrelabund)
+	aap = sprintf ("quartz+feldspar         %12.6f    %12.6f    %12.6f    %12.6f", momq[1,1,1], momq[2,1,1], momq[3,1,1], momq[5,1,1])
+			printf ("%s\n", aap)
+			system ("echo " + "'" + aap + "'" + " >> " + m4infofile)
+
+	aap = sprintf ("\n\n###################################################")
+			printf ("%s\n\n", aap)
+			system ("echo " + "'" + aap + "'" + " >> " + m4infofile)
+
+	#write quarts-feldspar
+	outfile = "results.abundances/model4/quartz-feldspar.v"
+	write (quartzrelabund, file=outfile, type=vicar)
+
+	# compress
+	outfilegz = outfile + ".gz"
+	system ("gzip -f " + outfile)
+
+	# make envi header
+	envihdr = sprintf ("davinci.make.envi.header.from.vicar %s > %s.hdr", outfilegz, outfilegz)
+	printf ("%s\n", envihdr)
+	system (envihdr)
+
+	model4g = byte (quartzrelabund *255.0 + 0.5)
+	outfile = "results.abundances/model4/quartz-feldspar.gif"
+	write (model4g, file=outfile, type=gif)
+}

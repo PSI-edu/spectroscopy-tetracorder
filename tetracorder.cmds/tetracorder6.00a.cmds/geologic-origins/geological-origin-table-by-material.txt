@@ -1,0 +1,330 @@
+\# Geologic origins table, derived from Noe Dobrea et al., 2025
+\#                         Planetary Science Journal 6:51.
+\#                         https://iopscience.iop.org/article/10.3847/PSJ/adaa78
+\#
+\#                  with additions (G08+).
+\#
+\# original befor entry modifications: Appendix-2b-Geological-Origin-Table-Year-2.txt
+\#
+\# modifications:  0 = not this origin
+\#                 1-9 scale = this origin with 9 being highest probability
+\#
+\#
+\# Column:
+\#       11111111112222222222333333333344444444445555555555666666666677777777778
+\# 45678901234567890123456789012345678901234567890123456789012345678901234567890
+\#   GO1   Lacustrine/Marine     
+\#   GO2   Evaporitic / playa   
+\#   GO3   Metamorphic  
+\#   GO4   Hydrothermal  
+\#   GO5   Pedogenic /diagenic /weathering (include secondary coatings)  
+\#   GO6   Igneous (include carbonatites) 
+\#   GO7   Biogenic, Includes Vegetation
+\#   G08   Organic, not necessarily biogenic
+\#   G09   Man-Made
+\#   G10   Water Liquid or Ice
+\#   G11   Fire /Thermal Emission
+\#
+\#
+\# Material                   GO1 GO2 GO3 GO4 GO5  GO6  GO7  G08  G09  G10  G11
+\#
+zero                           0   0   0   0   0    0    0    0    0    0    0
+generic_soil                   0   0   0   0   0    0    0    0    0    0    0
+\#
+acid_mine_drainage             0   0   0   9   0    0    0    0    0    0    0
+actinolite                     0   0   9   0   0    0    0    0    0    0    0      \# was actinolit
+adularia                       0   0   0   0   0    0    0    0    0    0    0
+albite                         0   0   9   9   0    9    0    0    0    0    0
+algea                          0   0   0   0   0    0    9    0    0    0    0
+aliphatic                      0   0   0   0   0    0    0    9    0    0    0
+almandine                      0   0   9   0   0    0    0    0    0    0    0
+alunite_hydrothermal           0   0   0   9   0    0    0    0    0    0    0
+alunite_hydroth_pedog          0   0   0   9   9    0    0    0    0    0    0
+natroalunite                   0   0   0   9   9    0    0    0    0    0    0
+ammonioalunite                 0   0   0   9   0    0    0    0    0    0    0
+ammonillsmectite               0   0   0   9   9    0    0    0    0    0    0
+ammoniojarosite                0   0   0   9   9    0    0    0    0    0    0
+amphibole                      0   0   9   0   0    9    0    0    0    0    0
+analcime                       9   0   0   9   0    9    0    0    0    0    0
+anorthite                      0   0   0   0   0    0    0    0    0    0    0
+antigorite                     9   9   9   0   0    0    0    0    0    0    0
+aragonite                      9   0   9   9   0    0    0    0    0    0    0
+augite                         0   0   9   0   0    9    0    0    0    0    0
+axinite                        0   0   0   0   0    9    0    0    0    0    0
+azurite                        0   0   0   0   9    0    0    0    0    0    0
+beidellite                     0   0   0   0   9    0    0    0    0    0    0
+benzene                        0   0   0   0   0    0    0    9    0    0    0
+biotite                        0   0   9   0   0    9    0    0    0    0    0
+black_Mn_Coating               0   0   0   5   0    0    9    0    0    0    0
+bloedite                       9   9   0   0   0    0    0    0    0    0    0
+bronzite                       0   0   0   9   0    9    0    0    0    0    0
+brucite                        0   0   9   9   9    0    0    0    0    0    0
+buddingtonite                  0   0   0   9   0    0    0    0    0    0    0
+butlerite                      0   0   0   9   0    0    0    0    0    0    0
+bytownite                      0   0   0   0   0    9    0    0    0    0    0
+calcite                        9   2   9   1   9    9    9    0    0    0    0  g04=0 2026-03-19a
+carnallite                     0   9   0   0   0    0    0    0    0    0    0
+chalcedony                     9   0   9   9   0    0    0    0    0    0    0
+chalcopyrite                   0   0   0   9   0    9    0    0    0    0    0
+chlorite                       0   0   9   9   0    0    0    0    0    0    0
+\#
+\# Material                   GO1 GO2 GO3 GO4  GO5  GO6  GO7  G08  G09  G10  G11
+\#
+\#   GO1   Lacustrine/Marine     
+\#   GO2   Evaporitic / playa   
+\#   GO3   Metamorphic  
+\#   GO4   Hydrothermal  
+\#   GO5   Pedogenic /diagenic /weathering (include secondary coatings)  
+\#   GO6   Igneous (include carbonatites) 
+\#   GO7   Biogenic, Includes Vegetation
+\#   G08   Organic, not necessarily biogenic
+\#   G09   Man-Made
+\#   G10   Water Liquid or Ice
+\#   G11   Fire /Thermal Emission
+\#
+\# Material                   GO1 GO2 GO3 GO4 GO5  GO6  GO7  G08  G09  G10  G11
+\#
+chlorophyll                    0   0   0   0   0    0    9    0    0    0    0
+chromite                       0   0   0   0   0    9    0    0    0    0    0
+chrysocolla                    0   0   0   0   9    0    0    0    0    0    0
+chrysotile                     0   0   9   9   0    0    0    0    0    0    0
+cinnabar                       0   0   0   9   0    0    0    0    0    0    0
+clinochlore                    0   0   9   9   0    0    0    0    0    0    0
+clintonite                     0   0   9   9   9    9    0    0    0    0    0
+co2_gas                        0   0   0   0   0    0    0    0    0    0    0
+co2_ice                        0   0   0   0   0    0    0    0    0    0    0
+co2_trapped                    0   0   0   0   0    0    0    0    0    0    0
+colemanite                     9   9   0   0   0    0    0    0    0    0    0
+cookeite                       0   0   0   0   9    9    0    0    0    0    0     \# association with lithium bearing minerals
+copiapite                      0   0   0   9   9    0    0    0    0    0    0
+coquimbite                     0   0   0   0   9    0    0    0    0    0    0
+cronstedtite                   0   0   9   0   0    0    0    0    0    0    0
+cummingtonite                  0   0   9   0   0    0    0    0    0    0    0
+cuprite                        0   0   0   0   9    0    0    0    0    0    0
+cyanide                        0   0   0   0   0    0    9    0    0    0    0
+cyanide-CdK                    0   0   0   0   0    0    9    0    0    0    0
+cyanide-KFe                    0   0   0   0   0    0    9    0    0    0    0
+cyanide-NiK                    0   0   0   0   0    0    9    0    0    0    0
+cyanide-trihydrate             0   0   0   0   0    0    9    0    0    0    0
+cyanide-ZnK                    0   0   0   0   0    0    9    0    0    0    0
+datolite                       0   0   0   9   0    0    0    0    0    0    0
+diaspore                       0   0   0   0   9    0    0    0    0    0    0
+dickite                        0   0   0   9   9    0    0    0    0    0    0
+pyroxene_diopside              0   0   9   0   0    9    0    0    0    0    0
+dolomite                       9   0   0   9   0    0    0    0    0    0    0
+dry_grass                      0   0   0   0   0    0    9    0    0    0    0
+dry_wood                       0   0   0   0   0    0    9    0    0    0    0
+dust_WTC                       0   9   0   0   0    0    0    0    0    0    0  g04=0 2026-03-19a
+elbaite                        0   0   0   0   0    9    0    0    0    0    0
+endellite                      0   0   0   9   9    0    0    0    0    0    0
+enstatite                      0   0   9   0   0    9    0    0    0    0    0
+epidote                        0   0   9   9   0    0    0    0    0    0    0
+eugsterite                     0   9   0   0   0    0    0    0    0    0    0
+fe2+_chlorite.thuringite       0   0   0   0   0    0    0    0    0    0    0
+fe2+fe3+_hematite_weath        0   0   0   0   9    0    0    0    0    0    0
+fe2+fe3+mix                    0   0   0   0   9    0    0    0    0    0    0
+fe2+fe3+_water_RTsludge        0   0   0   0   9    0    0    0    0    0    0
+fe2+generic_actinolite         0   0   0   0   0    0    0    0    0    0    0
+fe2+generic_almandine          0   0   0   0   0    0    0    0    0    0    0
+fe2+generic_amphibole          0   0   0   0   0    0    0    0    0    0    0
+fe2+generic_axinite            0   0   0   0   0    0    0    0    0    0    0
+fe2+generic_basalt             0   0   0   0   0    0    0    0    0    0    0
+fe2+generic_carbonate          0   0   0   0   0    0    0    0    0    0    0
+fe2+generic_chlor+clinochlor   0   0   0   0   0    0    0    0    0    0    0
+fe2+generic_chlorite           0   0   0   0   0    0    0    0    0    0    0
+fe2+generic_clinochlore        0   0   0   0   0    0    0    0    0    0    0
+fe2+generic_jadeite            0   0   0   0   0    0    0    0    0    0    0
+fe2+generic_nrw.cu             0   0   0   0   0    0    0    0    0    0    0
+fe2+generic_staurolite         0   0   0   0   0    0    0    0    0    0    0
+fe2+generic_sulfate_butlerite  0   0   0   0   0    0    0    0    0    0    0
+fe2+generic_vbroad             0   0   0   0   0    0    0    0    0    0    0
+fe3+bearing1                   0   0   0   0   9    0    0    0    0    0    0
+fe3+_ferrihydrite              0   0   0   0   9    0    0    0    0    0    0
+fiberglass                     0   0   0   0   0    0    0    0    0    0    0
+gasolene_unleaded              0   0   0   0   0    0    0    9    0    0    0
+gibbsite                       0   0   0   9   9    0    0    0    0    0    0
+goethite                       9   0   0   8   9    0    0    0    0    0    0  g04=0 2026-03-19a
+goethite_smallgrain            9   0   0   0   9    0    0    0    0    0    0  g04=0 2026-03-19a
+grossular                      0   0   9   0   0    0    0    0    0    0    0
+gypsum                         0   9   0   0   9    0    0    0    0    0    0  g04=0 2026-03-19a
+halloysite                     0   0   0   0   9    0    0    0    0    0    0    g04=0 2026-03-19a  \# note Noe Dobrea et al., 2025 only as GO4
+hectorite                      9   0   0   0   9    0    0    0    0    0    0
+hedenbergite                   0   0   9   0   0    0    0    0    0    0    0
+hematite                       0   0   0   8   9    0    0    0    0    0    0  g04=0 2026-03-19a
+hematite_smallgrain            0   0   0   0   9    0    1    0    0    0    0  g04=0 2026-03-19a,, G07=1 2026-03-27
+\#
+\# Material                   GO1 GO2 GO3 GO4 GO5  GO6  GO7  G08  G09  G10  G11
+\#
+\#   GO1   Lacustrine/Marine     
+\#   GO2   Evaporitic / playa   
+\#   GO3   Metamorphic  
+\#   GO4   Hydrothermal  
+\#   GO5   Pedogenic /diagenic /weathering (include secondary coatings)  
+\#   GO6   Igneous (include carbonatites) 
+\#   GO7   Biogenic, Includes Vegetation
+\#   G08   Organic, not necessarily biogenic
+\#   G09   Man-Made
+\#   G10   Water Liquid or Ice
+\#   G11   Fire /Thermal Emission
+\#
+\# Material                   GO1 GO2 GO3 GO4 GO5  GO6  GO7  G08  G09  G10  G11
+\#
+hornblende                     0   0   9   0   0    9    0    0    0    0    0
+howlite                        0   9   0   0   0    0    0    0    0    0    0
+hydrated_basaltic_glass        0   0   0   0   0    9    0    0    0    0    0
+hydrogrossular                 0   0   9   0   9    9    0    0    0    0    0
+pyroxene_hypersthene           0   0   0   0   0    9    0    0    0    0    0
+illite                         0   0   9   0   0    0    0    0    0    0    0  g04=0 2026-03-19a
+jarosite                       9   9   0   9   9    0    0    0    0    0    0
+kaolinite                      0   0   0   0   9    0    0    0    0    0    0  g04=0 2026-03-19a
+kaolinite_wxl                  0   0   0   9   9    0    0    0    0    0    0
+kaolinite_pxl                  9   0   0   0   9    0    0    0    0    0    0  g04=0 2026-03-19a
+kieserite                      0   9   0   0   9    0    0    0    0    0    0
+lazurite                       0   0   9   0   0    0    0    0    0    0    0
+lepidocrosite                  9   0   0   9   9    0    0    0    0    0    0
+lepidolite                     0   0   0   9   0    9    0    0    0    0    0
+lizardite                      0   0   0   0   0    0    0    0    0    0    0
+maghemite                      0   0   9   0   0    0    0    0    0    0    0
+magnesite                      0   0   9   9   9    0    9    0    0    0    0
+hydromagnesite                 0   0   9   9   9    0    9    0    0    0    0
+malachite                      0   0   9   0   9    0    0    0    0    0    0
+manganese                      0   0   0   0   9    0    9    0    0    0    0
+margarite                      0   0   0   0   9    0    0    0    0    0    0
+mascagnite                     0   0   0   9   0    0    0    0    0    0    0
+methane_gas                    0   0   0   0   0    0    0    9    0    0    0
+methane_ice                    0   0   0   0   0    0    0    9    0    0    0
+microcline                     0   0   0   0   0    9    0    0    0    0    0
+mirabilite                     0   9   0   0   0    0    0    0    0    0    0
+montmorillonite                9   0   0   0   9    0    0    0    0    0    0  g04=0 2026-03-19a
+muscovite                      0   0   9   0   0    9    0    0    0    0    0  g04=0 2026-03-19a
+nacrite                        0   0   0   9   9    0    0    0    0    0    0
+natrolite                      0   0   0   0   0    9    0    0    0    0    0
+neodymium_oxide                0   0   0   0   9    9    0    0    0    0    0
+niter                          0   0   0   0   9    0    0    0    0    0    0
+nitrobenzene                   0   0   0   0   0    0    0    9    0    0    0
+nontronite                     9   0   0   9   9    0    0    0    0    0    0
+nonyne                         0   0   0   0   0    0    0    9    0    0    0
+olivine                        0   0   0   0   0    9    0    0    0    0    0
+organic_plastic_green          0   0   0   0   0    0    0    9    0    0    0
+organic_plastic_blue           0   0   0   0   0    0    0    9    0    0    0
+organic_plastic_pvc            0   0   0   0   0    0    0    9    0    0    0
+organic_plastic-pete           0   0   0   0   0    0    0    9    0    0    0
+organic_plastic-hdpe           0   0   0   0   0    0    0    9    0    0    0
+organic_plastic-vinyl          0   0   0   0   0    0    0    9    0    0    0
+organic_fiberglass             0   0   0   0   0    0    0    9    0    0    0
+organic_polystyrene            0   0   0   0   0    0    0    9    0    0    0
+orthoclase                     0   0   0   0   0    9    0    0    0    0    0
+\#
+\# Material                   GO1 GO2 GO3 GO4 GO5  GO6  GO7  G08  G09  G10  G11
+\#
+\#   GO1   Lacustrine/Marine     
+\#   GO2   Evaporitic / playa   
+\#   GO3   Metamorphic  
+\#   GO4   Hydrothermal  
+\#   GO5   Pedogenic /diagenic /weathering (include secondary coatings)  
+\#   GO6   Igneous (include carbonatites) 
+\#   GO7   Biogenic, Includes Vegetation
+\#   G08   Organic, not necessarily biogenic
+\#   G09   Man-Made
+\#   G10   Water Liquid or Ice
+\#   G11   Fire /Thermal Emission
+\#
+\# Material                   GO1 GO2 GO3 GO4 GO5  GO6  GO7  G08  G09  G10  G11
+\#
+organic_paint                  0   0   0   0   0    0    0    9    0    0    0
+palygorskite                   9   0   0   0   9    0    0    0    0    0    0
+paragonite                     0   0   9   0   0    0    0    0    0    0    0
+pectolite                      0   0   0   9   0    0    0    0    0    0    0
+pentene                        0   0   0   0   0    0    0    9    0    0    0
+perchlorate                    0   9   0   0   0    0    0    0    0    0    0
+peroxide                       0   0   0   0   0    0    0    0    0    0    0         ?????
+phlogopite                     0   0   9   9   0    9    0    0    0    0    0
+pyroxene_pigeonite             0   0   0   0   0    9    0    0    0    0    0
+pinnoite                       9   9   0   0   0    0    0    0    0    0    0
+pitchlimonite                  0   0   0   0   9    0    0    0    0    0    0
+polyhalite                     0   9   0   0   0    0    0    0    0    0    0
+portlandite                    0   9   9   9   0    0    0    0    0    0    0
+potassium_nitrate              0   0   0   0   0    0    0    0    0    0    0
+prehnite                       0   0   0   9   0    0    0    0    0    0    0
+propylzone                     0   0   0   9   9    0    0    0    0    0    0          ?????
+pyridine                       0   0   0   0   0    0    0    9    0    0    0
+pyrite                         0   0   9   0   9    9    0    0    0    0    0
+pyrolusite                     9   0   0   0   9    0    0    0    0    0    0
+pyrophyllite                   0   0   9   9   0    0    0    0    0    0    0
+quartz                         0   0   0   9   0    9    0    0    0    0    0
+rhodochrosite                  0   0   0   9   0    0    0    0    0    0    0
+rhodonite                      0   0   9   9   0    0    0    0    0    0    0
+richterite                     0   0   9   9   0    0    0    0    0    0    0
+riebeckite                     0   0   9   9   0    0    0    0    0    0    0
+rivadavite                     0   9   0   9   0    0    0    0    0    0    0
+roscoelite                     0   0   0   9   9    0    0    0    0    0    0
+rutile                         0   0   0   0   0    9    0    0    0    0    0
+samarium_oxide                 0   0   0   0   9    9    0    0    0    0    0
+saponite                       9   0   0   9   9    0    0    0    0    0    0
+saponite_or_talc               9   0   0   9   9    0    0    0    0    0    0
+schwertmannite                 0   0   0   0   9    0    0    0    0    0    0
+sepiolite                      0   9   0   0   0    0    0    0    0    0    0
+serpentine                     0   0   9   9   0    0    0    0    0    0    0
+siderite                       5   5   9   2   9    0    0    0    0    0    0
+smaragdite                     0   0   9   0   0    9    0    0    0    0    0
+\#
+\# Material                   GO1 GO2 GO3 GO4 GO5  GO6  GO7  G08  G09  G10  G11
+\#
+\#   GO1   Lacustrine/Marine     
+\#   GO2   Evaporitic / playa   
+\#   GO3   Metamorphic  
+\#   GO4   Hydrothermal  
+\#   GO5   Pedogenic /diagenic /weathering (include secondary coatings)  
+\#   GO6   Igneous (include carbonatites) 
+\#   GO7   Biogenic, Includes Vegetation
+\#   G08   Organic, not necessarily biogenic
+\#   G09   Man-Made
+\#   G10   Water Liquid or Ice
+\#   G11   Fire /Thermal Emission
+\#
+\# Material                   GO1 GO2 GO3 GO4 GO5  GO6  GO7  G08  G09  G10  G11
+\#
+smectite                       9   9   9   0   9    0    0    0    0    0    0  g04=0 2026-03-19a
+sodium_nitrate                 0   0   0   0   0    0    0    0    0    0    0
+sphalerite                     0   0   0   9   0    9    0    0    0    0    0
+starkeyite                     0   9   0   0   0    0    0    0    0    0    0
+staurolite                     0   0   9   0   0    0    0    0    0    0    0
+strontinite                    0   0   0   9   0    0    0    0    0    0    0
+sulfur                         0   0   9   0   0    9    9    0    0    0    0
+syngenite                      9   9   9   0   9    0    9    0    0    0    0
+szomolnokite                   9   0   0   0   9    0    0    0    0    0    0
+talc                           0   0   9   9   0    0    0    0    0    0    0
+thuringite                     9   0   9   9   0    0    0    0    0    0    0
+toluene                        0   0   0   0   0    0    0    9    0    0    0
+topaz                          0   0   0   0   0    9    0    0    0    0    0
+tremolite                      0   0   9   0   0    0    0    0    0    0    0
+tremolite_or_talc              0   0   9   0   0    0    0    0    0    0    0
+trichloroethane                0   0   0   0   0    0    0    9    0    0    0      ??????
+trichloroethylene              0   0   0   0   0    0    0    9    0    0    0      ??????
+ulexite                        0   9   0   0   0    0    0    0    0    0    0
+uralite                        0   0   9   0   0    9    0    0    0    0    0
+vegetation_photosyn            0   0   0   0   0    0    9    0    0    0    0
+vegetation_nonphotosyn         0   0   0   0   0    0    9    0    0    0    0
+water_ice                      0   0   0   0   0    0    0    0    0    9    0
+water_liquid                   0   0   0   0   0    0    0    0    0    9    0
+witherite                      0   0   0   9   0    0    0    0    0    0    0
+wollastonite                   0   0   9   0   0    0    0    0    0    0    0
+zoisite                        0   0   9   0   0    0    0    0    0    0    0
+zunyite                        0   0   9   9   0    0    0    0    0    0    0
+\#
+\# Material                   GO1 GO2 GO3 GO4 GO5  GO6  GO7  G08  G09  G10  G11
+\#
+\#   GO1   Lacustrine/Marine     
+\#   GO2   Evaporitic / playa   
+\#   GO3   Metamorphic  
+\#   GO4   Hydrothermal  
+\#   GO5   Pedogenic /diagenic /weathering (include secondary coatings)  
+\#   GO6   Igneous (include carbonatites) 
+\#   GO7   Biogenic, Includes Vegetation
+\#   G08   Organic, not necessarily biogenic
+\#   G09   Man-Made
+\#   G10   Water Liquid or Ice
+\#   G11   Fire /Thermal Emission
+\#
+\#       11111111112222222222333333333344444444445555555555666666666677777777778
+\#345678901234567890123456789012345678901234567890123456789012345678901234567890

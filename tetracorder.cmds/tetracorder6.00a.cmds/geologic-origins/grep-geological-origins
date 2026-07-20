@@ -1,0 +1,93 @@
+#!/bin/sh
+
+
+# 45678901234567890123456789012345678901234567890123456789012345678901234567890
+#   GO1   Lacustrine/Marine       
+#   GO2   Evaporitic / playa      
+#   GO3   Metamorphic
+#   GO4   Hydrothermal
+#   GO5   Pedogenic /diagenic /weathering (include secondary coatings)      
+#   GO6   Igneous (include carbonatites)  
+#   GO7   Biogenic, Includes Vegetation   
+#   G08   Organic, not necessarily biogenic   
+#   G09   Man-Made
+#   G10   Water Liquid or Ice
+#   G11   Fire /Thermal Emission
+#   
+#   
+# Material                   GO1 GO2 GO3 GO4 GO5  GO6  GO7  G08  G09  G10  G11
+#   
+# zero entry:
+#ero                           0   0   0   0   0    0    0    0    0    0    0
+
+origins='geological-origin-table-by-material.txt'
+
+#grep '  0   0   0   0   0    0    0    0    0    0    0'  $origins
+
+if [ ! "$1" ]
+then
+	echo "usage:"
+	echo '      grep-geological-origins [-h] 1|2|3|4|5|6|7|8|9|10|11'
+	echo " "
+	echo "Example: list a header and all entries with column 4 =1"
+	echo " "
+	echo "      ./grep-geological-origins -h 4"
+	echo " "
+fi
+
+if [ "$1" = "-h" ]
+then
+	head -26 $origins | tail -11
+	echo " "
+	echo '\# Material                   GO1 GO2 GO3 GO4 GO5  GO6  GO7  G08  G09  G10  G11'
+	shift
+fi
+
+if [ "$1" = "1" ]
+then
+        #                                   0      0   0   0   0    0    0    0    0    0    0
+	grep -v 'zero ' $origins | grep '  [1-9]   .   .   .   .    .    .    .    .    .    .'
+fi
+if [ "$1" = "2" ]
+then
+        #                                  0   0       0   0   0    0    0    0    0    0    0
+	grep -v 'zero ' $origins | grep '  .   [1-9]   .   .   .    .    .    .    .    .    .'
+fi
+if [ "$1" = "3" ]
+then
+        #                                  0   0   0       0   0    0    0    0    0    0    0
+	grep -v 'zero ' $origins | grep '  .   .   [1-9]   .   .    .    .    .    .    .    .'
+fi
+if [ "$1" = "4" ]
+then
+	grep -v 'zero ' $origins | grep '  .   .   .   [1-9]   .    .    .    .    .    .    .'
+fi
+if [ "$1" = "5" ]
+then
+	grep -v 'zero ' $origins | grep '  .   .   .   .   [1-9]    .    .    .    .    .    .'
+fi
+if [ "$1" = "6" ]
+then
+	grep -v 'zero ' $origins | grep '  .   .   .   .   .    [1-9]    .    .    .    .    .'
+fi
+if [ "$1" = "7" ]
+then
+	grep -v 'zero ' $origins | grep '  .   .   .   .   .    .    [1-9]    .    .    .    .'
+fi
+if [ "$1" = "8" ]
+then
+	grep -v 'zero ' $origins | grep '  .   .   .   .   .    .    .    [1-9]    .    .    .'
+fi
+if [ "$1" = "9" ]
+then
+	grep -v 'zero ' $origins | grep '  .   .   .   .   .    .    .    .    [1-9]    .    .'
+fi
+if [ "$1" = "10" ]
+then
+	grep -v 'zero ' $origins | grep '  .   .   .   .   .    .    .    .    .    [1-9]    .'
+fi
+if [ "$1" = "11" ]
+then
+        #                                  0   0   0   0   0    0    0    0    0    0    0
+	grep -v 'zero ' $origins | grep '  .   .   .   .   .    .    .    .    .    .    [1-9]'
+fi

@@ -1,0 +1,3 @@
+y1260A Clinochlore_Fe SC-CCa-1.b s06crj3a=aa_
+ tf1= clinochlore  f1a  DLw  2.1890  2.2180  2.4040  2.4320   0.0000
+ tf2= clinochlore  f2a  WLw  2.1950  2.2240  2.2710  2.3000   0.0000

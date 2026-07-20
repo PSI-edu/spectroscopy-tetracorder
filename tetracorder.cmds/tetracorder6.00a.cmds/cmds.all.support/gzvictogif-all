@@ -1,0 +1,3 @@
+#!/bin/sh
+
+find . -name \*.depth.gz -o -name \*.fd.gz -o -name \*.fit.gz -exec gzvictogif-do_one {} \;

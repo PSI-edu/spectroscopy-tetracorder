@@ -1,0 +1,39 @@
+#!/bin/sh
+
+out="model-abundances.out2-model-results.txt"
+
+# resultsfile="cmd.compute-model-abundances.out"
+
+resultsfile="cmd.compute-model-abundances.out-quartz=100microns"
+
+if [ -f "$1" ]
+then
+	resultsfile=$1
+fi
+
+if [ -e "$2" ]
+then
+	echo "Output  $2   alreadey exists"
+	echo "exit 1"
+	exit 1
+fi
+
+if [ -n "$2" ]
+then
+	out=$2
+fi
+
+
+grep '^Model 1' $resultsfile  >  $out
+echo " "                                          >> $out
+echo " "                                          >> $out
+grep '^Model 2' $resultsfile  >> $out
+echo " "                                          >> $out
+echo " "                                          >> $out
+grep '^Model 3' $resultsfile  >> $out
+echo " "                                          >> $out
+echo " "                                          >> $out
+grep '^Model 4' $resultsfile  >> $out
+
+cat $out
+

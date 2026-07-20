@@ -1,0 +1,70 @@
+#!/bin/sh
+
+if [ -z "$1" ]
+then
+	echo "Usage:"
+	echo "./cmds.geology/cmd.make-one.geologic.mineral.group.image   class_name"
+	echo " "
+	echo "./cmds.geology/cmd.make-one.geologic.mineral.group.image   list   # lists all names"
+	exit 1
+fi
+
+lfile="AAA.info/material-classifications.txt"
+
+# vegetation_photosyn               biologic                organic              group=   0 imat=     1 c=  1  enable    mce= 204  group.1um/vegetation1
+# vegetation_photosyn               biologic                organic              group=   0 imat=     2 c=  1  enable    mce= 204  group.1um/vegetation.dry+green
+# vegetation_nonphotosyn            biologic                organic              group=   0 imat=     2 c=  2  enable    mce= 205  group.1um/vegetation.dry+green
+# water_ice                         oxide                   oxide                group=   0 imat=     3 c=  1   DISABLE  mce= 206  group.1um/snow.and.ice-77k
+# water_ice                         oxide                   oxide                group=   0 imat=     4 c=  1   DISABLE  mce= 206  group.1um/h2o-frost+ice-drops3-100k
+# ..........................................................
+#          11111111112222222222333333333344444444445555555555666666666677777777778
+# 12345678901234567890123456789012345678901234567890123456789012345678901234567890
+
+
+if [ "$1" = "list" ]
+then
+	cat $lfile | sed -e 's/^..........................................................//' | \
+		grep -a -v DISABLE | grep -a -v '^zero ' | \
+		awk '{ print $1 }' | grep -a -v zero | grep -a -v 'group='   | sort | uniq -c  | \
+		awk '{ printf("%20s   %s\n", $1, $11 ) }' 
+
+else
+
+	if [ -z "$2" ]
+	then
+		echo "Usage:"
+		echo "./cmds.geology/cmd.make-one.geologic.mineral.group.image   class_name  outputfilename"
+		echo " "
+		echo "./cmds.geology/cmd.make-one.geologic.mineral.group.image   list   # lists all names"
+		exit 1
+	fi
+
+	groupnam=$1
+
+	ofile=$2
+	if [ -f "$ofile" ]
+	then
+		echo "ERROR:  $ofile already exists"
+		exit 2
+	fi
+
+	#otmp=imagelist-tmp$$    # temporary file  not needed
+
+	echo "cmd.make-one.geologic.mineral.group.image:  making ${ofile}-group-list.txt"
+
+	cat $lfile | sed -e 's/^..........................................................//' | \
+		grep -a -v DISABLE |  sed -e 's/^      /zero  /'  | grep -a -v '^zero ' | \
+		grep -a $groupnam  | awk '{ print $11 }'  > ${ofile}-group-list.txt
+
+		#awk '{ printf("%s\n", $11 ) }'   > ${ofile}-group-list.txt
+		#awk '{ printf("%20s   %s\n", $1, $12 ) }'   > ${ofile}-group-list.txt
+		#grep -a $1 | \
+
+	echo "cat  ${ofile}-group-list.txt"
+	cat ${ofile}-group-list.txt
+
+
+	echo " "
+	echo "./cmds.geology/davinci.make-tet-mineral-group-image-from-list  ${ofile}-group-list.txt   $ofile"
+	./cmds.geology/davinci.make-tet-mineral-group-image-from-list        ${ofile}-group-list.txt   $ofile
+fi

@@ -1,0 +1,27 @@
+#   color.result name                                color.keys  key file
+#
+_1.5um.broadfeats.png                               key_1.5um-broadfeats.a.png
+_1.9um.water.band.position.png                      key_1.9-water.a.png
+_1.9um.water.sulfates.band.position.png             key_1.9-water-sulfates.a.png
+_1.9um.water.wave.position.a.png                    key_water-map-1.9-2um_labels_b.png
+_1micron-minerals-a.png                             key_1um-map.fe2+,fe3+.a-1200w.png
+_2micron-minerals-b4.png                            key_2um-mins-b4-layout-1200w.png   
+_2micron-minerals.png                               key_2micron-mins_labels_a.png
+_2micron-minerals-detail2.png                       key_2micron-mins-detail2-layout-1200w.png
+_2micron-minerals-muscovite-comp.png                key_2um-mins-muscovite-comp-layout-1200w.png
+_2micron-mins-emit8.png                             key_2um-mins-emit8-layout-1200w.png
+_2micron-mins-muscovite-comp+labels.png             key_2um-mins-muscovite-comp-layout-1200w.png
+_acid-minerals-buffering-minerals.a.png             key_acid-minerals-buffering-minerals.a.png
+_hematite+goethite.grain.size-a.png                 key_hematite+goethite.grain.size.a-wide.png
+_organics-veg-2um-a.png                             key_organics,veg-2um-a-1200w.png
+_prehnite-chlorite-mix+perchlorate.png              key_prehnite-chloriteserp-perchlorate_labels_a.png
+_pyroxene.2um.band.position.png                     key_pyroxene_labels_a.png
+_ree.b-g21.png                                      key_ree-b-g21.png
+_ree.b-g21+bw.png                                   key_ree-b-g21.png
+_red-edge-shift-a.png                               key_red-edge-shift.a.png
+_snow-grain-size-water.a.png                        key_snow-grain-size-water.a.png
+_vegetation-cover-a.png                             key_vegetation-cover.a.png
+_veg-spectral-type.png                              key_veg-spectral-type.a.png
+_veg,water,snow.png                                 key_veg,water,snow.a.png
+_veg-water-rgb.png                                  key_veg-water-rgb.png
+_water-a.png                                        key_water.a.png

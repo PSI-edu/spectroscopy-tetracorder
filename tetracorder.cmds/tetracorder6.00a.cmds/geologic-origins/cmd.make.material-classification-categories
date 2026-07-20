@@ -1,0 +1,26 @@
+#!/bin/sh
+
+# \#  Material                       classification          group
+# \#
+# \#       11111111112222222222333333333344444444445555555555666666666677777777778
+# \# 45678901234567890123456789012345678901234567890123456789012345678901234567890
+# \#                            |--|                    |--|                    |
+# zero                              zero                    zero
+# acid_mine_drainage                mixture
+# actinolite                        Inosilicate             amphibole
+# adularia                          tectosilicate           feldspar
+# albite                            tectosilicate           feldspar
+# algea                             biologic                organic
+
+set -x
+
+cat material-classification.txt | grep -v '^\\#' | grep -v '^zero' | \
+      cut -c 35-54 | sed -e 's/ *$//'  | sort -u \
+      > material-classification-categories.txt
+
+
+
+
+cat material-classification.txt | grep -v '^\\#' | grep -v '^zero' | \
+      cut -c 35-54 | sed -e 's/ *$//'  | sort | uniq -c \
+       > material-classification-categories-count.txt

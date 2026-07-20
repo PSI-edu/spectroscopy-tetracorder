@@ -1,0 +1,20 @@
+#!/bin/sh
+
+egrep 'f[1234]a|output|^group|^case' cmd.lib.setup.t5.27g2 | \
+		grep -v define | grep -v endoutput | grep -v depth
+
+nfeats=`egrep 'f[1234]a|output|^group|^case' cmd.lib.setup.t5.27g2 | \
+                grep -v define | grep -v endoutput | grep -v depth | \
+                grep -v 'output title' | grep -v '^group' | grep -v '^case' | \
+                grep -v '^\\#' | grep -v '^   \\#' | grep -v '               ' | \
+                grep -v '^ \\#' | grep ' f[1-9][abc] [DMWO]' | wc -l`
+
+echo " "
+echo "$nfeats   total number of spectral features"
+
+nspec=`egrep 'f[1234]a|output|^group|^case' cmd.lib.setup.t5.27g2 | \
+              grep -v define | grep -v endoutput | grep -v depth | \
+              grep  'output title' | wc -l`
+
+echo " "
+echo "$nspec  total number of reference spectra"

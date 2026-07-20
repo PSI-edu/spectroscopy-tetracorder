@@ -1,0 +1,70 @@
+#!/bin/sh
+
+if [ -z "$1" ]
+then
+
+	echo "usage:"
+	echo "   prepare a list of spectra using spprint, e.g. "
+	echo "   spprint spreslt1  > alist1 "
+	echo "       edit the list to include only the lines with spectra to continuum remove "
+	echo "run:"
+	echo " "
+	echo "./cmd.generate.m3.cmds.for.linear.continuum.removal alist1 > cmds.remove.linear.continuum-1 "
+	echo "  chmod 755 cmds.remove.linear.continuum-1"
+	echo "  edit cmds.remove.linear.continuum-1 if you have non-default specpr file names"
+	echo " "
+	echo "    input default specpr file name = spreslt1 "
+	echo "    output default specpr file name = sputmp1"
+	echo " "
+	echo "./cmds.remove.linear.continuum-1"
+	echo " "
+	exit 1
+
+fi
+
+
+# given a list from spprint, e.g.  (note column 1 is reall blanks)
+
+#   60  m3g4RC1N g1.3 kaolin.5+muscov. av1470095    85  20:54:22.00  10/06/2020      0      0
+#   61  m3g4RC1N g1.3 oh1.392_amphibol av8817863    85  21:20:56.00  10/06/2020      0      0
+#   62  m3g4RC1N g1.4 ohb1.438slf-al av34071251     85  21:51:54.00  10/06/2020      0      0
+#   63  m3g4RC1N g1.4 ohb1.435_tourm av20025445     85  22:20:21.00  10/06/2020      0      0
+#   64  m3g4RC1N g1.4 ohb1.425slf-al av19436911     85  22:48:39.00  10/06/2020      0      0
+#   65  m3g4RC1N g1.5 ohc1.471slf-ja av19062333     85  23:17:05.00  10/06/2020      0      0
+#   66  m3g4RC1N g1.5 ohc1.451_hydroxi av7822844    85  23:43:30.00  10/06/2020      0      0
+#        11111111112222222222333333333344444444445555555555666666666677777777778
+#2345678901234567890123456789012345678901234567890123456789012345678901234567890
+
+# convert to (ignore # at beginning of line):
+
+# p="davinci.remove.adaptive.linear.continuum.from.spectrum spreslt1"
+# 
+# c="6 -ch 33 38 74 77 -out sputmp1 -title"
+# 
+# $p  60  $c  "m3g4RC1N g1.3 kaolin.5+muscov. 1470095/c"  $a
+# $p  61  $c  "m3g4RC1N g1.3 oh1.392_amphibol 8817863/c"  $a
+# $p  62  $c  "m3g4RC1N g1.4 ohb1.438slf-al 34071251 /c"  $a
+# $p  63  $c  "m3g4RC1N g1.4 ohb1.435_tourm 20025445 /c"  $a
+# $p  64  $c  "m3g4RC1N g1.4 ohb1.425slf-al 19436911 /c"  $a
+# $p  65  $c  "m3g4RC1N g1.5 ohc1.471slf-ja 19062333 /c"  $a
+# $p  66  $c  "m3g4RC1N g1.5 ohc1.451_hydroxi 7822844/c"  $a
+
+alist=$1
+
+echo '#!/bin/sh'
+echo ' '
+echo '# $p  60  $c  "m3g4RC1N g1.3 kaolin.5+muscov. 1470095/c"  $a'
+echo '# $p  61  $c  "m3g4RC1N g1.3 oh1.392_amphibol 8817863/c"  $a'
+echo '# $p  62  $c  "m3g4RC1N g1.4 ohb1.438slf-al 34071251 /c"  $a'
+echo ' '
+echo 'p="davinci.remove.adaptive.linear.continuum.from.spectrum spreslt1"'
+echo ' '
+echo 'c="6 -ch 33 38 74 77 -out sputmp1 -title"'
+echo ' '
+echo 'a="-adapt 5 77 1"'
+echo ' '
+
+
+cat $alist | cut -c '1-48' | sed -e 's/ av/ /' | sed -e 's/$/\/c/' | \
+	sed -e 's/^/$p/' | sed -e 's/^........  /&$c  "/' | \
+	sed -e 's/$/"  $a/'

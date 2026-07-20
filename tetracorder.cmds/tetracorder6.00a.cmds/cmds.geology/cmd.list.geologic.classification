@@ -1,0 +1,23 @@
+#!/bin/sh
+
+if [ -z "$1" ]
+then
+	echo "Usage:"
+	echo "./cmds.geology/cmd.list.geologic.classification   class_name"
+	echo " "
+	echo "./cmds.geology/cmd.list.geologic.classification   list   # lists all names"
+fi
+
+lfile="AAA.info/material-classifications.txt"
+
+if [ "$1" = "list" ]
+then
+	cat $lfile | sed -e 's/^..................................//' | awk '{ print $1 }' | \
+			grep -a -v zero  | sort | uniq -c
+
+	c=`wc -l $lfile | awk '{ print $1 }'`
+	echo "Total entries = $c in file $lfile"
+else
+
+	grep -a  "^..................................$1   "  $lfile
+fi

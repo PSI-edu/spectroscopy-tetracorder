@@ -1,0 +1,35 @@
+#!/bin/sh
+
+TETNCPU=4
+
+if [ -z "$TETNCPU" ]   # make sure tetracorder number of cpus variable exists
+then
+        TETNCPU=1
+fi
+
+NCPU=1   # number of cpus in use, min=1
+
+for i in 1 2 3 4 5 6 7 8 9 10 11 12 12 14
+do
+   if [ "$TETNCPU" -gt "1" ]   # if multiple cpus declared, run in parallel
+   then
+        if [ "$NCPU" -lt "$TETNCPU" ]  # can do more in parallel
+        then
+                echo "./test1 $i  parallel NCPU=$NCPU  max=$TETNCPU"
+                ./test1 $i &
+                NCPU=`expr "$NCPU" + 1`
+        else                           # at cpu limit, so do not do in background
+                echo "./test1 $i  cpufull NCPU=$NCPU  max=$TETCPU"
+                echo "waiting for process group to finish.  max = $TETNCPU jobs"
+                echo " "
+                ./test1 $i
+                wait
+                NCPU=1
+        fi
+   else                         # use only 1 cpu
+        ./test1  $i
+   fi
+done
+
+wait   # wait for all jobs to finish
+echo "done " `date`

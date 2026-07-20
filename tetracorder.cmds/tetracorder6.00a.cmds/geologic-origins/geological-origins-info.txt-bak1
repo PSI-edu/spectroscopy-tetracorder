@@ -1,0 +1,306 @@
+
+#   GO1   Lacustrine/Marine     
+#   GO2   Evaporitic / playa   
+#   GO3   Metamorphic  
+#   GO4   Hydrothermal  
+#   GO5   Pedogenic /diagenic /weathering (include secondary coatings)  
+#   GO6   Igneous (include carbonatites) 
+#   GO7   Biogenic, Includes Vegetation
+#   G08   Organic, not necessarily biogenic
+#   G09   Man-Made
+#   G10   Water Liquid or Ice
+#   G11   Fire /Thermal Emission
+
+actinolite               actinolite: Produced by low-grade regional or contact metamorphism
+                         of magnesium carbonate, mafic, or ultramafic rocks;
+                         Also in glaucophane-bearing blueschists.
+
+
+adularia
+albite
+algea
+aliphatic
+almandine
+alunite_hydrothermal
+alunite_hydroth_pedog
+natroalunite
+ammonioalunite
+ammonillsmectite
+ammoniojarosite
+amphibole
+analcime
+anorthite
+antigorite
+aragonite
+augite
+axinite
+azurite
+beidellite
+benzene
+biotite
+black_Mn_Coating
+bloedite
+bronzite
+brucite
+buddingtonite
+butlerite
+bytownite
+
+calcite                   https://www.mindat.org/min-859.html
+                          Found in most geologic settings and as a
+                          later forming replacement mineral in most
+                          other environments in one form or another,
+                          it is most common as massive material
+                          in limestones and marbles. It forms as
+                          chemical sedimentary deposits as limestone,
+                          can be regionally or contact metamorphosed
+                          into marbles and rarely forms igneous
+                          rocks (carbonatites). Also is a common
+                          gangue mineral in hydrothermal deposits.
+
+                          major:  G01 G03 G05
+                          minor   G04  make =1?    3/23/2026  RC
+                          ??? origins table has G02 why?   make =2? 3/23/2026  RC
+
+carnallite
+chalcedony
+chalcopyrite
+chlorite
+chlorophyll
+chromite
+chrysocolla
+chrysotile
+cinnabar
+
+clinochlore               clinochlore: Hydrothermal alteration product of
+                          amphibole, pyroxene, and biotite.
+
+clintonite
+co2_gas
+co2_ice
+co2_trapped
+colemanite
+cookeite
+copiapite
+coquimbite
+cronstedtite
+cummingtonite
+cuprite
+cyanide
+cyanide-CdK
+cyanide-KFe
+cyanide-NiK
+cyanide-trihydrate
+cyanide-ZnK
+datolite
+diaspore
+dickite
+pyroxene_diopside
+dolomite
+dry_grass
+dry_wood
+dust_WTC
+elbaite
+endellite
+enstatite
+epidote
+eugsterite
+fe2+_chlorite.thuringite
+fe2+fe3+_hematite_weath
+fe2+fe3+mix
+fe2+fe3+_water_RTsludge
+fe2+generic_actinolite          generic, so no population in the origins table
+fe2+generic_almandine          generic, so no population in the origins table
+fe2+generic_amphibole          generic, so no population in the origins table
+fe2+generic_axinite            generic, so no population in the origins table
+fe2+generic_basalt             generic, so no population in the origins table
+fe2+generic_carbonate          generic, so no population in the origins table
+fe2+generic_chlor+clinochlor   generic, so no population in the origins table
+fe2+generic_chlorite           generic, so no population in the origins table
+fe2+generic_clinochlore        generic, so no population in the origins table
+fe2+generic_jadeite            generic, so no population in the origins table
+fe2+generic_nrw.cu             generic, so no population in the origins table
+fe2+generic_staurolite         generic, so no population in the origins table
+fe2+generic_sulfate_butlerite  generic, so no population in the origins table
+fe2+generic_vbroad             generic, so no population in the origins table
+fe3+bearing1                   generic, so no population in the origins table
+
+fe3+_ferrihydrite            source: ?
+                             ferrihydrite: Cold-water springs, Mine workings, warm subsea springs,
+                             warm water seabed, thermal springs, thermal water in brooks,
+                             rivers and lakes.
+fiberglass
+gasolene_unleaded
+gibbsite
+
+goethite                       source: ?
+                             goethite: Common weathering product,
+                             primary hydrothermal mineral, bog and
+                             marine environments.
+
+                             coarse grains  G01 G04 G05
+
+goethite_smallgrain          assume only G01 G05
+
+grossular
+gypsum
+
+halloysite                    source: ?
+                             halloysite: Halloysite is found in widely varied environments,
+                             including as an alteration of basaltic rocks, in hydrothermally
+                             altered fissure deposits in monzonites; it is also derived from
+                             feldspars, chlorites, micas, rhyolites, granites, volcanic ash,
+                             tuffs and pumices. More rarely found in granitic pegmatites,
+                             bauxites or laterites, and in some marine and glacial clays.
+
+
+hectorite
+hedenbergite
+
+hematite                      source: ?
+                              hematite: Large ore bodies of hematite
+                              are usually of sedimentary origin;
+                              also found in high-grade ore bodies
+                              in metamorphic rocks due to contact
+                              metasomatism, and occasionally as a
+                              sublimate on igneous extrusive rocks
+                              ("lavas") as a result of volcanic
+                              activity. It is also usually the
+                              cause of red soils all over the planet.
+
+hematite_smallgrain           G05 G07
+
+hornblende
+howlite
+hydrated_basaltic_glass
+hydrogrossular
+pyroxene_hypersthene
+
+illite                        source: ?
+                             illite: Found in a wide variety of
+                             environments, the materials of this
+                             series form by either weathering
+                             or hydrothermal alteration of
+                             muscovite-phengite; but some is
+                             authigenic or could be derived
+                             from alteration of K-feldspars or
+                             recrystallization of smectites.
+                             Common in sediments, clays, marls,
+                             shales and some slates.  Interstratified
+                             illite-smectite converts to illite at
+                             depths and mixed-layer ratios have
+                             been used to interpret the depth of
+                             burial of sediments.
+
+
+jarosite                       source: ?
+                              jarosite: A secondary mineral found in the oxidized zones of
+                              sulfide deposits, forming by the reaction of dilute sulfuric
+                              acid in groundwater, derived from the oxidation of pyrite,
+                              with gangue minerals and wall rock in the deposits.
+
+
+kaolinite                     kaolinite: A primary constiuent of clay beds formed by the
+                               decomposition of feldspar-bearing rocks.
+kaolinite_pxl
+
+kaolinite_wxl                 Kaolinite in a hydrothermal system
+
+kieserite
+lazurite
+lepidocrosite
+lepidolite
+lizardite
+maghemite
+magnesite
+hydromagnesite
+malachite
+manganese
+margarite
+mascagnite
+methane_gas
+methane_ice
+microcline
+mirabilite
+montmorillonite
+muscovite
+nacrite
+natrolite
+neodymium_oxide
+niter
+nitrobenzene
+nontronite
+nonyne
+olivine
+organic_plastic_green
+organic_plastic_blue
+organic_plastic_pvc
+organic_plastic-pete
+organic_plastic-hdpe
+organic_plastic-vinyl
+organic_fiberglass
+organic_polystyrene
+orthoclase
+organic_paint
+palygorskite
+paragonite
+pectolite
+pentene
+perchlorate
+peroxide
+phlogopite
+pyroxene_pigeonite
+pinnoite
+pitchlimonite
+polyhalite
+portlandite
+potassium_nitrate
+prehnite
+propylzone
+pyridine
+pyrite
+pyrolusite
+pyrophyllite
+quartz
+rhodochrosite
+rhodonite
+richterite
+riebeckite
+rivadavite
+roscoelite
+rutile
+samarium_oxide
+saponite
+saponite_or_talc
+schwertmannite
+sepiolite
+serpentine
+siderite
+smaragdite
+smectite
+sodium_nitrate
+sphalerite
+starkeyite
+staurolite
+strontinite
+sulfur
+syngenite
+szomolnokite
+talc
+thuringite
+toluene
+topaz
+tremolite
+tremolite_or_talc
+trichloroethane
+trichloroethylene
+ulexite
+uralite
+vegetation_photosyn
+vegetation_nonphotosyn
+water_ice
+water_liquid
+witherite
+wollastonite
+zoisite
+

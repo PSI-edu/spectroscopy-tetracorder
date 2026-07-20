@@ -1,0 +1,61 @@
+#!/bin/sh
+
+if [ -z "$1" ]
+then
+	echo "Usage:"
+	echo "./cmds.geology/cmd.list.geologic.classification   class_name"
+	echo " "
+	echo "./cmds.geology/cmd.list.geologic.classification   list   # lists all names"
+	exit 1
+fi
+
+lfile="AAA.info/material-classifications.txt"
+
+if [ "$1" = "list" ]
+then
+	cat $lfile | sed -e 's/^..................................//' | \
+		sed -e 's/...................  group= /zzzzzzz              group= /' | \
+		grep -a -v DISABLE | grep -a -v '^zero ' | \
+		awk '{ printf("%20s   %s\n", $1, $12 ) }' | grep -a -v  'zzzzzzz'
+
+else
+
+	if [ -z "$2" ]
+	then
+		echo "Usage:"
+		echo "./cmds.geology/cmd.list.geologic.classification   class_name  outputfilename"
+		echo " "
+		echo "./cmds.geology/cmd.list.geologic.classification   list   # lists all names"
+		exit 1
+	fi
+
+	classnam=$1
+
+	ofile=$2
+	if [ -f "$ofile" ]
+	then
+		echo "ERROR:  $ofile already exists"
+		exit 2
+	fi
+
+	otmp=imagelist-tmp$$    # temporary file
+
+	cat $lfile | sed -e 's/^..................................//' | \
+		sed -e 's/...................  group= /zzzzzzz              group= /' | \
+		grep -a $1 | \
+		grep -a -v DISABLE | grep -a -v '^zero ' | \
+		awk '{ printf("%20s   %s\n", $1, $12 ) }'   > ${ofile}-list.txt
+
+	awk '{ print $2 }' ${ofile}-list.txt | sort -u  > $otmp
+
+	otmpn=`wc -l $otmp | awk '{ print $1 }'`
+
+	if [ "otmpn" = "0" ]
+	then
+		echo "      cmd.make-one.geologic.classification.image $classnam"
+		echo "ERROR:      $otmp has no entries; skipping classifications"
+	else
+
+		./cmds.geology/davinci.make-tet-classification-image-from-list  $otmp   $ofile
+	fi
+fi

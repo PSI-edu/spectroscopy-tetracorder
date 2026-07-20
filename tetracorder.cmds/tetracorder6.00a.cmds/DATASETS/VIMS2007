@@ -1,0 +1,3 @@
+restart= r1-vims2007
+lib=     cmd.lib.setup.t5.1vims_ice-b8
+start=   cmds.start.t5.1vims_ice-b8

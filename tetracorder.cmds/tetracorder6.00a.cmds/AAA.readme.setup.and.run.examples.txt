@@ -1,0 +1,116 @@
+
+ How to run tetracorder
+
+Tetracorder has 3 basic modes of operation:
+1) Image cube mapping.
+2) Single spectrum analysis.
+3) Single spectrum, real-time analysis (analyze incoming data from a spectrometer).
+
+Run the command:
+
+       /t1/tetracorder.cmds/tetracorder6.00a.cmds/cmd-setup-tetrun
+
+with no options on the command line and it will tell you command line parameters and options needed.
+
+New command line options in tetracorder 6:
+
+    longcubeid  a longer ID to prepend to color results and geology images
+
+    geology     flag to calculate geologic origins, make the geologic origins cube,
+                make geologic origins images, results put in directory: geologic-origins
+                compute geologic-classifications images, results put in
+                              directory: geologic-classifications
+		(to be completed: compute the mineral groups images gand
+                              results will; be put in directory: eologic-groups)
+
+Geology output is not yet added to tetracorder single spectrum modes.
+
+
+Examples:
+
+#########################################################################
+1) Image cube mapping. Say we want to map in directory /data1/aviris/cuprite95 and the image cube to be mapped is in a
+directory /data1/aviris/cuprite95/cube.
+
+cd /data1/aviris/cuprite95
+ls -l cube  # shows vicar header cube with separate envi header:
+
+-rw-rw-r-x 1 rclark users 267371212 Dec 28  2011 cuprite.95.cal.rtgc.v
+-rw-rw-r-- 1 rclark users       212 Dec 28  2011 cuprite.95.cal.rtgc.v.hdr
+
+Run the command:
+
+/t1/tetracorder.cmds/tetracorder6.00a.cmds/cmd-setup-tetrun  testrun1 aviris_1995 \
+                cube ../cube/cuprite.95.cal.rtgc.v  0.00005  \
+                -T 10 50 C  -P  0.8 1.1 bar image png  shortcubeid cuprit95_6 \
+		longcubeid cuprite95-aviris_t6.00geo2  geology
+
+Mapping results will be in the directory testrun1. The above command will create the directory, install the necessary
+components then give you two commands to execute: cd to the directory and the command to run the tetracorder and create all
+output products once you are in the directory:
+
+cd testrun1
+time ./cmd.runtet cube <& cmd.runtet.out &
+
+
+######### example 2:   AVIRIS 5
+
+image envi format cube in directory cube, ls -l cube
+-rw-rw-r-- 1 rclark users 9087039104 Mar  1 15:50 AV520250627t181139_006_L2A_OE_85fb571f_RFL_ORT
+-rw-r--r-- 1 rclark users      16617 Mar  2 17:32 AV520250627t181139_006_L2A_OE_85fb571f_RFL_ORT.hdr
+
+Run the command:
+
+/t1/tetracorder.cmds/tetracorder6.00a.cmds/cmd-setup-tetrun map-cuprite-av5-25-t6.01a2b-geotest  \
+        aviris5_2025  cube ../cube/cuprite_av5-25   1.0 \
+	-T 10 50 C  -P  0.8 1.1 bar image png  shortcubeid cuprt5-25  \
+	longcubeid cuprite-aviris5-2025-tet6.01a2b  geology
+
+######### example 3:  EMIT Cuprite envi format cube in directory cubes:
+
+-rw-rw-r-- 1 rclark users 1812326400 Feb  9 11:36 cubes/emit20240626t165035_rfl
+-rw-rw-r-- 1 rclark users      11772 Feb  9 11:36 cubes/emit20240626t165035_rfl.hdr
+
+Run the command:
+
+/t1/tetracorder.cmds/tetracorder6.00a.cmds/cmd-setup-tetrun map_emit20240626t165035_cuprite-t6a2 \
+                emit_c  cube ../cubes/emit20240626t165035_rfl  1.0  \
+                -T 3 50 C  -P  0.8 1.1 bar image png  shortcubeid emCuprite \
+                longcubeid   cuprite-emit_ref2026_tet6.00a2  geology
+
+
+
+#########################################################################
+2) Single spectrum analysis. This mode is similar to the setup like in case 1 above. If no directory has been set up (no
+image cube, instead of cube, specify singlespectrum. Example:
+
+/t1/tetracorder.cmds/tetracorder5.27c.cmds/cmd-setup-tetrun testrun1 aviris_1995 singlespectrum nofollow -10 50 c 0.8 1.1 bar
+
+cd testrun1
+
+Typically you would start specpr and assign any aditional specpr files youi may need.
+Exit specpr
+
+Next, start teracorder with the command:
+
+tetracorder5.27single r1
+
+then redirect input at the first command line prompt:
+
+<cmds.start.t5.27c.single
+
+Then analyze any spectrum in an assigned specpr file.
+
+This mode can also be invoked from a directory where a cube mapping run has been completed, and is usualy done by a user
+working to verify results of a mapping run by extracting spectra from the cubes and analyzing them individually. That allows
+greater diagnostic output made by the tetracorder expert system.
+
+#########################################################################
+3) Single spectrum, real-time analysis This mode is similar to #2, except the incoming real-time spectra are to a specific
+specpr file. Example:
+
+/t1/tetracorder.cmds/tetracorder5.27c.cmds/cmd-setup-tetrun testdir ASDFS singlespectrum follow 0 80 c 0.9 1.1 bar autostart
+
+There is a command that does this the above for ASD specrometer data, like being done for rover tests:
+
+/t1/tetracorder.cmds/tetracorder5.2a.cmds/cmd.tetracorder.rover.ASD.setup.and.autostart testdir 

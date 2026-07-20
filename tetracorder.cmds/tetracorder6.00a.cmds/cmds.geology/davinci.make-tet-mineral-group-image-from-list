@@ -1,0 +1,78 @@
+#!/usr/bin/env -S davinci -f  
+
+###########################  was:  #!/usr/local/bin/davinci -f
+
+afile = $1    # list of images (basename), to be added: .fd.gif
+
+ofile = $2
+
+alist = read_lines(filename=afile)
+
+alines = length(alist)
+
+if ( alines == 0 ) {
+
+	printf ("     davinci.make-tet-mineral-group-image-from-list input file list of images has no entries\n")
+	printf ("                        file: %s\n", afile)
+	printf ("          Making no outoput image\n")
+	printf ("     exit   davinci.make-tet-mineral-group-image-from-list\n")
+	exit(1)
+}
+
+define read_an_image(1,1) {
+
+	# read a gray-scale image and convert to 3-bands
+
+	afile = $1   # file to read
+	printf ("reading file %s\n", afile)
+	aaa=read(filename=afile)
+	if (HasValue(aaa) ==0) {  # check that read worked
+		printf ("read ERROR on file: %s\n",afile)
+		printf ("setting to zero\n")
+		aaa=0
+	}
+	aaa = aaa[,,1]             # make sure the image is one band
+	#qqq = cat(aaa,aaa,axis=z)  # make into 2-band image
+	#aaa = cat(aaa,qqq,axis=z)  # make into 3-band image
+
+	return (aaa)
+
+}  # end define
+
+aout = 0
+
+for (i=1; i<=alines; i++) {
+
+	afile = alist[,i,]
+	bfile = afile + ".fd.gif"
+	printf("image: %s\n", bfile)
+
+	#cc="ls -l " + bfile
+	#c=system(cc)
+
+	oneimage = read_an_image(bfile)
+
+	onemom = moment(oneimage)
+	printf ("oneimage min max mean = %f   %f  %f   %s\n", onemom[1,1,1], onemom[2,1,1],  onemom[3,1,1], bfile)
+
+	aout = aout + oneimage
+}
+
+bbb = byte(aout)
+
+bbbmom = moment(bbb)
+	printf ("output image min max mean = %f   %f  %f   %s\n", bbbmom[1,1,1], bbbmom[2,1,1], bbbmom[3,1,1], ofileg)
+
+if ( bbbmom[1,1,1] < 0.00001 && bbbmom[2,1,1] < 0.00001 ) {
+
+	printf ("     davinci.make-tet-mineral-group-image-from-list  output is zero\n")
+	printf ("                        file: %s\n", ofile)
+	printf ("          Making no outoput image\n")
+	printf ("     exit   davinci.make-tet-mineral-group-image-from-list\n")
+	exit(1)
+}
+
+ofileg = ofile + "-group.gif"
+
+write (bbb,filename=ofileg, type=gif)
+

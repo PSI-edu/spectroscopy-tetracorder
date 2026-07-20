@@ -1,0 +1,108 @@
+#!/bin/sh
+# extract aviris channels for making  TM Bands
+
+#TM bands, approximate:
+#===============================
+#                  AVIRIS channels       Hyperion 2006 channels
+#CH  wavelength    (5/1993)     6/1995
+#1) 0.45 - 0.51     9-14        8-14
+#2) 0.53 - 0.605   17-23       17-23
+#3) 0.63 - 0.69    27-36       27-36
+#4) 0.79 - 0.89    47-56       47-56
+#5) 1.57 - 1.77   129-149     124-149
+#7) 2.12 - 2.33   186-207     185-206
+
+# e.g. $1=/o1/Summitville/CUBE/summr3s3-4.reflt
+# e.g. $2=summr3s3-4
+#############################################################
+prog=`basename $0`
+
+option=' '
+if [ "$1" = '-1993.198ch' ]
+then
+	echo "NOTE: special option -1993.198ch found"
+	echo "      using AVIRIS 5/1993 198ch wavelengths"
+	option=-1993.198ch
+	shift
+fi
+
+if [ -z "$1" -o -z "$2" ]
+then
+	echo "Usage: $prog [-1993.198ch]  cube_file_name   output_base_file_name"
+	exit 1
+fi
+
+if [ ! -s "$1" ]
+then
+	echo "ERROR: cube does not exist, or is zero length:"
+	echo "$1"
+	exit 2
+fi
+if [ -w "$1" ]
+then
+	echo "ERROR: cube is writable!  It should not be."
+	echo "$1"
+	exit 2
+fi
+
+if [ -f "$2" ]
+then
+	echo "ERROR: output file $2 already exists"
+	exit 3
+fi
+if [ -d "$2" ]
+then
+	echo "ERROR: output file $2 already exists as a directory"
+	exit 3
+fi
+
+# check that output does not exist.
+
+for i in ${2}.TM1 ${2}.TM2 ${2}.TM3 ${2}.TM4 ${2}.TM5 ${2}.TM7
+do
+	if [ -f $i ]
+	then
+		echo "WARNING: $i exists, will not write over it"
+		echo "exit 4"
+		exit 4
+	fi
+done
+
+cube=$1
+#############################################################
+
+dprog=/usr/local/bin/davinci.scripts/Scripts
+
+if [ "$option" = ' ' ]
+then
+	${dprog}/aviris.to.TM1 $cube ${2}.TM1
+	${dprog}/aviris.to.TM2 $cube ${2}.TM2
+	${dprog}/aviris.to.TM3 $cube ${2}.TM3
+	${dprog}/aviris.to.TM4 $cube ${2}.TM4
+	${dprog}/aviris.to.TM5 $cube ${2}.TM5
+	${dprog}/aviris.to.TM7 $cube ${2}.TM7
+elif [ "$option" = '-1993.198ch' ]
+then
+	${dprog}/aviris.to.TM1.1993.198ch $cube ${2}.TM1
+	${dprog}/aviris.to.TM2.1993.198ch $cube ${2}.TM2
+	${dprog}/aviris.to.TM3.1993.198ch $cube ${2}.TM3
+	${dprog}/aviris.to.TM4.1993.198ch $cube ${2}.TM4
+	${dprog}/aviris.to.TM5.1993.198ch $cube ${2}.TM5
+	${dprog}/aviris.to.TM7.1993.198ch $cube ${2}.TM7
+else
+	echo "UNRECOGNIZED OPTION: $option"
+	echo exit 1
+	exit 1
+fi
+
+#############################################################
+
+# now compute some ratios
+
+${dprog}/image.ratio  ${2}.TM5 ${2}.TM7 ${2}.TM5div7
+${dprog}/image.ratio  ${2}.TM5 ${2}.TM4 ${2}.TM5div4
+${dprog}/image.ratio  ${2}.TM3 ${2}.TM1 ${2}.TM3div1
+
+
+#############################################################
+exit

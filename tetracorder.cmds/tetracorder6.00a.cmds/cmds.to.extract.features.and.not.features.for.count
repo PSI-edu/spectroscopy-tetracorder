@@ -1,0 +1,20 @@
+# extract the features
+
+expsys='cmd.lib.setup.t6.00a5'
+
+grep ' f[1-9]a [DMOW]' $expsys | grep -v '^\\#' >  ${expsys}-features-list.txt
+
+grep ' n[1-9]a NOT' $expsys | grep -v '^\\#' > ${expsys}-not-features-list.txt
+
+# edit each and delete the few remaining commented lines.
+
+vi ${expsys}-features-list.txt
+
+vi ${expsys}-not-features-list.txt
+
+
+# count the lines:
+
+wc -l ${expsys}-features-list.txt
+
+wc -l ${expsys}-not-features-list.txt

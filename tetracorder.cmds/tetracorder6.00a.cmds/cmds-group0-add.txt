@@ -1,0 +1,61 @@
+\# | included (Y)
+\# v
+\#   library  record    output_name                 title
+\#
+\# Y splib06   7170     vegetation1                   Fir_Tree IH91-2  
+\# Y splib06   7614     vegetation.dry+green          Grass_dry.7+.3green  AMX30
+\# Y splib06   6216     snow.and.ice-77k              H2O-Ice GDS136 77K 
+\# Y sprlb06   1116     h2o-frost+ice-drops3-100k     H2O-frost+ice-drops3 100k
+\# Y sprlb06   1104     h2o-frost+ice-drops1-100k     H2O-frost+ice-drops1 100k
+\# Y sprlb06   1020     snow.and.ice-170k             frost on ice 170K Clark1981
+\# Y sprlb06   1380     snow.and.ice-248k             H2O-ice-Gr-3,1,.3mm 248k CMP
+\# Y splib06   6258     snow.melting.1a               Melting_snow mSnw1a 
+\# Y splib06   6270     snow.melting.3                Melting_snow mSnw3 
+\# Y splib06   6294     snow.melting.8                Melting_snow mSnw8 
+\# Y splib06   6306     snow.slush.9                  Melting_snow mSnw9 (slush)
+\# Y splib06   6240     snow.slush.16                 Melting_snow mSnw16 (slush)
+\# Y splib06   6264     snow.melting1a+0.5veg         Melting_snow mSnw1a+0.5_veg
+\# Y splib06   6312     snow.melting9+0.5veg          Melting_snow mSnw9+0.5_veg
+\# Y splib06   6252     snow.melting16+0.5veg         Melting_snow mSnw16+0.5 veg
+\# Y splib06   6324     water.high.chlorophyll        Seawater_Coast_Chl SW1
+\# Y sprlb06   1392     water.high.chlorophyll2       water_high_chloroph-SaltnSea
+\# Y splib06   6330     water.low.chlorophyll         Seawater_Open_Ocean SW2 lwch
+\# Y sprlb06   1386     water.low.chlorophyll-turquoise  Seawater_Open_Ocean SW2 lwch 
+\# Y sprlb06   1398     water.low.chlorophyll-blue1   water_lowc_blue1-chile av525
+\# Y sprlb06   1404     water.turquoise-shallow       turquoise-ocean-ABay-Hawaii
+\# Y splib06   6318     water.red.algae               Red_Coated_Algea_Water RCAW1
+\# Y sprlb06   1356     water+mont300gpl              Water+300gm/L-Montmor-SWy-2
+\# Y sprlb06   1350     water+mont100gpl              Water+100gm/L-Montmor-SWy-2
+\# Y sprlb06   1368     water+mont100gpl+0.5veg       Water+100gm/L-Mont+0.5veg
+\# Y sprlb06   1344     water+mont50gpl               Water+050gm/L-Montmor-SWy-2
+\# Y sprlb06   1362     water+mont50gpl+0.5veg        Water+050gm/L-Mont+0.5veg
+\# Y splib06   6348     water+mont16.5gpl             Water+Montmor SWy-2+16.5g/l
+\# Y splib06   6354     water+mont5.01gpl             Water+Montmor SWy-2+5.01g/l
+\# Y splib06   6342     water+mont1.67gpl             Water+Montmor SWy-2+1.67g/l
+\# Y splib06   6336     water+mont0.5gpl              Water+Montmor SWy-2+0.5g/l
+\# Y splib06   7128     organic_dry_long_grass-thick  Dry_Long_Grass AV87-2
+\# Y splib06   6840     organic_white_pvc_pipe        Plastic_PVC GDS338 White
+\# Y splib06   6858     organic_green_plastic_tarp    Plastic_Tarp GDS339 Green
+\#
+\# to be added if needed:
+\#   sprlb06   1374                                   Water+300gm/L-Mont+0.5veg 
+\#
+\# added 7/2026 starting in t6.00a5
+\#
+\# Y sprlb06   1410     snow-ice-1mm-273k             H2O-ice-273k-g=0.10cm-CMPREF 
+\# Y sprlb06   1416     snow-ice-3mm-273k             H2O-ice-273k-g=0.30cm-CMPREF 
+\# Y sprlb06   1422     snow-ice-10mm-273k            H2O-ice-273k-g=1.00cm-CMPREF 
+\# Y sprlb06   1428     snow-ice-3mm+0.1water-273k    H2O-ice-0.3cm+.1water-CMPREF 
+\# Y sprlb06   1434     snow-ice-3mm+0.2water-273k    H2O-ice-0.3cm+.2water-CMPREF 
+\# Y sprlb06   1440     snow-ice-3mm+0.3water-273k    H2O-ice-0.3cm+.3water-CMPREF 
+\# Y sprlb06   1446     snow-ice-10mm+0.3water-273k   H2O-ice-1.0cm+.3water-CMPREF 
+\#
+\# Y sprlb06   1452     water-20C-10cm-path-model     water-20C-10cm-path-model 
+\# Y sprlb06   1458     water-20C-30cm-path-model     water-20C-30cm-path-model 
+\# Y sprlb06   1464     water-20C-100cm-path-model    water-20C-100cm-path-model 
+\#
+\# Y sprlb06   1470     water-20C-10cm-path+chlrph-g  water-20C-10cm-path+chlrph-g 
+\# Y sprlb06   1476     water-20C-100cm-path+chlrph-g water-100cm-path+chlrphl-g 
+\# Y sprlb06   1482     water-20C-300cm-path+chlrph-g water-300cm-path+chlrphl-g 
+\# Y sprlb06   1488     water-20C-100cm-path+chlrph-a water-100cm-path+chlrphyll-a 
+

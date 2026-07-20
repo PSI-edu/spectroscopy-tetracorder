@@ -1,0 +1,85 @@
+Tetracorder needs to be setup to analyze spectroscopy data.
+The spectral libraries that have been convolved to the spectral
+sampling and resolution need to chosen.  We'll assume all the necessary
+components have already been setup.
+
+Choose a directory where the analyses willbe done.  Let's assume /data.
+
+Cd to /data
+
+First examples will be for analyzing image cubes.
+
+Make a directory for the image cubes, or a symbolic link to where they are located.
+
+mkdir cubes
+
+or
+
+ln -d /data2/emit/africa/cubes cubes
+
+One needs to keep the total path length to the image cube less than 75 characters.
+(There are plans to increase this in the future, but for the we need to live
+with this limitation.)
+
+Assume the EMIT image cube for Cuprite, Nevada is in the cubes directory.
+Cube = emit20250523t104701_rfl  with envi header  emit20250523t104701_rfl.hdr
+
+Choose a directory name for the tetracorder mapping run.  For example,
+map_emit20250523t104701-t6.0a5.
+
+The path name to the cube will be from the mapping directory, so will be:
+../cubes/emit20250523t104701_rfl
+
+
+The setup program is cmd-setup-tetrun in the tetracorder commands directory, thus
+/t1/tetracorder.cmds/tetracorder6.00a.cmds/cmd-setup-tetrun
+
+cmd-setup-tetrun needs the following:
+    mapping directory
+    data set that selects the libraries.  In this case, EMIT, so emit_c
+    keyword cube and cube poath and file name
+    scale factor to scale the data to reflectance 0 to 1.0
+    then optional parameters.
+
+Here is one command:
+
+/t1/tetracorder.cmds/tetracorder6.00a.cmds/cmd-setup-tetrun  map_emit20250523t104701-t6.0a5  \
+                emit_c  cube ../cubes/emit20250523t104701_rfl   1.0  \
+                -T -3 50 C  -P  0.8 1.1 bar  image png shortcubeid  em20250523   \
+                longcubeid emit_emit20250523t104701-tet6.00a5  \
+                geology  noredoverlayimages  nodualimages
+
+The setup will create the map_emit20250523t104701-t6.0a5 directory and place all the
+necessary components in the directory and tell you the commands to get the
+analysis started:
+
+    cd map_emit20250523t104701-t6.0a5
+    time  ./cmd.runtet cube  ../cubes/emit20250523t104701_rfl band 20   >& cmd.runtet.out &
+
+Once started (it ill be in the background, run tetmon to monitor progress.
+
+    tetmon
+
+Temperatures:  the -T -3 to 50 C    will include snow, but not very cold high mouintain snow.
+Pressure:      the -P  0.8 1.1 bar  is appropriate for Earth conditions excluding highest mountain peaks.
+
+               For Mars, the pressure would be: -P 0.001 0.02
+               For the Moon, asteroids and other airless bodies: -P 0.0 0.000001
+
+It is best to always include temperature and pressure limits to reject compoounds not plausible.
+like CO2 ice on Earth (that is common on Mars).  Including such limits improves compute time.
+
+image png says to produce color image products in png format (it will also make jpg products)
+
+shortcubeid  em20250523: the short ID is for adding to specpr titles which have a 40 character limit,
+                         so to include the short name leaves room for other descriptors.
+
+longcubeid is used to prepent to color output products.
+
+geology says calculate geologic origins
+
+noredoverlayimages  says do not calculate the mapped red pixels on gray scale background.
+                    Thus is to save compute time if you don't indent to view these products.
+
+nodualimages        says do not make the mapped product gray-scale pixels on a black background
+                    beside the red overlay images.

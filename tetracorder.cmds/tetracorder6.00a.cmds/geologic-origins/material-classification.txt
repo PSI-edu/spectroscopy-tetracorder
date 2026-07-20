@@ -1,0 +1,222 @@
+\#  Material                       classification          group
+\#
+\#       11111111112222222222333333333344444444445555555555666666666677777777778
+\# 45678901234567890123456789012345678901234567890123456789012345678901234567890
+\#                            |--|                    |--|                    |
+zero                              zero                    zero
+acid_mine_drainage                mixture
+actinolite                        inosilicate             amphibole
+adularia                          tectosilicate           feldspar
+albite                            tectosilicate           feldspar
+algea                             biologic                organic
+almandine                         nesosilicate            garnet
+alunite                           sulfate                 alunite
+alunite_hydrothermal              sulfate                 alunite
+alunite_hydroth_pedog             sulfate                 alunite
+natroalunite                      sulfate                 alunite
+ammonioalunite                    sulfate                 alunite
+ammonillsmectite                  phyllosilicate          smectite
+ammoniojarosite                   sulfate                 alunite
+amphibole                         inosilicate             amphibole
+analcime                          tectosilicate           zeolite
+anorthite                         tectosilicate           feldspar
+antigorite                        phyllosilicate          kaolinite-serpentine
+aragonite                         carbonate               calcite
+augite                            inosilicate             pyroxene
+axinite                           cyclosilicate           axinite
+azurite                           carbonate               dolomite
+beidellite                        phyllosilicate          smectite
+benzene                           aromatic_hydrocarbon    organic
+biotite                           phyllosilicate          mica
+black_Mn_Coating                  mixture
+bloedite                          sulfate                 bloedite
+bronzite                          inosilicate             pyroxene
+brucite                           hydroxide               brucite
+buddingtonite                     tectosilicate           feldspar
+butlerite                         sulfate                 
+bytownite                         tectosilicate           feldspar
+calcite                           carbonate               calcite
+carnallite                        halide
+chalcedony                        tectosilicate           quartz
+chalcopyrite                      sulfide
+chlorite                          phyllosilicate          chlorite
+chlorophyll                       biologic                organic
+chromite                          oxide                   spinel
+chrysocolla                       phyllosilicate
+chrysotile                        phyllosilicate          kaolinite-serpentine
+cinnabar                          sulfide
+clinochlore                       phyllosilicate
+clintonite                        phyllosilicate          mica
+co2_gas                           oxide                   oxide
+co2_ice                           oxide                   oxide
+co2_trapped                       oxide                   oxide
+colemanite                        borate
+cookeite                          phyllosilicate          chlorite
+copiapite                         sulfate
+coquimbite                        sulfate
+cronstedtite                      phyllosilicate          kaolinite-serpentine
+cummingtonite                     inosilicate             amphibole
+cuprite                           oxide
+cyanide                           nitrile                 nitrile
+cyanide-CdK                       nitrile                 nitrile
+cyanide-KFe                       nitrile                 nitrile
+cyanide-NiK                       nitrile                 nitrile
+cyanide-trihydrate                nitrile                 nitrile
+cyanide-ZnK                       nitrile                 nitrile
+datolite                          nesosilicate            borosilicate
+diaspore                          hydroxide               diaspore 
+dickite                           phyllosilicate          kaolinite-serpentine
+pyroxene_diopside                 inosilicate             pyroxene
+dolomite                          carbonate               dolomite
+dry_grass                         biologic                organic
+dry_wood                          biologic                organic
+dust_WTC                          mixture                 
+elbaite                           cyclosilicate           tourmaline 
+endellite                         phyllosilicate          
+enstatite                         inosilicate             pyroxene
+epidote                           sorosilicate            epidote
+eugsterite                        sulfate
+fe2+_chlorite.thuringite          generic_fe2+
+fe2+fe3+_hematite_weath           generic_fe2+fe3+
+fe2+fe3+mix                       generic_fe2+fe3+
+fe2+fe3+_water_RTsludge           generic_fe2+fe3+
+fe2+generic_actinolite            generic_fe2+
+fe2+generic_almandine             generic_fe2+
+fe2+generic_amphibole             generic_fe2+
+fe2+generic_axinite               generic_fe2+
+fe2+generic_basalt                generic_fe2+
+fe2+generic_carbonate             generic_fe2+
+fe2+generic_chlor+clinochlor      generic_fe2+
+fe2+generic_chlorite              generic_fe2+
+fe2+generic_clinochlore           generic_fe2+
+fe2+generic_jadeite               generic_fe2+
+fe2+generic_nrw.cu                generic_fe2+
+fe2+generic_staurolite            generic_fe2+
+fe2+generic_sulfate_butlerite     generic_fe2+
+fe2+generic_vbroad                generic_fe2+
+fe3+bearing1                      generic_fe3+
+fe3+_ferrihydrite                 oxide
+fiberglass                        manmade                 organic
+\#       11111111112222222222333333333344444444445555555555666666666677777777778
+\# 45678901234567890123456789012345678901234567890123456789012345678901234567890
+\#                            |--|                    |--|                    |
+gasolene_unleaded                 manmade                 organic
+gibbsite                          hydroxide               
+goethite                          hydroxide               diaspore
+goethite_smallgrain               hydroxide               diaspore
+grossular                         nesosilicate            garnet
+gypsum                            sulfate                 gypsum
+halloysite                        phyllosilicate          kaolinite-serpentine
+hectorite                         phyllosilicate          smectite
+hedenbergite                      inosilicate             pyroxene
+hematite                          oxide                   hematite
+hematite_smallgrain               oxide                   hematite
+hornblende                        inosilicate             amphibole
+howlite                           borate                  borate
+hydrated_basaltic_glass           glass
+hydrogrossular                    nesosilicate            garnet
+pyroxene_hypersthene              inosilicate             pyroxene
+illite                            phyllosilicate          mica
+jarosite                          sulfate                 alunite
+kaolinite                         phyllosilicate          kaolinite-serpentine
+kaolinite_wxl                     phyllosilicate          kaolinite-serpentine
+kaolinite_pxl                     phyllosilicate          kaolinite-serpentine
+kieserite                         sulfate                 kieserite
+lazurite                          tectosilicate           sodalite
+lepidocrosite                     hydroxide                                        NOTE: spelling lepidocrocite
+lepidolite                        phyllosilicate          mica
+lizardite                         phyllosilicate          kaolinite-serpentine
+maghemite                         oxide                   hematite
+magnesite                         carbonate               calcite
+hydromagnesite                    carbonate               calcite
+malachite                         carbonate               malachite-rosasite
+margarite                         phyllosilicate          mica
+mascagnite                        sulfate                 
+methane_gas                       aliphatichydrocarbon    organic
+methane_ice                       aliphatichydrocarbon    organic
+microcline                        tectosilicate           feldspar
+mirabilite                        sulfate
+montmorillonite                   phyllosilicate          smectite
+muscovite                         phyllosilicate          mica
+nacrite                           phyllosilicate          kaolinite-serpentine
+natrolite                         tectosilicate           zeolite
+neodymium_oxide                   element                 element
+niter                             nitrate
+nitrobenzene                      aromatic_hydrocarbon    organic
+nontronite                        phyllosilicate          smectite
+nonyne                            alkyne_hydrocarbon      organic
+olivine                           nesosilicate            olivine
+organic_plastic_green             organic                 organic-plastic
+organic_plastic_blue              organic                 organic-plastic
+organic_plastic_pvc               organic                 organic-plastic
+organic_plastic-pete              organic                 organic-plastic
+organic_plastic-hdpe              organic                 organic-plastic
+organic_plastic-vinyl             organic                 organic-plastic
+organic_fiberglass                organic                 organic-plastic
+organic_polystyrene               organic                 organic-plastic
+organic_paint                     organic                 organic-paint
+orthoclase                        tectosilicate           feldspar
+palygorskite                      phyllosilicate          palygorskite
+paragonite                        phyllosilicate          mica
+pectolite                         inosilicate             wollastonite
+pentene                           aliphatichydrocarbon    organic
+perchlorate                       perchlorate             perchlorate
+peroxide                          peroxide                peroxide
+phlogopite                        phyllosilicate          biotite
+\#       11111111112222222222333333333344444444445555555555666666666677777777778
+\# 45678901234567890123456789012345678901234567890123456789012345678901234567890
+\#                            |--|                    |--|                    |
+pyroxene_pigeonite                inosilicate             pyroxene
+pinnoite                          borate 
+pitchlimonite                     mixture
+polyhalite                        sulfate                 
+portlandite                       hydroxide               brucite
+potassium_nitrate                 nitrate
+prehnite                          phyllosilicate          
+pyridine                          aromatic_hydrocarbon    organic
+pyrite                            sulfide                 pyrite
+pyrolusite                        oxide                   rutile
+pyrophyllite                      phyllosilicate          pyrophyllite-talc
+quartz                            tectosilicate           silica
+rhodochrosite                     carbonate               calcite
+rhodonite                         inosilicate             rhodonite
+richterite                        inosilicate
+riebeckite                        inosilicate             amphibole
+rivadavite                        borate                  
+roscoelite                        phyllosilicate          mica
+rutile                            oxide                   rutile
+samarium_oxide                    element                 element
+saponite                          phyllosilicate          smectite
+saponite_or_talc                  phyllosilicate          smectite
+schwertmannite                    sulfate
+sepiolite                         phyllosilicate          sepiolite
+serpentine                        phyllosilicate          kaolinite-serpentine
+siderite                          carbonate               calcite
+smaragdite                        inosilicate    
+smectite                          smectite                smectite
+sodium_nitrate                    nitrate                 nitrate
+sphalerite                        sulfide                 sphalerite
+starkeyite                        sulfate                 rozenite 
+staurolite                        nesosilicate            staurolite
+strontianite                      carbonate               aragonite
+sulfur                            element                 element
+syngenite                         sulfate
+szomolnokite                      sulfate                 kieserite
+talc                              phyllosilicate          pyrophyllite-talc
+thuringite                        phyllosilicate          chlorite
+toluene                           aromatic_hydrocarbon    organic
+topaz                             nesosilicate
+tremolite                         inosilicate             amphibole
+tremolite_or_talc                 mixture
+trichloroethane                   aliphatichydrocarbon    organic
+trichloroethylene                 alkene_hydrocarbon      organic
+ulexite                           borate
+uralite                           inosilicate             amphibole
+vegetation_photosyn               biologic                organic
+vegetation_nonphotosyn            biologic                organic
+water_ice                         water_ice               oxide
+water_liquid                      water_liquid            oxide
+witherite                         carbonate               aragonite
+wollastonite                      inosilicate             wollastonite
+zoisite                           sorosilicate            epidote
+zunyite                           sorosilicate            

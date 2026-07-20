@@ -1,0 +1,207 @@
+     1  USGS Digital Spectral Library: sprlb01n    410 Characters of TEXT
+     2  Convolved Beckman Res Lib AVIRIS95.1 224   147 Characters of TEXT
+     3  ****************************************    41 Characters of TEXT
+     4  ****************************************    41 Characters of TEXT
+     5  ..                                          41 Characters of TEXT
+     6  Wavelengths in microns 224ch AVIRIS95.1    224  00:00:00.00  06/23/1995
+     7  Resolution  in microns 224ch AVIRIS95.1    224  00:00:00.00  06/23/1995
+     8  Data Channels to AVIRIS95.1 224ch          224  00:00:00.00  11/24/****
+     9  Am Fe-Hydroxide Summitville av AVIRIS95.   224  14:40:14.00  01/25/1994
+    10  Renyolds Tunnel Sludge SM93-15 AVIRIS95.   224  13:29:59.00  02/07/1993
+    11  Green Slime SM93-14A Summitvl AVIRIS95.1   224  10:32:53.00  02/07/1993
+    12  Blue Efflorescent Min SU93-300 AVIRIS95.   224  15:54:12.00  02/07/1993
+    13  Wet Renyold Tnl Sludge SM93-15 AVIRIS95.   224  12:35:55.00  02/10/1993
+    14  Wh Stream Precip SU93-301 AVIRIS95.1       224  13:59:04.00  02/09/1993
+    15  Solar Flux Watts/m2/sr/um   AVIRIS95.1     224  00:00:00.00  01/01/1976
+    16  NOAA-9 AVHRR Channel 1 BCKMN   AVIRIS95.   224  00:00:00.00  11/24/****
+    17  NOAA-9 AVHRR Channel 2 BCKMN   AVIRIS95.   224  00:00:00.00  11/24/****
+    18  Atmos TRANSM Modtran z=0  AVIRIS95.1       224  00:00:00.00  11/24/****
+    19  Atmos TRANSM Modtran z=20 AVIRIS95.1       224  00:00:00.00  11/24/****
+    20  Atmos TRANSM Modtran z=40 AVIRIS95.1       224  00:00:00.00  11/24/****
+    21  Atmos TRANSM Modtran z=60 AVIRIS95.1       224  00:00:00.00  11/24/****
+    22  Atmos TRANSM Modtran z=80 AVIRIS95.1       224  00:00:00.00  11/24/****
+    23  Hematite Coat Qtzite BR93-25B AVIRIS95.1   224  11:31:26.00  05/03/1994
+    24  Varnished Quartzite BR93-25C AVIRIS95.1    224  14:06:19.00  09/28/1993
+    25  Varnished Quartzite BR93-25A AVIRIS95.1    224  10:25:28.00  09/28/1993
+    26  BR5A Chlorite? rich scarn  AVIRIS95.1      224  12:26:38.00  02/02/1994
+    27  BR5B Magnetite scarn  AVIRIS95.1           224  13:33:44.00  02/02/1994
+    28  BR22C Actinolite?scarn Besse AVIRIS95.1    224  07:27:46.00  02/02/1994
+    29  bio qtz monz,hv epidote vn AVIRIS95.1      224  13:52:54.00  01/21/1993
+    30  BR36A fresh grn diorite porp AVIRIS95.1    224  13:25:20.00  01/31/1994
+    31  BR43 purple ash tuff wht zeo AVIRIS95.1    224  12:55:04.00  01/21/1993
+    32  BR46b fresh basalt AVIRIS95.1              224  12:54:28.00  01/12/1994
+    33  BR60b Actinolite on dolomite AVIRIS95.1    224  08:45:58.00  01/20/1994
+    34  Jarosite on Qtzite BR93-34A2 AVIRIS95.1    224  13:38:17.00  05/04/1994
+    35  Hematite Coat Qtz BR93-34C AVIRIS95.1      224  09:09:59.00  05/05/1994
+    36  nanohematite Qtzite BR93-34B2 AVIRIS95.1   224  15:25:46.00  05/04/1994
+    37  Specular Hematite BR93-34D2 AVIRIS95.1     224  09:58:56.00  05/06/1994
+    38  Hematite Coat Qtzite BR93-25B AVIRIS95.1   224  11:31:26.00  05/03/1994
+    39  Alt Biotite BR93-20 Fan Dep. AVIRIS95.1    224  17:08:09.00  05/04/1994
+    40  Mont SAz-1 20%+Calc WS272 80% AVIRIS95.1   224  14:52:50.00  01/17/1986
+    41  Calcite 80% +MontSwy-1 GDS212 AVIRIS95.1   224  11:57:07.00  05/23/1994
+    42  Calcite 80wt%+ KaolCM9 GDS213 AVIRIS95.1   224  15:10:30.00  05/24/1994
+    43  Chlorite-scarn BR22B Barstow AVIRIS95.1    224  09:58:08.00  02/02/1994
+    44  PyroPYS1A 50% & MontSAz-1 50% AVIRIS95.1   224  12:23:07.00  01/27/1986
+    45  Koal 60wt% + pyrophyl GDS224 AVIRIS95.1    224  14:15:16.00  08/25/1994
+    46  Alun 95wt% + pyrophy GDS221 AVIRIS95.1     224  16:09:23.00  08/24/1994
+    47  Alun 366 50% & Pyro PYS1A 1x AVIRIS95.1    224  15:04:16.00  02/14/1986
+    48  Grass 0.5 dry + 0.5 green AVIRIS95.1       224  12:05:07.00  08/09/1987
+    49  Grass 0.4 dry + 0.6 green AVIRIS95.1       224  16:04:29.00  06/18/1991
+    50  Grass 0.6 dry + 0.4 green AVIRIS95.1       224  16:04:29.00  06/18/1991
+    51  Grass 0.7 dry + 0.3 green AVIRIS95.1       224  16:04:29.00  06/18/1991
+    52  Grass 0.8 dry + 0.2 green AVIRIS95.1       224  16:04:29.00  06/18/1991
+    53  Grass 0.9 dry + 0.1 green AVIRIS95.1       224  16:04:29.00  06/18/1991
+    54  Alunite .5+Kaol CM9 0.5 Areal AVIRIS95.1   224  09:29:59.00  10/20/1985
+    55  Alunite .5+Kaol KGa-1 .5Areal AVIRIS95.1   224  11:31:11.00  01/29/1986
+    56  Kaolin .5+MuscCU91-250A Areal AVIRIS95.1   224  09:02:10.00  10/01/1991
+    57  Alunite.5+MuscCU91-250A Areal AVIRIS95.1   224  09:02:10.00  10/01/1991
+    58  Alunite .33+Kaol .33+Musc .33 AVIRIS95.1   224  09:02:10.00  10/01/1991
+    59  Lawn_Grass GDS91 shifted 3nm AVIRIS95.1    224  16:04:29.00  06/18/1991
+    60  Lawn_Grass GDS91 /shifted 3nm AVIRIS95.1   224  16:04:29.00  06/18/1991
+    61  Lawn_Grass GDS91 + const 1.0 AVIRIS95.1    224  16:04:29.00  06/18/1991
+    62  Lawn_Grass GDS91 +1 shft 3nm AVIRIS95.1    224  16:04:29.00  06/18/1991
+    63  Lawn_Grass GDS91 +1 shf/unshf AVIRIS95.1   224  16:04:29.00  06/18/1991
+    64  Alunite+Pyrophyl SD1093A av=3 AVIRIS95.1   224  08:54:11.00  11/14/1994
+    65  Fresh Water #1 AVIRIS95.1                  224  00:00:00.00  11/24/****
+    66  Seawater Coast Chl rc  AVIRIS95.1          224  00:00:00.00  11/24/****
+    67  Seawater Open Ocean low chl AVIRIS95.1     224  00:00:00.00  11/24/****
+    68  Seawater Open Ocean med chl AVIRIS95.1     224  00:00:00.00  11/24/****
+    69  Cadmium Potas. Cyanide AVIRIS95.1          224  09:35:51.00  06/02/1992
+    70  Nickel Potass. Cyanide AVIRIS95.1          224  17:30:55.00  01/02/1980
+    71  Trihydrate cyanide AVIRIS95.1              224  16:11:57.00  01/03/1980
+    72  Potassium Ferro Cyanide AVIRIS95.1         224  10:54:05.00  06/08/1992
+    73  Zinc Potassium Cyanide AVIRIS95.1          224  20:11:50.00  01/01/1980
+    74  place holde rfor a cyanide AVIRIS95.1      224  20:11:50.00  01/01/1980
+    75  Plastic Grnhouse Roof GGA-54 AVIRIS95.1    224  10:27:49.00  07/28/1989
+    76  Montmor SWy + Benzene (1ml) AVIRIS95.1     224  11:27:43.00  10/10/1986
+    77  Montmor SWy + trichlor (1ml) AVIRIS95.1    224  14:11:59.00  10/16/1986
+    78  Montmor SWy + toluene .5ml AVIRIS95.1      224  15:06:40.00  06/11/1986
+    79  Montmor SWy + unleaded gas AVIRIS95.1      224  16:01:56.00  12/03/1986
+    80  Montmor SWy + TCE saturated AVIRIS95.1     224  10:45:24.00  04/03/1987
+    81  Weath Pyrite on Tail LV95-6A AVIRIS95.1    224  09:48:16.00  09/11/1995
+    82  Goethite 2wt% + Quartz GDS240 AVIRIS95.1   224  11:46:31.00  09/08/1995
+    83  Schwertmannite? BZ93-1 AVIRIS95.1          224  14:11:11.00  02/10/1993
+    84  Black Mn? Coat Tailings LV95-3 AVIRIS95.   224  15:36:15.00  10/14/1995
+    85  Goeth+qtz 50% Jarosite Amix AVIRIS95.1     224  15:15:25.00  06/18/1992
+    86  Min Mix Mimic Dickite cubsp AVIRIS95.1     224  17:36:30.00  10/26/1995
+    87  Muscov + Jaros Coat CU93-314 AVIRIS95.1    224  15:26:01.00  09/06/1995
+    88  Chlorite + Muscovite CU93-65A AVIRIS95.1   224  09:49:00.00  08/29/1995
+    89  Biot + Goeth + Musc CU91-252D AVIRIS95.1   224  15:36:55.00  09/07/1995
+    90  Dev Rhyolite Tuff CU93-46E AVIRIS95.1      224  15:45:18.00  08/25/1995
+    91  Chlor + Goethite Phyl CU93-4B AVIRIS95.1   224  16:09:08.00  08/28/1995
+    92  Kaol + Musc intimate CU93-5C AVIRIS95.1    224  09:39:57.00  08/28/1995
+    93  Calcite + Dolomite .5 areal AVIRIS95.1     224  08:29:15.00  02/18/1986
+    94  calcite.25+dolom.25+mont.5 AVIRIS95.1      224  10:02:41.00  01/30/1986
+    95  dolomite.5+Na-mont.5 AVIRIS95.1            224  10:02:41.00  01/30/1986
+    96  dolomite.5+Ca-mont.5 AVIRIS95.1            224  11:39:14.00  08/29/1985
+    97  calcite.5+Na-mont.5 AVIRIS95.1             224  10:02:41.00  01/30/1986
+    98  calcite.33+Ca-mont.67 AVIRIS95.1           224  11:39:14.00  08/29/1985
+    99  Geothite Fine Gr MPCMA2-B 1x AVIRIS95.1    224  08:12:42.00  05/04/1995
+   100  Goethite M-Crs gr MPCMA2-C AVIRIS95.1      224  09:45:36.00  05/04/1995
+   101  Goethite Coarse Gr. WS222 AVIRIS95.1       224  14:24:20.00  01/31/1996
+   102  Nanohematite BR93-34B2 adj AVIRIS95.1      224  15:25:46.00  05/04/1994
+   103  Nanohematite BR93-34B2 adj2 AVIRIS95.1     224  15:25:46.00  05/04/1994
+   104  Hematite Thin Film GDS27 adj AVIRIS95.1    224  14:57:33.00  03/08/1994
+   105  Goethite Thin Film WS222 adj AVIRIS95.1    224  16:01:07.00  05/06/1994
+   106  Goethite Thin Film WS222 adj2 AVIRIS95.1   224  16:01:07.00  05/06/1994
+   107  Nanohematite BR93-34B2 adj3 AVIRIS95.1     224  15:25:46.00  05/04/1994
+   108  Nanohematite BR93-34B2 adj4 AVIRIS95.1     224  15:25:46.00  05/04/1994
+   109  Wh Rhyolite Tuff CU93-46E adj AVIRIS95.1   224  15:45:18.00  08/25/1995
+   110  Wh Rhyolite Tuff CU93-46E aj2 AVIRIS95.1   224  15:45:18.00  08/25/1995
+   111  Geothite Fine Gr MPCMA2-B adj AVIRIS95.1   224  08:12:42.00  05/04/1995
+   112  Goethite M-Crs gr MPCMA2-C adj AVIRIS95.   224  09:45:36.00  05/04/1995
+   113  Goethite M-Crs gr MPCMA2-C ad2 AVIRIS95.   224  09:45:36.00  05/04/1995
+   114  Stonwll Ply+ 10%Gr Grass Areal AVIRIS95.   224  15:06:40.00  07/13/1993
+   115  Stonwll Ply+ 20%Gr Grass Areal AVIRIS95.   224  15:06:40.00  07/13/1993
+   116  Dry Grass + 17% Na-Mont Areal AVIRIS95.1   224  10:02:41.00  01/30/1986
+   117  Dolo + 50% Ca-Mont Areal AVIRIS95.1        224  11:39:14.00  08/29/1985
+   118  Calc + 50% Ca-Mont Areal AVIRIS95.1        224  11:39:14.00  08/29/1985
+   119  Calc.25 + Dolo.25 + Ca-Mont Ar AVIRIS95.   224  11:39:14.00  08/29/1985
+   120  Calc + 33% Musc Ruby Areal AVIRIS95.1      224  14:12:33.00  09/08/1992
+   121  Calc + 33% Musc Ruby Areal AVIRIS95.1      224  14:12:33.00  09/08/1992
+   122  Kaol wxl + 66% Musc Ruby Areal AVIRIS95.   224  09:29:59.00  10/20/1985
+   123  Kaol Pxl + 66% Musc Ruby Areal AVIRIS95.   224  08:29:44.00  01/29/1986
+   124  Halloy + 66% Musc Ruby Areal AVIRIS95.1    224  08:48:56.00  03/24/1987
+   125  Kaol Wxl + 75% Musc Ruby Areal AVIRIS95.   224  09:29:59.00  10/20/1985
+   126  Kaol Wxl + 50% Musc Ruby Areal AVIRIS95.   224  09:29:59.00  10/20/1985
+   127  Halloy + 50% Musc Ruby Areal AVIRIS95.1    224  08:48:56.00  03/24/1987
+   128  Halloy + 25% Musc Ruby Areal AVIRIS95.1    224  08:48:56.00  03/24/1987
+   129  Hematite + 50% Jarosite Areal AVIRIS95.1   224  18:50:35.00  01/30/1991
+   130  Hematite + 25% Jarosite Areal AVIRIS95.1   224  18:50:35.00  01/30/1991
+   131  Goeth Th Flm + 50% Jaros Areal AVIRIS95.   224  15:15:25.00  06/18/1992
+   132  Goeth Th Flm + 50% Jaros2 Arl AVIRIS95.1   224  16:01:07.00  05/06/1994
+   133  Biotite Bio-P9-6 (3bds) 1x AVIRIS95.1      224  10:33:41.00  05/19/1994
+   134  Biotite Bio-T95-4 3bds AVIRIS95.1          224  13:11:43.00  05/16/1994
+   135  Neutral Ferrihydrite CC-4 1x AVIRIS95.1    224  09:45:54.00  03/19/1996
+   136  Red Petrified Wood PF95-3E 1x AVIRIS95.1   224  13:06:32.00  03/19/1996
+   137  Jarosite + 25% Hematite Amix AVIRIS95.1    224  13:38:17.00  05/04/1994
+   138  Jarosite2 +25% Hemtite Amix AVIRIS95.1     224  18:50:35.00  01/30/1991
+   139  Goethite + 50% Hematite Amix AVIRIS95.1    224  18:50:35.00  01/30/1991
+   140  Goethite + 25% Hematite Amix AVIRIS95.1    224  18:50:35.00  01/30/1991
+   141  Jarosite GDS243 Thin Film AVIRIS95.1       224  15:46:10.00  03/24/1996
+   142  Soil+43.6%varnish+3%veg Amix AVIRIS95.1    224  12:23:53.00  10/02/1991
+   143  Jarosite + 50%Hemat ThFlm Amix AVIRIS95.   224  14:57:33.00  03/08/1994
+   144  Jarosite + 50%Goeth ThFlm Amix AVIRIS95.   224  16:01:07.00  05/06/1994
+   145  Jarosite + 75%Goeth ThFlm Amix AVIRIS95.   224  15:46:10.00  03/24/1996
+   146  Petrified Wd+ 66% CaMont Amix AVIRIS95.1   224  11:39:14.00  08/29/1985
+   147  Petrified Wd + 33% CaMont Amix AVIRIS95.   224  13:06:32.00  03/19/1996
+   148  Petrified Wd + 10% CaMont Amix AVIRIS95.   224  11:39:14.00  08/29/1985
+   149  Petrified Wd + 20% CaMont Amix AVIRIS95.   224  11:39:14.00  08/29/1985
+   150  Hem 1%+ Geoth 1% +qtz GDS242 AVIRIS95.1    224  12:58:17.00  02/02/1996
+   151  Jarosite 1%+Geoth1%+qtz GDS256 AVIRIS95.   224  00:00:00.00  11/24/****
+   152  Ferrihydrite 40% + goeth Bt-1 AVIRIS95.1   224  00:00:00.00  11/24/****
+   153  Schwertmannite 1.5%+qtz GDS253 AVIRIS95.   224  00:00:00.00  11/24/****
+   154  Ferrihydrite +<10% Geoth Bt-3 AVIRIS95.1   224  00:00:00.00  11/24/****
+   155  Ferrihydrite 1.5wt%+qtz GDS254 AVIRIS95.   224  00:00:00.00  11/24/****
+   156  Jarosite 1.5wt% + qtz GDS252 AVIRIS95.1    224  11:59:23.00  02/01/1997
+   157  Schwertmannite +10%goet Nb-1 AVIRIS95.1    224  10:15:03.00  02/04/1997
+   158  Pb-Jarosite Thinfilm LV95-40 AVIRIS95.1    224  10:32:09.00  11/04/1997
+   159  Pb-Jarosite LV95-40 1x AVIRIS95.1          224  17:04:39.00  10/31/1997
+   160  Goethite66% + Pb-Jaros Amix AVIRIS95.1     224  17:04:39.00  10/31/1997
+   161  Pb-Jaros 50% + Goethite Amix AVIRIS95.1    224  17:04:39.00  10/31/1997
+   162  Pb-Jaros 75% + Goethite Amix AVIRIS95.1    224  09:04:31.00  08/21/1986
+   163  Pb-Jaros 66% + Goethite Amix AVIRIS95.1    224  09:04:31.00  08/21/1986
+   164  Jaros Coat 50% + Goethqtz Amix AVIRIS95.   224  00:00:00.00  11/24/****
+   165  JaroGoethqtz + GoethCr Amix AVIRIS95.1     224  00:00:00.00  11/24/****
+   166  JaroGoethqtz +66%GoethCr Amix AVIRIS95.1   224  00:00:00.00  11/24/****
+   167  JaroGoethqtz +75%GoethCr Amix AVIRIS95.1   224  00:00:00.00  11/24/****
+   168  Calcite.7 + Kaolwxl.3 Amix AVIRIS95.1      224  11:31:11.00  01/29/1986
+   169  Alunite RES-9(400C) conv BCK AVIRIS95.1    224  00:00:00.00  11/24/****
+   170  Alunite RES-9 conv BCK scl3.1 AVIRIS95.1   224  00:00:00.00  11/24/****
+   171  Alun10%+Musc50%+Pyroph40% Amix AVIRIS95.   224  00:00:00.00  11/24/****
+   172  Alun20%+Musc45%+Pyroph35% Amix AVIRIS95.   224  00:00:00.00  11/24/****
+   173  Alun30%+Musc40%+Pyroph30% Amix AVIRIS95.   224  00:00:00.00  11/24/****
+   174  Alun40%+Musc35%+Pyroph25% Amix AVIRIS95.   224  00:00:00.00  11/24/****
+   175  Alun50%+Musc30%+Pyroph20% Amix AVIRIS95.   224  00:00:00.00  11/24/****
+   176  Alun45%+Musc35%+Pyroph20% Amix AVIRIS95.   224  00:00:00.00  11/24/****
+   177  Pyroph 66%+Kaolpxl33% Amix AVIRIS95.1      224  13:31:47.00  03/23/1988
+   178  Pyroph 40%+Kaolpxl60% Amix AVIRIS95.1      224  13:31:47.00  03/23/1988
+   179  Pyroph 30%+Kaolpxl70% Amix AVIRIS95.1      224  13:31:47.00  03/23/1988
+   180  Pyroph 25%+Dickite75% Amix AVIRIS95.1      224  13:31:47.00  03/23/1988
+   181  Kaolpxl75%+AlunHS295 25% Amix AVIRIS95.1   224  10:03:31.00  11/22/1985
+   182  Kaolwxl 75%+AlunHS295 25% Amx AVIRIS95.1   224  10:03:31.00  11/22/1985
+   183  Pyroph 66%+Kaolwxl 33% Amix AVIRIS95.1     224  13:31:47.00  03/23/1988
+   184  Pyroph 50%+Kaolwxl 50% Amix AVIRIS95.1     224  13:31:47.00  03/23/1988
+   185  Pyroph 25%+Kaolwxl 75% Amix AVIRIS95.1     224  13:31:47.00  03/23/1988
+   186  GDS-241B Zunyite <150um AVIRIS95.1         224  14:36:58.00  09/28/1995
+   187  Dickite75+PyrophPYS1A25 Amix AVIRIS95.1    224  12:17:40.00  01/02/1991
+   188  gyp40+kjar30+hAlmusc30 Amix AVIRIS95.1     224  14:12:33.00  09/08/1992
+   189  gyp50+kjar30+hAlmusc20 Amix AVIRIS95.1     224  14:12:33.00  09/08/1992
+   190  gyp40+kjar20+hAlmusc30+dick10 AVIRIS95.1   224  12:17:40.00  01/02/1991
+   191  gyp40+kjar20+hAlmusc20+dick20 AVIRIS95.1   224  12:17:40.00  01/02/1991
+   192  gyp30+kjar20+hAlmusc30+dick20 AVIRIS95.1   224  12:17:40.00  01/02/1991
+   193  gyp50+kjar10+hAlmusc30+dick10 AVIRIS95.1   224  12:17:40.00  01/02/1991
+   194  gyp50+kjar10+hAlmusc20+dick20 AVIRIS95.1   224  12:17:40.00  01/02/1991
+   195  gyp50+kjar20+hAlmusc30 Amix AVIRIS95.1     224  14:12:33.00  09/08/1992
+   196  gyp30+kjar10+hAlmusc40+dick20 AVIRIS95.1   224  12:17:40.00  01/02/1991
+   197  hAlmusc40+kaol30+gyp20+jar10 AVIRIS95.1    224  09:29:59.00  10/20/1985
+   198  dick40+hAlmusc30+gyp20+jar10 AVIRIS95.1    224  12:17:40.00  01/02/1991
+   199  dick40+hAlmusc30+gyp30 Amix AVIRIS95.1     224  12:17:40.00  01/02/1991
+   200  dick40+hAlmusc30+gyp30 Amix AVIRIS95.1     224  12:17:40.00  01/02/1991
+   201  Artinite - Hokkaido <100um AVIRIS95.1      224  02:57:26.00  01/01/1980
+   202  Amesite NMNH-80715        AVIRIS95.1       224  13:21:59.00  09/06/1992
+   203  Greenalite NMNH-158902    AVIRIS95.1       224  15:43:27.00  09/06/1992
+   204  Dess. Hydromagnesite-Iwaki  AVIRIS95.1     224  19:37:42.00  01/27/1991
+   205  WHITE PHYLLITE CU91-250A AVIRIS95.1        224  00:00:00.00  11/24/****
+   206  Pyroph + Musc med Al Amix AVIRIS95.1       224  13:31:47.00  03/23/1988
+ done

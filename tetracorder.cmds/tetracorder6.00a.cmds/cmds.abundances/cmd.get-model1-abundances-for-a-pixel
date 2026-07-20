@@ -1,0 +1,24 @@
+#!/bin/sh
+
+pwd
+
+if [ -d "results.abundances" ]
+then
+    if [ -f "cmds.abundances/davinci.get-model1-abundances-for-a-pixel" ]
+    then
+
+      ( ./cmds.abundances/davinci.get-model1-abundances-for-a-pixel $1 $2 $3 $4 $5 $6  2>&1  )  | grep -v 'is compressed'
+
+    else
+       echo "./cmds.abundances/davinci.get-model1-abundances-for-a-pixel NOT FOUND"
+       echo "$0 needs to be run from the mapping directoru"
+
+  	exit 1
+    fi
+else
+	echo "results.abundances directory NOT FOUND"  
+	echo " "
+	echo "first run: "
+	echo " ./cmds.abundances/cmd.compute-model-abundances model3 cube cubefilenamewithpath  cube_scale_factor waves specpr_file wave_rec_# model1 quartz grain_diameter_microns "
+	exit 1
+fi

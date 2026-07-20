@@ -1,0 +1,661 @@
+A/ammonium_chloride_gds77.html:FORMULA: NH4Cl
+A/asphalt_gds366.html:FORMULA: Unknown
+A/asphalt_gds367.html:FORMULA: Unknown
+A/asphalt_gds368.html:FORMULA: Unknown
+A/black_ldpe_plastic_gds405.html:FORMULA: Unknown
+A/black_old_asphaltroof_gds376.html:FORMULA: Unknown
+A/black_rooftar_gds346.html:FORMULA: Unknown
+A/board_gds362.html:FORMULA: Unknown
+A/brick_gds347.html:FORMULA: Unknown
+A/brick_gds348.html:FORMULA: Unknown
+A/brick_gds349.html:FORMULA: Unknown
+A/brick_gds350.html:FORMULA: Unknown
+A/brick_gds353.html:FORMULA: Unknown
+A/brick_gds354.html:FORMULA: Unknown
+A/brick_gds355.html:FORMULA: Unknown
+A/cardboard_gds371.html:FORMULA: Unknown
+A/cedar_gds357.html:FORMULA: Unknown
+A/cedar_gds358.html:FORMULA: Unknown
+A/cedar_gds359.html:FORMULA: Unknown
+A/cedar_gds360.html:FORMULA: Unknown
+A/cedar_gds361.html:FORMULA: Unknown
+A/cinderblock_gds356.html:FORMULA: Unknown
+A/coat_steel_girder_wtc01-8.html:FORMULA: Not Available
+A/concrete_gds375.html:FORMULA: Unknown
+A/concrete_wtc01-37a.html:FORMULA: CaSO4*2H2O (Gypsum)
+A/cyanide_cadnium_k.html:FORMULA: Ca(CN)2
+A/cyanide_nickel_k_1.html:FORMULA: K2Ni(CN)4.H2O
+A/cyanide_potassium_ferro.html:FORMULA: K4Fe(CN)6
+A/cyanide_trihydrate_ct1.html:FORMULA:  Unknown
+A/cyanide_zinc_k_1.html:FORMULA: KZn(CN3)?
+A/dust_debris_wtc01-28.html:FORMULA: None
+A/dust_debris_wtc01-2.html:FORMULA: None
+A/fabric_gds430.html:FORMULA: Unknown
+A/fabric_gds434.html:FORMULA: Unknown
+A/fabric_gds436.html:FORMULA: Unknown
+A/fabric_gds437.html:FORMULA: Unknown
+A/fabric_gds537.html:FORMULA: Unknown
+A/fiberglass_gds335.html:FORMULA: CH4 compound
+A/fiberglass_gds336.html:FORMULA: CH4 compound
+A/fiberglass_gds337.html:FORMULA: CH4 compound
+A/fiberglass_gds374.html:FORMULA: Unknown
+A/fiberglass_gds399.html:FORMULA: CH4 compound
+A/green_slime_sm93-14a.html:FORMULA: Unknown
+A/insulation_gds345.html:FORMULA: Unknown
+A/kerogen_bk-cornell.html:FORMULA: Unknown
+A/montmorillonite_benzene.html:FORMULA: (Na,Ca)0.33(Al,Mg)2Si4O10(OH)2*nH20 + C6H6
+A/montmorillonite_tce.html:FORMULA: (Na,Ca)0.33(Al,Mg)2Si4O10(OH)2*nH20 + C2HCl3
+A/montmorillonite_toluene.html:FORMULA: (Na,Ca)0.33(Al,Mg)2Si4O10(OH)2*nH20 + C7H8
+A/montmorillonite_trichlor.html:FORMULA: (Na,Ca)0.33(Al,Mg)2Si4O10(OH)2*nH20 + C2H3Cl3
+A/montmorillonite_unleaded_gas.html:FORMULA: (Na,Ca)0.33(Al,Mg)2Si4O10(OH)2*nH20 + unleaded gasoline
+A/nylon_carpet_gds535.html:FORMULA: Unknown
+A/nylon_carpet_gds536.html:FORMULA: Unknown
+A/nylon_gds428.html:FORMULA: Unknown
+A/nylon_gds431.html:FORMULA: Unknown
+A/nylon_gds432.html:FORMULA: Unknown
+A/nylon_gds433.html:FORMULA: Unknown
+A/nylon_gds438.html:FORMULA: Unknown
+A/paint_gds333.html:FORMULA: CH4 compound
+A/paper_cottonbond.html:FORMULA: Unknown
+A/particleboard_gds364.html:FORMULA: Unknown
+A/pipe_gds338.html:FORMULA: CH4 compound
+A/pipe_gds341.html:FORMULA: CH4 compound
+A/pipe_gds342.html:FORMULA: CH4 compound
+A/pipe_gds344.html:FORMULA: CH4 compound
+A/plastic_film_gds402.html:FORMULA: CH4 compound
+A/plastic_gds369.html:FORMULA: CH4 compound
+A/plastic_gds370.html:FORMULA: CH4 compound
+A/plastic_gds373.html:FORMULA: CH4 compound
+A/plastic_gds380.html:FORMULA: CH4 compound
+A/plastic_gds381.html:FORMULA: Unknown
+A/plastic_gds382.html:FORMULA: CH4 compound
+A/plastic_gds383.html:FORMULA: CH4 compound
+A/plastic_gds384.html:FORMULA: Unknown
+A/plastic_gds385.html:FORMULA: Unknown
+A/plastic_gds386.html:FORMULA: Unknown
+A/plastic_gds387.html:FORMULA: Unknown
+A/plastic_gds389.html:FORMULA: Unknown
+A/plastic_gds390.html:FORMULA: Unknown
+A/plastic_gds394.html:FORMULA: Unknown
+A/plastic_gds395.html:FORMULA: Unknown
+A/plastic_gds396.html:FORMULA: Unknown
+A/plastic_gds397.html:FORMULA: Unknown
+A/plastic_gds398.html:FORMULA: Unknown
+A/plastic_gds400.html:FORMULA: Unknown
+A/plastic_gds401.html:FORMULA: Unknown
+A/plastic_gds404.html:FORMULA: Unknown
+A/plastic_gds406.html:FORMULA: Unknown
+A/plastic_grnhouse_roof_gga-54.html:FORMULA: CH4 compound
+A/plastic_hdpe_gds391.html:FORMULA: CH4 compound
+A/plastic_hdpe_gds392.html:FORMULA: Unknown
+A/plastic_hdpe_gds393.html:FORMULA: CH4 compound
+A/plastic_pete_gds379.html:FORMULA: CH4 compound
+A/plastic_sheet_gds351.html:FORMULA: CH4 compound
+A/plywood_gds365.html:FORMULA: Unknown
+A/polyester_gds429.html:FORMULA: Unknown
+A/polyester_gds435.html:FORMULA: Unknown
+A/renyolds_tunnel_sludge_sm93-15.html:FORMULA: Unknown
+A/roofing_felt_gds377.html:FORMULA: Unknown
+A/sheet_metal_gds334.html:FORMULA: Fe + Unknown
+A/sheetmetal_gds352.html:FORMULA: Unknown
+A/tarpaper_gds285a.html:FORMULA: Unknown
+A/tarpaper_gds285b.html:FORMULA: Unknown
+A/tarp_gds339.html:FORMULA: Unknown
+A/tarp_gds340.html:FORMULA: CH4 compound
+A/tin_mv99-6-15.html:FORMULA: Unknown
+A/vinyl_plastic_gds372.html:FORMULA: CH4 compound
+A/woodbeam_gds363.html:FORMULA: Unknown
+C/black_mntailings_lv95-3.html:FORMULA: Not available
+C/des_varnish_anp90-14.html:FORMULA: Na4Mn14O27*9H20 + alpha-Fe2O3 + clays
+C/des_varnish_entrada.html:FORMULA: Na4Mn14O27*9H2O + alpha-Fe2O3
+C/des_varnish_gds78.html:FORMULA: Na4Mn14O27*9H20 + alpha-Fe2O3 + clays
+C/goethite_ws222_coating.html:FORMULA: alpha-FeO(OH)
+C/hematite_coat_br93-25a.html:FORMULA: Fe2O3 and SiO2
+C/hematite_coat_br93-25b.html:FORMULA: Fe2O3 and SiO2
+C/hematite_coat_br93-25c.html:FORMULA: Fe2O3 and SiO2
+C/hematite_coat_br93-34c.html:FORMULA: Fe2O3 and SiO2
+C/hematite_thin_film_gds27.html:FORMULA: alpha-Fe2O3
+C/jarosite_on_qtzite_br93-34a2.html:FORMULA: K(Fe+3)3(SO4)2(OH)6, and KAl2Si3O10(OH)2
+C/jarosite_thin_film_gds243.html:FORMULA: K(Fe+3)3(SO4)2(OH)6
+L/h2o_ice_gds136.html:FORMULA: H2O
+L/melting_snow_1-16.html:FORMULA: H2O
+L/melting_snow_veg_1-16.html:FORMULA: H2O + Vegetation Pinion Pine
+L/red_coated_algea.html:FORMULA: H2O + Algae
+L/seawater_coast_sw1.html:FORMULA: H2O +chl
+L/seawater_open_ocean_sw2.html:FORMULA: H2O +chl
+L/water_mont_mix_a.html:FORMULA: H2O + (Na,Ca)0.33(Al,Mg)2Si4O10(OH)2*nH20
+M/acmite_nmnh133746.html:FORMULA: NaFeSi2O6
+M/actinolite_hs116.html:FORMULA: Ca2(Mg,Fe+2)5Si8O22(OH)2
+M/actinolite_hs22.html:FORMULA: Ca2(Mg,Fe+2)5Si8O22(OH)2
+M/actinolite_hs315.html:FORMULA: Ca2(Mg,Fe+2)5Si8O22(OH)2
+M/actinolite_nmnh16485.html:FORMULA: Ca2(Mg,Fe+2)5Si8O22(OH)2
+M/actinolite_nmnh80714.html:FORMULA: Ca2(Mg,Fe+2)5Si8O22(OH)2
+M/adularia_gds57.html:FORMULA: KAlSi3O8
+M/albite_gds30.html:FORMULA: NaAlSi3O8
+M/albite_hs143.html:FORMULA: (Na,Ca)Al(Al,Si)Si2O8
+M/albite_hs324.3b.html:FORMULA: NaAlSi3O8
+M/albite_hs66.3b.html:FORMULA: NaAlSi3O8
+M/allanite_hs293.3b.html:FORMULA: (Ce,Ca,Y)2(Al,Fe+3)3(SiO4)3(OH)
+M/almandine_hs114.html:FORMULA: (Fe+2)3Al2(SiO4)3
+M/almandine_ws475.html:FORMULA: (Fe+2)3Al2(SiO4)3
+M/almandine_ws476.html:FORMULA: (Fe+2)3Al2(SiO4)3
+M/almandine_ws477.html:FORMULA: (Fe+2)3Al2(SiO4)3
+M/almandine_ws478.html:FORMULA: (Fe+2)3Al2(SiO4)3
+M/almandine_ws479.html:FORMULA: (Fe+2)3Al2(SiO4)3
+M/alunite_al706.html:FORMULA: (Na,K)Al3(SO4)2(OH)6
+M/alunite_gds82.html:FORMULA: (Na,K)Al3(SO4)2(OH)6
+M/alunite_gds83.html:FORMULA: (Na,K)Al3(SO4)2(OH)6
+M/alunite_gds84.html:FORMULA: KAl3(SO4)2(OH)6
+M/alunite_gds95.html:FORMULA: NaAl3(SO4)2(OH)6
+M/alunite_gds96.html:FORMULA: KAl3(SO4)2(OH)6
+M/alunite_gds97.html:FORMULA: KAl3(SO4)2(OH)6
+M/alunite_hs295.html:FORMULA: KAl3(SO4)2(OH)6
+M/alunite_res10.html:FORMULA: (K,Na)Al3(SO4)2(OH)6
+M/alunite_res12.html:FORMULA: (K,Na)Al3(SO4)2(OH)6
+M/alunite_res2.html:FORMULA: KAl3(SO4)2(OH)6
+M/alunite_res3.html:FORMULA: NaAl3(SO4)2(OH)6
+M/alunite_res4.html:FORMULA: NaAl3(SO4)2(OH)6
+M/alunite_res9.html:FORMULA: Na,K)Al3(SO4)2(OH)6
+M/alunite_sustda20.html:FORMULA: NaAl3(SO4)2(OH)6
+M/ammoniumillsmec_gds87.html:FORMULA: NH4Al2(Si3Al)O10(OH)2 + (NH4)0.33(Al,Mg)2Si4O10(OH)2*nH2O
+M/ammoniumsmectite_gds86.html:FORMULA: (NH4)0.33(Al,Mg)2Si4O10(OH)2*nH2O
+M/amojarosite_scrnhj.html:FORMULA: (NH4)(Fe+3)3(SO4)2(OH)6
+M/amphibole_nmnh78662.html:FORMULA: A0-1B2Y8Z8O22(OH,F,Cl)2 (A=Ca,Na,K; B=Ca,Fe+2,Li,Mg,Mn+2,Na; Y=Al,Cr,Fe+2,Fe+3,Mg,Mn+2,Ti; Z=Al,Si,Ti)
+M/analcime_gds1.html:FORMULA: NaAlSi2O6*H2O
+M/andalusite_nmnh17898.html:FORMULA: Al2SiO5
+M/andesine_hs142.html:FORMULA: (Na,Ca)Al(Al,Si)Si2O8
+M/andradite_gds12.html:FORMULA: Ca3(Fe+3)2(SiO4)3
+M/andradite_hs111.html:FORMULA: Ca3(Fe+3)2(SiO4)3
+M/andradite_nmnh113829.html:FORMULA: Ca3(Fe+3)2(SiO4)3
+M/andradite_ws474.html:FORMULA: Ca3(Fe3+)2(SiO4)3
+M/andradite_ws487.html:FORMULA: Ca3(Fe+3)2(SiO4)3
+M/andradite_ws488.html:FORMULA: Ca3(Fe+3)2(SiO4)3
+M/anhydrite_gds42.html:FORMULA: CaSO4
+M/annite_ws661.html:FORMULA: K(Fe+2)3AlSi3O10(OH,F)2
+M/anorthite_gds28.html:FORMULA: CaAl2Si2O8
+M/anorthite_hs201.html:FORMULA: CaAl2Si2O8
+M/anorthite_hs349.html:FORMULA: CaAl2Si2O8
+M/anthophyllite_hs286.html:FORMULA: (Mg,Fe+2)7Si8O22(OH)2
+M/antigorite_nmnh17958.html:FORMULA: (Mg,Fe+2)3Si2O5(OH)4
+M/antigorite_nmnh96917.html:FORMULA: (Mg,Fe+2)3Si2O5(OH)4
+M/arsenopyrite_hs262.html:FORMULA: FeAsS
+M/augite_nmnh120049.html:FORMULA: (Ca,Na)(Mg,Fe,Al,Ti)(Si,Al)2O6
+M/augite_ws588.html:FORMULA: (Ca,Na)(Mg,Fe,Al,Ti)(Si,Al)2O6
+M/augite_ws592.html:FORMULA: (Ca,Na)(Mg,Fe,Al,Ti)(Si,Al)2O6
+M/axinite_hs342.html:FORMULA: (Ca,Mn,Fe+2)3Al2BO3Si4O15(OH)
+M/azurite_ws316.html:FORMULA: Cu3(CO3)2(OH)2
+M/barite_hs79.html:FORMULA: BaSO4
+M/bassanite_gds145.html:FORMULA: 2CaSO4*H2O
+M/beryl_gds9.html:FORMULA: Be3Al2Si6O18
+M/beryl_hs180.html:FORMULA: Be3Al2Si6O18
+M/biotite_hs28.html:FORMULA: K(Mg,Fe+2)3(Al,Fe+3)Si3O10(OH,F)2
+M/biotite_ws660.html:FORMULA: K(Fe+2)3AlSi3O10(OH,F)2
+M/bloedite_gds147.html:FORMULA: Na2Mg(SO4)2*4H2O
+M/bronzite_hs9.html:FORMULA: (Mg,Fe+2)2Si2O6
+M/brookite_hs443.html:FORMULA: TiO2
+M/brucite_hs247.html:FORMULA: Mg(OH)2
+M/buddingtonite_gds85.html:FORMULA: (NH4)AlSi3O8*0.5H20
+M/buddingtonite_nhb2301.html:FORMULA: (NH4)AlSi3O8*0.5H2O
+M/butlerite_gds25.html:FORMULA: Fe+3(SO4)(OH)*2H2O
+M/bytownite_hs105.html:FORMULA: (NaAlSi,CaAl2)Si2O8
+M/bytownite_hs106.html:FORMULA: (Na,Ca)Al(Al,Si)Si2O8
+M/calcite_co2004.html:FORMULA: CaCO3
+M/calcite_gds304.html:FORMULA: CaCO3
+M/calcite_hs48.html:FORMULA: CaCO3
+M/calcite_ws272.html:FORMULA: CaCO3
+M/carbon_black_gds68.html:FORMULA: C
+M/carnallite_hs430.html:FORMULA: KMgCl3*6H2O
+M/carnallite_nmnh98011.html:FORMULA: KMgCl3*6H2O
+M/cassiterite_hs279.html:FORMULA: SnO2
+M/chalcedony_cu91-6a.html:FORMULA: SiO2
+M/chalcopyrite_s26-36.html:FORMULA: CuFeS2
+M/chert_anp90-6d.html:FORMULA: SiO2
+M/chlorapatite_ws423.html:FORMULA: Ca5(PO4)3Cl
+M/chlorite_hs197.html:FORMULA: (Mg,Fe)3(Si,Al)4O10(OH)2-(Mg,Fe)3(OH)6
+M/chlorite_smr13.html:FORMULA: (Mg,Fe)3(Si,Al)4O10(OH)2-(Mg,Fe)3(OH)6
+M/chrysotile_ml99-12a.html:FORMULA: Mg3Si2O5(OH)4
+M/chrysotile_ml99-12c.html:FORMULA: Mg3Si2O5(OH)4
+M/cinnabar_hs133.html:FORMULA: HgS
+M/clinochlore_gds157.html:FORMULA: (Fe+2,Mg)5Al(Si3Al)O10(OH)8
+M/clinochlore_gds158.html:FORMULA: (Mg,Fe2+)5Al((Si3Al)O10(OH)8
+M/clinochlore_gds159.html:FORMULA: (Mg,Fe2+)5Al((Si3Al)O10(OH)8
+M/clinochlore_nmnh83369.html:FORMULA: (Mg,Fe+2)5Al(Si3Al)O10(OH)8
+M/clinochlore_sc-cca-1.html:FORMULA: (Fe+2,Mg)5Al(Si3Al)O10(OH)8
+M/clinoptilolite_gds152.html:FORMULA: (Na,K,Ca)2-3Al3(Al,Si)2Si13O36*12H2O
+M/clinoptilolite_gds2.html:FORMULA: (Na,K,Ca)2-3Al3(Al,Si)2Si13O36*12H2O
+M/clintonite_nmnh126553.html:FORMULA: Ca(Mg,Al)3(Al3Si)O10(OH)2
+M/colemanite_gds143.html:FORMULA: Ca2B6O11*5H2O
+M/cookeite_car1.html:FORMULA: LiAl4(Si3Al)O10(OH)8
+M/copiapite_gds21.html:FORMULA: Fe+2(Fe+3)4(SO4)6(OH)2*20H2O
+M/coquimbite_gds22.html:FORMULA: (Fe+3)2(SO4)3*9H2O
+M/cordierite_hs346.html:FORMULA: Mg2Al4Si5O18
+M/corrensite_corwa-1.html:FORMULA: 1:1  interstratified trioctahedral chlorite & vermiculite  (Mg,Fe)6(Si,Al)4O10(OH)8 + (Mg,Fe+2,Al)3(Al,Si)4O10(OH)2*4H2O
+M/corundum_hs283.html:FORMULA: Al2O3
+M/covellite_hs477.html:FORMULA: CuS
+M/cronstedite_m3542.html:FORMULA: Fe+22Fe+3(Si,Fe+3)O5(OH)4
+M/cummingtonite_hs294-3b.html:FORMULA: (Mg,Fe+2)7Si8O22(OH)2
+M/cuprite_hs127.html:FORMULA: Cu2O
+M/datolite_hs442.html:FORMULA: CaBSiO4(OH)
+M/datolite_su51399.html:FORMULA: CaBSiO4(OH)
+M/diaspore_hs416.html:FORMULA: AlO(OH)
+M/dickite_nmnh106242.html:FORMULA: Al2Si2O5(OH)4
+M/dickite_nmnh46967.html:FORMULA: Al2Si2O5(OH)4
+M/diopside_hs15.html:FORMULA: CaMgSi2O6
+M/diopside_hs317.html:FORMULA: CaMgSi2O6
+M/diopside_nmnh18685.html:FORMULA: CaMgSi2O6
+M/dipyre_bm1959-505.html:FORMULA: 3NaAlSi3O8*NaCl
+M/dolomite_cod2005.html:FORMULA: CaMg(CO3)2
+M/dolomite_hs102.html:FORMULA: CaMg(CO3)2
+M/dolomite_ml97-3.html:FORMULA: CaMg(CO3)2
+M/dumotierite_hs190.html:FORMULA: Al7(BO3)(SiO4)3O3
+M/elbaite_nmnh94217.html:FORMULA: Na(Li,Al)3Al6(BO3)3Si6O18(OH)4
+M/endellite_gds16.html:FORMULA: Al2Si2O5(OH)4*2H20
+M/enstatite_nmnh128288.html:FORMULA: Mg2Si2O6
+M/epidote_br93-33a.html:FORMULA: Epidote = Ca2(Al,Fe+3)3(SiO4)3(OH)
+M/epidote_gds26.html:FORMULA: Ca2(Al,Fe+3)3(SiO4)3(OH)
+M/epidote_gds301.html:FORMULA: Ca2(Al,Fe+3)3(SiO4)3(OH)
+M/epidote_hs328.html:FORMULA: Ca2(Al,Fe+3)3(SiO4)3(OH)
+M/epsomite_gds149.html:FORMULA: MgSO4*7H2O
+M/eugsterite_gds140.html:FORMULA: Na4Ca(SO4)3*2H2O
+M/euoxide_gds33.html:FORMULA: Eu2O3
+M/fassaite_hs118.html:FORMULA: Ca(Mg,Fe+3,Al)(Si,Al)2O6
+M/ferrihydrite_gds75.html:FORMULA: 5(Fe+3)2O3*9H2O
+M/fluorapatite_ws416.html:FORMULA: Ca5(PO4)3F
+M/galena_hs37.html:FORMULA: PbS
+M/galena_s102-17.html:FORMULA: PbS
+M/galena_s102-1b.html:FORMULA: PbS
+M/galena_s105-2.html:FORMULA: PbS
+M/galena_s26-39.html:FORMULA: PbS
+M/galena_s26-40.html:FORMULA: PbS
+M/gaylussite_nmnh102876-2.html:FORMULA: Na2Ca(CO3)2*5H2O
+M/gibbsite_hs423.html:FORMULA: Al(OH)3
+M/gibbsite_ws214.html:FORMULA: Al(OH)3
+M/glauconite_hs313.html:FORMULA: (K,Na)(Fe+3,Al,Mg)2(Si,Al)4O10(OH)2
+M/glaucophane_hs426.html:FORMULA: Na2(Mg,Fe+2)3Al2Si8O22(OH)2
+M/goethite_gds134.html:FORMULA: alpha-FeO(OH)
+M/goethite_hs36.html:FORMULA: alpha-FeO(OH)
+M/goethite_mpcma2b.html:FORMULA: alpha-FeO(OH)
+M/goethite_mpcma2c.html:FORMULA: alpha-FeO(OH)
+M/goethite_ws219.html:FORMULA: alpha-FeO(OH)
+M/goethite_ws220.html:FORMULA: alpha-FeO(OH)
+M/goethite_ws222.html:FORMULA: alpha-FeO(OH)
+M/gross_nmnh155371.html:FORMULA: Ca3Al2(SiO4)3
+M/grossular_hs113.html:FORMULA: Ca3Al2(SiO4)3
+M/gross_ws483.html:FORMULA: Ca3Al2(SiO4)3
+M/gross_ws484.html:FORMULA: Ca3Al2(SiO4)3
+M/gross_ws485.html:FORMULA: Ca3Al2(SiO4)3
+M/gypsum_hs333.html:FORMULA: CaSO4*2H20
+M/gypsum_su2202.html:FORMULA: CaSO4*2H2O
+M/halite_hs433.html:FORMULA: NaCl
+M/halloysite_cm13.html:FORMULA: Al2Si2O5(OH)4
+M/halloysite_klh503.html:FORMULA: Al2Si2O5(OH)4
+M/halloysite_nmnh106236.html:FORMULA: Al2Si2O5(OH)4
+M/halloysite_nmnh106237.html:FORMULA: Al2Si2O5(OH)4
+M/hectorite_shca-1.html:FORMULA: Na0.33(Mg,Li)3Si4O10(F,OH)2
+M/hedenbergite_hs10.html:FORMULA: CaFe+2Si2O6
+M/hedenbergite_nmnh119197.html:FORMULA: CaFe+2Si2O6
+M/hematite_fe2602.html:FORMULA: alpha-Fe2O3
+M/hematite_gds27.html:FORMULA: alpha-Fe2O3
+M/hematite_gds69.html:FORMULA: alpha-Fe2O3
+M/hematite_hs45.html:FORMULA: alpha-Fe2O3
+M/hematite_ws161.html:FORMULA: alpha-Fe2O3
+M/heulandite_gds3.html:FORMULA: (Na,Ca)2-3Al3(Al,Si)2Si13O36*12H2O
+M/heulandite_nmnh84534.html:FORMULA: (Na,Ca)2-3Al3(Al,Si)2Si13O36*12H2O
+M/holmquistite_hs291.html:FORMULA: Li2(Mg,Fe+2)3Al2Si8O22(OH)2
+M/hornblende_hs115.html:FORMULA: Ca2(Mg,Fe+2)4Al(Si7Al)O22(OH,F)2
+M/hornblende_hs16.html:FORMULA: Ca2(Mg,Fe+2)4Al(Si7Al)O22(OH,F)2
+M/hornblende_hs177.html:FORMULA: Ca2(Mg,Fe+2)4Al(Si7Al)O22(OH,F)2
+M/hornblende_nmnh117329.html:FORMULA: Ca2(Mg,Fe+2)4Al(Si7Al)O22(OH,F)2
+M/howlite_gds155.html:FORMULA: Ca2B5SiO9(OH)5
+M/hydrogrossular_nmnh120555.html:FORMULA: Ca3Al2(SiO4)3-x(OH)4x
+M/hydroxylapatite_ws425.html:FORMULA: Ca5(P04)3(OH)
+M/hypersthene_nmnhc2368.html:FORMULA: (Mg,Fe+2)2Si2O6
+M/hypersthene_pyx02.html:FORMULA: (Mg,Fe+2)2Si2O6
+M/illite_gds4.html:FORMULA: (K,H3O)(Al,Mg,Fe)2(Si,Al)4O10[(OH)2,H2O]
+M/illite_il101.html:FORMULA: (K,H3O)(Al,Mg,Fe)2(Si,Al)4O10[(OH)2,H20]
+M/illite_il105.html:FORMULA: (K,H3O)(Al,Mg,Fe)2(Si,Al)4O10[(OH)2,H20]
+M/illite_imt1.html:FORMULA: (K,H3O)(Al,Mg,Fe)2(Si,Al)4O10[(OH)2,H2O]
+M/ilmenite_hs231.html:FORMULA: Fe+2TiO3
+M/jadeite_hs343.html:FORMULA: Na(Al,Fe+3)Si2O6
+M/jarosite_gds100.html:FORMULA: Na(Fe+3)3(SO4)2(OH)6
+M/jarosite_gds101.html:FORMULA: Na(Fe+3)3(SO4)2(OH)6
+M/jarosite_gds24.html:FORMULA: (Na)(Fe+3)3(SO4)2(OH)6
+M/jarosite_gds98.html:FORMULA: K(Fe+3)3(SO4)2(OH)6
+M/jarosite_gds99.html:FORMULA: K(Fe+3)3(SO4)2(OH)6
+M/jarosite_jr2501.html:FORMULA: K(Fe+3)3(SO4)2(OH)6
+M/jarosite_nmnh95074-1.html:FORMULA: Na(Fe+3)3(SO4)2(OH)6
+M/jarosite_pb_ws368.html:FORMULA: Pb(Fe+3)6(SO4)4(OH)12
+M/jarosite_sj1.html:FORMULA: (K,H3O)(Fe+3)3(SO4)2(OH)6
+M/kainite_nmnh83904.html:FORMULA: MgSO4*KCl*3H2O
+M/kaolinite_cm3.html:FORMULA: Al2Si2O5(OH)4
+M/kaolinite_cm5.html:FORMULA: Al2Si2O5(OH)4
+M/kaolinite_cm7.html:FORMULA: Al2Si2O5(OH)4
+M/kaolinite_cm9.html:FORMULA: Al2Si2O5(OH)4
+M/kaolinite_gds11.html:FORMULA: Al2Si2O5(OH)4
+M/kaolinite_kga1.html:FORMULA: Al2Si2O5(OH)4
+M/kaolinite_kga2.html:FORMULA: Al2Si2O5(OH)4
+M/kaolinite_kl502.html:FORMULA: Al2Si2O5(OH)4
+M/kaolinite_pfn1_kga2.html:FORMULA: Al2Si2O5(OH)4
+M/kieserite_kiede1.html:FORMULA: MgSO4*H2O
+M/knebelite_hs419.html:FORMULA: (Fe2+,Mg,Mn)2SiO4
+M/labradorite_hs17.html:FORMULA: (NaAlSi,CaAl2)Si2O8
+M/laumontite_gds5.html:FORMULA: CaAl2Si4O12*4H2O
+M/lazurite_hs418.html:FORMULA: (Na,Ca)7-8(Al,Si)12(O,S)24[(SO4),Cl2,(OH)2]
+M/lepidochros_gds80.html:FORMULA: gamma-FeO(OH)
+M/lepidolite_hs167.html:FORMULA: K(Li,Al)3(Si,Al)4O10(F,OH)2
+M/lepidolite_nmnh105538.html:FORMULA: K(Li,Al)3(Si,Al)4O10(F,OH)2
+M/lepidolite_nmnh105541.html:FORMULA: K(Li,Al)3(Si,Al)4O10(F,OH)2
+M/lepidolite_nmnh105543.html:FORMULA: K(Li,Al)3(Si,Al)4O10(F,OH)2
+M/lepidolite_nmnh88526-1.html:FORMULA: K(Li,Al)3(Si,Al)4O10(F,OH)2
+M/limonite_hs41.html:FORMULA: FeO*OH*nH2O
+M/lizard_nmnhr4687.html:FORMULA: Mg3Si2O5(OH)4
+M/maghemite_gds81.html:FORMULA: gamma-Fe2O3
+M/magnetite_hs195.html:FORMULA: Fe+2(Fe+3)2O4
+M/magnetite_hs78.html:FORMULA: Fe+2(Fe+3)2O4
+M/malachite_hs254.html:FORMULA: Cu2CO3(OH)2
+M/margarite_gds106.html:FORMULA: CaAl2(Al2Si2)O10(OH)2
+M/marialite_nmnh126018.html:FORMULA: Na4Al3Si9O24(Cl,OH)/Ca4Al6Si6O24(CO3,SO4)
+M/mascagnite_gds65.html:FORMULA: (NH4)2SO4
+M/meionite_ws700.html:FORMULA:  Na4Al3Si9O24(Cl,OH)/Ca4Al6Si6O24(CO3,SO4)
+M/meionite_ws701.html:FORMULA:  Na4Al3Si9O24(Cl,OH)/Ca4Al6Si6O24(CO3,SO4)
+M/microcline_hs103.html:FORMULA: KAlSi3O8
+M/microcline_hs107.html:FORMULA: KAlSi3O8
+M/microcline_hs108.html:FORMULA: KAlSi3O8
+M/microcline_hs151.html:FORMULA: KAlSi3O8
+M/microcline_hs82.html:FORMULA: KAlSi3O8
+M/microcline_nmnh135231.html:FORMULA: KAlSi3O8
+M/mirabilite_gds150.html:FORMULA:  Na2SO4*10H2O
+M/mizzonite_bm931-12.html:FORMULA:  Na4Al3Si9O24(Cl,OH)/Ca4Al6Si6O24(CO3,SO4)
+M/mizzonite_hs350.html:FORMULA: Na4Al3Si9O24(Cl,OH)/Ca4Al6Si6O24(CO3,SO4)
+M/mizzonite_hs351.html:FORMULA: Na4Al3Si9O24(Cl,OH)/Ca4Al6Si6O24(CO3,SO4)
+M/mizzonite_nmnh113775-1.html:FORMULA: 3NaAlSi3O8*NaCl - 3CaAl2Si2O8*CaCO3 (Me57)
+M/monazite_hs255.html:FORMULA: (Ce,La,Nd,Th)PO4
+M/monticellite_hs339.html:FORMULA: CaMgSiO4
+M/montmorillonite_cm20.html:FORMULA: (Na,Ca)0.33(Al,Mg)2Si4O10(OH)2*nH2O
+M/montmorillonite_cm26.html:FORMULA: (Na,Ca)0.33(Al,Mg)2Si4O10(OH)2*nH20
+M/montmorillonite_cm27.html:FORMULA: (Na,Ca)0.33(Al,Mg)2Si4O10(OH)2*nH20
+M/montmorillonite_saz1.html:FORMULA: (Na,Ca)0.33(Al,Mg)2Si4O10(OH)2*nH20
+M/montmorillonite_sca2.html:FORMULA: (Na,Ca)0.33(Al,Mg)2Si4O10(OH)2*nH20
+M/montmorillonite_stx1.html:FORMULA: (Na,Ca)0.33(Al,Mg)2Si4O10(OH)2*nH20
+M/montmorillonite_swy1.html:FORMULA: (Na,Ca)0.33(Al,Mg)2Si4O10(OH)2*nH20
+M/mordenite_gds151.html:FORMULA: (Ca,Na2,K2)Al2Si10O24*7H2O
+M/mordenite_gds18.html:FORMULA: (Ca,Na2,K2)Al2Si10O24*7H2O
+M/muscovite_cu93-1.html:FORMULA: KAl2Si3O10(OH)2
+M/muscovite_gds107.html:FORMULA: KAl2Si3O10(OH)2
+M/muscovite_gds108.html:FORMULA: KAl2Si3O10(OH)2
+M/muscovite_gds111.html:FORMULA: KAl2Si3O10(OH)2
+M/muscovite_gds113.html:FORMULA: KAl2Si3O10(OH)2
+M/muscovite_gds114.html:FORMULA: KAl2Si3O10(OH)2
+M/muscovite_gds116.html:FORMULA: KAl2Si3O10(OH)2
+M/muscovite_gds117.html:FORMULA: KAl2Si3O10(OH)2
+M/muscovite_gds118.html:FORMULA: KAl2Si3O10(OH)2
+M/muscovite_gds119.html:FORMULA: KAl2Si3O10(OH)2
+M/muscovite_gds120.html:FORMULA: KAl2Si3O10(OH)2
+M/muscovite_hs146.html:FORMULA: KAl2Si3O10(OH)2
+M/muscovite_hs24.html:FORMULA: KAl3Si3O10(OH)2
+M/muscovite_il107.html:FORMULA: KAl2Si3O10(OH)2
+M/nacrite_gds88.html:FORMULA: Al2Si2O5(OH)4
+M/nanohematite_br93-34b2.html:FORMULA: Fe2O3
+M/natrolite_hs169.html:FORMULA: Na2Al2Si3O10*2H20
+M/natrolite_nmnh83380.html:FORMULA: Na2Al2Si3O10*2H2O
+M/neodymium_gds34.html:FORMULA: Nd2O3
+M/nepheline_hs19.html:FORMULA: (Na,K)AlSiO4
+M/nephrite_hs296.html:FORMULA: Ca2(Mg,Fe+2)5Si8O22(OH)2
+M/nickeline_hs264.html:FORMULA: NiAs
+M/niter_gds43.html:FORMULA: KNO3
+M/nontronite_ng1.html:FORMULA: Na0.33(Fe+3)2(Si,Al)4O10*nH20
+M/nontronite_swa1.html:FORMULA: Na0.33(Fe+3)2(Si,Al)4O10*nH20
+M/oligoclase_hs110.html:FORMULA: (Na,Ca)Al(Al,Si)Si2O8
+M/olivine_gds70.html:FORMULA: Mg2SiO4-Fe2SiO4  Fo89
+M/olivine_gds71.html:FORMULA: Mg2SiO4-Fe2SiO4
+M/olivine_hs285.html:FORMULA: Mg2SiO4-Fe2SiO4  Fo80
+M/olivine_hs420.html:FORMULA: Mg2SiO4-Fe2SiO4
+M/olivine_ki3005.html:FORMULA: Mg2SiO4-Fe2SiO4  Fo11
+M/olivine_ki3054.html:FORMULA: Mg2SiO4-Fe2SiO4  Fo66
+M/olivine_ki3188.html:FORMULA: Mg2SiO4-Fe2SiO4  Fo51
+M/olivine_ki3189.html:FORMULA: Mg2SiO4-Fe2SiO4  Fo60
+M/olivine_ki3291.html:FORMULA: Mg2SiO4-Fe2SiO4  Fo29
+M/olivine_ki3377.html:FORMULA: Mg2SiO4-Fe2SiO4  Fo18
+M/olivine_ki4143.html:FORMULA: Mg2SiO4-Fe2SiO4 Fo41
+M/olivine_nmnh137044.html:FORMULA: (Mg,Fe)2SiO4  Fo92
+M/opal_tm8896.html:FORMULA: SiO2*nH2O
+M/opal_ws732.html:FORMULA: SiO2*nH2O
+M/orthoclase_hs13.html:FORMULA: KAlSi3O8
+M/orthoclase_nmnh113188.html:FORMULA: KAlSi3O8
+M/orthoclase_nmnh142137.html:FORMULA: KAlSi3O8
+M/palygorskite_cm46.html:FORMULA: (Mg,Al)2Si4O10(OH)*4H2O
+M/palygorskite_pfl1.html:FORMULA: (Mg,Al)2Si4O10(OH)*4H2O
+M/paragonite_gds109.html:FORMULA: NaAl2(Si3Al)O10(OH)2
+M/pectolite_nmnh94865.html:FORMULA: NaCa2Si3O8(OH)
+M/perthite_hs415.html:FORMULA: KAlSi3O8 + NaAlSi3O8
+M/phlogopite_gds20.html:FORMULA: KMg3Si3AlO10(F,OH)2
+M/phlogopite_hs23.html:FORMULA: KMg3Si3AlO10(F,OH)2
+M/phlogopite_ws496.html:FORMULA: KMg3Si3AlO10(F,OH)2
+M/phlogopite_ws675.html:FORMULA: KMg3Si3AlO10(F,OH)2
+M/pigeonite_hs199.html:FORMULA: (Mg,Fe+2,Ca)(Mg,Fe+2)Si2O6
+M/pinnoite_nmnh123943.html:FORMULA: MgB2O4*3H2O
+M/pitchlimon_gds104.html:FORMULA: [H(Cu,Fe)O2]
+M/polyhalite_nmnh92669-4.html:FORMULA: K2Ca2Mg(SO4)4*2H2O
+M/portlandite_gds525.html:FORMULA: Ca(OH)2
+M/praseodmium_gds35.html:FORMULA: PrO2
+M/prehnite_gds613.html:FORMULA: Ca2Al2Si3O10(OH)2
+M/prochlorite_smr14.html:FORMULA: (Mg,Fe)3(Si,Al)4O10(OH)2-(Mg,Fe)3(OH)6
+M/psilomelane_hs139.html:FORMULA: BaMn+2(Mn+4)8O16(OH)4
+M/pyrite_gds483.html:FORMULA: FeS2
+M/pyrite_hs35.html:FORMULA: FeS2
+M/pyrite_s142-1.html:FORMULA: FeS2
+M/pyrite_s26-8.html:FORMULA: FeS2
+M/pyrite_s29-4.html:FORMULA: FeS2
+M/pyrite_s30.html:FORMULA: FeS2
+M/pyrolusite_hs138.html:FORMULA: MnO2
+M/pyrophyllite_pys1a.html:FORMULA: Al2Si4O10(OH)2
+M/pyrophyllite_su1421.html:FORMULA: Al2Si4O10(OH)2
+M/pyroxene_hs119.html:FORMULA: (Ca,Mg,Fe2+,Fe3+,Ti,Al)2(Si,Al)2O6
+M/pyrrhotite_hs269.html:FORMULA: Fe1-xS
+M/quartz_avent_hs117.html:FORMULA: SiO2
+M/quartz_gds31.html:FORMULA: SiO2
+M/quartz_gds74.html:FORMULA: SiO2
+M/quartz_hs32.html:FORMULA: SiO2
+M/rectorite_ar1.html:FORMULA: Al2Si4O10(OH)2 + (Mg,Fe+2,Al)3(Al,Si)4O10(OH)2*4H2O
+M/rectorite_isr202.html:FORMULA: Al2Si4O10(OH)2 + (Mg,Fe+2,Al)3(Al,Si)4O10(OH)2*4H2O
+M/rhodochrosite_hs338.html:FORMULA: MnCO3
+M/rhodochrosite_hs67.html:FORMULA: MnCO3
+M/rhodonite_hs325.html:FORMULA: MnSiO3
+M/rhodonite_nmnh6148.html:FORMULA: (Mn+2,Fe+2,Mg,Ca)SiO3
+M/richterite_hs336.html:FORMULA: Na2Ca(Mg,Fe2+,Mn,Fe3+,Al)5(Si8O22)(OH,F)2
+M/richterite_nmnh150800.html:FORMULA: Na2Ca(Mg,Fe2+,Mn,Fe3+,Al)5(Si8O22)(OH,F)2
+M/riebeckite_hs326.html:FORMULA: Na2Fe(+2)3Fe(+3)2Si8O22(OH)2
+M/riebeckite_nmnh122689.html:FORMULA: Na2Fe(+2)3Fe(+3)2Si8O22(OH)2
+M/rivadavite_nmnh170164.html:FORMULA: Na6MgB24O40*22H2O
+M/roscoelite_en124.html:FORMULA: KV2(AlSi3O10)(OH)2
+M/rutile_hs126.html:FORMULA: TiO2
+M/rutile_hs137.html:FORMULA: TiO2
+M/samarium_gds36.html:FORMULA: Sm2O3
+M/sanidine_gds19.html:FORMULA: (K,Na)AlSi3O8
+M/sanidine_nmnh103200.html:FORMULA: (K,Na)AlSi3O8
+M/saponite_sapca1.html:FORMULA: (1/2Ca,Na)0.33(Mg,Fe+2)3(Si,Al)4O10(OH)2*4H2O
+M/sauconite_gds135.html:FORMULA: Na0.33Zn3(Si,Al)4O10(OH)2*4H2O
+M/schwertmannite_bz93-1.html:FORMULA: Fe16O16(OH)12(SO4)2
+M/scolecite_gds7.html:FORMULA: CaAl2Si3O10*3H2O
+M/sepiolite_sepnev-1acb.html:FORMULA: Mg4Si6O15(OH)2*H2O
+M/sepiolite_sepnev-1.html:FORMULA: Mg4Si6O15(OH)2*H2O
+M/sepiolite_sepsp-1acb.html:FORMULA: Mg4Si6O15(OH)2*H2O
+M/sepiolite_sepsp-1.html:FORMULA: Mg4Si6O15(OH)2*H2O
+M/serpentine_hs318.html:FORMULA: Mg3Si2O5(OH)4
+M/serpentine_hs8.html:FORMULA: Mg3Si2O5(OH)4
+M/siderite_hs271.html:FORMULA: FeCO3
+M/siderophyllite_nmnh104998.html:FORMULA: K(Fe+2)2Al(Al2Si2)O10(F,OH)2
+M/sillimanite_hs186.html:FORMULA: Al2SiO5
+M/smaragdite_hs290.html:FORMULA: Ca2(Mg,Fe+2)5Si8O22(OH)2  (see sample description)
+M/sodiumbicarbonate_gds55.html:FORMULA: NaHCO3
+M/spessartine_hs112.html:FORMULA: Mn3Al2(SiO4)3
+M/spessartine_nmnh14143.html:FORMULA: Mn3Al2(SiO4)3
+M/spessartine_ws480.html:FORMULA: Mn3Al2(SiO4)3
+M/spessartine_ws481.html:FORMULA: Mn3Al2(SiO4)3
+M/sphalerite_hs136.html:FORMULA: ZnS
+M/sphalerite_s102-7.html:FORMULA: ZnS
+M/sphalerite_s102-8.html:FORMULA: ZnS
+M/sphalerite_s26-34.html:FORMULA: ZnS
+M/sphalerite_s26-35.html:FORMULA: ZnS
+M/sphene_hs189.html:FORMULA: CaTiSiO5
+M/spodumene_hs210.html:FORMULA: LiAlSi2O6
+M/staurolite_hs188.html:FORMULA: Fe(+2)2Al9O6(SiO4)4(O,OH)2
+M/stilbite_gds8.html:FORMULA: NaCa2Al5Si13O36*14H2O
+M/stilbite_hs482.html:FORMULA: NaCa2Al5Si13O36*14H2O
+M/strontianite_hs272.html:FORMULA: SrCO3
+M/sulfur_gds94.html:FORMULA: S <br>
+M/syngenite_gds139.html:FORMULA: K2Ca(SO4)2*H2O
+M/talc_gds23.html:FORMULA: Mg3Si4O10(OH)2
+M/talc_hs21.html:FORMULA: Mg3Si4O10(OH)2
+M/talc_tl2702.html:FORMULA: Mg3Si4O10(OH)2
+M/talc_ws659.html:FORMULA: Mg3Si4O10(OH)2
+M/thenardite_gds146.html:FORMULA: Na2SO4
+M/thenardite_hs450.html:FORMULA: Na2SO4
+M/thuringite_smr15.html:FORMULA: (Mg,Fe)3(Si,Al)4O10(OH)2-(Mg,Fe)3(OH)6
+M/tincalconite_gds142.html:FORMULA: Na2B4O7*5H2O
+M/topaz_10.html:FORMULA: Al2SiO4(F,OH)2
+M/topaz_12.html:FORMULA: Al2SiO4(F,OH)2
+M/topaz_13.html:FORMULA: Al2SiO4(F,OH)2
+M/topaz_14.html:FORMULA: Al2SiO4(F,OH)2
+M/topaz_15.html:FORMULA: Al2SiO4(F,OH)2
+M/topaz_16.html:FORMULA: Al2SiO4(F,OH)2
+M/topaz_17.html:FORMULA: Al2SiO4(F,OH)2
+M/topaz_22.html:FORMULA: Al2SiO4(F,OH)2
+M/topaz_2.html:FORMULA: Al2SiO4(F,OH)2
+M/topaz_3.html:FORMULA: Al2SiO4(F,OH)2
+M/topaz_41.html:FORMULA: Al2SiO4(F,OH)2
+M/topaz_42.html:FORMULA: Al2SiO4(F,OH)2
+M/topaz_4.html:FORMULA: Al2SiO4(F,OH)2
+M/topaz_5.html:FORMULA: Al2SiO4(F,OH)2
+M/topaz_6.html:FORMULA: Al2SiO4(F,OH)2
+M/topaz_8.html:FORMULA: Al2SiO4(F,OH)2
+M/topaz_9.html:FORMULA: Al2SiO4(F,OH)2
+M/topaz_hs184.html:FORMULA: Al2SiO4(F,OH)2
+M/tourmaline_hs282.html:FORMULA: (Na,Ca)(Li,Mg,Al)(Al,Fe,Mn)6(BO3)3(Si6O18)(OH)4
+M/tremolite_hs18.html:FORMULA: Ca2Mg5Si8O22(OH)2
+M/tremolite_nmnh117611.html:FORMULA: Ca2Mg5Si8O22(OH)2
+M/trona_gds148.html:FORMULA: Na3(CO3)(HCO3)*2H2O
+M/ulexite_gds138.html:FORMULA: NaCaB5O9*8H2O
+M/ulexite_hs4413b.html:FORMULA: NaCaB5O9*8H2O
+M/uralite_hs345.html:FORMULA: Ca2(Mg,Fe2+)5(Si8O22)(OH,F)2
+M/uvarovite_nmnh106661.html:FORMULA: Ca3Cr(+3)2(SiO4)3
+M/vermiculite_gds13.html:FORMULA: (Mg,Fe+2,Al)3(Al,Si)4O10(OH)2*4H2O
+M/vermiculite_vtx-1a.html:FORMULA: (Mg,Fe+2,Al)3(Al,Si)4O10(OH)2*4H2O
+M/vermiculite_vtx-1-flx.html:FORMULA: (Mg,Fe+2,Al)3(Al,Si)4O10(OH)2*4H2O
+M/vermiculite_ws681.html:FORMULA: (Mg,Fe+2,Al)3(Al,Si)4O10(OH)2*4H2O
+M/vesuvianite_hs446.html:FORMULA: Ca10Mg2Al4(SiO4)5(Si2O7)2(OH)4
+M/witherite_hs273.html:FORMULA: BaCO3
+M/wollastonite_hs348.html:FORMULA: CaSiO3
+M/zircon_ws522.html:FORMULA: ZrSiO4
+M/zoisite_hs347.html:FORMULA: Ca2Al3(SiO4)3(OH)
+M/zunyite_gds241b.html:FORMULA: Al13Si5O20(OH,F)18Cl
+S/acid_mine_drain_assem1.html:FORMULA: unknown
+S/acid_mine_drain_assem2.html:FORMULA: unknown
+S/actinolite_dolomite_skarn_br93-60b.html:FORMULA: Ca2(Mg,Fe+2)5Si8O22(OH)2, CaMg(CO3)2, and others
+S/actinolite-hornfels_br93-5a.html:FORMULA: Ca2(Mg,Fe+2)5Si8O22(OH)2, Ca2Mg5Si8O22(OH)2, K(Mg,Fe+2)3AlSi3O10(OH,F)2, and (Mg,Fe)3(Si,Al)4O10(OH)2-(Mg,Fe)3(OH)6
+S/actinolite-tremolite_br93-22c.html:FORMULA: Ca2(Mg,Fe+2)5Si8O22(OH)2 and Ca2Mg5Si8O22(OH)2
+S/alunite_cu91-217a.html:FORMULA: (K)Al3(SO4)2(OH)6 + (Na.83,K.17)Al3(SO4)2(OH)6
+S/alunite_cu91-217d.html:FORMULA: (K)Al3(SO4)2(OH)6 + (Na.74,K.26)Al3(SO4)2(OH)6
+S/alunite_cu91-217g1.html:FORMULA: KAl3(SO4)2(OH)6
+S/alunite_cu91-217h.html:FORMULA: (K)Al3(SO4)2(OH)6 + (Na.74,K.26)Al3(SO4)2(OH)6
+S/alunite_cu98-5c.html:FORMULA: KAl3(SO4)2(OH)6
+S/alunite_mix_mv2-ar3.html:FORMULA: KAl3(SO4)2(OH)6 + Al2Si4O10(OH)2 + Fe3O(OH)
+S/alunite_mixture_sd1093a.html:FORMULA: KAl3(SO4)2(OH)6 + Al2Si4O10(OH)2
+S/alunite_na_dickite_mv99-6-26b.html:FORMULA: Al2Si2O5(OH)4 +NaAl3(SO4)2(OH)6
+S/alunite_nh4+jar_nmnh145596.html:FORMULA: NH4Al3(SO4)2(OH)6
+S/alun_kaol_amx3.html:FORMULA: KAl3(SO4)2(OH)6 + Al2Si4O10(OH)2
+S/alun_kaol_musc_amx2.html:FORMULA: KAl3(SO4)2(OH)6 + Al2Si4O10(OH)2 + KAl2[AlSi3O10](OH,F)2
+S/alun_musc_amx4.html:FORMULA: KAl3(SO4)2(OH)6 + KAl2[AlSi3O10](OH,F)2
+S/alun_musc_pyro_amx1.html:FORMULA: KAl3(SO4)2(OH)6 + KAl2[AlSi3O10](OH,F)2 + Al2Si4O10(OH)2
+S/alun_na_mv00-11a.html:FORMULA: NaAl+Al2Si2O5(OH)4
+S/alun_pyro_pys1a.html:FORMULA: KAl3(SO4)2(OH)6 + Al2Si4O10(OH)2
+S/basalt_fresh_br93-46b.html:FORMULA: CaAl2Si2O8, (Ca,Na)(Mg,Fe,Al,Ti)(Si,Al)2O6, SiO2, SiO2, and SiO2
+S/basalt_weathered_br93-43.html:FORMULA: CaAl2Si2O8, (Ca,Na)(Mg,Fe,Al,Ti)(Si,Al)2O6, CaCO3, and Fe2O3
+S/beidellite_montmor_gds123.html:FORMULA: (Na,Ca,0.5)0.3 Al2(Si,Al)4O10(OH)2*nH2O
+S/beidellite_montmor_gds124.html:FORMULA: (Na,Ca,0.33 Al2[Si3.5Al0.5O10(OH)2]*nH2O
+S/biotite-chlorite_mx_br93-36a.html:FORMULA: K(Mg,Fe+2)3(Al,Fe+3)Si3O10(OH)2 and (Mg,Fe)3(Si,Al)4O10(OH)2-(Mg,Fe)3(OH)6
+S/blue_effor_su93-300.html:FORMULA: Cu2+SO4.5H2O (chalcanthite) and Cu2+4(SO4)(OH)6 (brochantite)
+S/buddingtonite_cu93-260b.html:FORMULA: (NH4)AlSi3O8*0.5H20
+S/burnarea_topsurface_WRF00-02.html:FORMULA: Not Available
+S/burnarea_traverse_WRF00-01.html:FORMULA: Not Available
+S/calc_dolo_amx8.html:FORMULA: CaCO3+CaMg(CO3)2
+S/calc_dolo_mont_amx18.html:FORMULA: CaCO3 + CaMg(CO3)2 +(Na)0.33(Al,Mg)2[(SiAl)4O10(OH)2]&middot;nH2O
+S/calc_dolo_mont_amx7.html:FORMULA: CaCO3 + CaMg(CO3)2 + (Na,Ca)0.33(Al,Mg)2[(SiAl)4O10(OH)2]*nH2O
+S/calcite_mixture_gds212.html:FORMULA: CaCO3 + (Na,Ca0.5)0.33(Al,Mg)2[(SiAl)4O10(OH)2]*nH2O
+S/calcite_mixture_gds213.html:FORMULA: CaCo3,  Al2Si2O5(OH)4
+S/calcite_talc_pc99-1g.html:FORMULA: CaCO3 and Mg3Si4O10(OH)2
+S/calc_kaol_amx9.html:FORMULA: CaCO3,  Al2Si2O5(OH)4
+S/calc_mont_amx19.html:FORMULA: CaCO3 + (Ca)0.33(Al,Mg)2[(SiAl)4O10(OH)2]*nH2O
+S/calc_mont_amx6.html:FORMULA: CaCO3 + (Na,Ca)0.33(Al,Mg)2[(SiAl)4O10(OH)2]*nH2O
+S/calc_musc_amx5.html:FORMULA:  CaCO3 + KAl2[AlSi3O10](OH,F)2
+S/chabazite_thom_wairaikite_hs193.html:FORMULA: CaAl2Si4012*6H2O + NaCa2Al5Si5O20*6H2O + CaAl2Si4O12*2H2O
+S/chlorite_mixture_cu93-4b.html:FORMULA: (Mg,Fe)3(Si,Al)4O10(OH)2-(Mg,Fe)3(OH)6 and alpha-Fe3+O(OH)
+S/chlorite_mixture_cu93-65a.html:FORMULA: (Mg,Fe)3(Si,Al)4O10(OH)2-(Mg,Fe)3(OH)6 and Kal2Si3O10(OH)2
+S/chlorite_phyllite_cu91_238a.html:FORMULA: (Mg,Fe2+)5Al(Si3Al)O10(OH)8
+S/chlorite-serpentine_skarn_br93-22b.html:FORMULA: (Mg,Al,Fe+2)6(Si,Al)4O10(OH)8, Mg3Si2O5(OH)4, (Mg,Fe+2)3Si2O5(OH)4, Mg3Si2O5(OH)4
+S/chl_phyllite_cu91-253d.html:FORMULA: (Mg,Fe)3(Si,Al)4O10(OH)2-(Mg,Fe)3(OH)6 and (Fe3+,Mg,Al,Fe2+,Ti,Mn)2.42(SiAl)2O5(OH)4
+S/constructed_mixtures_calc_epid.html:FORMULA: CaCO3 and Ca2(Al,Fe+3)3(SiO4)3(OH)
+S/constructed_mixtures_chl_epid_calc.html:FORMULA: (Mg,Fe)3(Si,Al)4O10(OH)2-(Mg,Fe)3(OH)6 + Ca2(Al,Fe+3)3(SiO4)3(OH) + CaCO3
+S/constructed_mixtures_chlor_calc.html:FORMULA: CaCO3 and (Mg,Fe)3(Si,Al)4O10(OH)2-(Mg,Fe)3(OH)6
+S/constructed_mixtures_chlor_epid.html:FORMULA: (Mg,Fe)3(Si,Al)4O10(OH)2-(Mg,Fe)3(OH)6 and Ca2(Al,Fe+3)3(SiO4)3(OH)
+S/dickite_cu91-219b.html:FORMULA: Al2Si2O5(OH)4, Al2Si2O5(OH)4, SiO2, CaCO3
+S/dick_musc_gyp_jar_amx20.html:FORMULA: Al2Si2O5(OH)4 + KAl2Si3O10(OH)2 + CaSO4*2H20 + K(Fe+3)3(SO4)2(OH)6
+S/dolo_calc_talc_pc99-1e.html:FORMULA: CaMg(CO3)2, CaCO3, and Mg3Si4O10(OH)2
+S/dolo_mont_amx10.html:FORMULA: CaMg(CO3)2 + (Ca)0.33(Al,Mg)2Si4O10(OH)2*nH20
+S/dolo_mont_amx21.html:FORMULA: CaMg(CO3)2 + (Na)0.33(Al,Mg)2Si4O10(OH)2*nH20
+S/erionite_gds144.html:FORMULA: (K2Na2Ca,Mg)2[Al4Si14O36]&middot;15H2O  and (K,Na)5(Ca,Ba)2[(Al9Si23)O64]&middot;22H2O
+S/erionite_gds72.html:FORMULA: (K2Na2Ca,Mg)2[Al4Si14O36]&middot;15H2O  + (K2,Ca)5[(Al10Si26)O72]&middot;30H2O
+S/fe_hydroxide_su93-106.html:FORMULA: Unknown
+S/goethite_gds240.html:FORMULA: alpha-FeO(OH) and SiO2
+S/goethite_phyllite_cu91_236a.html:FORMULA: alpha-Fe3+O(OH)
+S/goet_qtz_jaro_amx11.html:FORMULA: alpha-FeO(OH)+SiO2 and K(Fe+3)3(SO4)2(OH)6
+S/gyp_jar_ill_brcm1.html:FORMULA: CaSO4*2H2O and Na,K(Fe+3)3(SO4)2(OH)6 and (K,H30)(Al,Mg,Fe)2(Si,Al)4O10[(OH)2,H20]
+S/gyp_jar_mus_amx24.html:FORMULA: CaSO4*2H2O and K(Fe+3)3(SO4)2(OH)6 and KAl2Si3O10(OH)2
+S/gyp_jar_mus_dic_amx22.html:FORMULA: CaSO4*2H2O + K(Fe+3)3(SO4)2(OH)6 + KAl2Si3O10(OH)2 + Al2Si2O5(OH)4
+S/gyp_jar_mus_dic_amx23.html:FORMULA: CaSO4*2H2O + K(Fe+3)3(SO4)2(OH)6 + KAl2Si3O10(OH)2 + Al2Si2O5(OH)4
+S/halloysite_cu91-242d.html:FORMULA: Al2Si2O5(OH)4
+S/halloysite_kaolinite_cm29.html:FORMULA: Al2Si2O5(OH)4
+S/hema_qtz_gds76.html:FORMULA: alpha-Fe2O3 + SiO2
+S/hematite_tuff_cu91_223.html:FORMULA: alpha-Fe2O3
+S/hydrate_volcanic_glass_cu01-4a.html:FORMULA: Not Available
+S/illite-high-Al_cu00-5b.html:FORMULA: Al2Si2O5(OH)4 + SiO2
+S/jarosite_cu91_20a.html:FORMULA: KFe3(SO4)2(OH)6
+S/kaol_alun_amx14.html:FORMULA: Al2Si4O10(OH)2 + KAl3(SO4)2(OH)6
+S/kaolinite_mixture_cu93-5c.html:FORMULA: Al2Si2O5(OH)4 and KAl2Si3O10(OH)2
+S/kaolinite_muscovite_amx12.html:FORMULA: Al2Si2O5(OH)4 and KAl2Si3O10(OH)2
+S/kaolinite_wxl+other_cu00-19a.html:FORMULA: Al2Si2O5(OH)4 + smectite + (K,H3O)(Al,Mg,Fe)2(Si,Al)4O10[(OH)2,H2O]
+S/kaolinite_wxl+other_cu91-200a.html:FORMULA: Al2Si2O5(OH)4 + Si02 + feldspar
+S/kaol_musc_amx13.html:FORMULA: Al2Si2O5(OH)4 and KAl2Si3O10(OH)2
+S/kaolsmect_h89fr2.html:FORMULA: Al2Si2O5(OH)4 + (Na,Ca)0.33(Al,Mg)2Si4O10(OH)2*nH2O
+S/kaolsmect_h89fr5.html:FORMULA: Al2Si2O5(OH)4 + (Na,Ca)0.33(Al,Mg)2Si4O10(OH)2*nH2O
+S/kaolsmect_klf506.html:FORMULA: Al2Si2O5(OH)4 + (Na,Ca)0.33(Al,Mg)2Si4O10(OH)2*nH2O
+S/kaolsmect_klf508.html:FORMULA: Al2Si2O5(OH)4 + (Na,Ca)0.33(Al,Mg)2Si4O10(OH)2*nH2O
+S/kaolsmect_klf511.html:FORMULA: Al2Si2O5(OH)4 + (Na,Ca)0.33(Al,Mg)2Si4O10*nH2O
+S/limestone_cu02-11a.html:FORMULA: CaCO3 + impurities
+S/magnesite_hydroma_hs47.html:FORMULA: MgCO3 + Mg5(CO3)4(OH)2*4H2O
+S/magnetite_skarn_br5b.html:FORMULA: Fe+2(Fe+3)2O4, KMg3Si3AlO10(F,OH)2
+S/mesolite_gds6.html:FORMULA: Na2Ca2Al6Si9O30*8H2O + KCa4Si8O20(OH,F)*8H2O
+S/mont_calc_amx15.html:FORMULA: (Ca)0.33(Al,Mg)2[(SiAl)4O10(OH)2]*nH2O + CaCO3
+S/montmorillonite_cm37.html:FORMULA: (Na,Ca)0.33(Al,Mg)2Si4O10(OH)2*nH20 + (K,H3O)(Al,Mg,Fe)2(Si,Al)4O10[(OH)2,H2O]
+S/montmorillonite_cm42.html:FORMULA: (Na,Ca)0.33(Al,Mg)2Si4O10(OH)2*nH20 + (K,H3O)(Al,Mg,Fe)2(Si,Al)4O10[(OH)2,H2O]
+S/montmorillonite-Na_cu93-52.html:FORMULA: (Na,Ca)0.33(Al,Mg)2Si4O10(OH)2*nH20
+S/muscovite_cu91-250a.html:FORMULA: KAl2(Si3Al)O10(OH,F)2 + SiO2
+S/muscovite-lowAl_cu98-8h.html:FORMULA: KAl2(Si3Al)O10(OH,F)2 + SiO2
+S/muscovite-medhi-Al_CU91-252d.html:FORMULA:  KAl2(Si3Al)O10(OH,F)2 + SiO2 + (Mg,Fe2+)5Al(Si3Al)O10(OH)8 + alpha-FeO(OH)
+S/muscovite-medlow-Al_cu91-250a.html:FORMULA: KAl2(Si3Al)O10(OH,F)2 + SiO2
+S/muscovite_mix_cu93-314.html:FORMULA: KAl2(Si3Al)O10(OH,F)2 + (Na,K)Fe3(SO4)2(OH)6
+S/musc_pyro_pyrp1.html:FORMULA: KAl2[AlSi3O10](OH,F)2 + Al2Si4O10(OH)2
+S/natrolite_zeolite_hs168.html:FORMULA: Na2Al2Si3O10*2H20
+S/nontronite_cu00-13a.html:FORMULA: Na0.3Fe3+2(Si,Al)4O10(OH)2*nH2O
+S/opal_cu00-15e.html:FORMULA: SiO2*nH2O + others
+S/phlogopite_sand_mix_br93-20.html:FORMULA: K(Mg,Fe+2)3AlSi3O10(OH,F)2
+S/pyrite_lv95-6a.html:FORMULA: FeS2
+S/pyro_mont_amx17.html:FORMULA: Al2Si4O10(OH)2 + Al2Si2O5(OH)4
+S/pyro_musc_pyrm1.html:FORMULA:  Al2Si4O10(OH)2 + KAl2[AlSi3O10](OH,F)2
+S/pyroph_mont_amx16.html:FORMULA: Al2Si4O10(OH)2 and (Ca)0.33(Al,Mg)2Si4O10(OH)2*nH2O
+S/pyroxene.basalt.cu01_20a.html:FORMULA: Not Available
+S/stonewall_playa.html:FORMULA: Not Available
+S/talc_clinochl_hs327.html:FORMULA: Mg3Si4O10(OH)2 + (Mg,Fe,Al)6(Si,Al)4O10(OH)8
+S/teepleite_nmnh102798.html:FORMULA: Na2(BO2)Cl*2H2O + Na3(CO3)(HCO3)*2H2O
+S/white_crust_lv30.html:FORMULA: MgSO4.4H2O
+S/zincite_hs147.html:FORMULA: ZnO + (Zn,Mn+2,Fe+2)(Fe+3,Mn+3)2O4

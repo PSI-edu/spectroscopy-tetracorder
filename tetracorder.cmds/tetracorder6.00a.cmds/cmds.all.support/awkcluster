@@ -1,0 +1,16 @@
+#!/bin/sh
+
+# format davinci cluster analysis results:
+#
+# Roger N. Clark, April 24, 1995
+
+# output looks something like:
+
+#group.1um/br36a_qtzmonz_chlorite?.fd.gz   2.25  1  0.1875  0  0  0 none
+
+
+grep -v '^----------' $1 | \
+	grep -v '^$'     | \
+	sed -e 's/\"//g' | \
+	awk '{ printf ("%-40s  %7.4f %7.4f %7.4f %7.4f %7.4f %7.4f %-10s\n", \
+					$1, $2, $3, $4, $5, $6, $7, $8 ) }'

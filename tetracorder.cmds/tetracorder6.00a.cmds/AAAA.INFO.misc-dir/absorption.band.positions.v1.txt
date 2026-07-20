@@ -1,0 +1,17 @@
+          Spectrum                     Band Position (microns)
+
+group.2um/mizzonite.fd.gz                 2.36+
+group.2um/rhodochrosite.fd.gz             2.357
+group.2um/azurite.fd.gz                   2.35 + 2.28
+group.2um/chlorite.thuringite.fd.gz       2.35 + 2.25
+group.2um/calcite.fd.gz                   2.34
+group.2um/siderite.fd.gz                  2.337
+group.2um/epidote.fd.gz                   2.33
+group.2um/chlorite.fd.gz                  2.32
+group.2um/chlorite-scarn.fd.gz            2.31
+
+group.2um-broad/pyroxene.enstatite        1.825
+group.2um-broad/pyroxene.bronzite.fd.gz   1.85
+group.2um-broad/pyroxene.hypersthene      1.86
+group.2um-broad/pyroxene.pigeonite.fd.gz  2.1 
+group.2um-broad/pyroxene.augite.fd.gz     2.27

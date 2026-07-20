@@ -1,0 +1,819 @@
+                             Settings from mindat.org
+#################### group 0
+vegetation1
+vegetation.dry+green
+snow.and.ice
+snow.melting.1a
+snow.melting.3
+snow.melting.8
+snow.slush.9
+snow.slush.16
+snow.melting1a+0.5veg
+snow.melting9+0.5veg
+snow.melting16+0.5veg
+water.high.chlorophyll
+water.low.chlorophyll
+water.red.algae
+water+mont16.5gpl
+water+mont5.01gpl
+water+mont1.67gpl
+water+mont0.5gpl
+organic_dry_long_grass-thick
+organic_white_pvc_pipe
+organic_green_plastic_tarp
+
+#################### group 1
+organic_green_plastic_tarp_1um
+fe3+_hematite.fine.gr.gds76                    hematite: Large ore bodies of hematite are usually of sedimentary origin;
+                                                  also found in high-grade ore bodies in metamorphic rocks due to contact
+                                                  metasomatism, and occasionally as a sublimate on igneous extrusive
+                                                  rocks ("lavas") as a result of volcanic activity. It is also
+                                                  usually the cause of red soils all over the planet.
+     
+fe3+_goethite.medgr.ws222                      goethite: Common weathering product, primary hydrothermal mineral,
+                                                  bog and marine environments.
+fe3+_goethite+qtz.medgr.gds240
+fe3+_goethite.fingr
+fe3+_goethite.medcoarsegr.mpc.trjar
+fe3+_goethite.coarsegr
+fe3+_goethite.thincoat
+fe3+_goeth+jarosite
+sulfide_pyrite                                 pyrite: Common in many rock types, igneous, metamorphic and sedimentary.
+fe3+_sulfate_schwertmannite                    schwertmannite:
+Mn-Coating
+fe3+mix_AMD.assemb1
+fe3+mix_AMD.assemb2
+fe3+_sulfate_kjarosite200                      jarosite: A secondary mineral found in the oxidized zones of
+                                                  sulfide deposits, forming by the reaction of dilute sulfuric
+                                                  acid in groundwater, derived from the oxidation of pyrite,
+                                                  with gangue minerals and wall rock in the deposits.
+fe3+_goethite.lepidocrosite                    lepidocrocite:
+fe2+_chlor+muscphy
+fe2+_goeth+musc
+fe2+fe3+_chlor+goeth.propylzone
+fe2+generic_nrw.cummingtonite                  cummingtonite:
+fe2+generic_nrw.actinolite                     actinolite: Produced by low-grade regional or contact metamorphism
+                                                  of magnesium carbonate, mafic, or ultramafic rocks; 
+                                                  Also in glaucophane-bearing blueschists.
+
+fe2+generic_nrw.hs-actinolite
+fe2+_pyroxene.hypersthene                      hypersthene:
+fe2+_pyroxene.diopside                         diopside
+fe2+generic_med.jadeite                        jadeite:
+fe2+_pyroxene_clino_pigeonite                  pigeonite:
+epidote                                        epidote:
+fe3+bearing1
+fe3+_ferrihydrite                              ferrihydrite: Cold-water springs, Mine workings, warm subsea springs,
+                                                  warm water seabed, thermal springs, thermal water in brooks,
+                                                  rivers and lakes.
+fe3+_hematite.med.gr.gds27
+fe3+_hematite.thincoat
+fe3+_hematite.fine.gr.fe2602
+fe3+_hematite.fine.gr.ws161
+fe3+_smectite_nontronite
+fe2+generic_brd.br5a_actinolite
+fe2+fe3+mix_with_hematite_br5b
+fe2+generic_brd.br22c_actinolite
+fe2+generic_br33a_bioqtzmonz_epidote
+fe2+generic_brd.br36a_chlorite                 chlorite:
+fe2+fe3+_hematite_weathering
+fe2+generic_basalt_br46b                       basalt:
+fe3+_hematite.lg.gr.br25a
+fe3+_hematite.med.gr.br25b
+fe3+_hematite.lg.gr.br25c
+fe3+_hematite.nano.BR34b2
+fe3+_hematite.lg.gr.br34c
+fe3+_sulfate_jarosite_br34a2
+fe2+generic_broad_br60b
+fe2+generic_vbroad_br20
+fe2+fe3+_water_RTsludge
+fe2+_chlorite.clinochlor                       clinochlore: Hydrothermal alteration product of amphibole, pyroxene, and biotite.
+fe2+_chlorite.Felow.clinochlor
+fe2+_chlorite.thuringite                       thuringite:
+copper_carbonate_azurite                       azurite:
+fe3+copper-hydroxide_pitchlimonite             pitchlimonite:
+copper_carbonate_malachite                     malachite:
+copper_sulfate_bluefflor
+copper_precipitate_greenslime
+fe2+_olivine-lrg-gr                            olivine:
+fe2+_olivine-fine-gr
+carbonate_rhodochrosite                        rhodochrosite:
+fe2+generic_carbonate_siderite1                siderite: Most often found in bedded sedimentary deposits with a 
+                                                  biological component, with shales, clays and coal beds - 
+                                                  suggesting that the siderite is biogenically created under 
+                                                  low-oxygen and low-Ph conditions. It is also found in 
+                                                  metamorphosed sedimentary rocks as more massively 
+                                                  crystalline material, as a primary gangue mineral in 
+                                                  hydrothermal deposits, and in pegmatites, 
+                                                  including nepheline syenite pegmatites; as bog deposits.
+
+fe2+generic_amphibole_riebeckite               riebeckite: Syenite and undersaturated rocks
+
+fe3+fe2+_sulfate_coquimbite                    coquimbite: Secondary weathering zone of iron sulfide deposits 
+                                                  in arid regions. Rarely in fumaroles.
+
+fe3+fe2+_sulfate_copiapite                     copiapite:  Areas of pyrite oxidation.
+
+copper_chrysocolla                             chrysocolla: Found in the oxidation zone of copper deposits, 
+                                                            often encrusting or replacing earlier secondary minerals.
+
+ree_neodymium_oxide                            neodymium_oxide:
+ree_samarium_oxide                             samarium_oxide:
+fe2+generic_axinite
+fe2+generic_staurolite
+fe2+generic_almandine
+fe2+_pyroxene_augite                           augite: Major rock forming mineral in mafic igneous rocks, 
+                                                  ultramafic rocks, and some high-grade metamorphic rocks.
+fe2+generic_sulfate_butlerite
+fe2+_feldspar.bytownite                        bytownite:
+
+sulfide_copper_chalcopyrite                    chalcopyrite: It is the most abundant copper-bearing mineral 
+                                                  and is widespread. It is a primary mineral in hydrothermal veins, 
+                                                  disseminations, and massive replacements; the 
+                                                  principal copper mineral of porphyry copper deposits.
+
+fe2+_chromite                                  chromite: As a cumulate mineral layer in ultramafic igneous rocks, 
+                                                  in peridotites. As placer deposits. 
+                                                  Common in meteorites except carbonaceous chondrites.
+
+sulfide_cinnabar                               cinnabar: low-temperature hydrothermal, in veins and sedimentary, 
+                                                  igneous, and metamorphic host rocks
+
+copper_oxide_cuprite                           cuprite: Found in the oxidised zones of copper deposits.
+fe3+mn_desert.varnish1
+fe3+mn_desert.varnish2
+fe2+_pyroxene_enstatite
+fe2+_pyroxene_hedenbergite                     hedenbergite: Metamorphosed iron formations, Fe-Mn skarns, 
+                                                  alkalic granites, xenoliths in kimberlite.
+
+sulfate_lazurite                               lazurite: Contact metamorphic mineral in marble and skarns. 
+                                                  Also in some syenites and alkaline volcanics.
+
+fe3+_maghemite                                 maghemite:
+
+magnetite                                      magnetite: Common igneous accessory mineral. In sedimentary banded iron formations.
+
+mn_oxide_pyrolusite                            pyrolusite: A common Mn mineral, although difficult to distinguish 
+                                                  from similar Mn minerals, pyrolusite forms under oxidizing conditions 
+                                                  and high pH. Mainly a mineral of lacustrine, shallow marine, 
+                                                  and bog deposits, it is also found in the oxidized zones of 
+                                                  manganiferous ore deposits and as deposits formed by circulating 
+                                                  meteoric water. Both colloidal processes and 
+                                                  bacterial action are important in its formation.
+
+fe2+_feldspar_microcline                       microcline: Plutonic felsic rocks, pegmatites, high-grade metamorphic veins, 
+                                                  hydrothermal veins
+
+fe2+_feldspar_albite                           albite: A major constituent of granites and granite pegmatites, 
+                                                  alkalic diorites, basalts, and in hydrothermal and alpine veins. 
+                                                  A product of potassium metasomatism and in low-temperature and 
+                                                  low-pressure metamorphic facies and in some schists. 
+                                                  Detrital and authigenic in sedimentary rocks.
+
+fe2+_feldspar_orthoclase                       orthoclase: Common feldspar of high-temperature granites, syenites, 
+                                                 high-grade metamorphic rocks, and felsic extrusive rocks.
+
+inosilicate_pectolite                          pectolite: Primary mineral in nepheline syenites. Hydrothermal mineral 
+                                                  in cavities in basalts and diabases. In serpentinites and peridotites.
+
+mn2+_rhodonite                                 rhodonite: Manganese deposits formed by hydrothermal, contact or
+                                                  regional metamorphic, and sedimentary processes.
+
+sulfur                                         sulfur: Usually formed from volcanic action - as a sublimate from 
+                                                  volcanic gasses associated with realgar, cinnabar and other minerals. 
+                                                  It is also found in some vein deposits and as an alteration product 
+                                                  of sulphide minerals. It can also be formed biogenically - a 
+                                                  major source being salt domes, where it has formed by the 
+                                                  bacterial decomposition of calcium sulfate.
+
+#################### group 2
+organic_vegetation-dry-grass-long
+organic_vegetation-dry-grass-golden
+organic_vegetation-dry-wood
+organic_plastic-tarp1
+organic_plastic-vinyl
+organic_fiberglass-roofing
+organic_plastic-polystyrene
+organic_plastic-pete
+organic_plastic-pete2
+organic_plastic-hdpe.1
+organic_paint-1
+organic_plastic-pete3
+organic_plastic-pete4
+sulfate_kalun150c                              alunite: Formed between 15 C and 400 C by the action of sulfate, which may 
+                                                  be generated from pyrite or solfataric action, on aluminous rocks, 
+                                                  commonly accompanied by kaolinitization and silicification.
+sulfate_kalun250c
+sulfate_kalun450c
+sulfate_naalun150c
+sulfate_naalun300c
+sulfate_naalun450c
+sulfate_na82alun100c
+sulfate+kaolingrp_natroalun+dickite
+sulfate_na63alun300c
+sulfate_na40alun400c
+sulfate_alunNa03
+sulfate_alunNa56450c
+sulfate_alunNa78.450c
+sulfate_alun35K65Na.low
+sulfate_alun73K27Na.low
+sulfate_alun66K34Na.low
+micagrp_muscovite-med-Al                       muscovite: is common in many different rock types as a primary mineral.
+micagrp_muscovite-medhigh-Al
+micagrp_paragonite                             paragonite:
+
+micagrp_illite                                 illite: Found in a wide variety of environments, the materials of this 
+                                                  series form by either weathering or hydrothermal alteration of 
+                                                  muscovite-phengite; but some is authigenic or could be derived 
+                                                  from alteration of K-feldspars or recrystallization of smectites. 
+                                                  Common in sediments, clays, marls, shales and some slates. 
+                                                  Interstratified illite-smectite converts to illite at depths and 
+                                                  mixed-layer ratios have been used to interpret the depth of burial of sediments.
+micagrp_illite.gds4
+micagrp_muscovite-low-Al
+micagrp_muscoviteFerich
+kaolgrp_kaolinite_wxl                          kaolinite: A primary constiuent of clay beds formed by the
+                                                  decomposition of feldspar-bearing rocks.
+kaolgrp_kaolinite_pxl
+kaolgrp_halloysite                             halloysite: Halloysite is found in widely varied environments, 
+                                                  including as an alteration of basaltic rocks, in hydrothermally 
+                                                  altered fissure deposits in monzonites; it is also derived from 
+                                                  feldspars, chlorites, micas, rhyolites, granites, volcanic ash, 
+                                                  tuffs and pumices. More rarely found in granitic pegmatites, 
+                                                  bauxites or laterites, and in some marine and glacial clays.
+
+kaolgrp_dickite                                dickite: Usually of hydrothermal origin in conjunction with veins, 
+                                                  derived in part from the alteration of aluminosilicate minerals; 
+                                                  also occurs as an authigenic sedimentary phase.
+
+sulfate_gypsum                                 gypsum: Commonest of the sulphate minerals, gypsum is found in 
+                                                  marine evaporites, in caves where the air is dry enough to allow 
+                                                  it to be deposited and remain, at fumaroles, and in the 
+                                                  oxidized zones of sulfide deposits on occasion.
+
+kaolin.5+smect.5
+kaolin.3+smect.7
+smectite_montmorillonite_na_highswelling       montmorillonite: Alteration product of volcanic tuffs and ash.
+                                                  Late-hydrothermal formation in various rocks.
+smectite_montmorillonite_fe_swelling
+smectite_montmorillonite_ca_swelling
+sioh_hydrated_basaltic_glass                   basaltic_glass:
+
+sulfate_kieserite                              kieserite: Salt deposit of oceanic origin.
+
+sulfate_szomolnokite                           szomolnokite: A secondary mineral found in the oxidation zones of 
+                                                  sulfide mineral deposits, particularly noted as forming from 
+                                                  the oxidation of pyrite.
+sulfate_szomolnokite_heated
+
+perchlorate_mg                                 perchlorate_mg:
+perchlorate_na                                 perchlorate_na:
+
+smectite_beidellite_gds123                     beidellite:
+smectite_beidellite_gds124
+
+sioh_chalcedony                                chalcedony: Very common.
+                                                  As nodules, vein fillings, crusts in volcanic rocks.
+                                                  As sinter-like crusts in low- to medium temperature hydrothermal veins.
+                                                  Main constituent in silica-rich marine sedimentary rocks.
+                                                  As nodular concretions and layers in limestones and marls.
+                                                  As a metasomatic replacement in limestones and marls ("replacement chert").
+                                                  As cement in sandstones.
+                                                  Replacing other minerals in pseudomorphoses.
+                                                  As a fossilizing material (petrified wood, coral agate).
+
+hydroxide_diaspore                             diaspore:  With other minerals in bauxite deposits.
+
+pyrophyllite                                   pyrophyllite:  Hydrothermal veins and in bedded deposits in schistose rocks.
+kaol.75+pyroph.25
+pyroph.5+mont0.5
+pyroph.5+alunit.5
+alunite+pyrophyl
+pyroph+tr.musc
+musc+pyroph
+alunite+musc+pyroph
+
+alunite.5+kaol.5
+kaol.75+alun.25
+Kalun+kaol.intmx
+Na-alun+kaol.intmx
+kaolin.5+muscov.medAl
+kaolin.5+muscov.medhighAl
+kaolin+musc.intimat
+
+musc+jarosite.intimat
+
+sulfate-mix_gypsum+jar+illite.intmix 
+sulfate-mix_gyp+jar+musc.amix
+sulfate-mix_gyp+jar+musc+dick.amix
+musc+gyp+jar+dick.amix
+dick+musc+gyp+jar.amix
+
+alunite.5+musc.5
+alunite.33+kaol.33+musc.33
+muscovite+chlorite
+smectite_ammonillsmec                          ammonium_illite_smectite:
+
+feldspar_buddingtonite_ammonium                buddingtonite:
+feldspar_buddington.namont
+feldspar_buddington.namont2
+
+sulfate_ammonalunite                           ammonium_alunite:
+sulfate_ammonjarosite                          ammonium_jarosite:
+
+carbonate_dolomite                             dolomite:  An important sedimentary and metamorphic mineral found as the 
+                                                   principal mineral in dolostones and metadolostones, and as an 
+                                                   important mineral in limestones and marbles where calcite is the 
+                                                   principal mineral present. Also found as a hydrothermal vein mineral, 
+                                                   forming crystals in cavities; and found in serpentinites and similar rocks.
+
+actinolite                                     actinolite:   Produced by low-grade regional or contact metamorphism of 
+                                                   magnesium carbonate, mafic, or ultramafic rocks; Also in glaucophane-bearing blueschists.
+                                                   Occurs in many localities. In Austria, on Mt. Greiner, Zillertal, 
+                                                   and at Untersulzbachtal. From Zermatt, Valais, Switzerland. At Snarum 
+                                                   and Arendal, Norway. From the Ural Mountains, Russia. In the USA, 
+                                                   from Gouverneur, St. Lawrence Co., New York; Franklin and Newton, 
+                                                   Sussex Co., New Jersey; Chester, Windsor Co., Vermont; in the Fairfax 
+                                                   quarry, Centreville, Fairfax Co., Virginia; Crestmore, Riverside Co., 
+                                                   California; at Salida, Chaffee Co., Colorado. Nephrite jade occurs, 
+                                                   in the USA, south and east of Lander, Fremont Co., Wyoming; north from 
+                                                   Cape San Martin, Monterey Co., California; and around Jade Mountain, 
+                                                   near the Kobuk River, Alaska. Along the Fraser River, British Columbia, 
+                                                   Canada. Around Mt. Cook, South Island, New Zealand. Fine material 
+                                                   from the Kunlun Mountains, Sinkiang Uighur Autonomous Region, China.
+
+amphibole                                      amphibole:
+
+micagrp_biotite                                biotite:
+
+chlorite-scarn
+chlorite                                       chlorite:
+prehnite+.50chlorite
+prehnite+.67chlorite
+prehnite+.75chlorite
+
+carbonate_aragonite                            aragonite: As speleothems in limestone caves; as pisolites, sinters and 
+                                                   massive lamellar deposits at geysers and hot springs; as seafloor oolites; 
+                                                   with siderite in iron deposits; with calcite and dolomite and other magnesium 
+                                                   minerals in altered serpentinites, dunites and peridotites; and as a 
+                                                   replacement mineral in various rock types and ore deposits, formed 
+                                                   from low-temperature and pressure aqueous solutions.
+
+chlorite_clinochlore                           clinochlore:  Hydrothermal alteration product of amphibole, pyroxene, and biotite.
+chlorite_clinochlore.nmnh83369
+chlorite_clinochlore.fe.gds157
+chlorite_clinochlore.fe.sc-cca-1
+
+chlorite_cookeite-car-1.a                      cookeite:  Late stage hydrothermal alteration product in pegmatites, hydrothermal veins.
+chlorite_cookeite-car-1.c
+
+chlorite_thuringite                            thuringite:
+
+epidote                                        epidote:  Regional and contact metamorphic rocks. Saussuritisation (alteration of plagioclase).
+
+hornblende                                     hornblende:
+
+sulfate_jarosite-Na
+sulfate_jarosite-K
+sulfate_jarosite-lowT
+
+phlogopite                                     phlogopite: Contact and regional metamorphic limestones and dolomites, ultramafic rocks
+
+tremolite.or.talc                              tremolite:  A common rock-forming mineral in contact metamorphosed Ca+/-Mg siliceous 
+                                                   carbonate sediments, regional greenschist to amphibolite facies metamorphosed 
+                                                   mafic and ultramafic rocks and dolomitic rocks, many skarns and veins, and 
+                                                   some metamorphic ore deposits. See Deer et al., 1997.
+
+talc.crsgrnd                                   talc:  Schists and steatite through hydrothermal alteration of mafic rocks. 
+                                                   Low-temperature metamorphism of siliceous dolomites.
+talc.fngrnd
+talc+calcite.parkcity
+talc+carbonate.parkcity
+
+carbonate_calcite+0.2Ca-mont
+
+carbonate_magnesite                            magnesite:  Primary mineral in igneous and sedimentary rocks. Rarely as a 
+                                                   gangue mineral in hydrothermal ore veins, and in oceanic salt deposits. 
+                                                   Metamorphism of serpentinites and peridotites.
+
+carbonate_calcite                              calcite:  Found in most geologic settings and as a later forming replacement 
+                                                   mineral in most other environments in one form or another, it is most 
+                                                   common as massive material in limestones and marbles. It forms as chemical 
+                                                   sedimentary deposits as limestone, can be regionally or contact metamorphosed 
+                                                   into marbles and rarely forms igneous rocks (carbonatites). Also is a 
+                                                   common gangue mineral in hydrothermal deposits. 
+carbonate_calcite+dolomite.5
+carbonate_dolo+.5ca-mont
+calcite.25+dolom.25+Na-mont.5
+carbonate_calcite.25+dolom.25+Ca-mont.5
+
+carbonate_siderite                             siderite:  Most often found in bedded sedimentary deposits with a biological 
+                                                   component, with shales, clays and coal beds - suggesting that the siderite is 
+                                                   biogenically created under low-oxygen and low-Ph conditions. It is also found 
+                                                   in metamorphosed sedimentary rocks as more massively crystalline material, 
+                                                   as a primary gangue mineral in hydrothermal deposits, and in pegmatites, 
+                                                   including nepheline syenite pegmatites; as bog deposits.
+
+smectite_nontronite_swelling                   nontronite:
+
+clay_hectorite                                 hectorite:
+
+saponite.or.talc                               saponite:
+
+sepiolite                                      sepiolite:
+
+calcite+0.2Na-mont
+calcite+0.5Ca-mont
+carbonate_calcite+0.3muscovite
+organic_drygrass+.17Na-mont
+carbonate_dolomite.5+Na-mont.5
+carbonate_smectite_calcite.33+Ca-mont.67
+carbonate_calcite+0.2kaolwxl
+carbonate_calcite0.7+kaol0.3
+
+phyllosilicate.clintonite                      clintonite:  High grade marble chlorite schist meta-diorite
+                                                            High temperature marble.  Member of mica group.
+
+palygorskite                                   palygorskite:  Alteration product of magnesium silicates
+
+zoisite                                        zoisite:  Medium grade regionally metamorphosed rocks, eclogites, 
+                                                   blueschist facies metamorphic rocks.
+
+elbaite                                        elbaite:  Lithium-rich granitic pegmatites, metamorphic rocks and 
+                                                   high temperature hydrothermal veins.
+
+hydroxide_gibbsite                             gibbsite:  Bog iron deposit.
+
+nitrate_niter                                  niter:  Surface efflorescences in arid regions; in caves or other dry, 
+                                                   sheltered places. Also in soils rich in organic materials, 
+                                                   especially after rain during hot weather.
+
+topaz                                          topaz:  As a rock-forming mineral in igneous rocks, pegmatites, 
+                                                   and rhyolites, hydrothermal veins, metamorphic rocks, and greisens.
+
+carbonate_rhodochrosite                        rhodochrosite:  Low to moderate temperature hydrothermal veins, 
+                                                   metamorphic deposits, carbonatites, sedimentary deposits.
+
+carbonate_witherite                            witherite:  Low-temperature hydrothermal veins.
+
+prehnite                                       prehnite:  A secondary mineral in mafic volcanic rocks, low-grade metamorphic mineral.
+prehnite+muscovite
+
+borate_pinnoite                                pinnoite:  Upper Kainite layers of a salt deposit
+
+polyhalite                                     polyhalite:  Oceanic salt deposits; rarely as a volcanic product.
+
+rivadavite                                     rivadavite:  Sedimentary borate deposits, hot springs
+
+howlite                                        howlite:  In borate deposits. The common associates include those 
+                                                   at Piskanya deposit (studenitsite is not a common species)
+
+ulexite                                        ulexite:  Arid regions. In salt playas and desiccated saline lakes.
+
+white.crust.starkeyite                         starkeyite:  A secondary mineral sometimes found in the oxidized zone of 
+                                                   sulfide mineral deposits, resulting from the decomposition of pyrite and 
+                                                   marcasite. May form from the dehydration of hexahydrite (Chou, 2005).
+
+zeolite_analcime                               analcime:  In the groundmass or vesicles of silica-poor intermediate and 
+                                                   mafic igneous rocks, typically basalts and phonolites, from late-stage 
+                                                   hydrothermal solutions, or disseminated due to deuteric alteration. 
+                                                   In lake beds, altered from pyroclastics or clays, or as a primary 
+                                                   precipitate; authigenic in sandstones and siltstones.
+
+hydroxide_brucite                              brucite:  Alteration mineral of periclase in marbles.
+
+chloride_carnallite                            carnallite:  Saline marine deposits by action of high potash fluids.
+
+borate_colemanite                              colemanite:  Borate deposits formed in arid alkalai lacustrine environments.
+
+datolite                                       datolite:  Secondary mineral in mafic igneous rocks. Geodes in tuff, 
+                                                   limestone skarns, serpentinites, schists, ore veins.
+
+hydrogrossular                                 hydrogrossular:
+
+micagrp_lepidolite                             lepidolite:  May be found in aplites associated with granite pegmatite. rarely 
+                                                   found in hydrothermal veins and extremely rarely in granite contact zones.
+
+micagrp_margarite                              margarite:
+
+sulfate_mascagnite                             mascagnite:  Sublimation product from fumeroles, solfataras, burning coal seams.
+
+sulfate_mirabilite-wet_soil                    mirabilite: Saline lake deposits, playas, and springs; as an efflorescence on clayey, 
+                                                   alkalic soils; in caves and sheltered spot on recent lavas. Often deposited 
+                                                   from saline waters in cold seasons in sea sprays.
+
+zeolite_natrolite                              natrolite:  Cavities in amygdaloidal basalts
+
+richterite                                     richterite:
+
+serpentine_chrysotile.coarse-fibrous           chrysotile:
+serpentine_chrysotile.med-fine-fibrous
+serpentine_chrysotile.fine-fibrous
+
+serpentine_cronstedtite                        cronstedtite:  Low temperature hydrothermal mineral.
+
+micagrp_illite.roscoelite                      roscoelite:  Low temperature epithermal Au-Ag-Te deposits and oxidized portions of 
+                                                   sedimentary U-V deposits.
+
+carbonate_strontianite                         strontianite:  Forms in low-temperature hydrothermal deposits in limestone and 
+                                                   marl or as a gangue mineral in sulfide veins; as geodes or concretionary 
+                                                   masses in limestone or clay.
+
+sulfate_syngenite                              syngenite:   Oceanic salt deposits; volcanic activity.
+
+chrysocolla                                    chrysocolla:  Found in the oxidation zone of copper deposits, often encrusting 
+                                                   or replacing earlier secondary minerals.
+
+carbonate_azurite                              azurite:  Found largely in the oxidized portions of copper deposits, it is a 
+                                                   secondary mineral formed by the action of carbonated water acting on 
+                                                   copper-containing minerals, or from Cu-containing solutions, such 
+                                                   as CuSO4 or CuCl2 reacting with limestone
+
+carbonate_malachite                            malachite:  It is the most common secondary mineral found in the 
+                                                   oxidized zones of copper deposits.
+
+cyanide-CdK
+cyanide-NiK
+cyanide-trihydrate
+cyanide-KFe
+cyanide-ZnK
+
+organic_plastic.grnhs.roof
+organic_benzene+montswy
+organic_trichlor+montswy
+organic_toluene+montswy
+organic_unleaded.gas+montswy
+organic_tce+montswy
+
+zunyite                                        zunyite:
+
+sulfate-mix_gypsum.trace.dust+debris-WTC01-2
+sulfate-mix_gypsum.trace.dust+debris-WTC01-28
+
+chrysotile.gypsum.wtc01-8
+
+portlandite                                     portlandite:
+
+nitrate_potassium
+nitrate_sodium
+
+#################### group 3
+vegetation.map
+vegetation.weak.map
+vegetation.dry+green
+vegetation.dry_nonphotosyn
+
+#################### group 4
+anorthite_hs201.3b
+bytownite_hs106.3b
+microcline_hs103.3b
+magnetite_hs195.3b.or.olivine
+sphalerite_s26-341_1.5um
+rutile_hs126.3b
+fe2+_wollastonite_hs348.3b
+olivine_fo91_gds71.b
+olivine_fo89_gds70.a
+olivine_fo89_gds70.c
+olivine_fo89_gds70.d
+olivine_fo66_ki3054
+olivine_fo60_ki3189
+olivine_fo80_hs285                  previous to t5.2e1 was  olivine_fo80_ki3377
+olivine_fo18_ki3377
+
+#################### group 5
+diaspore
+pyroxene.augite
+pyroxene.bronzite
+pyroxene.enstatite
+pyroxene.hypersthene
+pyroxene.pigeonite
+
+#################### group 6
+eugsterite.2.5um.water
+adularia_2.5um
+naalun450c.2.5um
+analcime.2.5um
+
+#################### group 7
+goethite_3.17um
+grossular_3.17um
+jarosite_3.18um
+
+#################### group 8
+
+#################### group 9
+
+#################### group 10
+organic_3.237d_aromatic-benzene_cv
+organic_trace_3.42um_aliphatic1_curvc
+carbonate_calcite_3.5um_curvc
+carbonate_dolomite_3.5um_curvc
+carbonate_trace_3.5um_curvc
+carbonate_magnesite+hydromagnesite_curvc
+nitrate_niter_3.6um_curvc
+organic.3.41um.nonyne_curvc
+organic.3.37um.pentene_curvc
+organic.3.24um.pyridine_curvc
+organic.3.25um.nitrobenzene_curvc
+hydrogen_peroxide.3.52um_curvc
+
+#################### group 11
+organic_trace_aliphatic1
+carbonate_calcite_3.5um
+carbonate_dolomite_3.5um
+carbonate_trace_3.5um
+carbonate_magnesite+hydromagnesite
+nitrate_niter_3.6um
+
+#################### group 12
+
+#################### group 13
+oh_1.397_mica-phlogopite
+oh_1.383_amphibole-richterite
+oh_1.378_phyllo-ksg-chrysotile
+oh_1.381_phyllo-ksg-dickite
+oh_1.388_phyllo-chlorite
+oh_1.385_phyllo-ksg-nacrite
+oh_1.390_phyllo-ksg-endellite
+oh_1.392_amphibole-tremolite
+oh_1.392_smectite-saponite
+oh_1.392_phyllo-ksg-lizardite
+oh_1.393_phyllo-serpentine
+oh_1.393_phyllo-talc
+oh_1.394_phyllo-pyrophyllite
+oh_1.395_phyllo-ksg-antigorite
+oh_1.396_amphibole-actinolite
+oh_1.398_phyllo-clinochlore
+oh_1.396_amphibole-uralite
+oh_1.398_amphibole-smaragdit
+oh_1.398-phyllo-kaolinite-wxl
+oh_1.400_phyllo-chlorgrp-cookeite
+oh_1.401_mica-lepidolite
+oh_1.406_silica-opal
+oh_1.408_mica-paragonite
+oh_1.409_mica-lepidolite
+oh_1.413_phyllo-kaolinite-pxl
+oh_1.432_phyllo-vermiculite
+
+#################### group 14
+ohb_1.385_phyllo-nacrite
+ohb_1.398_phyllo-kaolinite-wxl
+ohb_1.400_phyllo-cookeite
+ohb_1.406_nesosil-topaz
+ohb_1.406_tectosil-opal
+ohb_1.408_mica-paragonite
+ohb_1.409_phyllo-lepidolite
+ohb_1.409_smectite-sauconite
+ohb_1.410_phyllo-chrysocolla
+ohb_1.410_kaolgrp-halloysite
+ohb_1.410_mica-margarite
+ohb_1.410_mica-muscovite
+ohb_1.411_smectite-montmor-swy
+ohb_1.413_kaolgrp-kaolinite-pxl
+ohb_1.413_nesosil-hydrogross
+ohb_1.414_smectite-hectorite
+ohb_1.416_phyllo-sepiolite
+ohb_1.416_mica-roscoelite
+ohb_1.416_mica-illite
+ohb_1.416_smectite-montmor-saz
+ohb_1.417_phyllo-palygorsk
+ohb_1.418_mica_muscovite
+ohb_1.418_zeolite_mordonite
+ohb_1.419_zeolite-stilbite
+ohb_1.419_zeolite-clinpt
+ohb_1.422_zeolite-heuland
+ohb_1.423_scapolute-meionite
+ohb_1.424_smectite-nontronite
+ohb_1.425_scapolite-mizzonite
+ohb_1.425_sulfate-alunite
+ohb_1.429_sodalite-lazurite
+ohb_1.431_zeolite-laumontite
+ohb_1.431_cyclosil-elbaite
+ohb_1.435_tourmaline
+ohb_1.438_sulfate-alunite-na
+ohb_1.424_zeolite-analcime
+ohb_1.436_sulfate-eugsterite
+ohb_1.440_zeolite-scolecite
+ohb_1.447_sulfate-gypsum
+ohb_1.449_sulfate-schwertm
+ohb_1.450_sulfate-copiapite
+ohb_1.432_phyllo-vermiculite
+ohb_1.455_zeolite-natrolite
+ohb_1.451_hydroxide-gibbsite
+
+#################### group 15
+ohc_1.451_hydroxide-gibbsite
+ohc_1.455_zeolite-natrolite
+ohc_1.464_sulfate-bloedite
+ohc_1.469_sulfate-jarosite-k
+ohc_1.471_sulfate-jarosite-k
+ohc_1.471_nesisil-datolite
+ohc_1.478_sulfate-jarosite-na90c
+ohc_1.479_sulfate-jarosite-na200c
+ohc_1.480_phyllo-prehnite
+
+#################### group 16
+
+#################### group 17
+
+#################### group 18
+
+#################### group 19
+water_1.896_beryl
+water_1.902_silica-opal
+water_1.903_smectite-saponite
+water_1.906_montmor-na
+water_1.907_smectite-nontronite
+water_1.908_smectite-beidell
+water_1.908_phyllo-illite
+water_1.909_mont-saz
+water_1.910_halloysite
+water_1.910_zeolite-clinopt
+water_1.910_stonwplaya
+water_1.910_zeolite-mordonite
+water_1.912_zeolite-analcime
+water_1.916_nesosil-sillim
+water_1.917_zeolite-heuland
+water_1.920_sulfate-bassanite
+water_1.918_perchlorate-mg
+water_1.923_chert
+water_1.924_perchlorate-na
+water_broad_1.927_veg
+water_1.929_sulfate-epsomite
+water_1.931_narrow-cheatgrass
+water_1.932_sulfate-eusgterite
+water_1.940_zeolite-natrolite
+water_1.941_zeolite-natrolite
+water_1.941_zeolite-scolecite
+water_1.942_sulfate-schwert
+water_1.943_sulfate-gypsum
+water_1.943_brick
+water_1.944_sulfate-polyhalite
+water_1.946_sulfate-copiapite
+water_1.951_sulfate-bloedite
+water_1.960_sulfate-butler
+water_1.964_sulfate-feso4
+water_1.971_sulfate-kainite
+water_1.980_salt-carnallite
+water_1.981_sulfate-coquimb
+water_1.991_sulfate-syngite
+h20_ice_2.02um-77k-a
+water_2.073_sulfate-kieserite
+water_2.060_sulfate_szomoln
+water_2.093_sulfate_szomoln
+water_2.122_nh4-buddingt
+water_2.130_sulfate_kieserite
+water_2.136_nh4-mascagnite
+
+#################### group 20
+neodymium_oxide_compete
+samarium_oxide_compete
+
+#################### group 21
+neodymium_oxide1
+
+#################### group 22
+samarium_oxide1
+
+#################### case 1
+red.edge.shift.1
+red.edge.shift.2
+
+#################### case 2
+vegetation.type1
+vegetation.type2
+vegetation.type3
+vegetation.type4
+vegetation.type5
+vegetation.type6
+vegetation.type7
+vegetation.type8
+vegetation.type9
+vegetation.type10
+vegetation.type11
+vegetation.type12
+vegetation.type13
+
+#################### case 3
+veg0.9um.band
+
+#################### case 4
+veg1.2um.band
+
+#################### case 5
+veg1.4um.band
+
+#################### case 6
+calcite
+epidote
+ripidolite
+CEC-D.33Ep66Ca
+CEC-E.66Ep33Ca
+CEC-G.20Ch60Ep20Ca
+CEC-H.60Ch20Ep20Ca
+CEC-I.20Ch20Ep60Ca
+CEC-J.33Ch66Ca
+CEC-K.60Ch20Ep20Ca
+CEC-L.66Ch33Ep
+CEC-M.33Ch66Ep
+CEC-N.33Ch33Ep33Ca

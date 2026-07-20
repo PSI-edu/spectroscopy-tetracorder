@@ -1,0 +1,15 @@
+#!/bin/sh
+
+# list classification from geologic-origins/material-classification.txt
+
+afile='../geologic-origins/material-classification.txt'
+afile='../AAA.info/material-classifications.txt'
+
+# ##  Material                       classification          group
+# ##
+# ##       11111111112222222222333333333344444444445555555555666666666677777777778
+# 12345678901234567890123456789012345678901234567890123456789012345678901234567890
+#                               |--|                    |--|                    |
+# adularia                          tectosilicate           feldspar
+
+grep -a -i "^..................................$1" $afile | grep -a -v DISABLE

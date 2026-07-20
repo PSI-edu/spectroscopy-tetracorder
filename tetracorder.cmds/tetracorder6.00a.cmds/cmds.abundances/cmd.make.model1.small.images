@@ -1,0 +1,36 @@
+#!/bin/sh
+
+# run this from in the cmds.abundances directory in your mapping run
+
+# cd cmds.abundances
+# ./cmd.make.model1.small.images
+
+
+outdir="../results.abundances/model1-small1280"
+
+if [ ! -d "$outdir" ]
+then
+	echo "mkdir $outdir"
+	mkdir $outdir
+fi
+
+cd ../results.abundances/model1
+
+outdir="../model1-small1280"
+
+for i in *.gif
+do
+	bfile=`basename $i .gif`
+
+	ofile="${bfile}-1280.gif"
+
+	if [ ! -f "$outdir/$ofile" ]
+	then
+
+		echo "giftopnm $i  | pnmscale -width=1280 | ppmtogif > $outdir/$ofile"
+		giftopnm $i  | pnmscale -width=1280 | ppmtogif > $outdir/$ofile
+
+	else
+		echo "$outdir/$ofile already exists"
+	fi
+done

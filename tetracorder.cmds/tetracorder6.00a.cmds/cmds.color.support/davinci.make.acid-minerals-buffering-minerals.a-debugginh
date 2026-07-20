@@ -1,0 +1,361 @@
+#!/usr/bin/env -S davinci -q -f  
+####!/usr/local/bin/davinci -q -f
+
+###########################  was:  #!/usr/local/bin/davinci -q -f
+
+
+
+# command line:
+# prog    gray_base_image  prefix-file-name   [dual|nodual]
+
+prog="davinci.make.acid-minerals-buffering-minerals.a"
+
+####################  Begin static: no need to change inything in this section ################
+
+if ($argc < 2) {
+
+        printf("Insufficient input\n")
+        printf("%s input_gray_image  outputcolorimage\n", prog)
+        printf("exit 1\n")
+        exit(1)
+}
+
+dual    = 1     # default color + gray image 
+dualmax = 2000  # no dual if width is greater than this
+
+if ($argc >= 3) {
+
+	if ( "$3" == "nodual" ) {
+		dual = 0
+	}
+	if ( "$3" == "dual" ) {
+		dual = 1
+		dualmax = 999999 
+	}
+
+	printf ("\n\n\n\n%s   %s   %s   %s\n\n\n", prog, $1, $2, $3)
+} else {
+
+	printf ("\n\n\n\n%s   %s   %s\n\n\n", prog, $1, $2)
+}
+
+# read base gray image
+
+gbase=read(filename=$1)
+if (HasValue(gbase) ==0) {                   # check that read worked
+      printf ("read ERROR on file: %s\n",$1)
+      printf ("^GEXIT 1\n")
+      exit(1)
+}
+
+# A master color set.  Just read in the files, assign the colors
+# and write the results.    R. Clark 4/16/2015 - 11/16/2015
+# execute this program in the same directory asthe source code below
+source ("cmds.color.support/davinci.master.colors")
+
+# available colors:
+# c_red     c_green          c_blue       c_yellow        c_magenta       c_cyan          c_armygreen  
+# c_salmon  c_flesh          c_orange     c_deeppink      c_yellowgreen   c_lavender      c_bluegreen
+# c_skyblue c_paleseagreen   c_white      c_redpink       c_gold          c_mudyellow     c_lightpink
+# c_purple
+
+# a purple/magenta to red 12 spectral color sequence:
+#
+# c_magenta c_purple c_blue c_skyblue c_cyan c_green c_armygreen c_yellow c_gold c_salmon c_orange c_red
+
+# a = first input image, 3-band color, xcolor = the color output image, RGB float
+# colorout = the color output image, 3-byte RGB
+
+
+define read_an_image(1,1) {
+
+	# read a gray-scale image and convert to 3-bands
+
+	afile = $1   # file to read
+	printf ("reading file %s\n", afile)
+	aaa=read(filename=afile)
+	if (HasValue(aaa) ==0) {  # check that read worked
+		printf ("read ERROR on file: %s\n",afile)
+		printf ("setting to zero\n")
+		aaa=0
+	}
+	aaa = aaa[,,1]             # make sure the image is one band
+	qqq = cat(aaa,aaa,axis=z)  # make into 2-band image
+	aaa = cat(aaa,qqq,axis=z)  # make into 3-band image
+
+	return (aaa)
+
+}  # end define
+
+#        make the xcolor image
+a      = read_an_image($1)
+xcolor = float(a*0)
+xdim   = dim(xcolor)
+dimx = xdim[1,,]
+dimy = xdim[2,,]
+
+
+###################   begin custom section ##########################################
+
+# strategy for the AGM, ABM product:
+
+#    AGM group 1:
+#   purple:
+# sulfide_pyrite.fd.gz
+# sulfide_copper_chalcopyrite.fd.gz
+# 
+#   red:
+# Sulfates group 1:
+# group.1um/fe3+_sulfate_nh3jarosite.fd.gif
+# group.1um/fe3+_sulfate_jarosite-na-gds100.fd.gif
+# group.1um/fe3+_sulfate_jarosite-na-gds101.fd.gif
+# group.1um/fe3+_sulfate_jarosite-k-90c.fd.gif
+# group.1um/fe3+_sulfate_kjarosite200.fd.gif
+# group.1um/fe3+_sulfate_jarosite-K-JR2501.fd.gif
+# group.1um/fe3+_sulfate_jarosite-na-nmnh.fd.gif
+# group.1um/fe3+_sulfate_jarosite-H3O-SJ-1.fd.gif
+# group.1um/fe3+_sulfate_jarosite_br34a2.fd.gif
+# group.1um/fe3+_sulfate_jarosite-thinfilm.fd.gif
+# group.1um/fe3+_goeth+jarosite.fd.gif
+
+#   orange:
+# group.1um/fe3+_sulfate_schwertmannite.fd.gif
+# group.1um/copper_sulfate_bluefflor.fd.gif
+# group.1um/fe3+fe2+_sulfate_coquimbite.fd.gif
+# group.1um/fe3+fe2+_sulfate_copiapite.fd.gif
+# group.1um/copper_precipitate_greenslime.fd.gif      # Green_Slime SM93-14A Summitv W1R1Ba
+# group.1um/fe3+mix_AMD.assemb2.fd.gif
+# group.1um/fe3+mix_AMD.assemb1.fd.gif
+# 
+# others?
+
+
+#   ABM, Group 2:
+#                get list from davinci.make.2micron-mins-detail2.a
+# 
+#    blue:
+# calcites
+# 
+#    sky blue:
+# other carbonates
+
+
+# available colors:
+# c_red     c_green          c_blue       c_yellow        c_magenta       c_cyan          c_armygreen  
+# c_salmon  c_flesh          c_orange     c_deeppink      c_yellowgreen   c_lavender      c_bluegreen
+# c_skyblue c_paleseagreen   c_white      c_redpink       c_gold          c_mudyellow     c_lightpink
+# c_purple
+
+
+# first image:
+
+# acid buffering, ABM (13 entries):
+
+c=c_blue
+a=   read_an_image("group.2um/carbonate_calcite.fd.gif")
+a=a+ read_an_image("group.2um/carbonate_calcite.25+dolom.25+Ca-mont.5.fd.gif")
+a=a+ read_an_image("group.2um/calcite.25+dolom.25+Na-mont.5.fd.gif")
+a=a+ read_an_image("group.2um/carbonate_calcite+dolomite.5.fd.gif")
+
+     xcolor= xcolor + a*( c /255.)
+     a=0   # be sure array is cleared
+
+
+c=c_skyblue
+a=   read_an_image("group.2um/carbonate_dolomite.fd.gif")
+a=a+ read_an_image("group.2um/carbonate_dolo+.5ca-mont.fd.gif")
+a=a+ read_an_image("group.2um/carbonate_dolomite.5+Na-mont.5.fd.gif")
+a=a+ read_an_image("group.2um/carbonate_magnesite.fd.gif")
+a=a+ read_an_image("group.2um/carbonate_malachite.fd.gif")
+a=a+ read_an_image("group.2um/carbonate_rhodochrosite.fd.gif")
+a=a+ read_an_image("group.2um/carbonate_siderite.fd.gif")
+a=a+ read_an_image("group.2um/carbonate_strontianite.fd.gif")
+a=a+ read_an_image("group.2um/carbonate_azurite.fd.gif")
+
+     xcolor= xcolor + a*( c /255.)
+     a=0   # be sure array is cleared
+
+
+xcolorABM = xcolor
+
+xcolor = xcolor * 0.0   # clear for the AGM colors
+
+# acid generating, AGM  (20 entries):
+
+c=c_magenta
+a=   read_an_image("group.1um/sulfide_pyrite.fd.gif")
+a=a+ read_an_image("group.1um/sulfide_copper_chalcopyrite.fd.gif")
+
+     xcolor= xcolor + a*( c /255.)
+     a=0   # be sure array is cleared
+
+
+c=c_red
+a=   read_an_image("group.1um/fe3+_sulfate_nh3jarosite.fd.gif")
+a=a+ read_an_image("group.1um/fe3+_sulfate_jarosite-na-gds100.fd.gif")
+a=a+ read_an_image("group.1um/fe3+_sulfate_jarosite-na-gds101.fd.gif")
+a=a+ read_an_image("group.1um/fe3+_sulfate_jarosite-k-90c.fd.gif")
+a=a+ read_an_image("group.1um/fe3+_sulfate_kjarosite200.fd.gif")
+a=a+ read_an_image("group.1um/fe3+_sulfate_jarosite-K-JR2501.fd.gif")
+a=a+ read_an_image("group.1um/fe3+_sulfate_jarosite-na-nmnh.fd.gif")
+a=a+ read_an_image("group.1um/fe3+_sulfate_jarosite-H3O-SJ-1.fd.gif")
+a=a+ read_an_image("group.1um/fe3+_sulfate_jarosite_br34a2.fd.gif")
+a=a+ read_an_image("group.1um/fe3+_sulfate_jarosite-thinfilm.fd.gif")
+
+     xcolor= xcolor + a*( c /255.)
+     a=0   # be sure array is cleared
+
+
+c=c_purple
+a=   read_an_image("group.1um/fe3+_goeth+jarosite.fd.gif")
+
+     xcolor= xcolor + a*( c /255.)
+     a=0   # be sure array is cleared
+
+
+c=c_orange
+a=   read_an_image("group.1um/fe3+_sulfate_schwertmannite.fd.gif")
+a=a+ read_an_image("group.1um/copper_sulfate_bluefflor.fd.gif")
+a=a+ read_an_image("group.1um/fe3+fe2+_sulfate_coquimbite.fd.gif")
+a=a+ read_an_image("group.1um/fe3+fe2+_sulfate_copiapite.fd.gif")
+a=a+ read_an_image("group.1um/copper_precipitate_greenslime.fd.gif")
+a=a+ read_an_image("group.1um/fe3+mix_AMD.assemb2.fd.gif")
+a=a+ read_an_image("group.1um/fe3+mix_AMD.assemb1.fd.gif")
+
+     xcolor= xcolor + a*( c /255.)
+     a=0   # be sure array is cleared
+
+
+xcolorAGM = xcolor
+
+# now overlay the xcolorAGM on top of xcolorABM
+
+printf ("now overlay the xcolorAGM on top of xcolorABM\n")
+system("date")                                 # do this to see how section this loop takes
+
+printf ("davinci.make.acid-minerals-buffering-minerals.a  TEST POINT 1\n")
+
+xcolor = xcolorABM   # xcolor is now the output color
+                     # next put AGM on top
+                     # and where both ABM and AGM in the same pixel, color = green
+
+printf ("davinci.make.acid-minerals-buffering-minerals.a  TEST POINT 2\n")
+vagm = float(xcolorAGM[,,1] + xcolorAGM[,,2] + xcolorAGM[,,3])
+bbb  = cat(vagm, vagm, axis=z)  # make into 2-band image
+vagm = cat(bbb,  vagm, axis=z)  # make into 3-band image
+
+vagmdim = dim(vagm)
+printf ("dimensions: vagmdim = %d %d %d\n", vagmdim[1,,], vagmdim[2,,], vagmdim[3,,])
+
+vabm = float(xcolorABM[,,1] + xcolorABM[,,2] + xcolorABM[,,3])
+bbb  = cat(vabm, vabm, axis=z)  # make into 2-band image
+vabm = cat(bbb,  vabm, axis=z)  # make into 3-band image
+
+vabmdim = dim(vabm)
+printf ("dimensions: vabmdim = %d %d %d\n", vabmdim[1,,], vabmdim[2,,], vabmdim[3,,])
+
+vagmvabm = (vagm + vabm) /6.0   # the 6 is for 6 channels, 3 vagm + 3 vabm
+vagmvabmdim = dim(vagmvabm)
+printf ("dimensions: vagmvabm = %d %d %d\n", vabmdim[1,,], vabmdim[2,,], vabmdim[3,,])
+
+# convert back to 3 band image
+#bbb      = cat(vagmvabm, vagmvabm, axis=z)  # make into 2-band image
+#vagmvabm = cat(bbb,      vagmvabm, axis=z)  # make into 3-band image
+
+printf ("davinci.make.acid-minerals-buffering-minerals.a  TEST POINT 3\n")
+
+cdim = dim(c_paleseagreen)
+printf ("dimensions: c_paleseagreen = %d %d %d\n", cdim[1,,], cdim[2,,], cdim[3,,])
+
+vagmvabm33 = vagmvabm * (c_paleseagreen / 255.)
+vagmvabm66 = vagmvabm * (c_yellow / 255.)
+vagmvabmgr = vagmvabm * (c_green / 255.)
+
+vagmvabm33dim = dim(vagmvabm33)
+vagmvabm66dim = dim(vagmvabm66)
+vagmvabmgrdim = dim(vagmvabmgr)
+
+printf ("dimensions: vagmvabm33dim = %d %d %d\n", vagmvabm33dim[1,,], vagmvabm33dim[2,,], vagmvabm33dim[3,,])
+printf ("dimensions: vagmvabm66dim = %d %d %d\n", vagmvabm66dim[1,,], vagmvabm66dim[2,,], vagmvabm66dim[3,,])
+printf ("dimensions: vagmvabmgrdim = %d %d %d\n", vagmvabmgrdim[1,,], vagmvabmgrdim[2,,], vagmvabmgrdim[3,,])
+
+printf ("davinci.make.acid-minerals-buffering-minerals.a  TEST POINT 4\n")
+vagmvabmratio = float(vagm[,,2]) / float(vabm[,,2])
+
+printf ("     computing color at each pixel: start loop\n")
+system("date")                                 # do this to see how long this loop takes
+for (iy=1; iy<=dimy; iy++) {
+	for (ix=1; ix<=dimx; ix++) {
+
+		if ( vagm[ix,iy,] > 0 && vabm[ix,iy,] == 0 ) {
+
+			xcolor[ix,iy,] = xcolorAGM[ix,iy,]
+
+		} else if ( vagm[ix,iy,] > 0 && vabm[ix,iy,] > 0 ) {
+
+			if ( vagmvabmratio[ix,iy,] < 0.33 ) {            # c_paleseagreen
+
+				xcolor[ix,iy,] = vagmvabm33[ix,iy,]
+				printf ("davinci.make.acid-minerals-buffering-minerals.a  TEST vagmvabm33 found\n")
+
+			} else if ( vagmvabmratio[ix,iy,] > 0.66 ) {     # c_yellow
+
+				xcolor[ix,iy,] = vagmvabm66[ix,iy,]
+				printf ("davinci.make.acid-minerals-buffering-minerals.a  TEST vagmvabm66 found\n")
+
+			} else {                                 # c_green
+				xcolor[ix,iy,] = vagmvabmgr[ix,iy,]
+			}
+		}
+	}
+}
+system("date")
+printf ("     computing color at each pixel complete\n")
+
+
+
+########### end custom, no need to change anything below this line ###############################
+
+if (HasValue(xcolor) ==0) {
+
+        printf ("%s: xcolor has no value\n", prog)
+        printf ("EXIT 1\n")
+        exit(1)
+}
+
+
+xout=byte(xcolor+0.5)   # output color image, byte
+xout = bip(xout)
+xdim=dim(xout)
+xdimx=xdim[1,,]      # color image width
+
+fout=$2
+
+foute="color.results-envi/" + fout
+
+write (xout, filename=foute, type=vicar)
+
+
+gbasedim=dim(gbase)
+x=gbasedim[1,,]      # base image width
+
+if (x > dualmax) {
+	dual = 0
+}
+
+if ( dual == 1 ) {
+	
+	gbase = bip(gbase)
+	xout = cat (xout, gbase, axis=x)
+}
+
+
+
+adim=dim(xout)
+if ( adim[1,,] > 5 || adim[2,,] > 5 ) {
+	printf ("writing %s\n", fout)
+	write (xout, filename=fout, type=png)
+} else {
+	printf ("not writing %s\n", fout)
+	printf ("    image size < 6 pixels\n")
+}

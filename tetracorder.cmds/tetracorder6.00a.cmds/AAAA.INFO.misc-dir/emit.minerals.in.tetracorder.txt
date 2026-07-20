@@ -1,0 +1,205 @@
+============== montmorillonite =================
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Montmorillonite SWy-1        W1R1Bb
+Montmorillonite SWy-1            \# output title
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Montmorillonite_Fe GDS759A
+Montmorillonite_Fe GDS759A       \# output title
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Montmorillonite SAz-1        W1R1Bb
+Montmorillonite SAz-1 (Ca)       \# output title
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Montmorillonite SWy-1 s06crj3a=b  
+Montmorillonite SWy-1 =b               \# output title
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Montmorillonite SAz-1 s06crj3a=a  
+Montmorillonite SAz-1 =a               \# output title
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Montmorillonite SWy-1        W1R1Bb
+Montmorillonite SWy-1 1.9um water \# output title
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Montmorillonite SAz-1 s06crj3a=bb_
+Montmorillonite SAz-1 s06crj3a=bb_    \# output title
+ 
+============== kaolinite =================
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Kaolinite CM9                W1R1Bb
+Kaolinite CM9 wxl                \# output title
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Kaolinite KGa-2 (pxl)        W1R1Bb
+Kaolinite KGa-2 pxl              \# output title
+Kaolinite 0.5 Smectite 0.5       \# output title
+Kaolinite 0.3 Smectite 0.7      \# output title
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Kaolinite KGa-1 (wxl) s06crj3a=b  
+Kaolinite KGa-1 (wxl) =b                  \# output title
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Kaolinite KGa-2 (pxl) s06crj3a=b 
+Kaolinite KGa-2 (pxl) =b                  \# output title
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Kaolinite KGa-1 (wxl) s06crj3a=b  
+Kaolinite KGa-1 (wxl) =b                  \# output title
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Kaolinite KGa-2 (pxl) s06crj3a=b 
+Kaolinite KGa-2 (pxl) =b                  \# output title
+ 
+============== halloysite =================
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Halloysite NMNH106237        W1R1Ba
+Halloysite NMNH106237            \# output title
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Halloysite NMNH106237 s06crj3a=a   
+Halloysite NMNH106237 =a                  \# output title
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Halloysite CU91-242D
+Halloysite CU91-242D 1.9um water \# output title
+ 
+============== gypsum =================
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Gypsum HS333.3B (Selenite)   W1R1Ba
+Gypsum HS333.3B                  \# output title
+Gypsum+Jarosite+Illite Intimate Mix     \# output title
+Gypsum+jar+musc Areal Mix    \# output title
+Gypsum+jar+musc+dick Areal Mix    \# output title
+Musc+gypsum+jar+dick Areal Mix    \# output title
+Dick+musc+gypsum+jar Areal Mix    \# output title
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Gypsum SU2202 s06crj3a=a      
+Gypsum SU2202 =a                      \# output title
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Gypsum HS333.3B (Selenite) s06crj3a=aaa
+Gypsum HS333.3B (Selenite) =aaa          \# output title
+ 
+============== goethite =================
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Goethite WS222 Medium Gr.    W1R1Ba AREF
+Goethite Med grain WS222         \# output title
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Goethite0.02+Quartz GDS240   W1R1Ba
+Goethite + qtz Med gr GDS240             \# output title
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Goethite MPCMA2-B FineGr adj W1R1Bb
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Goethite MPCMA2-C M-Crsgrad2 W1R1Bb
+Goethite M-Crs gr MPCMA2-C trjar \# output title
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Goethite WS222 Coarse Gr.    W1R1Ba
+Goethite Coarse Gr. WS222             \# output title
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Goethite_Thin_Film WS222     W1R1Ba
+Goethite Thin Coating WS222             \# output title
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Chlor+Goethite CU93-4B Phyl  W1R1Ba
+Chlor + Goethite Phyl CU93-4B    \# output title
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Goethite WS222 Medium Gr. s06crj3a=aa_ 
+goethite 3.18um                  \# output title
+ 
+============== calcite =================
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Calcite+Talc PC99-1G         W1R1Fc
+Talc+Calcite - Park City, Utah   \# output title
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Dolomit+Calcite+Talc PC99-1E W1R1Fc
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Calcite.8+Ca-Montmor.2 AMX15 W1R1BbS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Calcite WS272                W1R1Ba
+Calcite WS272                    \# output title
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Calcite+Dolomite.5 AMX8      W1R1Bb
+Calcite + Dolomite .5 areal      \# output title
+calcite.25+dolom.25+Na-mont.5    \# output title
+calcite.25+dolom.25+Ca-mont.5    \# output title
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Calcite.80+Mont_Swy-1 GDS212 W1R1Ba
+Calcite 80% +MontSwy-1 GDS212    \# output title
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Calcite+.50Ca-Mont AMX6      W1R1Bb
+Calcite + 50% Ca-Mont Areal      \# output title
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Calcite+.33Muscov AMX5 Ruby  W1R1Ba
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Calcite.33+Ca-mont.67 AMX19  W1R1Bb
+calcite.33+Ca-mont.67 AVIRIS     \# output title
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Calcite.80wt+Kaol_CM9 GDS213 W1R1Ba
+Calcite 80wt%+ KaolCM9 GDS213    \# output title
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Calcite.7+Kaolwxl.3 AMX9     W1R1Ba
+Calcite WS272 70%+Kaol KGa-1 (wxl) 30%    \# output title
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Calcite WS272 s06crj3a=aaa 
+Calcite saturated CURVC          \# output title
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Calcite WS272 s06crj3a=aaa 
+Calcite saturated                \# output title
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Calcite WS272                W1R1Ba
+Calcite WS272                    \# output title
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Calcite.67+Epidote.33 GDS310 W1R1Fa     
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Calcite.33+Epidote.67 GDS311 W1R1Fa
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Chlorit.33+Calcite.67 GDS315 W1R1Fa
+ 
+============== dolomite =================
+BR60B Actinolite on Dolomite     \# output title
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Dolomite HS102.3B            W1R1Bb
+Dolomite HS102.3B                \# output title
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Calcite+Dolomite.5 AMX8      W1R1Bb
+Calcite + Dolomite .5 areal      \# output title
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Dolomite.50+Ca-Montmor AMX10 W1R1Bb
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Dolomite.5+Na-mont.5 AMX21   W1R1Bb
+dolomite.5+Na-mont.5 AVIRIS      \# output title
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Dolomite HS102.3B s06crj3a=bbb 
+Dolomite saturated CURVC         \# output title
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Dolomite HS102.3B s06crj3a=bbb 
+Dolomite saturated               \# output title
+ 
+============== hematite =================
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Hematite.02+Quartz.98 GDS76 W1R1Ba
+Hematite + qtz GDS76             \# output title
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Hematite GDS27               W1R1Ba
+Hematite GDS27 med grained      \# output title
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Hematite_Thin_Film GDS27     W1R1Ba
+Hematite Thin Coating GDS27      \# output title
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Hematite FE2602              W1R1Bb
+Hematite FE2602                  \# output title
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Hematite WS161               W1R1Bb
+Hematite WS161                   \# output title
+Magnetite scarn+Hematite weather BR5B \# output title
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Hematite_Coatd_Qtzt BR93-25A W1R1Bb
+BR25a Varnshd Qurtzte large gr hematite        \# output title
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Hematite_Coatd_Qtz BR93-25B  W1R1Bb
+BR25b med gr Hematite Coat Qtzite \# output title
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Hematite_Coatd_Qtzt BR93-25C W1R1Bb
+BR25c Varnshd Qurtzte large gr hematite        \# output title
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Nanohematite BR93-34B2       W1R1BbS
+BR34B2 nanohematite on qtzite    \# output title
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Hematite_Coatd_Qtz BR93-34C  W1R1BaS
+BR34C lg gr hematite on quartzite      \# output title
+Vegetation, weak on hematite soil  \# output title
+ 
+============== illite =================
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Illite IMt-1.b <2um          W1R1BaS
+Illite IMt-1.b <2um              \# output title
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Illite GDS4 (Marblehead)     W1R1Bb
+Illite GDS4 (Marblehead)         \# output title
+Gypsum+Jarosite+Illite Intimate Mix     \# output title
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Ammonio-Illite/Smectit GDS87 W1R1Bb
+Ammonio-Illite/Smec GDS87        \# output title
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Illite IL101 (2M2) s06crj3a=b
+Illite IL101 (2M2)               \# output title
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Illite GDS4 (Marblehead) s06crj3a=bb_ 
+Illite GDS4 (Marblehead) s06crj3a=bb_ \# output title
+ 
+============== muscovite =================
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Chlorite+Muscovite CU93-65A  W1R1Ba
+Chlorite + Muscovite CU93-65A    \# output title
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Muscovite-medhi-Al CU91-252D W1R1FcRIS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Muscovite CU91-250A med Al   W2R4NbS
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Muscovite GDS113 Ruby        W1R1Bb
+Muscovite GDS113 Ruby medhigh Al    \# output title
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Muscovite CU93-1 low-Al Phyl W2R4Nb
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Muscovite GDS116 Tanzania    W1R1Ba
+Muscovite GDS116 Tanzania Fe rich\# output title
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Pyrophyl+Muscovite JH_PYRM1  W1R1Fb 
+Pyroph + Trace Muscovite, Park City    \# output title
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Muscovite+Pyrophyl JH_PYRP1  W1R1Fb
+Muscovite + Pyroph, Park City    \# output title
+Alunite + Muscovite + Pyrophyllite    \# output title
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Muscovite+Chlorite CU91-253D W2R4Na
+Muscovite + Chlorite CU91-253D   \# output title
+Calc + 33% Muscovite Ruby Areal  \# output title
+Prehnite + Muscovite             \# output title
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Muscovite GDS113 Ruby s06mm09c=b 
+Muscovite GDS113                 \# output title
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Muscovite GDS111 Guatemal s06crj3a=a   
+Muscovite GDS111 Guatemal =a            # output title
+ 
+============== chlorite =================
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Chlorite+Muscovite CU93-65A  W1R1Ba
+Chlorite + Muscovite CU93-65A    \# output title
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Biotite-Chlorite_Mx BR93-36A W1R1Bb
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Muscovite+Chlorite CU91-253D W2R4Na
+Muscovite + Chlorite CU91-253D   \# output title
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Chlorite_Serpentine BR93-22B W1R1Bb
+Chlorite-scarn BR22B             \# output title
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Chlorite SMR-13.b 60-104um   W1R1Ba
+Chlorite SMR-13.b                \# output title
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Prehnite+.50Chlorite AMIX
+Prehnite+.50Chlorite AMIX        \# output title
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Prehnite+.67Chlorite AMIX
+Prehnite+.67Chlorite AMIX        \# output title
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Prehnite+.75Chlorite AMIX
+Prehnite+.75Chlorite AMIX        \# output title
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=chlorite SMR-13.c 45-60um s06crj3a=a
+chlorite SMR-13.c 45-60um =a              \# output title
+Chlorite 75-150um Ripidolite     \# output title
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Chlorite.67+Epidot.33 GDS317 W1R1Fa
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Chlorite.33+Epidot.67 GDS318 W1R1Fa
+ 
+============== vermiculite =================
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Vermiculite GDS13 Llano s06crj3a=a    
+Vermiculite GDS13 Llano =a                \# output title
+\#=-=-=-=-=-=-=-=-=-=-=- TITLE=Vermiculite GDS13 Llano s06crj3a=a    
+Vermiculite GDS13 Llano =a                \# output title
+ 

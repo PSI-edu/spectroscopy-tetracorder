@@ -1,0 +1,396 @@
+Group 0:
+   organic_dry_long_grass-thick        \# Output base file name  was: dry_long_grass-thick
+   organic_green_plastic_tarp          \# Output base file name  was: green_plastic_tarp
+   organic_white_pvc_pipe              \# Output base file name   was: white_pvc_pipe
+   snow.and.ice                \# Output base file name
+   snow.melting16+0.5veg      \# Output base file name
+   snow.melting1a+0.5veg     \# Output base file name
+   snow.melting.1a             \# Output base file name
+   snow.melting.3             \# Output base file name
+   snow.melting.8             \# Output base file name
+   snow.melting9+0.5veg      \# Output base file name
+   snow.slush.16                      \# Output base file name
+   snow.slush.9                       \# Output base file name
+   vegetation1                 \# Output base file name
+   vegetation.dry+green               \# Output base file name
+   water.high.chlorophyll     \# Output base file name
+   water.low.chlorophyll     \# Output base file name
+   water+mont0.5gpl           \# Output base file name
+   water+mont16.5gpl          \# Output base file name
+   water+mont1.67gpl          \# Output base file name
+   water+mont5.01gpl          \# Output base file name
+   water.red.algae            \# Output base file name
+
+Group 1um:
+   carbonate_rhodochrosite               \# Output base file name  was rhodochrosite
+   copper_carbonate_azurite      \# Output base file name was azurite
+   copper_carbonate_malachite                   \# Output base file name  was malachite
+   copper_chrysocolla                      \# Output base file name  was chrysocolla
+   copper_oxide_cuprite                         \# Output base file name  was cuprite
+   copper_precipitate_greenslime                  \# Output base file name   was greenslime
+   copper_sulfate_bluefflor                   \# Output base file name was bluefflor
+   epidote                     \# Output base file name
+   fe2+_chlorite.clinochlor   \# Output base file name  was clinochlorfeint then chlorite.clinochlor
+   fe2+_chlorite.Felow.clinochlor  \# Output base file name was clinochlorfelow then chlorite.Felow.clinochlor
+   fe2+_chlorite.thuringite       \# Output base file name  was thuringite  then chlorite.thuringite
+   fe2+_chlor+muscphy   \# Output base file name  was chlor+muscphy
+   fe2+_chromite                        \# Output base file name  was chromite
+   fe2+fe3+_chlor+goeth.propylzone   \# Output base file name  was chlor+goethpyropzn then chlor+goeth.propylzone
+   fe2+fe3+_hematite_weathering    \# Output base file name  was Fe2+_hematite_weathering
+   fe2+fe3+mix_with_hematite_br5b      \# Output base file name  was Fe2+_and_hematite_br5b
+   fe2+fe3+_water_RTsludge                    \# Output base file name was  RTsludge
+   fe2+_feldspar.bytownite   \# Output base file name  was bytownite  then feldspar.bytownite
+   fe2+_feldspar_microcline           \# Output base file name  was microcline
+   fe2+_feldspar_oligoclase                      \# Output base file name  was oligoclase
+   fe2+_feldspar_orthoclase                      \# Output base file name  was orthoclase
+   fe2+generic_almandine                       \# Output base file name  was almandine
+   fe2+generic_amphibole_riebeckite       \# Output base file name  was riebeckite
+   fe2+generic_axinite                          \# Output base file name  axinite
+   fe2+generic_basalt_br46b  \# Output base file name  was Fe2+_basalt_br46b  then generic.Fe2+basalt_br46b
+   fe2+generic_br33a_bioqtzmonz_epidote    \# Output base file name  was br33a_bioqtzmonz_epidote
+   fe2+generic_brd.br22c_actinolite  \# Output base file name was br22c_actinolite?scarn  then generic.Fe2+brd.br22c_actinolite
+   fe2+generic_brd.br36a_chlorite \# Output base file name  was br36a_qtzmonz_chlorite?  then generic.Fe2+brd.br36a_chlorite
+   fe2+generic_brd.br5a_actinolite \# Output base file name  was br5a_actinolite  generic.Fe2+brd.br5a_actinolite
+   fe2+generic_broad_br60b  \# Output base file name  was Fe2+_broad_br60b  then generic.Fe2+.broad_br60b
+   fe2+generic_carbonate_siderite1                   \# Output base file name  was siderite1
+   fe2+generic_med.jadeite  \# Output base file name was jadeite then generic.Fe2+med.jadeite
+   fe2+generic_nrw.actinolite \# Output base file name  was actinolite  then generic.Fe2+nrw.actinolite
+   fe2+generic_nrw.cummingtonite  \# Output base file name was cummingtonite:generic.fe2+  then generic.Fe2+nrw.cummingtonite
+   fe2+generic_nrw.hs-actinolite  \# Output base file name  was actinolitehs then generic.Fe2+nrw.hs-actinolite
+   fe2+generic_staurolite                       \# Output base file name  was staurolite
+   fe2+generic_sulfate_butlerite                       \# Output base file name  was butlerite
+   fe2+generic_vbroad_br20  \# Output base file name was Fe2+_vbroad_br20 then generic.Fe2+.vbroad_br20
+   fe2+_goeth+musc                    \# Output base file name   was Fe2++goeth+musc
+   fe2+_olivine-fine-gr             \# Output base file name  was olivine-fine-gr
+   fe2+_olivine-lrg-gr              \# Output base file name  was olivine-lrg-gr
+   fe2+_pyroxene_augite                          \# Output base file name  was augite
+   fe2+_pyroxene_clino_pigeonite             \# Output base file name  was pigeonite
+   fe2+_pyroxene.diopside           \# Output base file name  was diopside
+   fe2+_pyroxene_enstatite                       \# Output base file name  was enstatite
+   fe2+_pyroxene_hedenbergite                    \# Output base file name  was hedenbergite
+   fe2+_pyroxene.hypersthene        \# Output base file name  was hypersthene
+   fe3+_AMD.assemb1              \# Output base file name   was: AMD.assemb1
+   fe3+_AMD.assemb2                    \# Output base file name  was: AMD.assemb2
+   fe3+bearing1                \# Output base file name
+   fe3+copper-hydroxide_pitchlimonite          \# Output base file name  was pitchlimonite
+   fe3+fe2+_sulfate_copiapite                   \# Output base file name  was copiapite
+   fe3+fe2+_sulfate_coquimbite                  \# Output base file name  was coquimbite
+   fe3+_ferrihydrite                \# Output base file name  was ferrihydrite
+   fe3+_goethite.coarsegr                \# Output base file name  was: goethite.coarsegr
+   fe3+_goethite.fingr              \# Output base file name  was: goethite.fingr
+   fe3+_goethite.lepidocrosite    \# Output base file name  was lepidocrosite then goethite.lepidocrosite
+   fe3+_goethite.medcoarsegr.mpc.trjar     \# Output base file name  was: goethite.medcoarsegr.mpc.trjar
+   fe3+_goethite.medgr.ws222               \# Output base file name  was: goethite.medgr.ws222
+   fe3+_goethite+qtz.medgr.gds240      \# Output base file name  was: goethite+qtz.medgr.gds240
+   fe3+_goethite.thincoat                \# Output base file name  was: goethite.thincoat
+   fe3+_goeth+jarosite       \# Output base file name  was: goeth+jarosite
+   fe3+_hematite.fine.gr.fe2602     \# Output base file name  was hematite.fine.gr.fe2602
+   fe3+_hematite.fine.gr.gds76           \# Output base file name was: hematite.fine.gr.gds76
+   fe3+_hematite.fine.gr.ws161             \# Output base file name  was hematite.fine.gr.ws161
+   fe3+_hematite.lg.gr.br25a              \# Output base file name was hematite.lg.gr.br25a
+   fe3+_hematite.lg.gr.br25c        \# Output base file name  was hematite.lg.gr.br25c 
+   fe3+_hematite.lg.gr.br34c        \# Output base file name  was hematite.lg.gr.br34c
+   fe3+_hematite.med.gr.br25b        \# Output base file name  was hematite.med.gr.br25b
+   fe3+_hematite.med.gr.gds27      \# Output base file name  was hematite.med.gr.gds27
+   fe3+_hematite.nano.BR34b2         \# Output base file name  was nanohematite.BR34b2
+   fe3+_hematite.thincoat      \# Output base file name   was hematite.thincoat
+   fe3+_maghemite                       \# Output base file name  was maghemite
+   fe3+mn_desert.varnish1                  \# Output base file name  was desert.varnish1 
+   fe3+mn_desert.varnish2                 \# Output base file name  was desert.varnish2
+   fe3+_smectite_nontronite          \# Output base file name  was nontronite
+   fe3+_sulfate_jarosite_br34a2             \# Output base file name  was jarosite_br34a2
+   fe3+_sulfate_kjarosite200                \# Output base file name   was: kjarosite200
+   fe3+_sulfate_schwertmannite              \# Output base file name  was: schwertmannite
+   feldspar_pectolite                       \# Output base file name  was pectolite 
+   magnetite                       \# Output base file name
+   mn2+_rhodonite                       \# Output base file name  was rhodonite
+   Mn-Coating              \# Output base file name
+   mn_oxide_pyrolusite                       \# Output base file name  was manganite
+   organic_green_plastic_tarp_1um       \# Output base file name  was: green_plastic_tarp_1um
+   ree_neodymium_oxide                  \# Output base file name  was neodymium_oxide
+   ree_samarium_oxide                   \# Output base file name  was samarium_oxide
+   sulfate_lazurite                        \# Output base file name  was lazurite
+   sulfide_cinnabar                        \# Output base file name  was sulfide_cinnabar
+   sulfide_copper_chalcopyrite                    \# Output base file name  was chalcopyrite
+   sulfide_pyrite                \# Output base file name  was: pyrite 
+   sulfur                          \# Output base file name
+
+Group 2um:
+   actinolite                  \# Output base file name
+   alunite.33+kaol.33+musc.33  \# Output base file name
+   alunite.5+kaol.5            \# Output base file name
+   alunite.5+musc.5            \# Output base file name
+   alunite+musc+pyroph         \# Output base file name
+   alunite+pyrophyl            \# Output base file name
+   amphibole                   \# Output base file name
+   borate_colemanite                  \# Output base file name was colemanite
+   borate_pinnoite                    \# Output base file name  was Pinnoite
+   calcite+0.2Na-mont          \# Output base file name
+   calcite+0.5Ca-mont          \# Output base file name
+   calcite.25+dolom.25+Na-mont.5      \# Output base file name
+   carbonaite_dolomite                    \# Output base file name  was dolomite
+   carbonate_azurite                     \# Output base file name  was azurite
+   carbonate_calcite+0.2Ca-mont          \# Output base file name  was calcite+0.2Ca-mont
+   carbonate_calcite+0.2kaolwxl          \# Output base file name  was calcite+0.2kaolwxl
+   carbonate_calcite0.7+kaol0.3                 \# Output base file name  was calcite0.7+kaol0.3
+   carbonate_calcite.25+dolom.25+Ca-mont.5      \# Output base file name  WAS calcite.25+dolom.25+Ca-mont.5
+   carbonate_calcite+dolomite.5                 \# Output base file name  was calcite+dolomite.5
+   carbonate_calcite                     \# Output base file name  was calcite
+   carbonate_dolo+.5ca-mont                 \# Output base file name  was dolo+.5ca-mont
+   carbonate_dolomite.5+Na-mont.5               \# Output base file name  was dolomite.5+Na-mont.5
+   carbonate_magnesite                   \# Output base file name  was magnesite
+   carbonate_malachite                   \# Output base file name was malachite
+   carbonate_rhodochrosite               \# Output base file name  was rhodochrosite
+   carbonate_siderite                    \# Output base file name  was siderite
+   carbonate_smectite_calcite.33+Ca-mont.67              \# Output base file name  was calcite.33+Ca-mont.67
+   carbonate_strontianite                    \# Output base file name  was strontianite
+   carbonate_witherite                   \# Output base file name  was witherite
+   carbonite_aragonite                   \# Output base file name  was aragonite
+   carbonite_calcite+0.3muscovite          \# Output base file name  was calcite+0.3muscovite
+   chloride_carnallite                  \# Output base file name  was carnallite
+   chlorite_clinochlore                 \# Output base file name   was clinochlore
+   chlorite                    \# Output base file name
+   chlorite-scarn              \# Output base file name
+   chlorite.thuringite                \# Output base file name
+   chrysocolla                      \# Output base file name
+   chrysotile.coarse-fibrous          \# Output base file name
+   chrysotile.fine-fibrous            \# Output base file name
+   chrysotile.gypsum.wtc01-8    \# Output base file name
+   chrysotile.med-fine-fibrous        \# Output base file name
+   clay_hectorite                  \# Output base file name  was hectorite
+   clintonite                  \# Output base file name
+   cyanide-CdK                \# Output base file name
+   cyanide-KFe                \# Output base file name
+   cyanide-NiK                \# Output base file name
+   cyanide-trihydrate                \# Output base file name
+   cyanide-ZnK                \# Output base file name
+   datolite                    \# Output base file name
+   dick+musc+gyp+jar.amix         \# Output base file name
+   elbaite                     \# Output base file name
+   epidote                     \# Output base file name
+   feldspar_buddingtonite_ammonium            \# Output base file name  was buddington
+   feldspar_buddington.namont2                      \# Output base file name  was buddington.namont2
+   feldspar_buddington.namont                       \# Output base file name  was buddington.namont
+   hornblende                  \# Output base file name
+   howlite                     \# Output base file name
+   hydrogrossular                  \# Output base file name
+   hydroxide_brucite                     \# Output base file name  was brucite
+   hydroxide_diaspore                         \# Output base file name was diaspore
+   hydroxide_gibbsite                    \# Output base file name
+   Kalun+kaol.intmx                   \# Output base file name
+   kaol.75+alun.25            \# Output base file name
+   kaol.75+pyroph.25             \# Output base file name
+   kaolgrp_dickite                          \# Output base file name  was dickite
+   kaolgrp_halloysite                       \# Output base file name  was halloy
+   kaolgrp_kaolinite_pxl                    \# Output base file name  was kaolpxl
+   kaolgrp_kaolinite_wxl                          \# Output base file name  was kaolwxl
+   kaolin.3+smect.7                 \# Output base file name
+   kaolin.5+muscov.medAl           \# Output base file name
+   kaolin.5+muscov.medhighAl           \# Output base file name
+   kaolin.5+smect.5                 \# Output base file name
+   kaolin+musc.intimat           \# Output base file name
+   micagrp_biotite                     \# Output base file name  was biotite
+   micagrp_illite.gds4         \# Output base file name  was illite.gds4
+   micagrp_illite                 \# Output base file name  was illite
+   micagrp_illite.roscoelite         \# Output base file name  was roscoelite   then illite.roscoelite
+   micagrp_lepidolite                      \# Output base file name   was lepidolite
+   micagrp_margarite                       \# Output base file name  was margarite
+   micagrp_muscoviteFerich                    \# Output base file name  was muscoviteFerich
+   micagrp_muscovite-low-Al                 \# Output base file name was muscovite-low-Al
+   micagrp_muscovite-med-Al                 \# Output base file name  was muscovite-med-Al
+   micagrp_muscovite-medhigh-Al                  \# Output base file name  was muscovite-medhigh-Al
+   micagrp_paragonite                         \# Output base file name  was paragonite
+   musc+gyp+jar+dick.amix         \# Output base file name
+   musc+jarosite.intimat              \# Output base file name
+   muscovite+chlorite          \# Output base file name
+   musc+pyroph                        \# Output base file name
+   Na-alun+kaol.intmx                   \# Output base file name
+   nitrate_niter                       \# Output base file name  was niter
+   nitrate_potassium                \# Output base file name  was potassium_nitrate
+   nitrate_sodium                   \# Output base file name  was sodium_nitrate
+   organic_benzene+montswy            \# Output base file name  was benzene+montswy
+   organic_drygrass+.17Na-mont         \# Output base file name  was drygrass+.17Na-mont 
+   organic_fiberglass-roofing                 \# Output base file name was fiberglass.roofing
+   organic_paint-1                           \# Output base file name  was paint.1
+   organic_plastic.grnhs.roof         \# Output base file name was plastic.grnhs.roof
+   organic_plastic-hdpe.1                    \# Output base file name   was organic_plastic.hdpe.1 
+   organic_plastic-pete2                     \# Output base file name  was plastic.pete2
+   organic_plastic-pete3                     \# Output base file name  was plastic.pete3
+   organic_plastic-pete4                     \# Output base file name  was plastic.pete4
+   organic_plastic-pete                      \# Output base file name  was plastic.pete
+   organic_plastic-polystyrene                \# Output base file name  was plastic.polystyrene
+   organic_plastic-tarp1                      \# Output base file name  plastic.tarp1
+   organic_plastic-vinyl                      \# Output base file name  was plastic.Vinyl
+   organic_tce+montswy                        \# Output base file name  was tce
+   organic_toluene+montswy                    \# Output base file name was toluene
+   organic_trichlor+montswy                   \# Output base file name  was trichlor
+   organic_unleaded.gas+montswy               \# Output base file name  was unleaded.gas
+   organic_vegetation-dry-grass-golden      \# Output base file name  was dryveg.grass.golden
+   organic_vegetation-dry-grass-long             \# Output base file name   was dryveg.grass.long
+   organic_vegetation-dry-wood                 \# Output base file name  was dryveg.wood
+   palygorskite                \# Output base file name
+   perchlorate_mg             \# Output base file name
+   phlogopite                  \# Output base file name
+   polyhalite                  \# Output base file name
+   portlandite                 \# Output base file name
+   prehnite+.50chlorite        \# Output base file name
+   prehnite+.67chlorite        \# Output base file name
+   prehnite+.75chlorite        \# Output base file name
+   prehnite+muscovite          \# Output base file name
+   prehnite                    \# Output base file name
+   pyroph.5+alunit.5           \# Output base file name
+   pyroph.5+mont0.5            \# Output base file name
+   pyroph+tr.musc                     \# Output base file name
+   pyrophyllite                     \# Output base file name
+   richterite                      \# Output base file name
+   rivadavite                  \# Output base file name
+   saponite.or.talc                   \# Output base file name
+   sepiolite                   \# Output base file name
+   sioh_chalcedony                  \# Output base file name  was chalcedony
+   sioh_hydrated_basaltic_glass    \# Output base file name   was hydrated_basaltic_glass
+   smectite_ammonillsmec                     \# Output base file name was ammonillsmec
+   smectite_beidellite_gds123                \# Output base file name  was beidellite_gds123
+   smectite_beidellite_gds124                \# Output base file name  was beidellite_gds124 
+   smectite_montmorillonite_ca_swelling                           \# Output base file name  was montca
+   smectite_montmorillonite_fe_swelling          \# Output base file name  was montmorillonite_fe
+   smectite_montorillonite_na_highswelling                  \# Output base file name  was montna
+   smectite_nontronite_swelling                  \# Output base file name  was nontronite
+   sulfate_alun35K65Na.low                    \# Output base file name  was alun35K65Na.low
+   sulfate_alun66K34Na.low                  \# Output base file name  was alun66K34Na.low
+   sulfate_alun73K27Na.low                  \# Output base file name  was alun73K27Na.low
+   sulfate_alunNa03                        \# Output base file name  was alunNa03
+   sulfate_alunNa56450c                        \# Output base file name  was alunNa56450c
+   sulfate_alunNa78.450c                        \# Output base file name was alunNa78.450c
+   sulfate_ammonalunite                        \# Output base file name  was ammonalun
+   sulfate_ammonjarosite                       \# Output base file name  ammonjaros
+   sulfate_gypsum                      \# Output base file name  was gypsum
+   sulfate_jarosite-K                  \# Output base file name  was jarosite-K
+   sulfate_jarosite-lowT               \# Output base file name  was jarosite-lowT
+   sulfate_jarosite-Na                 \# Output base file name  was jarosite-Na
+   sulfate_kalun150c                        \# Output base file name  was  kalun150c
+   sulfate_kalun250c                   \# Output base file name  was kalun250c
+   sulfate_kalun450c                        \# Output base file name  was kalun450c
+   sulfate+kaolingrp_natroalun+dickite                  \# Output base file name  was natroalun+dickite
+   sulfate_kiesserite                 \# Output base file name  was kiesserite
+   sulfate_mascagnite                      \# Output base file name  was mascagnite
+   sulfate_mirabilite-wet_soil                \# Output base file name  was mirabilite-wet_soil
+   sulfate-mix_gyp+jar+musc.amix         \# Output base file name
+   sulfate-mix_gyp+jar+musc+dick.amix             \# Output base file name
+   sulfate-mix_gypsum+jar+illite.intmix           \# Output base file name
+   sulfate-mix_gypsum.trace.dust+debris-WTC01-28        \# Output base file name
+   sulfate-mix_gypsum.trace.dust+debris-WTC01-2         \# Output base file name
+   sulfate_na40alun400c                     \# Output base file name  was na40alun400c
+   sulfate_na63alun300c                     \# Output base file name  was na63alun300c
+   sulfate_na82alun100c                     \# Output base file name  was na82alun100c
+   sulfate_naalun150c                       \# Output base file name was naalun150c
+   sulfate_naalun300c                       \# Output base file name  was naalun300c
+   sulfate_naalun450c                       \# Output base file name  was naalun450c
+   sulfate_syngenite                      \# Output base file name  was syngenite
+   sulfate_szomolnokite_heated               \# Output base file name  was szomolnokite_heated
+   sulfate_szomolnokite               \# Output base file name  was szomolnokite
+   talc+calcite.parkcity           \# Output base file name
+   talc+carbonate.parkcity           \# Output base file name
+   talc.crsgrnd           \# Output base file name
+   talc.fngrnd           \# Output base file name
+   topaz                       \# Output base file name
+   tremolite.or.talc           \# Output base file name
+   ulexite                     \# Output base file name
+   white.crust                 \# Output base file name
+   zeolite_analcime                    \# Output base file name  was analcime
+   zeolite_natrolite                       \# Output base file name  was natrolite
+   zoisite                     \# Output base file name
+   zunyite                                \# Output base file name
+
+Group 3 and on:
+   vegetation.map                 \# Output base file name
+   vegetation.weak.map                \# Output base file name
+   vegetation.dry+green               \# Output base file name
+   vegetation.dry_nonphotosyn         \# Output base file name
+   neodymium_oxide_compete          \# Output base file name
+   samarium_oxide_compete           \# Output base file name
+   diaspore                         \# Output base file name
+   pyroxene.augite                  \# Output base file name
+   pyroxene.bronzite                \# Output base file name
+   pyroxene.enstatite               \# Output base file name
+   pyroxene.hypersthene               \# Output base file name
+   pyroxene.pigeonite               \# Output base file name
+   eugsterite.2.5um.water           \# Output base file name
+   adularia_2.5um                         \# Output base file name
+   naalun450c.2.5um                       \# Output base file name
+   analcime.2.5um                    \# Output base file name
+   pyrophyllite_1.4um                \# Output base file name
+   muscovite_gds113_ruby_1.4um      \# Output base file name
+   illite_gds4_1.4um                \# Output base file name
+   tourmaline_1.4um                \# Output base file name
+   anorthite_hs201.3b               \# Output base file name
+   bytownite_hs106.3b               \# Output base file name
+   microcline_hs103.3b               \# Output base file name
+   magnetite_hs195.3b               \# Output base file name
+   sphalerite_s26-341_1.5um         \# Output base file name
+   rutile_hs126.3b                  \# Output base file name
+   wollastonite_hs348.3b            \# Output base file name
+   olivine_gds71.b_fo91             \# Output base file name
+   olivine_ki3377_fo18              \# Output base file name
+   goethite_3.17um                   \# Output base file name
+   grossular_3.17um                   \# Output base file name
+   jarosite_3.18um                   \# Output base file name
+   organic_trace_aliphatic1         \# Output base file name
+   carbonate_calcite_3.5um                    \# Output base file name was calcite_3.5um
+   carbonate_dolomite_3.5um                    \# Output base file name  was dolomite_3.5um
+   carbonate_trace_3.5um             \# Output base file name
+   carbonate_magnesite+hydromagnesite          \# Output base file name  was magnesite+hydromagnesite 
+   nitrate_niter_3.6um                       \# Output base file name  was niter_3.6um
+   organic_trace_3.42um_aliphatic1_curvc         \# Output base file name
+   carbonate_calcite_3.5um_curvc              \# Output base file name  was calcite_3.5um_curvc
+   carbonate_dolomite_3.5um_curvc              \# Output base file name  was dolomite_3.5um_curvc
+   carbonate_trace_3.5um_curvc       \# Output base file name
+   carbonate_magnesite+hydromagnesite_curvc    \# Output base file name  was magnesite+hydromagnesite_curvc
+   nitrate_niter_3.6um_curvc                 \# Output base file name  was niter_3.6um_curvc
+   organic.3.41um.nonyne_curvc                \# Output base file name
+   organic.3.37um.pentene_curvc                 \# Output base file name
+   organic.3.24um.pyridine_curvc                 \# Output base file name
+   organic.3.25um.nitrobenzene_curvc             \# Output base file name
+   hydrogen_peroxide.3.52um_curvc           \# Output base file name
+   water_1.91um_montna                           \# Output base file name
+   water_1.91um_stonwplaya                           \# Output base file name
+   water_1.94um_natrolite                           \# Output base file name
+   water_1.91um_halloysite                         \# Output base file name
+   water_2.08_kiesserite                 \# Output base file name
+   water_1.91_perchlorate_mg             \# Output base file name
+   water_1.94um_brick                           \# Output base file name
+   water_broad_1.93um                           \# Output base file name
+   water_narrow_1.93um                           \# Output base file name
+   h20_ice_2.02um-a                           \# Output base file name
+   neodymium_oxide1                 \# Output base file name
+   samarium_oxide1                  \# Output base file name
+   red.edge.shift.1                 \# Output base file name
+   red.edge.shift.2                 \# Output base file name
+   vegetation.type1                   \# Output base file name
+   vegetation.type2             \# Output base file name
+   vegetation.type3               \# Output base file name
+   vegetation.type4            \# Output base file name
+   vegetation.type5           \# Output base file name
+   vegetation.type6           \# Output base file name
+   vegetation.type7           \# Output base file name
+   vegetation.type8           \# Output base file name
+   vegetation.type9           \# Output base file name
+   vegetation.type10          \# Output base file name
+   vegetation.type11          \# Output base file name
+   vegetation.type12          \# Output base file name
+   vegetation.type13          \# Output base file name
+   veg0.9um.band             \# Output base file name
+   veg1.2um.band             \# Output base file name
+   veg1.4um.band             \# Output base file name
+   calcite                     \# Output base file name
+   epidote                     \# Output base file name
+   ripidolite                         \# Output base file name
+   CEC-D.33Ep66Ca                     \# Output base file name
+   CEC-E.66Ep33Ca                     \# Output base file name
+   CEC-G.20Ch60Ep20Ca                 \# Output base file name
+   CEC-H.60Ch20Ep20Ca                 \# Output base file name
+   CEC-I.20Ch20Ep60Ca                 \# Output base file name
+   CEC-J.33Ch66Ca                     \# Output base file name
+   CEC-K.60Ch20Ep20Ca                 \# Output base file name
+   CEC-L.66Ch33Ep                     \# Output base file name
+   CEC-M.33Ch66Ep                     \# Output base file name
+   CEC-N.33Ch33Ep33Ca                 \# Output base file name

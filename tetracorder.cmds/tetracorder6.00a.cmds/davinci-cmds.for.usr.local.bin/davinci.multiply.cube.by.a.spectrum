@@ -1,0 +1,121 @@
+#!/usr/bin/env -S davinci -f  
+
+###########################  was:  #!/usr/local/bin/davinci -f
+
+
+###################################################
+# User:   rclark    Date:  Tue Sep  2 11:03:48 2008
+###################################################
+verbose=0
+
+# This davinci script multiplies a cube by a spectrum
+#
+
+if ( $argc < 4 ) {
+  printf ("^GERROR: insufficient arguments\n")
+  printf ("davinci.multiply.cube.by.a.spectrum  inputcubename  specprfile record# outputcube -scale X -int16|-int32 -isis|-vicar\n")
+  exit(1)
+}
+
+ascale=1.0   # scale factor
+toint=0      # do not convert to integer
+otype="isis"
+
+
+if ( $argc > 4 ) {
+
+	for (j = 5; j <= $argc; j = j +1 ) {
+
+		if ($argv[j] == "-scale" ) {
+
+			if ($argc >= j+1) {
+
+				ascale=atof($argv[j+1])
+				j=j+1
+				printf ("will scale output by %f\n", ascale)
+			} else {
+				printf ("^GERROR: insufficient arguments\n")
+				printf ("davinci.multiply.cube.by.a.spectrum  inputcubename  specprfile record# outputcube -scale X -int\n")
+				exit(1)
+			}
+
+		} else if ($argv[j] == "-int32" ) {
+
+			toint = 32
+			printf ("will convert output to 32-bit integer\n")
+
+		} else if ($argv[j] == "-int16" ) {
+
+			toint = 16
+			printf ("will convert output to 16-bit integer\n")
+		} else if ($argv[j] == "-isis" ) {
+
+			otype="isis"
+			printf ("Output cube will be isis format\n")
+
+		} else if ($argv[j] == "-vicar" ) {
+
+			otype="vicar"
+			printf ("Output cube will be vicar format\n")
+
+		} else {
+			printf ("^GERROR: argument not recognized: %s\n", $argv[j])
+			printf ("davinci.multiply.cube.by.a.spectrum  inputcubename  specprfile record# outputcube -scale X -int\n")
+			exit(1)
+		}
+	}
+}
+
+afile=$1
+
+a=read(filename=afile)
+
+sfile=$2
+srec =atoi($3)
+
+outf=$4
+
+s=read(filename=sfile, record=srec)
+
+s=s*ascale
+
+d=dim(a)
+printf("image cube: x=%d, y=%d, z=%d\n", d[1,,], d[2,,], d[3,,])
+
+iy=d[2,,]
+
+for (i=1; i<=iy; i=i+1) {
+
+	a[,i,] = a[,i,] *s
+
+	printf("Processing line %d of %d  cube:%s\n", i, iy, afile)
+
+}
+
+if (toint == 16) {
+
+	printf ("convert output cube to 16-bit integer\n")
+	a=short(a)
+
+} else if ( toint == 32) {
+
+	printf ("convert output cube to 32-bit integer\n")
+	a=int(a)
+}
+
+	
+#a = bil(a)
+
+
+d=dim(a)
+printf("output image cube: x=%d, y=%d, z=%d\n", d[1,,], d[2,,], d[3,,])
+
+printf("writing cube %s   type=%s\n", outf, otype)
+
+if (otype == "vicar") {
+	write(a, filename=outf, type=vicar)
+} else {
+	write(a, filename=outf, type=isis)
+}
+
+printf("Done\n")

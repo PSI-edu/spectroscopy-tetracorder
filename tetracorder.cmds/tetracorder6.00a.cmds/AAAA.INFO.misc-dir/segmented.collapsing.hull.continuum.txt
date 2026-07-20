@@ -1,0 +1,17 @@
+
+April 25, 2012:
+
+Segmented upper hull has no convexity, so continuum fails in situations
+where the continuum is concave.
+
+segmented collapsing hull allows concavity.
+
+Specify a minimum segment length, e.g. the max width of a
+spectral feature.  Then the hull can follow a concave continuum,
+e.g. in a broad absorption to find a narrow feature superimposed
+on the broad absorption.
+
+example: narrow OH feature superimposed on a broad
+pyrozene band.
+
+Roger Clark

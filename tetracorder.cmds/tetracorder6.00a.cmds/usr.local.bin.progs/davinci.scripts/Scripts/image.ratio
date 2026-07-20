@@ -1,0 +1,16 @@
+#!/usr/local/bin/davinci -f
+
+# image ratio
+
+a=$1
+b=$2
+fout=$3
+#############################################################
+
+a=    float(load(filename=a))
+b=    float(load(filename=b))
+
+c = short ((a*100.0) /b)
+
+write(c,filename=fout,type=vicar)
+exit

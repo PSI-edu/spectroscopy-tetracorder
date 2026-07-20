@@ -1,0 +1,318 @@
+#!/usr/bin/env -S davinci -q -f  
+####!/usr/local/bin/davinci -q -f
+
+###########################  was:  #!/usr/local/bin/davinci -q -f
+
+
+
+# command line:
+# prog    gray_base_image  prefix-file-name   [dual|nodual]
+
+prog="davinci.snow-grain-size-water.a"   # CHANGE THIS if program name changes
+
+####################  Begin static: no need to change inything in this section ################
+
+if ($argc < 2) {
+
+        printf("Insufficient input\n")
+        printf("%s input_gray_image  outputcolorimage\n", prog)
+        printf("exit 1\n")
+        exit(1)
+}
+
+
+dual    = 1     # default color + gray image 
+dualmax = 2000  # no dual if width is greater than this
+
+if ($argc >= 3) {
+
+	if ( "$3" == "nodual" ) {
+		dual = 0
+	}
+	if ( "$3" == "dual" ) {
+		dual = 1
+		dualmax = 999999 
+	}
+
+	printf ("\n\n\n\n%s   %s   %s   %s\n\n\n", prog, $1, $2, $3)
+} else {
+
+	printf ("\n\n\n\n%s   %s   %s\n\n\n", prog, $1, $2)
+}
+
+
+# read base gray image
+
+gbase=read(filename=$1)
+if (HasValue(gbase) ==0) {                   # check that read worked
+      printf ("read ERROR on file: %s\n",$1)
+      printf ("^GEXIT 1\n")
+      exit(1)
+}
+
+# execute this program in the same directory asthe source code below
+source ("cmds.color.support/davinci.master.colors")
+
+# available colors:
+
+# 22 available colors:
+# c_red      c_green          c_blue       c_yellow        c_magenta       c_cyan      c_armygreen  
+# c_salmon   c_flesh          c_orange     c_deeppink      c_yellowgreen   c_lavender  c_bluegreen
+# c_skyblue  c_paleseagreen   c_white      c_redpink       c_gold          c_mudyellow c_lightpink
+# c_purple
+
+# a purple/magenta to red 12 spectral color sequence:
+#
+# c_magenta c_purple c_blue c_skyblue c_cyan c_green c_armygreen c_yellow c_gold c_salmon c_orange c_red
+
+###########################################################################
+
+define read_an_image(1,1) {
+
+        # read a gray-scale image and convert to 3-bands
+
+        afile = $1   # file to read
+        printf ("reading file %s\n", afile)
+        aaa=read(filename=afile)
+        if (HasValue(aaa) ==0) {  # check that read worked
+                printf ("read ERROR on file: %s\n",afile)
+                printf ("setting to zero\n")
+                aaa=0
+        }
+	aaa = aaa[,,1]             # make sure the image is one band
+        qqq = cat(aaa,aaa,axis=z)  # make into 2-band image
+        aaa = cat(aaa,qqq,axis=z)  # make into 3-band image
+
+        return (aaa)
+
+}  # end define
+
+#        make the xcolor image
+a      = read_an_image($1)
+xcolor = float(a*0)
+xdim   = dim(xcolor)
+
+
+###################   begin custom section ##########################################
+
+# first image:
+
+# available colors:
+# c_red     c_green          c_blue       c_yellow        c_magenta       c_cyan          c_armygreen  
+# c_salmon  c_flesh          c_orange     c_deeppink      c_yellowgreen   c_lavender  
+# c_skyblue c_paleseagreen   c_white      c_redpink       c_gold          c_mudyellow     c_lightpink
+
+
+
+# Y splib06   6216     group.1um/snow.and.ice-77k.fd.gif                  c_white       #  cold fine-grained snow 
+# Y sprlb06   1116     group.1um/h2o-frost+ice-drops3-100k.fd.gif
+# Y sprlb06   1104     group.1um/h2o-frost+ice-drops1-100k.fd.gif
+# Y sprlb06   1020     group.1um/snow.and.ice-170k.fd.gif                               # cold ice blocks
+
+c= c_white 
+a = read_an_image("group.1um/snow.and.ice-77k.fd.gif")
+a = a+ read_an_image("group.1um/h2o-frost+ice-drops3-100k.fd.gif") 
+a = a+ read_an_image("group.1um/h2o-frost+ice-drops1-100k.fd.gif") 
+a = a+ read_an_image("group.1um/snow.and.ice-170k.fd.gif") 
+
+     xcolor= xcolor + a*( c /255.)
+     a=0   # be sure array is cleared
+
+
+# Y sprlb06   1410     group.1um/snow-ice-1mm-273k.fd.gif                c_skyblue       # warm ice fine grained
+# Y sprlb06   1380     group.1um/snow.and.ice-248k.fd.gif 
+
+c= c_cyan
+a = read_an_image("group.1um/snow-ice-1mm-273k.fd.gif")
+a = a+ read_an_image("group.1um/snow.and.ice-248k.fd.gif") 
+
+     xcolor= xcolor + a*( c /255.)
+     a=0   # be sure array is cleared
+
+
+# Y sprlb06   1416     group.1um/snow-ice-3mm-273k.fd.gif                c_cyan          # warm ice medium grained
+
+c= c_paleseagreen
+a = read_an_image("group.1um/snow-ice-3mm-273k.fd.gif")
+
+     xcolor= xcolor + a*( c /255.)
+     a=0   # be sure array is cleared
+
+
+# Y sprlb06   1422     group.1um/snow-ice-10mm-273k.fd.gif               c_paleseagreen   # warm ice large grained
+
+c= c_skyblue
+a = read_an_image("group.1um/snow-ice-10mm-273k.fd.gif")
+
+     xcolor= xcolor + a*( c /255.)
+     a=0   # be sure array is cleared
+
+
+# Y splib06   6258     group.1um/snow.melting.1a.fd.gif                  c_lavender       # snow trace melting
+
+c= c_lavender
+a = read_an_image("group.1um/snow.melting.1a.fd.gif")
+
+     xcolor= xcolor + a*( c /255.)
+     a=0   # be sure array is cleared
+
+
+# Y splib06   6294     group.1um/snow.melting.8.fd.gif                   c_yellow         # snow significant melting
+# Y splib06   6306     group.1um/snow.slush.9.fd.gif        
+# Y sprlb06   1428     group.1um/snow-ice-3mm+0.1water-273k.fd.gif
+# Y sprlb06   1434     group.1um/snow-ice-3mm+0.2water-273k.fd.gif
+
+c= c_yellow
+a = read_an_image("group.1um/snow.melting.8.fd.gif")
+a = a+ read_an_image("group.1um/snow.slush.9.fd.gif") 
+a = a+ read_an_image("group.1um/snow-ice-3mm+0.1water-273k.fd.gif") 
+a = a+ read_an_image("group.1um/snow-ice-3mm+0.2water-273k.fd.gif") 
+
+     xcolor= xcolor + a*( c /255.)
+     a=0   # be sure array is cleared
+
+
+# Y splib06   6240     group.1um/snow.slush.16.fd.gif                    c_red            # major melting
+# Y sprlb06   1446     group.1um/snow-ice-10mm+0.3water-273k.fd.gif
+
+c= c_red 
+a = read_an_image("group.1um/snow.slush.16.fd.gif")
+a = a+ read_an_image("group.1um/snow-ice-10mm+0.3water-273k.fd.gif") 
+
+     xcolor= xcolor + a*( c /255.)
+     a=0   # be sure array is cleared
+
+
+# Y splib06   6264     group.1um/snow.melting1a+0.5veg.fd.gif            c_green         # melting snow + veg
+# Y splib06   6312     group.1um/snow.melting9+0.5veg.fd.gif   
+# Y splib06   6252     group.1um/snow.melting16+0.5veg.fd.gif   
+
+c= c_green 
+a = read_an_image("group.1um/snow.melting1a+0.5veg.fd.gif")
+a = a+ read_an_image("group.1um/snow.melting9+0.5veg.fd.gif") 
+a = a+ read_an_image("group.1um/snow.melting16+0.5veg.fd.gif") 
+
+     xcolor= xcolor + a*( c /255.)
+     a=0   # be sure array is cleared
+
+
+
+# Y splib06   6324     group.1um/water.high.chlorophyll.fd.gif           c_blue
+# Y splib06   6330     group.1um/water.low.chlorophyll.fd.gif         
+# Y sprlb06   1386     group.1um/water.low.chlorophyll-turquoise.fd.gif 
+# Y sprlb06   1398     group.1um/water.low.chlorophyll-blue1.fd.gif   
+# Y sprlb06   1404     group.1um/water.turquoise-shallow.fd.gif       
+
+c= c_blue
+a = read_an_image("group.1um/water.high.chlorophyll.fd.gif")
+a = a+ read_an_image("group.1um/water.low.chlorophyll.fd.gif") 
+a = a+ read_an_image("group.1um/water.low.chlorophyll-turquoise.fd.gif") 
+a = a+ read_an_image("group.1um/water.low.chlorophyll-blue1.fd.gif") 
+a = a+ read_an_image("group.1um/water.turquoise-shallow.fd.gif") 
+
+     xcolor= xcolor + a*( c /255.)
+     a=0   # be sure array is cleared
+
+
+# Y splib06   6348     group.1um/water+mont16.5gpl.fd.gif                c_salmon
+# Y splib06   6354     group.1um/water+mont5.01gpl.fd.gif        
+# Y splib06   6342     group.1um/water+mont1.67gpl.fd.gif         
+# Y splib06   6336     group.1um/water+mont0.5gpl.fd.gif           
+# Y sprlb06   1452     group.1um/water-20C-10cm-path-model.fd.gif   
+# Y sprlb06   1458     group.1um/water-20C-30cm-path-model.fd.gif    
+# Y sprlb06   1464     group.1um/water-20C-100cm-path-model.fd.gif    
+
+c= c_salmon
+a = read_an_image("group.1um/water+mont16.5gpl.fd.gif")
+a = a+ read_an_image("group.1um/water+mont5.01gpl.fd.gif") 
+a = a+ read_an_image("group.1um/water+mont1.67gpl.fd.gif") 
+a = a+ read_an_image("group.1um/water+mont0.5gpl.fd.gif") 
+a = a+ read_an_image("group.1um/water-20C-10cm-path-model.fd.gif") 
+a = a+ read_an_image("group.1um/water-20C-30cm-path-model.fd.gif") 
+a = a+ read_an_image("group.1um/water-20C-100cm-path-model.fd.gif") 
+
+     xcolor= xcolor + a*( c /255.)
+     a=0   # be sure array is cleared
+
+
+# Y splib06   6318     group.1um/water.red.algae.fd.gif                  c_mudyellow
+# Y sprlb06   1356     group.1um/water+mont300gpl.fd.gif            
+# Y sprlb06   1350     group.1um/water+mont100gpl.fd.gif             
+# Y sprlb06   1344     group.1um/water+mont50gpl.fd.gif               
+
+c= c_mudyellow
+a = read_an_image("group.1um/water.red.algae.fd.gif")
+a = a+ read_an_image("group.1um/water+mont300gpl.fd.gif") 
+a = a+ read_an_image("group.1um/water+mont100gpl.fd.gif") 
+a = a+ read_an_image("group.1um/water+mont50gpl.fd.gif") 
+
+     xcolor= xcolor + a*( c /255.)
+     a=0   # be sure array is cleared
+
+
+# Y sprlb06   1470     group.1um/water-20C-10cm-path+chlrph-g.fd.gif     c_armygreen
+# Y sprlb06   1392     group.1um/water.high.chlorophyll2.fd.gif      
+# Y sprlb06   1476     group.1um/water-20C-100cm-path+chlrph-g.fd.gif 
+# Y sprlb06   1482     group.1um/water-20C-300cm-path+chlrph-g.fd.gif 
+# Y sprlb06   1488     group.1um/water-20C-100cm-path+chlrph-a.fd.gif 
+# Y sprlb06   1368     group.1um/water+mont100gpl+0.5veg.fd.gif       
+# Y sprlb06   1362     group.1um/water+mont50gpl+0.5veg.fd.gif        
+
+c= c_armygreen
+a = read_an_image("group.1um/water-20C-10cm-path+chlrph-g.fd.gif")
+a = a+ read_an_image("group.1um/water.high.chlorophyll2.fd.gif") 
+a = a+ read_an_image("group.1um/water-20C-100cm-path+chlrph-g.fd.gif") 
+a = a+ read_an_image("group.1um/water-20C-300cm-path+chlrph-g.fd.gif") 
+a = a+ read_an_image("group.1um/water-20C-100cm-path+chlrph-a.fd.gif") 
+a = a+ read_an_image("group.1um/water+mont100gpl+0.5veg.fd.gif") 
+a = a+ read_an_image("group.1um/water+mont50gpl+0.5veg.fd.gif") 
+
+     xcolor= xcolor + a*( c /255.)
+     a=0   # be sure array is cleared
+
+
+########### end custom, no need to change anything below this line ###############################
+
+if (HasValue(xcolor) ==0) {
+
+        printf ("%s: xcolor has no value\n", prog)
+        printf ("EXIT 1\n")
+        exit(1)
+}
+
+
+xout=byte(xcolor+0.5)   # output color image, byte
+xout = bip(xout)
+xdim=dim(xout)
+xdimx=xdim[1,,]      # color image width
+
+fout=$2
+
+foute="color.results-envi/" + fout
+
+write (xout, filename=foute, type=vicar)
+
+
+gbasedim=dim(gbase)
+x=gbasedim[1,,]      # base image width
+
+if (x > dualmax) {
+        dual = 0
+}
+
+if ( dual == 1 ) {
+
+        gbase = bip(gbase)
+        xout = cat (xout, gbase, axis=x)
+}
+
+
+adim=dim(xout)
+if ( adim[1,,] > 5 || adim[2,,] > 5 ) {
+        printf ("writing %s\n", fout)
+        write (xout, filename=fout, type=png)
+} else {
+        printf ("not writing %s\n", fout)
+        printf ("    image size < 6 pixels\n")
+}
+

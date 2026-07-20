@@ -1,0 +1,150 @@
+SPECPR_Restart=2.00      # Restart Version
+#
+# file names
+#
+ivfl=/dev/null                                                                       
+iwfl=/sl1/usgs/rlib06/r06crj3a                                                       
+idfl=/dev/null                                                                       
+iufl=/dev/null
+iyfl=/sl1/usgs/library06.conv/s06crj3a                                             
+isfl=/dev/null                                                                       
+ilfl=spoolfile                                                                       
+irfl=r1-s06crj3a                                                                     
+#
+# protection number for open files (v,w,d,u,y,s)
+#
+iprtv=             0  # device protection v
+iprtw=          -695  # device protection w
+iprtd=             0  # device protection d
+iprtu=         -7356  # device protection u
+iprty=         -8219  # device protection y
+iprts=             0  # device protection s
+#
+# short 8 character names associated with file device letters
+#
+isavt=      *unasnd*  # file device letter v
+iwdgt=      r06crj3a  # file device letter w
+iwrkt=      *unasnd*  # file device letter d
+inmu=       *unasnd*  # file device letter u
+inmy=       s06crj3a  # file device letter y
+#
+# plot control values (real number format: ex. 0.23E+01)
+#
+wmina=  0.400000E+01  # plot min wavelength
+wmaxa=  0.400000E+01  # plot max wavelength
+bbnd=   0.000001E+00  # plot min reflectance
+ubnd=   0.110000E+01  # plot max reflectance
+#
+istarp(1)=         #  # star pack letter
+istarp(2)=         0  # star pack rec. no.
+#
+alat=      0.0000000  # observatory lat in rads
+ra=        0.0000000  # right ascension in radians
+dec=       0.0000000  # declination in radians
+ha=        0.0000000  # hour angle in radians
+airmas=    1.0000000  # air mass of object
+iwch=              0  # wavelength calib shift
+#
+# record pointers
+#
+mag0=             -1  # mag tape drive 0
+mag1=             -1  # mag tape drive 1
+isavf=             1  # file v
+iwjf=             73  # file w
+iwrkf=             1  # file d
+isvcu=             1  # file u
+iwjcy=             7  # file y
+istrf=             1  # file s
+ilpt=              1  # line printer
+icdr=              0  # card reader
+ipp=               1  # printer/plotter
+#
+nchans=          489  # num wave chans
+ibnrm1=           30  # band anal
+ibnrm2=           38  # band anal
+nchsav=            0  # num chan save
+iline=             3  # graphics line type
+#
+infmth=            0  #
+infopr=            1  #
+inftrn=            0  #
+iother(1)=         0  #
+iother(2)=         0  #
+iother(3)=         0  #
+iother(4)=         0  #
+iother(5)=         0  #
+iother(6)=         0  #
+iother(7)=         0  #
+iother(8)=         0  #
+iother(9)=         0  #
+#
+cfile=#                                         #
+#
+igrmod=           51  # graphics mode
+#
+itrol(1)=          Y  # wavelength file id
+itrol(2)=          6  # record in use
+itrol(3)=          a  # chan/wave/energy plot flag
+#
+# parameters for 3D file I/O
+#
+filtyp(1,1)=          0  # specpr file flag
+filtyp(2,1)=          0  # file header lgth
+filtyp(3,1)=          0  # record length
+filtyp(4,1)=          0  # record hdr lgth
+filtyp(5,1)=          0  # DN offset
+filtyp(6,1)=          0  # x - dimension
+filtyp(7,1)=          0  # y - dimension
+filtyp(8,1)=          0  # z - dimension
+filtyp(9,1)=          0  # data type
+filtyp(10,1)=         0  # file order
+filtyp(11,1)=         0  # point deletion
+filtyp(12,1)=         0  # blank
+filtyp(1,2)=          0  # specpr file flag
+filtyp(2,2)=          0  # file header lgth
+filtyp(3,2)=          0  # record length
+filtyp(4,2)=          0  # record hdr lgth
+filtyp(5,2)=          0  # DN offset
+filtyp(6,2)=          0  # x - dimension
+filtyp(7,2)=          0  # y - dimension
+filtyp(8,2)=          0  # z - dimension
+filtyp(9,2)=          0  # data type
+filtyp(10,2)=         0  # file order
+filtyp(11,2)=         0  # point deletion
+filtyp(12,2)=         0  # blank
+filtyp(1,3)=          0  # specpr file flag
+filtyp(2,3)=          0  # file header lgth
+filtyp(3,3)=          0  # record length
+filtyp(4,3)=          0  # record hdr lgth
+filtyp(5,3)=          0  # DN offset
+filtyp(6,3)=          0  # x - dimension
+filtyp(7,3)=          0  # y - dimension
+filtyp(8,3)=          0  # z - dimension
+filtyp(9,3)=          0  # data type
+filtyp(10,3)=         0  # file order
+filtyp(11,3)=         0  # point deletion
+filtyp(12,3)=         0  # blank
+filtyp(1,4)=          0  # specpr file flag
+filtyp(2,4)=          0  # file header lgth
+filtyp(3,4)=          0  # record length
+filtyp(4,4)=          0  # record hdr lgth
+filtyp(5,4)=          0  # DN offset
+filtyp(6,4)=          0  # x - dimension
+filtyp(7,4)=          0  # y - dimension
+filtyp(8,4)=          0  # z - dimension
+filtyp(9,4)=          0  # data type
+filtyp(10,4)=         0  # file order
+filtyp(11,4)=         0  # point deletion
+filtyp(12,4)=         0  # blank
+filtyp(1,5)=          0  # specpr file flag
+filtyp(2,5)=          0  # file header lgth
+filtyp(3,5)=          0  # record length
+filtyp(4,5)=          0  # record hdr lgth
+filtyp(5,5)=          0  # DN offset
+filtyp(6,5)=          0  # x - dimension
+filtyp(7,5)=          0  # y - dimension
+filtyp(8,5)=          0  # z - dimension
+filtyp(9,5)=          0  # data type
+filtyp(10,5)=         0  # file order
+filtyp(11,5)=         0  # point deletion
+filtyp(12,5)=         0  # blank

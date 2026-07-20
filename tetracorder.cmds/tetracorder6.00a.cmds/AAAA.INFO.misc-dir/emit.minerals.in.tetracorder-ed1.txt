@@ -1,0 +1,107 @@
+============== montmorillonite =================
+Montmorillonite SWy-1            
+Montmorillonite_Fe GDS759A       
+Montmorillonite SAz-1 (Ca)       
+Montmorillonite SWy-1 =b               
+Montmorillonite SAz-1 =a               
+ 
+============== kaolinite =================
+Kaolinite CM9 wxl                
+Kaolinite KGa-2 pxl              
+Kaolinite 0.5 Smectite 0.5       
+Kaolinite 0.3 Smectite 0.7      
+ 
+============== halloysite =================
+Halloysite NMNH106237            
+
+============== gypsum =================
+Gypsum HS333.3B                  
+Gypsum+Jarosite+Illite Intimate Mix     
+Gypsum+jar+musc Areal Mix    
+Gypsum+jar+musc+dick Areal Mix    
+Musc+gypsum+jar+dick Areal Mix    
+Dick+musc+gypsum+jar Areal Mix    
+Gypsum SU2202 =a                      
+Gypsum HS333.3B (Selenite) =aaa          
+ 
+============== goethite =================
+Goethite Med grain WS222         
+Goethite + qtz Med gr GDS240             
+Goethite M-Crs gr MPCMA2-C trjar 
+Goethite Coarse Gr. WS222             
+Goethite Thin Coating WS222             
+ 
+============== calcite =================
+Talc+Calcite - Park City, Utah   
+Calcite WS272                    
+Calcite + Dolomite .5 areal      
+calcite.25+dolom.25+Na-mont.5    
+calcite.25+dolom.25+Ca-mont.5    
+Calcite 80% +MontSwy-1 GDS212    
+Calcite + 50% Ca-Mont Areal      
+calcite.33+Ca-mont.67 AVIRIS     
+Calcite 80wt%+ KaolCM9 GDS213    
+Calcite WS272 70%+Kaol KGa-1 (wxl) 30%    
+Calcite WS272                    
+Calcite.67+Epidote.33 GDS310 W1R1Fa     
+Calcite.33+Epidote.67 GDS311 W1R1Fa
+Chlorit.33+Calcite.67 GDS315 W1R1Fa
+ 
+============== dolomite =================
+BR60B Actinolite on Dolomite     
+Dolomite HS102.3B                
+Calcite + Dolomite .5 areal      
+Dolomite.50+Ca-Montmor AMX10 W1R1Bb
+Dolomite.5+Na-mont.5 AMX21   W1R1Bb
+ 
+============== hematite =================
+Hematite + qtz GDS76             
+Hematite GDS27 med grained      
+Hematite Thin Coating GDS27      
+Hematite FE2602                  
+Hematite WS161                   
+Magnetite scarn+Hematite weather BR5B 
+BR25a Varnshd Qurtzte large gr hematite        
+BR25b med gr Hematite Coat Qtzite 
+BR25c Varnshd Qurtzte large gr hematite        
+BR34B2 nanohematite on qtzite    
+Vegetation, weak on hematite soil  
+ 
+============== illite =================
+Illite IMt-1.b <2um              
+Illite GDS4 (Marblehead)         
+Gypsum+Jarosite+Illite Intimate Mix     
+Ammonio-Illite/Smec GDS87        
+Illite IL101 (2M2)               
+ 
+============== muscovite =================
+Chlorite + Muscovite CU93-65A    
+Muscovite GDS113 Ruby medhigh Al    
+Muscovite CU93-1 low-Al Phyl W2R4Nb
+Muscovite GDS116 Tanzania Fe rich
+Pyroph + Trace Muscovite, Park City    
+Muscovite + Pyroph, Park City    
+Alunite + Muscovite + Pyrophyllite    
+Muscovite + Chlorite CU91-253D   
+Calc + 33% Muscovite Ruby Areal  
+Prehnite + Muscovite             
+ 
+============== chlorite =================
+Chlorite + Muscovite CU93-65A    
+Biotite-Chlorite_Mx BR93-36A W1R1Bb
+Muscovite+Chlorite CU91-253D W2R4Na
+Muscovite + Chlorite CU91-253D   
+Chlorite-scarn BR22B             
+Chlorite SMR-13.b                
+Prehnite+.50Chlorite AMIX        
+Prehnite+.67Chlorite AMIX        
+Prehnite+.75Chlorite AMIX        
+chlorite SMR-13.c 45-60um =a              
+Chlorite 75-150um Ripidolite     
+Chlorite.67+Epidot.33 GDS317 W1R1Fa
+Chlorite.33+Epidot.67 GDS318 W1R1Fa
+ 
+============== vermiculite =================
+Vermiculite GDS13 Llano =a                
+Vermiculite GDS13 Llano =a                
+ 

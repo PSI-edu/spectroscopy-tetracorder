@@ -1,0 +1,24 @@
+RGB colord defined in   davinci.master.colors
+
+                                                                r    g    b
+============================================================================
+dry long grass                                  gold           255  210    0
+vegetation.type1 (Lawn_Grass GDS91)             green           30  255    0
+vegetation.type2 (Aspen_Leaf-A DW92-2)          yellow         255  255    0
+
+vegetation.type3 ( Fir_Tree IH91-2)             redpink        255  125  125
+vegetation.type4 (Juniper_Bush IH91-4B)         mudyellow      186  165    0
+vegetation.type5 (Pinon_Pine ANP92-14A)         paleseagreen   110  245  140
+
+vegetation.type6 (Sage_Brush IH91-1B)           orange         255  120    0
+vegetation.type7 (Walnut_Leaf)                  yellowgreen    190  255    0
+vegetation.type8 (Blackbrush ANP92-9A)          lavender       185  120  255
+
+vegetation.type9 (Blue_Spruce DW92-5)           blue             0   80  255
+vegetation.type10 (Maple_Leaves DW92-1)         armygreen      165  175    0
+vegetation.type11 (Rabbitbrush ANP92-27)        cyan             0  255  255
+
+vegetation.type12 (Russian_Olive DW92-4)        skyblue        140  210  255
+vegetation.type13 (Saltbrush ANP92-31A)         red            255   30    0   
+vegetation.type14 (LeafySpurge Spurge-)         armygreen      165  175    0
+vegetation.type15 (LeafySpurge Spurge-A1-Oct97  magenta        255   25  255

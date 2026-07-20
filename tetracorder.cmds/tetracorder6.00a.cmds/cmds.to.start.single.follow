@@ -1,0 +1,4 @@
+v18 f    \# follow a growing file (v-file only, and v must be read only)
+         \# no minumum and maximum data thresholds
+4        \# one-line answers to screen, and ull diagnostic output to results file
+         \# no comment

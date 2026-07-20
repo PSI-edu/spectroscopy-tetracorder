@@ -1,0 +1,235 @@
+#!/bin/sh
+
+# run this from the main mapping directory
+
+# cmds.color.support/cmd.make.color.results.presentation.images
+
+
+if [ ! -d "color.results" ]
+then
+	echo "ERROR: directory color.results not found from this location"
+	echo "are you in the correct directory?"
+	echo "run this command from your tetracorder mapping directory:"
+        echo "    ./cmds.color.support/cmd.make.color.results.presentation.images"
+	echo "exit 1"
+	exit 1
+fi
+
+
+outdir="color.results-presentationsize"
+
+outsize=1280   # image max output dimension not including label
+
+if [ ! -d "$outdir" ]
+then
+	echo "mkdir $outdir"
+	mkdir $outdir
+fi
+
+keydir=${outdir}/keys
+if [ ! -d "$keydir" ]
+then
+	echo "mkdir $keydir"
+	mkdir $keydir
+fi
+
+smallimagedir=${outdir}/smallimages
+if [ ! -d "$smallimagedir" ]
+then
+	echo "mkdir $smallimagedir"
+	mkdir $smallimagedir
+fi
+
+shortcubeid='tet'
+if [ -f "AAA.info/shortcubeid.txt" ]
+then
+        shortcubeid=`head -1 AAA.info/shortcubeid.txt | awk '{ print $1 }'`
+fi
+
+echo "making color results image size for presentations" `date`
+echo " "
+
+# get image dimensions
+
+afile=`ls -1 color.results/*.png | head -1`
+imwitdh=`identify -ping -format '%w'  $afile`
+imheight=`identify -ping -format '%h'  $afile`
+
+echo "color results image use: witdth= $imwitdh   height= $imheight"
+echo " "
+
+immax=$imwitdh
+if [ "$imheight" -gt "$imwitdh" ]
+then
+	immax=$imheight
+fi
+
+imscale=1.0
+if [ "$immax" -gt "$outsize" ]
+then
+	imscale=`echo "scale=4;$outsize/$immax" | bc`
+	
+fi
+
+echo "scale color image results by $imscale"
+echo " "
+
+#  define function makesmallkey 
+
+makesmallkey () {
+	b=`echo $i | grep "$a"`
+	if [ -n "$b" ]
+	then
+		aa=`basename $a .png`
+		cfile=`basename $i $a`
+		keypnm=`echo $key | sed -e 's/png$/pnm/'`
+		echo "###### makesmallkey: aa= $aa"
+		echo "###### makesmallkey: cfile= $cfile"
+		keyfileout="$keydir/$keypnm"
+
+		echo "pngtopnm color.keys/$key | pnmscale 0.67 | pnmtopng > $keyfileout"
+		pngtopnm color.keys/$key | pnmscale 0.90 > $keyfileout
+	fi
+}
+
+makesmallimage () {
+
+	if [ "$imscale" = "1.0" ]
+	then
+		cp -a $i $smallimagedir     # copy without resizing
+	else
+		bimage=`basename $i`
+		echo "pngtopnm $i | pnmscale $imscale | pnmtopng > $smallimagedir/$bimage"
+		pngtopnm $i | pnmscale $imscale > $smallimagedir/$bimagepnm
+	fi
+}
+catsmallimage () {
+
+		echo "concating imgages   $smallimagedir/$bimage   $keyfileout"
+		pnmcat -black -topbottom -jleft  $smallimagedir/$bimage $keyfileout | pnmtojpeg --quality=90 > $outdir/$outimage
+}
+
+prodlist='cmds.color.support/AAA-product-list.txt'
+
+if [ ! -f "$prodlist" ]
+then
+	echo "ERROR: AAA-product-list.txt file not found"
+	echo "exit 1"
+	exit 1
+fi
+
+# example AAA-product-list.txt file:
+
+#   color.result name                                color.keys  key file
+
+# _1.5um.broadfeats.png                               key_1.5um-broadfeats.a.png
+# _1.9um.water.band.position.png                      key_1.9-water.a.png
+# _1.9um.water.sulfates.band.position.png             key_1.9-water-sulfates.a.png
+# _1.9um.water.wave.position.a.png                    key_water-map-1.9-2um_labels_b.png
+# _1micron-minerals-a.png                             key_1um-map.fe2+,fe3+.a-1200w.png
+# _2micron-minerals-b4.png                            key_2um-mins-b4-layout-1200w.png   
+# _2micron-minerals.png                               key_2micron-mins_labels_a.png
+# _2micron-minerals-detail2.png                       key_2micron-mins-detail2-layout-1200w.png
+# _2micron-minerals-muscovite-comp.png                key_2um-mins-muscovite-comp-layout-1200w.png
+# _2micron-mins-emit8.png                             key_2um-mins-emit8-layout-1200w.png
+# _2micron-mins-muscovite-comp+labels.png             key_2um-mins-muscovite-comp-layout-1200w.png
+# _acid-minerals-buffering-minerals.a.png             key_acid-minerals-buffering-minerals.a.png
+# _hematite+goethite.grain.size-a.png                 key_hematite+goethite.grain.size.a-wide.png
+# _color-results_organics-veg-2um-a.png               key_organics,veg-2um-a-1200w.png
+# _organics,veg-2um-a.png                             key_organics,veg-2um-a-1200w.png
+# _prehnite-chlorite-mix+perchlorate.png              key_prehnite-chloriteserp-perchlorate_labels_a.png
+# _pyroxene.2um.band.position.png                     key_pyroxene_labels_a.png
+# _ree-g21-on-bw+labels.png                           key_ree-b-g21.png
+# _red-edge-shift-a.png                               key_red-edge-shift.a.png
+# _snow-grain-size-water.a.png                        key_snow-grain-size-water.a.png
+# _vegetation-cover-a.png                             key_vegetation-cover.a.png
+# _veg-spectral-type.a.png                            key_veg-spectral-type.a.png
+# _veg,water,snow.png                                 key_veg,water,snow.a.png
+# _veg-water-rgb.png                                  key_veg-water-rgb.png
+# _water-a.png                                        key_water.a.png
+########################################################################################
+
+alist=`grep -v '^#' $prodlist | awk '{print $1 }'`
+
+# was:  for i in color.results/*.png
+
+for i in color.results/*.png
+do
+	echo " "
+	echo "######################################################################"
+	echo "$i"
+
+	a=`echo $i | sed -e 's/^.*_color-results//'`  # result should be from column in $prodlist
+
+	echo "a= $a"
+
+	aa=`grep $a $prodlist`
+
+	echo "aa= $aa"
+
+	if [ -z "$aa" ]
+	then
+		echo "Error, aa= $aa not found in $prodlist"
+		echo "exit 1"
+		exit 1
+	fi
+
+	b=`ls -1 color.results/*.png | grep $i`
+
+	echo "image file = $i"
+
+	bimage=`basename $i .png`
+	bimagepnm=`basename $i .pnm`
+	outimage=${bimage}+label$outsize.jpg
+
+
+
+
+    if [ ! -f "$outdir/$outimage" ]
+    then
+
+	########################################################################################
+	#               color.result name                    color.keys  key file
+	#                      $i                          grep $i $prodlist | awk '{print $2 }'
+	#
+	# example:   _1.5um.broadfeats.png                   key_1.5um-broadfeats.a.png
+
+	key=`grep ^$a $prodlist | awk '{print $2 }'`
+
+	if [ -z "$key" ]
+	then
+
+		echo "Error, key: $key not found in $prodlist"
+		echo "exit 1"
+		exit 1
+	fi
+
+	if [ `echo $i | grep $a` ]
+	then
+		echo " "
+		echo "########################    $a    ###########################"
+
+		echo "scaling image $i  by $imscale" 
+		makesmallimage
+
+		makesmallkey
+		catsmallimage
+	fi
+
+    else
+	echo "$outdir/$ofile already exists"
+    fi
+
+
+done
+
+	echo "Make presentation size images is complete `date`"
+
+	# now delete the intermediate directories
+
+	#echo "deleting intermediate files and directories with pnm files: keys smallimages"
+
+	cd $outdir
+	#rm -rf keys
+	#rm -rf smallimages
+

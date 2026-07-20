@@ -1,0 +1,33 @@
+#!/bin/sh
+
+set -x
+
+# cube is scaled from real 1.0 in int 1,000, so multiply by $gscale  for gif dn=255
+
+gscale="0.254.5"
+
+if [ -f "../AAA.info/longcubeid.txt" ]
+then
+	aa=`cat ../AAA.info/longcubeid.txt | head -1`
+	if [ -n "$aa" ]
+	then
+		aname=`echo "$aa" | sed -e 's/$/-/'`   # add - at end of string
+	else
+		aname=' '
+	fi
+else
+	aname=' '
+fi
+
+davinci.image-cube-chan-to-gif geologic_origins_cube.v  1   $gscale  ${aname}geologic_origins_cube.chan-01-lacustrine-marine.gif
+davinci.image-cube-chan-to-gif geologic_origins_cube.v  2   $gscale  ${aname}geologic_origins_cube.chan-02-evaporite-playa.gif
+davinci.image-cube-chan-to-gif geologic_origins_cube.v  3   $gscale  ${aname}geologic_origins_cube.chan-03-metamorphic.gif
+davinci.image-cube-chan-to-gif geologic_origins_cube.v  4   $gscale  ${aname}geologic_origins_cube.chan-04-hydrothermal.gif
+davinci.image-cube-chan-to-gif geologic_origins_cube.v  5   $gscale  ${aname}geologic_origins_cube.chan-05-pedogenic-diagenic-weathering.gif
+davinci.image-cube-chan-to-gif geologic_origins_cube.v  6   $gscale  ${aname}geologic_origins_cube.chan-06-igneous.gif
+davinci.image-cube-chan-to-gif geologic_origins_cube.v  7   $gscale  ${aname}geologic_origins_cube.chan-07-biogenic.gif
+davinci.image-cube-chan-to-gif geologic_origins_cube.v  8   $gscale  ${aname}geologic_origins_cube.chan-08-organic.gif
+davinci.image-cube-chan-to-gif geologic_origins_cube.v  9   $gscale  ${aname}geologic_origins_cube.chan-09-man0made.gif
+davinci.image-cube-chan-to-gif geologic_origins_cube.v 10   $gscale  ${aname}geologic_origins_cube.chan-10-water.gif
+davinci.image-cube-chan-to-gif geologic_origins_cube.v 11   $gscale  ${aname}geologic_origins_cube.chan-11-thermal.gif
+

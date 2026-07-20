@@ -1,0 +1,21 @@
+each file contains keyword= value
+
+Must have restart=
+
+Keyword must start in column 1 and there must be a space after the =
+
+Valid keywords:
+
+restart=
+lib=
+band=
+start=
+c_nots=
+deletedpoint=
+threshholdmin= 
+threshholdmax= 
+offset=
+
+
+threshholdmin= is the minimum value of a channel in the spectrum.  If below then, the channel is deleted.
+threshholdmax= is the maximum value of a channel in the spectrum.  If above then, the channel is deleted.

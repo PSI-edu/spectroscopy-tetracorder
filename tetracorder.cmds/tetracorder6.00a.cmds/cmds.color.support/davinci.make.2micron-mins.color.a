@@ -1,0 +1,298 @@
+#!/usr/bin/env -S davinci -q -f  
+####!/usr/local/bin/davinci -q -f
+
+###########################  was:  #!/usr/local/bin/davinci -q -f
+
+
+
+# command line:
+# prog    gray_base_image  prefix-file-name   [dual|nodual]
+
+prog="davinci.make.2micron-mins.color.a"     # CHANGE THIS if program name changes
+
+####################  Begin static: no need to change inything in this section
+################
+
+
+if ($argc < 2) {
+
+        printf("Insufficient input\n")
+        printf("%s input_gray_image  outputcolorimage\n", prog)
+        printf("exit 1\n")
+        exit(1)
+}
+
+
+dual    = 1     # default color + gray image 
+dualmax = 2000  # no dual if width is greater than this
+
+if ($argc >= 3) {
+
+	if ( "$3" == "nodual" ) {
+		dual = 0
+	}
+	if ( "$3" == "dual" ) {
+		dual = 1
+		dualmax = 999999 
+	}
+
+	printf ("\n\n\n\n%s   %s   %s   %s\n\n\n", prog, $1, $2, $3)
+} else {
+
+	printf ("\n\n\n\n%s   %s   %s\n\n\n", prog, $1, $2)
+}
+
+# read base gray image
+
+gbase=read(filename=$1)
+if (HasValue(gbase) ==0) {                   # check that read worked
+      printf ("read ERROR on file: %s\n",$1)
+      printf ("^GEXIT 1\n")
+      exit(1)
+}
+
+# execute this program in the same directory asthe source code below
+source ("cmds.color.support/davinci.master.colors")
+
+# available colors:
+# c_red     c_green          c_blue       c_yellow        c_magenta       c_cyan          c_armygreen  
+# c_salmon  c_flesh          c_orange     c_deeppink      c_yellowgreen   c_lavender  
+# c_skyblue c_paleseagreen   c_white      c_redpink       c_gold          c_mudyellow     c_lightpink
+
+# a = first input image, 3-band color, xcolor = the color output image, RGB float
+# colorout = the color output image, 3-byte RGB
+
+define read_an_image(1,1) {
+
+        # read a gray-scale image and convert to 3-bands
+
+        afile = $1   # file to read
+        printf ("reading file %s\n", afile)
+        aaa=read(filename=afile)
+        if (HasValue(aaa) ==0) {  # check that read worked
+                printf ("read ERROR on file: %s\n",afile)
+                printf ("setting to zero\n")
+                aaa=0
+        }
+	aaa = aaa[,,1]             # make sure the image is one band
+        qqq = cat(aaa,aaa,axis=z)  # make into 2-band image
+        aaa = cat(aaa,qqq,axis=z)  # make into 3-band image
+
+        return (aaa)
+
+}  # end define
+
+#        make the xcolor image
+a      = read_an_image($1)
+xcolor = float(a*0)
+xdim   = dim(xcolor)
+
+
+
+###################   begin custom section ##########################################
+
+# first image:
+a = read_an_image("group.2um/smectite_montmorillonite_na_highswelling.fd.gif")
+
+     xcolor= xcolor + a*( c /255.)
+     a=0   # be sure array is cleared
+
+
+#      montmorillonite group 2.2um      blue
+c=c_blue
+a =   read_an_image("group.2um/smectite_beidellite_gds123.fd.gif")
+a =a+ read_an_image("group.2um/smectite_beidellite_gds124.fd.gif")
+a =a+ read_an_image("group.2um/smectite_montmorillonite_na_highswelling.fd.gif")
+
+     xcolor= xcolor + a*( c /255.)
+     a=0   # be sure array is cleared
+
+
+#       montmorillonite group 2.3um      sky blue
+c=c_skyblue
+a =   read_an_image("group.2um/smectite_nontronite_swelling.fd.gif")
+a =a+ read_an_image("group.2um/smectite_montmorillonite_fe_swelling.fd.gif")
+
+     xcolor= xcolor + a*( c /255.)
+     a=0   # be sure array is cleared
+
+#       phyllosilicates                  green
+c=c_green
+a =   read_an_image("group.2um/micagrp_biotite.fd.gif")
+a =a+ read_an_image("group.2um/palygorskite.fd.gif")
+a =a+ read_an_image("group.2um/micagrp_muscovite-low-Al.fd.gif")
+a =a+ read_an_image("group.2um/micagrp_muscovite-med-Al.fd.gif")
+a =a+ read_an_image("group.2um/micagrp_muscovite-medhigh-Al.fd.gif")
+a =a+ read_an_image("group.2um/micagrp_illite.fd.gif")
+a =a+ read_an_image("group.2um/micagrp_paragonite.fd.gif")
+
+     xcolor= xcolor + a*( c /255.)
+     a=0   # be sure array is cleared
+
+
+#       Si-OH hydrated silica            white
+c=c_white
+a =   read_an_image("group.2um/sioh_chalcedony.fd.gif")
+a =a+ read_an_image("group.2um/sioh_hydrated_basaltic_glass.fd.gif")
+
+     xcolor= xcolor + a*( c /255.)
+     a=0   # be sure array is cleared
+
+
+#       kaolinite group                  yellow
+c=c_yellow
+a =   read_an_image("group.2um/kaolgrp_halloysite.fd.gif")
+a =a+ read_an_image("group.2um/kaolgrp_kaolinite_pxl.fd.gif")
+a =a+ read_an_image("group.2um/kaolgrp_kaolinite_wxl.fd.gif")
+a =a+ read_an_image("group.2um/kaolgrp_dickite.fd.gif")
+a =a+ read_an_image("group.2um/kaolgrp_nacrite.depth.gz")
+
+     xcolor= xcolor + a*( c /255.)
+     a=0   # be sure array is cleared
+
+
+#      kaolin+alunite                   mud-yellow
+c=c_mudyellow
+a =   read_an_image("group.2um/alunite.5+kaol.5.fd.gif")
+a =a+ read_an_image("group.2um/Kalun+kaol.intmx.fd.gif")
+a =a+ read_an_image("group.2um/kaol.75+alun.25.fd.gif")
+a =a+ read_an_image("group.2um/Na-alun+kaol.intmx.fd.gif")
+a =a+ read_an_image("group.2um/alunite.33+kaol.33+musc.33.fd.gif")
+
+     xcolor= xcolor + a*( c /255.)
+     a=0   # be sure array is cleared
+
+
+#       K-alunite                        red
+c=c_red
+a =   read_an_image("group.2um/sulfate_alun35K65Na.low.fd.gif")
+a =a+ read_an_image("group.2um/sulfate_alun66K34Na.low.fd.gif")
+a =a+ read_an_image("group.2um/sulfate_alun73K27Na.low.fd.gif")
+a =a+ read_an_image("group.2um/sulfate_kalun150c.fd.gif")
+a =a+ read_an_image("group.2um/sulfate_kalun250c.fd.gif")
+a =a+ read_an_image("group.2um/sulfate_kalun450c.fd.gif")
+
+     xcolor= xcolor + a*( c /255.)
+     a=0   # be sure array is cleared
+
+
+#       Na-alunite                       pink
+c=c_lightpink
+a =   read_an_image("group.2um/sulfate_alunNa03.fd.gif")
+a =a+ read_an_image("group.2um/sulfate_alunNa56450c.fd.gif")
+a =a+ read_an_image("group.2um/sulfate_alunNa78.450c.fd.gif")
+a =a+ read_an_image("group.2um/sulfate_na40alun400c.fd.gif")
+a =a+ read_an_image("group.2um/sulfate_na63alun300c.fd.gif")
+a =a+ read_an_image("group.2um/sulfate_na82alun100c.fd.gif")
+a =a+ read_an_image("group.2um/sulfate_naalun150c.fd.gif")
+a =a+ read_an_image("group.2um/sulfate_naalun300c.fd.gif")
+a =a+ read_an_image("group.2um/sulfate_naalun450c.fd.gif")
+a =a+ read_an_image("group.2um/sulfate_ammonalunite.fd.gif")
+
+     xcolor= xcolor + a*( c /255.)
+     a=0   # be sure array is cleared
+
+
+#       Alunite+other                    orange
+c=c_orange
+a =   read_an_image("group.2um/alunite.5+musc.5.fd.gif")
+a =a+ read_an_image("group.2um/alunite+musc+pyroph.fd.gif")
+a =a+ read_an_image("group.2um/alunite+pyrophyl.fd.gif")
+
+     xcolor= xcolor + a*( c /255.)
+     a=0   # be sure array is cleared
+
+
+#       kaolin+other                     army green
+c=c_armygreen
+a =   read_an_image("group.2um/carbonate_calcite0.7+kaol0.3.fd.gif")
+a =a+ read_an_image("group.2um/kaol.75+pyroph.25.fd.gif")
+a =a+ read_an_image("group.2um/kaolin.3+smect.7.fd.gif")
+a =a+ read_an_image("group.2um/kaolin.5+muscov.medAl.fd.gif")
+a =a+ read_an_image("group.2um/kaolin.5+muscov.medhighAl.fd.gif")
+a =a+ read_an_image("group.2um/kaolin.5+smect.5.fd.gif")
+a =a+ read_an_image("group.2um/kaolin+musc.intimat.fd.gif")
+a =a+ read_an_image("group.2um/calcite.33+kaol.33+mus-AMXr2.fd.gif")
+
+     xcolor= xcolor + a*( c /255.)
+     a=0   # be sure array is cleared
+
+
+#       jarosite                         cyan
+c=c_cyan
+a =   read_an_image("group.2um/sulfate_jarosite-K.fd.gif")
+a =a+ read_an_image("group.2um/sulfate_jarosite-lowT.fd.gif")
+a =a+ read_an_image("group.2um/sulfate_jarosite-Na.fd.gif")
+
+     xcolor= xcolor + a*( c /255.)
+     a=0   # be sure array is cleared
+
+
+#       sulfates: kiess szomol gypsum    magenta
+c=c_magenta
+a =   read_an_image("group.2um/sulfate_kieserite.fd.gif")
+a =a+ read_an_image("group.2um/sulfate_szomolnokite.fd.gif")
+a =a+ read_an_image("group.2um/sulfate_szomolnokite_heated.fd.gif")
+a =a+ read_an_image("group.2um/sulfate_gypsum.fd.gif")
+a =a+ read_an_image("group.2um/sulfate_bloedite.fd.gif")
+
+     xcolor= xcolor + a*( c /255.)
+     a=0   # be sure array is cleared
+
+
+#  m    perchlorate, 2.4 features        lavender
+c=c_lavender
+a =   read_an_image("group.2um/perchlorate_mg.fd.gif")
+a =a+ read_an_image("group.2um/perchlorate_na.fd.gif")
+a =a+ read_an_image("group.2um/portlandite.fd.gif")
+
+     xcolor= xcolor + a*( c /255.)
+     a=0   # be sure array is cleared
+
+
+if (HasValue(xcolor) ==0) {
+
+        printf ("%s: xcolor has no value\n", prog)
+        printf ("EXIT 1\n")
+        exit(1)
+}
+
+
+
+########### end custom, no need to change anything below this line ###############################
+
+xout=byte(xcolor+0.5)   # output color image, byte
+xout = bip(xout)
+xdim=dim(xout)
+xdimx=xdim[1,,]      # color image width
+
+fout=$2
+
+foute="color.results-envi/" + fout
+
+write (xout, filename=foute, type=vicar)
+
+
+gbasedim=dim(gbase)
+x=gbasedim[1,,]      # base image width
+
+if (x > dualmax) {
+        dual = 0
+}
+
+if ( dual == 1 ) {
+
+        gbase = bip(gbase)
+        xout = cat (xout, gbase, axis=x)
+}
+
+
+adim=dim(xout)
+if ( adim[1,,] > 5 || adim[2,,] > 5 ) {
+        printf ("writing %s\n", fout)
+        write (xout, filename=fout, type=png)
+} else {
+        printf ("not writing %s\n", fout)
+        printf ("    image size < 6 pixels\n")
+}
+

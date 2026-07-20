@@ -1,0 +1,218 @@
+#!/bin/sh
+
+# Create a specpr file for collecting the average spectra in the
+#     directory where a mappign runs has completed
+#          - R Clark 04/24/2023
+
+echo " "
+echo "##########   get average spectra for each mapped material  ###########"
+
+err=0
+if [ -z "$2" ]
+then
+	err=1
+fi
+if [ "$1" != "box" -o "$1" != "dirs" ]
+then
+	err=1
+fi
+
+b1=0  # bounting box x,y upper left, lower right
+b2=0
+b3=0
+b4=0
+
+if [ "$1" = "box" -a "$5" -gt "0" ]
+then
+	b1=$2
+	b2=$3
+	b3=$4
+	b4=$5
+	shift
+	shift
+	shift
+	shift
+	shift
+else
+        echo "$0  box error: our of range"
+	err=1
+fi
+if [ "$1" = "dirs" ]
+then
+	shift
+	dirlist=$*
+	echo "dirlist= $dirlist"
+else
+        echo "$0   dirs error: dirs flag not found"
+	err=1
+fi
+
+if [ -z "$1" ]
+then
+	echo "ERROR: directory variable is null"
+	echo " "
+	echo "Usage:"
+	echo "       cmd.get.average.spectra.of.mapped.materials  dirs dirlist|all"
+	echo "   or"
+	echo "       cmd.get.average.spectra.of.mapped.materials  box a b c d  dirs dirlist|all"
+	echo " "
+	echo "           where:  a= upper left x,  b=upper left y,  c= lower right x, d= lower right y"
+	echo "exit 1"
+	exit 1
+fi
+
+
+
+echo " "
+echo "start: " `date`
+echo " "
+
+# check that all needed files exist
+
+ierr=0
+for ifile in AAA.info/cubefilename.txt  \
+             AAA.info/image-xpixels.txt \
+             AAA.info/image-ypixels.txt \
+             AAA.info/shortcubeid.txt   \
+             AAA.info/cube-scale-factor \
+             AAA.info/shortcubeid.txt   \
+             AAA.info/cube-scale-factor
+do
+	if [ ! -f "$ifile" ]
+	then
+		echo "ERROR:  "$ifile"  not found"
+		ierr=1
+	fi
+done
+
+if [ "$ierr" -ne "0" ]
+then
+	echo "exit 1"
+	exit 1
+fi
+
+cubepath=`cat AAA.info/cubefilename.txt`
+cube=`basename $cubepath | cut -c 1-70`
+
+if [ ! -f "$cubepath" ]
+then
+	echo "ERROR:  $cubepath  not found"
+	echo "exit 1"
+	exit 1
+fi
+
+if [ -f "$cubepath" ]
+then
+	# if envi, start of first line of *.hdr = ENVI
+	# if vicar, start of first line of      = LBLSIZE=
+
+	cubtest1=`dd if=$cubepath ibs=4 count=1 | cat -v`
+	if [ "$cubtest1" = "ENVI" ]
+	then
+		echo "ENVI header found: $cubepath"
+
+	elif [ "$cubtest1" = "LBLS" ]
+	then
+		echo "VICAR header found: $cubepath"
+
+	elif [ -f ${cubepath}.hdr ]
+	then
+		cubepath2=${cubepath}.hdr
+
+		cubtest2=`dd if=$cubepath2 ibs=4 count=1 | cat -v`
+
+		if [ "$cubtest2" = "ENVI" ]
+		then
+
+			cube=${cubepath}.hdr
+			cubepath=${cubepath}.hdr
+		fi
+
+	fi
+
+fi
+
+echo "cube= $cube"
+
+splib=`grep iyfl= r1 | sed -e 's/iyfl=//'`
+spdir=`dirname $splib`
+spfile=`basename $splib`
+
+spstart=${spdir}/startfiles/${spfile}.start
+
+     # example:    cp /sl1/usgs/library06.conv/startfiles/s06emitc.start spreslt1
+
+if [ -f "$spstart" ]
+then
+	if [ -f "spreslt1" ]
+	then
+		echo "NOTE: file  spreslt1  already exists, appending"
+	else
+		echo "creating spreslt1 specpr file"
+		cp $spstart spreslt1
+    		sp_stamp spreslt1
+		spsettitle  spreslt1 1 '*************  spreslt1  ****************' -force
+		spsettitle  spreslt1 2 '**** extracted spectra from cube:   *****' -force
+		spsettitle  spreslt1 3 "$cube                                   " -force
+	fi
+else
+	echo "ERROR:  $spstart  not found"
+	echo "exit 1"
+	exit 1
+fi
+
+# cube isze:
+xpx=`cat AAA.info/image-xpixels.txt`
+ypx=`cat AAA.info/image-ypixels.txt`
+
+if [ $b1 -gt "0" -a $b2 -gt "0" -a $b3 -le $xpx -a $b4 -le $ypx ]
+then
+	echo "box $b1 $b2 $b3 $b4 is withing range"
+else
+	b1=1
+	b2=1
+	b3=$xpx
+	b4=$ypx
+fi
+
+echo "cube size:  $xpx  $ypx  pixels"
+
+# get average spectra for all mapped materials:
+avspec='cmds.all.support/cmd.get.mapped.material.spectral.averages-v5'
+shortid=`cat AAA.info/shortcubeid.txt`   # short cube ID  up to 10 characters
+cscale=`cat AAA.info/cube-scale-factor`
+
+if [ "$1" = "all" ]
+then
+	dirlist='all'
+else
+	dirlist=$*
+fi
+
+echo " working,  short ID= $shortid   Cube scale facotor= $cscale"
+
+echo "$avspec  $shortid  $cubepath  $cscale  spreslt1 box $b1 $b2 $b3 $b4 dirs $dirlist"
+
+      $avspec  $shortid  $cubepath  $cscale  spreslt1 box $b1 $b2 $b3 $b4 dirs $dirlist
+
+echo "now add spreslt1 to restart file"
+
+cp -a r1 r1.bak
+
+# get size in specpr records
+
+spfilebytes=`ls -l spreslt1 | awk '{ print $5}'`
+sprecs=`expr $spfilebytes / 1536 - 1`
+
+ex - r1 <<EOI
+/^ivfl=/ s,ivfl=.dev.null,ivfl=spreslt1 ,
+/^isavt=/ s/.unasnd./spreslt1/
+/^iprtv=/ s/   0/$sprecs /
+w
+q
+EOI
+
+
+echo " "
+echo "finished getting average spectra " `date`
+echo " "

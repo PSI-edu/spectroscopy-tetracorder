@@ -1,0 +1,173 @@
+References for origin of delk absorption coefficients
+
+calcite    tetracorder reference: splib06 918  Calcite WS272 s06crj3a=aaa
+                                       f1a DLw 2.383   2.415   2.600   2.635  weight=  1.0
+                                            abs coef: B= band center = 2.32um = 14.27  C= contin= 3.76 delk= 10.51
+
+           sps0000  462 Dolomite HS102 0.35-6um estim11 ABSCOEF   3800 (use dolomite until calcite derived)
+
+chlorite    tetracorder reference:  splib06 5664  Chlorite_Serpentine BR93-22B W1R1Bb
+                                         f1a DLw 2.208   2.237   2.355   2.376  weight=  1.0
+                                         f2a WLw 0.871   0.900   1.307   1.337  weight=  0
+                                    splib06 1080  Chlorite SMR-13.b 60-104um   W1R1Ba
+                                         f1a DLw 2.1880  2.2180  2.4040  2.4320  weight=  0.940  B= 115.5 C= 34.4 delk= 81.1
+                                         f2a DLw 2.1880  2.2180  2.2580  2.2780  weight=  0.060  B=  53.0 C= 40.9 delk= 12.1
+                                         f3a WLw 0.512   0.542   1.696   1.726   weight=  0
+                                                                                 delk = 0.940 * 81.1 + 0.060 * 12.1 = 76.96
+                                    splib06 1176  Clinochlore GDS158 Flagst    W1R1Bb
+                                         f1a DLw 2.189   2.218   2.404   2.432  weight=  0.902
+                                         f2a DLw 2.189   2.218   2.267   2.287  weight=  0.098
+                                         f3a WLw 0.512   0.542   1.696   1.726  weight=  0
+                                    splib06 1212  Clinochlore NMNH83369 =bb
+                                         f1a DLw 2.189   2.218   2.404   2.432  weight=  1.0
+                                         f2a WLw 2.189   2.218   2.267   2.287  weight=  0
+                                    splib06 1230  Clinochlore_Fe GDS157 NIR =
+                                         f1a DLw 2.189   2.218   2.404   2.432  weight=  1.0
+                                         f2a WLw 2.195   2.224   2.271   2.300  weight=  0
+                                    splib06 1260  Clinochlore_Fe SC-CCa-1.b =aa
+                                         f1a DLw 2.189   2.218   2.404   2.432  weight=  1.0
+                                         f2a WLw 2.189   2.218   2.267   2.287  weight=  0
+                                    splib06 1338  Cookeite CAr-1.a 104-150um =bb_
+                                         f1a DLw 2.115   2.142   2.268   2.300  weight=  1.0
+                                         f2a WLw 2.268   2.300   2.404   2.432  weight=  0
+                                    splib06 1368  Cookeite CAr-1.c <30um =cc_
+                                         f1a DLw 2.115   2.142   2.268   2.300  weight=  1.0
+                                         f2a WLw 2.268   2.300   2.404   2.432  weight=  0
+                                    splib06 4872  Thuringite SMR-15.b  32um    W1R1Ba
+                                         f1a DLw 2.188   2.218   2.396   2.426  weight=  0.795
+                                         f2a DLw 2.188   2.218   2.285   2.315  weight=  0.205
+                                         f3a WLw 0.512   0.542   1.696   1.726  weight=  0
+
+           sps0000   285  Chlorite SMR-13.c 0.2-3um estim ABSCOEF   3800
+           sps0000   484  Chlorite_Serpentine 0.2-6um est3 ABSCOEF  3800
+
+dolomite    tetracorder reference:  splib06 1572  Dolomite HS102.3B            W1R1Bb
+                                         f1a DLw 2.1580  2.1880  2.3570  2.3870  weight=  1.0
+                                            abs coef: 2.32um = 14.27  contin= 3.76 delk= 10.51
+
+           sps0000   462  Dolomite HS102 0.35-6um estim11 ABSCOEF   3800
+
+goethite
+           tetracorder reference:  splib06 1908  Goethite WS222 Medium Gr.    W1R1Ba AREF   goethite.medgr
+                                        f1a DLw 0.4160  0.4572  0.5622  0.5950  weight=  0.245
+                                        f2a DLw 0.7448  0.7757  1.2662  1.2964  weight=  0.755
+                                   splib06 1878  Goethite MPCMA2-B FineGr adj W1R1Bb        goethite.fingr
+                                        f1a DLw 0.4160  0.4572  0.5622  0.5950  weight=  0.330
+                                        f2a OLw 0.7448  0.7757  1.2662  1.2964  weight=  0.670
+                                   splib06 1884  Goethite MPCMA2-C M-Crsgrad2 W1R1Bb        goethite.medcoarsegr.mpc.trjar
+                                        f1a DLw 0.4160  0.4572  0.5622  0.5950  weight=  0.229
+                                        f2a DLw 0.7448  0.7757  1.2662  1.2964  weight=  0.771
+                                   splib06 1914  Goethite WS222 Coarse Gr.    W1R1Ba        goethite.coarsegr
+                                        f1a DLw 0.4160  0.4572  0.5622  0.5950  weight=  0.095
+                                        f2a DLw 0.7439  0.7757  1.2662  1.2964  weight=  0.905
+                                   splib06 6168  Goethite_Thin_Film WS222     W1R1Ba
+                                        f1a DLw 0.4257  0.4572  0.5622  0.5950  weight=  0.389
+                                        f2a OLw 0.7448  0.7757  1.1956  1.2284  weight=  0.611
+                                   splib06 2808  Lepidocrosite GDS80 (Syn)    W1R1BbIS
+                                        f1a DLw 0.4400  0.4600  0.5800  0.6200  weight=  0.307
+                                        f2a DLw 0.7500  0.7850  1.2200  1.2450  weight=  0.693
+
+                         for now, use hematite *0.8
+           Nano:
+           sps0000  
+
+           tetracorder reference:
+           Coarse:
+           sps0000   
+
+gypsum    tetracorder reference:   splib06 1986  Gypsum HS333.3B (Selenite)   W1R1Ba
+                                        f1a DLw 2.11    2.145   2.288   2.318  weight=  0.612
+                                        f2a DLw 1.497   1.518   1.566   1.596  weight=  0.099
+                                        f3a DLw 1.665   1.695   1.765   1.785  weight=  0.246
+                                        f4a DLw 2.225   2.255   2.288   2.318  weight=  0.043
+
+           sps0002  281  gypsum        scanza et.al. 2015 ABSCOEF    64 waves= 278  ???? 
+
+hematite
+           tetracorder reference:   splib06 3468  Nanohematite BR93-34B2       W1R1BbS
+                                         f1a DLw 0.4400  0.4550  0.6117  0.6315  weight=  0.735  B= 15472 C= 13476 delk= 1996
+                                         f2a OLw 0.7650  0.7950  1.1770  1.2070  weight=  0.265  B= 550.6 C= 386.5 delk= 164.1
+                                                            delk = 1996 * 0.6315 + 164.1 * 0.265 = 1304
+
+           spd0479  600  nanohematite SA544884 86K ABS COEF VIMS   waves= 6  
+  
+           tetracorder reference:   splib06 2106  Hematite GDS27               W1R1Ba   hematite.med.gr
+                                         f1a DLw 0.4430  0.4730  0.6110  0.6410  weight=  0.398  B= 109442 C= 94983 delk= 14459
+                                         f2a DLw 0.7360  0.7750  1.2250  1.2640  weight=  0.602  B=   6357 C=  5285 delk=  1072
+                                                            delk = 14459 * 0.398 + 1072 * 0.602 = 6400
+                                    splib06 6198  Hematite_Thin_Film GDS27     W1R1Ba
+                                         f1a DLw 0.4148  0.4554  0.6110  0.6410  weight=  0.710
+                                         f2a OLw 0.7257  0.7586  1.2073  1.2380  weight=  0.290
+                                    splib06 2100  Hematite FE2602              W1R1Bb   hematite.fine.gr
+                                         f1a DLw 0.4430  0.4730  0.6110  0.6410  weight=  0.184
+                                         f2a DLw 0.7360  0.7750  1.0620  1.0910  weight=  0.816
+                                    splib06 2208  Hematite WS161               W1R1Bb   hematite.fine.gr
+                                         f1a DLw 0.4430  0.4730  0.6110  0.6410  weight=  0.461
+                                         f2a DLw 0.7360  0.7750  1.0620  1.0910  weight=  0.539
+                                    splib06 6174  Hematite_Coatd_Qtz BR93-25B  W1R1Bb   hematite.med.gr
+                                         f1a DLw 0.4400  0.4550  0.6117  0.6315  weight=  0.226
+                                         f2a DLw 0.7270  0.7560  1.2070  1.2360  weight=  0.774
+                                    splib06 6186  Hematite_Coatd_Qtzt BR93-25A W1R1Bb   hematite.lg.gr
+                                         f1a DLw 0.4400  0.4550  0.6117  0.6315  weight=  0.093
+                                         f2a DLw 0.7270  0.7560  1.2680  1.3070  weight=  0.907
+                                    splib06 6192  Hematite_Coatd_Qtzt BR93-25C W1R1Bb   hematite.lg.gr
+                                         f1a DLw 0.4400  0.4550  0.6117  0.6315  weight=  0.067
+                                         f2a DLw 0.7270  0.7560  1.2680  1.3070  weight=  0.933
+                                    splib06 6180  Hematite_Coatd_Qtz BR93-34C  W1R1BaS  hematite.lg.gr
+                                         f1a DLw 0.4400  0.4550  0.6117  0.6315  weight=  0.150
+                                         f2a DLw 0.7270  0.7560  1.2870  1.3170  weight=  0.850
+
+           sps0002  394  hematite Querry 1985 avg e+o     ABSCOEF waves= 388
+
+illite-muscovite    tetracorder reference:   splib06 2478  Illite IMt-1.b <2um          W1R1BaS 
+                                                  f1a DLw 2.117   2.157   2.266   2.306  weight=  0.739  B= 217.7 C= 143.9 delk= 73.8
+                                                  f2a DLw 2.266   2.306   2.385   2.415  weight=  0.252  B= 234.2 C= 196.1 delk= 38.1
+                                                  f3a OLw 2.068   2.097   2.117   2.147  weight=  0.009  B= 128.7 C= 124.8 delk=  3.9
+                                                         delk= 73.8 * 0.739 + 38.1 + 0.252 + 3.9 * 0.009 = 92.9
+                                             splib06 2442  Illite GDS4 (Marblehead)     W1R1Bb
+                                                  f1a DLw 2.125   2.155   2.266   2.306  weight=  0.692  B= 217.7 C= 143.9 delk= 73.8
+                                                  f2a DLw 2.266   2.306   2.385   2.415  weight=  0.308  B= 234.2 C= 196.1 delk= 38.1
+                                                          delk= 73.8 * 0.692 + 38.1 + 0.308 = 89.5
+
+                                                           avg delk = (92.9+89.5)/2 = 91.2
+
+                                             splib06 4380  Roscoelite EN124             W1R1Bb
+                                                  f1a DLw 2.125   2.155   2.277  2.317   weight=  0.789
+                                                  f2a DLw 2.285   2.315   2.405  2.433   weight=  0.211
+                                             splib06 5976  Muscovite CU91-250A med Al   W2R4NbS   muscovite-med-Al
+                                                  f1a DLw 2.1284  2.1475  2.2680  2.2872  weight=  0.733
+                                                  f2a DLw 2.2782  2.2984  2.3874  2.4054  weight=  0.267
+                                             splib06 3348  Muscovite GDS113 Ruby        W1R1Bb   muscovite-medhigh-A
+                                                  f1a DLw 2.1180  2.1480  2.2670  2.2960  weight=  0.728
+                                                  f2a DLw 2.2770  2.2960  2.3860  2.4150  weight=  0.272
+                                             splib06 3306  Muscovite CU93-1 low-Al Phyl W2R4Nb   muscovite-low-Al
+                                                  f1a DLw 2.1374  2.1565  2.2658  2.2872  weight=  0.715
+                                                  f2a DLw 2.2872  2.3052  2.3953  2.4144  weight=  0.285
+                                             splib06 3372  Muscovite GDS116 Tanzania    W1R1Ba   muscoviteFerich
+                                                  f1a DLw 2.1280  2.1580  2.2770  2.3060  weight=  0.703
+                                                  f2a DLw 2.2870  2.3060  2.4050  2.4350  weight=  0.297
+
+           sps0000   241  Illite IMt-1.b 0.2-3um estimate ABSCOEF   3800
+
+kaolinite    tetracorder reference:   splib06 2676 Kaolinite CM9                W1R1Bb   kaolinite_wxl
+                                           f1a DLw 2.0780  2.1080  2.2370  2.2670  weight=  1.0  B= 235.5 C= 54.5 delk= 181.0
+                                      splib06 2718  Kaolinite KGa-2 (pxl)        W1R1Bb  kaolinite_pxl
+                                           f1a DLw 2.0790  2.1100  2.2370  2.2670  weight=  1.0
+
+           sps0000   197  Kaolinite KGa-1 .2-3um estimate ABSCOEF   3800
+
+montmorillonite    tetracorder reference:   splib06 3270  Montmorillonite SWy-1        W1R1Bb   montmorillonite_na_highswelling
+                                                 f1a DLw 2.1180  2.1374  2.2670  2.2870  weight=  1.0
+                                            sprlb06   54  Montmorillonite_Fe GDS759A            montmorillonite_fe_swelling
+                                                 f1a DLw 2.240   2.262   2.328   2.348  weight=  0.648
+                                                 f2a DLw 2.328   2.348   2.420   2.444  weight=  0.352
+                                            splib06 3228  Montmorillonite SAz-1        W1R1Bb   montmorillonite_ca_swelling
+                                                 f1a DLw 2.1480  2.1780  2.2570  2.2870  weight=  1.0
+
+           sps0002   312  montmorillonite scanza etal 2015 ABSCOEF   435 Insufficient spectral resolution.
+
+vermiculite    tetracorder reference:  need to add.
+
+           sps0000   ???
+
+

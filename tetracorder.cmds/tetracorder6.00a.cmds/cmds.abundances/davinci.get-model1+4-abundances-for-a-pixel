@@ -1,0 +1,239 @@
+#!/usr/bin/env -S davinci -f  
+
+###########################  was:  #!/usr/local/bin/davinci -f
+# So with the old method the first line would need to be:
+# On linux and windows the above line should be:
+#
+#  #!/usr/local/bin/davinci -f
+#
+# on macs, change the above to:
+#
+#  #!/Applications/davinci.app/Contents/Resources/bin/davinci -f
+#
+# with the new 1st line method, it should work on linux, macs and windows with no changes.
+#
+# R. N. Clark 2021-2023
+
+verbose=0
+
+# calcite.v.gz
+# chlorite.v.gz
+# dolomite.v.gz
+# goethite-fine.v.gz
+# goethite-large.v.gz
+# goethite-med.v.gz
+# gypsum-coarse.v.gz
+# gypsum-fine.v.gz
+# hematite-fine.v.gz
+# hematite-large.v.gz
+# hematite-med.v.gz
+# hematite-nano.v.gz
+# illite+muscovite.v.gz
+# kaolinite.v.gz
+# montmorillonite.v.gz
+# quartz-feldspar.v.gz
+# vermiculite.v.gz
+
+printf("\n")
+
+amode = 1   # extract single pixel
+
+if ( $argc < 2 ) {
+	printf ("insufficient parameters\n")
+	printf ("form:\n")
+	printf ("davinci.get-model4-abundances-for-a-pixel xpixel ypixel [xpixel2 ypixel2]\n")
+	printf ("        if 2 sets of pixel coordinates. 1st is upper left, 2nd lower right\n")
+	printf ("                  then extract the block of pixels and report min, max, mean for the block.\n")
+	exit(1)
+}
+
+xpixel = atoi($1)
+ypixel = atoi($2)
+
+asum = 0.0
+
+if ( $argc >= 4 ) {
+
+	xpixel2 = atoi($3)
+	ypixel2 = atoi($4)
+
+	amode = 2   # extract pixel block
+	# printf ("DEBUG: amode = %d\n", amode)
+
+	if (xpixel2 < xpixel) {
+		printf ("ERROR xpixel2 < xpixel: %d  %d\n", xpixel2, xpixel)
+		exit(1)
+	}
+	if (ypixel2 < ypixel) {
+		printf ("ERROR ypixel2 < ypixel: %d  %d\n", ypixel2, ypixel)
+		exit(1)
+	}
+}
+
+# flist =            "calcite.v.gz"
+# flist = cat(flist, "chlorite.v.gz",         axis=y)
+# flist = cat(flist, "dolomite.v.gz",         axis=y)
+# flist = cat(flist, "goethite-fine.v.gz",    axis=y)
+# flist = cat(flist, "goethite-large.v.gz",   axis=y)
+# flist = cat(flist, "goethite-med.v.gz",     axis=y)
+# flist = cat(flist, "gypsum-coarse.v.gz",    axis=y)
+# flist = cat(flist, "gypsum-fine.v.gz",      axis=y)
+# flist = cat(flist, "hematite-fine.v.gz",    axis=y)
+# flist = cat(flist, "hematite-large.v.gz",   axis=y)
+# flist = cat(flist, "hematite-med.v.gz",     axis=y)
+# flist = cat(flist, "hematite-nano.v.gz",    axis=y)
+# flist = cat(flist, "illite+muscovite.v.gz", axis=y)
+# flist = cat(flist, "kaolinite.v.gz",        axis=y)
+# flist = cat(flist, "montmorillonite.v.gz",  axis=y)
+# flist = cat(flist, "quartz-feldspar.v.gz",  axis=y)
+# flist = cat(flist, "vermiculite.v.gz",      axis=y)
+
+#fname = syscall("ls -1 results.abundances/model4/*.v.gz | sed -e 's/.v.gz//' | basename")   # get the list of files to process
+#fname = syscall("basename `ls -1 results.abundances/model4/*.v.gz | sed -e 's/.v.gz//' ` ")   # get the list of files to process
+#fname = syscall("basename `ls -1 results.abundances/model4/*.v.gz | sed -e 's/.v.gz//' ` ")   # get the list of files to process
+
+flist4 = syscall("ls -1 results.abundances/model4/*.v.gz")   # get the list of files without the extension
+
+nflist4 = length(flist4)
+
+nflist = nflist4
+
+flist1 = flist4
+
+for (i=1; i<=nflist4; i++) { 
+
+	flist1[,i] = strsub(flist4[,i], match="model4", subst="model1")
+
+	#printf ("input files, model1: %s    model 4:  %s\n", flist1[,i], flist4[,i])
+}
+
+printf("###########\n")
+
+a4a = read (filename=flist4[,1])  # read the first image so we get the dimensions
+if (HasValue(a4a) ==0) {                   # check that read worked
+      printf ("read ERROR on file: %s\n",flist[,1])
+      printf ("EXIT 1\n")
+      exit(1)
+}
+
+
+a4adim = dim(a4a)
+ax = a4adim[1,,]
+ay = a4adim[2,,]
+
+if ( xpixel > ax ) {
+
+	printf ("ERROR x-pixel out of range: x= %d, max is %d\n", xpixel, ax)
+	printf ("EXIT 1\n")
+	exit(1)
+}
+if ( ypixel > ay ) {
+
+	printf ("ERROR y-pixel out of range: x= %d, max is %d\n", ypixel, ay)
+	printf ("EXIT 1\n")
+	exit(1)
+}
+if ( $argc >= 4 ) {
+	if ( xpixel2 > ax ) {
+
+		printf ("ERROR x-pixel 2 out of range: x= %d, max is %d\n", xpixel2, ax)
+		printf ("EXIT 1\n")
+		exit(1)
+	}
+	if ( ypixel2 > ay ) {
+
+		printf ("ERROR y-pixel 2 out of range: x= %d, max is %d\n", ypixel2, ay)
+		printf ("EXIT 1\n")
+		exit(1)
+	}
+}
+
+
+a4 = create (ax,ay,nflist4, org="bil", format="float", start=0.0, step=0.0)
+a1 = a4
+
+# printf ("DEBUG: found %d files\n", nflist4)
+
+if (amode == 1) {
+	printf ("Tetracorder Model 1 and 4 Abundances at pixel %d %d:\n\n", xpixel, ypixel)
+	printf ("          Mineral     Model 1     Model 4 \n")
+} else {
+
+	printf ("Tetracorder Model 1 and 4 Abundances for pixel block %d %d to %d %d:\n\n", xpixel2, ypixel2)
+
+	printf ("          Mineral      ------------- Model 1 ----------------     ------------- Model 4 -----------------\n")
+	printf ("          Mineral        min      max       mean     std_dev        min       max       mean     std_dev\n")
+}
+
+for (i=1; i<=nflist4; i++) {   # read all the data
+
+	# printf("DEBUG: %d\n", i)
+
+	fname = basename (flist4[,i], ext= ".v.gz")
+
+	# printf("DEBUG: %s\n", fname)
+
+	if (fname == "quartz-feldspar") {
+
+		a4[,,i] = read (filename=flist4[,i])
+
+		a1[,,i] = a4[,,i] * 0.0  # no quartz-feldspar in model1, so set it to zero
+	} else {
+
+
+		a1[,,i] = read (filename=flist1[,i])
+		a4[,,i] = read (filename=flist4[,i])
+	}
+
+	
+}
+
+asum1 = 0.0
+asum4 = 0.0
+
+for (i=1; i<=nflist4; i++) {
+
+	fname = basename (flist4[,i], ext= ".v.gz")
+
+	if ( amode == 1 ) {     # single pixel mode
+
+		a1px =    a1[xpixel, ypixel, i]
+		asum1 = asum1 + a1px
+
+		a4px =    a4[xpixel, ypixel, i]
+		asum4 = asum4 + a4px
+
+		printf ("%20s  %7.4f   %7.4f\n", fname, a1px, a4px)
+
+	} else {                 # pixel block mode
+
+		a1px = a1[xpixel:xpixel2, ypixel:ypixel2, i]
+		amom1 = moment(a1px)
+		asum1 = asum1 + amom1[3,,]
+
+		a4px = a4[xpixel:xpixel2, ypixel:ypixel2, i]
+		amom4 = moment(a4px)
+		asum4 = asum4 + amom4[3,,]
+
+		printf ("%20s  %7.4f   %7.4f   %7.4f   %7.4f        %7.4f   %7.4f   %7.4f   %7.4f \n", fname, amom1[1,,], amom1[2,,], amom1[3,,], amom1[5,,],  \
+								amom4[1,,], amom4[2,,], amom4[3,,], amom4[5,,])
+	}
+
+}
+
+if ( amode == 1 ) {     # single pixel mode
+	printf ("==========================================================\n")
+	printf ("             total:    %6.4f    %6.4f\n", asum1, asum4)
+
+	q = 1.0 - asum1
+	printf ("  residual model 1 assigned to quartz-feldspar = %6.4f\n", q)
+} else {
+
+	printf ("========================================================================================================\n")
+	printf ("             total:                        %6.4f                                       %6.4f\n", asum1, asum4)
+
+	q = 1.0 - asum1
+	printf ("  residual model 1 mean assigned to quartz-feldspar = %6.4f\n", q)
+}
+
+
