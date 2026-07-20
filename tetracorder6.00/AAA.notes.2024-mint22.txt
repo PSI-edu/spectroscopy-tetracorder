@@ -1,0 +1,6 @@
+
+new ubuntu installs:
+
+no need for zlib1g:i386 or libjbig0:i386
+these do not exist in mint 22, so delete from the install scripts
+

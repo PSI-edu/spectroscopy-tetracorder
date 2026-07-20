@@ -1,0 +1,40 @@
+#!/bin/sh
+
+a=`grep 'imaxch=4852' multmap.h | grep -v '^#'`
+b=`grep 'imaxch=2200' multmap.h | grep -v '^#'`
+
+if [ -z "$1" ]
+then
+	echo "usage: $0 cube|singlespectrum"
+	echo "exit 1"
+	exit 1
+fi
+
+if [ "$1" = "singlespectrum" ]
+then
+	if [ -z "$a" -a -z "$b" ]
+	then
+		echo "multmap.h not in single spectrum mode"
+		echo "exit 1"
+		exit 1
+	else
+		echo "multmap.h check is in single spectrum mode"
+	fi
+
+elif [ "$1" = "cube" ]
+then
+
+	if [ -z "$a" -a -z "$b" ]
+	then
+		echo "multmap.h check is in cube mode"
+	else
+		echo "multmap.h not in single spectrum mode"
+		echo "exit 1"
+		exit 1
+	fi
+else
+	echo "ERROR: $1 not recognized.  Must be: cube  or  singlespectrum"
+	echo "usage: $0 cube|singlespectrum"
+	echo "exit 1"
+	exit 1
+fi
