@@ -1,0 +1,102 @@
+#!/bin/sh
+
+# R. N. Clark 12/2024
+
+if [ -z "$1" ]
+then
+	echo "No hdr file specified"
+	echo " "
+	echo "Usage:"
+	echo "       fix-emit-hdr-for-davinci [-refl] file.hdr"
+	echo "  where file.hdr is an envit header file"
+	echo " "
+	echo "   -refl option removes _reflectance from the file name "
+	echo " "
+	exit 1
+fi
+
+refl="yes"    # default: do not remove _reflectance from file names
+
+if [ "$1" = "-refl" -o "$1" = "refl" ]
+then
+	echo "remove _reflectance from file names"
+	refl="norefl"
+	shift
+fi
+
+cubhdr=$1
+
+if [ -f "$cubhdrorig" ]
+then
+	echo "$cubhdrorig  EXISTS, not overwriting"
+	echo "exit 1"
+	exit 1
+fi
+
+if [ ! -f "$cubhdr" ]
+then
+        echo "$cubhdr  DOES NOT EXIST"
+        echo "exit 1"
+        exit 1
+fi
+
+cube=`basename $cubhdr .hdr`
+
+if [ -f "$cube" ]
+then
+	echo "data cube also found: $cube"
+else
+        echo "data cube NOT found: $cube"
+	echo "exit 1"
+	exit 1
+fi
+
+a=`echo $cubhdr | grep _reflectance`
+if [ "$a" -a "$refl" = "norefl" ]
+then
+
+	h=`echo $cubhdr | sed -e 's/_reflectance//'`
+	c=`echo $cube   | sed -e 's/_reflectance//'`
+
+	echo "mv $cubhdr $h"
+	mv $cubhdr $h
+
+	echo "mv $cube $c"
+	mv $cube $c
+
+	cubhdr=$h
+	cube=$c
+fi
+
+
+
+cubhdrorig=${cubhdr}-orig
+
+a=`head -3 $cubhdr | tail -1`
+
+aemit=`echo "$a" | grep 'Earth Surface Mineral Dust Source'`
+
+if [ -n "$aemit" ]
+then
+
+	if [ ! -f "$cubhdrorig" ]
+	then
+		echo "cp -a $cubhdr $cubhdrorig"
+		cp -a $cubhdr $cubhdrorig
+	fi
+
+	awc=`echo "$a" | wc -c`
+
+	echo "editing $cubhdr to reduce emit envi hdr description line length"
+	ex - $cubhdr <<EOI
+/The Earth Surface Mineral Dust Source Investigation (EMIT)/ s/The Earth Surface Mineral Dust Source Investigation (EMIT).*$/The Earth Surface Mineral Dust Source Investigation (EMIT) }/
+w
+q
+EOI
+
+else
+	echo "$cubhdr is not an EMIT envi header file"
+	echo "exit 1"
+	exit 1
+
+fi
