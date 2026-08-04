@@ -1,6 +1,33 @@
 The code here is covered by the GNU General Public License
 [https://www.gnu.org/licenses/gpl.html](https://www.gnu.org/licenses/gpl.html)
 
+# Contents
+
+Tetracorder, Specpr, and spectral libraries
+
+Source Code
+
+Background
+
+Tetracorder 6.00, expert system 6.00a5 and spectral library update
+
+OLDER:
+
+Tetracorder 5.27
+
+Tetracorder 5.27, expert system 5.27c1, and spectral library update
+
+Tetracorder 5.27, expert system 5.27e1, and spectral library update
+
+December 2024: New Tetracorder paper is published (open paper).
+
+January 15, 2025:
+
+January 15, 2025 added opal-py
+
+April 2, 2026
+
+
 # Tetracorder, Specpr, and spectral libraries
 
 **Tetracorder** is a spectral identification and mapping system designed for 
@@ -123,6 +150,60 @@ instrument that will go on the International Space Station in June
 that produce dust aerosols around the world. By measuring in detail which
 minerals make up the dust, EMIT will help to answer the essential question
 of whether this type of aerosol warms or cools the atmosphere.
+
+# Tetracorder 6.00, expert system 6.00a5 and spectral library update
+
+Tetracorder 6 now includes derivation of geologic origins
+and mineral groups and classifications.  For each reference
+spectrum a list of components is given, along with a material
+classification.  If classification is missing it is obtained
+from geologic-origins/material-classification.txt A confidence
+score is given for the identification of that mineral set, and the
+classification.  confidence is for material and classification with
+two numbers  N  M  with  0 to 9 scale.  A value of 1  = position
+and shape match only, while 2 -9 = increasing diagnostic confidence.
+Output geologic origin, group and class images are scaled 8-bit
+0 - 198, 9=198 (multiply by 22).  More water, snow and melting snow
+spectra in group 0 were added.  Refined thresholds in group 0.
+In t6.00a5 removed entries in group 20 (REE) for a different future use.
+Use group 21 for more robust REE detection.  Group 20 included
+single feature REE detection which was prone to false positives from noise.
+
+Added not features in group 4 to better distinguish between water
+and broad fe2+ absorptions.
+
+Geologic origins is an expansion of the origins first described in
+Noe Dobrea et a., 2025.
+
+Noe Dobrea, Eldar Z., Maria E. Banks, Roger N. Clark, David
+Wettergreen, Amanda Hendrix, Caitlin Ahrens, Ernie Bell,
+Abigail Breitfeld, Thomas F. Bristow, Sanlyn Buxner, Alberto
+Candela, Margaret Hansen, Greg Holsclaw, Paul Knightly, Georgiana
+Kramer, Nandita Kumari, Melissa D. Lane, Audrey Martin, McKayla
+Meier, Ruby Patterson, Neil Pearson, Thomas Prettyman, Greg
+A. Swayze, David Vaniman, Srinivasan Vijayarangan, Faith Vilas,
+Shawn P. Wright, 2025, Rover Science Autonomy in Planetary
+Exploration: Field Analog Tests, Planetary Science Journal
+6:51. https://iopscience.iop.org/article/10.3847/PSJ/adaa78
+
+Accurate geologic origins requires excellent calibration to apparent
+surface reflectance.  For example, geologic origins does not work
+with Moon Mineralogy Mapper (M3) data due to scattered light in the
+instrument which mimics iron oxides (Clark et al., 2024)
+
+Clark, R. N., N. C. Pearson, T. B. McCord, D. L. Domingue,
+K. E. Livo, J. W. Boardman, D. P. Moriarty, A. R. Hendrix, G. Kramer,
+and M. E. Banks, 2024, The Global Distribution of Water and Hydroxyl
+on the Moon as Seen by the Moon Mineralogy Mapper (M3), Planetary
+Science Journal, 5:198, 32pp. https://doi.org/10.3847/PSJ/ad5837
+
+The tetracorder setup includes new parameters.  Please read
+tetracorder.cmds/tetracorder6.00a.cmds/AAAAA.example.commands.to.analyze.image.cubes.txt
+
+
+
+
+# OLDER:
 
 # Tetracorder 5.27
 
